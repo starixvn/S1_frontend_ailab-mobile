@@ -13,19 +13,11 @@ import GroupList from "./deposit.groupList";
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
-import PromoList from "./promoList";
 
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const {
-		paymentList,
-		userPaymentData,
-		handleUserPaymentData,
-		promoList,
-		asyncPromotionConfirmPopBox,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, userPaymentData, handleUserPaymentData } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -35,11 +27,6 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selbank, setBank] = useState({});
 	const [bankList, setBankList] = useState([]);
-	const [depositPromo, setDepositPromo] = useState({
-		bonusCode: null,
-		requiredAmount: null,
-		specialCode: ""
-	});
 
 	const {
 		amount,
@@ -170,30 +157,6 @@ const Payment = props => {
 		const result = VaildAmount({ _amount: amount });
 
 		if (result) {
-			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
-
-			if (
-				userInfo.phoneVerified &&
-				depositPromo.requiredAmount &&
-				resultAmount < depositPromo.requiredAmount
-			) {
-				const success = await asyncPromotionConfirmPopBox();
-
-				if (!success) return;
-			}
-
-			let { bonusCode } = depositPromo;
-
-			if (depositPromo.specialCode) {
-				bonusCode = await checkDepositSpecialCode(
-					depositPromo.specialCode
-				);
-
-				if (!bonusCode) {
-					return;
-				}
-			}
-
 			const { payId, channelId, mode } = selGroup;
 			let { sysId } = selbank;
 			let bankLogo = null;
@@ -409,15 +372,6 @@ const Payment = props => {
 				currencyId={userInfo.currencyId}
 			/>
 
-			<PromoList
-				i18n={i18n}
-				amount={Number(amount)}
-				userInfo={userInfo}
-				promoList={promoList}
-				depositPromo={depositPromo}
-				setDepositPromo={setDepositPromo}
-			/>
-
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -429,17 +383,13 @@ const Payment = props => {
 
 Payment.defaultProps = {
 	userPaymentData: {},
-	handleUserPaymentData: () => null,
-	promoList: []
+	handleUserPaymentData: () => null
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Payment;

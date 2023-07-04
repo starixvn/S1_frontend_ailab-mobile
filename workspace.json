@@ -518,6 +518,83 @@
 				}
 			}
 		},
+		"leobet": {
+			"root": "apps/leobet",
+			"sourceRoot": "apps/leobet/src",
+			"projectType": "application",
+			"schematics": {},
+			"architect": {
+				"autobuild": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": ["dist/apps/leobet"],
+					"options": {
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js build",
+						"cwd": "apps/leobet"
+					}
+				},
+				"build": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": ["dist/apps/leobet"],
+					"options": {
+						"commands": [
+							"(git rev-parse HEAD & git rev-parse --abbrev-ref HEAD & git config user.name) > public/rnt.txt",
+							"node ../../node_modules/react-app-rewired/bin/index.js build"
+						],
+						"cwd": "apps/leobet"
+					}
+				},
+				"serve": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": [],
+					"options": {
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js start",
+						"cwd": "apps/leobet"
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": [],
+					"options": {
+						"command": "node ../../node_modules/eslint/bin/eslint.js src/**/*.js src/**/*.jsx --no-error-on-unmatched-pattern",
+						"cwd": "apps/leobet"
+					}
+				},
+				"test": {
+					"builder": "@nrwl/workspace:run-commands",
+					"outputs": [],
+					"options": {
+						"command": "node ../../node_modules/react-app-rewired/bin/index.js test --watchAll=false",
+						"cwd": "apps/leobet"
+					}
+				}
+			}
+		},
+		"leobet-e2e": {
+			"root": "apps/leobet-e2e",
+			"sourceRoot": "apps/leobet-e2e/src",
+			"projectType": "application",
+			"architect": {
+				"e2e": {
+					"builder": "@nrwl/cypress:cypress",
+					"options": {
+						"cypressConfig": "apps/leobet-e2e/cypress.json",
+						"tsConfig": "apps/leobet-e2e/tsconfig.e2e.json",
+						"devServerTarget": "leobet:serve"
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "leobet:serve:production"
+						}
+					}
+				},
+				"lint": {
+					"builder": "@nrwl/linter:eslint",
+					"options": {
+						"lintFilePatterns": ["apps/leobet-e2e/**/*.js"]
+					}
+				}
+			}
+		},
 		"format-pattern": {
 			"root": "libs/format-pattern",
 			"sourceRoot": "libs/format-pattern/src",

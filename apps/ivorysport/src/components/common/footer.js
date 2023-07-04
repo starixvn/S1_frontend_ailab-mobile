@@ -172,13 +172,6 @@ const FooterWalletMenu = ({
 					<span>{i18n.lbl_Deposit}</span>
 				</Link>
 				<Link
-					className="icon icon-icon32px_Funds-transfer"
-					to={path.transfer.root}
-					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
-					<span>{i18n.lbl_Transfer}</span>
-				</Link>
-				<Link
 					className="icon icon-icon32px_History"
 					to={path.statement.root}
 					onClick={handleWalletMenu}>

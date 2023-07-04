@@ -19,7 +19,6 @@ import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import { defPopBoxType } from "../common/popbox";
 import useTip from "../hook/useTip";
-import PromoList from "./promoList";
 
 const defInputCol = {
 	payAccount: "payAccount"
@@ -28,14 +27,7 @@ const defInputCol = {
 const payType = "MobilePay";
 
 const Payment = props => {
-	const {
-		paymentList,
-		userPaymentData,
-		handleUserPaymentData,
-		promoList,
-		asyncPromotionConfirmPopBox,
-		checkDepositSpecialCode
-	} = props;
+	const { paymentList, userPaymentData, handleUserPaymentData } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -45,11 +37,6 @@ const Payment = props => {
 	const [selGroup, setSelGroup] = useState(null);
 	const [selChannel, setChannel] = useState({});
 	const [channelList, setChannelList] = useState([]);
-	const [depositPromo, setDepositPromo] = useState({
-		bonusCode: null,
-		requiredAmount: null,
-		specialCode: ""
-	});
 	const [payAccount, setPayAccount] = useState({ value: "", tip: "" });
 
 	const { showTips, showTipHandler } = useTip();
@@ -154,30 +141,7 @@ const Payment = props => {
 
 		const result = checkPayAccount() && VaildAmount({ _amount: amount });
 		if (result) {
-			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
 			const real_amount = _isConvert ? amount * 1000 : amount;
-
-			if (
-				userInfo.phoneVerified &&
-				depositPromo.requiredAmount &&
-				resultAmount < depositPromo.requiredAmount
-			) {
-				const success = await asyncPromotionConfirmPopBox();
-
-				if (!success) return;
-			}
-
-			let { bonusCode } = depositPromo;
-
-			if (depositPromo.specialCode) {
-				bonusCode = await checkDepositSpecialCode(
-					depositPromo.specialCode
-				);
-
-				if (!bonusCode) {
-					return;
-				}
-			}
 
 			const RedirectToNext = debounce(() => {
 				setPopBox(prevState => ({
@@ -262,11 +226,6 @@ const Payment = props => {
 			// DuitNow 彈窗
 			const handleDuitNowQR = async () => {
 				try {
-					const res = await api.payment.DepositReqLocalPay({
-						groupId: selChannel.groupId,
-						amount,
-						bonusCode: depositPromo.bonusCode
-					});
 					const { data, errorCode } = res.data;
 					if (errorCode === 0) {
 						setPopBox({
@@ -445,15 +404,6 @@ const Payment = props => {
 				currencyId={userInfo.currencyId}
 			/>
 
-			<PromoList
-				i18n={i18n}
-				amount={Number(amount)}
-				userInfo={userInfo}
-				promoList={promoList}
-				depositPromo={depositPromo}
-				setDepositPromo={setDepositPromo}
-			/>
-
 			<div className="btn-group">
 				<button className="orange" onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
@@ -465,17 +415,13 @@ const Payment = props => {
 
 Payment.defaultProps = {
 	userPaymentData: {},
-	handleUserPaymentData: () => null,
-	promoList: []
+	handleUserPaymentData: () => null
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
-	handleUserPaymentData: PropTypes.func,
-	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	asyncPromotionConfirmPopBox: PropTypes.func.isRequired,
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	handleUserPaymentData: PropTypes.func
 };
 
 export default Payment;
