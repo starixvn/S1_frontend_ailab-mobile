@@ -4,6 +4,8 @@ import moment from "moment";
 import { useGetPrizeList } from "../hook/useGetPrizeList";
 import { eventIds } from "../../datas/eventId";
 
+const { DATE, TIME_SECONDS } = HTML5_FMT;
+
 const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 	const { history } = useGetPrizeList({
 		i18n,
@@ -12,16 +14,6 @@ const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 		setLoading,
 		eventId: eventIds.luckyWheel,
 		canDrawPrize
-	});
-
-	const arr = history?.map(data => {
-		return (
-			<Item
-				key={`luckyWheel-${data.drawTime}`}
-				drawTime={data.drawTime}
-				prizeName={data.prizeName}
-			/>
-		);
 	});
 
 	return history?.length > 0 ? (
@@ -36,7 +28,16 @@ const History = ({ i18n, userInfo, setPopBox, setLoading, canDrawPrize }) => {
 						{i18n[`Currency_${userInfo.currencyId}`]})
 					</div>
 				</div>
-				{arr}
+				{history?.map(data => (
+					<div key={data.drawTime}>
+						<div>
+							{moment(data.drawTime).format(
+								`${DATE} ${TIME_SECONDS}`
+							)}
+						</div>
+						<div>{data.prizeName}</div>
+					</div>
+				))}
 			</div>
 		</div>
 	) : (
@@ -51,20 +52,6 @@ History.propTypes = {
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
 	setPopBox: PropTypes.func.isRequired,
 	setLoading: PropTypes.func.isRequired
-};
-
-const Item = ({ drawTime, prizeName }) => {
-	return (
-		<div>
-			<div>{moment(drawTime).format("YYYY/MM/DD HH:mm:ss")}</div>
-			<div>{prizeName}</div>
-		</div>
-	);
-};
-
-Item.propTypes = {
-	drawTime: PropTypes.string.isRequired,
-	prizeName: PropTypes.string.isRequired
 };
 
 export default History;
