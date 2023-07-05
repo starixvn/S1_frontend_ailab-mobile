@@ -177,7 +177,7 @@ const EventListVND = ({ i18n, vipBanner }) => (
 			<tr>
 				{vipBanner?.vipBannerData?.map(item => (
 					<td>
-						{item?.downDeposit
+						{item?.downDeposit && Number(item?.downDeposit) !== 0
 							? item?.downDeposit.split(".")[0]
 							: null}
 					</td>
@@ -191,7 +191,7 @@ const EventListVND = ({ i18n, vipBanner }) => (
 			<tr>
 				{vipBanner?.vipBannerData?.map(item => (
 					<td>
-						{item?.downTurnover
+						{item?.downTurnover && Number(item?.downTurnover) !== 0
 							? item?.downTurnover.split(".")[0]
 							: null}
 					</td>
