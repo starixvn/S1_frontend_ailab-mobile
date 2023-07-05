@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import moment from "moment/moment";
 import { useNavigate } from "@reach/router";
-import { Autoplay } from "../components/common/swipperBanner";
-import { userInfoContext, i18nContext } from "../components/common/context";
-import { defBannersUrl, defLevelList } from "../components/vip/def";
-import { EventList } from "../components/vip/eventList";
+import {
+	userInfoContext,
+	i18nContext,
+	popBoxContext
+} from "../components/common/context";
 import { Info } from "../components/vip/info";
 import { FooterBanner } from "../components/vip/footerBanner";
 import Header from "../components/header/header";
+import api from "../service/api";
 import path from "../path";
-import { defCurrenyId } from "../components/common/common";
+import {
+	defCurrenyId,
+	currencyIdToTimeZone
+} from "../components/common/common";
 import { useHandleAllowCurrencies } from "../components/hook/useHandleAllowCurrencies";
+import { VIP_LEVEL } from "../components/vip/def";
 import Layout from "../components/common/layout";
+import VipBanner from "../components/vip/vipBanner";
+import VipMedal from "../components/vip/vipMedal";
+import VipTable from "../components/vip/vipTable";
 
 export const vipAllowCurrencies = [
 	defCurrenyId.MYR,
@@ -19,41 +28,18 @@ export const vipAllowCurrencies = [
 	defCurrenyId.IDR
 ];
 
-const Banners = ({ langId, currencyId }) => {
-	let bannerLangId = langId;
-	if (langId === "en") {
-		if (currencyId === defCurrenyId.THB) {
-			bannerLangId = "th_en";
-		} else if (currencyId === defCurrenyId.IDR) {
-			bannerLangId = "id_en";
-		}
-	}
-
-	const rows = defBannersUrl({
-		langId: bannerLangId
-	}).map(b => (
-		<div>
-			<img
-				key={`VIPBanner-${b}`}
-				src={b}
-				className="banner"
-				alt="vip banner"
-			/>
-		</div>
-	));
-	return <Autoplay Rows={rows} />;
-};
-
-Banners.propTypes = {
-	langId: PropTypes.string.isRequired,
-	currencyId: PropTypes.number.isRequired
-};
-
 const IndexPage = () => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const header = <Header title="VIP" hideLogo={true} />;
+	const [vipBanner, setVipBanner] = useState([]);
+	// 預設 vintage
+	const [vipActiveTabId, setVipActiveTabId] = useState(
+		VIP_LEVEL.VIP_LEVEL_VINTAGE
+	);
+	const { setPopBox } = useContext(popBoxContext);
+	const isMountedRef = useRef(null);
 
 	useHandleAllowCurrencies({
 		allowCurrencies: vipAllowCurrencies,
@@ -70,49 +56,83 @@ const IndexPage = () => {
 		}
 	};
 
+	const selectedVipTableData = vipBanner?.vipBannerData?.find(
+		item => item.level === vipActiveTabId
+	);
+
+	useEffect(() => {
+		const getVipBanner = async () => {
+			await api.site
+				.GetVipBanner({ CurrencyId: userInfo?.currencyId })
+				.then(
+					res => {
+						if (isMountedRef.current && res.data.errorCode === 0) {
+							setVipBanner(res.data.data || []);
+						} else if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					},
+					() => {
+						setPopBox({
+							isOpen: true,
+							content: i18n.msg_ApiServerError
+						});
+					}
+				);
+		};
+		getVipBanner();
+	}, []);
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => {
+			isMountedRef.current = false;
+		};
+	});
+
 	return (
 		<Layout header={header} mainClass="main vip">
-			<Banners
-				langId={userInfo.langId}
-				currencyId={userInfo.currencyId}
-			/>
-			<LevelList i18n={i18n} langId={userInfo.langId} />
-			<Info langId={userInfo.langId} />
+			<VipBanner i18n={i18n} userInfo={userInfo} vipBanner={vipBanner} />
+
+			<div className="vipprogram">
+				{/* 目前只用 en 圖 */}
+				<img
+					src="https://banner.0814media.net/h5/img/vipbox.png"
+					alt=""
+				/>
+				<Info langId={userInfo.langId} />
+			</div>
+
 			<div className="vipPage">
 				<div className="text">
-					{i18n.lbl_Vip_Last_Updated}: 10/25/2022
+					{i18n.lbl_Vip_Last_Updated}:{" "}
+					{moment(vipBanner?.lastUpdateTime, "YYYY-MM-DDThh:mm:ssZ")
+						.zone(
+							currencyIdToTimeZone[
+								userInfo.currencyId ?? defCurrenyId.MYR
+							]
+						)
+						.format("MM/DD/YYYY")}
 				</div>
-				<EventList langId={userInfo.langId} />
-				<FooterBanner
-					langId={userInfo.langId}
-					openJoinPop={openJoinPop}
+				<VipMedal
+					i18n={i18n}
+					vipActiveTabId={vipActiveTabId}
+					setVipActiveTabId={setVipActiveTabId}
+				/>
+
+				<VipTable
+					selectedVipTableData={selectedVipTableData}
+					userInfo={userInfo}
+					vipActiveTabId={vipActiveTabId}
 				/>
 			</div>
+
+			<FooterBanner langId={userInfo.langId} openJoinPop={openJoinPop} />
 		</Layout>
 	);
-};
-
-const LevelList = ({ i18n, langId }) => {
-	const rows = defLevelList.map(l => (
-		<div key={`VIPLevelList-${l.levelName}`}>
-			<img src={l.imgUrl} alt={l.levelName} />
-			{langId === "cs" ? (
-				<>
-					{i18n[l.levelNameCS]}
-					<p>{i18n.lbl_Club}</p>
-				</>
-			) : (
-				i18n[l.levelName]
-			)}
-		</div>
-	));
-
-	return <div className="medal">{rows}</div>;
-};
-
-LevelList.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired
 };
 
 export default IndexPage;

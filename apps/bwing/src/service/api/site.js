@@ -88,3 +88,8 @@ export const api_site_GetSocialChannel = ({ langId, displayPage }) =>
 		LangId: langId,
 		DisplayPage: displayPage
 	});
+
+export const api_site_GetVipBanner = () =>
+	siteRequest.post("GetVipBanner", {
+		CurrencyId: 51
+	});
