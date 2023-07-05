@@ -229,7 +229,8 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 						)}
 					</li>
 					<li className="">
-						{selectedVipTableData?.downDeposit
+						{selectedVipTableData?.downDeposit &&
+						Number(selectedVipTableData?.downDeposit) !== 0
 							? selectedVipTableData?.downDeposit.split(".")[0]
 							: null}
 					</li>
@@ -241,7 +242,8 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 						)}
 					</li>
 					<li className="">
-						{selectedVipTableData?.downTurnover
+						{selectedVipTableData?.downTurnover &&
+						Number(selectedVipTableData?.downTurnover) !== 0
 							? selectedVipTableData?.downTurnover.split(".")[0]
 							: null}
 					</li>
