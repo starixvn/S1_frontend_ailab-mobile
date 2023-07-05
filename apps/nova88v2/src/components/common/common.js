@@ -316,3 +316,14 @@ export const memberType = {
 	generalUser: 1,
 	liveHost: 3
 };
+
+// 每個字斷第一個字均大寫
+export function capitalizeFirstLetter(string = "") {
+	const words = string?.toLowerCase().split(" ");
+
+	return words
+		.map(word => {
+			return word[0]?.toUpperCase() + word.substring(1);
+		})
+		.join(" ");
+}

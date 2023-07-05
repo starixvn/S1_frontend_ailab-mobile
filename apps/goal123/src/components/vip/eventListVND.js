@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EventListVND = ({ i18n }) => (
+const EventListVND = ({ i18n, vipBanner }) => (
 	<table className="eventList">
 		<tbody>
 			<tr className="title">
@@ -13,124 +13,69 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Deposit_Priority}</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.depositPriority ? (
+							<i className="icon icon-checkmark" />
+						) : null}{" "}
+						{item?.depositPriority}
+					</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_WithDrawal_Priority}</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.withdrawalPriority ? (
+							<i className="icon icon-checkmark" />
+						) : null}{" "}
+						{item?.withdrawalPriority}
+					</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_Service_Support_At_Date}</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-					{i18n.lbl_Vip_High}
-				</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.serviceSupport ? (
+							<i className="icon icon-checkmark" />
+						) : null}{" "}
+						{item?.serviceSupport}
+					</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_Designated_Account_Manager}</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td />
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.designatedAccountManager && (
+							<i className="icon icon-checkmark" />
+						)}
+					</td>
+				))}
 			</tr>
 
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_Daily_Limit}</td>
 			</tr>
 			<tr>
-				<td>200,000,000</td>
-				<td>300,000,000</td>
-				<td>500,000,000</td>
-				<td>1,000,000,000</td>
-				<td>2,000,000,000</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.withdrawalMax.split(".")[0]}</td>
+				))}
 			</tr>
-
-			{/* <tr>
-					<td colSpan="7">
-						{i18n.lbl_Vip_Unlimited_Withdrawal_amount}
-					</td>
-				</tr>
-				<tr>
-					<td>{i18n.lbl_Vip_Status1}</td>
-					<td>{i18n.lbl_Vip_Status1}</td>
-					<td>{i18n.lbl_Vip_Status1}</td>
-					<td>{i18n.lbl_Vip_Status1}</td>
-					<td>{i18n.lbl_Vip_Status1}</td>
-					<td>{i18n.lbl_Vip_Status1}</td>
-				</tr> */}
 			<tr>
 				<td colSpan="7">{i18n.lbl_DAILY_TRANSACTIONS_COUNT}</td>
 			</tr>
 			<tr>
-				<td>10</td>
-				<td>10</td>
-				<td>15</td>
-				<td>15</td>
-				<td>20</td>
-				<td>{i18n.lbl_Unlimited}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.times}</td>
+				))}
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -142,12 +87,11 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Tier_UpGrade_Bonus}</td>
 			</tr>
 			<tr>
-				<td />
-				<td>333,123</td>
-				<td>500,123</td>
-				<td>1,123,123</td>
-				<td>2,123,123</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.upBonus ? item?.upBonus.split(".")[0] : null}
+					</td>
+				))}
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -158,45 +102,33 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.70%</td>
-				<td>0.80%</td>
-				<td>0.90%</td>
-				<td>1.00%</td>
-				<td>1.10%</td>
-				<td>1.20%</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.rebateCategory[0].percentage}%</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.25%</td>
-				<td>0.30%</td>
-				<td>0.35%</td>
-				<td>0.40%</td>
-				<td>0.45%</td>
-				<td>0.50%</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.rebateCategory[2].percentage}%</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.20%</td>
-				<td>0.25%</td>
-				<td>0.30%</td>
-				<td>0.35%</td>
-				<td>0.40%</td>
-				<td>0.45%</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.rebateCategory[1].percentage}%</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
 			</tr>
 			<tr>
-				<td>0.70%</td>
-				<td>0.80%</td>
-				<td>0.90%</td>
-				<td>1.10%</td>
-				<td>1.20%</td>
-				<td>1.50%</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.rebateCategory[3].percentage}%</td>
+				))}
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -207,24 +139,13 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Referral_bonus}</td>
 			</tr>
 			<tr>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
-				<td>
-					<i className="icon icon-checkmark" />
-				</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.referralBonus && (
+							<i className="icon icon-checkmark" />
+						)}
+					</td>
+				))}
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -236,12 +157,11 @@ const EventListVND = ({ i18n }) => (
 				<td colSpan="7">{i18n.lbl_Vip_Monthly_Minimum_Deposit}</td>
 			</tr>
 			<tr>
-				<td />
-				<td>200,000,000</td>
-				<td>600,000,000</td>
-				<td>1,500,000,000</td>
-				<td>3,000,000,000</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.upDeposit ? item?.upDeposit.split(".")[0] : null}
+					</td>
+				))}
 			</tr>
 			<tr className="title">
 				<td colSpan="7" className="icon icon-nova88">
@@ -255,12 +175,13 @@ const EventListVND = ({ i18n }) => (
 				</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td>300,000,000</td>
-				<td>750,000,000</td>
-				<td>3,000,000,000</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.downDeposit && Number(item?.downDeposit) !== 0
+							? item?.downDeposit.split(".")[0]
+							: null}
+					</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">
@@ -268,12 +189,13 @@ const EventListVND = ({ i18n }) => (
 				</td>
 			</tr>
 			<tr>
-				<td />
-				<td />
-				<td>3,000,000,000</td>
-				<td>7,500,000,000</td>
-				<td>30,000,000,000</td>
-				<td>{i18n.lbl_Vip_ByInvitation}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>
+						{item?.downTurnover && Number(item?.downTurnover) !== 0
+							? item?.downTurnover.split(".")[0]
+							: null}
+					</td>
+				))}
 			</tr>
 			<tr>
 				<td colSpan="7">
@@ -281,19 +203,17 @@ const EventListVND = ({ i18n }) => (
 				</td>
 			</tr>
 			<tr className="lastTd">
-				<td>{i18n.lbl_Vip_Normal}</td>
-				<td>{i18n.lbl_Vip_Lifetime}</td>
-				<td>{i18n.lbl_Vip_3Months}</td>
-				<td>{i18n.lbl_Vip_3Months}</td>
-				<td>{i18n.lbl_Vip_3Months}</td>
-				<td>{i18n.lbl_Vip_3Months}</td>
+				{vipBanner?.vipBannerData?.map(item => (
+					<td>{item?.rankingValidityMembershipRenewal}</td>
+				))}
 			</tr>
 		</tbody>
 	</table>
 );
 
 EventListVND.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	vipBanner: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default EventListVND;
