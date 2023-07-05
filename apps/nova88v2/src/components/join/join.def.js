@@ -5,7 +5,7 @@ export const initValue = {
 	RealName: "",
 	Email: "",
 	CurrencyIdx: null,
-	AffiliateId: "",
+	Affiliate: "",
 	Checkbox: true,
 	Phone: ""
 	// Birth_d: 0,
@@ -38,7 +38,7 @@ export const initStatus = {
 		checked: null,
 		msg: ""
 	},
-	AffiliateId: {
+	Affiliate: {
 		checked: null,
 		msg: ""
 	},

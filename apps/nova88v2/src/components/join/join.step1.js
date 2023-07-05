@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import useTip from "../hook/useTip";
 import api from "../../service/api";
 import Inputbox from "../common/inputbox.hint";
 import InputboxPWD from "../common/inputbox.password";
-import {
-	getUrlParameter,
-	passwordCheck,
-	getCookie,
-	getCombineLangId
-} from "../common/common";
+import { passwordCheck, getCombineLangId } from "../common/common";
 import FeaturePanel from "./features";
 import { userInfoContext } from "../common/context";
 import { cloudBannerImgURL } from "../../config";
@@ -22,26 +17,17 @@ const JoinStep1 = ({
 	setHintStatus,
 	EditField,
 	langId,
-	setStep
+	setStep,
+	checkAffiliate,
+	urlAffiliate
 }) => {
 	const [showingPwd, setShowingPwd] = useState({
 		Password: false,
 		ConfirmPwd: false
 	});
-	const [affiliateidExist, setAffiliateidExist] = useState("");
 
 	const { showTips, showTipHandler } = useTip([]);
 	const { userInfo } = useContext(userInfoContext);
-	const AffId = getUrlParameter("AffId") || getCookie("AffId");
-	useEffect(() => {
-		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
-
-		if (AffId) {
-			setAffiliateidExist(AffId);
-		} else if (AffCode) {
-			setAffiliateidExist(AffCode);
-		}
-	}, []);
 
 	const showPswHandler = ({ col }) => {
 		const pwdStatus = !showingPwd[col];
@@ -69,6 +55,10 @@ const JoinStep1 = ({
 			msg = result.msg;
 		} else if (col === "RealName") {
 			const result = checkRealName({ val });
+			checked = result.checked;
+			msg = result.msg;
+		} else if (col === "Affiliate") {
+			const result = await checkAffiliate({ formAffCode: val });
 			checked = result.checked;
 			msg = result.msg;
 		}
@@ -146,12 +136,18 @@ const JoinStep1 = ({
 			const _realNameCheck = checkRealName({
 				val: userValue.RealName
 			});
+			const _affiliateCheck = await checkAffiliate({
+				formAffCode: userValue.Affiliate
+			});
 
 			const checked =
 				_usernameCheck.checked &&
 				_passwordCheck.checked &&
 				_confirmPwdCheck.checked &&
-				_realNameCheck.checked;
+				_realNameCheck.checked &&
+				// affiliate is optional
+				(_affiliateCheck.checked === true ||
+					_affiliateCheck.checked === null);
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -250,19 +246,16 @@ const JoinStep1 = ({
 				<Inputbox
 					icon="icon-affiliate"
 					placeholder={i18n.lbl_Affiliate_ID}
-					value={
-						affiliateidExist !== ""
-							? affiliateidExist
-							: userValue.AffiliateId
-					}
-					onChange={EditField.bind(null, "AffiliateId")}
-					disabled={Boolean(affiliateidExist)}
-					btnStatus={hintStatus.AffiliateId.checked}
-					warningMsg={hintStatus.AffiliateId.msg}
+					value={userValue.Affiliate}
+					onChange={EditField.bind(null, "Affiliate")}
+					onBlur={checkValue.bind(null, "Affiliate")}
+					disabled={urlAffiliate && userValue.Affiliate}
+					btnStatus={hintStatus.Affiliate.checked}
+					warningMsg={hintStatus.Affiliate.msg}
 					infoText={i18n.lbl_Please_enter_Affiliate_ID}
-					clickInfo={() => showTipHandler("AffiliateId")}
-					showTips={showTips.includes("AffiliateId")}
-					testAttr="AffiliateId"
+					clickInfo={() => showTipHandler("Affiliate")}
+					showTips={showTips.includes("Affiliate")}
+					testAttr="Affiliate"
 				/>
 				<div className="Terms">
 					{i18n.lbl_Check18TC1}
@@ -294,6 +287,11 @@ const JoinStep1 = ({
 	);
 };
 
+JoinStep1.defaultProps = {
+	checkAffiliate: () => null,
+	urlAffiliate: null
+};
+
 JoinStep1.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userValue: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -301,7 +299,9 @@ JoinStep1.propTypes = {
 	setHintStatus: PropTypes.func.isRequired,
 	EditField: PropTypes.func.isRequired,
 	langId: PropTypes.string.isRequired,
-	setStep: PropTypes.func.isRequired
+	setStep: PropTypes.func.isRequired,
+	checkAffiliate: PropTypes.func,
+	urlAffiliate: PropTypes.bool
 };
 
 export default JoinStep1;

@@ -211,6 +211,7 @@
 	"lbl_AcceptedFileType": "Jenis file yang dapat diterima: JPG, JPEG, PNG",
 	"lbl_InaccessibleWithoutPermission": "Tidak dapat diakses tanpa izin",
 	"lbl_RemindForName": "NAMA LENGKAP harus sesuai dengan nama KTP Anda yang masih berlaku, dilarang menggunakan simbol khusus",
+	"lbl_AffiliateIdWrong": "ID afiliasi tidak dapat ditemukan",
 
 	"-==================HotEvent====================": "",
 	"lbl_Odds": "Odds",

@@ -50,11 +50,13 @@ const JoinStep2 = ({
 	setUserInfo,
 	lineUserId,
 	setStep,
-	recaptchaInfo
+	recaptchaInfo,
+	siteCurrency,
+	setSiteCurrencyState,
+	urlAffId
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { t } = useTranslation();
-	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
@@ -382,28 +384,12 @@ const JoinStep2 = ({
 				ReCaptchaToken: reCaptchaToken
 			};
 
-			if (AffId) {
-				const res = await api.site.GetAffiliateAgent({ AffId });
-				if (res.data?.errorCode === 0) {
-					regData.AffId =
-						getUrlParameter("AffId") || getCookie("AffId");
-				} else {
-					setHintStatus(prev => ({
-						...prev,
-						AffiliateId: {
-							checked: false,
-							msg: res.data.message
-						}
-					}));
-				}
-			}
-
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
 			regData.Aff = getUrlParameter("Aff") || getCookie("Aff");
-			regData.AffCode =
-				getUrlParameter("AffCode") ||
-				getCookie("AffCode") ||
-				userValue.AffiliateId;
+			// If userValue.affiliate means urlAffId is qualified
+			regData.AffId = urlAffId && userValue.Affiliate ? urlAffId : null;
+			// If no urlAffId, then userValue.affiliate is affCode (no matter url or form value)
+			regData.AffCode = !urlAffId ? userValue.Affiliate : null;
 			regData.blackbox = await Iov_GetBlackBox();
 			regData.LineUserId = lineUserId;
 
@@ -599,7 +585,10 @@ const JoinStep2 = ({
 };
 
 JoinStep2.defaultProps = {
-	lineUserId: null
+	lineUserId: null,
+	siteCurrency: [],
+	setSiteCurrencyState: () => null,
+	urlAffId: null
 };
 
 JoinStep2.propTypes = {
@@ -613,7 +602,10 @@ JoinStep2.propTypes = {
 	setUserInfo: PropTypes.func.isRequired,
 	lineUserId: PropTypes.string,
 	setStep: PropTypes.func.isRequired,
-	recaptchaInfo: PropTypes.objectOf(PropTypes.any).isRequired
+	recaptchaInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	siteCurrency: PropTypes.arrayOf(PropTypes.object),
+	setSiteCurrencyState: PropTypes.func,
+	urlAffId: PropTypes.string
 };
 
 const AreaCodeDropdown = ({
