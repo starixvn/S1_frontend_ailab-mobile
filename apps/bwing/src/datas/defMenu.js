@@ -486,11 +486,11 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-dg.png`,
 					...defGameInfo.LIVEcasinoDG
 				},
-				// {
-				// 	displayText: "Allbet",
-				// 	img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
-				// 	...defGameInfo.LIVEcasinoAB
-				// },
+				{
+					displayText: "Allbet",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
+					...defGameInfo.LIVEcasinoAB
+				},
 				{
 					displayText: "eBET",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ebet.png`,

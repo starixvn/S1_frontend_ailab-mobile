@@ -75,7 +75,7 @@ const allowedCurrencyList = {
 		defCurrenyId.INR,
 		defCurrenyId.KHM
 	],
-	allbet: [defCurrenyId.MYR, defCurrenyId.IDR],
+	allbet: [defCurrenyId.MYR, defCurrenyId.IDR, defCurrenyId.THB],
 
 	// slot
 	slotAMB: [
