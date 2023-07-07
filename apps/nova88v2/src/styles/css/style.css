@@ -7257,13 +7257,14 @@ span.important {
   padding-top: 10vw;
 }
 .vip_mark img {
-  width: 30vw;
+  width: 32vw;
   z-index: 1;
   position: relative;
 }
 .vip_mark div {
   background: #112240;
   padding: 1vw;
+  margin-top: 1vw;
   border-radius: 15px;
 }
 .vip_mark .circleAnimation {

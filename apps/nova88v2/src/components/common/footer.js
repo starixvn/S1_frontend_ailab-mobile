@@ -37,7 +37,6 @@ const Footer = () => {
 								className={`icon icon-home${
 									isMatch ? " active" : ""
 								}`}>
-								<div className="circleAnimation" />
 								<span>{i18n.lbl_Home}</span>
 							</Link>
 						);
@@ -55,7 +54,6 @@ const Footer = () => {
 								className={`icon icon-gift${
 									isMatch ? " active" : ""
 								}`}>
-								<div className="circleAnimation" />
 								<span>{i18n.lbl_Promotion}</span>
 								<div className="icon icon-mediafire">HOT</div>
 							</Link>
@@ -68,7 +66,6 @@ const Footer = () => {
 					target="_blank"
 					href="https://direct.lc.chat/11638088/"
 					className="icon icon-contact">
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
@@ -83,7 +80,6 @@ const Footer = () => {
 								className={`icon icon-menu${
 									isMatch ? " active" : ""
 								}`}>
-								<div className="circleAnimation" />
 								<span>{i18n.lbl_More}</span>
 							</Link>
 						);
@@ -102,7 +98,6 @@ const Footer = () => {
 								className={`icon icon-home${
 									isMatch && !openWalletMenu ? " active" : ""
 								}`}>
-								<div className="circleAnimation" />
 								<span>{i18n.lbl_Home}</span>
 							</Link>
 						);
@@ -121,7 +116,6 @@ const Footer = () => {
 								className={`icon icon-gift${
 									isMatch && !openWalletMenu ? " active" : ""
 								}`}>
-								<div className="circleAnimation" />
 								<span>{i18n.lbl_Promotion}</span>
 								<div className="icon icon-mediafire">HOT</div>
 							</Link>
@@ -134,7 +128,6 @@ const Footer = () => {
 						openWalletMenu ? " icon-close active" : ""
 					}`}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_Wallet}</span>
 				</a>
 
@@ -143,7 +136,6 @@ const Footer = () => {
 					target="_blank"
 					href="https://direct.lc.chat/11638088/"
 					className="icon icon-contact">
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
 
@@ -163,7 +155,7 @@ const Footer = () => {
 									<div className="icon icon-envelope" />
 								) : null}
 								<MsgPopup userInfo={userInfo} />
-								<div className="circleAnimation" />
+
 								<span>{i18n.lbl_More}</span>
 							</Link>
 						);
@@ -211,35 +203,30 @@ const FooterWalletMenu = ({
 					className="icon icon-icon32px_wallet"
 					to={path.wallet.root}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_MyWallet}</span>
 				</Link>
 				<Link
 					className="icon icon-icon32px_Withdraw"
 					to={withdrawalLink()}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_Withdrawal}</span>
 				</Link>
 				<Link
 					className="icon icon-icon32px_deposit"
 					to={path.deposit.root}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_Deposit}</span>
 				</Link>
 				<Link
 					className="icon icon-icon32px_Funds-transfer"
 					to={path.transfer.root}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_Transfer}</span>
 				</Link>
 				<Link
 					className="icon icon-icon32px_History"
 					to={path.statement.root}
 					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
 					<span>{i18n.lbl_Statement}</span>
 				</Link>
 			</div>

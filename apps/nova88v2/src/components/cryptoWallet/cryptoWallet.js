@@ -227,9 +227,7 @@ const CryptoWallet = () => {
 		<>
 			{userInfo.accountName && (
 				<>
-					<div className="icon icon-member">
-						<div className="circleAnimation" />
-					</div>
+					<div className="icon icon-member" />
 					<div className="name">{userInfo.accountName}</div>
 					<div className="text-center text-gray">
 						{i18n.lbl_Crypto_Wallet_Submit_Note}

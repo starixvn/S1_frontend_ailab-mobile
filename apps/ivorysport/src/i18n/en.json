@@ -105,6 +105,7 @@
 	"lbl_Req": "Req.",
 	"lbl_Email": "Email",
 	"msg_UsernameReq": "Username is required.",
+	"msg_RealNameReq": "Real name is required.",
 	"msg_PasswordReq": "Password is required.",
 	"lbl_Username": "Username",
 	"lbl_UsernameTooltip": "For security, we suggest that your username does not contain your real name.",
