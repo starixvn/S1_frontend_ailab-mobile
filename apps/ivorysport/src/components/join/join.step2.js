@@ -579,21 +579,7 @@ const JoinStep2 = ({
 					{hintStatus.Phone.msg}
 				</div>
 			</div>
-			{/* )} */}
 
-			<Inputbox
-				icon="icon-member"
-				placeholder={i18n.lbl_RealName}
-				value={userValue.RealName}
-				onChange={EditField.bind(null, "RealName")}
-				onBlur={checkValue.bind(null, "RealName")}
-				btnStatus={hintStatus.RealName.checked}
-				warningMsg={hintStatus.RealName.msg}
-				infoText={i18n.msg_ConfirmRealNameAlert}
-				clickInfo={() => showTipHandler("RealName")}
-				showTips={showTips.includes("RealName")}
-				testAttr="RealName"
-			/>
 			<Birthday
 				i18n={i18n}
 				monthOptions={monthOptions}

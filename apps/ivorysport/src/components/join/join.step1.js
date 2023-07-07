@@ -46,6 +46,10 @@ const JoinStep1 = ({
 			const result = passwordCheck({ val });
 			checked = result.checked;
 			msg = result.msg;
+		} else if (col === "RealName") {
+			const result = checkRealName({ val });
+			checked = result.checked;
+			msg = result.msg;
 		}
 
 		setHintStatus(prev => ({
@@ -82,6 +86,12 @@ const JoinStep1 = ({
 				});
 			}
 		}
+		return { checked, msg };
+	};
+
+	const checkRealName = ({ val }) => {
+		const checked = val !== "";
+		const msg = val === "" ? i18n.msg_RealNameReq : "";
 		return { checked, msg };
 	};
 
@@ -152,6 +162,19 @@ const JoinStep1 = ({
 				clickInfo={() => showTipHandler("Password")}
 				showTips={showTips.includes("Password")}
 				testAttr="Password"
+			/>
+			<Inputbox
+				icon="icon-member"
+				placeholder={i18n.lbl_RealName}
+				value={userValue.RealName}
+				onChange={EditField.bind(null, "RealName")}
+				onBlur={checkValue.bind(null, "RealName")}
+				btnStatus={hintStatus.RealName.checked}
+				warningMsg={hintStatus.RealName.msg}
+				infoText={i18n.lbl_RemindForName}
+				clickInfo={() => showTipHandler("RealName")}
+				showTips={showTips.includes("RealName")}
+				testAttr="RealName"
 			/>
 
 			<div className="Terms">

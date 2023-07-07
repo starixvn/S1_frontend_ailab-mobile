@@ -105,6 +105,7 @@
 	"lbl_Req": "Req",
 	"lbl_Email": "Email",
 	"msg_UsernameReq": "Tên đăng nhập là bắt buộc.",
+	"msg_RealNameReq": "Tên thật là bắt buộc",
 	"msg_PasswordReq": "Mật khẩu là bắt buộc",
 	"lbl_Username": "Tên đăng nhập",
 	"lbl_UsernameTooltip": "Để bảo mật, chúng tôi khuyến cáo tên đăng nhập không chứa tên thật của bạn",
