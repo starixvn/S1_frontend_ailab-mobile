@@ -239,10 +239,10 @@ const defSubMenus = [
 				...defGameInfo.LIVEcasinoAG,
 				displayText: "Asia Gaming"
 			},
-			// {
-			// 	...defGameInfo.LIVEcasinoAB,
-			// 	displayText: "Allbet"
-			// },
+			{
+				...defGameInfo.LIVEcasinoAB,
+				displayText: "Allbet"
+			},
 			{
 				...defGameInfo.LIVEcasinoSA,
 				displayText: "SA Gaming"
