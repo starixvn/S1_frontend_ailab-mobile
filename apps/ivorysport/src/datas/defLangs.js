@@ -32,15 +32,16 @@ export default {
 		],
 		countryName: "Indonesia",
 		currencyId: defCurrenyId.IDR
-	},
-	VN: {
-		country: "VN",
-		img: `${cloudBannerImgURL}/h5/img/vn.jpg`,
-		lang: [
-			{ value: "en", displayText: "English" },
-			{ value: "vn", displayText: "Tiếng Việt" }
-		],
-		countryName: "VND",
-		currencyId: defCurrenyId.VND
 	}
+	// * 暫時隱藏
+	// VN: {
+	// 	country: "VN",
+	// 	img: `${cloudBannerImgURL}/h5/img/vn.jpg`,
+	// 	lang: [
+	// 		{ value: "en", displayText: "English" },
+	// 		{ value: "vn", displayText: "Tiếng Việt" }
+	// 	],
+	// 	countryName: "VND",
+	// 	currencyId: defCurrenyId.VND
+	// }
 };
