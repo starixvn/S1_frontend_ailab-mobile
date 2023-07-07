@@ -24,6 +24,10 @@ const defPlatfrom = [
 		imgName: "aga"
 	},
 	{
+		...defGameInfo.LIVEcasinoAB,
+		imgName: "aba"
+	},
+	{
 		...defGameInfo.LIVEcasinoAE,
 		imgName: "aea"
 	},
