@@ -105,6 +105,7 @@
 	"lbl_EWalletWithdrawal": "Penarikan E-Wallet",
 	"lbl_Email": "Email",
 	"msg_UsernameReq": "Nama pengguna Wajib diisi.",
+	"msg_RealNameReq": "Nama asli diperlukan.",
 	"msg_PasswordReq": "Kata Sanda wajib diisi",
 	"lbl_Username": "Nama pengguna",
 	"lbl_UsernameTooltip": "Demi keamanan, kami menyarankan agar Username anda berbeda dengan nama asli anda.",

@@ -105,6 +105,7 @@
 	"lbl_EWalletWithdrawal": "ถอนเงิน E-Wallet",
 	"lbl_Email": "อีเมล์",
 	"msg_UsernameReq": "ต้องใส่ชื่อบัญชีผู้ใช้",
+	"msg_RealNameReq": "ต้องระบุชื่อจริง",
 	"msg_PasswordReq": "ต้องใส่รหัสผ่าน",
 	"lbl_Username": "ชื่อผู้ใช้",
 	"lbl_UsernameTooltip": "เพื่อความปลอดภัยเราแนะนำให้คุณใช้ชื่อผู้ใช้ที่ไม่มีชื่อจริงของคุณ",
