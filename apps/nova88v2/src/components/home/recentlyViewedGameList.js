@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { Navigation } from "swiper";
-import { navigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import { popBoxContext, userInfoContext } from "../common/context";
 import {
 	defSpecialSetting,
@@ -11,15 +11,23 @@ import {
 } from "../hook/useGotoGame";
 import api from "../../service/api";
 import gameList from "../../datas/productList";
-import { defAppType, GET_ENTER_PAGE } from "../../service/enterPage";
+import {
+	defAppType,
+	GET_CASINO_ENTER_PAGE,
+	GET_ENTER_PAGE
+} from "../../service/enterPage";
 import path from "../../path";
 import useHandleLogin from "../hook/useHandleLogin";
+import { defProductType } from "../../datas/hotGameList";
+import useSetTimeout from "../hook/useSetTimeout";
 
 const RecentlyViewedGameList = () => {
 	const [recentlyViewedGames, setRecentlyViewedGames] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
+	const navigate = useNavigate();
 	const { setPopBox } = useContext(popBoxContext);
 	const { t } = useTranslation();
+	const { throttle } = useSetTimeout();
 	const { handleLogin } = useHandleLogin();
 	const { handleGoToGame } = useGotoGame({
 		isLogin: userInfo.isLogin,
@@ -28,7 +36,10 @@ const RecentlyViewedGameList = () => {
 	});
 	const handleGoToRecentlyViewedGame = ({
 		selectedTpId,
-		selectedTpGameType
+		selectedTpGameType,
+		selectedCategoryId,
+		selectedGameId,
+		isMaintain
 	}) => {
 		let targetItem;
 		const gameItems = gameList({
@@ -113,7 +124,34 @@ const RecentlyViewedGameList = () => {
 		if (targetItem?.href) {
 			navigate(targetItem.href);
 		} else if (targetItem?.path) {
-			navigate(_path);
+			if (selectedCategoryId === defProductType.Slots) {
+				if (isMaintain) {
+					return;
+				}
+				throttle(
+					() =>
+						GET_CASINO_ENTER_PAGE({
+							tpId: selectedTpId,
+							gameId: selectedGameId,
+							isFree: false,
+							langId: userInfo.langId,
+							execFunction:
+								selectedTpId === defSpecialSetting.playTech
+									? handleGoToGame.bind(this, {
+											langId: userInfo.langId,
+											tpId: selectedTpId,
+											gameId: selectedGameId,
+											isFun: false,
+											tpGameType: selectedTpGameType
+									  })
+									: null,
+							tpGameType: selectedTpGameType
+						}),
+					5000
+				);
+			} else {
+				navigate(_path);
+			}
 		} else {
 			handleOpenGame({
 				tpId: targetItem.tpId,
@@ -172,7 +210,9 @@ const RecentlyViewedGameList = () => {
 								gameName,
 								tpId,
 								tpGameType,
-								isMaintain
+								isMaintain,
+								categoryId,
+								gameId
 							}) => (
 								<SwiperSlide
 									key={`recently-game-${tpId}-${tpGameType}`}>
@@ -181,7 +221,10 @@ const RecentlyViewedGameList = () => {
 										onClick={() =>
 											handleGoToRecentlyViewedGame({
 												selectedTpId: tpId,
-												selectedTpGameType: tpGameType
+												selectedTpGameType: tpGameType,
+												selectedCategoryId: categoryId,
+												selectedGameId: gameId,
+												isMaintain
 											})
 										}>
 										<div
