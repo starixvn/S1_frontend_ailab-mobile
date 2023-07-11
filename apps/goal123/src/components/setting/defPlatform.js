@@ -58,9 +58,9 @@ const defPlatfrom = [
 		imgName: "mga"
 	},
 	{
-		...defGameInfo.Casino_PT,
+		...defGameInfo.Casino_Playtech,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PT },
+		parameter: { ...defGameInfo.Casino_Playtech },
 		imgName: "pta"
 	},
 	{
