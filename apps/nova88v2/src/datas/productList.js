@@ -64,8 +64,6 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	PT: { tpId: 27, tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
@@ -576,14 +574,6 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/ev.png`,
 					sortKey: "casino_EVO"
 				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					...defGameInfo.LIVEcasino_PT,
-					spanText: "PT (Old)",
-					img: `${cloudBannerImgURL}/h5/img/ptc.png`,
-					useGotoGame: true,
-					sortKey: "casino_PT"
-				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
 					...defGameInfo.LIVEcasino_PlayTech,
@@ -833,16 +823,6 @@ const gameList = ({ langId, currencyId }) => {
 							inPeriod: isEventPeriod(eventTime.skywind)
 						}
 					]
-				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
-					spanText: "Playtech (Old)",
-					img: `${cloudBannerImgURL}/h5/img/pt.png`,
-					path: path.casino.root,
-					providerImgName: "pt",
-					sortKey: "slot_PT"
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
@@ -1255,7 +1235,8 @@ export const defGameInfo = {
 	LIVEcasinoAG: { tpId: 3, gameId: 3, tpGameType: 8 },
 	LIVEcasinoMW: { tpId: 5, gameId: 105, tpGameType: 8 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
-	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	// 新的 PlayTech (Seamless Wallet)
+	LIVEcasino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 101 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { gameId: "0", tpId: 43, tpGameType: 84 },
@@ -1269,7 +1250,8 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
-	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_OW: {
 		// tpId: 1,
 		tpId: 41, // seamless wallet

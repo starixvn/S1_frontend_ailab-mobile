@@ -31,8 +31,6 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	PT: { tpId: 27, tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
@@ -347,15 +345,6 @@ export const productList = langId => {
 						}
 					]
 				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
-					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
-					icon: "icon icon-pt",
-					displayText: "PlayTech (Old)"
-				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
 					...defGameInfo.Casino_Playtech,
@@ -439,14 +428,6 @@ export const productList = langId => {
 					displayText: "Evolution Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO
-				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					displayText: "Playtech (Old)",
-					icon: "icon icon-pt",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
-					...defGameInfo.LIVEcasinoPT,
-					useGotoGame: true
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
