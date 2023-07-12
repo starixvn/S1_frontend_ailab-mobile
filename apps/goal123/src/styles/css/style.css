@@ -1553,6 +1553,178 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   content: "";
   display: block;
 }
+#popup.qrpayPop {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#popup.qrpayPop .pop {
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div {
+  width: 100%;
+}
+#popup.qrpayPop .pop > div span {
+  color: #1E85EC;
+}
+#popup.qrpayPop .pop > div.popTit {
+  background: #284985;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1vw 2vw;
+}
+#popup.qrpayPop .pop > div.popTit img {
+  width: 20vw;
+  position: absolute;
+  left: 1vw;
+}
+#popup.qrpayPop .pop > div.popTit .icon-close {
+  right: 1vw;
+  top: auto;
+  position: absolute;
+}
+#popup.qrpayPop .pop > div.popTxt .title {
+  font-size: 4vw;
+  text-align: center;
+  margin-bottom: 2vw !important;
+}
+#popup.qrpayPop .pop > div.popTxt .logo {
+  width: 35vw;
+  border-radius: 3px;
+  background: #fff;
+}
+#popup.qrpayPop .pop > div.popTxt .logo img {
+  margin: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .info {
+  text-align: center;
+  margin: 1vw;
+  color: #1f3258;
+}
+#popup.qrpayPop .pop > div.popTxt .info span {
+  display: block;
+  color: #1f3258;
+  font-weight: bold;
+}
+#popup.qrpayPop .pop > div.popTxt .amount {
+  display: block;
+  margin: 1vw;
+  text-align: center;
+}
+#popup.qrpayPop .pop > div.popTxt .amount span {
+  color: #1f3258;
+  font-weight: bold;
+  font-size: 4vw;
+  display: block;
+  padding: 1vw;
+  border: 0;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1px dotted #1E85EC;
+  border-bottom: 1px dotted #1E85EC;
+  padding: 2vw 0;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide > button {
+  padding: 0.5vw 2vw;
+  background: #5574A7;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1vw auto;
+  border-radius: 3px;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 53vw;
+  height: 53vw;
+  background: rgba(78, 108, 168, 0.5);
+  overflow: hidden;
+  margin: 1vw 0 2vw;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg, #popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
+  width: auto;
+  height: 90%;
+  margin: 0;
+  border-radius: 0;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code {
+  color: #d83b35;
+  font-size: 6vw;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a, #popup.qrpayPop .pop > div.popTxt .guide .code button {
+  color: #fff;
+  padding: 1vw;
+  margin-left: 1vw;
+  background: #4e6ca8;
+  border-radius: 3px;
+  font-size: 2vw;
+  font-weight: normal;
+}
+#popup.qrpayPop .pop > div.popTxt .guide .code a {
+  padding: 0.25vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt ul {
+  padding-left: 6vw;
+  list-style: decimal;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa {
+  text-align: center;
+  margin: 2vw 0 0;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa div:last-child {
+  font-weight: bold;
+  margin: 2vw 1vw;
+}
+#popup.qrpayPop .pop > div.popTxt .sisa span {
+  font-size: 3.5vw;
+  color: #1f3258;
+  font-weight: normal;
+  padding: 1vw 2vw;
+  margin: 2vw 1vw;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+}
 
 .txt-red {
   color: #d83b35;
@@ -2559,7 +2731,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transform: translateY(60%);
           transform: translateY(60%);
   left: 2vw;
-  top: -0.5vw;
+  top: 0.5vw;
   color: #64789b;
 }
 .inputBox i.icon.icon-cake, .worldcupEvent .ticket__container .inputBox-event i.icon.icon-cake {
@@ -2620,6 +2792,17 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   color: red;
   margin-right: 1vw;
   display: block;
+}
+.inputBox .icon-phone + .countryCode, .worldcupEvent .ticket__container .inputBox-event .icon-phone + .countryCode {
+  background: transparent;
+  border: 0;
+  position: absolute;
+  left: 6vw;
+  top: 2vw;
+  padding: 1.5vw;
+}
+.inputBox .icon-phone + .countryCode + input, .worldcupEvent .ticket__container .inputBox-event .icon-phone + .countryCode + input {
+  padding-left: 18vw;
 }
 
 .LoginRule {
@@ -3083,6 +3266,20 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .account.open .icon-crypto {
   color: #4e6ca8;
+}
+.account.pending {
+  position: relative;
+}
+.account.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background: rgba(1, 0, 12, 0.7);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  z-index: 1;
 }
 
 .smallTitle {
@@ -6683,6 +6880,52 @@ span.important {
 .depositModule_Crpyto .selectModule .dropdown {
   padding: 1vw 1vw 1vw 2vw;
 }
+.depositModule_mobile .selectModule .infoAccount + .subtitle,
+.depositModule_online .selectModule .infoAccount + .subtitle,
+.depositModule_local .selectModule .infoAccount + .subtitle,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle {
+  width: 100%;
+  font-weight: bold;
+  margin-top: 4vw;
+  margin-left: 3vw;
+  text-align: left;
+}
+.depositModule_mobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_online .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_local .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_topupMobile .selectModule .infoAccount + .subtitle .text-org,
+.depositModule_Crpyto .selectModule .infoAccount + .subtitle .text-org {
+  color: #fab617;
+  margin-right: 0.5vw;
+}
+.depositModule_mobile .selectModule .qrCode,
+.depositModule_online .selectModule .qrCode,
+.depositModule_local .selectModule .qrCode,
+.depositModule_topupMobile .selectModule .qrCode,
+.depositModule_Crpyto .selectModule .qrCode {
+  width: 36vw;
+  height: 36vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #adccff;
+  border-radius: 5px;
+  margin: 1vw auto;
+  padding: 3vw;
+  overflow: hidden;
+}
+.depositModule_mobile .selectModule .qrCode img,
+.depositModule_online .selectModule .qrCode img,
+.depositModule_local .selectModule .qrCode img,
+.depositModule_topupMobile .selectModule .qrCode img,
+.depositModule_Crpyto .selectModule .qrCode img {
+  width: auto;
+  height: 100%;
+}
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
 .depositModule_local .input-group,
@@ -7247,6 +7490,28 @@ span.important {
   left: 30%;
   letter-spacing: 2px;
   font-size: 5vw;
+}
+.jackpot.active {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  pointer-events: none;
+}
+.jackpot.active img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.jackpot.active .under {
+  display: block;
+}
+.jackpot .under {
+  display: none;
+  position: absolute;
+  right: 20vw;
+  bottom: 12vw;
+  font-size: 4vw;
+  color: #fff;
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
 }
 
 .topWinner {
@@ -10206,86 +10471,14 @@ span.important {
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
           filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
-
-@keyframes slide-in-blurred-right {
-  0% {
-    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 0% 50%;
-    transform-origin: 0% 50%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-    transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes slide-in-blurred-left {
-  0% {
-    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 100% 50%;
-    transform-origin: 100% 50%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-    transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-blurred-left {
-  0% {
-    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 100% 50%;
-    transform-origin: 100% 50%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-    transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-.dragon {
-  position: relative;
-}
-.dragon .zongzi {
-  width: 28vw;
-  position: absolute;
-  bottom: -6.5vw;
-  left: -10.2vw;
-  pointer-events: none;
-}
-@media (max-width: 320px) {
-  .dragon .zongzi {
-    opacity: 0;
-    display: none;
-  }
-}
-@media (min-width: 550px) {
-  .dragon .zongzi {
-    opacity: 0;
-    display: none;
-  }
+.recently-title {
+  width: 100%;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: #1f3258;
+  font-size: 3.5vw;
 }/*# sourceMappingURL=style.css.map */
