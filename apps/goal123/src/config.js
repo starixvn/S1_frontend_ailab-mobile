@@ -33,6 +33,7 @@ export const sportsImgUrl = "http://sportsimgs.goal123.org";
 export const paymentImgUrl = "https://payment.goal123.org";
 export const cloudImgURL = "https://image.0814media.net";
 export const usdtImgUrl = "https://payment.goal123.org";
+export const bannerMediaUrl = "https://banner.0814media.net";
 
 export default process.env.NODE_ENV === "production"
 	? {
