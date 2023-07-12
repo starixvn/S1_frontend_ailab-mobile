@@ -42,5 +42,6 @@ export const eventTime = {
 	yee_bet: { endDate: "2023/03/10 12:00:00" },
 	ap_mini_game: { endDate: "2024/03/10 12:00:00" },
 	liveCasino_bg: { endDate: "2023/12/31 23:59:59" },
-	TFGaming: { endDate: "2023/06/30 12:00:00" }
+	TFGaming: { endDate: "2023/06/30 12:00:00" },
+	casino_Nextspin: { endDate: "2023/08/12 11:00:00" }
 };

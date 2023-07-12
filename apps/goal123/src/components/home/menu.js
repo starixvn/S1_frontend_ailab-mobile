@@ -175,6 +175,7 @@ const Menu = ({ i18n, userInfo }) => {
 		});
 
 	const subPanelArr = [];
+
 	for (let i = 0; i < subGameArr?.length; i += 9) {
 		const subPanel = subGameArr.slice(i, i + 9);
 		subPanelArr.push(

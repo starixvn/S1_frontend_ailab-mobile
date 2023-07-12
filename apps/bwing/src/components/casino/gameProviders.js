@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
-import { cloudImgURL } from "../../config";
+import { bannerMediaUrl } from "../../config";
+
 import path from "../../path";
 
 const GameProviders = props => {
@@ -10,7 +11,7 @@ const GameProviders = props => {
 		const content = (
 			<img
 				key={`casino-nav-${k.tpId}`}
-				src={`${cloudImgURL}/SiteSkin/img/logo/${k.imgName}${
+				src={`${bannerMediaUrl}/h5/img/venderlogo/${k.imgName}${
 					selNav === k.tpId ? "a" : ""
 				}.png`}
 				alt={k.providerImgName ?? k.tpName}

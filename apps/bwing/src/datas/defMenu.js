@@ -37,7 +37,8 @@ export const defSlotTpGameType = {
 	NetEnt: { tpId: 37, tpGameType: 64 },
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
-	SimplePlay: { tpId: 44, tpGameType: 86 }
+	SimplePlay: { tpId: 44, tpGameType: 86 },
+	Nextspin: { tpId: 50, tpGameType: 99 }
 };
 
 export const productList = langId => {
@@ -225,6 +226,19 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.ap_mini_game)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_Nextspin,
+					parameter: defGameInfo.Casino_Nextspin,
+					path: path.casino.root,
+					displayText: "Nextspin",
+					img: `${bannerImgUrl}/h5/img/slot/nextspin.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
 						}
 					]
 				},
@@ -450,11 +464,11 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-dg.png`,
 					...defGameInfo.LIVEcasinoDG
 				},
-				// {
-				// 	displayText: "Allbet",
-				// 	img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
-				// 	...defGameInfo.LIVEcasinoAB
-				// },
+				{
+					displayText: "Allbet",
+					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
+					...defGameInfo.LIVEcasinoAB
+				},
 				{
 					displayText: "eBET",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ebet.png`,
