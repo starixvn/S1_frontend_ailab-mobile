@@ -231,6 +231,19 @@ export const productList = langId => {
 					]
 				},
 				{
+					...defGameInfo.Casino_Nextspin,
+					parameter: defGameInfo.Casino_Nextspin,
+					path: path.casino.root,
+					displayText: "Nextspin",
+					img: `${bannerImgUrl}/h5/img/slot/nextspin.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_PG,
 					parameter: defGameInfo.Casino_PG,
 					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
@@ -347,8 +360,8 @@ export const productList = langId => {
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
-					...defGameInfo.Casino_Playtech,
-					parameter: defGameInfo.Casino_Playtech,
+					...defGameInfo.Casino_PlayTech,
+					parameter: defGameInfo.Casino_PlayTech,
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
 					icon: "icon icon-pt",

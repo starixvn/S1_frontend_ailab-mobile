@@ -607,6 +607,20 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.Casino_Nextspin,
+				parameter: defGameInfo.Casino_Nextspin,
+				spanText: "Nextspin",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nextspin.png`,
+				path: path.casino.root,
+				providerImgName: "nextspin",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_Nextspin)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
 				spanText: "PG Soft",
