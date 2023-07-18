@@ -393,7 +393,7 @@ const Payment = props => {
 				SelectPayment={SelectChannel}
 				selected={selChannel?.channelId}
 				mainKey={`deposit-full-${payType}-channelList`}
-				imgKey={defCurrenyId.BDT ? "channelName" : "payName"}
+				imgKey="channelName"
 				idKey="channelId"
 				bindFullObj={true}
 				prefixImgUrl={`${paymentImgURL}/`}
