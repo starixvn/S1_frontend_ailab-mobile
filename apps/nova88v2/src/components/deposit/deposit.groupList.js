@@ -17,7 +17,8 @@ const GroupList = ({
 	isCrypto,
 	titleClassName,
 	i18n,
-	_isConvert
+	_isConvert,
+	displayKey
 }) => {
 	const rows = dataList
 		?.sort((a, b) => {
@@ -43,7 +44,7 @@ const GroupList = ({
 				} else if (isCrypto && title === i18n.lbl_SelectChannel) {
 					result = data.channelName;
 				} else {
-					result = data.bankCode ?? data.payName ?? data.groupName;
+					result = data.bankCode ?? data[displayKey];
 				}
 				return result;
 			};
