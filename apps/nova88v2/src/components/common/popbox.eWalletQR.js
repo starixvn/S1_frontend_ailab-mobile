@@ -1,14 +1,13 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { cloudBannerImgURL, paymentImgURL } from "../../config";
-import { userInfoContext } from "./context";
 import { number_format } from "./common";
 
 const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 	const inputRef = useRef(null);
 	const { t } = useTranslation();
-	const { userInfo } = useContext(userInfoContext);
+	const [counter, setCounter] = useState(167);
 
 	const copy = () => {
 		if (inputRef.current) {
@@ -16,6 +15,20 @@ const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 			document.execCommand("copy");
 		}
 	};
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCounter(prev => {
+				if (prev > 0) {
+					return prev - 1;
+				}
+				onClose();
+				return 0;
+			});
+		}, 1000);
+		return () => clearInterval(interval); // Clean up the interval on component unmount
+	}, []);
+
 	return (
 		<div className="pop">
 			<div className="popTit">
@@ -50,9 +63,7 @@ const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 						<div>{t("lbl_EWalletQRDesc3")}</div>
 						<div>
 							{t("lbl_EWalletQRDesc4")}
-							<span>
-								{userInfo.langId === "th" ? "179" : "167"}
-							</span>
+							<span>{counter}</span>
 							{t("lbl_EWalletQRDesc5")}
 						</div>
 						<div>
