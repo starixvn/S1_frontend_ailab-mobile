@@ -31,8 +31,6 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	PT: { tpId: 27, tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
@@ -212,6 +210,14 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/slot/pp.png`
 				},
 				{
+					...defGameInfo.Casino_SG,
+					parameter: defGameInfo.Casino_SG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/sg.png`,
+					icon: "icon icon-SG",
+					displayText: "Spadegaming"
+				},
+				{
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
@@ -238,44 +244,12 @@ export const productList = langId => {
 					]
 				},
 				{
-					...defGameInfo.Casino_Skywind,
-					parameter: defGameInfo.Casino_Skywind,
+					...defGameInfo.Casino_PG,
+					parameter: defGameInfo.Casino_PG,
+					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
 					path: path.casino.root,
-					displayText: "Skywind",
-					img: `${bannerImgUrl}/h5/img/slot/sk.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.skywind)
-						}
-					]
-				},
-				{
-					...defGameInfo.Casino_Habanero,
-					parameter: defGameInfo.Casino_Habanero,
-					path: path.casino.root,
-					displayText: "Habanero",
-					img: `${bannerImgUrl}/h5/img/slot/ho.png`
-				},
-				{
-					...defGameInfo.Casino_NetEnt,
-					parameter: defGameInfo.Casino_NetEnt,
-					path: path.casino.root,
-					displayText: "NetEnt",
-					img: `${bannerImgUrl}/h5/img/slot/ne.png`
-				},
-				{
-					...defGameInfo.Casino_SimplePlay,
-					parameter: defGameInfo.Casino_SimplePlay,
-					path: path.casino.root,
-					displayText: "SimplePlay",
-					img: `${bannerImgUrl}/h5/img/slot/simpleplay.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
-						}
-					]
+					icon: "icon icon-PG",
+					displayText: "PG Soft"
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -293,32 +267,20 @@ export const productList = langId => {
 					icon: "icon icon-jili",
 					displayText: "JILI"
 				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
 				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
+					...defGameInfo.Casino_RedTiger,
+					parameter: defGameInfo.Casino_RedTiger,
 					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
-					icon: "icon icon-pt",
-					displayText: "PlayTech (Old)"
+					displayText: "Red Tiger",
+					img: `${bannerImgUrl}/h5/img/slot/red.png`
 				},
-				// 新的 PlayTech (Seamless Wallet)
 				{
-					...defGameInfo.Casino_Playtech,
-					parameter: defGameInfo.Casino_Playtech,
+					...defGameInfo.Casino_NetEnt,
+					parameter: defGameInfo.Casino_NetEnt,
 					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
-					icon: "icon icon-pt",
-					displayText: "PlayTech"
+					displayText: "NetEnt",
+					img: `${bannerImgUrl}/h5/img/slot/ne.png`
 				},
-				// {
-				// 	...defGameInfo.casino_ICG,
-				// 	parameter: defGameInfo.casino_ICG,
-				// 	path: path.casino.root,
-				// 	img: `${bannerImgUrl}/h5/img/slot/icg.png`,
-				// 	icon: "icon icon-ICG",
-				// 	displayText: "Astro Tech"
-				// },
 				{
 					...defGameInfo.Casino_CQ9,
 					parameter: defGameInfo.Casino_CQ9,
@@ -344,34 +306,55 @@ export const productList = langId => {
 					displayText: "YGGDrassil"
 				},
 				{
-					...defGameInfo.Casino_SG,
-					parameter: defGameInfo.Casino_SG,
+					...defGameInfo.Casino_Habanero,
+					parameter: defGameInfo.Casino_Habanero,
 					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/sg.png`,
-					icon: "icon icon-SG",
-					displayText: "Spadegaming"
+					displayText: "Habanero",
+					img: `${bannerImgUrl}/h5/img/slot/ho.png`
 				},
 				{
-					...defGameInfo.Casino_RedTiger,
-					parameter: defGameInfo.Casino_RedTiger,
+					...defGameInfo.Casino_SimplePlay,
+					parameter: defGameInfo.Casino_SimplePlay,
 					path: path.casino.root,
-					displayText: "Red Tiger",
-					img: `${bannerImgUrl}/h5/img/slot/red.png`,
+					displayText: "SimplePlay",
+					img: `${bannerImgUrl}/h5/img/slot/simpleplay.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
 						}
 					]
 				},
 				{
-					...defGameInfo.Casino_PG,
-					parameter: defGameInfo.Casino_PG,
-					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
+					...defGameInfo.Casino_Skywind,
+					parameter: defGameInfo.Casino_Skywind,
 					path: path.casino.root,
-					icon: "icon icon-PG",
-					displayText: "PG Soft"
+					displayText: "Skywind",
+					img: `${bannerImgUrl}/h5/img/slot/sk.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
+				},
+				// 新的 PlayTech (Seamless Wallet)
+				{
+					...defGameInfo.Casino_PlayTech,
+					parameter: defGameInfo.Casino_PlayTech,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
+					icon: "icon icon-pt",
+					displayText: "PlayTech"
 				}
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	path: path.casino.root,
+				// 	img: `${bannerImgUrl}/h5/img/slot/icg.png`,
+				// 	icon: "icon icon-ICG",
+				// 	displayText: "Astro Tech"
+				// },
 				// {
 				// 	...defGameInfo.Casino_ow,
 				// 	parameter: defGameInfo.Casino_ow,
@@ -438,14 +421,6 @@ export const productList = langId => {
 					displayText: "Evolution Gaming",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO
-				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					displayText: "Playtech (Old)",
-					icon: "icon icon-pt",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
-					...defGameInfo.LIVEcasinoPT,
-					useGotoGame: true
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{

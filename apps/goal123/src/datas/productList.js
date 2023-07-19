@@ -94,8 +94,6 @@ export const defGameInfo = {
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_ow: {
@@ -126,8 +124,6 @@ export const defGameInfo = {
 	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	LIVEcasinoEVO: { gameId: 0, tpId: 36, tpGameType: 63 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	// 新的 PlayTech (Seamless Wallet)
 	LIVEcasino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 101 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
@@ -210,8 +206,6 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	PT: { tpId: 27, tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
@@ -567,6 +561,14 @@ const gameList = [
 				providerImgName: "pp"
 			},
 			{
+				...defGameInfo.Casino_SG,
+				parameter: defGameInfo.Casino_SG,
+				spanText: "Spadegaming",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sg.png`,
+				path: path.casino.root,
+				providerImgName: "sg"
+			},
+			{
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
@@ -600,52 +602,21 @@ const gameList = [
 				spanText: "Skywind",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
 				path: path.casino.root,
-				providerImgName: "sk",
+				providerImgName: "nextspin",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.skywind)
+						inPeriod: isEventPeriod(eventTime.casino_Nextspin)
 					}
 				]
 			},
 			{
-				...defGameInfo.Casino_Habanero,
-				parameter: defGameInfo.Casino_Habanero,
-				spanText: "Habanero",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-habanero.png`,
+				...defGameInfo.Casino_PG,
+				parameter: defGameInfo.Casino_PG,
+				spanText: "PG Soft",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
 				path: path.casino.root,
-				providerImgName: "habanero"
-			},
-			{
-				...defGameInfo.Casino_NetEnt,
-				parameter: defGameInfo.Casino_NetEnt,
-				spanText: "NetEnt",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
-				path: path.casino.root,
-				providerImgName: "ne"
-			},
-			{
-				...defGameInfo.Casino_SimplePlay,
-				parameter: defGameInfo.Casino_SimplePlay,
-				spanText: "SimplePlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-simpleplay.png`,
-				path: path.casino.root,
-				providerImgName: "simpleplay",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
-					}
-				]
-			},
-			// 舊的 PT 測試用，等新的測試沒問題後移除
-			{
-				...defGameInfo.Casino_PT,
-				parameter: defGameInfo.Casino_PT,
-				spanText: "Playtech (Old)",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
-				path: path.casino.root,
-				providerImgName: "pt"
+				providerImgName: "pg"
 			},
 			// 新的 PlayTech (Seamless Wallet)
 			{
@@ -654,7 +625,7 @@ const gameList = [
 				spanText: "PlayTech",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
 				path: path.casino.root,
-				providerImgName: "pt"
+				providerImgName: "mg"
 			},
 			{
 				...defGameInfo.Casino_Jili,
@@ -665,21 +636,27 @@ const gameList = [
 				providerImgName: "jili"
 			},
 			{
-				...defGameInfo.Casino_MGP,
-				parameter: defGameInfo.Casino_MGP,
-				spanText: "Microgaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-mg.png`,
+				...defGameInfo.Casino_RedTiger,
+				parameter: defGameInfo.Casino_RedTiger,
+				spanText: "Red Tiger",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
 				path: path.casino.root,
-				providerImgName: "mg"
+				providerImgName: "rt",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+					}
+				]
 			},
-			// {
-			// 	...defGameInfo.casino_ICG,
-			// 	parameter: defGameInfo.casino_ICG,
-			// 	spanText: "Astro Tech",
-			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
-			// 	path: path.casino.root,
-			// 	providerImgName: "icg"
-			// },
+			{
+				...defGameInfo.Casino_NetEnt,
+				parameter: defGameInfo.Casino_NetEnt,
+				spanText: "NetEnt",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
+				path: path.casino.root,
+				providerImgName: "ne"
+			},
 			{
 				...defGameInfo.Casino_CQ9,
 				parameter: defGameInfo.Casino_CQ9,
@@ -705,35 +682,58 @@ const gameList = [
 				providerImgName: "yg"
 			},
 			{
-				...defGameInfo.Casino_SG,
-				parameter: defGameInfo.Casino_SG,
-				spanText: "Spadegaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sg.png`,
+				...defGameInfo.Casino_Habanero,
+				parameter: defGameInfo.Casino_Habanero,
+				spanText: "Habanero",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-habanero.png`,
 				path: path.casino.root,
-				providerImgName: "sg"
+				providerImgName: "habanero"
 			},
 			{
-				...defGameInfo.Casino_RedTiger,
-				parameter: defGameInfo.Casino_RedTiger,
-				spanText: "Red Tiger",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
+				...defGameInfo.Casino_SimplePlay,
+				parameter: defGameInfo.Casino_SimplePlay,
+				spanText: "SimplePlay",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-simpleplay.png`,
 				path: path.casino.root,
-				providerImgName: "rt",
+				providerImgName: "simpleplay",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
+						inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
 					}
 				]
 			},
 			{
-				...defGameInfo.Casino_PG,
-				parameter: defGameInfo.Casino_PG,
-				spanText: "PG Soft",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
+				...defGameInfo.Casino_Skywind,
+				parameter: defGameInfo.Casino_Skywind,
+				spanText: "Skywind",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
 				path: path.casino.root,
-				providerImgName: "pg"
+				providerImgName: "sk",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.skywind)
+					}
+				]
+			},
+			// 新的 PlayTech (Seamless Wallet)
+			{
+				...defGameInfo.Casino_PlayTech,
+				parameter: defGameInfo.Casino_PlayTech,
+				spanText: "PlayTech",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
+				path: path.casino.root,
+				providerImgName: "pt"
 			}
+			// {
+			// 	...defGameInfo.casino_ICG,
+			// 	parameter: defGameInfo.casino_ICG,
+			// 	spanText: "Astro Tech",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-icg.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "icg"
+			// },
 			// {
 			// 	...defGameInfo.Casino_ow,
 			// 	parameter: defGameInfo.Casino_ow,
@@ -795,13 +795,6 @@ const gameList = [
 				spanText: "Evolution Gaming",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-evolution.png`,
 				tpGameType: 63
-			},
-			// 舊的 PT 測試用，等新的測試沒問題後移除
-			{
-				...defGameInfo.LIVEcasinoPT,
-				spanText: "Playtech (Old)",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`,
-				useGotoGame: true
 			},
 			// 新的 PlayTech (Seamless Wallet)
 			{

@@ -17,6 +17,7 @@ import ReloadSpin from "../components/common/reloadSpin";
 import useGetBalance from "../components/hook/useGetMainBalance";
 import useGetTpBalance from "../components/hook/useGetTpBalance";
 import { myWallet as bankInfoTabs } from "../datas/defTabs";
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const Wallet = () => {
 	const navigate = useNavigate();
@@ -108,11 +109,15 @@ const Wallet = () => {
 					className="icon icon-deposit white">
 					{i18n.lbl_Deposit}
 				</Link>
-				<Link
-					to={`${path.transfer.root}`}
-					className="icon icon-transfer white">
-					{i18n.lbl_Transfer}
-				</Link>
+				{allowedCurrencyList.transferFunds.includes(
+					userInfo.currencyId
+				) && (
+					<Link
+						to={`${path.transfer.root}`}
+						className="icon icon-transfer white">
+						{i18n.lbl_Transfer}
+					</Link>
+				)}
 			</div>
 		</>
 	);

@@ -3513,8 +3513,8 @@ footer > a.active .circleAnimation::after {
   opacity: 1;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_wallet {
-  -webkit-transform: translateX(-40vw) translateY(15vw);
-          transform: translateX(-40vw) translateY(15vw);
+  -webkit-transform: translateX(-35vw) translateY(5vw);
+          transform: translateX(-35vw) translateY(5vw);
 }
 .walletMenu.active .walletModule > a.icon-icon32px_wallet:before {
   font-size: 5vw;
@@ -3523,8 +3523,8 @@ footer > a.active .circleAnimation::after {
           align-items: center;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_Withdraw {
-  -webkit-transform: translateX(-25vw) translateY(-5vw);
-          transform: translateX(-25vw) translateY(-5vw);
+  -webkit-transform: translateX(-15vw) translateY(-10vw);
+          transform: translateX(-15vw) translateY(-10vw);
 }
 .walletMenu.active .walletModule > a.icon-icon32px_Withdraw:before {
   -webkit-box-align: center;
@@ -3532,18 +3532,57 @@ footer > a.active .circleAnimation::after {
           align-items: center;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_deposit {
+  -webkit-transform: translateX(15vw) translateY(-10vw);
+          transform: translateX(15vw) translateY(-10vw);
+}
+.walletMenu.active .walletModule > a.icon-icon32px_History {
+  -webkit-transform: translateX(35vw) translateY(5vw);
+          transform: translateX(35vw) translateY(5vw);
+}
+.walletMenu.active .walletModule > a.icon-icon32px_History:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a {
+  top: 10vw;
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_wallet {
+  -webkit-transform: translateX(-40vw) translateY(15vw);
+          transform: translateX(-40vw) translateY(15vw);
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_wallet:before {
+  font-size: 5vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Withdraw {
+  -webkit-transform: translateX(-25vw) translateY(-5vw);
+          transform: translateX(-25vw) translateY(-5vw);
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Withdraw:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_deposit {
   -webkit-transform: translateY(-10vw) translateY(-5vw);
           transform: translateY(-10vw) translateY(-5vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_Funds-transfer {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Funds-transfer {
   -webkit-transform: translateX(25vw) translateY(-5vw);
           transform: translateX(25vw) translateY(-5vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_History {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_History {
   -webkit-transform: translateX(40vw) translateY(15vw);
           transform: translateX(40vw) translateY(15vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_History:before {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_History:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -7253,13 +7292,14 @@ span.important {
   padding-top: 10vw;
 }
 .vip_mark img {
-  width: 30vw;
+  width: 32vw;
   z-index: 1;
   position: relative;
 }
 .vip_mark div {
   background: #112240;
   padding: 1vw;
+  margin-top: 1vw;
   border-radius: 15px;
 }
 .vip_mark .circleAnimation {

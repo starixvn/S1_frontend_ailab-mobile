@@ -64,8 +64,6 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	PT: { tpId: 27, tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
@@ -179,96 +177,99 @@ const defSortCasino = {
 const defSortSlot = {
 	[defCurrenyId.THB]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
 		"slot_Nextspin",
-		"slot_Skywind",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_Playtech",
-		"slot_YGG",
-		"slot_AMB",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_Playtech",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.MYR]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
 		"slot_Nextspin",
-		"slot_Skywind",
-		"slot_kiss918",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_Playtech",
-		"slot_YGG",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_Playtech",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.IDR]: [
 		"slot_PP",
+		"slot_SG",
 		"slot_AdvantPlay",
 		"slot_Nextspin",
-		"slot_Skywind",
-		"slot_Mega888",
-		"slot_SimplePlay",
-		"slot_Habanero",
-		"slot_NetEnt",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
 		"slot_RedTiger",
-		"slot_PT",
-		"slot_Playtech",
-		"slot_YGG",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_Playtech",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	],
 	[defCurrenyId.INR]: [
-		"slot_NetEnt",
-		"slot_RedTiger",
-		"slot_AdvantPlay",
 		"slot_PP",
+		"slot_SG",
+		"slot_AdvantPlay",
 		"slot_Nextspin",
-		"slot_Skywind",
-		"slot_SimplePlay",
-		"slot_Habanero",
+		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
-		"slot_PG",
 		"slot_JOKER",
-		"slot_SG",
-		"slot_PT",
-		"slot_Playtech",
-		"slot_YGG",
+		"slot_RedTiger",
+		"slot_NetEnt",
 		"slot_CQ9",
 		"slot_GPI",
-		"slot_ICG",
-		"slot_OW"
+		"slot_YGG",
+		"slot_AMB",
+		"slot_Habanero",
+		"slot_SimplePlay",
+		"slot_Skywind",
+		"slot_Playtech",
+		"slot_kiss918"
+		// "slot_Mega888",
+		// "slot_ICG",
+		// "slot_OW"
 	]
 };
 
@@ -556,14 +557,6 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/ev.png`,
 					sortKey: "casino_EVO"
 				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					...defGameInfo.LIVEcasino_PT,
-					spanText: "PT (Old)",
-					img: `${cloudBannerImgURL}/h5/img/ptc.png`,
-					useGotoGame: true,
-					sortKey: "casino_PT"
-				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
 					...defGameInfo.LIVEcasino_PlayTech,
@@ -640,6 +633,15 @@ const gameList = ({ langId, currencyId }) => {
 					allowCurrency: getPPAllowCurrencies()
 				},
 				{
+					...defGameInfo.Casino_SG,
+					parameter: defGameInfo.Casino_SG,
+					spanText: "Spadegaming",
+					img: `${cloudBannerImgURL}/h5/img/sg.png`,
+					path: path.casino.root,
+					providerImgName: "sg",
+					sortKey: "slot_SG"
+				},
+				{
 					...defGameInfo.Casino_AdvantPlay,
 					parameter: defGameInfo.Casino_AdvantPlay,
 					spanText: "AdvantPlay",
@@ -658,7 +660,6 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_Nextspin,
 					parameter: defGameInfo.Casino_Nextspin,
 					spanText: "Nextspin",
-					providerImgName: "sk",
 					img: `${cloudBannerImgURL}/h5/img/nextspin.png`,
 					path: path.casino.root,
 					sortKey: "slot_Nextspin",
@@ -674,73 +675,24 @@ const gameList = ({ langId, currencyId }) => {
 					parameter: defGameInfo.Casino_Skywind,
 					spanText: "Skywind",
 					providerImgName: "sk",
-					img: `${cloudBannerImgURL}/h5/img/slotsk.png`,
+					img: `${cloudBannerImgURL}/h5/img/nextspin.png`,
 					path: path.casino.root,
-					sortKey: "slot_Skywind",
+					sortKey: "slot_Nextspin",
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.skywind)
+							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
 						}
 					]
 				},
 				{
-					...defGameInfo.Casino_918Kiss,
-					parameter: defGameInfo.Casino_918Kiss,
-					spanText: "918Kiss",
-					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
+					...defGameInfo.Casino_PG,
+					parameter: defGameInfo.Casino_PG,
+					spanText: "PG Soft",
+					img: `${cloudBannerImgURL}/h5/img/pg.png`,
 					path: path.casino.root,
-					providerImgName: "casino_kiss918",
-					sortKey: "slot_kiss918",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
-						}
-					]
-				},
-				// {
-				// 	...productList.mega888,
-				// 	parameter: productList.mega888,
-				// 	spanText: "Mega888",
-				// 	providerImgName: "mega",
-				// 	img: `${cloudBannerImgURL}/h5/img/mega888.png`,
-				// 	path: path.mega888.root,
-				// 	alwaysShowOnSlotLobby: true,
-				// 	sortKey: "slot_Mega888"
-				// },
-				{
-					...defGameInfo.Casino_SimplePlay,
-					parameter: defGameInfo.Casino_SimplePlay,
-					spanText: "SimplePlay",
-					providerImgName: "casino_simpleplay",
-					img: `${cloudBannerImgURL}/h5/img/simpleplay.png`,
-					path: path.casino.root,
-					sortKey: "slot_SimplePlay",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
-						}
-					]
-				},
-				{
-					...defGameInfo.Casino_Habanero,
-					parameter: defGameInfo.Casino_Habanero,
-					spanText: "Habanero",
-					providerImgName: "ho",
-					img: `${cloudBannerImgURL}/h5/img/ho.png`,
-					path: path.casino.root,
-					sortKey: "slot_Habanero"
-				},
-				{
-					...defGameInfo.Casino_NetEnt,
-					parameter: defGameInfo.Casino_NetEnt,
-					spanText: "NetEnt",
-					providerImgName: "nt",
-					img: `${cloudBannerImgURL}/h5/img/nt.png`,
-					path: path.casino.root,
-					sortKey: "slot_NetEnt"
+					providerImgName: "pg",
+					sortKey: "slot_PG"
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -751,26 +703,6 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "mg",
 					sortKey: "slot_MGPSW"
 				},
-				// 舊的 PT 測試用，等新的測試沒問題後移除
-				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
-					spanText: "Playtech (Old)",
-					img: `${cloudBannerImgURL}/h5/img/pt.png`,
-					path: path.casino.root,
-					providerImgName: "pt",
-					sortKey: "slot_PT"
-				},
-				// 新的 PlayTech (Seamless Wallet)
-				{
-					...defGameInfo.Casino_PlayTech,
-					parameter: defGameInfo.Casino_PlayTech,
-					spanText: "PlayTech",
-					img: `${cloudBannerImgURL}/h5/img/pt.png`,
-					path: path.casino.root,
-					providerImgName: "pt",
-					sortKey: "slot_Playtech"
-				},
 				{
 					...defGameInfo.Casino_Jili,
 					parameter: defGameInfo.Casino_Jili,
@@ -780,15 +712,6 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "ji",
 					sortKey: "slot_JI"
 				},
-				// {
-				// 	...defGameInfo.casino_ICG,
-				// 	parameter: defGameInfo.casino_ICG,
-				// 	spanText: "Astro Tech",
-				// 	img: `${cloudBannerImgURL}/h5/img/icg.png`,
-				// 	path: path.casino.root,
-				// 	providerImgName: "icg",
-				// 	sortKey: "slot_ICG"
-				// },
 				{
 					...defGameInfo.Casino_JOKER,
 					parameter: defGameInfo.Casino_JOKER,
@@ -797,6 +720,24 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "jk",
 					sortKey: "slot_JOKER"
+				},
+				{
+					...defGameInfo.Casino_RedTiger,
+					parameter: defGameInfo.Casino_RedTiger,
+					spanText: "Red Tiger",
+					providerImgName: "rt",
+					img: `${cloudBannerImgURL}/h5/img/rt.png`,
+					path: path.casino.root,
+					sortKey: "slot_RedTiger"
+				},
+				{
+					...defGameInfo.Casino_NetEnt,
+					parameter: defGameInfo.Casino_NetEnt,
+					spanText: "NetEnt",
+					providerImgName: "nt",
+					img: `${cloudBannerImgURL}/h5/img/nt.png`,
+					path: path.casino.root,
+					sortKey: "slot_NetEnt"
 				},
 				{
 					...defGameInfo.Casino_CQ9,
@@ -842,32 +783,88 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "slot_AMB"
 				},
 				{
-					...defGameInfo.Casino_SG,
-					parameter: defGameInfo.Casino_SG,
-					spanText: "Spadegaming",
-					img: `${cloudBannerImgURL}/h5/img/sg.png`,
+					...defGameInfo.Casino_Habanero,
+					parameter: defGameInfo.Casino_Habanero,
+					spanText: "Habanero",
+					providerImgName: "ho",
+					img: `${cloudBannerImgURL}/h5/img/ho.png`,
 					path: path.casino.root,
-					providerImgName: "sg",
-					sortKey: "slot_SG"
+					sortKey: "slot_Habanero"
 				},
 				{
-					...defGameInfo.Casino_RedTiger,
-					parameter: defGameInfo.Casino_RedTiger,
-					spanText: "Red Tiger",
-					providerImgName: "rt",
-					img: `${cloudBannerImgURL}/h5/img/rt.png`,
+					...defGameInfo.Casino_SimplePlay,
+					parameter: defGameInfo.Casino_SimplePlay,
+					spanText: "SimplePlay",
+					providerImgName: "casino_simpleplay",
+					img: `${cloudBannerImgURL}/h5/img/simpleplay.png`,
 					path: path.casino.root,
-					sortKey: "slot_RedTiger"
+					sortKey: "slot_SimplePlay",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
+						}
+					]
 				},
 				{
-					...defGameInfo.Casino_PG,
-					parameter: defGameInfo.Casino_PG,
-					spanText: "PG Soft",
-					img: `${cloudBannerImgURL}/h5/img/pg.png`,
+					...defGameInfo.Casino_Skywind,
+					parameter: defGameInfo.Casino_Skywind,
+					spanText: "Skywind",
+					providerImgName: "sk",
+					img: `${cloudBannerImgURL}/h5/img/slotsk.png`,
 					path: path.casino.root,
-					providerImgName: "pg",
-					sortKey: "slot_PG"
+					sortKey: "slot_Skywind",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.skywind)
+						}
+					]
+				},
+				// 新的 PlayTech (Seamless Wallet)
+				{
+					...defGameInfo.Casino_PlayTech,
+					parameter: defGameInfo.Casino_PlayTech,
+					spanText: "PlayTech",
+					img: `${cloudBannerImgURL}/h5/img/pt.png`,
+					path: path.casino.root,
+					providerImgName: "pt",
+					sortKey: "slot_Playtech"
+				},
+				{
+					...defGameInfo.Casino_918Kiss,
+					parameter: defGameInfo.Casino_918Kiss,
+					spanText: "918Kiss",
+					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
+					path: path.casino.root,
+					providerImgName: "casino_kiss918",
+					sortKey: "slot_kiss918",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
+						}
+					]
 				}
+				// {
+				// 	...productList.mega888,
+				// 	parameter: productList.mega888,
+				// 	spanText: "Mega888",
+				// 	providerImgName: "mega",
+				// 	img: `${cloudBannerImgURL}/h5/img/mega888.png`,
+				// 	path: path.mega888.root,
+				// 	alwaysShowOnSlotLobby: true,
+				// 	sortKey: "slot_Mega888"
+				// },
+				// {
+				// 	...defGameInfo.casino_ICG,
+				// 	parameter: defGameInfo.casino_ICG,
+				// 	spanText: "Astro Tech",
+				// 	img: `${cloudBannerImgURL}/h5/img/icg.png`,
+				// 	path: path.casino.root,
+				// 	providerImgName: "icg",
+				// 	sortKey: "slot_ICG"
+				// },
 				// {
 				// 	...defGameInfo.Casino_OW,
 				// 	parameter: defGameInfo.Casino_OW,
@@ -1235,8 +1232,6 @@ export const defGameInfo = {
 	LIVEcasinoAG: { tpId: 3, gameId: 3, tpGameType: 8 },
 	LIVEcasinoMW: { tpId: 5, gameId: 105, tpGameType: 8 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	LIVEcasino_PT: { tpId: 27, gameId: "0", tpGameType: 48 },
 	// 新的 PlayTech (Seamless Wallet)
 	LIVEcasino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 101 },
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
@@ -1252,8 +1247,6 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
-	// 舊的 PT 測試用，等新的測試沒問題後移除
-	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_OW: {

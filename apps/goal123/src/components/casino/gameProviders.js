@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
-import { userInfoContext } from "../common/context";
 import { bannerMediaUrl } from "../../config";
 import path from "../../path";
 
 const GameProviders = props => {
 	const { selNav, onChange, sorted } = props;
-	const { userInfo } = useContext(userInfoContext);
 	const rows = sorted.map(k => {
 		const content = (
 			<img
@@ -29,12 +27,11 @@ const GameProviders = props => {
 				</Link>
 			);
 		}
-
 		return (
 			<Link
 				to={
 					window.location.pathname ===
-					`/${userInfo.langId}/${path.casino.root}/${k.tpId}`
+					`/${path.casino.root}/${k.tpId}`
 						? `${path.casino.root}`
 						: `${path.casino.root}/${k.tpId}`
 				}
