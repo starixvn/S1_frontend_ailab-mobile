@@ -140,6 +140,9 @@ const Index = () => {
 						<UMPage path={path.um.root} />
 						<WorldCup path={path.worldCup.root} />
 						<RebateExclude path={path.rebateExclude.root} />
+						<RebateExclude
+							path={`/:langId/${path.rebateExclude.root}`}
+						/>
 					</Router>
 					<Join />
 					<Login />
