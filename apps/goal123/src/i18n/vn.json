@@ -639,6 +639,13 @@
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
 	"lbl_Promotion_Slot": "QUAY HŨ",
 
+  "==============E-Wallet==============": "",
+  "lbl_EWalletWithdrawal": "E-Wallet Withdrawal",
+  "lbl_EWallet": "E-Wallet",
+	"lbl_AddEWallet": "Thêm ví điện tử",
+	"lbl_EWallet_Hint": "Please note: E-Wallet Account must be verified.",
+	"lbl_EWalletAccountNumber": "E-wallet Account Number",
+
 	"==============Crypto Wallet==============": "",
 	"lbl_CryptoPay": "Tiền ảo",
 	"lbl_CryptoWallet": "Ví tiền ảo",

@@ -20,6 +20,9 @@ export default {
 			},
 			cryptoWallet: {
 				root: "cryptoWallet"
+			},
+			eWallet: {
+				root: "eWallet"
 			}
 		}
 	},
@@ -74,6 +77,9 @@ export default {
 			},
 			cryptoWithdrawal: {
 				root: "cryptoWithdrawal"
+			},
+			eWalletWithdrawal: {
+				root: "eWalletWithdrawal"
 			}
 		}
 	},

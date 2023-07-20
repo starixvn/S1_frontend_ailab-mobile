@@ -16,7 +16,8 @@ const AmountPanel = ({
 	VaildAmount,
 	withdrawalLimit,
 	withdrawalLimitHint,
-	currencyId
+	currencyId,
+	placeholder // 目前只有 EWallet 用到這參數 因 api_payment_GetWithdrawalLimit() 有特別限制
 }) => {
 	return (
 		<div className="subModule">
@@ -84,6 +85,7 @@ const AmountPanel = ({
 					i18n={i18n}
 					clickSubmit={ClickSubmit}
 					clickInfo={clickInfo}
+					placeholder={placeholder}
 				/>
 
 				<div className={`errorTip ${inputStatus.msg ? "active" : ""}`}>
@@ -118,7 +120,8 @@ AmountPanel.defaultProps = {
 	VaildAmount: () => null,
 	withdrawalLimitHint: "",
 	currencyId: null,
-	withdrawalLimit: null
+	withdrawalLimit: null,
+	placeholder: null
 };
 
 AmountPanel.propTypes = {
@@ -134,7 +137,8 @@ AmountPanel.propTypes = {
 	VaildAmount: PropTypes.func,
 	withdrawalLimitHint: PropTypes.string,
 	currencyId: PropTypes.number,
-	withdrawalLimit: PropTypes.objectOf(PropTypes.any)
+	withdrawalLimit: PropTypes.objectOf(PropTypes.any),
+	placeholder: PropTypes.string
 };
 
 export default AmountPanel;

@@ -14,6 +14,10 @@ const defTabs = {
 		to: `/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`,
 		displayKey: "lbl_WithdrawalHistory"
 	},
+	eWallet: {
+		to: `/${path.eWalletWithdrawal.root}`,
+		displayKey: "lbl_EWalletWithdrawal"
+	},
 	Crypto: {
 		to: `/${path.cryptoWithdrawal.root}`,
 		displayKey: "lbl_CryptoWithdrawal"

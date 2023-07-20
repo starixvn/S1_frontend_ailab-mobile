@@ -16,6 +16,10 @@ const defTabs = {
 		to: path.member.sub.bankInfo.root,
 		displayKey: "lbl_BankInfo"
 	},
+	eWallet: {
+		to: path.member.sub.eWallet.root,
+		displayKey: "lbl_EWallet"
+	},
 	cryptoWallet: {
 		to: path.member.sub.cryptoWallet.root,
 		displayKey: "lbl_CryptoWallet"
