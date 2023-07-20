@@ -271,6 +271,10 @@ const Layout = ({ children }) => {
 	}, [root]);
 
 	useEffect(() => {
+		window.scroll(0, 0);
+	}, [location]);
+
+	useEffect(() => {
 		if (userInfo.isLogin && userInfo.isResetPwd) {
 			navigate(`${path.changePassword.root}`);
 			setLoading(false);

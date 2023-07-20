@@ -59,7 +59,7 @@ const RecentDatas = props => {
 					{isOpen ? (
 						<div className="btn-group">
 							<Link
-								to={path.withdrawal.sub.history.root}
+								to={`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`}
 								className="blue recentBtn">
 								{i18n.lbl_AllTranscations}
 							</Link>

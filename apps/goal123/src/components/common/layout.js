@@ -2,7 +2,7 @@ import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { isDateRange } from "@ailab-mobile/common";
 import { AngpaoFloatLink } from "@ailab-mobile/components";
-import { useMatch, useNavigate } from "@reach/router";
+import { useMatch, useNavigate, useLocation } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -40,6 +40,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 
@@ -73,6 +74,10 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			navigate(`${path.changePassword.root}`);
 		}
 	}, [window.location.pathname, userInfo.isResetPwd]);
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, [location]);
 
 	return (
 		<>
