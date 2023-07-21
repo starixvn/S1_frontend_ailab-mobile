@@ -304,7 +304,7 @@
 	"GPI_Keno": "គីណូ",
 	"GPI_ThaiLottery": "Thai Lottery",
 	"GPI_Fast3": "Fast 3",
-  "lbl_Recently_Viewed":"បានមើលថ្មីៗនេះ",
+	"lbl_Recently_Viewed": "បានមើលថ្មីៗនេះ",
 
 	"==============================================Casino====================================": "",
 
@@ -573,12 +573,12 @@
 	"lbl_Vip_Tier_Maintenance_Requirement": "តម្រូវការថែទាំកម្រិត",
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "ប្រាក់ដាក់បង្គរក្នុងរយៈពេល ៣ ខែ",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "ប្រាក់ភ្នាល់វិលជុំបង្គរក្នុងរយៈពេល ៣ ខែ",
-  "lbl_Vip_TopPriorityServices": "កំពូលអាទិភាពសេវាកម្ម",
-	"lbl_Vip_ExclusivePromo":"ប្រូម៉ូសិនពិសេស",
+	"lbl_Vip_TopPriorityServices": "កំពូលអាទិភាពសេវាកម្ម",
+	"lbl_Vip_ExclusivePromo": "ប្រូម៉ូសិនពិសេស",
 	"lbl_Vip_BirthdaySpecialGifts": "កាដូពិសេសសម្រាប់ថ្ងៃកំណើត",
 	"lbl_Vip_LifetimeMembership": "សមាជិកភាពពេញមួយជីវិត",
 	"lbl_Vip_NoRestrictions": "NO RESTRICTIONS",
-  "lbl_Vip_Special_Rebate_UP_TO": "SPECIAL REBATE UP TO",
+	"lbl_Vip_Special_Rebate_UP_TO": "SPECIAL REBATE UP TO",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "ចំណាត់ថ្នាក់ការបន្តសុពលភាពសមាជិកភាព",
 	"lbl_Vip_Minimum_Deposit_Count": "ចំនួនទឹកប្រាក់ដាក់អប្បបរមា",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "ប្រាក់ដាក់អប្បបរមាក្នុងរយៈពេលដែលមានសុពលភាព",
@@ -921,5 +921,14 @@
 
 	"==============H5 Sportsbook for Desktop Entrance==============": "",
 	"lbl_Sportsbook_PlayNow": "លេង​ឥឡូវ",
-	"lbl_Sportsbook_Desktop": "ទូរស័ព្ទលើតុ"
+	"lbl_Sportsbook_Desktop": "ទូរស័ព្ទលើតុ",
+
+	"Label_Referral_AccumulateRewardAmount": "ប្រមូលប្រាក់រង្វាន់",
+	"Label_Referral_Simple3StepsToShare": "គ្រាន់តែធ្វើតាម 3 ជំហានដើម្បីចែករំលែក",
+	"Label_Share": "ធ្វើការចែករំលែក",
+	"Label_Recharge": "ការផ្លាស់ប្តូរ",
+	"Label_Referral_ShareDescription": "Share Your Unique Line Or Code To Invite Friends.",
+	"Label_Referral_Recharge": "មិត្តរបស់អ្នកបានបញ្ចូលដោយជោគជ័យ",
+	"Label_Referral_RewardsDescription": "ទទួលបានរង្វាន់របស់អ្នក",
+	"Label_Referral_ShareAcrossSocialMedia": "សូមចែករំលែកនៅលើបណ្តាញសង្គម"
 }

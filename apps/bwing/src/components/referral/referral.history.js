@@ -1,13 +1,17 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { i18nContext, popBoxContext, loadingContext } from "Context";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
+import { useLazyGetRefFriendDetailQuery } from "@ailab-mobile/service";
 import ReloadSpin from "../common/reloadSpin";
 import HistoryFilter from "../common/historyFilter";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import { api_account_GetRefFriendList } from "../../service/api/account";
-import { Detail } from "./referral.history.detail";
+import { number_format } from "../common/common";
+import ReferralHistoryDetails from "./referral.history.details";
 
 const Panel = () => {
+	const { t } = useTranslation();
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
@@ -16,7 +20,25 @@ const Panel = () => {
 	const [pageInfo, setPageInfo] = useState({ pageNumber: 0, totalPages: 0 });
 	const [processing, setProcessing] = useState(false);
 	const [clickSubmit, setClickSubmit] = useState(false);
+	const [isDetailsActive, setIsDetailsActive] = useState(false);
 	const isMountedRef = useRef(null);
+
+	const [
+		getRefFriendDetail,
+		{ data: { data: referralDetail = [] } = {} }
+	] = useLazyGetRefFriendDetailQuery();
+
+	const handleRefFriendDetail = async payload => {
+		try {
+			await getRefFriendDetail(payload).unwrap();
+			setIsDetailsActive(true);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: i18n.msg_ApiServerError
+			});
+		}
+	};
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -45,20 +67,19 @@ const Panel = () => {
 			let transactionData = filterData;
 			if (!isUnix) {
 				transactionData = {
-					StartDate: moment(startDay).unix(),
-					EndDate: moment(endDay).endOf("day").unix()
+					StartDate: moment(startDay),
+					EndDate: moment(endDay).endOf("day")
 				};
 				setFilterData(transactionData);
 			} else {
-				transactionData = {
-					StartDate: moment(startDay).zone("+07:00").unix(),
-					EndDate: moment(endDay).endOf("day").zone("+07:00").unix()
-				};
-				setFilterData(transactionData);
+				transactionData = filterData;
 			}
 			setClickSubmit(true);
 			api_account_GetRefFriendList({
-				...transactionData,
+				StartDate: moment(transactionData.StartDate)
+					.zone("+07:00")
+					.unix(),
+				EndDate: moment(transactionData.EndDate).zone("+07:00").unix(),
 				PageNumber: 1,
 				PageSize: 10
 			}).then(
@@ -100,23 +121,63 @@ const Panel = () => {
 		}
 	};
 
-	const arr = history?.map(data => {
-		return (
-			<Detail
-				key={`referral-history-${data.custId}`}
-				i18n={i18n}
-				userName={data.userName}
-				registerDate={data.registerDate}
-				currencyId={data.currencyId}
-				totalDeposit={data.totalDeposit}
-				depositC={data.depositC}
-				totalBet={data.totalBet}
-				vaildBetC={data.vaildBetC}
-				bonusAmount={data.bonusAmount}
-				status={data.status}
-			/>
-		);
-	});
+	const arr = history?.map(
+		({ settledDate, totalDeposit, rewardAmount }, index) => {
+			return (
+				<div className="info infoBlack" key={settledDate}>
+					<ul>
+						<li>
+							<span className="title">NO.</span>
+							<span>{index + 1}</span>
+						</li>
+						<li>
+							<span className="title">
+								{t("lbl_Date")} (+7:00)
+							</span>
+							<span>
+								{moment(settledDate, "YYYY-MM-DDThh:mm:ssZ")
+									.zone("+07:00")
+									.format("MM/DD/YYYY")}
+							</span>
+						</li>
+						<li>
+							<span className="title">
+								{t("lbl_TotalDeposit")}
+							</span>
+							<span>{number_format(totalDeposit, false)}</span>
+						</li>
+						<li>
+							<span className="title">
+								{t("lbl_RewardAmount")}
+							</span>
+							<span>{number_format(rewardAmount, false)}</span>
+						</li>
+						<li>
+							<span className="title">{t("lbl_Status")}</span>
+						</li>
+						<div className="btn-group">
+							<a
+								className="blue"
+								onClick={async () => {
+									const payload = {
+										startDate: moment(settledDate).unix(),
+										endDate: moment(settledDate)
+											.endOf("day")
+											.unix(),
+										pageNumber: 1,
+										pageSize: 10
+									};
+
+									await handleRefFriendDetail(payload);
+								}}>
+								{t("lbl_Details")}
+							</a>
+						</div>
+					</ul>
+				</div>
+			);
+		}
+	);
 
 	return (
 		<>
@@ -146,6 +207,12 @@ const Panel = () => {
 					)}{" "}
 				</div>
 			) : null}
+
+			<ReferralHistoryDetails
+				referralDetail={referralDetail}
+				active={isDetailsActive}
+				setIsDetailsActive={setIsDetailsActive}
+			/>
 		</>
 	);
 };
