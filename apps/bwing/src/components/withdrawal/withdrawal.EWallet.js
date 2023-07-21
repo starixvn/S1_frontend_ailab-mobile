@@ -705,6 +705,7 @@ const Panel = () => {
 						withdrawalLimit={withdrawalLimit}
 						withdrawalLimitHint={withdrawalLimitHint}
 						placeholder={placeHolderHandle()}
+						isEWallet={true}
 					/>
 				</div>
 				<RecentDatas

@@ -105,10 +105,15 @@ const Index = () => {
 							<WithdrawalHistory
 								path={path.withdrawal.sub.history.root}
 							/>
+							<WithdrawalEWallet
+								path={
+									path.withdrawal.sub.eWalletWithdrawal.root
+								}
+							/>
+							<WithdrawalCrypto
+								path={path.withdrawal.sub.cryptoWithdrawal.root}
+							/>
 						</Withdrawal>
-
-						<WithdrawalEWallet path={path.eWalletWithdrawal.root} />
-						<WithdrawalCrypto path={path.cryptoWithdrawal.root} />
 
 						<Kyc path={path.kyc.root} />
 						<KycWaiting path={path.kycWaiting.root} />

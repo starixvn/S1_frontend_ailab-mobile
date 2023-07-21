@@ -222,7 +222,7 @@ const EWalletInfo = () => {
 			msg = i18n.msg_NeedAccountNo;
 		} else if (isDuplicateBank) {
 			checked = false;
-			msg = i18n.lbl_Prohibited_Duplicate_Bank_Account;
+			msg = i18n.lbl_Prohibited_Duplicate_EWallet_Account;
 		}
 		return { checked, msg };
 	};
@@ -392,7 +392,7 @@ const EWalletInfo = () => {
 				<>
 					{userInfo.accountName ? (
 						<div className="text-org" data-testid="accountNameTip">
-							{i18n.lbl_BankAccountHint}
+							{i18n.lbl_EWalletAccountHint}
 						</div>
 					) : null}
 					{custEWalletInfo && custEWalletInfo.length < 3 ? (
@@ -410,7 +410,7 @@ const EWalletInfo = () => {
 							className="smallTitle"
 							data-testid="accountListTitle">
 							<i className="icon icon-library" />
-							{i18n.lbl_BankAccount}
+							{i18n.lbl_EWalletAccount}
 						</div>
 					) : null}
 					<div className="bankAccount" data-testid="accountList">

@@ -92,7 +92,7 @@ const EWalletAddCard = ({
 					: i18n.msg_NeedAccountNo;
 		} else if (col === "accountNo" && isDuplicateBank) {
 			checked = false;
-			_msg = i18n.lbl_Prohibited_Duplicate_Bank_Account;
+			_msg = i18n.lbl_Prohibited_Duplicate_EWallet_Account;
 		} else {
 			checked = true;
 		}

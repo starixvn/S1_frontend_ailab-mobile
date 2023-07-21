@@ -14,7 +14,6 @@ import {
 } from "../common/context";
 import { defIptStatus } from "../common/inputStatus";
 import { paymentNoSiteImgURL } from "../../config";
-import Withdrawal from "../../pages/withdrawal";
 import {
 	api_GetWithdrawalInfoRecent,
 	api_SetWithdrawalCancel,
@@ -26,12 +25,6 @@ import {
 	api_account_GetCustEWalletInfo,
 	api_GetWithdrawalAvailableBalance
 } from "../../service/api/account";
-
-export default () => (
-	<Withdrawal>
-		<Panel />
-	</Withdrawal>
-);
 
 const initStatus = { checked: null, msg: "" };
 
@@ -787,3 +780,5 @@ const Panel = () => {
 
 	return content;
 };
+
+export default Panel;

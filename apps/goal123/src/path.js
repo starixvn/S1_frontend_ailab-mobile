@@ -50,14 +50,11 @@ export default {
 			},
 			cryptoWithdrawal: {
 				root: "cryptoWithdrawal"
+			},
+			eWalletWithdrawal: {
+				root: "eWalletWithdrawal"
 			}
 		}
-	},
-	cryptoWithdrawal: {
-		root: "cryptoWithdrawal"
-	},
-	eWalletWithdrawal: {
-		root: "eWalletWithdrawal"
 	},
 	transfer: {
 		root: "transfer",

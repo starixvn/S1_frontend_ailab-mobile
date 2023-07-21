@@ -115,7 +115,7 @@ const EWallet = () => {
 		<Loading />
 	) : (
 		<section className="depositBox" data-testid="bankInfo">
-			<p className="depositBox-text">{i18n.lbl_EWallet_Hint}</p>
+			<p className="depositBox-text">{i18n.lbl_EWallet_Update_Hint}</p>
 			<Step i18n={i18n} step={step} />
 			{userInfo?.accountName ? (
 				<>

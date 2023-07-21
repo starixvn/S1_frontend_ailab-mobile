@@ -17,7 +17,8 @@ const AmountPanel = ({
 	withdrawalLimit,
 	withdrawalLimitHint,
 	currencyId,
-	placeholder // 目前只有 EWallet 用到這參數 因 api_payment_GetWithdrawalLimit() 有特別限制
+	placeholder, // 目前只有 EWallet 用到這參數 因 api_payment_GetWithdrawalLimit() 有特別限制
+	isEWallet = false
 }) => {
 	return (
 		<div className="subModule">
@@ -80,7 +81,7 @@ const AmountPanel = ({
 					inputType="tel"
 					onChange={e => EditAmount(e.target.value)}
 					onBlur={e => VaildAmount(e.target.value)}
-					submitBtn={true}
+					submitBtn={!isEWallet}
 					btnStatus={inputStatus.checked}
 					i18n={i18n}
 					clickSubmit={ClickSubmit}
@@ -105,6 +106,12 @@ const AmountPanel = ({
 						</span>
 					)}
 					{withdrawalLimitHint}
+
+					<div className="btn-group">
+						<button className="blue" onClick={ClickSubmit}>
+							{i18n.lbl_Submit}
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
