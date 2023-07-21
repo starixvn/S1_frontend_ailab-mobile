@@ -1,107 +1,48 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import api from "../../service/api";
-import { Link } from "../../route/link";
+import { useNavigate } from "@reach/router";
+import { useTranslation } from "react-i18next";
+import { useGetReferralCodeQuery } from "@ailab-mobile/service";
 import path from "../../path";
 import { defPopBoxType } from "../common/popbox";
+import { userInfoContext } from "../common/context";
 
-const ReferralPanel = ({ i18n, userInfo, setPopBox }) => {
-	const [referralBonus, setReferralBonus] = useState(null);
-	const [referralCode, setReferralCode] = useState("");
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		if (userInfo.isLogin === true && isMountedRef.current) {
-			api.account.GetReferralSetting().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data.length > 0)
-								setReferralBonus(res.data.data[0].bonusAmount);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-
-			api.account.GetReferralCode().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data.length > 0)
-								setReferralCode(res.data.data);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-		}
-	}, [userInfo.isLogin, i18n, setPopBox]);
+const ReferralPanel = ({ setPopBox }) => {
+	const { t } = useTranslation();
+	const navigate = useNavigate();
+	const { userInfo } = useContext(userInfoContext);
+	const { data: { data: referralCode } = {} } = useGetReferralCodeQuery();
 
 	const shareReferral = () => {
 		setPopBox({
 			isOpen: true,
 			className: "referralShare ",
 			popBoxType: defPopBoxType.Referral,
-			title: i18n.lbl_ReferFriends,
+			title: t("lbl_ReferFriends"),
 			referralCode
 		});
 	};
 
 	return (
 		<>
-			<div className="moduleTitle icon icon-friend">
-				{i18n.lbl_friendReferral.toUpperCase()}
-			</div>
-			<div className="friendReferral">
-				<div>
-					<div className="title">
-						{`${i18n.lbl_Free} ${
-							i18n[`Currency_${userInfo.currencyId}`]
-						} `}
-						{referralBonus}
-					</div>
-					<div>{i18n.lbl_Referral_intro}</div>
-					{/* <a
-						href={TandC(userInfo.langId).Referral}
-						target="_blank"
-						rel="noreferrer">
-						{i18n.lbl_TermsConditions}
-					</a> */}
-					<br />
-					<Link to={path.referral.root}>{i18n.lbl_To_Referral}</Link>
-				</div>
-				<div>
-					<div>{referralCode}</div>
-					<div className="btn-group" onClick={shareReferral}>
-						<button className="title">{i18n.lbl_Share}</button>
+			<div className="moduleTitle">{t("lbl_friendReferral")}</div>
+
+			<div className={`friendReferral indexRefer ${userInfo?.langId}`}>
+				{/* <!-- 連結至referral.html --> */}
+				<button
+					className="friendReferral-btn"
+					onClick={() => navigate(path.referral.root)}>
+					{/* <!-- 多語系換字 --> */}
+					{t("lbl_More_Info")}
+				</button>
+				<div className="inputcopy">
+					<input type="text" value={referralCode} />
+					{/* <!-- img-icon點擊後觸發原生系統分享彈窗 --> */}
+					<div onClick={shareReferral}>
+						<img
+							src="https://banner.0814media.net/h5/img/icon-share-1.svg"
+							alt=""
+						/>
 					</div>
 				</div>
 			</div>
@@ -110,8 +51,6 @@ const ReferralPanel = ({ i18n, userInfo, setPopBox }) => {
 };
 
 ReferralPanel.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	setPopBox: PropTypes.func.isRequired
 };
 

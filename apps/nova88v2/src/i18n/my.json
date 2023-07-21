@@ -299,7 +299,7 @@
 	"Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
 	"GPI_Keno": "Keno",
 	"GPI_Fast3": "Fast 3",
-  "lbl_Recently_Viewed":"BARU SAJA DILIHAT",
+	"lbl_Recently_Viewed": "BARU SAJA DILIHAT",
 
 	"==============================================Casino====================================": "",
 
@@ -567,12 +567,12 @@
 	"lbl_Vip_Tier_Maintenance_Requirement": "SYARAT PENYELENGGARAAN TARAF",
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "DEPOSIT DIKUMPUL DALAM MASA 3 BULAN",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "PEROLEHAN DIKUMPUL DALAM MASA 3 BULAN",
-  "lbl_Vip_TopPriorityServices": "PERKHIDMATAN KEUTAMAAN",
-	"lbl_Vip_ExclusivePromo":"PROMO ELSKLUSIF",
+	"lbl_Vip_TopPriorityServices": "PERKHIDMATAN KEUTAMAAN",
+	"lbl_Vip_ExclusivePromo": "PROMO ELSKLUSIF",
 	"lbl_Vip_BirthdaySpecialGifts": "HADIAH ISTIMEWA HARI LAHIR",
 	"lbl_Vip_LifetimeMembership": "KEAHLIAN SEUMUR HIDUP",
 	"lbl_Vip_NoRestrictions": "TIADA SEKATAN",
-  "lbl_Vip_Special_Rebate_UP_TO": "REBAT KHAS MENCECAH",
+	"lbl_Vip_Special_Rebate_UP_TO": "REBAT KHAS MENCECAH",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "PENSAHIHAN KEDUDUKAN PEMBAHARUAN KEAHLIAN",
 	"lbl_Vip_Minimum_Deposit_Count": "MIN DEPOSIT",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "DEPOSIT MINIMUM DALAM TEMPOH SAH",
@@ -914,5 +914,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
-	"lbl_GameName": "Nama Permainan"
+	"lbl_GameName": "Nama Permainan",
+
+	"Label_Referral_AccumulateRewardAmount": "Jumlah ganjaran",
+	"Label_Referral_Simple3StepsToShare": "3 langkah mudah untuk perkongsian",
+	"Label_Share": "Kongsi",
+	"Label_Recharge": "Isi semula",
+	"Label_Referral_ShareDescription": "Kongsi pautan/kod unik anda Untuk menjemput rakan anda",
+	"Label_Referral_Recharge": "Rakan anda telah berjaya mengecas semula.",
+	"Label_Referral_RewardsDescription": "Dapatkan Ganjaran Anda",
+	"Label_Referral_ShareAcrossSocialMedia": "kongsi di media sosial"
 }
