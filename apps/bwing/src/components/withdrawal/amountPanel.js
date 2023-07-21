@@ -106,12 +106,13 @@ const AmountPanel = ({
 						</span>
 					)}
 					{withdrawalLimitHint}
-
-					<div className="btn-group">
-						<button className="blue" onClick={ClickSubmit}>
-							{i18n.lbl_Submit}
-						</button>
-					</div>
+					{isEWallet && (
+						<div className="btn-group">
+							<button className="blue" onClick={ClickSubmit}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
@@ -145,7 +146,8 @@ AmountPanel.propTypes = {
 	withdrawalLimitHint: PropTypes.string,
 	currencyId: PropTypes.number,
 	withdrawalLimit: PropTypes.objectOf(PropTypes.any),
-	placeholder: PropTypes.string
+	placeholder: PropTypes.string,
+	isEWallet: PropTypes.bool.isRequired
 };
 
 export default AmountPanel;
