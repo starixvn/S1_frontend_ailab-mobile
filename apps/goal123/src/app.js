@@ -9,6 +9,7 @@ import Home from "./pages/home";
 import Promotion from "./pages/promotion";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
+import EWalletInfo from "./components/member/eWallet";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
@@ -19,6 +20,7 @@ import Withdrawal from "./pages/withdrawal";
 import WithdrawalHome from "./components/withdrawal/withdrawal";
 import WithdrawalHistory from "./components/withdrawal/withdrawal.history";
 import WithdrawalCrypto from "./components/withdrawal/withdrawal.crypto";
+import WithdrawalEWallet from "./components/withdrawal/withdrawal.EWallet";
 
 import Transfer from "./pages/transfer";
 import TransferHome from "./components/transfer/transfer";
@@ -85,6 +87,7 @@ const Index = () => {
 							<BankInfo path={path.member.sub.bankInfo.root} />
 						</Member>
 
+						<EWalletInfo path={path.eWallet.root} />
 						<CryptoWallet path={path.cryptoWallet.root} />
 
 						<FriendReferral path={path.referral.root}>
@@ -102,9 +105,15 @@ const Index = () => {
 							<WithdrawalHistory
 								path={path.withdrawal.sub.history.root}
 							/>
+							<WithdrawalEWallet
+								path={
+									path.withdrawal.sub.eWalletWithdrawal.root
+								}
+							/>
+							<WithdrawalCrypto
+								path={path.withdrawal.sub.cryptoWithdrawal.root}
+							/>
 						</Withdrawal>
-
-						<WithdrawalCrypto path={path.cryptoWithdrawal.root} />
 
 						<Kyc path={path.kyc.root} />
 						<KycWaiting path={path.kycWaiting.root} />

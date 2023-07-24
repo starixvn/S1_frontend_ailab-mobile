@@ -1,9 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Redirect, Link, useMatch } from "@reach/router";
+import { Redirect, Link, useMatch, useLocation } from "@reach/router";
 import { i18nContext, userInfoContext } from "./context";
 
-const IndexPage = ({ defTabs, children, beforeLogin, showScroll }) => {
+const IndexPage = ({
+	defTabs,
+	children,
+	beforeLogin,
+	showScroll,
+	multipleExclude = false
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -33,9 +39,21 @@ const IndexPage = ({ defTabs, children, beforeLogin, showScroll }) => {
 	if (redirectPath !== null) {
 		return <Redirect to="/" noThrow />;
 	}
-	const items = Object.keys(defTabs).map(key => (
-		<TabItem key={`tab-btn-${key}`} i18n={i18n} tabItem={defTabs[key]} />
-	));
+	const items = multipleExclude
+		? Object.keys(defTabs).map(key => (
+				<SimpleTab
+					key={`tab-btn-${key}`}
+					i18n={i18n}
+					tabItem={defTabs[key]}
+				/>
+		  ))
+		: Object.keys(defTabs).map(key => (
+				<TabItem
+					key={`tab-btn-${key}`}
+					i18n={i18n}
+					tabItem={defTabs[key]}
+				/>
+		  ));
 
 	return (
 		<>
@@ -69,6 +87,24 @@ const TabItem = ({ i18n, tabItem }) => {
 			{i18n[tabItem.displayKey]}
 		</Link>
 	);
+};
+
+const SimpleTab = ({ i18n, tabItem }) => {
+	const location = useLocation();
+	const curPath = location.pathname.split("/");
+	const re = /[a-zA-Z]/g;
+	const match = curPath[curPath.length - 1] === tabItem.to.match(re).join("");
+
+	return (
+		<Link to={tabItem.to} className={match ? "open" : ""}>
+			{i18n[tabItem.displayKey]}
+		</Link>
+	);
+};
+
+SimpleTab.propTypes = {
+	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
+	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 TabItem.propTypes = {

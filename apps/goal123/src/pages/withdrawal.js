@@ -11,11 +11,15 @@ const defTabs = {
 		excludeMath: path.withdrawal.sub.history.root
 	},
 	History: {
-		to: `/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`,
+		to: path.withdrawal.sub.history.root,
 		displayKey: "lbl_WithdrawalHistory"
 	},
+	eWallet: {
+		to: path.withdrawal.sub.eWalletWithdrawal.root,
+		displayKey: "lbl_EWalletWithdrawal"
+	},
 	Crypto: {
-		to: `/${path.cryptoWithdrawal.root}`,
+		to: path.withdrawal.sub.cryptoWithdrawal.root,
 		displayKey: "lbl_CryptoWithdrawal"
 	}
 };
@@ -24,7 +28,7 @@ const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
 	return (
 		<Layout title={i18n.lbl_Withdrawal}>
-			<TabPage defTabs={defTabs} showScroll={true}>
+			<TabPage defTabs={defTabs} multipleExclude={true} showScroll={true}>
 				{props.children}
 			</TabPage>
 		</Layout>
