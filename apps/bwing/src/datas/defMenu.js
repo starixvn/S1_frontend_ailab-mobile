@@ -31,7 +31,8 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	PT: { tpId: 27, tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
@@ -343,9 +344,10 @@ export const productList = langId => {
 						}
 					]
 				},
+				// 新的 PlayTech (Seamless Wallet)
 				{
-					...defGameInfo.Casino_PT,
-					parameter: defGameInfo.Casino_PT,
+					...defGameInfo.Casino_PlayTech,
+					parameter: defGameInfo.Casino_PlayTech,
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
 					icon: "icon icon-pt",
@@ -426,12 +428,12 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO
 				},
+				// 新的 PlayTech (Seamless Wallet)
 				{
-					displayText: "Playtech",
+					displayText: "PlayTech",
 					icon: "icon icon-pt",
 					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
-					...defGameInfo.LIVEcasinoPT,
-					useGotoGame: true
+					...defGameInfo.LIVEcasinoPlaytech
 				},
 				{
 					displayText: "n2-LIVE",

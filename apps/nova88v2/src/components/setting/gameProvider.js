@@ -113,7 +113,7 @@ const defPlatfrom = [
 	// 	allowCurrencies: allowedCurrencyList.oneGame
 	// },
 	{
-		...defGameInfo.Casino_PT,
+		...defGameInfo.Casino_PlayTech,
 		path: path.casino.root,
 		imgName: "casino_pt"
 	},
