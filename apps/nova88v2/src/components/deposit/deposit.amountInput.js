@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { number_format, defCurrenyId } from "../common/common";
+import {
+	number_format,
+	defCurrenyId,
+	currencyIdToCurrency
+} from "../common/common";
 import useTip from "../hook/useTip";
 
 const defAmountQuickPick = {
@@ -34,7 +38,7 @@ const AmountInput = ({
 	const placeHolderJudge = () => {
 		let text = "";
 		if (minAmount && maxAmount) {
-			if (currencyId === defCurrenyId.IDR) {
+			if (_isConvert) {
 				text = `${i18n.lbl_MinMaxAmount}: ${minAmount / 1000} / ${
 					maxAmount / 1000
 				}`;
@@ -121,9 +125,7 @@ const AmountInput = ({
 							placeholder={placeHolderText}
 							value={amount}
 						/>
-						{currencyId === defCurrenyId.IDR && (
-							<div>(&apos;000)</div>
-						)}
+						{_isConvert && <div>(&apos;000)</div>}
 						<div className="icon-module">
 							<i className="icon icon-pencil" />
 						</div>
@@ -152,9 +154,7 @@ const AmountInput = ({
 							placeholder={placeHolderText}
 							value={amount}
 						/>
-						{currencyId === defCurrenyId.IDR && (
-							<div>(&apos;000)</div>
-						)}
+						{_isConvert && <div>(&apos;000)</div>}
 						<div className="icon-module">
 							{status ? (
 								<i className="icon icon-errormark" />
@@ -180,7 +180,11 @@ const AmountInput = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
-				{currencyId === defCurrenyId.IDR && i18n.lbl_DepositAmountNote}
+				{_isConvert &&
+					i18n.lbl_DepositAmountNote?.replaceAll(
+						"{{currencyName}}",
+						currencyIdToCurrency[currencyId]
+					)}
 			</div>
 			{content}
 		</>

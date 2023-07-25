@@ -18,6 +18,7 @@ const ImportantNote = ({ langId, i18n }) => {
 	if (langId === "hi") content = <HI />;
 	if (langId === "bd") content = <BD />;
 	if (langId === "kh") content = <KH />;
+	if (langId === "vn") content = <VN />;
 
 	if (langId) {
 		return (
@@ -310,6 +311,44 @@ const KH = () => (
 				ជជែកបន្តផ្ទាល់ ២៤ ម៉/៧ ថ្ងៃ
 			</a>{" "}
 			របស់យើង ប្រសិនបើប្រតិបត្តិការរបស់អ្នកនៅតែរង់ចាំលើសពី ៥ នាទី។
+		</li>
+	</ul>
+);
+
+const VN = () => (
+	<ul>
+		<li>
+			Vui lòng kiểm tra thông tin tài khoản ngân hàng nạp tiền hoạt động
+			mới nhất trước khi thực hiện nạp tiền.
+		</li>
+		<li>
+			Đối với tùy chọn nạp tiền{" "}
+			<span>&quot;Trao đổi qua ngân hàng&quot;</span> , vui lòng thực hiện
+			việc chuyển khoản trước khi gửi giao dịch để tránh trễ giao dịch.
+		</li>
+		<li>
+			Tên người gửi tiền phải đáp ứng tiêu chí xác minh, bao gồm tên đăng
+			ký hoặc số tham chiếu trong biên nhận.
+		</li>
+		<li>
+			Vui lòng <span>ĐỪNG</span> điền <span>&quot;NOVA88&quot;</span> hoặc
+			bất kỳ từ ngữ nhạy cảm nào liên quan đến cờ bạc làm tham chiếu/giúp
+			ghi chú trong giao dịch trực tuyến của bạn.
+		</li>
+		<li>
+			Vui lòng lưu ý rằng cần phải thực hiện xổ số 1 lần cho mọi khoản
+			tiền nạp trước khi có thể thực hiện rút tiền.
+		</li>
+		<li>
+			Nếu giao dịch của bạn vẫn chưa hoàn tất sau hơn 5 phút, vui lòng
+			liên hệ với{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				TRÒ CHUYỆN TRỰC TUYẾN 24/7
+			</a>{" "}
+			của chúng tôi.
 		</li>
 	</ul>
 );

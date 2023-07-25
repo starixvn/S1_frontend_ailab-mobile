@@ -15,7 +15,12 @@ export const changeAllowCurrenciesByTime = ({
 };
 
 const allowedCurrencyList = {
-	VIP: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
+	VIP: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.VND
+	],
 	affiliate: [
 		defCurrenyId.MYR,
 		defCurrenyId.THB,
@@ -52,7 +57,8 @@ const allowedCurrencyList = {
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
 		defCurrenyId.BDT,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
 	eWallet: [
 		defCurrenyId.IDR,
@@ -73,9 +79,15 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY,
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
-	allbet: [defCurrenyId.MYR, defCurrenyId.IDR, defCurrenyId.THB],
+	allbet: [
+		defCurrenyId.MYR,
+		defCurrenyId.IDR,
+		defCurrenyId.THB,
+		defCurrenyId.VND
+	],
 
 	// slot
 	slotAMB: [

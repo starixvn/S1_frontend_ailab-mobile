@@ -152,6 +152,7 @@ export const defCurrencyToClass = {
 	4: "th",
 	13: "cs",
 	15: "id",
+	51: "vn",
 	61: "in",
 	72: "kh",
 	74: "bd"
@@ -163,6 +164,7 @@ export const defCurrencyToLang = {
 	4: "th",
 	13: "cs",
 	15: "id",
+	51: "vn",
 	61: "hi",
 	72: "kh",
 	74: "bd"
@@ -173,6 +175,7 @@ export const currCustomMapping = {
 	4: "THB",
 	13: "MYR",
 	15: "IDR",
+	51: "VND",
 	61: "INR",
 	72: "KHM",
 	74: "BDT"
@@ -184,6 +187,7 @@ export const defCurrenyId = {
 	THB: 4,
 	CNY: 13,
 	IDR: 15,
+	VND: 51,
 	INR: 61,
 	KHM: 72,
 	BDT: 74,
@@ -196,6 +200,7 @@ export const currencyIdToCurrency = {
 	4: "THB",
 	13: "CNY",
 	15: "IDR",
+	51: "VND",
 	61: "INR",
 	74: "BDT"
 };
@@ -208,7 +213,8 @@ export const currencyIdToTimeZone = {
 	72: "+07:00",
 	74: "+06:00",
 	61: "+05:30",
-	3: "+00:00"
+	3: "+00:00",
+	51: "+07:00"
 };
 
 export const langMappingCurr = {
@@ -219,7 +225,8 @@ export const langMappingCurr = {
 	th: "THB",
 	hi: "INR",
 	bd: "BDT",
-	kh: "KHM"
+	kh: "KHM",
+	vn: "VND"
 };
 
 export const defCurrencyToLangId = {
@@ -228,6 +235,7 @@ export const defCurrencyToLangId = {
 	4: "th",
 	13: "cs",
 	15: "id",
+	51: "vn",
 	61: "hi",
 	72: "kh",
 	74: "bd"
