@@ -233,6 +233,19 @@ export const defCurrencyToLangId = {
 	74: "bd"
 };
 
+// liveChat 專屬
+export const defLiveChatLangIdToCurrencyId = {
+	en: 1,
+	id: 2,
+	cs: 3,
+	th: 4,
+	hi: 8
+	// 以下無支援會自動導到英文 1
+	// my
+	// bd
+	// kh
+};
+
 export const GetCurrencyName = ({ langId, currencyId, i18n }) => {
 	const currency = currencyId
 		? currCustomMapping[currencyId] ?? i18n[`Currency_${currencyId}`]

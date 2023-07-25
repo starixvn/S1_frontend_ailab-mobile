@@ -12,8 +12,8 @@ import {
 } from "./context";
 import path from "../../path";
 import MsgPopup from "./msgPopup";
-import { defCurrenyId } from "./common";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
+import { defCurrenyId, defLiveChatLangIdToCurrencyId } from "./common";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -24,6 +24,14 @@ const Footer = () => {
 
 	const handleWalletMenu = isClose => {
 		setOpenWalletMenu(prev => (isClose === true ? false : !prev));
+	};
+
+	const liveChatLangId = () => {
+		if (defLiveChatLangIdToCurrencyId[userInfo.langId] === undefined) {
+			return defLiveChatLangIdToCurrencyId.en;
+		}
+
+		return defLiveChatLangIdToCurrencyId[userInfo.langId];
 	};
 
 	const footer =
@@ -65,7 +73,7 @@ const Footer = () => {
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href="https://direct.lc.chat/11638088/"
+					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
 					className="icon icon-contact">
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
@@ -135,7 +143,7 @@ const Footer = () => {
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href="https://direct.lc.chat/11638088/"
+					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
 					className="icon icon-contact">
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
