@@ -15,7 +15,7 @@ export const defOpenType = {
 };
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PT.tpId
+	playTech: defGameInfo.Casino_PlayTech.tpId
 };
 
 const playTechLaunchGame = (client, game, mode, openType) => {
