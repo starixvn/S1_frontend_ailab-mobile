@@ -81,7 +81,7 @@ export const api_account_GetRefFriendList = ({
 	PageNumber,
 	PageSize
 }) =>
-	accountRequest.post("/GetRefFriendList", {
+	accountRequest.post("/GetRefFriendListV2", {
 		StartDate,
 		EndDate,
 		PageNumber,

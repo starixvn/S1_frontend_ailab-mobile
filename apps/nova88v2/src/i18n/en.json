@@ -591,13 +591,13 @@
 	"lbl_Vip_Lifetime": "Lifetime",
 	"lbl_Vip_3Months": "3 Months",
 	"lbl_VIP": "VIP",
+	"lbl_VIP_Vintage": "Vintage",
 	"lbl_VIP_Silver": "Silver",
 	"lbl_VIP_Gold": "Gold",
 	"lbl_VIP_Titanium": "Titanium",
 	"lbl_VIP_Diamond": "Diamond",
 	"lbl_VIP_Nova": "Nova",
 	"lbl_VIP_Club": "Club",
-	"lbl_VIP_Vintage": "Vintage",
 	"lbl_Vip_Last_Updated": "LAST UPDATED",
 	"lbl_WithdrawalLimitation": "DAILY WITHDRAWAL LIMITATION",
 	"lbl_VIP_unlimited": "Unlimited",
@@ -954,5 +954,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Games in this list will be excluded daily rebate rewards",
-	"lbl_GameName": "Game Name"
+	"lbl_GameName": "Game Name",
+
+	"Label_Referral_AccumulateRewardAmount": "ACCUMULATE REWARD AMOUNT",
+	"Label_Referral_Simple3StepsToShare": "SIMPLE 3 STEPS TO SHARE",
+	"Label_Share": "SHARE",
+	"Label_Recharge": "RECHARGE",
+	"Label_Referral_ShareDescription": "Share Your Unique Line Or Code To Invite Friends.",
+	"Label_Referral_Recharge": "Your Friend Has Successfully Recharge.",
+	"Label_Referral_RewardsDescription": "Get Your Rewards.",
+	"Label_Referral_ShareAcrossSocialMedia": "SHARE ACROSS SOCIAL MEDIA"
 }

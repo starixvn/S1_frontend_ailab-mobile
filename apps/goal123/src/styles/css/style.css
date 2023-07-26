@@ -1725,6 +1725,47 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
+#popup.detailpop {
+  width: 100%;
+  background: #eaf1ff;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  -webkit-box-pack: revert;
+      -ms-flex-pack: revert;
+          justify-content: revert;
+}
+#popup.detailpop .pop {
+  padding: 0 !important;
+}
+#popup.detailpop.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+#popup.detailpop .popTit {
+  border-radius: 0;
+  position: fixed;
+  padding: 2vw 4vw;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .icon-close {
+  z-index: 2;
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+}
+#popup.detailpop .infoList {
+  padding: 11vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .infoList .info {
+  color: #4e6ca8;
+}
 
 .txt-red {
   color: #d83b35;
@@ -3175,6 +3216,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .recent .info {
   display: none;
+}
+.recent .info .btn-group {
+  padding-top: 1vw;
+}
+.recent .info .btn-group a {
+  width: 100%;
 }
 
 .account {
@@ -5732,7 +5779,7 @@ span.important {
   font-size: 14px;
 }
 .breadcrumb ul .breadcrumb-item a {
-  color: #1e85ec;
+  color: #acc2d9;
   text-transform: capitalize;
 }
 .breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
@@ -10334,151 +10381,133 @@ span.important {
   display: none;
 }
 
-.recentlyList {
-  padding: 0 5vw;
+.cambodia {
+  position: relative;
+  margin-left: 5vw;
 }
-.recentlyList .title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1vw 0 1vw 2vw;
-  background: url(https://banner.goal123.org/h5/img/titlebg.png) no-repeat;
-  line-height: 1;
-  font-size: 4vw;
-  height: 5vw;
+@media (min-width: 768px) {
+  .cambodia {
+    margin-left: 10vw;
+  }
 }
-.recentlyList .title i {
-  margin-right: 2vw;
-  font-weight: normal;
+.cambodia::before {
+  content: "";
+  display: block;
+  background: url(https://banner.goal123.org/h5/img/rabbitboy.png) no-repeat center/cover;
+  position: absolute;
+  width: 12vw;
+  height: 12vw;
+  top: -3.5vw;
+  left: -10vw;
+  -webkit-animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+          animation: slide-in-blurred-right 2s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@media (max-width: 320px) {
+  .cambodia::before {
+    background: none;
+  }
 }
 
-.recently {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5vw auto 10vw;
-  overflow: hidden;
+@-webkit-keyframes slide-in-blurred-right {
+  0% {
+    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-blurred-right {
+  0% {
+    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-left {
+  0% {
+    -webkit-transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+    transform: translateX(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+.dragon {
   position: relative;
-  cursor: pointer;
 }
-.recently .swiper-button-next, .recently .swiper-button-prev {
-  background: rgba(250, 182, 23, 0.8);
-  font-family: "icomoon";
-  width: 6vw;
-  height: 6vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50%;
-  top: calc(50% + 1.5vw);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
-  content: "\ea40";
-  font-size: 4vw;
-}
-.recently .swiper-button-next {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.recently .swiper-slide {
-  cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-slide:hover .recently-game {
-  background: #4e6ca8;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-slide:hover .recently-title {
-  color: #fff;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-slide:hover .recently-game.active {
-  background: #E8EAED;
-  color: #1f3258;
-  cursor: default;
-}
-.recently-game {
-  background: #E8EAED;
-  border-radius: 2vw;
-  font-weight: bold;
-  color: #1f3258;
-  padding: 3vw;
-  border-bottom: 2vw solid #fab617;
-  position: relative;
-}
-.recently-game > div:first-child {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.recently-game.active {
-  -webkit-filter: grayscale(1) brightness(0.85);
-          filter: grayscale(1) brightness(0.85);
-}
-.recently-game.active .under {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.recently-game .under {
-  display: none;
+.dragon .zongzi {
+  width: 28vw;
   position: absolute;
-  top: calc(50% - 4vw);
-  left: calc(50% - 24vw);
-  z-index: 1;
-  background: #272727;
-  border-radius: 1vw;
-  color: white;
-  font-weight: normal;
-  font-size: 3vw;
-  width: 42vw;
-  height: 12vw;
-  padding: 0 3vw;
-  text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  bottom: -6.5vw;
+  left: -10.2vw;
+  pointer-events: none;
 }
-.recently-image {
-  border-radius: 2vw;
-  width: 20vw;
-  height: 20vw;
-  margin-right: 2vw;
+@media (max-width: 320px) {
+  .dragon .zongzi {
+    opacity: 0;
+    display: none;
+  }
 }
-.recently-brand {
-  height: 12vw;
-  display: block;
-  width: auto;
-  max-width: 30vw;
-  margin-bottom: 1vw;
-  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
-}
-.recently-title {
-  width: 100%;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  color: #1f3258;
-  font-size: 3.5vw;
+@media (min-width: 550px) {
+  .dragon .zongzi {
+    opacity: 0;
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

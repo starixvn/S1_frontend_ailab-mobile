@@ -913,5 +913,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "เกมในรายการนี้จะไม่รวมรางวัลเงินคืนรายวัน",
-	"lbl_GameName": "ชื่อเกมส์"
+	"lbl_GameName": "ชื่อเกมส์",
+
+	"Label_Referral_AccumulateRewardAmount": "สะสมยอดรางวัล",
+	"Label_Referral_Simple3StepsToShare": "แชร์ง่ายๆ 3 ขั้นตอน",
+	"Label_Share": "แชร์",
+	"Label_Recharge": "เติมเงิน",
+	"Label_Referral_ShareDescription": "แชร์ลิงก์/รหัสเฉพาะของคุณ",
+	"Label_Referral_Recharge": "เพื่อนของคุณเติมเงินสำเร็จแล้ว",
+	"Label_Referral_RewardsDescription": "รับรางวัลของคุณ",
+	"Label_Referral_ShareAcrossSocialMedia": "แชร์ผ่านโซเชียลมีเดีย"
 }

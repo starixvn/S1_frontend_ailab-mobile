@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import path from "../../path";
+import { defCurrenyId } from "../common/common";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const HeaderShortcut = ({ i18n, currencyId }) => {
@@ -18,7 +19,12 @@ const HeaderShortcut = ({ i18n, currencyId }) => {
 						<span>{i18n.lbl_Transfer}</span>
 					</Link>
 				)}
-				<Link to={path.withdrawal.root}>
+				<Link
+					to={
+						currencyId === defCurrenyId.BDT
+							? path.eWalletWithdrawal.root
+							: path.withdrawal.root
+					}>
 					<i className="icon icon-withdrawal" />
 					<span>{i18n.lbl_Withdrawal}</span>
 				</Link>
