@@ -57,4 +57,9 @@ export class PromotionAPI extends BaseAPI {
 			BonusCode,
 			DeviceType: defDeviceType.Mobile
 		});
+
+	GetRebateExcludeGameList = ({ langId, currencyId }) =>
+		this.promotionRequest.post(`/GetRebateExcludeGameList/${langId}`, {
+			CurrencyId: currencyId
+		});
 }
