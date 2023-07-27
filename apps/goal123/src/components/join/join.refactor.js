@@ -116,7 +116,8 @@ const Join = () => {
 	const checkAffiliate = async ({ formAffCode }) => {
 		let checked = null;
 		let msg = "";
-
+		// * 預先拿 currencyList
+		await GetSiteCurrencyList();
 		if (urlAffId) {
 			const res = await api_site_GetAffiliateAgent({ AffId: urlAffId });
 			if (res.data.errorCode === 0) {
