@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
-import { i18nContext } from "../components/common/context";
+import { i18nContext, eWalletContext } from "../components/common/context";
 
 const defTabs = {
 	default: {
@@ -26,9 +26,22 @@ const defTabs = {
 
 const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
+	const { isShowEWallet } = useContext(eWalletContext);
+	const filteredDefTabs = () => {
+		if (!isShowEWallet) {
+			const { eWallet, ...restTabs } = defTabs;
+			return restTabs;
+		}
+
+		return defTabs;
+	};
+
 	return (
 		<Layout title={i18n.lbl_Withdrawal}>
-			<TabPage defTabs={defTabs} multipleExclude={true} showScroll={true}>
+			<TabPage
+				defTabs={filteredDefTabs()}
+				multipleExclude={true}
+				showScroll={true}>
 				{props.children}
 			</TabPage>
 		</Layout>

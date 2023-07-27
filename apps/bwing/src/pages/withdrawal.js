@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
+import { eWalletContext } from "../components/common/context";
 
 const defTabs = {
 	default: {
@@ -23,8 +24,20 @@ const defTabs = {
 };
 
 const IndexPage = props => {
+	const { isShowEWallet } = useContext(eWalletContext);
+	const filteredDefTabs = () => {
+		if (!isShowEWallet) {
+			const { eWallet, ...restTabs } = defTabs;
+			return restTabs;
+		}
+
+		return defTabs;
+	};
 	return (
-		<TabPage defTabs={defTabs} multipleExclude={true} showScroll={true}>
+		<TabPage
+			defTabs={filteredDefTabs()}
+			multipleExclude={true}
+			showScroll={true}>
 			{props.children}
 		</TabPage>
 	);
