@@ -30,6 +30,8 @@ import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
 import { defPopBoxType } from "../common/popbox";
+import TopUpCard from "./deposit.topUpCard";
+import QRPay from "./deposit.qrPay";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -243,6 +245,30 @@ const Panel = () => {
 				langId={userInfo.langId}
 			/>
 		);
+	} else if (selected === defPayType.topUpCard) {
+		content = (
+			<TopUpCard
+				payType={defPayType.topUpCard}
+				promoList={promoList}
+				paymentList={paymentList[defPayType.topUpCard] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			/>
+		);
+	} else if (selected === defPayType.qrPay) {
+		content = (
+			<QRPay
+				payType={defPayType.qrPay}
+				promoList={promoList}
+				paymentList={paymentList[defPayType.qrPay] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			/>
+		);
 	}
 
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
@@ -259,7 +285,9 @@ const Panel = () => {
 					[defPayType.onlineBank]: [],
 					[defPayType.mobilePay]: [],
 					[defPayType.cryptoPay]: [],
-					[defPayType.linePay]: []
+					[defPayType.linePay]: [],
+					[defPayType.topUpCard]: [],
+					[defPayType.qrPay]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -371,6 +399,38 @@ const Panel = () => {
 							defPayType.linePay,
 							payments[defPayType.linePay]
 						);
+					}
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetLoadCardPayGroupList();
+					payments[defPayType.topUpCard] = getDataListResult(res);
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.topUpCard,
+						payments[defPayType.topUpCard]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
+
+				try {
+					const res = await api.payment.GetQRPayGroupList();
+					payments[defPayType.qrPay] = getDataListResult(res);
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.qrPay,
+						payments[defPayType.qrPay]
+					);
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
 					}
 				} catch (error) {}
 

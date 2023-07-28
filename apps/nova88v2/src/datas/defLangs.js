@@ -23,6 +23,16 @@ export default {
 		countryName: "Thailand",
 		currencyId: defCurrenyId.THB
 	},
+	VN: {
+		country: "VN",
+		img: `${cloudBannerImgURL}/h5/img/vn.jpg`,
+		lang: [
+			{ value: "en", displayText: "English" },
+			{ value: "vn", displayText: "Tiếng Việt" }
+		],
+		countryName: "Vietnam",
+		currencyId: defCurrenyId.VND
+	},
 	ID: {
 		country: "ID",
 		img: `${cloudBannerImgURL}/h5/img/id.jpg`,

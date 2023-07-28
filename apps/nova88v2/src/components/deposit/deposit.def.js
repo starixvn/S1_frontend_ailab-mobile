@@ -4,7 +4,9 @@ export const defPayType = {
 	onlineBank: "onlineBank",
 	mobilePay: "mobilePay",
 	cryptoPay: "cryptoPay",
-	linePay: "linePay"
+	linePay: "linePay",
+	topUpCard: "topUpCard",
+	qrPay: "qrPay"
 };
 
 export const defPayment = {
@@ -33,9 +35,19 @@ export const defPayment = {
 		creditTimeKey: "lbl_Instant",
 		icon: "icon icon-mobile"
 	},
+	[defPayType.topUpCard]: {
+		displayKey: "lbl_TopUpCard",
+		creditTimeKey: "lbl_Instant",
+		icon: "icon icon-topup"
+	},
 	[defPayType.cryptoPay]: {
 		displayKey: "lbl_CryptoPay",
 		creditTimeKey: "lbl_Instant",
 		icon: "icon icon-USDT"
+	},
+	[defPayType.qrPay]: {
+		displayKey: "lbl_QRPay",
+		creditTimeKey: "lbl_Instant",
+		icon: "icon icon-qrpay"
 	}
 };
