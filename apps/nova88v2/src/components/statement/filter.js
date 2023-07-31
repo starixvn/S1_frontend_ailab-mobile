@@ -10,7 +10,7 @@ const quickPickList = [
 	{ displayKey: "lbl_YesterDay" },
 	{ displayKey: "lbl_ThisWeek" },
 	{ displayKey: "lbl_LastWeek" },
-	{ displayKey: "lbl_LastMonth" }
+	{ displayKey: "lbl_ThisMonth" }
 ];
 
 export const Filter = ({ langId, defaultValue }) => {
