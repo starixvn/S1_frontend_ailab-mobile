@@ -18,6 +18,9 @@ export const getDateRange = ({ startDate, endDate }) => {
 		.endOf("week")
 		.format("YYYY-MM-DD");
 
+	const thisMonthStart = moment().startOf("month").format("YYYY-MM-DD");
+	const thisMonthEnd = moment().endOf("month").format("YYYY-MM-DD");
+
 	if (startDate === endDate) {
 		displayKey = startDate === today ? "lbl_Today" : "lbl_YesterDay";
 	} else if (
@@ -35,6 +38,8 @@ export const getDateRange = ({ startDate, endDate }) => {
 		moment(endDate).isBetween(lastWeekStart, lastWeekEnd, undefined, "[]")
 	) {
 		displayKey = "lbl_LastWeek";
+	} else if (thisMonthStart === startDate && thisMonthEnd === endDate) {
+		displayKey = "lbl_LastMonth";
 	} else {
 		displayKey = "lbl_Other";
 	}
