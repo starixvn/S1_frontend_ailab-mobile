@@ -363,7 +363,7 @@
 	"lbl_Casino": "Casino",
 	"lbl_BePartsOfUs": "",
 	"lbl_Product": "SẢN PHẨM",
-	"lbl_Result": "",
+	"lbl_Result": "Kết Quả",
 	"lbl_Calculation": "",
 	"lbl_GamesPoint": "Điểm Trò Chơi",
 	"lbl_RankPrefix": "",
@@ -637,7 +637,7 @@
 	"lbl_TotalBonusClaimable": "Tổng tiền thưởng có thể nhận",
 
 	"==============================================Streaming====================================": "",
-	"lbl_LiveStreaming": "",
+	"lbl_LiveStreaming": "Truyền hình trực tiếp",
 	"lbl_Streaming_FOOTBALL": "Bóng bầu dục Mỹ",
 	"lbl_Streaming_BASKETBALL": "Bóng rổ",
 	"lbl_Streaming_CRICKET": "Cricket ",
@@ -647,8 +647,8 @@
 	"lbl_Streaming_BADMINTON": "Cầu lông",
 	"lbl_Streaming_VOLLEYBALL": "Bóng chuyền",
 	"lbl_Streaming_NoData": "Hiện không có trận đấu trực tiếp nào. Vui lòng thử lại sau.",
-	"lbl_Streaming_Home": "",
-	"lbl_Streaming_Away": "",
+	"lbl_Streaming_Home": "Đội nhà",
+	"lbl_Streaming_Away": "Đội khách",
 	"lbl_streaming_please_make_deposit": "Vui lòng nạp tiền tối thiểu để thưởng thức TRUYỀN HÌNH TRỰC TIẾP của chúng tôi.",
 
 	"==============================================Join====================================": "",
