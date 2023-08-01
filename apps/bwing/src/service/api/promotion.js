@@ -17,6 +17,14 @@ export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 		BonusCode
 	});
 
+export const api_promotion_GetRebateExcludeGameList = ({
+	langId,
+	currencyId
+}) =>
+	promotionRequest.post(`/GetRebateExcludeGameList/${langId}`, {
+		CurrencyId: currencyId
+	});
+
 // export const api_promotion_SetClaimPromotion = ({
 // 	langId,
 // 	BonusCode,

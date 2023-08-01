@@ -34,21 +34,15 @@ const allowedCurrencyList = {
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	wheel: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
-	sportsCricket: [defCurrenyId.BDT, defCurrenyId.INR],
-	sportsVolleyball: [
-		defCurrenyId.MYR,
-		defCurrenyId.THB,
-		defCurrenyId.IDR,
-		defCurrenyId.USD,
-		defCurrenyId.CNY,
-		defCurrenyId.KHM
-	],
 	worldCup: [
 		defCurrenyId.MYR,
 		defCurrenyId.THB,
 		defCurrenyId.IDR,
 		defCurrenyId.INR
 	],
+
+	// ==== transfer ====
+	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 
 	// ==== withdrawal ====
 	bankCard: [
@@ -69,6 +63,15 @@ const allowedCurrencyList = {
 
 	// ====products====
 	// sports
+	sportsCricket: [defCurrenyId.BDT, defCurrenyId.INR],
+	sportsVolleyball: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.USD,
+		defCurrenyId.CNY,
+		defCurrenyId.KHM
+	],
 	wap: [defCurrenyId.IDR],
 
 	// live casino

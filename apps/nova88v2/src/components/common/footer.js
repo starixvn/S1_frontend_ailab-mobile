@@ -12,7 +12,8 @@ import {
 } from "./context";
 import path from "../../path";
 import MsgPopup from "./msgPopup";
-import { defCurrenyId } from "./common";
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
+import { defCurrenyId, defLiveChatLangIdToCurrencyId } from "./common";
 
 const Footer = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -23,6 +24,14 @@ const Footer = () => {
 
 	const handleWalletMenu = isClose => {
 		setOpenWalletMenu(prev => (isClose === true ? false : !prev));
+	};
+
+	const liveChatLangId = () => {
+		if (defLiveChatLangIdToCurrencyId[userInfo.langId] === undefined) {
+			return defLiveChatLangIdToCurrencyId.en;
+		}
+
+		return defLiveChatLangIdToCurrencyId[userInfo.langId];
 	};
 
 	const footer =
@@ -64,7 +73,7 @@ const Footer = () => {
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href="https://direct.lc.chat/11638088/"
+					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
 					className="icon icon-contact">
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
@@ -134,7 +143,7 @@ const Footer = () => {
 				<a
 					rel="noreferrer"
 					target="_blank"
-					href="https://direct.lc.chat/11638088/"
+					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
 					className="icon icon-contact">
 					<span>{i18n.lbl_LiveChat}</span>
 				</a>
@@ -197,7 +206,12 @@ const FooterWalletMenu = ({
 		return path.withdrawal.root;
 	};
 	return (
-		<div className={`walletMenu${isOpen ? " active" : ""}`}>
+		<div
+			className={`walletMenu${isOpen ? " active" : ""}${
+				allowedCurrencyList.transferFunds.includes(userInfo.currencyId)
+					? " five-style"
+					: ""
+			}`}>
 			<div className="walletModule">
 				<Link
 					className="icon icon-icon32px_wallet"
@@ -217,12 +231,17 @@ const FooterWalletMenu = ({
 					onClick={handleWalletMenu}>
 					<span>{i18n.lbl_Deposit}</span>
 				</Link>
-				<Link
-					className="icon icon-icon32px_Funds-transfer"
-					to={path.transfer.root}
-					onClick={handleWalletMenu}>
-					<span>{i18n.lbl_Transfer}</span>
-				</Link>
+				{allowedCurrencyList.transferFunds.includes(
+					userInfo.currencyId
+				) && (
+					<Link
+						className="icon icon-icon32px_Funds-transfer"
+						to={path.transfer.root}
+						onClick={handleWalletMenu}>
+						<div className="circleAnimation" />
+						<span>{i18n.lbl_Transfer}</span>
+					</Link>
+				)}
 				<Link
 					className="icon icon-icon32px_History"
 					to={path.statement.root}

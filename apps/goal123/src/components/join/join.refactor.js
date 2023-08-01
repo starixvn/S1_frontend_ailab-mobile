@@ -10,7 +10,8 @@ import {
 	api_GetBanner,
 	api_site_GetAffiliateAgent,
 	api_site_Signup,
-	api_ExistsEmail
+	api_ExistsEmail,
+	api_site_AffiliateCheck
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
@@ -43,11 +44,14 @@ const Join = () => {
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [banner, setBanner] = useState([]);
-	const [affiliateidExist, setAffiliateidExist] = useState(null);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
+
+	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
+	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+	const urlAffiliate = urlAffId || urlAffCode;
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -95,43 +99,10 @@ const Join = () => {
 		}
 	}, [nav, userInfo.langId]);
 
-	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
-		const AffCode = getUrlParameter("AffCode") || getCookie("AffCode");
-		if (AffId) {
-			setAffiliateidExist(AffId);
-			api_site_GetAffiliateAgent({ AffId }).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const { currencyId } = res.data.data;
-							const currencyData = {
-								id: currencyId,
-								displayKey: `Currency_${currencyId}`
-							};
-							setSiteCurrencyList(() => [currencyData]);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-							GetSiteCurrencyList();
-						}
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				}
-			);
+		if (urlAffiliate) {
+			checkAffiliate({});
 		} else {
-			if (AffCode) {
-				setAffiliateidExist(AffCode);
-			}
 			GetSiteCurrencyList();
 		}
 	}, []);
@@ -141,6 +112,55 @@ const Join = () => {
 			setRedirectPath(null);
 		}
 	}, [redirectPath]);
+
+	const checkAffiliate = async ({ formAffCode }) => {
+		let checked = null;
+		let msg = "";
+		// * 預先拿 currencyList
+		await GetSiteCurrencyList();
+		if (urlAffId) {
+			const res = await api_site_GetAffiliateAgent({ AffId: urlAffId });
+			if (res.data.errorCode === 0) {
+				const { currencyId } = res.data.data;
+				const currencyArr = [
+					{
+						id: currencyId,
+						displayKey: `Currency_${currencyId}`
+					}
+				];
+				setSiteCurrencyList(() => currencyArr);
+				setUserValue(prev => ({
+					...prev,
+					Affiliate: urlAffId
+				}));
+			}
+		} else if (urlAffCode) {
+			const res = await api_site_AffiliateCheck({
+				AffCode: urlAffCode,
+				langId: userInfo.langId
+			});
+			if (res.data.errorCode === 0) {
+				setUserValue(prev => ({
+					...prev,
+					Affiliate: urlAffCode
+				}));
+			}
+		} else if (formAffCode) {
+			const res = await api_site_AffiliateCheck({
+				AffCode: formAffCode,
+				langId: userInfo.langId
+			});
+			if (res.data.errorCode === 0) {
+				checked = true;
+				msg = "";
+			} else {
+				checked = false;
+				msg = i18n.lbl_AffiliateIdWrong;
+			}
+		}
+
+		return { checked, msg };
+	};
 
 	const GetSiteCurrencyList = async () => {
 		const res = await api_GetSiteCurrencyList();
@@ -174,6 +194,8 @@ const Join = () => {
 			result = phoneCheck({ val });
 		} else if (col === "Email") {
 			result = await emailCheck({ val });
+		} else if (col === "Affiliate") {
+			result = await checkAffiliate({ formAffCode: val });
 		}
 
 		setInputStatus(prev => ({
@@ -325,6 +347,9 @@ const Join = () => {
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		const EmailCheck = await emailCheck({ val: userValue.Email });
 		const reCaptchaCheck = reCaptchaToken !== "";
+		const _affiliateCheck = await checkAffiliate({
+			formAffCode: userValue.Affiliate
+		});
 
 		checked =
 			UserNameCheck.checked &&
@@ -334,7 +359,10 @@ const Join = () => {
 			PhoneCheck.checked &&
 			EmailCheck.checked &&
 			userValue.Checkbox &&
-			reCaptchaCheck;
+			reCaptchaCheck &&
+			// affiliate is optional
+			(_affiliateCheck.checked === true ||
+				_affiliateCheck.checked === null);
 
 		if (checked) {
 			const regData = {
@@ -350,25 +378,12 @@ const Join = () => {
 				ReCaptchaToken: reCaptchaToken
 			};
 
-			if (AffId) {
-				const res = await api_site_GetAffiliateAgent({ AffId });
-				if (res.data.errorCode === 0) {
-					regData.AffId =
-						getUrlParameter("AffId") || getCookie("AffId");
-				} else {
-					setPopBox({
-						isOpen: true,
-						content: `[${res.data.errorCode}] ${res.data.message}`
-					});
-				}
-			}
-
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
 			regData.Aff = getUrlParameter("Aff") || getCookie("Aff");
-			regData.AffCode =
-				getUrlParameter("AffCode") ||
-				getCookie("AffCode") ||
-				userValue.AffiliateId;
+			// If userValue.affiliate means urlAffId is qualified
+			regData.AffId = urlAffId && userValue.Affiliate ? urlAffId : null;
+			// If no urlAffId, then userValue.affiliate is affCode (no matter url or form value)
+			regData.AffCode = !urlAffId ? userValue.Affiliate : null;
 
 			api_site_Signup(regData, userInfo.langId).then(
 				response => {
@@ -574,13 +589,14 @@ const Join = () => {
 					<Inputbox
 						icon="icon icon-affiliate"
 						placeholder={i18n.lbl_Affiliate_ID}
-						value={affiliateidExist ?? userValue.AffiliateId}
-						onChange={EditField.bind(this, { col: "AffiliateId" })}
-						btnStatus={inputStatus.AffiliateId.checked}
-						tip={inputStatus.AffiliateId.msg}
-						disabled={Boolean(affiliateidExist)}
+						value={userValue.Affiliate}
+						onChange={EditField.bind(this, { col: "Affiliate" })}
+						onBlur={checkValue.bind(this, { col: "Affiliate" })}
+						btnStatus={inputStatus.Affiliate.checked}
+						tip={inputStatus.Affiliate.msg}
+						disabled={urlAffiliate && userValue.Affiliate}
 						clickInfo={clickInfo.bind(this, {
-							col: "AffiliateId",
+							col: "Affiliate",
 							info: "lbl_Please_enter_Affiliate_ID"
 						})}
 					/>

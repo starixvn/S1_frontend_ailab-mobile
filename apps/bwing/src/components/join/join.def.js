@@ -6,8 +6,7 @@ export const initValue = {
 	Phone: "",
 	Email: "",
 	Currency: 0,
-	AffiliateId: "",
-	// SpecialBonusCode: "",
+	Affiliate: "",
 	termsCheck: false,
 	ageCheck: false
 };
@@ -24,7 +23,7 @@ export const initWarning = {
 	Currency: {
 		status: false
 	},
-	AffiliateId: {
+	Affiliate: {
 		status: false,
 		msg: ""
 	},
@@ -89,7 +88,7 @@ export const initStatus = {
 		checked: null,
 		msg: ""
 	},
-	AffiliateId: {
+	Affiliate: {
 		checked: null,
 		msg: ""
 	},

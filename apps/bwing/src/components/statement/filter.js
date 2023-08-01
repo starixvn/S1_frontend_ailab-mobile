@@ -8,7 +8,8 @@ const quickPickList = [
 	{ displayKey: "lbl_Today" },
 	{ displayKey: "lbl_YesterDay" },
 	{ displayKey: "lbl_ThisWeek" },
-	{ displayKey: "lbl_LastWeek" }
+	{ displayKey: "lbl_LastWeek" },
+	{ displayKey: "lbl_ThisMonth" }
 ];
 
 export const Filter = ({ submitHandler }) => {

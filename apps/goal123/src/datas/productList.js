@@ -94,7 +94,8 @@ export const defGameInfo = {
 	Casino_SG: { tpId: 10, tpGameType: 15 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
 	Casino_PG: { tpId: 14, tpGameType: 17 },
-	Casino_PT: { tpId: 27, gameId: "0", tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_ow: {
 		gameId: 208, // tpId: 1,
 		tpId: 41, // seamless wallet
@@ -123,7 +124,8 @@ export const defGameInfo = {
 	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
 	LIVEcasinoMW: { gameId: 105, tpId: 5 },
 	LIVEcasinoEVO: { gameId: 0, tpId: 36, tpGameType: 63 },
-	LIVEcasinoPT: { tpId: 27, gameId: "0", tpGameType: 48 },
+	// 新的 PlayTech (Seamless Wallet)
+	LIVEcasino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 101 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
@@ -204,7 +206,8 @@ export const defSlotTpGameType = {
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
 	Iconic: { tpId: 24, tpGameType: 39 },
-	PT: { tpId: 27, tpGameType: 46 },
+	// 新的 PlayTech (Seamless Wallet)
+	PlayTech: { tpId: 51, tpGameType: 100 },
 	JILI: { tpId: 32, tpGameType: 53 },
 	MG: { tpId: 34, tpGameType: 57 },
 	NetEnt: { tpId: 37, tpGameType: 64 },
@@ -699,10 +702,11 @@ const gameList = [
 					}
 				]
 			},
+			// 新的 PlayTech (Seamless Wallet)
 			{
-				...defGameInfo.Casino_PT,
-				parameter: defGameInfo.Casino_PT,
-				spanText: "Playtech",
+				...defGameInfo.Casino_PlayTech,
+				parameter: defGameInfo.Casino_PlayTech,
+				spanText: "PlayTech",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
 				path: path.casino.root,
 				providerImgName: "pt"
@@ -777,11 +781,11 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-evolution.png`,
 				tpGameType: 63
 			},
+			// 新的 PlayTech (Seamless Wallet)
 			{
-				...defGameInfo.LIVEcasinoPT,
-				spanText: "Playtech",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`,
-				useGotoGame: true
+				...defGameInfo.LIVEcasino_PlayTech,
+				spanText: "PlayTech",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoN2,
