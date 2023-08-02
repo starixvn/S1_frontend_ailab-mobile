@@ -631,7 +631,7 @@ const Panel = () => {
 								<button
 									className="lightBlue"
 									onClick={() =>
-										handleClickSubmit(to_Amount, rate)
+										handleClickSubmit({ to_Amount, rate })
 									}>
 									{i18n.lbl_Submit}
 								</button>
