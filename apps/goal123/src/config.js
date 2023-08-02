@@ -34,6 +34,7 @@ export const paymentImgUrl = "https://payment.goal123.org";
 export const cloudImgURL = "https://image.0814media.net";
 export const usdtImgUrl = "https://payment.goal123.org";
 export const bannerMediaUrl = "https://banner.0814media.net";
+export const paymentNoSiteImgURL = "https://payment.0814media.net";
 
 export default process.env.NODE_ENV === "production"
 	? {
@@ -43,7 +44,8 @@ export default process.env.NODE_ENV === "production"
 			imgUrl: "",
 			t_and_cURL: "https://banner.goal123.org",
 			bannerImgUrl,
-			paymentImgUrl
+			paymentImgUrl,
+			paymentNoSiteImgURL
 	  }
 	: {
 			siteName,
@@ -58,5 +60,6 @@ export default process.env.NODE_ENV === "production"
 			t_and_cURL: "https://banner.goal123.org",
 			openURL: "",
 			bannerImgUrl,
-			paymentImgUrl
+			paymentImgUrl,
+			paymentNoSiteImgURL
 	  };

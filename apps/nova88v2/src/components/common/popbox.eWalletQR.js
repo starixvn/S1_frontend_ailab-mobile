@@ -1,14 +1,12 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { cloudBannerImgURL, paymentImgURL } from "../../config";
-import { userInfoContext } from "./context";
 import { number_format } from "./common";
 
 const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 	const inputRef = useRef(null);
 	const { t } = useTranslation();
-	const { userInfo } = useContext(userInfoContext);
 
 	const copy = () => {
 		if (inputRef.current) {
@@ -50,9 +48,7 @@ const EWalletQR = ({ amount, qrUrl, transId, onClose }) => {
 						<div>{t("lbl_EWalletQRDesc3")}</div>
 						<div>
 							{t("lbl_EWalletQRDesc4")}
-							<span>
-								{userInfo.langId === "th" ? "179" : "167"}
-							</span>
+							<span>167</span>
 							{t("lbl_EWalletQRDesc5")}
 						</div>
 						<div>

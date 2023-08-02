@@ -11,6 +11,7 @@ import Wallet from "./pages/wallet";
 import Layout from "./components/common/layout";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
+import EWallet from "./components/member/eWallet";
 import Member from "./pages/member";
 
 import Deposit from "./pages/deposit";
@@ -21,6 +22,7 @@ import Withdrawal from "./pages/withdrawal";
 import WithdrawalHome from "./components/withdrawal/withdrawal";
 import WithdrawalHistory from "./components/withdrawal/withdrawal.history";
 import WithdrawalCrypto from "./components/withdrawal/withdrawal.crypto";
+import WithdrawalEWallet from "./components/withdrawal/withdrawal.EWallet";
 
 import Transfer from "./pages/transfer";
 import TransferHome from "./components/transfer/transfer";
@@ -102,6 +104,7 @@ const Index = () => {
 								<CryptoWallet
 									path={path.member.sub.cryptoWallet.root}
 								/>
+								<EWallet path={path.member.sub.eWallet.root} />
 							</Member>
 							<FriendReferral path={path.referral.root}>
 								<ReferFriends path={path.referral.sub.root} />
@@ -126,6 +129,12 @@ const Index = () => {
 								<WithdrawalCrypto
 									path={
 										path.withdrawal.sub.cryptoWithdrawal
+											.root
+									}
+								/>
+								<WithdrawalEWallet
+									path={
+										path.withdrawal.sub.eWalletWithdrawal
 											.root
 									}
 								/>
