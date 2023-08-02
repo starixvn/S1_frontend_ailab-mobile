@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext, i18nContext, rootContext } from "Context";
 import { Link } from "@reach/router";
@@ -12,6 +12,7 @@ import path from "../../path";
 import Balance from "./balance";
 import AppDownloadHint from "./appDownloadHint";
 import { cloudBannerImgURL } from "../../config";
+import { popBoxContext } from "../common/context";
 
 const HeaderTitle = ({ title = "", link = "", titleClass = "title", navBar }) =>
 	title ? (
@@ -39,6 +40,7 @@ const Header = ({
 	appHint,
 	setAppHint
 }) => {
+	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
@@ -53,6 +55,12 @@ const Header = ({
 		}
 	};
 
+	useEffect(() => {
+		setPopBox({
+			isOpen: true,
+			content: "test"
+		});
+	}, []);
 	const handleInputChange = e => {
 		setSearchInput(e.target.value);
 	};
