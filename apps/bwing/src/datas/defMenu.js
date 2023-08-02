@@ -260,19 +260,6 @@ export const productList = langId => {
 					displayText: "PG Soft"
 				},
 				{
-					...defGameInfo.Casino_Nextspin,
-					parameter: defGameInfo.Casino_Nextspin,
-					path: path.casino.root,
-					displayText: "Nextspin",
-					img: `${bannerImgUrl}/h5/img/slot/nextspin.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
-						}
-					]
-				},
-				{
 					...defGameInfo.Casino_MGP,
 					parameter: defGameInfo.Casino_MGP,
 					path: path.casino.root,

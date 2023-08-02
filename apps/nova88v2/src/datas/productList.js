@@ -712,21 +712,6 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "slot_PG"
 				},
 				{
-					...defGameInfo.Casino_Nextspin,
-					parameter: defGameInfo.Casino_Nextspin,
-					spanText: "Nextspin",
-					providerImgName: "sk",
-					img: `${cloudBannerImgURL}/h5/img/nextspin.png`,
-					path: path.casino.root,
-					sortKey: "slot_Nextspin",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
-						}
-					]
-				},
-				{
 					...defGameInfo.Casino_MGP,
 					parameter: defGameInfo.Casino_MGP,
 					spanText: "Microgaming",
