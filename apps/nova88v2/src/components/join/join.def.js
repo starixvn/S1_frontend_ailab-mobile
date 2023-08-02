@@ -77,7 +77,8 @@ export const reCaptchaEnum = {
 	my: "ms",
 	th: "th",
 	bd: "bn",
-	kh: "en"
+	kh: "en",
+	vn: "vi"
 };
 
 export const countryEnum = {
@@ -98,5 +99,6 @@ export const limitCountryNum = {
 	"+91": "10",
 	"+86": "10-11",
 	"+880": "10",
-	"+855": "8-9"
+	"+855": "8-9",
+	"+84": "9"
 };

@@ -537,5 +537,115 @@ export const defPrize = () => ({
 				}
 			]
 		}
+	},
+	VND: {
+		vn: {
+			prizeList: [
+				{
+					rank: "Vô địch",
+					prizes: ["", "30,000", "55,000,000"]
+				},
+				{
+					rank: "Giải Nhất ",
+					prizes: ["", "25,000", "44,000,000"]
+				},
+				{
+					rank: "Giải Nhì",
+					prizes: ["", "18,000", "33,000,000"]
+				},
+				{
+					rank: "Giải Ba",
+					prizes: ["", "15,000", "27,500,000"]
+				},
+				{
+					rank: "Giải Bốn",
+					prizes: ["", "12,000", "22,000,000"]
+				},
+				{
+					rank: "Giải Năm",
+					prizes: ["", "10,000", "16,500,000"]
+				},
+				{
+					rank: "Giải Sáu",
+					prizes: ["", "9,000", "11,000,000"]
+				},
+				{
+					rank: "Giải Bảy",
+					prizes: ["", "8,000", "5,500,000"]
+				},
+				{
+					rank: "Giải Tám",
+					prizes: ["", "5,000", "2,750,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "Thể Thao",
+					prizes: ["550,000", "1"]
+				},
+				{
+					rank: "Máy đánh bạc",
+					prizes: ["2,750,000", "1"]
+				},
+				{
+					rank: "Casino trực tiếp",
+					prizes: ["5,500,000", "1"]
+				}
+			]
+		},
+		en: {
+			prizeList: [
+				{
+					rank: "CHAMPION",
+					prizes: ["", "30,000", "55,000,000"]
+				},
+				{
+					rank: "2nd Runner Up",
+					prizes: ["", "25,000", "44,000,000"]
+				},
+				{
+					rank: "3rd Runner Up",
+					prizes: ["", "18,000", "33,000,000"]
+				},
+				{
+					rank: "4th Runner Up",
+					prizes: ["", "15,000", "27,500,000"]
+				},
+				{
+					rank: "5th Runner Up",
+					prizes: ["", "12,000", "22,000,000"]
+				},
+				{
+					rank: "6th Runner Up",
+					prizes: ["", "10,000", "16,500,000"]
+				},
+				{
+					rank: "7th Runner Up",
+					prizes: ["", "9,000", "11,000,000"]
+				},
+				{
+					rank: "8th Runner Up",
+					prizes: ["", "8,000", "5,500,000"]
+				},
+				{
+					rank: "RANK 9th - 30th",
+					prizes: ["", "5,000", "2,750,000"]
+				}
+			],
+			pointCalculation: [
+				{
+					rank: "SPORTS",
+					prizes: ["550,000", "1"]
+				},
+				{
+					rank: "SLOTS",
+					prizes: ["2,750,000", "1"]
+				},
+				{
+					rank: "LIVE CASINO",
+					prizes: ["5,500,000", "1"]
+				}
+			]
+		}
 	}
 });

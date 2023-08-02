@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
 import path from "../../path";
-import { userInfoContext } from "../common/context";
 import { defCurrenyId } from "../common/common";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
-const HeaderShortcut = ({ i18n,currencyId }) => {
-	const { userInfo } = useContext(userInfoContext);
-
+const HeaderShortcut = ({ i18n, currencyId }) => {
 	return (
 		<div className="submenu">
 			<div className="thBar">
@@ -24,7 +21,7 @@ const HeaderShortcut = ({ i18n,currencyId }) => {
 				)}
 				<Link
 					to={
-						userInfo.currencyId === defCurrenyId.BDT
+						currencyId === defCurrenyId.BDT
 							? path.eWalletWithdrawal.root
 							: path.withdrawal.root
 					}>
