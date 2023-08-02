@@ -15,13 +15,7 @@ export const defProductType = {
 };
 
 export const defGameInfo = {
-	Sports: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 1,
-		// tpGameType: 1,
-		tpGameType: 69 // seamless wallet
-	},
+	Sports: { tpId: 41, gameId: 1, tpGameType: 69 },
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
@@ -46,11 +40,7 @@ export const defGameInfo = {
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
 	One789_lottery: { tpId: 23, gameId: 0, tpGameType: 35 },
 	One789_lottery_789: { tpId: 23, gameId: 1, tpGameType: 36 },
-	Casino_ow: {
-		gameId: 208, // tpId: 1,
-		tpId: 41, // seamless wallet
-		tpGameType: 4
-	},
+	Casino_ow: { gameId: 208, tpId: 41, tpGameType: 4 },
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
@@ -69,6 +59,7 @@ export const defGameInfo = {
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
+	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -78,46 +69,12 @@ export const defGameInfo = {
 		tpId: 43,
 		tpGameType: 85
 	},
-	Indo4d: {
-		gameId: 223, // tpId: 1,
-		tpId: 41, // seamless wallet
-		tpGameType: 20
-	},
-	Keno: {
-		gameId: 202,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 5,
-		tpGameType: 73 // seamless wallet
-	},
-	lottery: {
-		gameId: 220,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 19,
-		tpGameType: 74 // seamless wallet
-	},
-	tableGame: {
-		gameId: 222,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 23,
-		tpGameType: 75 // seamless wallet
-	},
-	NumberGame: {
-		gameId: 161,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 2,
-		tpGameType: 70 // seamless wallet
-	},
-	sabaClub: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 171,
-		// tpGameType: 59,
-		tpGameType: 95 // seamless wallet
-	},
+	Indo4d: { gameId: 223, tpId: 41, tpGameType: 20 },
+	Keno: { gameId: 202, tpId: 41, tpGameType: 73 },
+	lottery: { gameId: 220, tpId: 41, tpGameType: 74 },
+	tableGame: { gameId: 222, tpId: 41, tpGameType: 75 },
+	NumberGame: { gameId: 161, tpId: 41, tpGameType: 70 },
+	sabaClub: { tpId: 41, gameId: 171, tpGameType: 95 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	ICG_DRAGONBALL_FISHING: { tpId: 24, gameId: "cmf0001", tpGameType: 40 },
@@ -136,31 +93,11 @@ export const defGameInfo = {
 	kingMaker: { tpId: 11, tpGameType: 52 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
 	tcg: { tpId: 33, tpGameType: 55 },
-	MaxGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet gameId: 237,
-		tpGameType: 83
-	},
-	VirtualGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet gameId: 245,
-		tpGameType: 22
-	},
-	VirtualSports: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 192,
-		// tpGameType: 24,
-		tpGameType: 72 // seamless wallet
-	},
+	MaxGame: { tpId: 41, gameId: 237, tpGameType: 83 },
+	VirtualGame: { tpId: 41, gameId: 245, tpGameType: 22 },
+	VirtualSports: { tpId: 41, gameId: 192, tpGameType: 72 },
 	sportSbo: { tpId: 42, tpGameType: 77 },
-	WorldCup: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 2002,
-		// tpGameType: 1,
-		tpGameType: 69 // seamless wallet
-	},
+	WorldCup: { tpId: 41, gameId: 2002, tpGameType: 69 },
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
 };
 
@@ -250,11 +187,7 @@ export const slotPlatform = [
 ];
 
 export const defSlotTpGameType = {
-	Saba: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		tpGameType: 4
-	},
+	Saba: { tpId: 41, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
 	GPI: { tpId: 6, tpGameType: 11 },
 	YGG: { tpId: 8, tpGameType: 14 },
@@ -272,25 +205,22 @@ export const defSlotTpGameType = {
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
-	Nextspin: { tpId: 50, tpGameType: 99 }
+	Nextspin: { tpId: 50, tpGameType: 99 },
+	Endorphina: { tpId: 49, tpGameType: 98 }
 };
 
 export const sportStreamDef = {
 	sportSaba: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 1,
 		name: "soccer",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	sabaClub: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 171,
 		name: "sabaClub",
-		// tpGameType: 59
-		tpGameType: 95 // seamless wallet
+		tpGameType: 95
 	},
 	sportSbo: {
 		tpId: 42,
@@ -309,60 +239,46 @@ export const sportStreamDef = {
 		tpGameType: 69
 	},
 	soccer: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 1,
 		name: "soccer",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	basketball: {
 		gameId: 2,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "basketball",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	badminton: {
 		gameId: 9,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "badminton",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	football: {
 		gameId: 3,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "football",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	tennis: {
 		gameId: 5,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "tennis",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	hockey: {
 		gameId: 4,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "hockey",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	},
 	baseball: {
 		gameId: 8,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		name: "baseball",
-		// tpGameType: 1
-		tpGameType: 69 // seamless wallet
+		tpGameType: 69
 	}
 };
 

@@ -178,6 +178,11 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Nextspin,
 		imgName: "casino_nextspin",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_Endorphina,
+		imgName: "casino_end",
+		path: path.casino.root
 	}
 ];
 
