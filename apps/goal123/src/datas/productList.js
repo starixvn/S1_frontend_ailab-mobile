@@ -20,13 +20,7 @@ export const defProductType = {
 };
 
 export const defGameInfo = {
-	Sports: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 1,
-		// tpGameType: 1,
-		tpGameType: 69 // seamless wallet
-	},
+	Sports: { tpId: 41, gameId: 1, tpGameType: 69 },
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
@@ -60,35 +54,11 @@ export const defGameInfo = {
 		tpGameType: 69 // seamless wallet
 	},
 	// CockFighting: { tpId: 17, tpGameType: 27 },
-	sabaClub: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 171,
-		// tpGameType: 59,
-		tpGameType: 95 // seamless wallet
-	},
+	sabaClub: { tpId: 41, gameId: 171, tpGameType: 95 },
 	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
-	Keno: {
-		gameId: 202,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 5,
-		tpGameType: 73 // seamless wallet
-	},
-	lottery: {
-		gameId: 220,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 19,
-		tpGameType: 74 // seamless wallet
-	},
-	tableGame: {
-		gameId: 222,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 23,
-		tpGameType: 75 // seamless wallet
-	},
+	Keno: { gameId: 202, tpId: 41, tpGameType: 73 },
+	lottery: { gameId: 220, tpId: 41, tpGameType: 74 },
+	tableGame: { gameId: 222, tpId: 41, tpGameType: 75 },
 	fish_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	fish_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	fish_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
@@ -121,8 +91,8 @@ export const defGameInfo = {
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_ow: {
-		gameId: 208, // tpId: 1,
-		tpId: 41, // seamless wallet
+		gameId: 208,
+		tpId: 41,
 		tpGameType: 4
 	},
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
@@ -135,6 +105,7 @@ export const defGameInfo = {
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
+	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -154,41 +125,34 @@ export const defGameInfo = {
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
 	Indo4d: {
-		gameId: 223, // tpId: 1,
-		tpId: 41, // seamless wallet
+		gameId: 223,
+		tpId: 41,
 		tpGameType: 20
 	},
 	NumberGame: {
 		gameId: 161,
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		// tpGameType: 2,
-		tpGameType: 70 // seamless wallet
+		tpId: 41,
+		tpGameType: 70
 	},
 	kingMaker: { tpId: 11, tpGameType: 52 },
 	tcg: { tpId: 33, tpGameType: 55 },
 	MaxGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 237,
 		tpGameType: 83
 	},
 	// VirtualGame: {
-	// 	// tpId: 1,
-	// 	tpId: 41, // seamless wallet
+	// 	tpId: 41,
 	// 	gameId: 245,
 	// 	tpGameType: 22
 	// },
 	VirtualSports: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 192,
-		// tpGameType: 24,
-		tpGameType: 72 // seamless wallet
+		tpGameType: 72
 	},
 	WorldCup: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
+		tpId: 41,
 		gameId: 2002,
 		tpGameType: 1
 	},
@@ -218,11 +182,7 @@ export const openGameType = {
 };
 
 export const defSlotTpGameType = {
-	Saba: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		tpGameType: 4
-	},
+	Saba: { tpId: 41, tpGameType: 4 },
 	PP: { tpId: 5, tpGameType: 7 },
 	GPI: { tpId: 6, tpGameType: 11 },
 	YGG: { tpId: 8, tpGameType: 14 },
@@ -240,7 +200,8 @@ export const defSlotTpGameType = {
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
-	Nextspin: { tpId: 50, tpGameType: 99 }
+	Nextspin: { tpId: 50, tpGameType: 99 },
+	Endorphina: { tpId: 49, tpGameType: 98 }
 };
 
 const gameList = [
@@ -598,11 +559,19 @@ const gameList = [
 				spanText: "AdvantPlay",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
 				path: path.casino.root,
-				providerImgName: "ap",
+				providerImgName: "ap"
+			},
+			{
+				...defGameInfo.Casino_Endorphina,
+				parameter: defGameInfo.Casino_Endorphina,
+				spanText: "Endorphina",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-endorphina.png`,
+				path: path.casino.root,
+				providerImgName: "endorphina",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.ap_mini_game)
+						inPeriod: isEventPeriod(eventTime.casino_Endorphina)
 					}
 				]
 			},
@@ -627,20 +596,6 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
 				path: path.casino.root,
 				providerImgName: "pg"
-			},
-			{
-				...defGameInfo.Casino_Nextspin,
-				parameter: defGameInfo.Casino_Nextspin,
-				spanText: "Nextspin",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nextspin.png`,
-				path: path.casino.root,
-				providerImgName: "nextspin",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_Nextspin)
-					}
-				]
 			},
 			{
 				...defGameInfo.Casino_MGP,
