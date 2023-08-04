@@ -8765,6 +8765,27 @@ span.important {
   border-radius: 5px;
   border: 1px solid #d2e2f9;
 }
+.friendReferral.en {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-en.jpg) no-repeat center/100%;
+}
+.friendReferral.cs {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-cs.jpg) no-repeat center/100%;
+}
+.friendReferral.th {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-th.jpg) no-repeat center/100%;
+}
+.friendReferral.id {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-id.jpg) no-repeat center/100%;
+}
+.friendReferral.hi {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-hi.jpg) no-repeat center/100%;
+}
+.friendReferral.bd {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-bd.jpg) no-repeat center/100%;
+}
+.friendReferral.kh {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-kh.jpg) no-repeat center/100%;
+}
 .friendReferral-btn {
   font-size: 2.8vw;
   font-weight: bold;
