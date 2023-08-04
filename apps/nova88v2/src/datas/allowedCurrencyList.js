@@ -122,7 +122,20 @@ const allowedCurrencyList = {
 
 	// lottery
 	indo4d: [defCurrenyId.IDR],
-	thaiLottery: [defCurrenyId.THB]
+	thaiLottery: [defCurrenyId.THB],
+
+	// other products
+
+	// slot & game
+	SPRIBE: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.USD,
+		defCurrenyId.CNY,
+		defCurrenyId.KHM
+	]
 };
 
 export default allowedCurrencyList;

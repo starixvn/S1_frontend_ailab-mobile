@@ -39,5 +39,14 @@ export const defPlatform = [
 	},
 	{ name: "sk", img: `${bannerImgUrl}/h5/img/partner/sk.png` },
 	{ name: "nextspin", img: `${bannerImgUrl}/h5/img/partner/nextspin.png` },
-	{ name: "endorphina", img: `${bannerImgUrl}/h5/img/partner/endorphina.png` }
+	{
+		name: "endorphina",
+		img: `${bannerImgUrl}/h5/img/partner/endorphina.png`
+	},
+	{ name: "im-sports", img: `${bannerImgUrl}/h5/img/partner/im-sports.png` },
+	{
+		name: "im-esports",
+		img: `${bannerImgUrl}/h5/img/partner/im-esports.png`
+	},
+	{ name: "spribe", img: `${bannerImgUrl}/h5/img/partner/spribe.png` }
 ];

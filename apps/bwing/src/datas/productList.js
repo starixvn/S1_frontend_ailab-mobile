@@ -26,6 +26,7 @@ export const defGameInfo = {
 		tpGameType: 69 // seamless wallet
 	},
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
+	eSports_IM: { tpId: 52, gameId: "ESPORTSBULL", tpGameType: 102 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
@@ -66,6 +67,7 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -102,6 +104,26 @@ export const defGameInfo = {
 	MaxGame: { tpId: 41, gameId: 237, tpGameType: 83 },
 	VirtualGame: { tpId: 41, gameId: 245, tpGameType: 22 },
 	VirtualSports: { tpId: 41, gameId: 192, tpGameType: 72 },
+	IM_Avaitor: {
+		tpId: 53,
+		gameId: "imgame12001",
+		tpGameType: 104
+	},
+	IM_Mines: {
+		tpId: 53,
+		gameId: "imgame12002",
+		tpGameType: 104
+	},
+	IM_Goal: {
+		tpId: 53,
+		gameId: "imgame12003",
+		tpGameType: 104
+	},
+	IM_Dice: {
+		tpId: 53,
+		gameId: "imgame12004",
+		tpGameType: 104
+	},
 	sportSbo: { tpId: 42, tpGameType: 77 },
 	WorldCup: { tpId: 41, gameId: 2002, tpGameType: 69 },
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
@@ -212,7 +234,8 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	Endorphina: { tpId: 49, tpGameType: 98 }
+	Endorphina: { tpId: 49, tpGameType: 98 },
+	SPRIBE: { tpId: 53, tpGameType: 104 }
 };
 
 export const sportStreamDef = {
