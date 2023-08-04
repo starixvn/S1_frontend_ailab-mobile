@@ -4916,6 +4916,32 @@ button.clickBtn:before {
   background: #e6e6e6;
   color: #a5aab1;
 }
+.buttonBox.col-3 {
+  margin: 0 0.5vw !important;
+}
+.buttonBox.col-3 button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25.75vw;
+          flex: 0 0 25.75vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.buttonBox.col-3 button:nth-child(3n) {
+  margin-right: 0 !important;
+}
+.buttonBox.col-3 .icon-icon32px_check {
+  margin-right: 0.5vw;
+}
+.buttonBox.col-3 .icon-icon32px_check::before {
+  font-size: 4vw;
+}
 
 .channel {
   visibility: hidden;
@@ -8785,6 +8811,9 @@ span.important {
 }
 .friendReferral.kh {
   background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-kh.jpg) no-repeat center/100%;
+}
+.friendReferral.vn {
+  background: url(https://banner.0814media.net/h5/img/index-referBlock-H5-vn.jpg) no-repeat center/100%;
 }
 .friendReferral-btn {
   font-size: 2.8vw;
