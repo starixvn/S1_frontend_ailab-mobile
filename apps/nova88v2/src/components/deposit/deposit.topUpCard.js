@@ -379,6 +379,7 @@ const Payment = ({
 						: 1
 				)}
 				currencyId={userInfo.currencyId}
+				isNote={true}
 			/>
 			<PromoList
 				i18n={i18n}

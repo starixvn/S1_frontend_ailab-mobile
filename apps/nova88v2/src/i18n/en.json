@@ -787,6 +787,8 @@
 	"lbl_CardValue": "Card Value",
 	"msg_PleaseEnterCardCode": "Please enter card code.",
 	"msg_PleaseEnterCardSerial": "Please enter card serial.",
+  "lbl_DepositLoadCardNoticeContent1": "Please ensure you choose the correct telcom provider  and card value. Otherwise, Goal123 will not bear any responsibility.",
+  "lbl_DepositLoadCardNoticeContent2": "Our card fee is cheapest in the market, only 25% apply for all telcoms.",
 	"lbl_QRPay": "QR Pay",
 
 	"==============================================Payment QR====================================": "",
