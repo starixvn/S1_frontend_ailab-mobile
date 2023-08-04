@@ -31,7 +31,8 @@ const AmountInput = ({
 	msg,
 	status,
 	currencyId,
-	noInfoModule
+	noInfoModule,
+	isNote
 }) => {
 	const { showTips, showTipHandler } = useTip();
 	const { amountRule, amountList, minAmount, maxAmount } = channel;
@@ -64,10 +65,22 @@ const AmountInput = ({
 			);
 		});
 		content = noInfoModule ? (
-			<div className="buttonBox">{rows}</div>
+			<div className="buttonBox col-3">{rows}</div>
 		) : (
 			<div className="selectModule">
-				<div className="buttonBox">{rows}</div>
+				<div className="buttonBox col-3">{rows}</div>
+				{isNote ? (
+					<div className="note">
+						<ol>
+							<li className="title">
+								<span className="icon icon-warning" />
+								{i18n.lbl_ImportantNotes}
+							</li>
+							<li>* {i18n.lbl_DepositLoadCardNoticeContent1}</li>
+							<li>* {i18n.lbl_DepositLoadCardNoticeContent2}</li>
+						</ol>
+					</div>
+				) : null}
 			</div>
 		);
 	} else {
@@ -132,7 +145,7 @@ const AmountInput = ({
 					</div>
 					{status ? <div className="tip">{msg}</div> : null}
 				</div>
-				<div className="buttonBox">{rows}</div>
+				<div className="buttonBox col-3">{rows}</div>
 			</>
 		) : (
 			<div className="selectModule">
@@ -170,7 +183,19 @@ const AmountInput = ({
 					</div>
 					{status ? <div className="tip">{msg}</div> : null}
 				</div>
-				<div className="buttonBox">{rows}</div>
+				<div className="buttonBox col-3">{rows}</div>
+				{isNote ? (
+					<div className="note">
+						<ol>
+							<li className="title">
+								<span className="icon icon-warning" />
+								{i18n.lbl_ImportantNotes}
+							</li>
+							<li>* {i18n.lbl_DepositLoadCardNoticeContent1}</li>
+							<li>* {i18n.lbl_DepositLoadCardNoticeContent2}</li>
+						</ol>
+					</div>
+				) : null}
 			</div>
 		);
 	}
@@ -196,7 +221,8 @@ AmountInput.defaultProps = {
 	msg: "",
 	status: null,
 	currencyId: null,
-	noInfoModule: false
+	noInfoModule: false,
+	isNote: false
 };
 
 AmountInput.propTypes = {
@@ -213,7 +239,8 @@ AmountInput.propTypes = {
 	msg: PropTypes.string,
 	status: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	currencyId: PropTypes.number,
-	noInfoModule: PropTypes.bool
+	noInfoModule: PropTypes.bool,
+	isNote: PropTypes.bool
 };
 
 export default AmountInput;

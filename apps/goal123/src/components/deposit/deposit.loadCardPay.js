@@ -416,15 +416,8 @@ const Note = ({ langId }) => {
 						<span className="icon icon-warning" />
 						{i18n.lbl_ImportantNotes}
 					</p>
-					<li>
-						Please ensure you choose the correct telcom provider and
-						card value. Otherwise, Goal123 will not bear any
-						responsibility.
-					</li>
-					<li>
-						Our card fee is cheapest in the market, only 25% apply
-						for all telcoms.
-					</li>
+					<li>* {i18n.lbl_DepositLoadCardNoticeContent1}</li>
+					<li>* {i18n.lbl_DepositLoadCardNoticeContent2}</li>
 				</ol>
 			</div>
 		);
