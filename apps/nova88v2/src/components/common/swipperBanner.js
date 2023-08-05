@@ -9,8 +9,6 @@ import { userInfoContext, popBoxContext } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import api from "../../service/api";
-import { useGotoGame } from "../hook/useGotoGame";
-import { defGameInfo } from "../../datas/productList";
 
 export const ClickLink = ({
 	tpId,
@@ -103,12 +101,6 @@ const Panel = ({ ImgFolder = [], params }) => {
 	});
 	const { handleLogin } = useHandleLogin();
 
-	const { handleGoToGame } = useGotoGame({
-		isLogin: userInfo.isLogin,
-		langId: userInfo.langId,
-		autoGetData: false
-	});
-
 	const handleClick = ({
 		tpId,
 		gameId,
@@ -117,15 +109,6 @@ const Panel = ({ ImgFolder = [], params }) => {
 		bannerLink,
 		tpGameType
 	}) => {
-		if (Number(tpId) === defGameInfo.Casino_PT.tpId)
-			return handleGoToGame({
-				isLogin: userInfo.isLogin,
-				langId: userInfo.langId,
-				tpId: Number(tpId),
-				gameId,
-				tpGameType
-			});
-
 		return ClickLink({
 			tpId,
 			gameId,
