@@ -2,9 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import PropTypes from "prop-types";
 import { popBoxContext } from "../common/context";
-import { defSlotTpGameType } from "../../datas/productList";
 import { defProductType } from "../../datas/hotGameList";
-import { useGotoGame } from "../hook/useGotoGame";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import useHandleLogin from "../hook/useHandleLogin";
 import {
@@ -18,7 +16,6 @@ const HotGame = ({ i18n, userInfo }) => {
 	const { handleLogin } = useHandleLogin();
 	const { maintainList } = useGetTpMaintainList();
 	const [gameList, setGameList] = useState([]);
-	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	useEffect(() => {
 		api.hotGame
@@ -37,13 +34,7 @@ const HotGame = ({ i18n, userInfo }) => {
 			});
 	}, [userInfo.currencyId]);
 
-	const clickGame = ({
-		tpId,
-		gameId,
-		tpCategory,
-		tpGameType,
-		specialUrl
-	}) => {
+	const clickGame = ({ tpId, gameId, tpCategory, tpGameType }) => {
 		if (
 			maintainList?.some(
 				m =>
@@ -70,23 +61,6 @@ const HotGame = ({ i18n, userInfo }) => {
 			});
 		} else if (userInfo.isLogin === false) {
 			handleLogin();
-		} else if (tpId === defSlotTpGameType.PT.tpId) {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: userInfo.isLogin === true,
-				loginCallback: handleLogin,
-				execFunction: handleGoToGame.bind(this, {
-					isLogin: userInfo.isLogin === true,
-					langId: userInfo.langId,
-					tpId,
-					gameId,
-					tpGameType
-				}),
-				specialUrl: specialUrl ?? "",
-				tpGameType
-			});
 		} else if (tpCategory === defProductType.Slots) {
 			GET_CASINO_ENTER_PAGE({
 				langId: userInfo.langId,
