@@ -1,4 +1,4 @@
-import { isDateRange } from "@ailab-mobile/common";
+import { CurrenciesEnum, isDateRange } from "@ailab-mobile/common";
 import path from "../path";
 import SiteURL, { cloudBannerImgURL } from "../config";
 // import { defPopBoxType } from "../components/common/popbox";
@@ -1166,7 +1166,11 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
-					...defGameInfo.TCG,
+					tpId: defGameInfo.TCG.tpId,
+					tpGameType:
+						currencyId === CurrenciesEnum.VN
+							? 55
+							: defGameInfo.TCG.tpGameType,
 					img: `${cloudBannerImgURL}/h5/img/tcg.png`,
 					spanTextKey: "lbl_TCG"
 				},
