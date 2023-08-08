@@ -89,7 +89,8 @@ export const countryEnum = {
 	BD: "1.8",
 	CS: "1.8",
 	GB: "1.8",
-	KH: "1.8"
+	KH: "1.8",
+	VN: "1.8"
 };
 
 export const limitCountryNum = {
