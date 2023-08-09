@@ -88,6 +88,17 @@ const JoinStepAll = () => {
 				langId: userInfo.langId
 			});
 			if (res.data.errorCode === 0) {
+				if (res.data.data !== 0) {
+					const currencyId = res.data.data;
+					const currencyArr = [
+						{
+							id: currencyId,
+							displayKey: `Currency_${currencyId}`
+						}
+					];
+					setSiteCurrencyState(currencyArr);
+				}
+
 				checked = true;
 				msg = "";
 			} else {
@@ -105,7 +116,7 @@ const JoinStepAll = () => {
 		if (col === "UserName") {
 			val = val.replace(/[\W_]/g, "");
 		} else if (col === "RealName") {
-			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?\[\]\\`~{}]+/gu, "");
+			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?[\]\\`~{}]+/gu, "");
 		} else if (col === "Phone") {
 			val = val.replace(/[^0-9]+/g, "");
 		}
