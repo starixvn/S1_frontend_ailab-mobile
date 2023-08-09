@@ -147,7 +147,10 @@ const JoinStep2 = ({
 						const currencyArr = currencyNum.map(id => {
 							return { id, displayKey: `Currency_${id}` };
 						});
-						setSiteCurrencyState(() => currencyArr);
+						// TODO VND 上線後須將 filter id === 51 移除
+						setSiteCurrencyState(() =>
+							currencyArr.filter(item => item.id !== 51)
+						);
 					} else {
 						setPopBox({
 							isOpen: true,
