@@ -30,25 +30,20 @@ export class DropdownBox extends Component {
 	};
 
 	render() {
-		// TODO VND 上線後須將 filter id === 51 移除
-		const arr = this.props.options
-			.filter(item => item.id !== 51)
-			.map((item, i) => {
-				const displayText = item.displayText
-					? item.displayText
-					: this.props.i18n?.[item.displayKey];
-				return (
-					<Item
-						currencyId={item.id}
-						key={`${this.props.mainKey}-${
-							item.id ?? i
-						}-${displayText}`}
-						displayText={displayText}
-						onClick={this.SelectItem.bind(this, i)}
-						flag={this.props.flag}
-					/>
-				);
-			});
+		const arr = this.props.options.map((item, i) => {
+			const displayText = item.displayText
+				? item.displayText
+				: this.props.i18n?.[item.displayKey];
+			return (
+				<Item
+					currencyId={item.id}
+					key={`${this.props.mainKey}-${item.id ?? i}-${displayText}`}
+					displayText={displayText}
+					onClick={this.SelectItem.bind(this, i)}
+					flag={this.props.flag}
+				/>
+			);
+		});
 		let selected = null;
 		if (this.props.options[this.props.selectedIdx]) {
 			const _s = this.props.options[this.props.selectedIdx];
