@@ -90,7 +90,7 @@ const JoinStep2 = ({
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 
 	useEffect(() => {
-		if (!lineUserId && !AffId) {
+		if (!lineUserId && !AffId && !userValue?.Affiliate) {
 			GetSiteCurrencyList();
 		} else if (AffId) {
 			api.site.GetAffiliateAgent({ AffId }).then(
