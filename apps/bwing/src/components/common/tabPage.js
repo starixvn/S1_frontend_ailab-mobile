@@ -86,7 +86,7 @@ const SimpleTab = ({ i18n, tabItem }) => {
 	);
 };
 
-SimpleTab.propTypes = {
+TabItem.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	tabItem: PropTypes.objectOf(PropTypes.string).isRequired
 };
