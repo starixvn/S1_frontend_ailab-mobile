@@ -27,13 +27,6 @@ import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import ImportantNote from "./importantNote";
 import { defPopBoxType } from "../common/popbox";
-import Withdrawal from "../../pages/withdrawal";
-
-export default () => (
-	<Withdrawal>
-		<Panel />
-	</Withdrawal>
-);
 
 const initStatus = { checked: null, msg: "" };
 
@@ -962,3 +955,5 @@ const Panel = () => {
 
 	return content;
 };
+
+export default Panel;

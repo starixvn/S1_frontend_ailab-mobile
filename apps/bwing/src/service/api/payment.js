@@ -208,3 +208,19 @@ export const api_payment_DepositReqLocalPay = ({
 		amount,
 		bonusCode
 	});
+
+export const api_payment_GetEWalletInfoSysList = () =>
+	paymentRequest.post("/GetEWalletInfoSysList");
+
+export const api_payment_WithdrawalEWalletReq = ({
+	AccountNo,
+	amount,
+	sysId,
+	memo
+}) =>
+	paymentRequest.post("/WithdrawalEWalletReq", {
+		AccountNo,
+		amount,
+		sysId,
+		memo
+	});

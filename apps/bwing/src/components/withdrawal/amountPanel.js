@@ -16,7 +16,9 @@ const AmountPanel = ({
 	VaildAmount,
 	withdrawalLimit,
 	withdrawalLimitHint,
-	currencyId
+	currencyId,
+	placeholder, // 目前只有 EWallet 用到這參數 因 api_payment_GetWithdrawalLimit() 有特別限制
+	isEWallet = false
 }) => {
 	return (
 		<div className="subModule">
@@ -79,11 +81,12 @@ const AmountPanel = ({
 					inputType="tel"
 					onChange={e => EditAmount(e.target.value)}
 					onBlur={e => VaildAmount(e.target.value)}
-					submitBtn={true}
+					submitBtn={!isEWallet}
 					btnStatus={inputStatus.checked}
 					i18n={i18n}
 					clickSubmit={ClickSubmit}
 					clickInfo={clickInfo}
+					placeholder={placeholder}
 				/>
 
 				<div className={`errorTip ${inputStatus.msg ? "active" : ""}`}>
@@ -103,6 +106,13 @@ const AmountPanel = ({
 						</span>
 					)}
 					{withdrawalLimitHint}
+					{isEWallet && (
+						<div className="btn-group">
+							<button className="blue" onClick={ClickSubmit}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
@@ -118,7 +128,8 @@ AmountPanel.defaultProps = {
 	VaildAmount: () => null,
 	withdrawalLimitHint: "",
 	currencyId: null,
-	withdrawalLimit: null
+	withdrawalLimit: null,
+	placeholder: null
 };
 
 AmountPanel.propTypes = {
@@ -134,7 +145,9 @@ AmountPanel.propTypes = {
 	VaildAmount: PropTypes.func,
 	withdrawalLimitHint: PropTypes.string,
 	currencyId: PropTypes.number,
-	withdrawalLimit: PropTypes.objectOf(PropTypes.any)
+	withdrawalLimit: PropTypes.objectOf(PropTypes.any),
+	placeholder: PropTypes.string,
+	isEWallet: PropTypes.bool.isRequired
 };
 
 export default AmountPanel;
