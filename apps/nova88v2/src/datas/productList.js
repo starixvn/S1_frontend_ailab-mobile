@@ -36,9 +36,7 @@ export const getPPAllowCurrencies = () => {
 export const getKiss918AllowCurrencies = () => {
 	const KissDestroyDate = "2023-08-14 23:59:59";
 	return isDateRange({ endDate: KissDestroyDate })
-		? Object.values(defCurrenyId).filter(
-				currency => currency !== defCurrenyId.MYR
-		  )
+		? []
 		: Object.values(defCurrenyId);
 };
 
