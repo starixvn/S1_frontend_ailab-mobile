@@ -890,8 +890,7 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
 						}
-					],
-					allowCurrency: allowedCurrencyList.slot918Kiss
+					]
 				}
 				// {
 				// 	...productList.mega888,

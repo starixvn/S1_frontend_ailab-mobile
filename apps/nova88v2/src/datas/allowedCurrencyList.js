@@ -115,7 +115,6 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.USDT
 	],
-	slot918Kiss: [defCurrenyId.MYR],
 
 	// game
 	mPoker: [defCurrenyId.THB],
