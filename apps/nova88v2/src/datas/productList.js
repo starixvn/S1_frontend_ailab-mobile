@@ -33,6 +33,13 @@ export const getPPAllowCurrencies = () => {
 		: Object.values(defCurrenyId);
 };
 
+export const getKiss918AllowCurrencies = () => {
+	const KissDestroyDate = "2023-08-14 23:59:59";
+	return isDateRange({ endDate: KissDestroyDate })
+		? []
+		: Object.values(defCurrenyId);
+};
+
 export const getCurrencyLink = (targetCurrencyId, langId) => {
 	if (targetCurrencyId === defCurrenyId.MYR) {
 		return ` https://aff.nova88mas102.com/?lang=${langId}`;
@@ -885,6 +892,7 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "casino_kiss918",
 					sortKey: "slot_kiss918",
+					allowCurrency: getKiss918AllowCurrencies(),
 					eventIcon: [
 						{
 							icon: defIconType.new,
