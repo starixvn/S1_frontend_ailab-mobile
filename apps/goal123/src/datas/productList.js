@@ -25,8 +25,10 @@ export const defGameInfo = {
 	SBOSport: { tpId: 42, tpGameType: 77 },
 	BTISport: { tpId: 29, tpGameType: 49 },
 	SabaSoccer: { tpId: 41, gameId: 997, tpGameType: 69 },
+	sports_IM: { tpId: 52, tpGameType: 103, gameId: "IMSB" },
 	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
+	eSports_IM: { tpId: 52, gameId: "ESPORTSBULL", tpGameType: 102 },
 	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
 	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
 	// CockFighting: { tpId: 17, tpGameType: 27 },
@@ -82,6 +84,7 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -116,6 +119,26 @@ export const defGameInfo = {
 		tpId: 41,
 		gameId: 237,
 		tpGameType: 83
+	},
+	IM_Avaitor: {
+		tpId: 53,
+		gameId: "imgame12001",
+		tpGameType: 104
+	},
+	IM_Mines: {
+		tpId: 53,
+		gameId: "imgame12002",
+		tpGameType: 104
+	},
+	IM_Goal: {
+		tpId: 53,
+		gameId: "imgame12003",
+		tpGameType: 104
+	},
+	IM_Dice: {
+		tpId: 53,
+		gameId: "imgame12004",
+		tpGameType: 104
 	},
 	// VirtualGame: {
 	// 	tpId: 41,
@@ -177,7 +200,8 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	Endorphina: { tpId: 49, tpGameType: 98 }
+	Endorphina: { tpId: 49, tpGameType: 98 },
+	SPRIBE: { tpId: 53, tpGameType: 104 }
 };
 
 const gameList = [
@@ -292,6 +316,18 @@ const gameList = [
 				hasDesktopLink: true
 			},
 			{
+				...defGameInfo.sports_IM,
+				img: `${bannerImgUrl}/h5/img/hotgame/sports/inplaymatrix.png`,
+				spanText: "IM Sports",
+				hasDesktopLink: true,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
+			},
+			{
 				...defGameInfo.SabaSoccer,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
 				spanTextKey: "lbl_SabaSoccer",
@@ -351,15 +387,20 @@ const gameList = [
 				spanTextKey: "lbl_Saba"
 			},
 			{
-				...defGameInfo.eSports_TFGaming,
-				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-tfg.png`,
-				spanTextKey: "lbl_TFGaming",
+				...defGameInfo.eSports_IM,
+				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-inplaymatrix.png`,
+				spanText: "IM E-Sports",
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.TFGaming)
+						inPeriod: isEventPeriod(eventTime.IM)
 					}
 				]
+			},
+			{
+				...defGameInfo.eSports_TFGaming,
+				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-tfg.png`,
+				spanTextKey: "lbl_TFGaming"
 			}
 		]
 	},
@@ -403,6 +444,50 @@ const gameList = [
 				...defGameInfo.VirtualGame,
 				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vir.png`,
 				spanTextKey: "lbl_VirtualGames"
+			},
+			{
+				...defGameInfo.IM_Avaitor,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-aviator.png`,
+				spanText: "Avaitor",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
+			},
+			{
+				...defGameInfo.IM_Mines,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-mines.png`,
+				spanText: "Mines",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
+			},
+			{
+				...defGameInfo.IM_Goal,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-goal.png`,
+				spanText: "Goal",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
+			},
+			{
+				...defGameInfo.IM_Dice,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-dice.png`,
+				spanText: "Dice",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
 			}
 		]
 	},
@@ -605,18 +690,26 @@ const gameList = [
 				providerImgName: "jili"
 			},
 			{
+				...defGameInfo.Casino_SPRIBE,
+				parameter: defGameInfo.Casino_SPRIBE,
+				spanText: "SPRIBE",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-spribe.png`,
+				path: path.casino.root,
+				providerImgName: "spribe",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.IM)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_RedTiger,
 				parameter: defGameInfo.Casino_RedTiger,
 				spanText: "Red Tiger",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
 				path: path.casino.root,
-				providerImgName: "rt",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-					}
-				]
+				providerImgName: "rt"
 			},
 			{
 				...defGameInfo.Casino_NetEnt,

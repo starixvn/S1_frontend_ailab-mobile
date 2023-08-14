@@ -181,7 +181,15 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Endorphina,
-		imgName: "casino_end",
+		imgName: "casino_end"
+	},
+	{
+		...defGameInfo.ESport_IM,
+		imgName: "im-esports"
+	},
+	{
+		...defGameInfo.casino_SPRIBE,
+		imgName: "spribe",
 		path: path.casino.root
 	}
 ];
