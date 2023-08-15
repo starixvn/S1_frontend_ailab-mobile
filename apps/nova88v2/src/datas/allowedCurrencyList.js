@@ -60,9 +60,9 @@ const allowedCurrencyList = {
 		defCurrenyId.THB,
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
-		defCurrenyId.BDT,
 		defCurrenyId.KHM,
-		defCurrenyId.VND
+		defCurrenyId.VND,
+		defCurrenyId.CNY
 	],
 	eWallet: [
 		defCurrenyId.IDR,
