@@ -832,6 +832,7 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "casino_kiss918",
 					sortKey: "slot_kiss918",
+					allowCurrency: getKiss918AllowCurrencies(),
 					eventIcon: [
 						{
 							icon: defIconType.new,
