@@ -20,7 +20,10 @@ export const number_format = (
 		}
 
 		if (digits > 0) {
-			n = Number(n).toFixed(digits);
+			// 無條件捨去到第二位，避免四捨五入進位
+			n =
+				Math.floor(number * Math.pow(10, digits)) /
+				Math.pow(10, digits).toFixed(digits);
 		}
 	}
 
