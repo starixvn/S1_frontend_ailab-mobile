@@ -323,21 +323,22 @@ const VN = () => (
 		</li>
 		<li>
 			Đối với tùy chọn nạp tiền{" "}
-			<span>&quot;Trao đổi qua ngân hàng&quot;</span> , vui lòng thực hiện
-			việc chuyển khoản trước khi gửi giao dịch để tránh trễ giao dịch.
+			<span>&quot;Chuyển khoản qua ngân hàng&quot;</span> , vui lòng thực
+			hiện việc chuyển khoản trước khi gửi giao dịch để tránh trễ giao
+			dịch.
 		</li>
 		<li>
-			Tên người gửi tiền phải đáp ứng tiêu chí xác minh, bao gồm tên đăng
-			ký hoặc số tham chiếu trong biên nhận.
+			Để xác thực, vui lòng gửi kèm biên lai nạp tiền có số tham chiếu.
+			Lưu ý tên người nạp tiền nên trùng với tên người đăng ký
 		</li>
 		<li>
-			Vui lòng <span>ĐỪNG</span> điền <span>&quot;NOVA88&quot;</span> hoặc
-			bất kỳ từ ngữ nhạy cảm nào liên quan đến cờ bạc làm tham chiếu/giúp
-			ghi chú trong giao dịch trực tuyến của bạn.
+			Vui lòng <span>KHÔNG</span> điền <span>&quot;NOVA88&quot;</span>{" "}
+			hoặc bất kỳ từ ngữ nhạy cảm nào liên quan đến cờ bạc làm tham
+			chiếu/giúp ghi chú trong giao dịch trực tuyến của bạn.
 		</li>
 		<li>
-			Vui lòng lưu ý rằng cần phải thực hiện xổ số 1 lần cho mọi khoản
-			tiền nạp trước khi có thể thực hiện rút tiền.
+			Vui lòng lưu ý rằng mọi khoản tiền nạp đều cần hoàn thành doanh thu
+			cược 1 lần trước khi được rút.
 		</li>
 		<li>
 			Nếu giao dịch của bạn vẫn chưa hoàn tất sau hơn 5 phút, vui lòng
