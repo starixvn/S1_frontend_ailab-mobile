@@ -15,7 +15,12 @@ export const changeAllowCurrenciesByTime = ({
 };
 
 const allowedCurrencyList = {
-	VIP: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
+	VIP: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.VND
+	],
 	affiliate: [
 		defCurrenyId.MYR,
 		defCurrenyId.THB,
@@ -37,7 +42,12 @@ const allowedCurrencyList = {
 	],
 
 	// ==== transfer ====
-	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
+	transferFunds: [
+		defCurrenyId.INR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.VND
+	],
 
 	// ==== withdrawal ====
 	bankCard: [
@@ -46,7 +56,8 @@ const allowedCurrencyList = {
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
 		defCurrenyId.BDT,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
 	eWallet: [
 		defCurrenyId.IDR,
@@ -76,7 +87,8 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY,
 		defCurrenyId.IDR,
 		defCurrenyId.INR,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
 	allbet: [defCurrenyId.MYR, defCurrenyId.IDR, defCurrenyId.THB],
 
@@ -86,6 +98,17 @@ const allowedCurrencyList = {
 		defCurrenyId.USD,
 		defCurrenyId.KHM,
 		defCurrenyId.CNY
+	],
+	slotJoker: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
+		defCurrenyId.USDT
 	],
 
 	// game
@@ -103,14 +126,58 @@ const allowedCurrencyList = {
 	],
 
 	// fishing
-	fishingGod: [defCurrenyId.INR],
-	oneShot: [defCurrenyId.INR],
+	fishingGod: [defCurrenyId.INR, defCurrenyId.VND],
+	oneShot: [defCurrenyId.INR, defCurrenyId.VND],
 	tyrantAndProncess: [defCurrenyId.INR],
 	fishingOfSaviors: [defCurrenyId.INR],
+	fishing_Haiba: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
+		defCurrenyId.USDT
+	],
+	fishingHappyFish5: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
+		defCurrenyId.USDT
+	],
+	fishingMonsterAwaken: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
+		defCurrenyId.USDT
+	],
 
 	// lottery
 	indo4d: [defCurrenyId.IDR],
-	thaiLottery: [defCurrenyId.THB]
+	thaiLottery: [defCurrenyId.THB],
+	fast3: [
+		defCurrenyId.MYR,
+		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
+		defCurrenyId.USDT
+	]
 };
 
 export default allowedCurrencyList;

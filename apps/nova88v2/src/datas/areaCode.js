@@ -47,6 +47,14 @@ export default {
 		Name: "China",
 		Abbr: "CS"
 	},
+	VN: {
+		AreaCode: "+84",
+		Pattern: "^[1-9]{1}[0-9]*$",
+		Length: 9,
+		MaxLength: 11,
+		Name: "Vietnam",
+		Abbr: "VN"
+	},
 	AF: {
 		AreaCode: "+93",
 		Pattern: "[0-9]*",
@@ -1610,14 +1618,6 @@ export default {
 		MaxLength: 50,
 		Name: "Venezuela",
 		Abbr: "VE"
-	},
-	VN: {
-		AreaCode: "+84",
-		Pattern: "^[1-9]{1}[0-9]*$",
-		Length: 9,
-		MaxLength: 11,
-		Name: "Vietnam",
-		Abbr: "VN"
 	},
 	// WF: {
 	// 	AreaCode: "+681",
