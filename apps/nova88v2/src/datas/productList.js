@@ -1,4 +1,4 @@
-import { isDateRange } from "@ailab-mobile/common";
+import { CurrenciesEnum, isDateRange } from "@ailab-mobile/common";
 import path from "../path";
 import SiteURL, { cloudBannerImgURL } from "../config";
 // import { defPopBoxType } from "../components/common/popbox";
@@ -712,7 +712,8 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/joker.png`,
 					path: path.casino.root,
 					providerImgName: "jk",
-					sortKey: "slot_JOKER"
+					sortKey: "slot_JOKER",
+					allowCurrency: allowedCurrencyList.slotJoker
 				},
 				{
 					...defGameInfo.Casino_RedTiger,
@@ -931,19 +932,22 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.FishingHaiba,
 					spanTextKey: "lbl_Fishing_Haiba",
 					img: `${cloudBannerImgURL}/h5/img/hb.png`,
-					sortKey: "fishing_Haiba"
+					sortKey: "fishing_Haiba",
+					allowCurrency: allowedCurrencyList.fishing_Haiba
 				},
 				{
 					...defGameInfo.FishingHappyFish5,
 					spanTextKey: "lbl_Fishing_Hunting_Happy_Fish_5",
 					img: `${cloudBannerImgURL}/h5/img/hf5.png`,
-					sortKey: "fishing_Hunting_Happy_Fish_5"
+					sortKey: "fishing_Hunting_Happy_Fish_5",
+					allowCurrency: allowedCurrencyList.fishingHappyFish5
 				},
 				{
 					...defGameInfo.FishingMonsterAwaken,
 					spanTextKey: "lbl_Fishing_Hunting_Monster_Awaken",
 					img: `${cloudBannerImgURL}/h5/img/ma.png`,
-					sortKey: "fishing_Hunting_Monster_Awaken"
+					sortKey: "fishing_Hunting_Monster_Awaken",
+					allowCurrency: allowedCurrencyList.fishingMonsterAwaken
 				},
 				{
 					...defGameInfo.Fishing_AB3,
@@ -1060,10 +1064,15 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.GPI_Lottery)
 						}
-					]
+					],
+					allowCurrency: allowedCurrencyList.fast3
 				},
 				{
-					...defGameInfo.TCG,
+					tpId: defGameInfo.TCG.tpId,
+					tpGameType:
+						currencyId === CurrenciesEnum.VN
+							? 55
+							: defGameInfo.TCG.tpGameType,
 					img: `${cloudBannerImgURL}/h5/img/tcg.png`,
 					spanTextKey: "lbl_TCG"
 				},

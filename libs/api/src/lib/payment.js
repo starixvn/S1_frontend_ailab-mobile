@@ -220,4 +220,15 @@ export class PaymentAPI extends BaseAPI {
 			amount,
 			bonusCode
 		});
+
+	GetLoadCardPayGroupList = () =>
+		this.paymentRequest.post("/GetLoadCardPayGroupList");
+
+	GetLoadCardPayInfoList = groupId =>
+		this.paymentRequest.post("/GetLoadCardPayInfoList", { groupId });
+
+	GetQRPayGroupList = () => this.paymentRequest.post("/GetQRPayGroupList");
+
+	GetQRPayInfoList = groupId =>
+		this.paymentRequest.post("/GetQRPayInfoList", { groupId });
 }
