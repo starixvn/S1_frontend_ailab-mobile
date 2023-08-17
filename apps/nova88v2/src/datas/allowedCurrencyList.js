@@ -32,12 +32,7 @@ const allowedCurrencyList = {
 		defCurrenyId.INR
 	],
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
-	rewards: [
-		defCurrenyId.MYR,
-		defCurrenyId.THB,
-		defCurrenyId.IDR,
-		defCurrenyId.VND
-	],
+	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	wheel: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
 	worldCup: [
 		defCurrenyId.MYR,
