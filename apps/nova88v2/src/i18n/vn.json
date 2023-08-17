@@ -337,7 +337,7 @@
 
 	"==============================================LeaderBoard====================================": "",
 	"lbl_Sports": "Thể thao",
-	"lbl_LiveCasino": "Casino trực tiếp",
+	"lbl_LiveCasino": "Song bài",
 	"lbl_Event": "SỰ KIỆN",
 	"lbl_Records": "THÀNH TÍCH",
 	"lbl_last_3_day": "3 ngày qua",
@@ -360,7 +360,7 @@
 	"lbl_LastUpdTime": "Cập nhật vào lúc {{time}}  (Cập nhật mỗi 30 phút)",
 	"lbl_Ranking_EndDate": "SỰ KIỆN ĐÃ KẾT THÚC: {{time}}",
 	"lbl_Points": "Điểm Số",
-	"lbl_Casino": "Casino",
+	"lbl_Casino": "Quay hũ",
 	"lbl_BePartsOfUs": "HÃY TRỞ THÀNH MỘT PHẦN CỦA CHÚNG TÔI!",
 	"lbl_Product": "SẢN PHẨM",
 	"lbl_Result": "Kết Quả",
