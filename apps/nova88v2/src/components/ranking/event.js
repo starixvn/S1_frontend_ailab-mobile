@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PrizeList from "./prize";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
-import { GetCurrencyName, defCurrenyId } from "../common/common";
+import { GetCurrencyName, getCombineLangId } from "../common/common";
 import { siteInfo, cloudBannerImgURL } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
@@ -19,17 +19,11 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 	}, []);
 
 	const tncURL = async () => {
-		let _langId = userInfo.langId;
-		if (userInfo.langId === "en") {
-			if (userInfo.currencyId === defCurrenyId.THB) {
-				_langId = "th_en";
-			} else if (userInfo.currencyId === defCurrenyId.IDR) {
-				_langId = "id_en";
-			}
-		}
-
 		setURL(
-			`${cloudBannerImgURL}/NovaPromotion/ranking_new_tnc/${_langId}.html`
+			`${cloudBannerImgURL}/NovaPromotion/ranking_new_tnc/${getCombineLangId(
+				userInfo.langId,
+				userInfo.currencyId
+			)}.html`
 		);
 	};
 	const rows = getPrize?.map((item, index) => {
