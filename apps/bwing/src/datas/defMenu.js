@@ -216,6 +216,21 @@ export const productList = langId => {
 							inPeriod: isEventPeriod(eventTime.IM)
 						}
 					]
+				},
+				{
+					...defGameInfo.Spaceman,
+					img: `${bannerImgUrl}/h5/img/new-game/pp.png`,
+					displayText: "Spaceman"
+				},
+				{
+					...defGameInfo.Crash,
+					img: `${bannerImgUrl}/h5/img/new-game/ap.png`,
+					displayText: "Crash"
+				},
+				{
+					...defGameInfo.GoRush,
+					img: `${bannerImgUrl}/h5/img/new-game/jili.png`,
+					displayText: "Go Rush"
 				}
 				// {
 				// 	displayKey: "lbl_VirtualGames",

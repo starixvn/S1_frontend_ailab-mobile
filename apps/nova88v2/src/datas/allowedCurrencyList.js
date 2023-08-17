@@ -131,8 +131,7 @@ const allowedCurrencyList = {
 	],
 
 	// fishing
-
-	fishingGod: [defCurrenyId.INR, defCurrenyId.KHM, defCurrenyId.VND],
+	fishingGod: [defCurrenyId.INR, defCurrenyId.VND],
 	oneShot: [defCurrenyId.INR, defCurrenyId.VND],
 	tyrantAndProncess: [defCurrenyId.INR],
 	fishingOfSaviors: [defCurrenyId.INR],
