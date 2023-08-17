@@ -18,6 +18,7 @@ const ImportantNote = ({ langId, i18n }) => {
 	if (langId === "hi") content = <HI />;
 	if (langId === "bd") content = <BD />;
 	if (langId === "kh") content = <KH />;
+	if (langId === "vn") content = <VN />;
 
 	if (langId) {
 		return (
@@ -339,6 +340,46 @@ const KH = () => (
 				ជជែកបន្តផ្ទាល់ ២៤ ម៉/៧ ថ្ងៃ
 			</a>
 			ងៃ ។ សូមអរគុណ។
+		</li>
+	</ul>
+);
+
+const VN = () => (
+	<ul>
+		<li>
+			Vui lòng kiểm tra với{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				TRÒ CHUYỆN TRỰC TUYẾN 24/7
+			</a>{" "}
+			nếu giao dịch của bạn đang chờ xử lý hơn 10 phút.
+		</li>
+		<li>
+			Tên tài khoản ngân hàng rút tiền phải khớp với tên đăng ký đầy đủ,
+			thành viên không được rút tiền vào tài khoản ngân hàng của bên thứ
+			ba.
+		</li>
+		<li>
+			Một số nhà cung cấp trò chơi yêu cầu thời gian đồng bộ báo cáo từ 15
+			đến 30 phút, xin vui lòng kiên nhẫn chờ đợi trong thời gian đồng bộ
+			cần thiết.
+		</li>
+		<li>
+			Vui lòng đảm bảo bạn đã đạt đủ doanh số cược yêu cầu và gửi giao
+			dịch rút tiền sau 30 phút để tránh việc hệ thống tự động từ chối.
+		</li>
+		<li>
+			Nếu có bất kỳ sự không phù hợp hoặc bạn có bất kỳ câu hỏi rút tiền
+			nào khác, vui lòng liên hệ{" "}
+			<a
+				rel="noreferrer"
+				target="_blank"
+				href="https://direct.lc.chat/11638088/">
+				TRÒ CHUYỆN TRỰC TUYẾN 24/7
+			</a>
+			của chúng tôi. Cảm ơn bạn.
 		</li>
 	</ul>
 );

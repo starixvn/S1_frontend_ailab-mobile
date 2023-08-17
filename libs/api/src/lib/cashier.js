@@ -70,4 +70,27 @@ export class CashierAPI extends BaseAPI {
 			`/${langId}/Cashier/DepositReqCryptoLocalPay?${paramsUrl}`
 		);
 	};
+
+	DepositReqLoadCardPay = ({
+		langId,
+		channelId,
+		code,
+		serial,
+		amount,
+		bonusCode
+	}) => {
+		const paramsUrl = [
+			`ChannelId=${channelId}`,
+			`Code=${code}`,
+			`Serial=${serial}`,
+			`Amount=${amount}`,
+			bonusCode && `BonusCode=${bonusCode}`
+		]
+			.filter(Boolean)
+			.join("&");
+
+		return this.cashierRequest.post(
+			`/${langId}/Cashier/DepositReqLoadCardPay?${paramsUrl}`
+		);
+	};
 }
