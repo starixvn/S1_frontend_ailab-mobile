@@ -157,7 +157,7 @@ export const defGameInfo = {
 		tpGameType: 1
 	},
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
-	Spaceman: { tpId: 5, tpGameType: 7, gameId: 130 },
+	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
 	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
 };
