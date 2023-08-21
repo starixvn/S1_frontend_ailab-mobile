@@ -155,7 +155,10 @@ export const defGameInfo = {
 		gameId: 2002,
 		tpGameType: 1
 	},
-	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
+	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
+	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
+	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
 };
 
 const defIconType = {
@@ -488,6 +491,21 @@ const gameList = [
 						inPeriod: isEventPeriod(eventTime.IM)
 					}
 				]
+			},
+			{
+				...defGameInfo.Spaceman,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/pp.png`,
+				spanText: "Spaceman"
+			},
+			{
+				...defGameInfo.Crash,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/ap.png`,
+				spanText: "Crash"
+			},
+			{
+				...defGameInfo.GoRush,
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/jili.png`,
+				spanText: "Go Rush"
 			}
 		]
 	},

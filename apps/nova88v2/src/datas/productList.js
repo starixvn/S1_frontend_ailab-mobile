@@ -1031,6 +1031,24 @@ const gameList = ({ langId, currencyId }) => {
 							inPeriod: isEventPeriod(eventTime.IM)
 						}
 					]
+				},
+				{
+					...defGameInfo.Spaceman,
+					img: `${cloudBannerImgURL}/h5/img/game-pp.png`,
+					spanText: "Spaceman",
+					sortKey: "games_Spaceman"
+				},
+				{
+					...defGameInfo.Crash,
+					img: `${cloudBannerImgURL}/h5/img/game-ap.png`,
+					spanText: "Crash",
+					sortKey: "games_Crash"
+				},
+				{
+					...defGameInfo.GoRush,
+					img: `${cloudBannerImgURL}/h5/img/game-jili.png`,
+					spanText: "Go Rush",
+					sortKey: "games_GoRush"
 				}
 			]
 		},
@@ -1481,7 +1499,10 @@ export const defGameInfo = {
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	GPI_Keno: { tpId: 6, gameId: "keno", tpGameType: 88 },
 	GPI_ThaiLottery: { tpId: 6, gameId: "thailottery", tpGameType: 90 },
-	GPI_Fast3: { tpId: 6, gameId: "fast3", tpGameType: 91 }
+	GPI_Fast3: { tpId: 6, gameId: "fast3", tpGameType: 91 },
+	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
+	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
 };
 
 export const defCol = {

@@ -120,7 +120,10 @@ export const defGameInfo = {
 	},
 	sportSbo: { tpId: 42, tpGameType: 77 },
 	WorldCup: { tpId: 41, gameId: 2002, tpGameType: 69 },
-	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
+	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
+	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
+	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
 };
 
 export const slotPlatform = [
