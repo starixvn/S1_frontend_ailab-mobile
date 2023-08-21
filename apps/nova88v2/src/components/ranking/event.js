@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import PrizeList from "./prize";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
-import { GetCurrencyName, getCombineLangId } from "../common/common";
+import { GetCurrencyName, getCombineLeaderBoardLangId } from "../common/common";
 import { siteInfo, cloudBannerImgURL } from "../../config";
 
 const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
@@ -20,7 +20,7 @@ const Event = ({ userInfo = {}, isOpen, i18n = {} }) => {
 
 	const tncURL = async () => {
 		setURL(
-			`${cloudBannerImgURL}/NovaPromotion/ranking_new_tnc/${getCombineLangId(
+			`${cloudBannerImgURL}/NovaPromotion/ranking_new_tnc/${getCombineLeaderBoardLangId(
 				userInfo.langId,
 				userInfo.currencyId
 			)}.html`
