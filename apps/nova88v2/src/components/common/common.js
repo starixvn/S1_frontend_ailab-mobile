@@ -298,6 +298,35 @@ export const getCombineLangId = (langId, currencyId) => {
 	const checkedCurrencyId = currencyId ?? defCurrenyId.MYR;
 
 	let combineLangId = "";
+
+	switch (langId) {
+		case "en":
+			combineLangId = `${
+				defCurrencyToLangId[Number(checkedCurrencyId)]
+			}_en`;
+			break;
+		case "cs":
+			combineLangId =
+				currencyId === defCurrenyId.CNY
+					? "cs"
+					: `${defCurrencyToLangId[Number(checkedCurrencyId)]}_cs`;
+			break;
+		default:
+			combineLangId = langId;
+			break;
+	}
+	return combineLangId;
+};
+
+export const getCombineLeaderBoardLangId = (langId, currencyId) => {
+	const checkedCurrencyId = currencyId ?? defCurrenyId.MYR;
+
+	let combineLangId = "";
+
+	if (currencyId === defCurrenyId.MYR) {
+		return langId;
+	}
+
 	switch (langId) {
 		case "en":
 			combineLangId = `${
