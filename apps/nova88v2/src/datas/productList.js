@@ -1036,7 +1036,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Spaceman,
 					img: `${cloudBannerImgURL}/h5/img/game-pp.png`,
 					spanText: "Spaceman",
-					sortKey: "games_Spaceman"
+					sortKey: "games_Spaceman",
+					allowCurrency: allowedCurrencyList.spaceman
 				},
 				{
 					...defGameInfo.Crash,
