@@ -59,6 +59,10 @@ a {
   color: white;
 }
 
+img {
+  height: auto;
+}
+
 @font-face {
   font-family: "icomoon";
   src: url("../fonts/icomoon.woff?v=202003") format("woff");
@@ -1399,10 +1403,10 @@ header .headerModule > a {
       -ms-flex-align: center;
           align-items: center;
   height: 13.5vw;
-  width: 33vw;
+  width: 42vw;
   background: #F9F9F9;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-          clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
 }
 header .headerModule > a img {
   width: 24vw;
@@ -1441,6 +1445,86 @@ header .headerModule .headerInfo .MemberID {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 1vw;
+}
+header .splogo {
+  position: absolute;
+  left: 28vw;
+  bottom: 3vw;
+  width: 8vw !important;
+  height: 8vw !important;
+  background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+  -webkit-animation: splogo 3.5s ease-in-out infinite;
+          animation: splogo 3.5s ease-in-out infinite;
+  -webkit-clip-path: none !important;
+          clip-path: none !important;
+}
+@-webkit-keyframes splogo {
+  0% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0.1;
+  }
+  5% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  45% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  50% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0;
+  }
+  51% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0.1;
+  }
+  56% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  95% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  100% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0;
+  }
+}
+@keyframes splogo {
+  0% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0.1;
+  }
+  5% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  45% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  50% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0;
+  }
+  51% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0.1;
+  }
+  56% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  95% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  100% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0;
+  }
 }
 header button.clickBtn {
   display: -webkit-box;
@@ -3513,8 +3597,8 @@ footer > a.active .circleAnimation::after {
   opacity: 1;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_wallet {
-  -webkit-transform: translateX(-40vw) translateY(15vw);
-          transform: translateX(-40vw) translateY(15vw);
+  -webkit-transform: translateX(-35vw) translateY(5vw);
+          transform: translateX(-35vw) translateY(5vw);
 }
 .walletMenu.active .walletModule > a.icon-icon32px_wallet:before {
   font-size: 5vw;
@@ -3523,8 +3607,8 @@ footer > a.active .circleAnimation::after {
           align-items: center;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_Withdraw {
-  -webkit-transform: translateX(-25vw) translateY(-5vw);
-          transform: translateX(-25vw) translateY(-5vw);
+  -webkit-transform: translateX(-15vw) translateY(-10vw);
+          transform: translateX(-15vw) translateY(-10vw);
 }
 .walletMenu.active .walletModule > a.icon-icon32px_Withdraw:before {
   -webkit-box-align: center;
@@ -3532,18 +3616,57 @@ footer > a.active .circleAnimation::after {
           align-items: center;
 }
 .walletMenu.active .walletModule > a.icon-icon32px_deposit {
+  -webkit-transform: translateX(15vw) translateY(-10vw);
+          transform: translateX(15vw) translateY(-10vw);
+}
+.walletMenu.active .walletModule > a.icon-icon32px_History {
+  -webkit-transform: translateX(35vw) translateY(5vw);
+          transform: translateX(35vw) translateY(5vw);
+}
+.walletMenu.active .walletModule > a.icon-icon32px_History:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a {
+  top: 10vw;
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_wallet {
+  -webkit-transform: translateX(-40vw) translateY(15vw);
+          transform: translateX(-40vw) translateY(15vw);
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_wallet:before {
+  font-size: 5vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Withdraw {
+  -webkit-transform: translateX(-25vw) translateY(-5vw);
+          transform: translateX(-25vw) translateY(-5vw);
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Withdraw:before {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_deposit {
   -webkit-transform: translateY(-10vw) translateY(-5vw);
           transform: translateY(-10vw) translateY(-5vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_Funds-transfer {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_Funds-transfer {
   -webkit-transform: translateX(25vw) translateY(-5vw);
           transform: translateX(25vw) translateY(-5vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_History {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_History {
   -webkit-transform: translateX(40vw) translateY(15vw);
           transform: translateX(40vw) translateY(15vw);
 }
-.walletMenu.active .walletModule > a.icon-icon32px_History:before {
+.walletMenu.active.five-style .walletModule > a.icon-icon32px_History:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4837,32 +4960,6 @@ button.clickBtn:before {
 .buttonBox button[disabled] {
   background: #e6e6e6;
   color: #a5aab1;
-}
-.buttonBox.col-3 {
-  margin: 0 0.5vw !important;
-}
-.buttonBox.col-3 button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 25.75vw;
-          flex: 0 0 25.75vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.buttonBox.col-3 button:nth-child(3n) {
-  margin-right: 0 !important;
-}
-.buttonBox.col-3 .icon-icon32px_check {
-  margin-right: 0.5vw;
-}
-.buttonBox.col-3 .icon-icon32px_check::before {
-  font-size: 4vw;
 }
 
 .channel {
@@ -8294,65 +8391,6 @@ span.important {
 .depositModule .downloadModule .swiper-pagination-bullets {
   bottom: -3vw;
 }
-.depositModule .input-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.depositModule .input-group .inputBox, .depositModule .input-group .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .input-group .inputBox-event {
-  width: 76vw;
-}
-.depositModule .cardinfo {
-  text-align: left;
-  margin-top: 2vw;
-}
-.depositModule .cardinfo img {
-  border-radius: 5px;
-  width: 74vw;
-}
-.depositModule .note {
-  width: 100% !important;
-  background: #e2e2e2;
-  color: #838383;
-  border-radius: 5px;
-  padding: 1vw 2vw;
-  font-size: 3vw;
-  text-align: left;
-  margin: 1.5vw auto;
-}
-.depositModule .note .title {
-  margin: 0 0 1.5vw 0;
-  color: #cf0404;
-  border-top: 0;
-}
-.depositModule .note .title .icon-warning::before {
-  font-size: 3.5vw;
-}
-.depositModule .note li {
-  margin-bottom: 2vw;
-  line-height: 1.5;
-}
-
-.icon-qrpay::before {
-  content: "";
-  display: block;
-  width: 10vw;
-  height: 10vw;
-  margin: 0 auto !important;
-  background: url(https://banner.0814media.net/h5/img/qrpay.png) center/cover;
-}
-
-.icon-topup::before {
-  content: "";
-  display: block;
-  width: 10vw;
-  height: 10vw;
-  margin: 0 auto !important;
-  background: url(https://banner.0814media.net/h5/img/topup.png) center/cover;
-}
 
 .submenu {
   background: #E4E4E4;
@@ -8401,7 +8439,6 @@ span.important {
           justify-content: center;
   margin: 0 0 1vw;
   color: white;
-  text-align: center;
 }
 .submenu > div.thBar a i:not(.icon-history):before {
   font-size: 7vw;
