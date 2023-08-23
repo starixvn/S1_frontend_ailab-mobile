@@ -20,7 +20,7 @@ export const useHandlePromotionInfo = ({
 	const urlBonusCode = getUrlParameter("BonusCode");
 
 	useEffect(() => {
-		if (window.location.pathname.includes(`${path.promotionInfo.root}`)) {
+		if (window.location.pathname.includes(`${path.promotion.root}`)) {
 			getPromotionDetail(userInfo.langId, urlBonusCode);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
