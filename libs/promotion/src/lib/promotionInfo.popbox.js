@@ -19,7 +19,7 @@ export const useHandlePromotionInfo = ({
 	useEffect(() => {
 		if (
 			userInfo.regTime &&
-			window.location.pathname.includes(`${path.promotionInfo.root}`)
+			window.location.pathname.includes(`${path.promotion.root}`)
 		) {
 			getPromotionDetail(userInfo.langId, urlBonusCode, null);
 		}
