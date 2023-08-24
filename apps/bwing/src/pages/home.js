@@ -244,6 +244,7 @@ const IndexPage = () => {
 					setPopBox({
 						isOpen: true,
 						className: "promosback active",
+						displayStyle: "", //* 默認為block, 給空字串防止跑版
 						custContent: (
 							<div className="pop promosbackpop">
 								<img
