@@ -305,7 +305,7 @@ const IndexPage = () => {
 		i18n,
 		setPopBox,
 		userInfo.currencyId,
-		userInfo.userName,
+		userInfo.accountName,
 		userInfo.isLogin,
 		userInfo.langId
 	]);
