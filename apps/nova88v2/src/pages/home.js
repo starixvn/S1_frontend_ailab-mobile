@@ -18,7 +18,11 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { defCurrenyId, readCookie } from "../components/common/common";
+import {
+	defCurrenyId,
+	readCookie,
+	setCookie
+} from "../components/common/common";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Jackpot from "../components/home/jackpot";
