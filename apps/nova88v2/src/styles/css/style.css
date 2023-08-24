@@ -1403,10 +1403,10 @@ header .headerModule > a {
       -ms-flex-align: center;
           align-items: center;
   height: 13.5vw;
-  width: 33vw;
+  width: 42vw;
   background: #F9F9F9;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
-          clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
 }
 header .headerModule > a img {
   width: 24vw;
@@ -1445,6 +1445,86 @@ header .headerModule .headerInfo .MemberID {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 1vw;
+}
+header .splogo {
+  position: absolute;
+  left: 28vw;
+  bottom: 3vw;
+  width: 8vw !important;
+  height: 8vw !important;
+  background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+  -webkit-animation: splogo 5.5s ease-in-out infinite;
+          animation: splogo 5.5s ease-in-out infinite;
+  -webkit-clip-path: none !important;
+          clip-path: none !important;
+}
+@-webkit-keyframes splogo {
+  0% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0.1;
+  }
+  5% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  45% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  50% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0;
+  }
+  51% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0.1;
+  }
+  56% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  95% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  100% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0;
+  }
+}
+@keyframes splogo {
+  0% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0.1;
+  }
+  5% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  45% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 1;
+  }
+  50% {
+    background: url(https://banner.0814media.net/desktop/img/sp-sevilla.png) center/cover;
+    opacity: 0;
+  }
+  51% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0.1;
+  }
+  56% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  95% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 1;
+  }
+  100% {
+    background: url(https://banner.0814media.net/desktop/img/sp-inter-milan.png) center/cover;
+    opacity: 0;
+  }
 }
 header button.clickBtn {
   display: -webkit-box;

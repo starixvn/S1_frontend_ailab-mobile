@@ -146,6 +146,7 @@ const HeaderInfo = ({ userInfo, i18n }) => {
 					<Logo langId={userInfo.langId} />
 				)}
 			</a>
+			<a className="splogo" />
 			{userInfo.isLogin ? (
 				<div>
 					<div className="headerInfo">
