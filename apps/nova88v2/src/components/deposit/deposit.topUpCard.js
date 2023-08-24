@@ -189,7 +189,7 @@ const Payment = ({
 										<button
 											className="lightBlue"
 											onClick={refreshPage}>
-											{i18n.btn_Refresh}
+											OK
 										</button>
 									</div>
 								),
