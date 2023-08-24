@@ -303,7 +303,7 @@ const IndexPage = () => {
 		if (userInfo.userName && readCookie(cookieName) !== "1") {
 			setAppHint(true);
 		}
-	}, [userInfo.currencyId, userInfo.userName]);
+	}, [userInfo.currencyId, userInfo.accountName]);
 
 	const header = (
 		<Header

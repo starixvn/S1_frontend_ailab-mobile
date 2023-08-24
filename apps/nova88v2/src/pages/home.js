@@ -101,7 +101,7 @@ const IndexPage = () => {
 							</div>
 						)
 					});
-					// setCookie(cookieName, "1", 1);
+					setCookie(cookieName, "1", 1);
 				} else {
 					openNextPopUp();
 				}
