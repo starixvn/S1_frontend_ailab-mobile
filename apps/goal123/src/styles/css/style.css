@@ -1017,6 +1017,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 8vw;
   overflow: auto;
   display: none;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 }
 #popup.active {
   display: -webkit-box;
@@ -1724,6 +1725,173 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: #fff;
   border: 0;
   border-radius: 2px;
+}
+#popup.promosback {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+}
+#popup.promosback.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.promosback .promosbackpop {
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  margin-bottom: 15vw;
+  -webkit-animation: promosbackpop 2s ease-in-out;
+          animation: promosbackpop 2s ease-in-out;
+}
+#popup.promosback .promosbackpop img {
+  display: block;
+  margin: 0 auto;
+  max-width: 90vw;
+}
+@media (min-width: 428px) {
+  #popup.promosback .promosbackpop {
+    margin-bottom: 18vw;
+  }
+}
+@-webkit-keyframes promosbackpop {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  25% {
+    -webkit-transform: scale(1.08, 1.08);
+            transform: scale(1.08, 1.08);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  75% {
+    -webkit-transform: scale(1.15, 1.15);
+            transform: scale(1.15, 1.15);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+@keyframes promosbackpop {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  25% {
+    -webkit-transform: scale(1.08, 1.08);
+            transform: scale(1.08, 1.08);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  75% {
+    -webkit-transform: scale(1.15, 1.15);
+            transform: scale(1.15, 1.15);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+#popup.promosback .popgo {
+  color: #fff;
+  text-align: center;
+  background: #FAB617;
+  font-size: 4vw;
+  padding: 3vw 0;
+  border-radius: 20vw;
+  min-width: 36vw;
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  left: calc(50% - 18vw);
+  bottom: 2vw;
+  -webkit-animation: popgo 2s ease-in-out;
+          animation: popgo 2s ease-in-out;
+}
+@media (min-width: 428px) {
+  #popup.promosback .popgo {
+    font-size: 3.5vw;
+    min-width: 34vw;
+    left: calc(50% - 17vw);
+    bottom: -2vw;
+  }
+}
+@-webkit-keyframes popgo {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes popgo {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.promosback .closepop {
+  cursor: pointer;
+  display: block;
+  width: 9vw;
+  position: absolute;
+  left: calc(50% - 4.5vw);
+  bottom: -13vw;
+  -webkit-animation: closepop 2.3s ease-in-out;
+          animation: closepop 2.3s ease-in-out;
+}
+@media (min-width: 428px) {
+  #popup.promosback .closepop {
+    width: 7vw;
+    left: calc(50% - 4.5vw);
+    bottom: -12vw;
+  }
+}
+@-webkit-keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .txt-red {
