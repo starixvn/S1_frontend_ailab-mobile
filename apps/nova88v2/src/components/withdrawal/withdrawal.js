@@ -175,13 +175,38 @@ const Panel = () => {
 											obj.accountNo ===
 											res.data.data?.defAccountNo
 									);
-									setSelBank(
-										res.data.data.bankInfoDetail?.[
-											defAccountIdx === -1
-												? 0
-												: defAccountIdx
-										]
+									const noDisabledAccountIdx = res.data.data?.bankInfoDetail.findIndex(
+										obj => !obj.disabled
 									);
+
+									// * 若有 disabled 則不會 setSelBank 所以有可能不會有預設所選到的 bankCard
+									if (
+										defAccountIdx !== -1 &&
+										!res.data.data.bankInfoDetail[
+											defAccountIdx
+										]?.disabled
+									) {
+										setSelBank(
+											res.data.data.bankInfoDetail[
+												defAccountIdx
+											]
+										);
+									} else if (
+										defAccountIdx === -1 &&
+										!res.data.data.bankInfoDetail[0]
+											?.disabled
+									) {
+										setSelBank(
+											res.data.data.bankInfoDetail[0]
+										);
+									} else if (noDisabledAccountIdx) {
+										setSelBank(
+											res.data.data.bankInfoDetail[
+												noDisabledAccountIdx
+											]
+										);
+									}
+
 									if (!pageVerify) {
 										setPageVerify(true);
 									}
@@ -668,6 +693,7 @@ const Panel = () => {
 	banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
+				disabled={b?.disabled}
 				className={
 					selBank?.sysId === b.sysId &&
 					selBank?.accountNo === b.accountNo
