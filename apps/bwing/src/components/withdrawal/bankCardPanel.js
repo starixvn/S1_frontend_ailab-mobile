@@ -143,6 +143,7 @@ const BankCard = props => {
 					)}
 					<div className="checkbox">
 						<input
+							disabled={props.disabled}
 							type="checkbox"
 							id={props.checkKey}
 							onChange={props.selectAccount}
