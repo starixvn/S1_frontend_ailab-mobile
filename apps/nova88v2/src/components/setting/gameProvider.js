@@ -178,6 +178,15 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Nextspin,
 		imgName: "casino_nextspin",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.ESport_IM,
+		imgName: "im-esports"
+	},
+	{
+		...defGameInfo.casino_SPRIBE,
+		imgName: "spribe",
+		path: path.casino.root
 	}
 ];
 

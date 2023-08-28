@@ -40,5 +40,6 @@ export const eventTime = {
 	ap_mini_game: { endDate: "2024/03/10 12:00:00" },
 	liveCasino_bg: { endDate: "2023/12/31 23:59:59" },
 	TFGaming: { endDate: "2023/06/30 12:00:00" },
-	casino_Nextspin: { endDate: "2023/08/12 11:00:00" }
+	casino_Nextspin: { endDate: "2023/08/12 11:00:00" },
+	IM: { endDate: "2023/09/28 23:59:59" }
 };
