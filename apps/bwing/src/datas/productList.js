@@ -26,6 +26,7 @@ export const defGameInfo = {
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
 	eSports_TFGaming: { tpId: 48, gameId: 0, tpGameType: 97 },
+	eSports_IM: { tpId: 52, gameId: "ESPORTSBULL", tpGameType: 102 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
@@ -69,6 +70,7 @@ export const defGameInfo = {
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
+	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -140,6 +142,26 @@ export const defGameInfo = {
 		// tpId: 1,
 		tpId: 41, // seamless wallet gameId: 237,
 		tpGameType: 83
+	},
+	IM_Avaitor: {
+		tpId: 53,
+		gameId: "imgame12001",
+		tpGameType: 104
+	},
+	IM_Mines: {
+		tpId: 53,
+		gameId: "imgame12002",
+		tpGameType: 104
+	},
+	IM_Goal: {
+		tpId: 53,
+		gameId: "imgame12003",
+		tpGameType: 104
+	},
+	IM_Dice: {
+		tpId: 53,
+		gameId: "imgame12004",
+		tpGameType: 104
 	},
 	VirtualGame: {
 		// tpId: 1,
@@ -275,7 +297,8 @@ export const defSlotTpGameType = {
 	Habanero: { tpId: 40, tpGameType: 68 },
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
-	Nextspin: { tpId: 50, tpGameType: 99 }
+	Nextspin: { tpId: 50, tpGameType: 99 },
+	SPRIBE: { tpId: 53, tpGameType: 104 }
 };
 
 export const sportStreamDef = {

@@ -82,7 +82,8 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Kiss918: { tpId: 21, tpGameType: 33 },
-	Nextspin: { tpId: 50, tpGameType: 99 }
+	Nextspin: { tpId: 50, tpGameType: 99 },
+	SPRIBE: { tpId: 53, tpGameType: 104 }
 };
 
 const defSortSports = {
@@ -190,6 +191,7 @@ const defSortSlot = {
 		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
+		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_RedTiger",
 		"slot_NetEnt",
@@ -214,6 +216,7 @@ const defSortSlot = {
 		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
+		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_RedTiger",
 		"slot_NetEnt",
@@ -238,6 +241,7 @@ const defSortSlot = {
 		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
+		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_RedTiger",
 		"slot_NetEnt",
@@ -262,6 +266,7 @@ const defSortSlot = {
 		"slot_PG",
 		"slot_MGPSW",
 		"slot_JI",
+		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_RedTiger",
 		"slot_NetEnt",
@@ -478,28 +483,39 @@ const gameList = ({ langId, currencyId }) => {
 			items: [
 				{
 					...defGameInfo.ESportAll,
-					spanTextKey: "lbl_All",
-					img: `${cloudBannerImgURL}/h5/img/esportALL.png`
+					spanText: "Saba",
+					img: `${cloudBannerImgURL}/h5/img/esportSABA.png`
 				},
+				// {
+				// 	...defGameInfo.ESportCS,
+				// 	spanText: "CS:GO",
+				// 	img: `${cloudBannerImgURL}/h5/img/esportCS.png`
+				// },
+				// {
+				// 	...defGameInfo.ESportDota,
+				// 	spanText: "DOTA2",
+				// 	img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
+				// },
+				// {
+				// 	...defGameInfo.ESportKOG,
+				// 	spanText: "KOG",
+				// 	img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
+				// },
+				// {
+				// 	...defGameInfo.ESportLOL,
+				// 	spanText: "LOL",
+				// 	img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
+				// },
 				{
-					...defGameInfo.ESportCS,
-					spanText: "CS:GO",
-					img: `${cloudBannerImgURL}/h5/img/esportCS.png`
-				},
-				{
-					...defGameInfo.ESportDota,
-					spanText: "DOTA2",
-					img: `${cloudBannerImgURL}/h5/img/esportDOTA2.png`
-				},
-				{
-					...defGameInfo.ESportKOG,
-					spanText: "KOG",
-					img: `${cloudBannerImgURL}/h5/img/esportKOG.png`
-				},
-				{
-					...defGameInfo.ESportLOL,
-					spanText: "LOL",
-					img: `${cloudBannerImgURL}/h5/img/esportLOL.png`
+					...defGameInfo.ESport_IM,
+					spanText: "IM E-Sports",
+					img: `${cloudBannerImgURL}/h5/img/esportInplayMatrix.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
 				}
 			]
 		},
@@ -704,6 +720,22 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "ji",
 					sortKey: "slot_JI"
+				},
+				{
+					...defGameInfo.Casino_SPRIBE,
+					parameter: defGameInfo.Casino_SPRIBE,
+					spanText: "SPRIBE",
+					img: `${cloudBannerImgURL}/h5/img/slotSPRIBE.png`,
+					path: path.casino.root,
+					providerImgName: "slotSPRIBE",
+					sortKey: "slot_SPRIBE",
+					allowCurrency: allowedCurrencyList.SPRIBE,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_JOKER,
@@ -919,6 +951,58 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/km.png`,
 					spanTextKey: "lbl_KingMaker",
 					sortKey: "games_kingMaker"
+				},
+				{
+					...defGameInfo.IM_Avaitor,
+					img: `${cloudBannerImgURL}/h5/img/gameSpribeAviator.png`,
+					spanText: "Avaitor",
+					sortKey: "games_IM_Avaitor",
+					allowCurrency: allowedCurrencyList.SPRIBE,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					...defGameInfo.IM_Mines,
+					img: `${cloudBannerImgURL}/h5/img/gameSpribeMines.png`,
+					spanText: "Mines",
+					sortKey: "games_IM_Mines",
+					allowCurrency: allowedCurrencyList.SPRIBE,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					...defGameInfo.IM_Goal,
+					img: `${cloudBannerImgURL}/h5/img/gameSpribeGoal.png`,
+					spanText: "Goal",
+					sortKey: "games_IM_Goal",
+					allowCurrency: allowedCurrencyList.SPRIBE,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					...defGameInfo.IM_Dice,
+					img: `${cloudBannerImgURL}/h5/img/gameSpribeDice.png`,
+					spanText: "Dice",
+					sortKey: "games_IM_Dice",
+					allowCurrency: allowedCurrencyList.SPRIBE,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
 				},
 				{
 					...defGameInfo.Spaceman,
@@ -1202,6 +1286,11 @@ export const defGameInfo = {
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
+	sports_IM: {
+		tpId: 52,
+		tpGameType: 103,
+		gameId: "IMSB"
+	},
 	ESportAll: {
 		// tpId: 1,
 		tpId: 41, // seamless wallet
@@ -1240,6 +1329,11 @@ export const defGameInfo = {
 		bettype: 2,
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
+	},
+	ESport_IM: {
+		tpId: 52,
+		gameId: "ESPORTSBULL",
+		tpGameType: 102
 	},
 	LIVEcasinoN2Live: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
@@ -1285,6 +1379,7 @@ export const defGameInfo = {
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
+	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
@@ -1377,6 +1472,26 @@ export const defGameInfo = {
 		tpId: 41, // seamless wallet
 		gameId: 237,
 		tpGameType: 83
+	},
+	IM_Avaitor: {
+		tpId: 53,
+		gameId: "imgame12001",
+		tpGameType: 104
+	},
+	IM_Mines: {
+		tpId: 53,
+		gameId: "imgame12002",
+		tpGameType: 104
+	},
+	IM_Goal: {
+		tpId: 53,
+		gameId: "imgame12003",
+		tpGameType: 104
+	},
+	IM_Dice: {
+		tpId: 53,
+		gameId: "imgame12004",
+		tpGameType: 104
 	},
 	Mega888: { tpId: 22, tpGameType: 34 },
 	VirtualGame: {

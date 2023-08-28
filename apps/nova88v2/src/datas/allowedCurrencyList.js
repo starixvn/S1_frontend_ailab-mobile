@@ -186,6 +186,19 @@ const allowedCurrencyList = {
 		defCurrenyId.KHM,
 		defCurrenyId.BDT,
 		defCurrenyId.USDT
+	],
+
+	// other products
+
+	// slot & game
+	SPRIBE: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.USD,
+		defCurrenyId.CNY,
+		defCurrenyId.KHM
 	]
 };
 
