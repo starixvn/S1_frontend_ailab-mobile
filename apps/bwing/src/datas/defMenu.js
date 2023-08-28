@@ -39,7 +39,8 @@ export const defSlotTpGameType = {
 	RedTiger: { tpId: 38, tpGameType: 65 },
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
-	Nextspin: { tpId: 50, tpGameType: 99 }
+	Nextspin: { tpId: 50, tpGameType: 99 },
+	SPRIBE: { tpId: 53, tpGameType: 104 }
 };
 
 export const productList = langId => {
@@ -106,13 +107,19 @@ export const productList = langId => {
 					displayKey: "lbl_BTISport",
 					img: `${bannerImgUrl}/h5/img/sport/btisport.png`,
 					...defGameInfo.BTISport,
+					hasDesktopLink: true
+				},
+				{
+					displayText: "IM Sports",
+					img: `${bannerImgUrl}/h5/img/sport/inplaymatrix.png`,
+					...defGameInfo.eSports_IM,
+					hasDesktopLink: true,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.new_BTI)
+							inPeriod: isEventPeriod(eventTime.IM)
 						}
-					],
-					hasDesktopLink: true
+					]
 				},
 				{
 					displayKey: "lbl_VirtualSports",
@@ -166,6 +173,50 @@ export const productList = langId => {
 					...defGameInfo.tableGame
 				},
 				{
+					displayText: "Avaitor",
+					img: `${bannerImgUrl}/h5/img/new-game/spribe-aviator.png`,
+					...defGameInfo.IM_Avaitor,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					displayText: "Mines",
+					img: `${bannerImgUrl}/h5/img/new-game/spribe-mines.png`,
+					...defGameInfo.IM_Mines,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					displayText: "Goal",
+					img: `${bannerImgUrl}/h5/img/new-game/spribe-goal.png`,
+					...defGameInfo.IM_Goal,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					displayText: "Dice",
+					img: `${bannerImgUrl}/h5/img/new-game/spribe-dice.png`,
+					...defGameInfo.IM_Dice,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
 					...defGameInfo.Spaceman,
 					img: `${bannerImgUrl}/h5/img/new-game/pp.png`,
 					displayText: "Spaceman"
@@ -199,15 +250,20 @@ export const productList = langId => {
 					...defGameInfo.eSports
 				},
 				{
-					displayKey: "lbl_TFGaming",
-					img: `${bannerImgUrl}/h5/img/esport/tfg.png`,
-					...defGameInfo.eSports_TFGaming,
+					displayText: "IM E-Sports",
+					img: `${bannerImgUrl}/h5/img/esport/inplaymatrix.png`,
+					...defGameInfo.eSports_IM,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.TFGaming)
+							inPeriod: isEventPeriod(eventTime.IM)
 						}
 					]
+				},
+				{
+					displayKey: "lbl_TFGaming",
+					img: `${bannerImgUrl}/h5/img/esport/tfg.png`,
+					...defGameInfo.eSports_TFGaming
 				}
 			]
 		},
@@ -283,17 +339,25 @@ export const productList = langId => {
 					displayText: "JILI"
 				},
 				{
+					...defGameInfo.Casino_SPRIBE,
+					parameter: defGameInfo.Casino_SPRIBE,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/spribe.png`,
+					icon: "icon icon-SPRIBE",
+					displayText: "SPRIBE",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_RedTiger,
 					parameter: defGameInfo.Casino_RedTiger,
 					path: path.casino.root,
 					displayText: "Red Tiger",
-					img: `${bannerImgUrl}/h5/img/slot/red.png`,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_RedTiger)
-						}
-					]
+					img: `${bannerImgUrl}/h5/img/slot/red.png`
 				},
 				{
 					...defGameInfo.Casino_NetEnt,
