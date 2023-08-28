@@ -161,7 +161,10 @@ export const defGameInfo = {
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
-	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 }
+	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
+	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
+	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
 };
 
 export const slotPlatform = [
