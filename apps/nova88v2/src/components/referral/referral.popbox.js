@@ -30,9 +30,12 @@ export default () => {
 export const ReferralPopBox = ({ data, i18n }) => (
 	<div className="promotions">
 		<div className="proInfomodule">
-			<img src={data.referralContent.bannerUrl} alt="banner" />
-			<div className="protitle">{data.referralContent?.title}</div>
-			<div className="text">{data.referralContent?.description}</div>
+			{data?.referralContent?.bannerUrl && (
+				<img src={data.referralContent.bannerUrl} alt="banner" />
+			)}
+
+			<div className="protitle">{data?.referralContent?.title}</div>
+			<div className="text">{data?.referralContent?.description}</div>
 			<div className="rolloverList">
 				<div>
 					<div>{i18n.lbl_ReferralReward}</div>
@@ -70,12 +73,14 @@ export const ReferralPopBox = ({ data, i18n }) => (
 						{data.periodDays} {i18n.lbl_Days}
 					</div>
 				</div>
-				<div
-					className="text"
-					dangerouslySetInnerHTML={{
-						__html: `<pre>${data.referralContent?.detail}</pre>`
-					}}
-				/>
+				{data?.referralContent?.detail && (
+					<div
+						className="text"
+						dangerouslySetInnerHTML={{
+							__html: `<pre>${data?.referralContent?.detail}</pre>`
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	</div>

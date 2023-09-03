@@ -304,7 +304,7 @@
 	"Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
 	"GPI_Keno": "केनो",
 	"GPI_Fast3": "Fast 3",
-  "lbl_Recently_Viewed":"हाल ही में देखा गया",
+	"lbl_Recently_Viewed": "हाल ही में देखा गया",
 
 	"==============================================Casino====================================": "",
 	"lbl_AllProvider": "सभी मंच",
@@ -465,7 +465,7 @@
 	"lbl_RegisterDate": "रजिस्टर की तिथि",
 	"lbl_Currency": "मुद्रा",
 	"lbl_ValidPeriod": "वैध समय",
-	"lbl_Referral_link": "रेफरल लिकं",
+	"lbl_Referral_link": "सिफ़ारिश के लिंक",
 	"lbl_Copy_to_clipboard": "क्लिपबोर्ड पर कॉपी करें",
 	"lbl_ReferralReward": "रेफरल इनाम",
 	"lbl_FriendsInvitationLimit": "मित्र आमंत्रण सीमा",
@@ -572,12 +572,12 @@
 	"lbl_Vip_Tier_Maintenance_Requirement": "टियर रखरखाव की आवश्यकता",
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "3 महीने के अंदर जमा की गई कुल राशि",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "3 महीने के भीतर संचित कारोबार",
-  "lbl_Vip_TopPriorityServices": "Top Priority Services",
-	"lbl_Vip_ExclusivePromo":"Exclusive Promo",
+	"lbl_Vip_TopPriorityServices": "Top Priority Services",
+	"lbl_Vip_ExclusivePromo": "Exclusive Promo",
 	"lbl_Vip_BirthdaySpecialGifts": "Birthday Special Gifts",
 	"lbl_Vip_LifetimeMembership": "Lifetime Membership",
 	"lbl_Vip_NoRestrictions": "NO RESTRICTIONS",
-  "lbl_Vip_Special_Rebate_UP_TO": "SPECIAL REBATE UP TO",
+	"lbl_Vip_Special_Rebate_UP_TO": "SPECIAL REBATE UP TO",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "रैंकिंग वैधता सदस्यता नवीनीकरण",
 	"lbl_Vip_Minimum_Deposit_Count": "न्यूनतम जमा",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "वैधता अवधि के भीतर न्यूनतम जमा",
@@ -913,5 +913,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "दैनिक छूट पुरस्कारों का आनंद लेने के लिए इस सूची के खेलों को बाहर रखा जाएगा",
-	"lbl_GameName": "गेम का नाम"
+	"lbl_GameName": "गेम का नाम",
+
+	"Label_Referral_AccumulateRewardAmount": "संचय करें इनाम की रकम",
+	"Label_Referral_Simple3StepsToShare": "साझा करने के लिए सरल 3 चरण",
+	"Label_Share": "शेयर करना",
+	"Label_Recharge": "रिचार्ज",
+	"Label_Referral_ShareDescription": "अपने मित्र को आमंत्रित करने के लिए अपना अद्वितीय लिंक/कोड साझा करें",
+	"Label_Referral_Recharge": "आपके मित्र ने सफलतापूर्वक रिचार्ज कर लिया है।",
+	"Label_Referral_RewardsDescription": "अपने पुरस्कार प्राप्त करें",
+	"Label_Referral_ShareAcrossSocialMedia": "सोशल मीडिया पर साझा करें"
 }
