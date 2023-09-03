@@ -105,7 +105,7 @@
 	"lbl_MainWallet": "中心钱包",
 	"lbl_ID": "ID",
 	"lbl_Login": "登入",
-	"lbl_Date": "Date",
+	"lbl_Date": "日期",
 	"lbl_Time": "时间",
 	"lbl_Deposit": "充值",
 	"lbl_Transfer": "转帐",
@@ -310,7 +310,7 @@
 	"Skywind_Cai_Shen_Da_Hai": "財神大海",
 	"GPI_Keno": "快乐彩",
 	"GPI_Fast3": " 快3",
-  "lbl_Recently_Viewed":"近期浏览",
+	"lbl_Recently_Viewed": "近期浏览",
 
 	"-==================--=========================Casino--==================================": "",
 	"lbl_AllProvider": "所有平台",
@@ -565,12 +565,12 @@
 	"lbl_Vip_Tier_Maintenance_Requirement": "等级保留要求",
 	"lbl_Vip_Accumulated_Deposit_Within_3_Months": "三个月内累计存款",
 	"lbl_Vip_Accumulated_Turnover_Within_3_Months": "三个月内的累计有效投注",
-  "lbl_Vip_TopPriorityServices": "优先服务",
-	"lbl_Vip_ExclusivePromo":"独家促销",
+	"lbl_Vip_TopPriorityServices": "优先服务",
+	"lbl_Vip_ExclusivePromo": "独家促销",
 	"lbl_Vip_BirthdaySpecialGifts": "生日特别奖励",
 	"lbl_Vip_LifetimeMembership": "终身会员",
 	"lbl_Vip_NoRestrictions": "无限制条件",
-  "lbl_Vip_Special_Rebate_UP_TO": "特别返水",
+	"lbl_Vip_Special_Rebate_UP_TO": "特别返水",
 	"lbl_Vip_Ranking_Validity_Membership_renewal": "会员等级续约",
 	"lbl_Vip_Minimum_Deposit_Count": "最低存款金额",
 	"lbl_Vip_Minimum_Deposit_Within_Validity_Period": "有效期内最低存款",
@@ -899,5 +899,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "游戏在此列表将排除与享有每日返水奖励",
-	"lbl_GameName": "游戏名称"
+	"lbl_GameName": "游戏名称",
+
+	"Label_Referral_AccumulateRewardAmount": "累积奖励金额",
+	"Label_Referral_Simple3StepsToShare": "简单3步骤分享",
+	"Label_Share": "分享",
+	"Label_Recharge": "充值",
+	"Label_Referral_ShareDescription": "向朋友分享您的推荐链接/代码",
+	"Label_Referral_Recharge": "您的好友已充值成功。",
+	"Label_Referral_RewardsDescription": "获得您的奖励",
+	"Label_Referral_ShareAcrossSocialMedia": "通过社交媒体分享"
 }
