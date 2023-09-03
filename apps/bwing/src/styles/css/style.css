@@ -1176,8 +1176,8 @@ footer > a.open {
   color: white;
   position: absolute;
   color: #58cdff;
-  right: 2vw;
-  top: 3vw;
+  right: 3vw;
+  top: 0;
   left: unset;
 }
 #popup.promoinfo .pop .popTit {
@@ -1831,6 +1831,57 @@ footer > a.open {
   background: #fff;
   border: 0;
   border-radius: 2px;
+}
+#popup.detailpop {
+  padding: 0;
+  top: 100%;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+#popup.detailpop.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+#popup.detailpop .pop {
+  width: 100%;
+  height: 100%;
+  margin: 0 0 auto;
+}
+#popup.detailpop .pop .icon-close {
+  color: white;
+  position: absolute;
+  color: #58cdff;
+  right: 3vw;
+  top: 0;
+  left: unset;
+}
+#popup.detailpop .pop .popTit {
+  font-size: 3.5vw;
+  padding: 3vw;
+  background: #1d2f62;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 1;
+}
+#popup.detailpop .infoList {
+  width: calc(100% - 6vw);
+  padding: 0 3vw;
+  overflow: auto;
+  margin-top: 10vw;
+  height: calc(100% - 10vw);
+}
+#popup.detailpop .infoList ul, #popup.detailpop .infoList li {
+  margin-top: 0;
 }
 
 .header {
@@ -5401,9 +5452,6 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
   margin: 8px;
-}
-.hotgame + .titleBox {
-  margin: 8px 8px 0 8px;
 }
 .hotgame .titleBox {
   width: 100%;
@@ -14356,146 +14404,75 @@ span.important {
   display: none;
 }
 
-.titleBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#4dc4ff), to(#3097ff));
-  background: linear-gradient(to bottom, #4dc4ff 0%, #3097ff 100%);
-  border-radius: 5px 5px 0 0;
-  padding: 0 15px;
-}
-.titleBox .title {
-  padding: 8px 0;
-  text-align: center;
+.headerTLogout {
+  position: relative;
 }
 
-.recently {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0 8px 8px 8px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  border: 1px solid #414F6B;
-  border-radius: 3px;
-  padding: 2vw 2vw 5vw;
-}
-.recently .swiper-button-next, .recently .swiper-button-prev {
-  background: #112240;
-  font-family: "icomoon";
-  width: 35px;
-  height: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50%;
-  top: calc(50% + 1vw);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
-  content: "\ea40";
-  color: #fff;
-}
-.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
-  display: none;
-}
-.recently .swiper-button-next {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.recently .swiper-slide {
-  cursor: pointer;
-  padding-top: 10vw;
-  margin-top: -2vw;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.recently-game {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(183, 229, 255, 0)), color-stop(56.77%, rgba(72, 188, 255, 0.2)), to(rgba(71, 187, 255, 0.78)));
-  background: linear-gradient(180deg, rgba(183, 229, 255, 0) 0%, rgba(72, 188, 255, 0.2) 56.77%, rgba(71, 187, 255, 0.78) 100%);
-  border-radius: 7px;
-  font-weight: bold;
-  color: #fff;
-  padding: 5vw;
-  position: relative;
-}
-.recently-game > div:first-child {
-  margin-top: -10vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.recently-game.active {
-  -webkit-filter: grayscale(1);
-          filter: grayscale(1);
-}
-.recently-game.active .under {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.recently-game .under {
-  display: none;
+.cambodia::before {
+  content: "";
+  display: block;
+  width: 14vw;
+  height: 14vw;
+  -webkit-animation: rabbitboy 1s infinite;
+          animation: rabbitboy 1s infinite;
   position: absolute;
-  top: calc(50% + 4vw);
-  left: calc(50% - 23.5vw);
-  z-index: 1;
-  background: rgba(165, 159, 159, 0.8);
-  border-radius: 1vw;
-  color: white;
-  font-weight: normal;
-  font-size: 3vw;
-  width: 41vw;
-  height: 12vw;
-  padding: 0 3vw;
-  text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  left: 64vw;
+  bottom: -1vw;
 }
-.recently-image {
-  border-radius: 15px;
-  width: 45vw;
+.cambodia:after {
+  content: "";
+  display: block;
+  width: 15vw;
+  height: 15vw;
+  -webkit-animation: rabbitgirl 1s infinite;
+          animation: rabbitgirl 1s infinite;
+  position: absolute;
+  left: 67vw;
+  bottom: -1vw;
 }
-.recently-brand {
-  height: 55px;
-  width: auto;
-  max-width: 26vw;
-  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+
+@-webkit-keyframes rabbitgirl {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
 }
-.recently-title {
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+@keyframes rabbitgirl {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitgirl-a.png) no-repeat center/cover;
+  }
+}
+@-webkit-keyframes rabbitboy {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+}
+@keyframes rabbitboy {
+  0% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
+  50% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-b.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.bw88.io/h5/img/rabbitboy-a.png) no-repeat center/cover;
+  }
 }/*# sourceMappingURL=style.css.map */
