@@ -2326,6 +2326,7 @@ footer > a.active .circleAnimation::after {
   opacity: 0;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 }
 #popup.active {
   visibility: visible;

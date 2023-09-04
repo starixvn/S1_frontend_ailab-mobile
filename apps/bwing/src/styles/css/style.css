@@ -903,6 +903,7 @@ footer > a.open {
           box-sizing: border-box;
   z-index: 11;
   font-size: 3.5vw;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 }
 #popup.show {
   display: -webkit-box;
