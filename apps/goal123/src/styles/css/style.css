@@ -1017,6 +1017,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   padding: 8vw;
   overflow: auto;
   display: none;
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 }
 #popup.active {
   display: -webkit-box;

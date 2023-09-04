@@ -1,10 +1,13 @@
 import React, { useEffect, useContext, useState } from "react";
+import { useNavigate } from "@reach/router";
 import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
 	rootContext
 } from "Context";
+import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
+import { defDeviceType } from "@ailab-mobile/api";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -15,13 +18,18 @@ import Referral from "../components/home/referral";
 import EventSwipper from "../components/home/eventSwipper";
 import HeaderShortcut from "../components/home/headerShortcut";
 import Bottom from "../components/home/bottom";
-import { defCurrenyId } from "../components/common/common";
+import {
+	defCurrenyId,
+	readCookie,
+	setCookie
+} from "../components/common/common";
 import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import Jackpot from "../components/home/jackpot";
 import AddToHomePop from "../components/home/addToHomePop";
 import PromotionWrapper from "../components/promotion/common/wrapper";
 import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
+import path from "../path";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -29,6 +37,10 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setRoot } = useContext(rootContext);
 	const [appHint, setAppHint] = useState(false);
+	const navigate = useNavigate();
+
+	// * 如果 popUpBonusCode 有值需彈出彈窗提醒有該優惠活動可以使用
+	const [getPopUpPromotion] = useLazyGetPopUpPromotionQuery();
 
 	useEffect(() => {
 		setRoot(true);
@@ -37,6 +49,82 @@ const IndexPage = () => {
 		};
 	}, [setRoot]);
 
+	useEffect(() => {
+		const displayPromotionPopup = () => {
+			const cookieName = `popUpPromotion${userInfo.userName}`;
+
+			// * 如果未登入 or 當日觸發過 則直接進入下一個彈窗
+			if (
+				!userInfo.isLogin ||
+				!userInfo.accountName ||
+				readCookie(cookieName) === "1"
+			) {
+				openNextPopUp();
+				return;
+			}
+
+			// * 如果 bonusCode 不為 null ，打開並記錄 cookie，效期為一日
+			getPopUpPromotion({
+				deviceType: defDeviceType.Mobile,
+				langId: userInfo.langId
+			}).then(({ data: { data: { bonusCode } = {} } = {} }) => {
+				if (bonusCode) {
+					setPopBox({
+						isOpen: true,
+						className: "promosback active",
+						custContent: (
+							<div className="pop promosbackpop">
+								<img
+									src={`${
+										process.env.REACT_APP_BANNER_URL
+									}/desktop/img/promosBackPopup/promosPopup-${
+										userInfo?.langId || "en"
+									}.png`}
+									alt="img-promosPopup"
+								/>
+								<button
+									className="popgo"
+									onClick={() => {
+										// nova88 h5 版本的導轉需加上 langId 才能正常運作
+										navigate(
+											`/${userInfo.langId}/${path.promotion.root}?bonusCode=${bonusCode}`
+										);
+										setPopBox({ isOpen: false });
+									}}>
+									{i18n.lbl_ClaimNow}
+								</button>
+								<img
+									src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
+									alt="img-delet"
+									className="closepop"
+									onClick={() => {
+										setPopBox({ isOpen: false });
+										openNextPopUp();
+									}}
+								/>
+							</div>
+						)
+					});
+					setCookie(cookieName, "1", 1);
+				} else {
+					openNextPopUp();
+				}
+			});
+		};
+
+		const popUpStack = [displayPromotionPopup];
+		const openNextPopUp = () => {
+			if (popUpStack.length) {
+				popUpStack.pop()();
+			} else {
+				setPopBox({ isOpen: false });
+			}
+		};
+
+		if (userInfo.isLogin !== null) {
+			openNextPopUp();
+		}
+	}, [userInfo.isLogin, userInfo.accountName]);
 	return (
 		<PromotionWrapper>
 			<Layout
