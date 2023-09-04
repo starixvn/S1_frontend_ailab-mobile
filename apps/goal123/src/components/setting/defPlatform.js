@@ -159,6 +159,10 @@ const defPlatfrom = [
 		imgName: "endorphinaa"
 	},
 	{
+		...defGameInfo.sports_IM,
+		imgName: "im-sportsa"
+	},
+	{
 		...defGameInfo.eSports_IM,
 		imgName: "im-esportsa"
 	},

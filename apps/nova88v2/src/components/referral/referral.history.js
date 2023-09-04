@@ -1,11 +1,11 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, popBoxContext, userInfoContext } from "../common/context";
-import { isConvert, currencyIdToTimeZone } from "../common/common";
+import { useLazyGetRefFriendDetailQuery } from "@ailab-mobile/service";
+import { i18nContext, popBoxContext } from "../common/context";
 import AUTO_FETCHING_DATA from "../../service/autoFetchingData";
 import api from "../../service/api";
-import { Detail } from "./referral.history.detail";
-import GoTopBtn from "../common/goTopBtn";
+import ReferralHistoryList from "./referral.history.list";
+import ReferralHistoryDetails from "./referral.history.details";
 
 const Panel = ({
 	history,
@@ -15,11 +15,10 @@ const Panel = ({
 	filterData,
 	clickSubmit
 }) => {
-	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [processing, setProcessing] = useState(false);
-	const _isConvert = isConvert(userInfo.currencyId);
+	const [isDetailsActive, setIsDetailsActive] = useState(false);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -28,6 +27,23 @@ const Panel = ({
 			isMountedRef.current = false;
 		};
 	});
+
+	const [
+		getRefFriendDetail,
+		{ data: { data: referralDetail = [] } = {} }
+	] = useLazyGetRefFriendDetailQuery();
+
+	const handleRefFriendDetail = async payload => {
+		try {
+			await getRefFriendDetail(payload).unwrap();
+			setIsDetailsActive(true);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: i18n.msg_ApiServerError
+			});
+		}
+	};
 
 	AUTO_FETCHING_DATA(
 		api.account.GetRefFriendList,
@@ -41,41 +57,28 @@ const Panel = ({
 		clickSubmit
 	);
 
-	const timeZone = currencyIdToTimeZone[userInfo.currencyId];
-	const arr = history?.map(data => {
-		return (
-			<Detail
-				key={`referral-history-${data.custId}`}
-				i18n={i18n}
-				_isConvert={_isConvert}
-				userName={data.userName}
-				registerDate={data.registerDate}
-				currencyId={data.currencyId}
-				totalDeposit={data.totalDeposit}
-				depositC={data.depositC}
-				totalBet={data.totalBet}
-				vaildBetC={data.vaildBetC}
-				bonusAmount={data.bonusAmount}
-				status={data.status}
-				timeZone={timeZone}
-			/>
-		);
-	});
+	return (
+		<>
+			<div className="recent active">
+				{history?.length > 0 ? (
+					<ReferralHistoryList
+						history={history}
+						onRefFriendDetail={handleRefFriendDetail}
+					/>
+				) : (
+					<div className="nodata icon icon-nodata">
+						<div className="txt-white">{i18n.msg_NoData}</div>
+					</div>
+				)}
+			</div>
 
-	return history ? (
-		<div className="recent active">
-			{history.length > 0 ? (
-				<div className="infoList">
-					{arr}
-					{history.length > 2 ? <GoTopBtn /> : null}
-				</div>
-			) : (
-				<div className="nodata icon icon-nodata">
-					<div className="txt-white">{i18n.msg_NoData}</div>
-				</div>
-			)}
-		</div>
-	) : null;
+			<ReferralHistoryDetails
+				referralDetail={referralDetail}
+				active={isDetailsActive}
+				setIsDetailsActive={setIsDetailsActive}
+			/>
+		</>
+	);
 };
 
 Panel.defaultProps = {

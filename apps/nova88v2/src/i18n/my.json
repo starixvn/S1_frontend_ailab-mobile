@@ -914,5 +914,14 @@
 
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Permainan dalam senarai ini akan dikecualikan menikmati ganjaran rebat harian",
-	"lbl_GameName": "Nama Permainan"
+	"lbl_GameName": "Nama Permainan",
+
+	"Label_Referral_AccumulateRewardAmount": "Jumlah ganjaran",
+	"Label_Referral_Simple3StepsToShare": "3 langkah mudah untuk perkongsian",
+	"Label_Share": "Kongsi",
+	"Label_Recharge": "Isi semula",
+	"Label_Referral_ShareDescription": "Kongsi pautan/kod unik anda Untuk menjemput rakan anda",
+	"Label_Referral_Recharge": "Rakan anda telah berjaya mengecas semula.",
+	"Label_Referral_RewardsDescription": "Dapatkan Ganjaran Anda",
+	"Label_Referral_ShareAcrossSocialMedia": "kongsi di media sosial"
 }

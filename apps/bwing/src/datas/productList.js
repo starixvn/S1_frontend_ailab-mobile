@@ -103,6 +103,11 @@ export const defGameInfo = {
 		gameId: "imgame12001",
 		tpGameType: 104
 	},
+	IM_Avaitor: {
+		tpId: 53,
+		gameId: "imgame12001",
+		tpGameType: 104
+	},
 	IM_Mines: {
 		tpId: 53,
 		gameId: "imgame12002",
@@ -118,8 +123,30 @@ export const defGameInfo = {
 		gameId: "imgame12004",
 		tpGameType: 104
 	},
+	VirtualGame: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet gameId: 245,
+		tpGameType: 22
+	},
+	IM_Goal: {
+		tpId: 53,
+		gameId: "imgame12003",
+		tpGameType: 104
+	},
+	IM_Dice: {
+		tpId: 53,
+		gameId: "imgame12004",
+		tpGameType: 104
+	},
 	sportSbo: { tpId: 42, tpGameType: 77 },
 	WorldCup: { tpId: 41, gameId: 2002, tpGameType: 69 },
+	WorldCup: {
+		// tpId: 1,
+		tpId: 41, // seamless wallet
+		gameId: 2002,
+		// tpGameType: 1,
+		tpGameType: 69 // seamless wallet
+	},
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
