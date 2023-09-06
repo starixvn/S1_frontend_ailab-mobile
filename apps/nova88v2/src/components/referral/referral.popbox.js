@@ -36,43 +36,44 @@ export const ReferralPopBox = ({ data, i18n }) => (
 
 			<div className="protitle">{data?.referralContent?.title}</div>
 			<div className="text">{data?.referralContent?.description}</div>
+			{/* 先暫移除 */}
+			{/* <div className="rolloverList"> */}
+			{/* 	<div> */}
+			{/* 		<div>{i18n.lbl_ReferralReward}</div> */}
+			{/* 		<div>{data.referralReward}</div> */}
+			{/* 	</div> */}
+			{/* 	<div> */}
+			{/* 		<div>{i18n.lbl_FriendsInvitationLimit}</div> */}
+			{/* 		<div>{data.invitationLimit}</div> */}
+			{/* 	</div> */}
+			{/* 	<div> */}
+			{/* 		<div>{i18n.lbl_DepositRequirement}</div> */}
+			{/* 		<div>{data.agentDeposit}</div> */}
+			{/* 	</div> */}
+			{/* 	<div> */}
+			{/* 		<div>{i18n.lbl_ValidBetRequirement}</div> */}
+			{/* 		<div>{data.agentValidBet}</div> */}
+			{/* 	</div> */}
+			{/* </div> */}
 			<div className="rolloverList">
-				<div>
-					<div>{i18n.lbl_ReferralReward}</div>
-					<div>{data.referralReward}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_FriendsInvitationLimit}</div>
-					<div>{data.invitationLimit}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_DepositRequirement}</div>
-					<div>{data.agentDeposit}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_ValidBetRequirement}</div>
-					<div>{data.agentValidBet}</div>
-				</div>
-			</div>
-			<div className="rolloverList">
-				<div>
-					<div>{i18n.lbl_ReferredFreeCredit}</div>
-					<div>{data.memberReward}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_DepositRequirement}</div>
-					<div>{data.deposit}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_ValidBetRequirement}</div>
-					<div>{data.vaildBet}</div>
-				</div>
-				<div>
-					<div>{i18n.lbl_TermPeriodWithin}</div>
-					<div>
-						{data.periodDays} {i18n.lbl_Days}
-					</div>
-				</div>
+				{/* <div> */}
+				{/* 	<div>{i18n.lbl_ReferredFreeCredit}</div> */}
+				{/* 	<div>{data.memberReward}</div> */}
+				{/* </div> */}
+				{/* <div> */}
+				{/* 	<div>{i18n.lbl_DepositRequirement}</div> */}
+				{/* 	<div>{data.deposit}</div> */}
+				{/* </div> */}
+				{/* <div> */}
+				{/* 	<div>{i18n.lbl_ValidBetRequirement}</div> */}
+				{/* 	<div>{data.vaildBet}</div> */}
+				{/* </div> */}
+				{/* <div> */}
+				{/* 	<div>{i18n.lbl_TermPeriodWithin}</div> */}
+				{/* 	<div> */}
+				{/* 		{data.periodDays} {i18n.lbl_Days} */}
+				{/* 	</div> */}
+				{/* </div> */}
 				{data?.referralContent?.detail && (
 					<div
 						className="text"

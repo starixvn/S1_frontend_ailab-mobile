@@ -372,19 +372,6 @@ const gameList = ({ langId, currencyId }) => {
 			isEventPeriod: !isDateRange(angPaoEventPeriod)
 		},
 		{
-			category: "cryptoSports",
-			event: true,
-			imgUrl: `${cloudBannerImgURL}/h5/img/cryptosports.png`,
-			className: "crypto",
-			...defGameInfo.CryptoSports,
-			eventIcon: [
-				{
-					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
-				}
-			]
-		},
-		{
 			category: "sports",
 			categoryIcon: "soccer",
 			translateKey: "lbl_Sports",
