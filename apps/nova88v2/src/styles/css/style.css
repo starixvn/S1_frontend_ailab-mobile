@@ -5176,6 +5176,32 @@ button.clickBtn:before {
   background: #e6e6e6;
   color: #a5aab1;
 }
+.buttonBox.col-3 {
+  margin: 0 0.5vw !important;
+}
+.buttonBox.col-3 button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25.75vw;
+          flex: 0 0 25.75vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.buttonBox.col-3 button:nth-child(3n) {
+  margin-right: 0 !important;
+}
+.buttonBox.col-3 .icon-icon32px_check {
+  margin-right: 0.5vw;
+}
+.buttonBox.col-3 .icon-icon32px_check::before {
+  font-size: 4vw;
+}
 
 .channel {
   visibility: hidden;
@@ -8789,6 +8815,65 @@ span.important {
 .depositModule .downloadModule .swiper-pagination-bullets {
   bottom: -3vw;
 }
+.depositModule .input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.depositModule .input-group .inputBox, .depositModule .input-group .worldcupEvent .event .event-content .inputBox-event, .worldcupEvent .event .event-content .depositModule .input-group .inputBox-event {
+  width: 76vw;
+}
+.depositModule .cardinfo {
+  text-align: left;
+  margin-top: 2vw;
+}
+.depositModule .cardinfo img {
+  border-radius: 5px;
+  width: 74vw;
+}
+.depositModule .note {
+  width: 100% !important;
+  background: #e2e2e2;
+  color: #838383;
+  border-radius: 5px;
+  padding: 1vw 2vw;
+  font-size: 3vw;
+  text-align: left;
+  margin: 1.5vw auto;
+}
+.depositModule .note .title {
+  margin: 0 0 1.5vw 0;
+  color: #cf0404;
+  border-top: 0;
+}
+.depositModule .note .title .icon-warning::before {
+  font-size: 3.5vw;
+}
+.depositModule .note li {
+  margin-bottom: 2vw;
+  line-height: 1.5;
+}
+
+.icon-qrpay::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.0814media.net/h5/img/qrpay.png) center/cover;
+}
+
+.icon-topup::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.0814media.net/h5/img/topup.png) center/cover;
+}
 
 .submenu {
   background: #E4E4E4;
@@ -8837,6 +8922,7 @@ span.important {
           justify-content: center;
   margin: 0 0 1vw;
   color: white;
+  text-align: center;
 }
 .submenu > div.thBar a i:not(.icon-history):before {
   font-size: 7vw;
