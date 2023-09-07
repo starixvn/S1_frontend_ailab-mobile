@@ -1,13 +1,15 @@
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
 import moment from "moment";
-import { AutoPlay, ClickLink } from "../common/swipperBanner";
+import { AutoPlay } from "../common/swipperBanner";
 import {
 	userInfoContext,
 	navContext,
 	popBoxContext,
-	i18nContext
+	i18nContext,
+	defNavPanel
 } from "../common/context";
 import { api_hotEvent_GetDataList } from "../../service/api/hotEvent";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 
 const EventSwipper = memo(() => {
 	const { userInfo } = useContext(userInfoContext);
@@ -38,6 +40,20 @@ const EventSwipper = memo(() => {
 		);
 	};
 
+	const goToBet = ({ tpId, gameId, matchId }) => {
+		GET_ENTER_PAGE({
+			langId: userInfo.langId,
+			tpId,
+			gameId,
+			matchid: matchId,
+			isLogin: userInfo.isLogin,
+			loginCallback: () => {
+				setNav(defNavPanel.login);
+			},
+			tpGameType: 1
+		});
+	};
+
 	useEffect(() => {
 		getHotEventDataList();
 		const interval = setInterval(() => {
@@ -52,6 +68,9 @@ const EventSwipper = memo(() => {
 
 	const rows = banner?.map(b => {
 		const {
+			tpId,
+			gameId,
+			matchId,
 			battleTime,
 			homeTeamPic,
 			awayTeamPic,
@@ -72,12 +91,9 @@ const EventSwipper = memo(() => {
 		return (
 			<div
 				key={`HotEvent-${sportLeaguesTitle}`}
-				onClick={ClickLink.bind(this, {
-					...b,
-					isLogin: userInfo.isLogin,
-					lang: userInfo.langId,
-					setNav
-				})}>
+				onClick={() => {
+					goToBet({ tpId, gameId, matchId });
+				}}>
 				<div className="eventImg">
 					<div className="team">
 						<img
