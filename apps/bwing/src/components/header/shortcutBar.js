@@ -36,7 +36,7 @@ const ShortcutBar = ({ closeSubMenu }) => {
 			<NavLink to={`/${path.deposit.root}`} checkProfile={true}>
 				{i18n.lbl_Deposit}
 			</NavLink>
-			<NavLink to={`/${path.transfer.root}`}>{i18n.lbl_Transfer}</NavLink>
+			{/* <NavLink to={`/${path.transfer.root}`}>{i18n.lbl_Transfer}</NavLink> */}
 			<NavLink to={`/${path.statement.root}`}>
 				{i18n.lbl_Statement}
 			</NavLink>

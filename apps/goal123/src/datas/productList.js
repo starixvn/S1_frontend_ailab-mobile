@@ -34,7 +34,7 @@ export const defGameInfo = {
 	Volleyball: { tpId: 41, gameId: 6, tpGameType: 69 },
 	// CockFighting: { tpId: 17, tpGameType: 27 },
 	sabaClub: { tpId: 41, gameId: 171, tpGameType: 95 },
-	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 47 },
 	Keno: { gameId: 202, tpId: 41, tpGameType: 73 },
 	lottery: { gameId: 220, tpId: 41, tpGameType: 74 },
 	tableGame: { gameId: 222, tpId: 41, tpGameType: 75 },

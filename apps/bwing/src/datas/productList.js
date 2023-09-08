@@ -92,7 +92,7 @@ export const defGameInfo = {
 		gameId: "cmf0006",
 		tpGameType: 40
 	},
-	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 47 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
