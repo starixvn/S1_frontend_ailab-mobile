@@ -45,7 +45,7 @@ export const defGameInfo = {
 		// tpGameType: 59,
 		tpGameType: 95 // seamless wallet
 	},
-	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 47 },
 	Keno: {
 		gameId: 202,
 		// tpId: 1,
