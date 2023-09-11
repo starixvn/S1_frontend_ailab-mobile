@@ -122,7 +122,7 @@ const IndexPage = () => {
 				return;
 			}
 
-			const cookieName = `disclaimerForVnd-${userInfo.userName}`;
+			const cookieName = "disclaimerForVnd";
 			const {
 				data: { data: ipCountryData = {} } = {}
 			} = await api.site.GetIpCountry();
