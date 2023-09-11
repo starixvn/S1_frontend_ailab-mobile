@@ -122,15 +122,12 @@ const IndexPage = () => {
 				return;
 			}
 
-			const cookieName = `disclaimerForVnd-${userInfo.userName}`;
+			const cookieName = "disclaimerForVnd";
 			const {
 				data: { data: ipCountryData = {} } = {}
 			} = await api.site.GetIpCountry();
 			// * 如果未登入 or 當日觸發過 則直接進入下一個彈窗
 			if (
-				!userInfo.isLogin ||
-				// * 多判斷是否有 accountName 防止 setCookie 紀錄 Guest 狀態時的資料
-				!userInfo.accountName ||
 				// * 等同於lodash isEmpty
 				Object.keys(ipCountryData).length === 0 ||
 				ipCountryData.code !== "VN" ||
