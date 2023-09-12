@@ -80,6 +80,8 @@ const JoinStep2 = ({
 	}
 	const _areaCode = areaCodeList[userValue?.AreaCodeIdx]?.value;
 
+	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -90,7 +92,11 @@ const JoinStep2 = ({
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 
 	useEffect(() => {
-		if (!lineUserId && !AffId && !userValue?.Affiliate) {
+		if (
+			(!lineUserId && !AffId && !userValue?.Affiliate) ||
+			// 有 userValue?.Affiliate 且 urlAffCode 有值，代表此 AffCode 為合格
+			(userValue?.Affiliate && urlAffCode)
+		) {
 			GetSiteCurrencyList();
 		} else if (AffId) {
 			api.site.GetAffiliateAgent({ AffId }).then(
