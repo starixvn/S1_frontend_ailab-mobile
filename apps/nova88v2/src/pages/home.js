@@ -137,6 +137,11 @@ const IndexPage = () => {
 				return;
 			}
 
+			const showLang =
+				ipCountryData.code === "VN" && userInfo.langId === "vn"
+					? "vn"
+					: "en";
+
 			setCookie(cookieName, "1", 1);
 			setPopBox({
 				isOpen: true,
@@ -144,7 +149,7 @@ const IndexPage = () => {
 				custContent: (
 					<div className="pop vninfopop-inner">
 						<img
-							src={`https://banner.0814media.net/h5/img/disclaimer-vnd-currency-popup-${userInfo.langId}.png`}
+							src={`https://banner.0814media.net/h5/img/disclaimer-vnd-currency-popup-${showLang}.png`}
 							alt=""
 						/>
 						<button
