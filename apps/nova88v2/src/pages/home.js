@@ -8,6 +8,7 @@ import {
 } from "Context";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { defDeviceType } from "@ailab-mobile/api";
+import api from "../service/api";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -112,7 +113,62 @@ const IndexPage = () => {
 			});
 		};
 
-		const popUpStack = [displayPromotionPopup];
+		const expiredDisclaimerForVndDate = new Date(2024, 3, 13);
+
+		const disclaimerForVnd = async () => {
+			const nowDate = new Date();
+			if (nowDate > expiredDisclaimerForVndDate) {
+				openNextPopUp();
+				return;
+			}
+
+			const cookieName = "disclaimerForVnd";
+			const {
+				data: { data: ipCountryData = {} } = {}
+			} = await api.site.GetIpCountry();
+			// * 如果未登入 or 當日觸發過 則直接進入下一個彈窗
+			if (
+				// * 等同於lodash isEmpty
+				Object.keys(ipCountryData).length === 0 ||
+				ipCountryData.code !== "VN" ||
+				readCookie(cookieName) === "1"
+			) {
+				openNextPopUp();
+				return;
+			}
+
+			const showLang =
+				ipCountryData.code === "VN" && userInfo.langId === "vn"
+					? "vn"
+					: "en";
+
+			setCookie(cookieName, "1", 1);
+			setPopBox({
+				isOpen: true,
+				className: "vninfopop active",
+				custContent: (
+					<div className="pop vninfopop-inner">
+						<img
+							src={`https://banner.0814media.net/h5/img/disclaimer-vnd-currency-popup-${showLang}.png`}
+							alt=""
+						/>
+						<button
+							onClick={() => setPopBox({ isOpen: false })}
+							className="popgoto">
+							{i18n.lbl_JoinNow}
+						</button>
+						<img
+							onClick={() => setPopBox({ isOpen: false })}
+							src="https://banner.0814media.net/desktop/img/promosBackPopup/delet.png"
+							alt=""
+							className="closepop"
+						/>
+					</div>
+				)
+			});
+		};
+
+		const popUpStack = [displayPromotionPopup, disclaimerForVnd];
 		const openNextPopUp = () => {
 			if (popUpStack.length) {
 				popUpStack.pop()();

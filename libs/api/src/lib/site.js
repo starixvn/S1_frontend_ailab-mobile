@@ -100,4 +100,6 @@ export class SiteAPI extends BaseAPI {
 		this.siteRequest.post("GetVipBanner", {
 			CurrencyId
 		});
+
+	GetIpCountry = () => this.siteRequest.post("/GetIpCountry");
 }
