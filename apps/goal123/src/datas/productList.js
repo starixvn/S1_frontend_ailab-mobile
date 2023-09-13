@@ -91,6 +91,7 @@ export const defGameInfo = {
 	Casino_All: { tpId: 0 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	Casino_PNG: { tpId: 54, tpGameType: 105 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_SG: { tpId: 10, tpGameType: 15 },
@@ -231,6 +232,7 @@ export const defSlotTpGameType = {
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
+	PNG: { tpId: 54, tpGameType: 105 },
 	Iconic: { tpId: 24, tpGameType: 39 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
@@ -663,6 +665,7 @@ const gameList = [
 				path: path.casino.root,
 				providerImgName: "pp"
 			},
+
 			{
 				...defGameInfo.Casino_SG,
 				parameter: defGameInfo.Casino_SG,
@@ -760,6 +763,14 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-cq9.png`,
 				path: path.casino.root,
 				providerImgName: "cq9"
+			},
+			{
+				...defGameInfo.Casino_PNG,
+				parameter: defGameInfo.Casino_PNG,
+				spanText: "Play' n GO",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-png.png`,
+				path: path.casino.root,
+				providerImgName: "png"
 			},
 			{
 				...defGameInfo.Casino_GPI,
