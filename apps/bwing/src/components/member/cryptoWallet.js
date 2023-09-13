@@ -1,15 +1,24 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	withdrawalBlockSettingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import { api_DelCustCryptoWallet } from "../../service/api/accountStrict";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import { defLevelList } from "../vip/def";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const CryptoWallet = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [tip, setTip] = useState(false);
 	const levelInfo = userInfo.userLevel
 		? defLevelList[Number(userInfo.userLevel) - 1]
@@ -19,6 +28,11 @@ const CryptoWallet = () => {
 	const [walletInfo, setWalletInfo] = useState([]);
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
+
+	const displayCrypto =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.Crypto
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -174,6 +188,9 @@ const CryptoWallet = () => {
 			<div>{item.usdtAddress}</div>
 		</div>
 	));
+
+	if (!displayCrypto) return null;
+
 	return (
 		<section className="cryptoBox">
 			<div className="porfileVip">

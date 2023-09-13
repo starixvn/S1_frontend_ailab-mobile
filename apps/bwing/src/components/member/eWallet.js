@@ -1,16 +1,25 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	withdrawalBlockSettingContext
+} from "../common/context";
 import Loading from "../common/loading";
 import Step, { defStep } from "./eWallet.step";
 import AddEWalletPanel from "./eWallet.addCard";
 import ShowCardPanel from "./eWallet.showCard";
 import { api_account_GetCustEWalletInfo } from "../../service/api/account";
 import { api_payment_GetEWalletInfoSysList } from "../../service/api/payment";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const EWallet = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [siteEWalletList, setSiteEWalletList] = useState([]);
 	const [custEWalletInfo, setCustEWalletInfo] = useState([]);
 	const [eWalletSelectedIdx, setEWalletSelectedIdx] = useState(0);
@@ -18,6 +27,11 @@ const EWallet = () => {
 	const [step, setStep] = useState(defStep.initPanel);
 	const [tip, setTip] = useState("");
 	const isMountedRef = useRef(null);
+
+	const displayEWallet =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.EWallet
+		)?.status ?? true;
 
 	const GetCustEWalletInfo = () => {
 		setLoading(true);
@@ -110,6 +124,8 @@ const EWallet = () => {
 		setPopBox,
 		userInfo.isLogin
 	]);
+
+	if (!displayEWallet) return null;
 
 	return loading ? (
 		<Loading />

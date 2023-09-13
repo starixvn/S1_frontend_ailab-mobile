@@ -224,3 +224,6 @@ export const api_payment_WithdrawalEWalletReq = ({
 		sysId,
 		memo
 	});
+
+export const api_payment_GetWithdrawalBlockSetting = () =>
+	paymentRequest.post("GetWithdrawalBlockSetting");

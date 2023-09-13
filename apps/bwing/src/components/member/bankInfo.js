@@ -1,16 +1,25 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	withdrawalBlockSettingContext
+} from "../common/context";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import { api_GetBankInfoSysList } from "../../service/api/payment";
 import Loading from "../common/loading";
 import Step, { defStep } from "./bankInfo.step";
 import AddCardPanel from "./bankInfo.addCard";
 import ShowCardPanel from "./bankInfo.showCard";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const BankInfo = () => {
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [custBankInfo, setCustBankInfo] = useState([]);
 	const [siteBankList, setSiteBankList] = useState([]);
 	const [bankSelectedIdx, setBankSelectedIdx] = useState(0);
@@ -18,6 +27,11 @@ const BankInfo = () => {
 	const [step, setStep] = useState(defStep.initPanel);
 	const [tip, setTip] = useState("");
 	const isMountedRef = useRef(null);
+
+	const displayBankCard =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.BankCard
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -149,6 +163,8 @@ const BankInfo = () => {
 		const _tip = tip === "" ? i18n.lbl_BankAccountHint : "";
 		setTip(_tip);
 	};
+
+	if (!displayBankCard) return null;
 
 	return loading ? (
 		<Loading />

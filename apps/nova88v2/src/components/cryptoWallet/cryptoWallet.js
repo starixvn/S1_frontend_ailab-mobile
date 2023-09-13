@@ -1,17 +1,31 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	withdrawalBlockSettingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import api from "../../service/api";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const CryptoWallet = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [walletInfo, setWalletInfo] = useState([]);
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
+
+	const displayCrypto =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.Crypto
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -223,6 +237,9 @@ const CryptoWallet = () => {
 			/> */}
 		</div>
 	));
+
+	if (!displayCrypto) return null;
+
 	return (
 		<>
 			{userInfo.accountName && (
