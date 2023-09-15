@@ -148,7 +148,7 @@ const HeaderInfo = ({ userInfo, i18n }) => {
 			</a>
 
 			{/* 暫時隱藏 */}
-			{/* <a className="splogo" /> */}
+			<a className="splogo" />
 
 			{userInfo.isLogin ? (
 				<div>
