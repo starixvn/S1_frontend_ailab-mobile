@@ -623,7 +623,13 @@
 	"lbl_TFGaming": "TFGaming",
 	"lbl_Recently_Viewed": "RECENTLY VIEWED",
 	"lbl_AffiliateIdWrong": "Affiliate ID cant be found",
-
+  "lbl_HotGame": "HOT GAMES",
+  "lbl_HotPromotions": "Hot Promotions",
+  "lbl_Fabulous_Sports_Experience": "FABULOUS SPORTS EXPERIENCE",
+  "lbl_SEDIE": "SEDIE",
+  "lbl_QuickGames": "Quick Games",
+  "lbl_Dont_Have_An_Account": "Don't have an account?",
+  "lbl_SignUp": "Sign Up",
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Top10winners": "Top 10 Winners",
@@ -646,6 +652,8 @@
 	"lbl_Dont_show_me_again": "Dont show me again",
 	"lbl_Stay_accessible": "STAY ACCESSIBLE",
 	"lbl_Anytime_anywhere": "Anytime, Anywhere",
+
+
 
 	"==============Promotion==============": "",
 	"lbl_PromotionRebateAndCashback": "Rebate / Cashback",
