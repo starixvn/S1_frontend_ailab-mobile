@@ -5,27 +5,18 @@ import path from "../../path";
 import { bannerImgUrl } from "../../config";
 
 const LuckyWheel = ({ setLuckyWheel }) => {
-	const { root, setRoot } = useContext(rootContext);
+	const { root } = useContext(rootContext);
 	const closePop = () => {
 		setLuckyWheel(false);
-		setRoot(false);
 	};
 
 	return (
 		root && (
-			<div className="wheelModuel">
-				<button className="icon_close" onClick={closePop}>
-					X
-				</button>
+			<div className="eventLink luckywheel">
+				<button className="icon-close-white-bg" onClick={closePop} />
 				<Link to={`/${path.luckyWheel.root}`}>
 					<img
-						className="luckwheel"
-						src={`${bannerImgUrl}/h5/img/luckybox/homeImg.png`}
-						alt="luckyWheel"
-					/>
-					<img
-						className="luckwheelw"
-						src={`${bannerImgUrl}/h5/img/luckybox/homeImg-w.png`}
+						src={`${bannerImgUrl}/h5/img/4.0/luckywheel.gif`}
 						alt="luckyWheel"
 					/>
 				</Link>
