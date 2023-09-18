@@ -47,7 +47,7 @@ const IndexPage = () => {
 			<div className="liverightModule">
 				<div className="livelist">
 					{arr.length <= 0 ? (
-						<StreamingNoData i18n={i18n} />
+						<StreamingNoData />
 					) : (
 						<div className="opentv active">{arr}</div>
 					)}
