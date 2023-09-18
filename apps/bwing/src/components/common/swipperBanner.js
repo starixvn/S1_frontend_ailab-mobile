@@ -237,33 +237,24 @@ AutoPlay.propTypes = {
 };
 
 export const AutoPlayWithBtn = ({ Rows }) => {
+	const swiperRef = useRef(null);
 	const params = {
-		...defSwipperConfig,
+		spaceBetween: 10,
+		effect: "fade",
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev"
-		},
-		getSwiper: obj => {
-			ref.current = obj;
-		},
-		renderPrevButton: () => (
-			<div className="swiper-button-prev" onClick={goPrev} />
-		),
-		renderNextButton: () => (
-			<div className="swiper-button-next" onClick={goNext} />
-		)
-	};
-	const ref = useRef(null);
-
-	const goNext = () => {
-		if (ref.current !== null) {
-			ref.current.slideNext();
 		}
 	};
 
+	const goNext = () => {
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slideNext();
+		}
+	};
 	const goPrev = () => {
-		if (ref.current !== null) {
-			ref.current.slidePrev();
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slidePrev();
 		}
 	};
 
@@ -271,8 +262,12 @@ export const AutoPlayWithBtn = ({ Rows }) => {
 		<div className="swiper-container">
 			<div className="swiper-wrapper">
 				{/* eslint-disable-next-line react/jsx-props-no-spreading */}
-				<Swiper {...params}>{Rows}</Swiper>
+				<Swiper ref={swiperRef} {...params}>
+					{Rows}
+				</Swiper>
 			</div>
+			<div className="swiper-button-prev" onClick={goPrev} />
+			<div className="swiper-button-next" onClick={goNext} />
 		</div>
 	) : null;
 };

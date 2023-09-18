@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { i18nContext } from "../common/context";
@@ -9,9 +10,10 @@ const Nav = props => {
 	return categoryList.map(value => {
 		return (
 			<button
-				data-testid={`nav_${value}`}
 				key={`casino-nav-${value}`}
-				className={selNav === value ? "active" : ""}
+				className={classNames("slots-category-item", {
+					active: selNav === value
+				})}
 				onClick={() => onChange(value)}>
 				{i18n[`lbl_${value.charAt(0).toUpperCase() + value.slice(1)}`]}
 			</button>

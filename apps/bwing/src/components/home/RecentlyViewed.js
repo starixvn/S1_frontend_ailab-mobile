@@ -1,30 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
-import { Navigation } from "swiper";
+import Swiper from "react-id-swiper";
+import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import { popBoxContext, userInfoContext } from "../common/context";
-import { defSpecialSetting, useGotoGame } from "../hook/useGotoGame";
-import { api_GetRecentlyViewed } from "../../service/api/game";
+import { defNavPanel, navContext, userInfoContext } from "../common/context";
+import { productList } from "../../datas/defMenu";
+import path from "../../path";
 import {
 	defAppType,
 	GET_CASINO_ENTER_PAGE,
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
-import path from "../../path";
-import useHandleLogin from "../hook/useHandleLogin";
-import { productList } from "../../datas/defMenu";
 import { defProductType } from "../../datas/productList";
+import { defSpecialSetting, useGotoGame } from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
-const RecentlyViewedGameList = () => {
-	const [recentlyViewedGames, setRecentlyViewedGames] = useState([]);
-	const { userInfo } = useContext(userInfoContext);
-	const navigate = useNavigate();
-	const { setPopBox } = useContext(popBoxContext);
-	const { throttle } = useSetTimeout();
+const RecentlyViewed = ({ recentlyViewedGames }) => {
 	const { t } = useTranslation();
-	const { handleLogin } = useHandleLogin();
+	const { userInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
+	const navigate = useNavigate();
+	const { throttle } = useSetTimeout();
 	const { handleGoToGame } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
@@ -86,7 +82,7 @@ const RecentlyViewedGameList = () => {
 				tpId,
 				gameId,
 				isLogin: userInfo.isLogin === true,
-				loginCallback: handleLogin,
+				loginCallback: () => setNav(defNavPanel.login),
 				execFunction: _useGotoGame
 					? handleGoToGame.bind(this, {
 							isLogin: userInfo.isLogin === true,
@@ -145,108 +141,82 @@ const RecentlyViewedGameList = () => {
 		}
 	};
 
-	useEffect(() => {
-		const getRecentlyViewedGames = async () => {
-			try {
-				const res = await api_GetRecentlyViewed({
-					currencyId: userInfo.currencyId
-				});
-				if (res.data.errorCode === 0) {
-					const { recentlyViewedList } = res.data.data;
-					setRecentlyViewedGames(recentlyViewedList);
-				}
-			} catch (error) {
-				setPopBox({
-					isOpen: true,
-					content: error
-				});
-			}
-		};
-		getRecentlyViewedGames();
-	}, []);
-
-	const params = {
-		spaceBetween: 10,
-		slidesPerView: 1.8
-	};
-
 	if (!recentlyViewedGames || !recentlyViewedGames.length) return null;
+
+	const swiperParams = {
+		spaceBetween: 10,
+		slidesPerView: 1.9,
+		initialSlide: 1.3
+	};
 
 	return (
 		<>
-			<div className="titleBox">
-				<div className="title">{t("lbl_Recently_Viewed")}</div>
+			<div className="home-title">
+				<i className="icon-star-outline" />
+				{t("lbl_Recently_Viewed")}
 			</div>
-			<Swiper
-				className="recently"
-				modules={[Navigation]}
-				navigation
-				{...params}>
-				<div className="swiper-wrapper">
-					{recentlyViewedGames &&
-						recentlyViewedGames.map(
-							({
-								gameLogo,
-								tpLogo,
-								gameName,
-								tpId,
-								tpGameType,
-								isMaintain,
-								categoryId,
-								gameId
-							}) => (
-								<SwiperSlide
-									key={`recently-game-${tpId}-${tpGameType}`}>
+			<div className="home-recently mb-2">
+				<Swiper {...swiperParams}>
+					{recentlyViewedGames.map(
+						({
+							gameLogo,
+							gameName,
+							tpId,
+							tpGameType,
+							categoryId,
+							gameId,
+							isMaintain
+						}) => (
+							<div key={`${tpId}_${tpGameType}_${gameId}`}>
+								<a
+									className={`home-recently-item ${
+										isMaintain ? "maintain" : ""
+									}`}
+									onClick={() =>
+										handleGoToRecentlyViewedGame({
+											selectedTpId: tpId,
+											selectedTpGameType: tpGameType,
+											selectedCategoryId: categoryId,
+											selectedGameId: gameId,
+											isMaintain
+										})
+									}>
 									<div
-										className="swiper-slide"
-										onClick={() =>
-											handleGoToRecentlyViewedGame({
-												selectedTpId: tpId,
-												selectedTpGameType: tpGameType,
-												selectedCategoryId: categoryId,
-												selectedGameId: gameId,
-												isMaintain
-											})
-										}>
-										<div
-											className={`recently-game ${
-												isMaintain ? "active" : ""
-											}`}>
-											<div>
-												<img
-													className="recently-image"
-													src={
-														gameLogo[
-															userInfo.langId
-														] ?? gameLogo.en
-													}
-													alt=""
-												/>
-												<img
-													className="recently-brand"
-													src={tpLogo}
-													alt=""
-												/>
-												<div className="recently-title">
-													{gameName[
-														userInfo.langId
-													] ?? gameName.en}
-												</div>
-											</div>
-											{isMaintain && (
-												<div className="under">
-													{t("lbl_underMaintenance")}
-												</div>
-											)}
-										</div>
+										className="home-recently-img"
+										style={{
+											backgroundImage: `url("${
+												gameLogo[userInfo.langId] ??
+												gameLogo.en
+											}")`
+										}}
+									/>
+									<div className="home-recently-info">
+										<span>
+											{gameName[userInfo.langId] ??
+												gameName.en}
+										</span>
 									</div>
-								</SwiperSlide>
-							)
-						)}
-				</div>
-			</Swiper>
+									{isMaintain && (
+										<div className="tag-maintain">
+											{t("lbl_underMaintenance")}
+										</div>
+									)}
+								</a>
+							</div>
+						)
+					)}
+				</Swiper>
+			</div>
 		</>
 	);
 };
 
-export default RecentlyViewedGameList;
+RecentlyViewed.defaultProps = {
+	recentlyViewedGames: []
+};
+
+RecentlyViewed.propTypes = {
+	recentlyViewedGames: PropTypes.arrayOf(PropTypes.any)
+};
+
+export default RecentlyViewed;

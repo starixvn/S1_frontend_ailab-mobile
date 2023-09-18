@@ -480,7 +480,7 @@ const Main = props => {
 
 			<div className="btn-group">
 				<button
-					className={canSubmit ? "orange" : "darkGray"}
+					className={canSubmit ? "orange" : "btn-gray"}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>

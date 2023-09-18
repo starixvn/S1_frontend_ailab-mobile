@@ -1,19 +1,16 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import { useMatch, Link, useNavigate } from "@reach/router";
+import React, { useContext, useEffect, useState } from "react";
+import classNames from "classnames";
+import { useTranslation } from "react-i18next";
+import { Link, useLocation, useNavigate } from "@reach/router";
+import { bannerImgUrl } from "../../config";
+import { defNavPanel, navContext, userInfoContext } from "../common/context";
+import path from "../../path";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import { LOGIN } from "../../service/auth";
-import {
-	userInfoContext,
-	i18nContext,
-	navContext,
-	defNavPanel
-} from "../common/context";
-import path from "../../path";
-import Logo from "../img/logo";
 import useShieldCheck from "../hook/useShieldCheck";
 
-const initState = {
+const initUserValue = {
 	UserName: "",
 	Password: ""
 };
@@ -21,39 +18,30 @@ const initState = {
 const initStatus = {
 	UserName: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_UsernameTooltip",
+		isShowHint: false
 	},
 	Password: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_PasswordTooltip",
+		isShowHint: false
 	}
 };
 
-const LoginPage = () => {
-	const navigate = useNavigate();
-	const { i18n } = useContext(i18nContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+const Login = () => {
+	const { t } = useTranslation();
 	const { nav, setNav } = useContext(navContext);
-	const [userValue, setUserValue] = useState(initState);
-	const [inputStatus, setInputStatus] = useState(initStatus);
-	const isMountedRef = useRef(null);
+	const navigate = useNavigate();
+	const { pathname } = useLocation();
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const [userValue, setUserValue] = useState(initUserValue);
+	const [inputStatus, setInputStatus] = useState(initStatus);
 
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
-
-	useEffect(() => {
-		const showBylink = window.location.pathname === `/${path.login.root}`;
-		const openPanel = showBylink || nav === defNavPanel.login;
-
-		if (openPanel && isShieldLoaded) {
-			getShieldData();
-		}
-	}, [nav]);
+	const isShow =
+		nav === defNavPanel.login || pathname === `/${path.login.root}`;
 
 	const checkValue = ({ col }, e) => {
 		const val = e.target.value;
@@ -62,18 +50,30 @@ const LoginPage = () => {
 			...prev,
 			[col]: {
 				checked: val !== "",
-				msg: val === "" ? i18n[_msg] : ""
+				msg: val === "" ? t(_msg) : ""
 			}
 		}));
 	};
 
-	const clickInfo = ({ col, info }) => {
-		const _info = inputStatus[col].msg === "" ? i18n[info] : "";
+	const EditField = ({ col }, e) => {
+		let val = e.target.value;
+
+		if (col === "UserName") {
+			val = val.replace(/[\W_]/g, "");
+		}
+
+		setUserValue(prev => ({
+			...prev,
+			[col]: val
+		}));
+	};
+
+	const clickInfo = col => {
 		setInputStatus(prev => ({
 			...prev,
 			[col]: {
-				checked: null,
-				msg: _info
+				...prev[col],
+				isShowHint: !inputStatus[col].isShowHint
 			}
 		}));
 	};
@@ -83,31 +83,41 @@ const LoginPage = () => {
 
 		if (checked) {
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
-				if (isMountedRef.current) {
-					if (errorCode === 0) {
-						setUserInfo(() => ({
-							...userData,
-							isLogin
-						}));
-						setNav(null);
-						saveShieldData();
-						navigate(`/`);
-					} else if (
-						errorCode === 1101 ||
-						errorCode === 1102 ||
-						errorCode === 9000 ||
-						errorCode === 1103
-					) {
-						setInputStatus(prev => ({
-							...prev,
-							UserName: { checked: false, msg: message }
-						}));
-					} else if (errorCode === 1001) {
-						setInputStatus(prev => ({
-							...prev,
-							Password: { checked: false, msg: message }
-						}));
-					}
+				if (errorCode === 0) {
+					setUserInfo(() => ({
+						...userData,
+						isLogin
+					}));
+					setNav(null);
+					saveShieldData();
+					navigate(`/`);
+					setUserValue(initUserValue);
+					setInputStatus(initStatus);
+				} else if (
+					errorCode === 1101 ||
+					errorCode === 1102 ||
+					errorCode === 9000 ||
+					errorCode === 1103
+				) {
+					setInputStatus(prev => ({
+						...prev,
+						UserName: {
+							checked: false,
+							msg: message,
+							hint: "lbl_UsernameTooltip",
+							isShowHint: false
+						}
+					}));
+				} else if (errorCode === 1001) {
+					setInputStatus(prev => ({
+						...prev,
+						Password: {
+							checked: false,
+							msg: message,
+							hint: "lbl_PasswordTooltip",
+							isShowHint: false
+						}
+					}));
 				}
 			};
 
@@ -125,112 +135,105 @@ const LoginPage = () => {
 			setInputStatus({
 				UserName: {
 					checked: userNameCheck,
-					msg: userNameCheck ? "" : i18n.msg_UsernameReq
+					msg: userNameCheck ? "" : t("msg_UsernameReq"),
+					hint: "lbl_UsernameTooltip",
+					isShowHint: false
 				},
 				Password: {
 					checked: passwordCheck,
-					msg: passwordCheck ? "" : i18n.msg_PasswordReq
+					msg: passwordCheck ? "" : t("msg_PasswordReq"),
+					hint: "lbl_PasswordTooltip",
+					isShowHint: false
 				}
 			});
 		}
 	};
 
-	const handleloginPanel = (show, reset, showBylink) => {
-		if (reset) {
-			setUserValue(initState);
-			setInputStatus(initStatus);
+	useEffect(() => {
+		const openPanel =
+			pathname === `/${path.login.root}` || nav === defNavPanel.login;
+
+		if (openPanel && isShieldLoaded) {
+			getShieldData();
 		}
-
-		if (showBylink) {
-			navigate("/");
-		} else {
-			setNav(() => {
-				const newState = show ? null : defNavPanel.login;
-				return newState;
-			});
-		}
-	};
-
-	const showBylink = useMatch(path.login.root) !== null;
-	const showPanel = showBylink || nav === defNavPanel.login;
-
-	const EditField = ({ col }, e) => {
-		let val = e.target.value;
-
-		if (col === "UserName") {
-			val = val.replace(/[\W_]/g, "");
-		}
-
-		setUserValue(prev => ({
-			...prev,
-			[col]: val
-		}));
-	};
+	}, [nav]);
 
 	return (
-		<div className={`Login${showPanel ? " open" : ""}`}>
-			<div
-				className={`close${showPanel ? " open" : ""}`}
-				onClick={handleloginPanel.bind(
-					this,
-					showPanel,
-					true,
-					showBylink
-				)}>
-				<span />
-				<span />
-				<span />
-				<span />
-				<span />
-				<span />
-			</div>
-			<Logo />
-			<div className="title">{i18n.lbl_Login}</div>
-			<Inputbox
-				icon="icon icon-member"
-				placeholder={i18n.lbl_Username}
-				onBlur={checkValue.bind(null, { col: "UserName" })}
-				onChange={EditField.bind(null, { col: "UserName" })}
-				value={userValue.UserName}
-				btnStatus={inputStatus.UserName.checked}
-				tip={inputStatus.UserName.msg}
-				clickInfo={clickInfo.bind(this, {
-					col: "UserName",
-					info: "msg_UsernameReq"
-				})}
-				testAttr="Username"
-			/>
-			<InputboxPWD
-				placeholder={i18n.lbl_Password}
-				onBlur={checkValue.bind(null, { col: "Password" })}
-				onChange={EditField.bind(null, { col: "Password" })}
-				value={userValue.Password}
-				btnStatus={inputStatus.Password.checked}
-				tip={inputStatus.Password.msg}
-				clickInfo={clickInfo.bind(this, {
-					col: "Password",
-					info: "msg_PasswordReq"
-				})}
-				testAttr="Password"
-			/>
-			<div className="Terms">
+		<div className={`login-module popup ${classNames({ active: isShow })}`}>
+			<div>
+				<button
+					className="icon-close-white-bg"
+					onClick={() => {
+						setNav(null);
+						navigate("/");
+						setUserValue(initUserValue);
+						setInputStatus(initStatus);
+					}}
+				/>
+				<img
+					className="login-logo"
+					src={`${bannerImgUrl}/h5/img/4.0/logo.png`}
+					alt=""
+				/>
+				<img
+					className="login-banner"
+					src={`${bannerImgUrl}/h5/img/4.0/login-banner.png`}
+					alt=""
+				/>
+				<div className="login-title">{t("lbl_Login")}</div>
+
+				<Inputbox
+					icon="icon-profile"
+					placeholder={t("lbl_Username")}
+					onBlur={checkValue.bind(null, { col: "UserName" })}
+					onChange={EditField.bind(null, { col: "UserName" })}
+					value={userValue.UserName}
+					btnStatus={inputStatus.UserName.checked}
+					tip={inputStatus.UserName.msg}
+					clickInfo={() => clickInfo("UserName")}
+					testAttr="Username"
+					inputBoxNewClass="inputbox-item primary"
+					border={false}
+					hint={inputStatus.UserName.hint}
+					isShowHint={inputStatus.UserName.isShowHint}
+				/>
+
+				<InputboxPWD
+					placeholder={t("lbl_Password")}
+					onBlur={checkValue.bind(null, { col: "Password" })}
+					onChange={EditField.bind(null, { col: "Password" })}
+					value={userValue.Password}
+					btnStatus={inputStatus.Password.checked}
+					tip={inputStatus.Password.msg}
+					clickInfo={() => clickInfo("Password")}
+					testAttr="Password"
+					icon="icon-password"
+					inputBoxNewClass="inputbox-item primary"
+					border={false}
+					hint={inputStatus.Password.hint}
+					isShowHint={inputStatus.Password.isShowHint}
+					hideInfoBtn={false}
+				/>
+
 				<Link
-					data-testid="forgetpw"
+					className="login-forget"
 					to={`/${path.forgetPassword.root}`}
-					onClick={handleloginPanel.bind(
-						this,
-						showPanel,
-						true,
-						showBylink
-					)}>
-					{i18n.lbl_ForgetPassword}?
+					onClick={() => setNav(null)}>
+					{t("lbl_ForgetPassword")}
 				</Link>
+				<div onClick={handleLogin} className="btn-group">
+					<button className="btn-primary"> {t("lbl_Login")}</button>
+				</div>
+				<div className="login-message">
+					{t("lbl_DontHaveAccount")}
+					<a onClick={() => setNav(defNavPanel.join)}>
+						{t("lbl_SignUp")}
+					</a>
+				</div>
 			</div>
-			<button data-testid="login_submit" onClick={handleLogin}>
-				{i18n.lbl_Login}
-			</button>
+			<div className="join-bottominfo">{t("lbl_PoweredBy")} Bong88</div>
 		</div>
 	);
 };
 
-export default LoginPage;
+export default Login;

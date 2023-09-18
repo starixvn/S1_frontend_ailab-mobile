@@ -17,12 +17,14 @@ const swipperParam = {
 	rebuildOnUpdate: true
 };
 
-export default () => {
+export const HomeBanner = () => {
 	return (
-		<SwipperBanner
-			ImgFolder={[defBannerType.Promotions]}
-			params={swipperParam}
-			swiperClass="hotevent"
-		/>
+		<div className="fullbanner">
+			<SwipperBanner
+				ImgFolder={[defBannerType.Promotions]}
+				params={swipperParam}
+				swiperClass="hotevent"
+			/>
+		</div>
 	);
 };

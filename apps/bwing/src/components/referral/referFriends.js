@@ -17,8 +17,8 @@ export default () => {
 				className="refbanner"
 				src={
 					userInfo.langId === "en"
-						? `${bannerImgUrl}/h5/img/refbanner.png`
-						: `${bannerImgUrl}/h5/img/refbanner_vn.png`
+						? `${bannerImgUrl}/h5/img/4.0/refbanner.png`
+						: `${bannerImgUrl}/h5/img/4.0/refbanner_vn.png`
 				}
 				alt="referral step banner"
 			/>

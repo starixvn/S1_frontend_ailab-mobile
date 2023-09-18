@@ -66,6 +66,7 @@ import HowToPlay from "./pages/howToPlay";
 import Angpao from "./pages/angpao";
 import MysteryBox from "./pages/mysteryBox";
 import VIP from "./pages/vip";
+import VipInner from "./pages/vip-inner";
 
 import FriendReferral from "./pages/referral";
 import ReferFriends from "./components/referral/referFriends";
@@ -78,6 +79,7 @@ import LuckyWheel from "./pages/luckyWheel";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
+import News from "./pages/news";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -178,7 +180,10 @@ const Index = () => {
 							<Angpao path={path.angpao.root} />
 							<MysteryBox path={path.mysteryBox.root} />
 							<LuckyWheel path={path.luckyWheel.root} />
+
 							<VIP path={path.vip.root} />
+							<VipInner path={path.vip.sub.vipInner.root} />
+
 							<AppDownload path={path.appDownload.root} />
 							<AppEntPage
 								path={`/${defSpecialPath.appentpage}`}
@@ -190,6 +195,7 @@ const Index = () => {
 							<RebateExclude
 								path={`/:langId/${path.rebateExclude.root}`}
 							/>
+							<News path={path.news.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>
