@@ -384,6 +384,14 @@ export const productList = langId => {
 					displayText: "CQ9"
 				},
 				{
+					...defGameInfo.Casino_PNG,
+					parameter: defGameInfo.Casino_PNG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/png.png`,
+					icon: "icon icon-png",
+					displayText: "Play'n GO"
+				},
+				{
 					...defGameInfo.Casino_GPI,
 					parameter: defGameInfo.Casino_GPI,
 					path: path.casino.root,
