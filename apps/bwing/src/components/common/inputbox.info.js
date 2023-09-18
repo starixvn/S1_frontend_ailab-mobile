@@ -27,7 +27,8 @@ const Inputbox = ({
 	isShowPaste,
 	EditFieldPaste,
 	pasteCol,
-	areaCode
+	areaCode,
+	border
 }) => {
 	let Title = null;
 	const handlePaste = () => {
@@ -50,7 +51,10 @@ const Inputbox = ({
 		<div className={_class} data-testid={`${testAttr}_inputBox`}>
 			{Title}
 			<div className="input-group">
-				<div className={`inputBoxNew ${inputBoxNewClass ?? ""}`}>
+				<div
+					className={`${border ? "inputBoxNew" : ""} ${
+						inputBoxNewClass ?? ""
+					}`}>
 					{icon ? <i className={icon} /> : null}
 					{areaCode && (
 						<span className="countryCode">{areaCode}</span>
@@ -117,7 +121,8 @@ Inputbox.defaultProps = {
 	EditFieldPaste: null,
 	pasteCol: null,
 	hideInfoBtn: false,
-	areaCode: null
+	areaCode: null,
+	border: true
 };
 
 Inputbox.propTypes = {
@@ -146,7 +151,8 @@ Inputbox.propTypes = {
 	EditFieldPaste: PropTypes.func,
 	pasteCol: PropTypes.string,
 	hideInfoBtn: PropTypes.bool,
-	areaCode: PropTypes.string
+	areaCode: PropTypes.string,
+	border: PropTypes.bool
 };
 
 export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {

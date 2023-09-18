@@ -11,19 +11,32 @@ const Inputbox = ({
 	btnStatus,
 	title,
 	clickInfo,
-	testAttr
+	testAttr,
+	icon,
+	inputBoxNewClass,
+	border
 }) => {
 	const [showingPsw, setShowingPsw] = useState(false);
 	const showPswHandler = () => {
 		setShowingPsw(!showingPsw);
 	};
 
+	const handleIconClassNameSelected = () => {
+		if (border) {
+			return showingPsw ? "icon-eye" : "icon-eye-blocked";
+		}
+		return showingPsw ? "icon-unvisible" : "icon-unvisible";
+	};
+
 	return (
 		<div className="input-Area">
 			{title ? <div className="input-title">{title}</div> : null}
 			<div className="input-group">
-				<div className="inputBoxNew">
-					<i className="icon icon-key" />
+				<div
+					className={`${
+						border ? "inputBoxNew" : ""
+					} ${inputBoxNewClass}`}>
+					<i className={icon} />
 					<input
 						data-testid={`${testAttr}_ipt`}
 						type={showingPsw ? "text" : "password"}
@@ -33,9 +46,7 @@ const Inputbox = ({
 						value={value}
 					/>
 					<i
-						className={`icon ${
-							showingPsw ? "icon-eye" : "icon-eye-blocked"
-						}`}
+						className={`icon ${handleIconClassNameSelected()}`}
 						data-testid="showPsw"
 						onClick={showPswHandler}
 					/>
@@ -62,7 +73,10 @@ Inputbox.defaultProps = {
 	btnStatus: null,
 	title: null,
 	clickInfo: () => null,
-	testAttr: ""
+	testAttr: "",
+	icon: "icon icon-key",
+	inputBoxNewClass: "",
+	border: true
 };
 
 Inputbox.propTypes = {
@@ -74,7 +88,10 @@ Inputbox.propTypes = {
 	btnStatus: PropTypes.bool,
 	title: PropTypes.string,
 	clickInfo: PropTypes.func,
-	testAttr: PropTypes.string
+	testAttr: PropTypes.string,
+	icon: PropTypes.string,
+	inputBoxNewClass: PropTypes.string,
+	border: PropTypes.bool
 };
 
 export default Inputbox;

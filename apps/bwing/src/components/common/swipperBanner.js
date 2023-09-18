@@ -150,7 +150,6 @@ const Panel = ({ ImgFolder = [], params, swiperClass }) => {
 			setNav
 		});
 	};
-
 	const rows = banner?.map((b, bIdx) => {
 		let redirectLink = null;
 		if (b.actionMode === defBannerActionMode.GoToBonus) {

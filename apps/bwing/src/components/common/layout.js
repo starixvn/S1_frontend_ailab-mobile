@@ -26,6 +26,7 @@ import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
+import Loginn from "../login/loginn";
 
 export const defPageInfo = {
 	default: {
@@ -190,7 +191,7 @@ export const defPageInfo = {
 	},
 	home: {
 		titleKey: "",
-		className: "",
+		className: "home",
 		hideLogo: false,
 		showMenuBar: true,
 		hideBtn: true,
@@ -249,10 +250,6 @@ const Layout = ({ children }) => {
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [appHint, setAppHint] = useState(false);
-	if (root) {
-		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
-	}
-
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -298,7 +295,8 @@ const Layout = ({ children }) => {
 				children
 			) : (
 				<>
-					<Header
+					<Loginn />
+					{/* <Header
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
@@ -307,8 +305,10 @@ const Layout = ({ children }) => {
 						appHint={appHint}
 						setAppHint={setAppHint}
 					/>
+
 					<Join />
-					<Login />
+
+					*/}
 					<main
 						className={`${pageInfo.className ?? ""} ${
 							appHint && root ? "active" : ""
@@ -318,7 +318,7 @@ const Layout = ({ children }) => {
 				</>
 			)}
 			{loading ? <Loading /> : null}
-			<Footer />
+			{/* <Footer /> */}
 
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming && root && (
