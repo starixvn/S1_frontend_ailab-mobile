@@ -20,7 +20,7 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
-import Join from "../join/join.refactor";
+import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
@@ -97,7 +97,7 @@ export const defPageInfo = {
 	},
 	promotion: {
 		titleKey: "lbl_Promotion",
-		className: "main promotions",
+		className: "lobby promotion",
 		hideLogo: true
 	},
 	kyc: {
@@ -117,7 +117,7 @@ export const defPageInfo = {
 	},
 	other: {
 		titleKey: "lbl_Other",
-		className: "main",
+		className: "account",
 		hideLogo: true
 	},
 	howToDeposit: {
@@ -162,7 +162,7 @@ export const defPageInfo = {
 	},
 	sports: {
 		titleKey: "",
-		className: "main",
+		className: "lobby sports",
 		hideLogo: false,
 		showMenuBar: true
 	},
@@ -190,7 +190,7 @@ export const defPageInfo = {
 	},
 	home: {
 		titleKey: "",
-		className: "",
+		className: "home",
 		hideLogo: false,
 		showMenuBar: true,
 		hideBtn: true,
@@ -212,6 +212,11 @@ export const defPageInfo = {
 	worldCup: {
 		titleKey: "lbl_FIFAWorldCup",
 		className: "",
+		hideLogo: true
+	},
+	news: {
+		titleKey: "lbl_SiteNews",
+		className: "lobby news",
 		hideLogo: true
 	}
 };
@@ -249,10 +254,6 @@ const Layout = ({ children }) => {
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [appHint, setAppHint] = useState(false);
-	if (root) {
-		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
-	}
-
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -298,6 +299,8 @@ const Layout = ({ children }) => {
 				children
 			) : (
 				<>
+					<Login />
+					<Join />
 					<Header
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
@@ -307,8 +310,7 @@ const Layout = ({ children }) => {
 						appHint={appHint}
 						setAppHint={setAppHint}
 					/>
-					<Join />
-					<Login />
+
 					<main
 						className={`${pageInfo.className ?? ""} ${
 							appHint && root ? "active" : ""

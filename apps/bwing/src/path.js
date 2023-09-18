@@ -169,7 +169,13 @@ export default {
 		root: "luckyWheel"
 	},
 	vip: {
-		root: "vip"
+		root: "vip",
+		sub: {
+			root: "/",
+			vipInner: {
+				root: "vip-inner"
+			}
+		}
 	},
 	sports: {
 		root: "sports"
@@ -188,7 +194,16 @@ export default {
 	},
 	rebateExclude: {
 		root: "rebateExclude"
-	}
+	},
+	lottery: {
+		root: "lottery"
+	},
+	eSports: {
+		root: "eSports"
+	},
+	news: {
+		root: "news"
+	},
 };
 
 export const defSpecialPath = {

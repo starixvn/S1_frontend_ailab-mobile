@@ -1,8 +1,8 @@
+import PropTypes from "prop-types";
 import React, { useContext } from "react";
-import { Promotion } from "@ailab-mobile/promotion";
 import config from "Config";
 import path from "Path";
-import { Promotion as uiSetting } from "UISetting";
+import { promotionUiSetting } from "../components/promotion/promotionUiSetting";
 import {
 	userInfoContext,
 	i18nContext,
@@ -11,9 +11,9 @@ import {
 	navContext,
 	defNavPanel
 } from "../components/common/context";
-import staticList from "../datas/promotionList";
 import PromotionWrapper from "../components/promotion/wrapper";
 import { siteInfo } from "../config";
+import Promotion from "../components/promotion/promotion";
 
 export default ({ location }) => {
 	return (
@@ -29,16 +29,14 @@ const Content = ({ location }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { promoBox, setPromoBox } = useContext(promoPopBox);
 	const { setNav } = useContext(navContext);
-
 	const handleLogin = () => {
 		setNav(defNavPanel.login);
 	};
 
 	return (
 		<Promotion
-			staticList={staticList}
 			config={config}
-			uiSetting={uiSetting}
+			uiSetting={promotionUiSetting}
 			path={path}
 			userInfo={userInfo}
 			i18n={i18n}
@@ -56,4 +54,12 @@ const Content = ({ location }) => {
 			handleLogin={handleLogin}
 		/>
 	);
+};
+
+Content.defaultProps = {
+	location: null
+};
+
+Content.propTypes = {
+	location: PropTypes.objectOf(PropTypes.any)
 };
