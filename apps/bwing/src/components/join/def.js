@@ -8,37 +8,7 @@ export const initValue = {
 	Currency: 0,
 	Affiliate: "",
 	termsCheck: false,
-	ageCheck: false
-};
-
-export const initWarning = {
-	UserName: {
-		status: false,
-		msg: ""
-	},
-	Password: {
-		status: false,
-		msg: ""
-	},
-	Currency: {
-		status: false
-	},
-	Affiliate: {
-		status: false,
-		msg: ""
-	},
-	Checkbox: {
-		status: false,
-		msg: ""
-	},
-	Phone: {
-		status: false,
-		msg: ""
-	},
-	SpecialBonusCode: {
-		checked: null,
-		msg: ""
-	}
+	agreeCheck: false
 };
 
 export const initCheckboxVal = {
@@ -62,7 +32,9 @@ export const currencyToAreacode = {
 export const initStatus = {
 	UserName: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_UsernameTooltip",
+		isShowHint: false
 	},
 	Password: {
 		checked: null,
@@ -74,15 +46,21 @@ export const initStatus = {
 	},
 	RealName: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_RemindForName",
+		isShowHint: false
 	},
 	Phone: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_PhoneTooltip",
+		isShowHint: false
 	},
 	Email: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_EmailToolTip",
+		isShowHint: false
 	},
 	Currency: {
 		checked: null,
@@ -90,7 +68,9 @@ export const initStatus = {
 	},
 	Affiliate: {
 		checked: null,
-		msg: ""
+		msg: "",
+		hint: "lbl_Please_enter_Affiliate_ID",
+		isShowHint: false
 	},
 	Checkbox: {
 		checked: null,

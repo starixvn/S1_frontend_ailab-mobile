@@ -38,7 +38,7 @@ const HotGames = () => {
 	return (
 		<>
 			<div className="home-title">
-				<i className="icon-games">{t("lbl_HotGame")}</i>
+				<i className="icon-games">{t("lbl_HOT_GAMES")}</i>
 			</div>
 			<div className="home-hotgame mb-2">
 				{HOT_GAME_LIST.map(({ displayKey, category, ...rest }) => {
