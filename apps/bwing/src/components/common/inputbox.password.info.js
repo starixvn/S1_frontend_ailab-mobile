@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { IptStatus } from "./inputbox.info";
 
 const Inputbox = ({
@@ -11,19 +12,36 @@ const Inputbox = ({
 	btnStatus,
 	title,
 	clickInfo,
-	testAttr
+	testAttr,
+	icon,
+	inputBoxNewClass,
+	border,
+	hideInfoBtn,
+	hint,
+	isShowHint
 }) => {
 	const [showingPsw, setShowingPsw] = useState(false);
+	const { t } = useTranslation();
 	const showPswHandler = () => {
 		setShowingPsw(!showingPsw);
+	};
+
+	const handleIconClassNameSelected = () => {
+		if (border) {
+			return showingPsw ? "icon-eye" : "icon-eye-blocked";
+		}
+		return showingPsw ? "icon-visible" : "icon-unvisible";
 	};
 
 	return (
 		<div className="input-Area">
 			{title ? <div className="input-title">{title}</div> : null}
-			<div className="input-group">
-				<div className="inputBoxNew">
-					<i className="icon icon-key" />
+			<div className={border ? "input-group" : "inputbox-group"}>
+				<div
+					className={`${
+						border ? "inputBoxNew" : ""
+					} ${inputBoxNewClass}`}>
+					<i className={icon} />
 					<input
 						data-testid={`${testAttr}_ipt`}
 						type={showingPsw ? "text" : "password"}
@@ -33,21 +51,26 @@ const Inputbox = ({
 						value={value}
 					/>
 					<i
-						className={`icon ${
-							showingPsw ? "icon-eye" : "icon-eye-blocked"
-						}`}
+						className={`icon ${handleIconClassNameSelected()}`}
 						data-testid="showPsw"
 						onClick={showPswHandler}
 					/>
+
 					<IptStatus
-						hideInfoBtn
+						hideInfoBtn={hideInfoBtn}
 						btnStatus={btnStatus}
 						clickInfo={clickInfo}
+						border={border}
 					/>
+					{isShowHint && (
+						<div className="inputbox-tip-popup">{t(hint)}</div>
+					)}
 				</div>
 			</div>
 			{tip ? (
-				<div className="tip open" data-testid={`${testAttr}_msg`}>
+				<div
+					className={border ? "tip open" : "inputbox-tip"}
+					data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
 			) : null}
@@ -62,7 +85,13 @@ Inputbox.defaultProps = {
 	btnStatus: null,
 	title: null,
 	clickInfo: () => null,
-	testAttr: ""
+	testAttr: "",
+	icon: "icon icon-key",
+	inputBoxNewClass: "",
+	border: true,
+	hideInfoBtn: true,
+	hint: "",
+	isShowHint: false
 };
 
 Inputbox.propTypes = {
@@ -74,7 +103,13 @@ Inputbox.propTypes = {
 	btnStatus: PropTypes.bool,
 	title: PropTypes.string,
 	clickInfo: PropTypes.func,
-	testAttr: PropTypes.string
+	testAttr: PropTypes.string,
+	icon: PropTypes.string,
+	inputBoxNewClass: PropTypes.string,
+	border: PropTypes.bool,
+	hideInfoBtn: PropTypes.bool,
+	hint: PropTypes.string,
+	isShowHint: PropTypes.bool
 };
 
 export default Inputbox;
