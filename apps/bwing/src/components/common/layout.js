@@ -20,7 +20,7 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
-import Join from "../join/join.refactor";
+import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
@@ -190,7 +190,7 @@ export const defPageInfo = {
 	},
 	home: {
 		titleKey: "",
-		className: "",
+		className: "home",
 		hideLogo: false,
 		showMenuBar: true,
 		hideBtn: true,
@@ -249,10 +249,6 @@ const Layout = ({ children }) => {
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [appHint, setAppHint] = useState(false);
-	if (root) {
-		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
-	}
-
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -298,7 +294,9 @@ const Layout = ({ children }) => {
 				children
 			) : (
 				<>
-					<Header
+					<Login />
+					<Join />
+					{/* <Header
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
@@ -307,8 +305,10 @@ const Layout = ({ children }) => {
 						appHint={appHint}
 						setAppHint={setAppHint}
 					/>
-					<Join />
-					<Login />
+
+
+
+					*/}
 					<main
 						className={`${pageInfo.className ?? ""} ${
 							appHint && root ? "active" : ""
@@ -318,7 +318,7 @@ const Layout = ({ children }) => {
 				</>
 			)}
 			{loading ? <Loading /> : null}
-			<Footer />
+			{/* <Footer /> */}
 
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming && root && (

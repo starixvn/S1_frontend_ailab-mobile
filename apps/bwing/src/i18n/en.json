@@ -623,6 +623,17 @@
 	"lbl_TFGaming": "TFGaming",
 	"lbl_Recently_Viewed": "RECENTLY VIEWED",
 	"lbl_AffiliateIdWrong": "Affiliate ID cant be found",
+  "lbl_HOT_GAMES": "HOT GAMES",
+  "lbl_HotPromotions": "Hot Promotions",
+  "lbl_Fabulous_Sports_Experience": "FABULOUS SPORTS EXPERIENCE",
+  "lbl_SEDIE": "SEDIE",
+  "lbl_QuickGames": "Quick Games",
+  "lbl_DontHaveAccount": "Don't have an account?",
+  "lbl_SignUp": "ĐĂNG KÝ",
+  "lbl_SignUpNote": "Please note that we do not permit members to own more than (1) account.",
+  "lbl_LoginHere": "Login Here",
+  "lbl_PasswordNote": "Please enter your password again.",
+  "lbl_SighUpTerms": "I agree to the Terms and Conditions and the Rules and Regulations of Bwing. I am at least 18 years of age.",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
@@ -646,6 +657,8 @@
 	"lbl_Dont_show_me_again": "Dont show me again",
 	"lbl_Stay_accessible": "STAY ACCESSIBLE",
 	"lbl_Anytime_anywhere": "Anytime, Anywhere",
+
+
 
 	"==============Promotion==============": "",
 	"lbl_PromotionRebateAndCashback": "Rebate / Cashback",
