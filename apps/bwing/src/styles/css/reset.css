@@ -25,12 +25,12 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after {
-  content: "";
+  content: '';
   content: none;
 }
 
 q:before, q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -52,4 +52,6 @@ pre {
 
 a {
   text-decoration: none;
-}/*# sourceMappingURL=reset.css.map */
+  color: #fff;
+}
+/*# sourceMappingURL=reset.css.map */

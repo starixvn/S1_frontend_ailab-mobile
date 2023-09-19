@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useTranslation } from "react-i18next";
 
 const Inputbox = ({
 	icon,
@@ -28,12 +27,8 @@ const Inputbox = ({
 	isShowPaste,
 	EditFieldPaste,
 	pasteCol,
-	areaCode,
-	border,
-	hint,
-	isShowHint
+	areaCode
 }) => {
-	const { t } = useTranslation();
 	let Title = null;
 	const handlePaste = () => {
 		navigator.clipboard
@@ -51,21 +46,14 @@ const Inputbox = ({
 			Title = <div className="input-title">{title}</div>;
 		}
 	}
-
 	return (
 		<div className={_class} data-testid={`${testAttr}_inputBox`}>
 			{Title}
 			<div className="input-group">
-				<div
-					className={`${border ? "inputBoxNew" : ""} ${
-						inputBoxNewClass ?? ""
-					}`}>
+				<div className={`inputBoxNew ${inputBoxNewClass ?? ""}`}>
 					{icon ? <i className={icon} /> : null}
 					{areaCode && (
-						<span
-							className={border ? "countryCode" : "countrycode"}>
-							{areaCode}
-						</span>
+						<span className="countryCode">{areaCode}</span>
 					)}
 					<input
 						data-testid={`${testAttr}_ipt`}
@@ -83,11 +71,7 @@ const Inputbox = ({
 						hideInfoBtn={hideInfoBtn}
 						btnStatus={btnStatus}
 						clickInfo={clickInfo}
-						border={border}
 					/>
-					{isShowHint && (
-						<div className="inputbox-tip-popup">{t(hint)}</div>
-					)}
 				</div>
 				{isShowPaste && (
 					<button
@@ -100,13 +84,11 @@ const Inputbox = ({
 				) : null}
 			</div>
 
-			{tip && (
-				<div
-					className={border ? "tip open" : "inputbox-tip"}
-					data-testid={`${testAttr}_msg`}>
+			{tip ? (
+				<div className="tip open" data-testid={`${testAttr}_msg`}>
 					{tip}
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 };
@@ -135,10 +117,7 @@ Inputbox.defaultProps = {
 	EditFieldPaste: null,
 	pasteCol: null,
 	hideInfoBtn: false,
-	areaCode: null,
-	border: true,
-	hint: "",
-	isShowHint: false
+	areaCode: null
 };
 
 Inputbox.propTypes = {
@@ -167,37 +146,20 @@ Inputbox.propTypes = {
 	EditFieldPaste: PropTypes.func,
 	pasteCol: PropTypes.string,
 	hideInfoBtn: PropTypes.bool,
-	areaCode: PropTypes.string,
-	border: PropTypes.bool,
-	hint: PropTypes.string,
-	isShowHint: PropTypes.bool
+	areaCode: PropTypes.string
 };
 
-export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn, border }) => {
+export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn }) => {
 	switch (btnStatus) {
 		case false:
-			return (
-				<i
-					className={
-						border ? "icon textRed icon-cross" : "icon-error"
-					}
-				/>
-			);
+			return <i className="icon icon-cross textRed" />;
 		case true:
-			return (
-				<i
-					className={
-						border ? "icon textGreen icon-checkmark" : "icon-check"
-					}
-				/>
-			);
+			return <i className="icon icon-checkmark textGreen" />;
 		default:
 			if (hideInfoBtn) return null;
 			return (
 				<i
-					className={
-						border ? "icon icon-information-solid" : "icon-info"
-					}
+					className="icon icon-information-solid"
 					data-testid="showTipBtn"
 					onClick={clickInfo}
 				/>
@@ -208,15 +170,13 @@ export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn, border }) => {
 IptStatus.defaultProps = {
 	btnStatus: null,
 	clickInfo: () => null,
-	hideInfoBtn: false,
-	border: true
+	hideInfoBtn: false
 };
 
 IptStatus.propTypes = {
 	btnStatus: PropTypes.bool,
 	clickInfo: PropTypes.func,
-	hideInfoBtn: PropTypes.bool,
-	border: PropTypes.bool
+	hideInfoBtn: PropTypes.bool
 };
 
 const SubmitBtn = ({ i18n, clickSubmit }) => {

@@ -19,12 +19,10 @@ const swipperParam = {
 
 export default () => {
 	return (
-		<div className="fullbanner">
-			<SwipperBanner
-				ImgFolder={[defBannerType.Promotions]}
-				params={swipperParam}
-				swiperClass="hotevent"
-			/>
-		</div>
+		<SwipperBanner
+			ImgFolder={[defBannerType.Promotions]}
+			params={swipperParam}
+			swiperClass="hotevent"
+		/>
 	);
 };

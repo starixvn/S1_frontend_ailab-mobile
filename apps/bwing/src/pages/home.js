@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Redirect, Link, useLocation, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import Slider from "../components/home/slider";
+import Marquee from "../components/home/marquee";
 import {
 	i18nContext,
 	userInfoContext,
@@ -34,15 +35,8 @@ import NewYear, {
 import useInterval from "../components/hook/useInterval";
 import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
 import { defDeviceType } from "../service/api/base";
-import { api_GetAnnouncement } from "../service/api/message";
-import Marquee from "../components/home/marquee";
-import HotGames from "../components/home/hotGames";
-import HotPromotion from "../components/home/hotPromotion";
 
 const IndexPage = () => {
-	// new
-	const [announcementList, setAnnouncementList] = useState([]);
-
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
@@ -58,6 +52,10 @@ const IndexPage = () => {
 
 	// * 如果 popUpBonusCode 有值需彈出彈窗提醒有該優惠活動可以使用
 	const [getPopUpPromotion] = useLazyGetPopUpPromotionQuery();
+
+	if (root) {
+		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
+	}
 
 	useEffect(() => {
 		if (redirectPath !== null) {
@@ -312,83 +310,26 @@ const IndexPage = () => {
 		userInfo.isLogin,
 		userInfo.langId
 	]);
-	// new
-	const getAnnouncement = async () => {
-		try {
-			const {
-				data: { data }
-			} = await api_GetAnnouncement({
-				langId: userInfo.langId,
-				currencyId: userInfo.currencyId
-			});
-			setAnnouncementList(data);
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: i18n.msg_ApiServerError
-			});
-		}
-	};
-	useEffect(() => {
-		getAnnouncement();
-	}, []);
 
-	const handleMarqueeClick = item => {
-		if (userInfo.isLogin) {
-			const content = item.content.split("\\n").join("　");
-			setPopBox({
-				isOpen: true,
-				title: item.subject,
-				content,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="blue"
-							onClick={() => {
-								setPopBox({ isOpen: false });
-								setRedirectPath(
-									`/${path.message.root}/${path.message.sub.announcement.root}`
-								);
-							}}>
-							{i18n.lbl_More ?? "More"}
-						</button>
-					</div>
-				)
-			});
-		} else {
-			setNav(defNavPanel.login);
-		}
-	};
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
 			<Slider />
-			<Marquee list={announcementList} onClick={handleMarqueeClick} />
+			<Marquee />
 			{userInfo.isLogin === false && (
-				<div className="login-bar btn-group">
+				<div className="loginbut">
 					<button
-						className="btn-primary"
+						className="login"
 						onClick={() => setNav(defNavPanel.login)}>
 						{i18n.lbl_Login.toUpperCase()}
 					</button>
-					<button
-						className="btn-secondary"
-						onClick={() => setNav(defNavPanel.join)}>
+					<button onClick={() => setNav(defNavPanel.join)}>
 						{i18n.lbl_JoinNow.toUpperCase()}
 					</button>
 				</div>
 			)}
-			<div className="wrapper">
-				<div className="col-12">
-					<HotGames />
-					<HotPromotion />
-				</div>
-			</div>
 			<GameList i18n={i18n} userInfo={userInfo} />
-			{/*
-
 			<EventSwipper />
 			<GamePanel i18n={i18n} userInfo={userInfo} />
 			<HotGameSwipper i18n={i18n} userInfo={userInfo} />
@@ -396,9 +337,9 @@ const IndexPage = () => {
 			<PlaytechJactpot />
 			<Top10Winner i18n={i18n} setPopBox={setPopBox} />
 			<Streaming />
-			{/* <MidBanner langId={userInfo.langId} />
+			{/* <MidBanner langId={userInfo.langId} /> */}
 			<LinksPanel i18n={i18n} langId={userInfo.langId} />
-			<AddToHomePop i18n={i18n} userInfo={userInfo} /> */}
+			<AddToHomePop i18n={i18n} userInfo={userInfo} />
 		</>
 	);
 };

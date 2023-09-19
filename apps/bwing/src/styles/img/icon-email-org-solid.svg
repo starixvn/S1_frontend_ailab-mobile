@@ -1,8 +1,0 @@
-<svg id="btnVem" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <circle id="bg" cx="15" cy="15" r="15" fill="#f38c00"/>
-  <g id="fr" fill="none" stroke="#fff" stroke-width="2">
-    <circle cx="15" cy="15" r="15" stroke="none"/>
-    <circle cx="15" cy="15" r="14" fill="none"/>
-  </g>
-  <path id="email" d="M16943,6430.58h-12a2,2,0,0,1-2-2v-6a2.007,2.007,0,0,1,.025-.322l7.014,5.226a1.665,1.665,0,0,0,1.926,0l7.01-5.223a2.086,2.086,0,0,1,.025.319v6A2,2,0,0,1,16943,6430.58Zm-6-3.577a.55.55,0,0,1-.32-.1l-7.324-5.46a2,2,0,0,1,1.643-.86h12a2.007,2.007,0,0,1,1.646.86l-7.324,5.459A.533.533,0,0,1,16937,6427Z" transform="translate(-16922.002 -6410.58)" fill="#fff"/>
-</svg>
