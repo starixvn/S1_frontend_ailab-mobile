@@ -20,13 +20,12 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
-import Join from "../join/join.refactor";
+import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
-import Loginn from "../login/loginn";
 
 export const defPageInfo = {
 	default: {
@@ -295,7 +294,8 @@ const Layout = ({ children }) => {
 				children
 			) : (
 				<>
-					<Loginn />
+					<Login />
+					<Join />
 					{/* <Header
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
@@ -306,7 +306,7 @@ const Layout = ({ children }) => {
 						setAppHint={setAppHint}
 					/>
 
-					<Join />
+
 
 					*/}
 					<main
