@@ -70,7 +70,7 @@ export const defSlotTpGameType = {
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
-	PNG: { tpID: 54, tpGameType: 105 },
+	PNG: { tpId: 54, tpGameType: 105 },
 	Iconic: { tpId: 24, tpGameType: 39 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
