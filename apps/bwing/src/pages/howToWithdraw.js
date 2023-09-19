@@ -72,7 +72,7 @@ export default () => {
 				• Thành viên có thể cập nhật nhiều ngân hàng một lúc.
 				<br />
 				• Tên thật trong Hồ sơ, tên tài khoản ngân hàng, và tên trong
-				CMND của bạn phải giống nhau.
+				CCCD của bạn phải giống nhau.
 				<br />
 				Sau khi điền tất cả thông tin cần thiết, vui lòng chọn nút Gửi.
 			</p>
