@@ -387,7 +387,7 @@ export const productList = langId => {
 					...defGameInfo.Casino_PNG,
 					parameter: defGameInfo.Casino_PNG,
 					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/png.png`,
+					img: `${bannerImgUrl}/h5/img/slot/playngo.png`,
 					icon: "icon icon-png",
 					displayText: "Play'n GO"
 				},
