@@ -15,7 +15,7 @@ const getLogo = ({ langId }) =>
 
 const getMoonFestivalLogo = ({ langId }) =>
 	`${cloudBannerImgURL}/h5/img/${
-		langId === "cs" ? "mid-autumn-logo-cs" : "mid-autumn-logo-en"
+		langId === "cs" ? "mid-autumn-logo-cs-2" : "mid-autumn-logo-en-2"
 	}.png`;
 
 const Logo = ({ langId }) => {
