@@ -771,7 +771,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_PNG,
 					parameter: defGameInfo.Casino_PNG,
 					spanText: "Play' n Go",
-					img: `${cloudBannerImgURL}/h5/img/png.png`,
+					img: `${cloudBannerImgURL}/h5/img/slotPlayngo.png`,
 					path: path.casino.root,
 					providerImgName: "png",
 					sortKey: "slot_PNG"

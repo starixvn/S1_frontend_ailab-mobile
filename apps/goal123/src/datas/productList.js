@@ -768,7 +768,7 @@ const gameList = [
 				...defGameInfo.Casino_PNG,
 				parameter: defGameInfo.Casino_PNG,
 				spanText: "Play' n GO",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-png.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-playngo.png`,
 				path: path.casino.root,
 				providerImgName: "png"
 			},
