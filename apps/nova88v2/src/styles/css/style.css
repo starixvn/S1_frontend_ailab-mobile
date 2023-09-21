@@ -3510,6 +3510,185 @@ footer > a.active .circleAnimation::after {
 #popup.detailpop .pop .infoList .info {
   margin: 2vw auto;
 }
+#popup.promosback {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+}
+#popup.promosback.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.promosback .promosbackpop {
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  margin-bottom: 5vw;
+  -webkit-animation: promosbackpop 1.5s ease-in-out;
+          animation: promosbackpop 1.5s ease-in-out;
+}
+#popup.promosback .promosbackpop img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100vw;
+}
+@-webkit-keyframes promosbackpop {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  25% {
+    -webkit-transform: scale(1.25, 1.25);
+            transform: scale(1.25, 1.25);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  75% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+@keyframes promosbackpop {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  25% {
+    -webkit-transform: scale(1.25, 1.25);
+            transform: scale(1.25, 1.25);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  75% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+#popup.promosback .popgo {
+  color: #fff;
+  text-align: center;
+  background: #113158;
+  font-size: 4.5vw;
+  padding: 3vw 0;
+  border-radius: 20vw;
+  min-width: 48vw;
+  -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  left: calc(50% - 24vw);
+  bottom: 8vw;
+  -webkit-animation: popgo 2s ease-in-out;
+          animation: popgo 2s ease-in-out;
+}
+@media (min-width: 428px) {
+  #popup.promosback .popgo {
+    font-size: 3.5vw;
+    min-width: 42vw;
+    left: calc(50% - 21vw);
+    bottom: -2vw;
+  }
+}
+@-webkit-keyframes popgo {
+  0% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+  }
+  75% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+  }
+}
+@keyframes popgo {
+  0% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+  }
+  75% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
+  }
+}
+#popup.promosback .closepop {
+  cursor: pointer;
+  display: block;
+  width: 9vw;
+  position: absolute;
+  left: calc(50% - 4.5vw);
+  bottom: -8vw;
+  -webkit-animation: closepop 2.4s ease-in-out;
+          animation: closepop 2.4s ease-in-out;
+}
+@media (min-width: 428px) {
+  #popup.promosback .closepop {
+    width: 7vw;
+    left: calc(50% - 4.5vw);
+    bottom: -12vw;
+  }
+}
+@-webkit-keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.promosback > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background-color: unset;
+}
 
 .blackInfo {
   background: #212121;
@@ -10527,7 +10706,6 @@ span.important {
   position: absolute;
   top: -23vw;
   right: -6vw;
-  pointer-events: none;
 }
 .jpot .jpot-btn {
   width: 40%;
