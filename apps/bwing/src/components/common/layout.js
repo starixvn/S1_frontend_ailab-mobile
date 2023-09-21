@@ -296,7 +296,7 @@ const Layout = ({ children }) => {
 				<>
 					<Login />
 					<Join />
-					{/* <Header
+					<Header
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
@@ -306,9 +306,6 @@ const Layout = ({ children }) => {
 						setAppHint={setAppHint}
 					/>
 
-
-
-					*/}
 					<main
 						className={`${pageInfo.className ?? ""} ${
 							appHint && root ? "active" : ""
@@ -318,7 +315,7 @@ const Layout = ({ children }) => {
 				</>
 			)}
 			{loading ? <Loading /> : null}
-			{/* <Footer /> */}
+			<Footer />
 
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming && root && (
