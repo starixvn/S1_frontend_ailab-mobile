@@ -188,6 +188,12 @@ export default {
 	},
 	rebateExclude: {
 		root: "rebateExclude"
+	},
+	lottery: {
+		root: "lottery"
+	},
+	eSports: {
+		root: "eSports"
 	}
 };
 

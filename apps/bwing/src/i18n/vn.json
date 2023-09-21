@@ -737,16 +737,16 @@
 	"lbl_Promotion_All": "HIỂN THỊ TẤT CẢ",
 	"lbl_Promotion_Slot": "QUAY HŨ",
 
-  "==============E-Wallet==============": "",
-  "lbl_EWalletWithdrawal": "Rút Ví điện Tử",
-  "lbl_EWallet": "Ví điện tử",
+	"==============E-Wallet==============": "",
+	"lbl_EWalletWithdrawal": "Rút Ví điện Tử",
+	"lbl_EWallet": "Ví điện tử",
 	"lbl_AddEWallet": "Thêm ví điện tử",
 	"lbl_EWallet_Update_Hint": "Vui lòng cập nhật chi tiết tài khoản Ví điện tử của bạn trước khi thực hiện Rút tiền. Tên tài khoản và hồ sơ của bạn phải là tên thật của bạn như trong Căn Cước Công Dân",
-  "lbl_Step_SelectEWallet": "Chọn Ví điện tử",
-  "lbl_EWalletAccount": "Tài Khoản Ví điện Tử",
-  "lbl_Prohibited_Duplicate_EWallet_Account": "Số tài khoản ví điện tử trùng lặp không được phép cập nhật . Vui lòng thử số tài khoản khác",
-  "lbl_NumberOfEWalletAccounts": "Số tài khoản Ví điện tử",
-  "lbl_E-Wallet_Step_1": "Thêm tài khoản mới",
+	"lbl_Step_SelectEWallet": "Chọn Ví điện tử",
+	"lbl_EWalletAccount": "Tài Khoản Ví điện Tử",
+	"lbl_Prohibited_Duplicate_EWallet_Account": "Số tài khoản ví điện tử trùng lặp không được phép cập nhật . Vui lòng thử số tài khoản khác",
+	"lbl_NumberOfEWalletAccounts": "Số tài khoản Ví điện tử",
+	"lbl_E-Wallet_Step_1": "Thêm tài khoản mới",
 	"lbl_E-Wallet_Step_2": "Chọn Tên Ví Điện Tử",
 	"lbl_E-Wallet_Step_3": "Thẻ ví điện tử ràng buộc",
 
@@ -888,5 +888,11 @@
 	"==============RebateExclude==============": "",
 	"lbl_RebateExclude_title": "Những trò chơi trong danh sách này sẽ bị loại trừ để hưởng phần thưởng hoàn trả hàng ngày",
 	"lbl_Product": "Sản phẩm",
-	"lbl_GameName": "Tên trò chơi"
+	"lbl_GameName": "Tên trò chơi",
+
+	"==============4.0==============": "",
+	"lbl_Account": "Account",
+	"lbl_Contact": "Contact",
+	"lbl_History": "Lịch sử",
+	"lbl_APP": "APP"
 }
