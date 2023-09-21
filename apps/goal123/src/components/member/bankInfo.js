@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { api_GetBankInfoSysList } from "../../service/api/payment";
 import {
@@ -15,6 +16,7 @@ import { api_GetCustBankInfo } from "../../service/api/account";
 import Inputbox from "../common/inputbox.info";
 import Dropdown from "../common/dropdown.image";
 import { paymentImgUrl } from "../../config";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const panel = { bankList: "bankList", addBank: "addBank" };
 const initStatus = {
@@ -27,6 +29,9 @@ const BankInfo = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [siteBankList, setSiteBankList] = useState([]);
 	const [custBankInfo, setCustBankInfo] = useState([]);
 	const [currentPanel, setCurrentPanel] = useState(panel.bankList);
@@ -39,6 +44,11 @@ const BankInfo = () => {
 	};
 	const [userValue, setUserValue] = useState(initValue);
 	const isMountedRef = useRef(null);
+
+	const displayBankCard =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.BankCard
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -377,6 +387,8 @@ const BankInfo = () => {
 			/>
 		);
 	});
+
+	if (!displayBankCard) return null;
 
 	return (
 		<>

@@ -7,7 +7,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { api_payment_GetEWalletInfoSysList } from "../../service/api/payment";
 import {
@@ -16,6 +17,7 @@ import {
 } from "../../service/api/accountStrict";
 import { api_account_GetCustEWalletInfo } from "../../service/api/account";
 import Member from "../../pages/member";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const panel = { eWalletList: "eWalletList", addEWallet: "addEWallet" };
 const initStatus = {
@@ -34,6 +36,9 @@ const EWalletInfo = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [siteBankList, setSiteBankList] = useState([]);
 	const [custEWalletInfo, setCustEWalletInfo] = useState([]);
 	const [currentPanel, setCurrentPanel] = useState(panel.eWalletList);
@@ -46,6 +51,11 @@ const EWalletInfo = () => {
 	};
 	const [userValue, setUserValue] = useState(initValue);
 	const isMountedRef = useRef(null);
+
+	const displayEWallet =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.EWallet
+		)?.status ?? true;
 
 	const GetCustEWalletInfo = () => {
 		setLoading(true);
@@ -381,6 +391,8 @@ const EWalletInfo = () => {
 			GetCustEWalletInfo();
 		}
 	}, [userInfo.isLogin]);
+
+	if (!displayEWallet) return null;
 
 	return (
 		<>

@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 
@@ -26,6 +27,7 @@ import BankCardPanel from "./bankCardPanel";
 import AmountPanel from "./amountPanel";
 import { defIptStatus } from "../common/inputbox.hint";
 import ImportantNote from "./importantNote";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -34,6 +36,9 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [balanceInfo, setBalanceInfo] = useState({
 		balance: 0,
 		deduction: 0,
@@ -56,6 +61,11 @@ const Panel = () => {
 
 	const isMountedRef = useRef(null);
 	const isClickedRef = useRef(false);
+
+	const displayBankCard =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.BankCard
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -796,6 +806,8 @@ const Panel = () => {
 			</section>
 		);
 	}
+
+	if (!displayBankCard) return null;
 
 	return content;
 };

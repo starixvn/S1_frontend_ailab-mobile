@@ -11,6 +11,7 @@ export const navContext = createContext({});
 export const popBoxContext = createContext({});
 export const themeContext = createContext({});
 export const userInfoContext = createContext({ isLogin: false });
+export const withdrawalBlockSettingContext = createContext({});
 export const walletInfoContext = createContext({});
 export const eWalletContext = createContext({});
 export const bankSlipPopBoxContext = createContext({});
