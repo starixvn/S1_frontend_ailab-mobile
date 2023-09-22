@@ -505,7 +505,7 @@ const Join = () => {
 					{step === 1 && (
 						<>
 							<div className="join-message">
-								{t("lbl_SignUpNote")}
+								{t("lbl_LoginMsg")}
 								<a onClick={() => setNav(defNavPanel.login)}>
 									{t("lbl_LoginHere")}
 								</a>

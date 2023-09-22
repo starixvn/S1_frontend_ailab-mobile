@@ -629,6 +629,15 @@
   "lbl_LoginHere": "Đăng nhập tại đây",
   "lbl_HotPromotions": "Khuyến mãi",
   "lbl_SighUpTerms": "Tôi đồng ý với Điều Khoản và Điều Kiện và Quy Tắc và Quy Định Đặt Cược của Bwing. Tôi xác nhận tôi đã trên 18 tuổi",
+  "lbl_LoginMsg": "Xin lưu ý rằng chúng tôi không cho phép các Thành Viên sở hữu nhiều hơn (1) tài khoản.",
+  "lbl_Fabulous_Sports_Experience": "TRẢI NGHIỆM THỂ THAO ĐỈNH CAO",
+  "lbl_FavouriteSlots": "QUAY HŨ ĐẶC SẮC",
+  "lbl_Home_Download_Description1": "Tải app và tận hưởng trải nghiệm cược đỉnh cao, mọi lúc mọi nơi",
+  "lbl_Home_Download_Description2": "Nhanh hơn, ổn định hơn ",
+  "lbl_Home_Download_Description3": "Không lo bị chặn ",
+  "lbl_App_Download_Guide": "Hướng Dẫn Tải App",
+  "lbl_SiteNews": "Điểm báo Bwing",
+  "lbl_Read_more": "Đọc thêm",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "NỔ HŨ",
@@ -679,6 +688,7 @@
 	"lbl_iOS_App_Trust_Authentication": "Cách xác nhận tin cậy ứng dụng trên iOS",
 	"lbl_Once_Bwing_App_is_installed": "Khi ứng dụng Bwing được cài đặt, chọn Tin cậy hoặc hoàn thành Cài đặt theo hướng dẫn bên dưới",
 	"lbl_BetNow": "CƯỢC NGAY",
+  "lbl_Top_Winner_Description": "CƯỢC LỚN THẮNG TO CHIẾM LĨNH BẢNG ĐUA TOP",
 
 	"==============Add To Home Screen==============": "",
 	"lbl_AddToHome_Hint": "Cách thêm ứng dụng vào màn hình chính",

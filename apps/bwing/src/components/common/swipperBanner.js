@@ -129,7 +129,7 @@ const Panel = ({ ImgFolder = [], params, swiperClass }) => {
 		bannerLink,
 		tpGameType
 	}) => {
-		if (Number(tpId) === defGameInfo.Casino_PT.tpId)
+		if (Number(tpId) === defGameInfo.Casino_PT?.tpId)
 			return handleGoToGame({
 				isLogin: userInfo.isLogin,
 				langId: userInfo.langId,

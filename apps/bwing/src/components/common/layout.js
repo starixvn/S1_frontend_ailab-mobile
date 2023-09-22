@@ -162,7 +162,7 @@ export const defPageInfo = {
 	},
 	sports: {
 		titleKey: "",
-		className: "main",
+		className: "lobby sports",
 		hideLogo: false,
 		showMenuBar: true
 	},
