@@ -637,6 +637,14 @@
 	"lbl_HotGame": "HOT GAMES",
 	"lbl_Dont_Have_An_Account": "Don't have an account?",
 
+  "lbl_LoginMsg": "Please note that we do not permit members to own more than (1) account.",
+  "lbl_FavouriteSlots": "FAVOURITE SLOTS",
+  "lbl_Home_Download_Description1": "Download our app and enjoy exclusive experiences, anywhere anytime",
+  "lbl_Home_Download_Description2": "Faster, More Stable,",
+  "lbl_Home_Download_Description3": "no worries of being denied access",
+  "lbl_App_Download_Guide": "App Download Guide",
+  "lbl_Read_more": "Read More",
+
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",
 	"lbl_Top10winners": "Top 10 Winners",
@@ -686,6 +694,7 @@
 	"lbl_iOS_App_Trust_Authentication": "iOS App Trust Authentication",
 	"lbl_Once_Bwing_App_is_installed": "Once Bwing App is installed, tap Trust or complete the setting as below.",
 	"lbl_BetNow": "Bet Now",
+  "lbl_Top_Winner_Description": "WIN BIG AND HAVE YOUR NAME WRITTEN ON THE BOARD!",
 
 	"==============Under Maintenance==============": "",
 	"lbl_underMaintenance": "Under Maintenance",
@@ -720,6 +729,7 @@
 	"lbl_Streaming_Away": "Away",
 	"lbl_More": "More",
 	"lbl_streaming_please_make_deposit": "Please make a Min Deposit to enjoy our LIVE STREAMING.",
+  "lbl_SiteNews": "Bwing News",
 
 	"==============Promotion Cashback==============": "",
 	"lbl_Cashback": "Cashback",

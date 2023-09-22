@@ -38,12 +38,14 @@ const HotGames = () => {
 	return (
 		<>
 			<div className="home-title">
-				<i className="icon-games">{t("lbl_HOT_GAMES")}</i>
+				<i className="icon-games" />
+				{t("lbl_HOT_GAMES")}
 			</div>
 			<div className="home-hotgame mb-2">
 				{HOT_GAME_LIST.map(({ displayKey, category, ...rest }) => {
 					return (
 						<a
+							key={`${displayKey}_${category}`}
 							className="home-hotgame-item"
 							onClick={() => handleHotGameClick({ ...rest })}>
 							<img

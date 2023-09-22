@@ -17,7 +17,7 @@ const swipperParam = {
 	rebuildOnUpdate: true
 };
 
-export default () => {
+export const HomeBanner = () => {
 	return (
 		<div className="fullbanner">
 			<SwipperBanner

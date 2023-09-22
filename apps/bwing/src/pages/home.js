@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Redirect, Link, useLocation, useNavigate } from "@reach/router";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { Redirect, useLocation, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
-import Slider from "../components/home/slider";
 import {
-	i18nContext,
 	userInfoContext,
 	popBoxContext,
 	rootContext,
@@ -18,43 +17,161 @@ import {
 import path from "../path";
 import { GetPageInfo } from "../components/common/layout";
 import { api_GetWalletInfo } from "../service/api/account";
-import Streaming from "../components/home/streaming";
-import GamePanel from "../components/home/gamePanel";
-import LinksPanel from "../components/home/links";
-import EventSwipper from "../components/home/eventSwipper";
-import HotGameSwipper from "../components/home/hotGameSwipper";
-import defNav from "../components/casino/defNav";
-import AddToHomePop from "../components/home/addToHomePop";
-import Top10Winner from "../components/home/top10winner";
 import { bannerImgUrl } from "../config";
-import GameList from "../components/home/menu";
 import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../components/common/popbox.newYear";
-import useInterval from "../components/hook/useInterval";
-import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
 import { defDeviceType } from "../service/api/base";
 import { api_GetAnnouncement } from "../service/api/message";
 import Marquee from "../components/home/marquee";
 import HotGames from "../components/home/hotGames";
 import HotPromotion from "../components/home/hotPromotion";
+import { api_promotion_GetPromotionList } from "../service/api/promotion";
+import HomeMatch from "../components/home/homeMatch";
+import { api_hotEvent_GetDataList } from "../service/api/hotEvent";
+import SportList from "../components/home/sportList";
+import TopWinner from "../components/home/TopWinner";
+import { api_events_GetLeaderboardList } from "../service/api/events";
+import Jactpot from "../components/home/jackpot";
+import FavoriteSlots from "../components/home/FavoriteSlots";
+import { api_HotGame_GetDataList } from "../service/api/hotGame";
+import RecentlyViewed from "../components/home/RecentlyViewed";
+import { api_GetRecentlyViewed } from "../service/api/game";
+import HomeDownLoad from "../components/home/HomeDownLoad";
+import LiveSports from "../components/home/liveSports";
+import { useHandleStreamList } from "../components/streaming/hook";
+import { api_GetNews } from "../service/api/news";
+import News from "../components/home/news";
+import { HomeBanner } from "../components/home/homeBanner";
 
 const IndexPage = () => {
-	// new
-	const [announcementList, setAnnouncementList] = useState([]);
-
 	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { setRoot } = useContext(rootContext);
 	const navigate = useNavigate();
-
-	const { root } = useContext(rootContext);
-
 	const location = useLocation();
-	const pageInfo = GetPageInfo(location.pathname);
+	const { t } = useTranslation();
+	const [announcementList, setAnnouncementList] = useState([]);
+	const [promotionList, setPromotionList] = useState([]);
+	const [hotEventList, setHotEventList] = useState([]);
+	const [leaderBoardList, setLeaderBoardList] = useState([]);
+	const [hotGameList, setHotGameList] = useState([]);
+	const [recentlyViewedGames, setRecentlyViewedGames] = useState([]);
+	const [news, setNews] = useState([]);
+	const { videoList } = useHandleStreamList({});
+	const timeRef = useRef(null);
+	const getPromotionList = async () => {
+		try {
+			const {
+				data: { data }
+			} = await api_promotion_GetPromotionList({
+				langId: userInfo.langId,
+				currencyId: userInfo.currencyId
+			});
+			setPromotionList(data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getAnnouncement = async () => {
+		try {
+			const {
+				data: { data }
+			} = await api_GetAnnouncement({
+				langId: userInfo.langId,
+				currencyId: userInfo.currencyId
+			});
+			setAnnouncementList(data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getHotEventList = async () => {
+		try {
+			const {
+				data: { data }
+			} = await api_hotEvent_GetDataList({
+				langId: userInfo.langId
+			});
+			setHotEventList(data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getLeaderBoardList = async () => {
+		try {
+			const res = await api_events_GetLeaderboardList({
+				lBCategoryId: 0,
+				TopNum: 10,
+				BeforeDays: 0,
+				EventCode: "202104"
+			});
+			setLeaderBoardList(res.data.data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getHotGameList = async () => {
+		try {
+			const res = await api_HotGame_GetDataList();
+			setHotGameList(res.data.data.HotGame);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getRecentlyViewedGames = async () => {
+		try {
+			const res = await api_GetRecentlyViewed({
+				currencyId: userInfo.currencyId
+			});
+			if (res.data.errorCode === 0) {
+				const { recentlyViewedList } = res.data.data;
+				setRecentlyViewedGames(recentlyViewedList);
+			}
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
+
+	const getNews = async () => {
+		try {
+			const res = await api_GetNews({
+				langId: userInfo.langId,
+				currencyId: userInfo.currencyId
+			});
+			setNews(res.data.data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
 
 	// * 如果 popUpBonusCode 有值需彈出彈窗提醒有該優惠活動可以使用
 	const [getPopUpPromotion] = useLazyGetPopUpPromotionQuery();
@@ -98,8 +215,9 @@ const IndexPage = () => {
 
 							const hasBalance =
 								mainWallet.balance ||
-								tpWalletsArr?.filter(t => t.balance > 0)
-									.length >= 1;
+								tpWalletsArr?.filter(
+									tpWallet => tpWallet.balance > 0
+								).length >= 1;
 
 							if (!hasBalance) {
 								const RedirectToDeposit = () => {
@@ -111,20 +229,18 @@ const IndexPage = () => {
 
 								setPopBox({
 									isOpen: true,
-									title: i18n.lbl_Notice,
+									title: t("lbl_Notice"),
 									content: (
 										<>
 											<p>
-												{`${i18n.msg_BalanceHint} : `}
+												{`${t("msg_BalanceHint")} : `}
 												<span className="important">
-													{`${
-														i18n[
-															`Currency_${userInfo.currencyId}`
-														]
-													} 0`}
+													{`${t(
+														`Currency_${userInfo.currencyId}`
+													)} 0`}
 												</span>
 											</p>
-											<p>{i18n.msg_DepositHint}</p>
+											<p>{t("msg_DepositHint")}</p>
 										</>
 									),
 									hasBtn: true,
@@ -133,12 +249,12 @@ const IndexPage = () => {
 											<button
 												className="cancel"
 												onClick={openNextPopUp}>
-												{i18n.lbl_Later}
+												{t("lbl_Later")}
 											</button>
 											<button
 												onClick={RedirectToDeposit}
 												className="submit">
-												{i18n.lbl_DepositNow}
+												{t("lbl_DepositNow")}
 											</button>
 										</div>
 									),
@@ -156,7 +272,7 @@ const IndexPage = () => {
 					() => {
 						setPopBox({
 							isOpen: true,
-							content: i18n.msg_ApiServerError,
+							content: t("msg_ApiServerError"),
 							handlePopBox: openNextPopUp
 						});
 					}
@@ -192,7 +308,7 @@ const IndexPage = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button className="blue" onClick={openNextPopUp}>
-								{i18n.lbl_Close}
+								{t("lbl_Close")}
 							</button>
 						</div>
 					),
@@ -265,7 +381,7 @@ const IndexPage = () => {
 										);
 										setPopBox({ isOpen: false });
 									}}>
-									{i18n.lbl_ClaimNow}
+									{t("lbl_ClaimNow")}
 								</button>
 								<img
 									src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
@@ -305,32 +421,32 @@ const IndexPage = () => {
 			openNextPopUp();
 		}
 	}, [
-		i18n,
 		setPopBox,
 		userInfo.currencyId,
 		userInfo.accountName,
 		userInfo.isLogin,
 		userInfo.langId
 	]);
-	// new
-	const getAnnouncement = async () => {
-		try {
-			const {
-				data: { data }
-			} = await api_GetAnnouncement({
-				langId: userInfo.langId,
-				currencyId: userInfo.currencyId
-			});
-			setAnnouncementList(data);
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: i18n.msg_ApiServerError
-			});
-		}
-	};
+
 	useEffect(() => {
 		getAnnouncement();
+		getPromotionList();
+		getHotEventList();
+		getLeaderBoardList();
+		getHotGameList();
+		getRecentlyViewedGames();
+		getNews();
+	}, []);
+
+	useEffect(() => {
+		getHotEventList();
+		timeRef.current = setInterval(() => {
+			getHotEventList();
+		}, 60000);
+
+		return () => {
+			clearInterval(timeRef.current);
+		};
 	}, []);
 
 	const handleMarqueeClick = item => {
@@ -351,7 +467,7 @@ const IndexPage = () => {
 									`/${path.message.root}/${path.message.sub.announcement.root}`
 								);
 							}}>
-							{i18n.lbl_More ?? "More"}
+							{t("lbl_More") ?? "More"}
 						</button>
 					</div>
 				)
@@ -364,81 +480,45 @@ const IndexPage = () => {
 		<Redirect to={redirectPath} noThrow />
 	) : (
 		<>
-			<Slider />
+			<HomeBanner />
 			<Marquee list={announcementList} onClick={handleMarqueeClick} />
 			{userInfo.isLogin === false && (
 				<div className="login-bar btn-group">
 					<button
 						className="btn-primary"
 						onClick={() => setNav(defNavPanel.login)}>
-						{i18n.lbl_Login.toUpperCase()}
+						{t("lbl_Login").toUpperCase()}
 					</button>
 					<button
 						className="btn-secondary"
 						onClick={() => setNav(defNavPanel.join)}>
-						{i18n.lbl_JoinNow.toUpperCase()}
+						{t("lbl_JoinNow").toUpperCase()}
 					</button>
 				</div>
 			)}
 			<div className="wrapper">
 				<div className="col-12">
 					<HotGames />
-					<HotPromotion />
+					<HotPromotion promotionList={promotionList} />
+					<HomeMatch hotEventList={hotEventList} />
+					<SportList />
+					<TopWinner leaderBoardList={leaderBoardList} />
+					<Jactpot />
+					<FavoriteSlots hotGameList={hotGameList} />
+					{userInfo.isLogin && (
+						<RecentlyViewed
+							recentlyViewedGames={recentlyViewedGames}
+						/>
+					)}
+					<HomeDownLoad />
+					<LiveSports videoList={videoList} />
+					<News news={news} />
 				</div>
 			</div>
-			<GameList i18n={i18n} userInfo={userInfo} />
-			{/*
-
-			<EventSwipper />
-			<GamePanel i18n={i18n} userInfo={userInfo} />
-			<HotGameSwipper i18n={i18n} userInfo={userInfo} />
-			{userInfo.isLogin && <RecentlyViewedGameList />}
-			<PlaytechJactpot />
-			<Top10Winner i18n={i18n} setPopBox={setPopBox} />
-			<Streaming />
-			{/* <MidBanner langId={userInfo.langId} />
-			<LinksPanel i18n={i18n} langId={userInfo.langId} />
-			<AddToHomePop i18n={i18n} userInfo={userInfo} /> */}
-		</>
-	);
-};
-
-const PlaytechJactpot = () => {
-	const { i18n } = useContext(i18nContext);
-	const [jPotSuccess, setJPotSuccess] = useState(false);
-
-	useInterval(() => {
-		if (!jPotSuccess) {
-			const ticker2 =
-				typeof Ticker === "undefined"
-					? null
-					: new Ticker({
-							info: 2,
-							casino: "hotspin88am",
-							currency: "vnd"
-					  });
-
-			if (ticker2) {
-				setJPotSuccess(true);
-			}
-
-			ticker2?.attachToTextBox("tick");
-			ticker2?.SetCurrencySign("");
-			ticker2?.tick();
-		}
-	}, 1000);
-
-	return (
-		<Link to={`/${path.casino.root}`} state={{ nav: defNav.PROMO.key }}>
-			<div className={`bannerS${jPotSuccess ? "" : " active"}`}>
-				<img src={`${bannerImgUrl}/h5/img/jackpot.png`} alt="" />
-				<p>VND</p>
-				{!jPotSuccess && (
-					<div className="under">{i18n.lbl_underMaintenance}</div>
-				)}
-				<p id="tick" />
+			<div className="copyright">
+				{`© Copyright ${new Date().getFullYear()}. Bwing. All Rights Reserved.`}
 			</div>
-		</Link>
+		</>
 	);
 };
 

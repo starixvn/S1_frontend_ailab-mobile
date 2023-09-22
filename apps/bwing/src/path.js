@@ -194,6 +194,9 @@ export default {
 	},
 	eSports: {
 		root: "eSports"
+	},
+	news: {
+		root: "news"
 	}
 };
 

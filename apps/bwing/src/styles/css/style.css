@@ -4499,6 +4499,9 @@ header {
   border-radius: 4.5vw;
 }
 .home-news-info {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 0 0 4.5vw 4.5vw;
   padding: 1vw;
   background: rgba(0, 0, 0, 0.8);
@@ -5961,14 +5964,27 @@ header {
 .vip-grade-table-content i {
   width: auto;
 }
+.vip-grade .swiper-container {
+  position: relative;
+}
 .vip-grade .swiper-button-next, .vip-grade .swiper-button-prev {
-  top: 60vw;
+  top: 20vw;
   color: #1C317B;
   z-index: 2;
+  background-image: url(https://banner.bw88.io/h5/img/4.0/btn-arrow3.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 4vw;
+  height: 6.5vw;
 }
 .vip-grade .swiper-button-next::after, .vip-grade .swiper-button-prev::after {
+  display: none;
   font-size: 5vw;
   font-weight: bold;
+}
+.vip-grade .swiper-button-prev {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .swiper-pagination {
