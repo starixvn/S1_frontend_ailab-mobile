@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import classNames from "classnames";
 import {
-	dragonBoatFestivalEventPeriod,
-	isDateRange
-} from "@ailab-mobile/common";
-import {
 	userInfoContext,
 	i18nContext,
 	popBoxContext,
@@ -113,10 +109,7 @@ Header.propTypes = {
 
 const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
 	return isShow ? (
-		<div
-			className={classNames("headerTLogout", {
-				dragon: isDateRange(dragonBoatFestivalEventPeriod)
-			})}>
+		<div className={classNames("headerTLogout")}>
 			<div className="close noPos" onClick={onClickSubMenu}>
 				<span />
 				<span />
@@ -166,10 +159,7 @@ const AfterLogin = ({
 	return (
 		isShow && (
 			<>
-				<div
-					className={classNames("headerTLogout", {
-						dragon: isDateRange(dragonBoatFestivalEventPeriod)
-					})}>
+				<div className={classNames("headerTLogout")}>
 					<div className="close noPos" onClick={onClickSubMenu}>
 						<span />
 						<span />

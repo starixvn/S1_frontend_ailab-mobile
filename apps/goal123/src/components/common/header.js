@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import { Redirect, Link } from "@reach/router";
 import classNames from "classnames";
 import {
-	dragonBoatFestivalEventPeriod,
-	isDateRange
-} from "@ailab-mobile/common";
-import {
 	userInfoContext,
 	i18nContext,
 	msgCountContext,
@@ -53,21 +49,8 @@ const Header = ({
 								<span>≡</span>
 							</button>
 						</div>
-						<a
-							href="/"
-							className={classNames("logo", {
-								dragon: isDateRange(
-									dragonBoatFestivalEventPeriod
-								)
-							})}>
+						<a href="/" className={classNames("logo")}>
 							<Logo />
-							{isDateRange(dragonBoatFestivalEventPeriod) && (
-								<img
-									className="zongzi"
-									src={`${bannerImgUrl}/h5/img/zongzi.png`}
-									alt="logo"
-								/>
-							)}
 						</a>
 					</>
 				)}
