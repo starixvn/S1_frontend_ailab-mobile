@@ -29,7 +29,8 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.USD,
 		defCurrenyId.KHM,
-		defCurrenyId.INR
+		defCurrenyId.INR,
+		defCurrenyId.VND
 	],
 	exchange: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 	rewards: [defCurrenyId.MYR, defCurrenyId.THB, defCurrenyId.IDR],
