@@ -732,234 +732,65 @@ export const productList = langId => {
 	};
 };
 
-export const defSubMenus = () => [
+export const defSubMenus = langId => [
 	{
-		displayKey: "lbl_Sports",
-		icon: "icon icon-sports",
-		subItems: [
-			{
-				displayKey: "lbl_SabaSport",
-				...defGameInfo.Sports
-			},
-			{
-				displayKey: "lbl_CryptoSports",
-				...defGameInfo.CryptoSports
-			},
-			{
-				displayText: "SBOBET",
-				...defGameInfo.sportSbo
-			},
-			{
-				displayKey: "lbl_BTISport",
-				...defGameInfo.BTISport
-			},
-			{
-				displayKey: "lbl_VirtualSports",
-				...defGameInfo.VirtualSports
-			}
-		]
+		icon: "icon-promo-blue",
+		path: path.promotion.root,
+		displayKey: "lbl_Promotion"
 	},
 	{
-		displayKey: "lbl_Games",
-		icon: "icon icon-kelo",
-		subItems: [
-			{
-				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker"
-			},
-			{
-				...defGameInfo.sabaClub,
-				displayKey: "lbl_Vgaming"
-			},
-			// {
-			// 	...defGameInfo.MaxGame,
-			// 	displayText: "Max Game"
-			// },
-			{
-				...defGameInfo.V8Poker,
-				displayKey: "lbl_V8Poker"
-			},
-			{
-				...defGameInfo.tableGame,
-				displayKey: "lbl_tableGame"
-			}
-			// {
-			// 	...defGameInfo.VirtualGame,
-			// 	displayKey: "lbl_VirtualGames"
-			// }
-		]
+		icon: "icon-star-outline-blue",
+		path: path.vip.root,
+		displayKey: "lbl_VIP"
 	},
 	{
-		displayKey: "lbl_Fishing",
-		icon: "icon icon-game",
-		subItems: [
-			{
-				...defGameInfo.Fishing_AB3,
-				displayKey: "lbl_Paradise"
-			},
-			{
-				...defGameInfo.Fishing_AT01,
-				displayKey: "lbl_Oneshot_Fishing"
-			},
-			// {
-			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
-			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			// },
-			// {
-			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
-			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			// },
-			// {
-			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			// },
-			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_FishingGG"
-			},
-			{
-				...defGameInfo.Fishing_SG,
-				displayKey: "lbl_FishingSG1"
-			},
-			{
-				...defGameInfo.Fishing_SGW,
-				displayKey: "lbl_FishingSG2"
-			}
-		]
+		icon: "icon-download-blue",
+		path: path.appDownload.root,
+		displayKey: "lbl_APP"
 	},
 	{
-		displayKey: "lbl_Lottery",
-		// icon: "icon icon-kelo",
-		subItems: [
-			{
-				...defGameInfo.GPI_VNLottery,
-				displayKey: "GPI_VNLottery"
-			},
-			{
-				...defGameInfo.tcg,
-				displayKey: "lbl_tcg"
-			},
-			{
-				displayKey: "lbl_TraditionalLottery",
-				...defGameInfo.One789_lottery
-			},
-			// {
-			// 	displayKey: "lbl_789Lottery",
-			// 	...defGameInfo.One789_lottery_789
-			// },
-			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			}
-		]
+		icon: "icon-soccer-blue",
+		path: path.sports.root,
+		displayKey: "lbl_Sports"
 	},
 	{
-		...defGameInfo.eSports,
-		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports",
-		subItems: [
-			{
-				...defGameInfo.eSports,
-				displayKey: "lbl_Saba"
-			},
-			{
-				...defGameInfo.eSports_TFGaming,
-				displayKey: "lbl_TFGaming"
-			}
-		]
+		icon: "icon-livecasino-blue",
+		path: path.liveCasino.root,
+		displayKey: "lbl_LiveCasino"
 	},
 	{
-		displayKey: "lbl_Slots",
-		path: `/${path.casino.root}`,
-		icon: "icon icon-casino"
+		icon: "icon-lottery-blue",
+		path: path.lottery.root,
+		displayKey: "lbl_Lottery"
 	},
 	{
-		displayKey: "lbl_LiveCasino",
-		icon: "icon icon-livecasino",
-		subItems: [
-			{
-				...defGameInfo.LIVEcasinoPP,
-				displayText: "Pragmatic Play"
-			},
-			{
-				...defGameInfo.LIVEcasinoBG,
-				displayText: "Big Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoYEEBET,
-				displayText: "YEEBET"
-			},
-			{
-				...defGameInfo.LIVEcasinoSkywind,
-				displayText: "Skywind"
-			},
-			{
-				...defGameInfo.LIVEcasinoMG,
-				displayText: "Microgaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoEVO,
-				displayText: "Evolution Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoPT,
-				displayText: "Playtech"
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				displayText: "n2-LIVE"
-			},
-			{
-				displayKey: "lbl_liveCasino_789SeDie",
-				...defGameInfo.LIVEcasinoOne789
-			},
-			{
-				...defGameInfo.LIVEcasinoWM,
-				displayText: "WM Casino"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayText: "Asia Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayText: "AE Sexy"
-			},
-			{
-				...defGameInfo.LIVEcasinoDG,
-				displayText: "Dream Gaming"
-			},
-			// {
-			// 	...defGameInfo.LIVEcasinoAB,
-			// 	displayText: "Allbet"
-			// },
-			{
-				...defGameInfo.LIVEcasinoEB,
-				displayText: "eBET"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayText: "SA Gaming"
-			}
-		]
+		icon: "icon-fishing-blue",
+		path: path.fishing.root,
+		displayKey: "lbl_Fishing"
 	},
 	{
-		displayKey: "lbl_Promotions",
-		path: `/${path.promotion.root}`,
-		icon: "icon icon-gift"
+		icon: "icon-slots-blue",
+		path: path.casino.root,
+		displayKey: "lbl_Slots"
 	},
 	{
-		displayKey: "lbl_APP_DOWNLOAD",
-		path: `/${path.appDownload.root}`,
-		icon: "icon icon-mobile"
+		icon: "icon-games-blue",
+		path: path.games.root,
+		displayKey: "lbl_Games"
 	},
 	{
-		displayKey: "lbl_VIP",
-		path: `/${path.vip.root}`,
-		icon: "icon icon-vip"
+		icon: "icon-esports-blue",
+		path: path.eSports.root,
+		displayKey: "lbl_eSports"
+	},
+	{
+		icon: "icon-aff-blue",
+		href: siteInfo(langId).affiliateLink,
+		displayKey: "lbl_Affiliates"
+	},
+	{
+		icon: "icon-other-blue",
+		path: path.other.root,
+		displayKey: "lbl_Other"
 	}
 ];

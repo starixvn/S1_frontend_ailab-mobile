@@ -48,3 +48,10 @@ export const defLevelList = [
 		levelName: "lbl_BWING_Club"
 	}
 ];
+
+export const VIP_SPECIAL_REBATE = {
+	sport: 1,
+	liveCasino: 3,
+	casino: 2,
+	virtualSports: 7
+};

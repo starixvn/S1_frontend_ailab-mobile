@@ -1,73 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import moment from "moment/moment";
-import PropTypes from "prop-types";
-import { AutoPlay } from "../components/common/swipperBanner";
-import {
-	userInfoContext,
-	i18nContext,
-	defNavPanel,
-	navContext,
-	popBoxContext
-} from "../components/common/context";
-import { defBannersUrl, defLevelList } from "../components/vip/def";
-import { EventList } from "../components/vip/eventList";
+import React, { useContext, useEffect, useRef } from "react";
+import { userInfoContext } from "../components/common/context";
 import { Info } from "../components/vip/info";
-import { FooterBanner } from "../components/vip/footerBanner";
-import { api_site_GetVipBanner } from "../service/api/site";
-
-const Banners = ({ langId }) => {
-	const rows = defBannersUrl({ langId }).map(b => (
-		<img
-			key={`VIPBanner-${b}`}
-			src={b}
-			className="banner"
-			alt="vip banner"
-		/>
-	));
-	return <AutoPlay Rows={rows} />;
-};
-
-Banners.propTypes = {
-	langId: PropTypes.string.isRequired
-};
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
-	const [vipBanner, setVipBanner] = useState([]);
-	const { setPopBox } = useContext(popBoxContext);
 	const isMountedRef = useRef(null);
-
-	const openJoinPop = () => {
-		if (!userInfo.isLogin) {
-			setNav(defNavPanel.join);
-		}
-	};
-
-	useEffect(() => {
-		const getVipBanner = async () => {
-			await api_site_GetVipBanner().then(
-				res => {
-					if (isMountedRef.current && res.data.errorCode === 0) {
-						setVipBanner(res.data.data || []);
-					} else if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-		};
-		getVipBanner();
-	}, [userInfo.langId]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -77,40 +14,22 @@ const IndexPage = () => {
 	});
 
 	return (
-		<>
-			<Banners langId={userInfo.langId} />
-			<LevelList i18n={i18n} />
-			<Info langId={userInfo.langId} />
-			<div className="vipPage">
-				<div className="text">
-					{i18n.lbl_LastUpdated} :{" "}
-					{moment(vipBanner?.lastUpdateTime, "YYYY-MM-DDThh:mm:ssZ")
-						.zone("+07:00")
-						.format("MM/DD/YYYY")}
+		<div className="wrapper">
+			<div className="col-12">
+				<div className="col-12">
+					<div className="lobby-top">
+						<div className="lobby-banner">
+							<img
+								src={`${process.env.REACT_APP_BANNER_URL}/h5/img/4.0/vip/en/all-banner.jpg`}
+								alt=""
+							/>
+						</div>
+					</div>
+					<Info langId={userInfo.langId} />
 				</div>
-				<EventList langId={userInfo.langId} vipBanner={vipBanner} />
-				<FooterBanner
-					langId={userInfo.langId}
-					openJoinPop={openJoinPop}
-				/>
 			</div>
-		</>
-	);
-};
-
-const LevelList = ({ i18n }) => {
-	const rows = defLevelList.map(l => (
-		<div key={`VIPLevelList-${l.levelName}`}>
-			<img src={l.imgUrl} alt={l.levelName} />
-			{i18n[l.levelName]}
 		</div>
-	));
-
-	return <div className="medal">{rows}</div>;
-};
-
-LevelList.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
+	);
 };
 
 export default IndexPage;

@@ -70,7 +70,7 @@ export const useHandlePromotionInfo = ({
 	};
 };
 
-const PromotionInfoContent = ({
+export const PromotionInfoContent = ({
 	promotionInfo,
 	getPromotionDetail,
 	showAllPromosBtn,
