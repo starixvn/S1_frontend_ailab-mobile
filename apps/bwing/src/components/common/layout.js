@@ -213,6 +213,11 @@ export const defPageInfo = {
 		titleKey: "lbl_FIFAWorldCup",
 		className: "",
 		hideLogo: true
+	},
+	news: {
+		titleKey: "lbl_SiteNews",
+		className: "lobby news",
+		hideLogo: true
 	}
 };
 

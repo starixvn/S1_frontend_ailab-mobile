@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
+import path from "../../path";
 
 const News = ({ news }) => {
 	const { t } = useTranslation();
@@ -14,14 +15,16 @@ const News = ({ news }) => {
 			</div>
 			<div className="home-news">
 				<div className="home-news-content">
-					{news.map(({ imageURL, content, newsId }) => (
+					{news.map(({ imageURL, content, newsId, title }) => (
 						<div key={newsId} className="home-news-item">
 							<img src={imageURL} alt="" />
 							<div className="home-news-info">
 								<span>{content}</span>
 								<a
 									onClick={() =>
-										navigate(`/${paths.news.root}`)
+										navigate(
+											`/${path.news.root}?imageURL=${imageURL}&content=${content}&title=${title}`
+										)
 									}>
 									${t("lbl_Read_more")} &gt;&gt;
 								</a>
