@@ -79,6 +79,7 @@ import LuckyWheel from "./pages/luckyWheel";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
+import News from "./pages/news";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -194,6 +195,7 @@ const Index = () => {
 							<RebateExclude
 								path={`/:langId/${path.rebateExclude.root}`}
 							/>
+							<News path={path.news.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>
