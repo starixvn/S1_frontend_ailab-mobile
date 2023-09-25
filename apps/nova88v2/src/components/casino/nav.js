@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 const Nav = props => {
 	const { memberType, categoryList, selNav, onChange } = props;
 	const { i18n } = useContext(i18nContext);
-
 	return categoryList.map(value => {
 		const LiveStreamingMemberType = 3;
 		if (memberType === LiveStreamingMemberType && value === "random") {
