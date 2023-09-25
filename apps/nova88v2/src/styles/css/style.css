@@ -2407,6 +2407,7 @@ footer > a.active .circleAnimation::after {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap");
 }
 #popup.active {
   visibility: visible;
@@ -3357,6 +3358,156 @@ footer > a.active .circleAnimation::after {
   }
 }
 #popup.promosback > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background-color: unset;
+}
+#popup.vninfopop {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+}
+#popup.vninfopop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.vninfopop .vninfopop-inner {
+  background: rgba(0, 0, 0, 0);
+  margin-bottom: 5vw;
+  position: relative;
+  -webkit-animation: vninfopop-inner 1.5s ease-in-out;
+          animation: vninfopop-inner 1.5s ease-in-out;
+}
+#popup.vninfopop .vninfopop-inner img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100vw;
+}
+@-webkit-keyframes vninfopop-inner {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+@keyframes vninfopop-inner {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+#popup.vninfopop .popgoto {
+  color: #fff;
+  text-align: center;
+  background: #ff5e00;
+  font-size: 3.5vw;
+  font-weight: 600;
+  font-family: "Be Vietnam Pro", sans-serif;
+  padding: 2.7vw 0;
+  border-radius: 20vw;
+  min-width: 36vw;
+  -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+  font-family: "Be Vietnam Pro", sans-serif;
+  position: absolute;
+  left: 50%;
+  bottom: 1.5vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: popgoto 2s ease-in-out;
+          animation: popgoto 2s ease-in-out;
+}
+@-webkit-keyframes popgoto {
+  0% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+  }
+  75% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+  }
+  88% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+  }
+}
+@keyframes popgoto {
+  0% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+  }
+  75% {
+    opacity: 0;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0);
+  }
+  88% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 14px 2px rgba(0, 0, 0, 0.6);
+  }
+}
+#popup.vninfopop .closepop {
+  cursor: pointer;
+  display: block;
+  width: 7vw;
+  position: absolute;
+  left: 50%;
+  bottom: -10vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2.3s ease-in-out;
+          animation: closepop 2.3s ease-in-out;
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.vninfopop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
 }
 
