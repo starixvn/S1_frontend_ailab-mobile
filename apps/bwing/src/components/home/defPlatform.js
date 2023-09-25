@@ -44,5 +44,6 @@ export const defPlatform = [
 		name: "im-esports",
 		img: `${bannerImgUrl}/h5/img/partner/im-esports.png`
 	},
-	{ name: "spribe", img: `${bannerImgUrl}/h5/img/partner/spribe.png` }
+	{ name: "spribe", img: `${bannerImgUrl}/h5/img/partner/spribe.png` },
+	{ name: "endorphina", img: `${bannerImgUrl}/h5/img/partner/endorphina.png` }
 ];

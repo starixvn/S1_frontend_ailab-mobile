@@ -40,7 +40,8 @@ export const defSlotTpGameType = {
 	AdvantPlay: { tpId: 39, tpGameType: 67 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	SPRIBE: { tpId: 53, tpGameType: 104 }
+	SPRIBE: { tpId: 53, tpGameType: 104 },
+	Endorphina: { tpId: 49, tpGameType: 98 }
 };
 
 export const productList = langId => {
@@ -293,11 +294,18 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_AdvantPlay,
 					path: path.casino.root,
 					displayText: "AdvantPlay",
-					img: `${bannerImgUrl}/h5/img/slot/apnew.png`,
+					img: `${bannerImgUrl}/h5/img/slot/apnew.png`
+				},
+				{
+					...defGameInfo.Casino_Endorphina,
+					parameter: defGameInfo.Casino_Endorphina,
+					path: path.casino.root,
+					displayText: "Endorphina",
+					img: `${bannerImgUrl}/h5/img/slot/endorphina.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.ap_mini_game)
+							inPeriod: isEventPeriod(eventTime.casino_Endorphina)
 						}
 					]
 				},
