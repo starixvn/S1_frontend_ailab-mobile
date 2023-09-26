@@ -345,12 +345,12 @@ const Layout = ({ children }) => {
 			{displayVgaming && root && (
 				<div className="eventLink vgaming">
 					<button
-						className="icon icon-close"
+						className="icon-close-white-bg"
 						onClick={() => setDisplayVgaming(false)}
 					/>
 					<img
 						className="vgimg"
-						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
 						onClick={() => clickGame(defGameInfo.sabaClub)}
 					/>
