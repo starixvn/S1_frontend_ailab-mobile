@@ -707,12 +707,13 @@ const Panel = () => {
 				className={
 					selBank?.sysId === b.sysId &&
 					selBank?.accountNo === b.accountNo
-						? "active"
-						: ""
+						? `active ${b?.disabled ? "pending" : ""}`
+						: `${b?.disabled ? "pending" : ""}`
 				}
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				data-testid="bank-icon"
 				onClick={SelectBank.bind(this, b)}>
+				{b?.disabled && <div className="mask" />}
 				<img
 					src={`${paymentImgURL}/square/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
