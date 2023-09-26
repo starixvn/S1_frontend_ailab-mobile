@@ -3146,6 +3146,41 @@ footer > a.active .circleAnimation::after {
       -ms-flex: 0 0 60%;
           flex: 0 0 60%;
 }
+#popup.detailpop {
+  width: 100%;
+  background: white;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  z-index: 3;
+}
+#popup.detailpop.active {
+  top: 0;
+}
+#popup.detailpop .pop .popTit {
+  position: fixed;
+  background: #ecf3fd;
+  padding: 2vw 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .pop .icon-close {
+  z-index: 2;
+  color: #233d67;
+  position: absolute;
+}
+#popup.detailpop .pop .infoList {
+  padding: 13vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .pop .infoList .info {
+  margin: 2vw auto;
+}
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3325,6 +3360,41 @@ footer > a.active .circleAnimation::after {
 #popup.promosback > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
 }
+#popup.detailpop {
+  width: 100%;
+  background: white;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  z-index: 3;
+}
+#popup.detailpop.active {
+  top: 0;
+}
+#popup.detailpop .pop .popTit {
+  position: fixed;
+  background: #ecf3fd;
+  padding: 2vw 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .pop .icon-close {
+  z-index: 2;
+  color: #233d67;
+  position: absolute;
+}
+#popup.detailpop .pop .infoList {
+  padding: 13vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .pop .infoList .info {
+  margin: 2vw auto;
+}
 #popup.vninfopop {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3474,41 +3544,6 @@ footer > a.active .circleAnimation::after {
 }
 #popup.vninfopop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
-}
-#popup.detailpop {
-  width: 100%;
-  background: white;
-  padding: 0;
-  height: 100%;
-  overflow-y: auto;
-  top: 100%;
-  z-index: 3;
-}
-#popup.detailpop.active {
-  top: 0;
-}
-#popup.detailpop .pop .popTit {
-  position: fixed;
-  background: #ecf3fd;
-  padding: 2vw 0;
-  width: 100%;
-  text-align: center;
-  z-index: 1;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-  border: 0;
-}
-#popup.detailpop .pop .icon-close {
-  z-index: 2;
-  color: #233d67;
-  position: absolute;
-}
-#popup.detailpop .pop .infoList {
-  padding: 13vw 4vw 4vw;
-  width: calc(100% - 8vw) !important;
-}
-#popup.detailpop .pop .infoList .info {
-  margin: 2vw auto;
 }
 
 .blackInfo {
@@ -4910,6 +4945,21 @@ footer > a.active .circleAnimation::after {
 }
 .selectBank button.active, .selectBank a.active {
   border: 2px solid #5574A7;
+}
+.selectBank button.pending, .selectBank a.pending {
+  position: relative;
+}
+.selectBank button.pending .mask, .selectBank a.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(40, 73, 133, 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 .selectBank a {
   display: -webkit-box;
@@ -10527,7 +10577,6 @@ span.important {
   position: absolute;
   top: -23vw;
   right: -6vw;
-  pointer-events: none;
 }
 .jpot .jpot-btn {
   width: 40%;

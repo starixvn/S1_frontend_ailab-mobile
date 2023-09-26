@@ -86,7 +86,7 @@ export const defGameInfo = {
 		gameId: "cmf0006",
 		tpGameType: 40
 	},
-	V8Poker: { gameId: 0, tpId: 25, tpGameType: 42 },
+	V8Poker: { gameId: 0, tpId: 25, tpGameType: 47 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
@@ -98,11 +98,6 @@ export const defGameInfo = {
 	MaxGame: { tpId: 41, gameId: 237, tpGameType: 83 },
 	VirtualGame: { tpId: 41, gameId: 245, tpGameType: 22 },
 	VirtualSports: { tpId: 41, gameId: 192, tpGameType: 72 },
-	IM_Avaitor: {
-		tpId: 53,
-		gameId: "imgame12001",
-		tpGameType: 104
-	},
 	IM_Avaitor: {
 		tpId: 53,
 		gameId: "imgame12001",
@@ -123,30 +118,8 @@ export const defGameInfo = {
 		gameId: "imgame12004",
 		tpGameType: 104
 	},
-	VirtualGame: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet gameId: 245,
-		tpGameType: 22
-	},
-	IM_Goal: {
-		tpId: 53,
-		gameId: "imgame12003",
-		tpGameType: 104
-	},
-	IM_Dice: {
-		tpId: 53,
-		gameId: "imgame12004",
-		tpGameType: 104
-	},
 	sportSbo: { tpId: 42, tpGameType: 77 },
 	WorldCup: { tpId: 41, gameId: 2002, tpGameType: 69 },
-	WorldCup: {
-		// tpId: 1,
-		tpId: 41, // seamless wallet
-		gameId: 2002,
-		// tpGameType: 1,
-		tpGameType: 69 // seamless wallet
-	},
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
@@ -258,8 +231,8 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	Endorphina: { tpId: 49, tpGameType: 98 },
-	SPRIBE: { tpId: 53, tpGameType: 104 }
+	SPRIBE: { tpId: 53, tpGameType: 104 },
+	Endorphina: { tpId: 49, tpGameType: 98 }
 };
 
 export const sportStreamDef = {
