@@ -187,6 +187,11 @@ const defPlatfrom = [
 		...defGameInfo.casino_SPRIBE,
 		imgName: "spribe",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.casino_PNG,
+		imgName: "png",
+		path: path.casino.root
 	}
 ];
 
