@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "@reach/router";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
@@ -60,17 +60,19 @@ const IndexPage = props => {
 		})
 	);
 
-	// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
-	// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
-	if (
-		location.pathname.split("/")[1] === path.withdrawal.root &&
-		Object.keys(filteredSettingTabs)?.length !== 0 &&
-		!Object.hasOwn(filteredSettingTabs, "default")
-	) {
-		navigate(
-			`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`
-		);
-	}
+	useEffect(() => {
+		// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
+		// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
+		if (
+			location.pathname.split("/")[1] === path.withdrawal.root &&
+			Object.keys(filteredSettingTabs)?.length !== 0 &&
+			!Object.hasOwn(filteredSettingTabs, "default")
+		) {
+			navigate(
+				`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`
+			);
+		}
+	}, []);
 
 	return (
 		<TabPage
