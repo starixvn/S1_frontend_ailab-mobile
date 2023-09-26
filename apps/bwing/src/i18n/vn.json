@@ -409,6 +409,8 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Lưu ý họ tên đăng ký tài khoản phải trùng với họ tên trong CMND và trên tài khoản ngân hàng của bạn. Giao dịch rút tiền có thể bị từ chối nếu họ tên không trùng khớp.",
 	"lbl_FishingSG1": "Thánh bắn cá",
 	"lbl_FishingSG2": "Bắn cá giao đấu",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
 	"lbl_history_submit": "Xem lịch sử",
 	"lbl_transfer_submit": "CHUYỂN QUỸ",
 	"lbl_add_bank_submit": "THÊM TÀI KHOẢN",
