@@ -4,7 +4,6 @@ import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
 import {
-	userInfoContext,
 	i18nContext,
 	eWalletContext,
 	withdrawalBlockSettingContext
@@ -36,7 +35,6 @@ const defTabs = {
 const IndexPage = props => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { isShowEWallet } = useContext(eWalletContext);
 	const { withdrawalSettingTypeList } = useContext(
@@ -73,7 +71,7 @@ const IndexPage = props => {
 		!Object.hasOwn(filteredSettingTabs, "default")
 	) {
 		navigate(
-			`/${userInfo.langId}/${Object.values(filteredSettingTabs)[0]?.to}`
+			`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`
 		);
 	}
 
