@@ -536,12 +536,12 @@ const gameList = [
 			},
 			{
 				...defGameInfo.Fishing_Zombie_Party,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fish-zp.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-zp.png`,
 				spanTextKey: "lbl_Fishing_Zombie_Party"
 			},
 			{
 				...defGameInfo.Fishing_Alien_Hunter,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fish-ah.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-ah.png`,
 				spanTextKey: "lbl_Fishing_Alien_Hunter"
 			},
 			{
