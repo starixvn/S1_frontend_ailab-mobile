@@ -760,7 +760,13 @@ const gameList = [
 				spanText: "Play' n GO",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-playngo.png`,
 				path: path.casino.root,
-				providerImgName: "png"
+				providerImgName: "png",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.PNG)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_GPI,

@@ -389,7 +389,13 @@ export const productList = langId => {
 					path: path.casino.root,
 					img: `${bannerImgUrl}/h5/img/slot/playngo.png`,
 					icon: "icon icon-png",
-					displayText: "Play'n GO"
+					displayText: "Play'n GO",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.PNG)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_GPI,

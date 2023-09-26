@@ -805,7 +805,13 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/slotPlayngo.png`,
 					path: path.casino.root,
 					providerImgName: "png",
-					sortKey: "slot_PNG"
+					sortKey: "slot_PNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.PNG)
+						}
+					]
 				},
 
 				{
