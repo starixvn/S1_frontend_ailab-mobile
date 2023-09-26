@@ -43,11 +43,11 @@ const ShortcutBar = () => {
 				checkProfile={true}>
 				<span>{i18n.lbl_Deposit}</span>
 			</NavLink>
-			<NavLink
+			{/* <NavLink
 				to={`/${path.transfer.root}`}
 				className="icon icon-transfer">
 				<span>{i18n.lbl_Transfer}</span>
-			</NavLink>
+			</NavLink> */}
 			<NavLink
 				to={`/${path.withdrawal.root}`}
 				className="icon icon-withdrawal"
