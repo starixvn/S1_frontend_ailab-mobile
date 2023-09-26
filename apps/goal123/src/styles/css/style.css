@@ -1726,172 +1726,46 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
-#popup.promosback {
-  background: rgba(0, 0, 0, 0.7);
+#popup.detailpop {
   width: 100%;
-  height: 100%;
+  background: #eaf1ff;
   padding: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: unset;
-          flex-flow: unset;
-  display: none;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  -webkit-box-pack: revert;
+      -ms-flex-pack: revert;
+          justify-content: revert;
 }
-#popup.promosback.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+#popup.detailpop .pop {
+  padding: 0 !important;
 }
-#popup.promosback .promosbackpop {
-  position: relative;
-  background: rgba(0, 0, 0, 0);
-  margin-bottom: 15vw;
-  -webkit-animation: promosbackpop 2s ease-in-out;
-          animation: promosbackpop 2s ease-in-out;
+#popup.detailpop.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
-#popup.promosback .promosbackpop img {
-  display: block;
-  margin: 0 auto;
-  max-width: 90vw;
+#popup.detailpop .popTit {
+  border-radius: 0;
+  position: fixed;
+  padding: 2vw 4vw;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
 }
-@media (min-width: 428px) {
-  #popup.promosback .promosbackpop {
-    margin-bottom: 18vw;
-  }
-}
-@-webkit-keyframes promosbackpop {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-  }
-  25% {
-    -webkit-transform: scale(1.08, 1.08);
-            transform: scale(1.08, 1.08);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-  75% {
-    -webkit-transform: scale(1.15, 1.15);
-            transform: scale(1.15, 1.15);
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-}
-@keyframes promosbackpop {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-  }
-  25% {
-    -webkit-transform: scale(1.08, 1.08);
-            transform: scale(1.08, 1.08);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-  75% {
-    -webkit-transform: scale(1.15, 1.15);
-            transform: scale(1.15, 1.15);
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-}
-#popup.promosback .popgo {
-  color: #fff;
-  text-align: center;
-  background: #FAB617;
-  font-size: 4vw;
-  padding: 3vw 0;
-  border-radius: 20vw;
-  min-width: 36vw;
-  font-family: "Poppins", sans-serif;
+#popup.detailpop .icon-close {
+  z-index: 2;
   position: absolute;
-  left: calc(50% - 18vw);
-  bottom: 2vw;
-  -webkit-animation: popgo 2s ease-in-out;
-          animation: popgo 2s ease-in-out;
+  top: 2vw;
+  right: 2vw;
 }
-@media (min-width: 428px) {
-  #popup.promosback .popgo {
-    font-size: 3.5vw;
-    min-width: 34vw;
-    left: calc(50% - 17vw);
-    bottom: -2vw;
-  }
+#popup.detailpop .infoList {
+  padding: 11vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
 }
-@-webkit-keyframes popgo {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes popgo {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-#popup.promosback .closepop {
-  cursor: pointer;
-  display: block;
-  width: 9vw;
-  position: absolute;
-  left: calc(50% - 4.5vw);
-  bottom: -13vw;
-  -webkit-animation: closepop 2.3s ease-in-out;
-          animation: closepop 2.3s ease-in-out;
-}
-@media (min-width: 428px) {
-  #popup.promosback .closepop {
-    width: 7vw;
-    left: calc(50% - 4.5vw);
-    bottom: -12vw;
-  }
-}
-@-webkit-keyframes closepop {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes closepop {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+#popup.detailpop .infoList .info {
+  color: #4e6ca8;
 }
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
@@ -3300,6 +3174,21 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .selectBank button.open, .selectBank a.open {
   border: 2px solid #1e85ec;
 }
+.selectBank button.pending, .selectBank a.pending {
+  position: relative;
+}
+.selectBank button.pending .mask, .selectBank a.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(1, 0, 12, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
 .selectBank > img {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(33.3333333333% - 1vw);
@@ -3510,6 +3399,12 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .recent .info {
   display: none;
+}
+.recent .info .btn-group {
+  padding-top: 1vw;
+}
+.recent .info .btn-group a {
+  width: 100%;
 }
 
 .account {
@@ -6067,7 +5962,7 @@ span.important {
   font-size: 14px;
 }
 .breadcrumb ul .breadcrumb-item a {
-  color: #1e85ec;
+  color: #acc2d9;
   text-transform: capitalize;
 }
 .breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
