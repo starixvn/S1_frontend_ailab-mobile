@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "@reach/router";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import {
+	userInfoContext,
 	eWalletContext,
 	withdrawalBlockSettingContext
 } from "../components/common/context";
@@ -33,6 +34,7 @@ const defTabs = {
 const IndexPage = props => {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { userInfo } = useContext(userInfoContext);
 	const { isShowEWallet } = useContext(eWalletContext);
 	const { withdrawalSettingTypeList } = useContext(
 		withdrawalBlockSettingContext
