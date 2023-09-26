@@ -409,6 +409,8 @@
 	"lbl_Please_input_your_real_name_as_in_your_ID": "Please input your real name as in your ID. Your account name should be the same with your profile name.",
 	"lbl_FishingSG1": "Fishing God",
 	"lbl_FishingSG2": "Fishing War",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
 	"lbl_history_submit": "Submit",
 	"lbl_transfer_submit": "Submit",
 	"lbl_add_bank_submit": "Submit",

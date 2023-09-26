@@ -3400,12 +3400,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .recent .info {
   display: none;
 }
-.recent .info .btn-group {
-  padding-top: 1vw;
-}
-.recent .info .btn-group a {
-  width: 100%;
-}
 
 .account {
   background: #1f3258;
@@ -5962,7 +5956,7 @@ span.important {
   font-size: 14px;
 }
 .breadcrumb ul .breadcrumb-item a {
-  color: #acc2d9;
+  color: #1e85ec;
   text-transform: capitalize;
 }
 .breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {

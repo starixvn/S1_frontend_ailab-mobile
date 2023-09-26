@@ -189,7 +189,11 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.casino_SPRIBE,
-		imgName: "spribe",
+		imgName: "spribe"
+	},
+	{
+		...defGameInfo.Casino_Endorphina,
+		imgName: "casino_end",
 		path: path.casino.root
 	}
 ];

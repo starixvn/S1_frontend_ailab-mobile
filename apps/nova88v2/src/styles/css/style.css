@@ -10542,7 +10542,6 @@ span.important {
   position: absolute;
   top: -23vw;
   right: -6vw;
-  pointer-events: none;
 }
 .jpot .jpot-btn {
   width: 40%;

@@ -68,11 +68,21 @@ export const defGameInfo = {
 	Casino_Skywind: { tpId: 43, tpGameType: 82 },
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
-	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
+	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
+	Fishing_Zombie_Party: {
+		gameId: "F-ZP01",
+		tpId: 10,
+		tpGameType: 31
+	},
+	Fishing_Alien_Hunter: {
+		gameId: "F-AH01",
+		tpId: 10,
+		tpGameType: 31
+	},
 	Skywind_Ocean_Ruler: { gameId: "sw_or", tpId: 43, tpGameType: 85 },
 	Skywind_Cai_Shen_Da_Hai: {
 		gameId: "sw_cashdaha",
