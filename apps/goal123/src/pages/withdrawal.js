@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useLocation, useNavigate } from "@reach/router";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
@@ -32,6 +33,8 @@ const defTabs = {
 };
 
 const IndexPage = props => {
+	const navigate = useNavigate();
+	const location = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { isShowEWallet } = useContext(eWalletContext);
 	const { withdrawalSettingTypeList } = useContext(
@@ -59,6 +62,18 @@ const IndexPage = props => {
 			return result;
 		})
 	);
+
+	// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
+	// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
+	if (
+		location.pathname.split("/")[2] === path.withdrawal.root &&
+		Object.keys(filteredSettingTabs)?.length !== 0 &&
+		!Object.hasOwn(filteredSettingTabs, "default")
+	) {
+		navigate(
+			`/${userInfo.langId}/${Object.values(filteredSettingTabs)[0]?.to}`
+		);
+	}
 
 	return (
 		<Layout title={i18n.lbl_Withdrawal}>
