@@ -70,6 +70,7 @@ export const defGameInfo = {
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -257,8 +258,9 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
+	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	SPRIBE: { tpId: 53, tpGameType: 104 }
+	FaChai: { tpId: 55, tpGameType: 106 }
 };
 
 export const sportStreamDef = {
