@@ -21,7 +21,7 @@ const IndexPage = () => {
 
 	const vipTableRow = vipBanner?.vipBannerData?.map(item => {
 		return (
-			<div className="vip-grade-info">
+			<div className="vip-grade-info" key={item.levelName}>
 				<div className="vip-grade-icon">
 					<img
 						src={`https://banner.bw88.io/h5/img/4.0/vip/vip${item?.level}.png`}
@@ -72,7 +72,7 @@ const IndexPage = () => {
 					<AutoPlay Rows={rows} />
 				</div>
 				<div className="vip-grade">
-					<AutoPlayWithBtn Rows={vipTableRow} />
+					<AutoPlayWithBtn Rows={vipTableRow ?? []} />
 				</div>
 			</div>
 		</div>

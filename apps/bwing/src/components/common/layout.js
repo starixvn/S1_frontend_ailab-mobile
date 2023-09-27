@@ -97,7 +97,7 @@ export const defPageInfo = {
 	},
 	promotion: {
 		titleKey: "lbl_Promotion",
-		className: "main promotions",
+		className: "lobby promotion",
 		hideLogo: true
 	},
 	kyc: {
@@ -117,7 +117,7 @@ export const defPageInfo = {
 	},
 	other: {
 		titleKey: "lbl_Other",
-		className: "main",
+		className: "account",
 		hideLogo: true
 	},
 	howToDeposit: {
@@ -161,31 +161,50 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	sports: {
-		titleKey: "",
+		titleKey: "SPORTS",
 		className: "lobby sports",
+		iconClassName: "icon-soccer-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	fishing: {
-		className: "main",
+		titleKey: "Fishing",
+		className: "lobby fishing",
+		iconClassName: "icon-fishing-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	liveCasino: {
-		titleKey: "",
-		className: "main",
+		titleKey: "LIVECASINO",
+		className: "lobby livacasino",
+		iconClassName: "icon-livecasino-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	games: {
-		titleKey: "",
-		className: "main",
+		titleKey: "GAMES",
+		className: "lobby games",
+		iconClassName: "icon-games-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	lottery: {
+		titleKey: "LOTTERY",
+		className: "lobby lottery",
+		iconClassName: "icon-lottery-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	eSports: {
+		titleKey: "ESPORTS",
+		className: "lobby esports",
+		iconClassName: "icon-esports-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
-		className: "main",
+		className: "lobby livesports",
 		hideLogo: true
 	},
 	home: {
@@ -218,6 +237,13 @@ export const defPageInfo = {
 		titleKey: "lbl_SiteNews",
 		className: "lobby news",
 		hideLogo: true
+	},
+	livesports: {
+		titleKey: "LIVE SPORTS",
+		iconClassName: "icon-lottery-blue",
+		className: "lobby news",
+		hideLogo: true,
+		showMenuBar: true
 	}
 };
 
@@ -305,6 +331,7 @@ const Layout = ({ children }) => {
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
+						iconClassName={pageInfo.iconClassName}
 						hideLogo={pageInfo.hideLogo}
 						showMenuBar={pageInfo.showMenuBar === true}
 						appHint={appHint}
@@ -326,12 +353,12 @@ const Layout = ({ children }) => {
 			{displayVgaming && root && (
 				<div className="eventLink vgaming">
 					<button
-						className="icon icon-close"
+						className="icon-close-white-bg"
 						onClick={() => setDisplayVgaming(false)}
 					/>
 					<img
 						className="vgimg"
-						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
 						onClick={() => clickGame(defGameInfo.sabaClub)}
 					/>

@@ -26,7 +26,7 @@ const Panel = () => {
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setUserValue] = useState(_initUserValue);
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
-	const _areaCode = country ? areaCode[country].AreaCode : "";
+	const _areaCode = country ? areaCode[country]?.AreaCode : "";
 
 	const _infoList = infoList(i18n, userInfo, _areaCode);
 	const legalDate = moment().subtract(18, "year");

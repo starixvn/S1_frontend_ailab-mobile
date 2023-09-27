@@ -70,8 +70,8 @@ const FavoriteSlots = ({ hotGameList }) => {
 	};
 
 	const swiperParams = {
-		spaceBetween: 15,
-		slidesPerView: 1.3,
+		spaceBetween: 10,
+		slidesPerView: 1.9,
 		initialSlide: 1.3
 	};
 
@@ -94,28 +94,29 @@ const FavoriteSlots = ({ hotGameList }) => {
 							tpCategory,
 							tpGameType
 						}) => (
-							<a
-								key={gameId}
-								className="home-fav-item"
-								onClick={() =>
-									handleGameClick({
-										tpId,
-										gameId,
-										tpCategory,
-										tpGameType
-									})
-								}>
-								<div
-									className="home-fav-img"
-									style={{
-										backgroundImage: `url("${gameLogo}")`
-									}}
-								/>
-								<div className="home-fav-info">
-									<span>{gameName}</span>
-									<img src={tpLogo} alt={tpName} />
-								</div>
-							</a>
+							<div key={gameId}>
+								<a
+									className="home-fav-item"
+									onClick={() =>
+										handleGameClick({
+											tpId,
+											gameId,
+											tpCategory,
+											tpGameType
+										})
+									}>
+									<div
+										className="home-fav-img"
+										style={{
+											backgroundImage: `url("${gameLogo}")`
+										}}
+									/>
+									<div className="home-fav-info">
+										<span>{gameName}</span>
+										<img src={tpLogo} alt={tpName} />
+									</div>
+								</a>
+							</div>
 						)
 					)}
 				</Swiper>

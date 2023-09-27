@@ -37,7 +37,10 @@ import RecentlyViewed from "../components/home/RecentlyViewed";
 import { api_GetRecentlyViewed } from "../service/api/game";
 import HomeDownLoad from "../components/home/HomeDownLoad";
 import LiveSports from "../components/home/liveSports";
-import { useHandleStreamList } from "../components/streaming/hook";
+import {
+	useHandleStreamList,
+	useSelCategory
+} from "../components/streaming/hook";
 import { api_GetNews } from "../service/api/news";
 import News from "../components/home/news";
 import { HomeBanner } from "../components/home/homeBanner";
@@ -56,7 +59,8 @@ const IndexPage = () => {
 	const [hotGameList, setHotGameList] = useState([]);
 	const [recentlyViewedGames, setRecentlyViewedGames] = useState([]);
 	const [news, setNews] = useState([]);
-	const { videoList } = useHandleStreamList({});
+	const { selCategory } = useSelCategory();
+	const { videoList } = useHandleStreamList({ selCategory });
 	const timeRef = useRef(null);
 	const getPromotionList = async () => {
 		try {

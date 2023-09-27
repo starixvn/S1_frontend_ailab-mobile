@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import {
@@ -39,7 +40,7 @@ export const StreamingModule = ({
 		setNav(defNavPanel.login);
 	};
 
-	const ClickLiveTv = e => {
+	const ClickLiveTv = () => {
 		if (isStreamingPage) {
 			if (!isLogin) {
 				handleLogin();
@@ -126,19 +127,35 @@ export const StreamingModule = ({
 
 	return (
 		<>
-			<div className="home-livesports-item">
-				<div className="home-livesports-league">{league}</div>
-				<div className="home-livesports-team left">
-					<div>{t("lbl_Streaming_Home").toUpperCase()}</div>
-					<div className="name">{home}</div>
+			<div className="lobby-livesports-item">
+				<div className="lobby-livesports-league">
+					<div className="info left" onClick={() => ClickLiveTv()}>
+						{t("lbl_Started")}
+					</div>
+					<div className="title">{league}</div>
+					<div
+						className="info right"
+						onClick={() => clickSportBook()}>
+						{t("lbl_Streaming_SPORTSBOOK")}
+					</div>
 				</div>
-				<div className="home-livesports-score">
-					<span> {homeScore ?? 0}</span>
-					<span> {awayScore ?? 0} </span>
-				</div>
-				<div className="home-livesports-team right">
-					<div>{t("lbl_Streaming_Away").toUpperCase()}</div>
-					<div className="name">{away}</div>
+				<div className="lobby-livesports-team">
+					<div className="left">
+						<div>{t("lbl_Streaming_Home").toUpperCase()}</div>
+						<div className="name">{home}</div>
+					</div>
+					<div className="center">
+						<div>VS</div>
+						<div>
+							{nowPlaying
+								? "LIVE"
+								: moment(timeStart).format("MM/DD HH:mm")}
+						</div>
+					</div>
+					<div className="right">
+						<div>{t("lbl_Streaming_Away").toUpperCase()}</div>
+						<div className="name">{away}</div>
+					</div>
 				</div>
 			</div>
 			{/*

@@ -9,7 +9,7 @@ import { angPaoEventPeriod } from "../pages/angpao";
 
 export const defIconType = {
 	live: " liveicon",
-	new: " newicon",
+	new: " tag-new-pop",
 	new_nav: " newicon",
 	hot: " hoticon"
 };
@@ -144,12 +144,12 @@ export const productList = langId => {
 			items: [
 				{
 					...defGameInfo.kingMaker,
-					img: `${bannerImgUrl}/h5/img/new-game/king.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/king.png`,
 					displayKey: "lbl_KingMaker"
 				},
 				{
 					displayKey: "lbl_Vgaming",
-					img: `${bannerImgUrl}/h5/img/new-game/vgamimg.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/vgaming.png`,
 					...defGameInfo.sabaClub
 				},
 				// {
@@ -165,17 +165,17 @@ export const productList = langId => {
 				// },
 				{
 					displayKey: "lbl_V8Poker",
-					img: `${bannerImgUrl}/h5/img/new-game/v8.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/v8.png`,
 					...defGameInfo.V8Poker
 				},
 				{
 					displayKey: "lbl_tableGame",
-					img: `${bannerImgUrl}/h5/img/new-game/table.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/table.png`,
 					...defGameInfo.tableGame
 				},
 				{
 					displayText: "Avaitor",
-					img: `${bannerImgUrl}/h5/img/new-game/spribe-aviator.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/spribe-aviator.png`,
 					...defGameInfo.IM_Avaitor,
 					eventIcon: [
 						{
@@ -186,7 +186,7 @@ export const productList = langId => {
 				},
 				{
 					displayText: "Mines",
-					img: `${bannerImgUrl}/h5/img/new-game/spribe-mines.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/spribe-mines.png`,
 					...defGameInfo.IM_Mines,
 					eventIcon: [
 						{
@@ -197,7 +197,7 @@ export const productList = langId => {
 				},
 				{
 					displayText: "Goal",
-					img: `${bannerImgUrl}/h5/img/new-game/spribe-goal.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/spribe-goal.png`,
 					...defGameInfo.IM_Goal,
 					eventIcon: [
 						{
@@ -208,7 +208,7 @@ export const productList = langId => {
 				},
 				{
 					displayText: "Dice",
-					img: `${bannerImgUrl}/h5/img/new-game/spribe-dice.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/spribe-dice.png`,
 					...defGameInfo.IM_Dice,
 					eventIcon: [
 						{
@@ -219,17 +219,17 @@ export const productList = langId => {
 				},
 				{
 					...defGameInfo.Spaceman,
-					img: `${bannerImgUrl}/h5/img/new-game/pp.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/pp.png`,
 					displayText: "Spaceman"
 				},
 				{
 					...defGameInfo.Crash,
-					img: `${bannerImgUrl}/h5/img/new-game/ap.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/ap.png`,
 					displayText: "Crash"
 				},
 				{
 					...defGameInfo.GoRush,
-					img: `${bannerImgUrl}/h5/img/new-game/jili.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/jili.png`,
 					displayText: "Go Rush"
 				}
 				// {
@@ -246,13 +246,13 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/esport.png`,
 			items: [
 				{
-					displayKey: "lbl_Saba",
-					img: `${bannerImgUrl}/h5/img/esport/saba.png`,
+					// displayKey: "lbl_Saba",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/esports/saba.png`,
 					...defGameInfo.eSports
 				},
 				{
-					displayText: "IM E-Sports",
-					img: `${bannerImgUrl}/h5/img/esport/inplaymatrix.png`,
+					// displayText: "IM E-Sports",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/esports/inplaymatrix.png`,
 					...defGameInfo.eSports_IM,
 					eventIcon: [
 						{
@@ -262,8 +262,8 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayKey: "lbl_TFGaming",
-					img: `${bannerImgUrl}/h5/img/esport/tfg.png`,
+					// displayKey: "lbl_TFGaming",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/esports/tfg.png`,
 					...defGameInfo.eSports_TFGaming
 				}
 			]
@@ -474,19 +474,19 @@ export const productList = langId => {
 		},
 		liveCasino: {
 			category: "livecasino",
-			displayKey: "lbl_LiveCasino",
-			icon_img: `${bannerImgUrl}/h5/img/gameicon/live.png`,
+			// displayKey: "lbl_LiveCasino",
+			icon_img: `${bannerImgUrl}/h5/img/4.0/gameicon/live.png`,
 			items: [
 				{
-					displayText: "Pragmatic Play",
+					// displayText: "Pragmatic Play",
 					icon: "icon icon-PP",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pp.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-one789.png`,
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
-					displayText: "Big Gaming",
+					// displayText: "Big Gaming",
 					icon: "icon icon-bg",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-bg.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-bg.png`,
 					...defGameInfo.LIVEcasinoBG,
 					eventIcon: [
 						{
@@ -496,9 +496,9 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayText: "YEEBET",
+					// displayText: "YEEBET",
 					icon: "icon icon-sk",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-yb.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-yb.png`,
 					...defGameInfo.LIVEcasinoYEEBET,
 					eventIcon: [
 						{
@@ -508,9 +508,9 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayText: "Skywind",
+					// displayText: "Skywind",
 					icon: "icon icon-sk",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sk.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-sk.png`,
 					...defGameInfo.LIVEcasinoSkywind,
 					eventIcon: [
 						{
@@ -520,67 +520,67 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayText: "Microgaming",
+					// displayText: "Microgaming",
 					icon: "icon icon-mg",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-mg.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-mg.png`,
 					...defGameInfo.LIVEcasinoMG
 				},
 				{
-					displayText: "Evolution Gaming",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-evo.png`,
+					// displayText: "Evolution Gaming",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-evo.png`,
 					...defGameInfo.LIVEcasinoEVO
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
-					displayText: "PlayTech",
+					// displayText: "PlayTech",
 					icon: "icon icon-pt",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-pt.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-pt.png`,
 					...defGameInfo.LIVEcasinoPlaytech
 				},
 				{
-					displayText: "n2-LIVE",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-n2live.png`,
+					// displayText: "n2-LIVE",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-n2live.png`,
 					...defGameInfo.LIVEcasinoN2
 				},
 				{
-					displayKey: "lbl_liveCasino_789SeDie",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-one789.png`,
+					// displayKey: "lbl_liveCasino_789SeDie",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-one789.png`,
 					...defGameInfo.LIVEcasinoOne789
 				},
 				{
-					displayText: "WM Casino",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-wm.png`,
+					// displayText: "WM Casino",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-wm.png`,
 					...defGameInfo.LIVEcasinoWM
 				},
 				{
-					displayText: "Asia Gaming",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ag.png`,
+					// displayText: "Asia Gaming",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-ag.png`,
 					...defGameInfo.LIVEcasinoAG
 				},
 				{
-					displayText: "AE Sexy",
+					// displayText: "AE Sexy",
 					icon: "icon icon-AE",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ae.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-ae.png`,
 					...defGameInfo.LIVEcasinoAE
 				},
 				{
-					displayText: "Dream Gaming",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-dg.png`,
+					// displayText: "Dream Gaming",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-dg.png`,
 					...defGameInfo.LIVEcasinoDG
 				},
 				{
-					displayText: "Allbet",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ab.png`,
+					// displayText: "Allbet",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-ab.png`,
 					...defGameInfo.LIVEcasinoAB
 				},
 				{
-					displayText: "eBET",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-ebet.png`,
+					// displayText: "eBET",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-ebet.png`,
 					...defGameInfo.LIVEcasinoEB
 				},
 				{
-					displayText: "SA Gaming",
-					img: `${bannerImgUrl}/h5/img/liveGameNew/live-sa.png`,
+					// displayText: "SA Gaming",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-sa.png`,
 					...defGameInfo.LIVEcasinoSA
 				}
 			]
@@ -616,13 +616,13 @@ export const productList = langId => {
 				},
 				{
 					displayKey: "lbl_Paradise",
-					img: `${bannerImgUrl}/h5/img/fish/fish-paradise.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-paradise.png`,
 					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AB3
 				},
 				{
 					displayKey: "lbl_Oneshot_Fishing",
-					img: `${bannerImgUrl}/h5/img/fish/fish-tos.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-of.png`,
 					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT01
 				},
@@ -682,8 +682,8 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/lottery.png`,
 			items: [
 				{
-					displayKey: "GPI_VNLottery",
-					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-vn.png`,
+					// displayKey: "GPI_VNLottery",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/lottery/lottery-vn.png`,
 					...defGameInfo.GPI_VNLottery,
 					eventIcon: [
 						{
@@ -693,13 +693,13 @@ export const productList = langId => {
 					]
 				},
 				{
-					displayKey: "lbl_tcg",
-					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-tcg.png`,
+					// displayKey: "lbl_tcg",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/lottery/lottery-tcg.png`,
 					...defGameInfo.tcg
 				},
 				{
-					displayKey: "lbl_TraditionalLottery",
-					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-tl.png`,
+					// displayKey: "lbl_TraditionalLottery",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/lottery/lottery-789.png`,
 					...defGameInfo.One789_lottery
 				},
 				// {
@@ -708,13 +708,13 @@ export const productList = langId => {
 				// 	...defGameInfo.One789_lottery_789
 				// },
 				{
-					displayKey: "lbl_Keno",
-					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-keno.png`,
+					// displayKey: "lbl_Keno",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/lottery/lottery-keno.png`,
 					...defGameInfo.Keno
 				},
 				{
-					displayKey: "lbl_Lottery",
-					img: `${bannerImgUrl}/h5/img/new-lottery/lottery-lottery.png`,
+					// displayKey: "lbl_Lottery",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/lottery/lottery-lottery.png`,
 					...defGameInfo.lottery
 				}
 			]

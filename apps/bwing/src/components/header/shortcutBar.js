@@ -29,16 +29,12 @@ const ShortcutBar = ({ closeSubMenu }) => {
 
 	return (
 		<div className="menu-function">
-			<NavLink
-				className="icon-deposit"
-				to={`/${path.deposit.root}`}
-				checkProfile={true}>
+			<NavLink className="icon-deposit" to={`/${path.deposit.root}`}>
 				{i18n.lbl_Deposit}
 			</NavLink>
 			<NavLink
 				className="icon-withdrawal"
-				to={`/${path.withdrawal.root}`}
-				checkProfile={true}>
+				to={`/${path.withdrawal.root}`}>
 				{i18n.lbl_Withdrawal}
 			</NavLink>
 			<NavLink className="icon-statement" to={`/${path.statement.root}`}>

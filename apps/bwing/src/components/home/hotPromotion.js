@@ -105,7 +105,7 @@ const HotPromotion = ({ promotionList }) => {
 										<div>
 											{t(
 												`Currency_${userInfo.currencyId}`
-											)}{" "}
+											)}
 											{number_format(requiredAmount, {
 												isConvertRequired: false,
 												digits: 0,
@@ -128,7 +128,7 @@ const HotPromotion = ({ promotionList }) => {
 										<div>
 											{t(
 												`Currency_${userInfo.currencyId}`
-											)}{" "}
+											)}
 											{number_format(maxBonus, {
 												isConvertRequired: false,
 												digits: 0,
@@ -225,6 +225,11 @@ const HotPromotion = ({ promotionList }) => {
 		}
 	};
 
+	const swiperParams = {
+		spaceBetween: 10,
+		slidesPerView: 1
+	};
+
 	return (
 		<>
 			<div className="home-title">
@@ -232,7 +237,7 @@ const HotPromotion = ({ promotionList }) => {
 				{t("lbl_HotPromotions")}
 			</div>
 			<div className="home-promo mb-2">
-				<Swiper>
+				<Swiper {...swiperParams}>
 					{promotionList.map(
 						({
 							banner,

@@ -1307,6 +1307,7 @@ header {
 }
 
 .main {
+  height: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 25.5vw;
@@ -4251,10 +4252,11 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 50vw;
 }
 .home-fav-img, .home-recently-img {
   width: 100%;
-  height: 48vw;
+  height: 50vw;
   background-size: cover;
   background-position: center;
 }
@@ -6622,12 +6624,12 @@ main .sideBar button.icon:before {
 .luckyboxEvent .eventModule .title {
   background: transparent;
   font-size: 5vw;
-  color: #58cdff;
+  color: #F38C00;
   width: auto;
   margin: 2vw 0;
 }
 .luckyboxEvent .eventModule .title:nth-child(5) {
-  color: #58cdff;
+  color: #F38C00;
   margin-top: 8vw;
 }
 .luckyboxEvent .eventModule .text-gray:nth-child(3) {
@@ -6683,7 +6685,7 @@ main .sideBar button.icon:before {
   font-weight: normal;
 }
 .luckyboxEvent .eventList tr:first-child {
-  background: #58cdff;
+  background: #F38C00;
 }
 .luckyboxEvent .eventList tr:first-child td {
   color: #151923;
@@ -9132,8 +9134,8 @@ a.clickBtn:before {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  color: #58cdff;
-  border: 1px solid #1d2f62;
+  color: #F38C00;
+  border: 1px solid #F38C00;
   border-radius: 3px;
   padding: 1vw 0;
   margin-right: 2vw;
@@ -9142,7 +9144,7 @@ a.clickBtn:before {
   margin-right: 0;
 }
 .filterBtn button.open {
-  background: #58cdff;
+  background: #F38C00;
   color: #070e22;
 }
 
