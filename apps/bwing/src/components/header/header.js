@@ -104,9 +104,12 @@ const AfterLogin = ({ isShow, hideLogo }) => {
 		setPopBox
 	});
 
+	const isOnHomePage = window.location.pathname === "/";
+
 	return (
 		isShow &&
-		!hideLogo && (
+		!hideLogo &&
+		isOnHomePage && (
 			<div className="header-memberinfo">
 				<div>
 					<Link to={`/${path.member.root}`} className="memberbtn">
