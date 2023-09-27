@@ -156,47 +156,47 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	vip: {
-		titleKey: "VIP",
+		titleKey: "lbl_VIP",
 		className: "main vip",
 		hideLogo: true
 	},
 	sports: {
-		titleKey: "SPORTS",
+		titleKey: "lbl_Sports",
 		className: "lobby sports",
 		iconClassName: "icon-soccer-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	fishing: {
-		titleKey: "Fishing",
+		titleKey: "lbl_Fishing",
 		className: "lobby fishing",
 		iconClassName: "icon-fishing-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	liveCasino: {
-		titleKey: "LIVECASINO",
+		titleKey: "lbl_LiveCasino",
 		className: "lobby livacasino",
 		iconClassName: "icon-livecasino-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	games: {
-		titleKey: "GAMES",
+		titleKey: "lbl_Games",
 		className: "lobby games",
 		iconClassName: "icon-games-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	lottery: {
-		titleKey: "LOTTERY",
+		titleKey: "lbl_Lottery",
 		className: "lobby lottery",
 		iconClassName: "icon-lottery-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	eSports: {
-		titleKey: "ESPORTS",
+		titleKey: "lbl_eSports",
 		className: "lobby esports",
 		iconClassName: "icon-esports-blue",
 		hideLogo: false,
@@ -204,8 +204,10 @@ export const defPageInfo = {
 	},
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
-		className: "lobby livesports",
-		hideLogo: true
+		iconClassName: "icon-lottery-blue",
+		className: "lobby news",
+		hideLogo: true,
+		showMenuBar: true
 	},
 	home: {
 		titleKey: "",
@@ -237,13 +239,6 @@ export const defPageInfo = {
 		titleKey: "lbl_SiteNews",
 		className: "lobby news",
 		hideLogo: true
-	},
-	livesports: {
-		titleKey: "LIVE SPORTS",
-		iconClassName: "icon-lottery-blue",
-		className: "lobby news",
-		hideLogo: true,
-		showMenuBar: true
 	}
 };
 
