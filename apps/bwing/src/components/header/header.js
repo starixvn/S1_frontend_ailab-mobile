@@ -49,7 +49,7 @@ const Header = ({ hideLogo, title, appHint, setAppHint, iconClassName }) => {
 					/>
 					{title && (
 						<div className="header-title">
-							<i className={iconClassName} />
+							{iconClassName && <i className={iconClassName} />}
 							{title}
 						</div>
 					)}

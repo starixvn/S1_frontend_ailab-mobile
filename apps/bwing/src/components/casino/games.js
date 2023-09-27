@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
@@ -22,6 +23,8 @@ const GamePanel = React.forwardRef((props, ref) => {
 		setFavoriteStr
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
+	const { langId } = userInfo;
+
 	const { maintainList } = useGetTpMaintainList();
 	if (gameList === null) return <Loading />;
 	const games = [];
@@ -73,14 +76,20 @@ const GamePanel = React.forwardRef((props, ref) => {
 
 		games.push(
 			<div
-				className={`info${isMaintain ? " under" : ""}`}
+				className={classNames("slots-products-item", {
+					under: isMaintain
+				})}
 				key={`casino-game-${brandName}-${g.gameId}`}>
-				{activeCategory === "new" ? (
-					<i className="icon icon-new" />
-				) : null}
+				{activeCategory === "new" && <i className="icon icon-new" />}
 				<button>
+					<button
+						type="button"
+						onClick={onToggleFavorite}
+						className={`icon-fav-${
+							_isFavorite ? "solid" : "outline"
+						}`}
+					/>
 					<img
-						data-testid="gameImg"
 						onClick={
 							isMaintain
 								? () => null
@@ -91,31 +100,26 @@ const GamePanel = React.forwardRef((props, ref) => {
 										})
 						}
 						src={`${imgUrl}/${brandName}/${
-							g.imgName[userInfo.langId] ?? g.imgName.en
+							g.imgName[langId] ?? g.imgName.en
 						}`}
-						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
+						alt={g.gameName[langId] ?? g.gameName.en}
 					/>
+					<div className="name">
+						{g.gameName[langId] ?? g.gameName.en}
+					</div>
 				</button>
-				<span data-testid="providerName">{gameProviderName}</span>
 				{isMaintain ? (
 					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
 				) : null}
-				<span
-					onClick={onToggleFavorite}
-					data-testid="favBtn"
-					className={`icon icon-star-${
-						_isFavorite ? "full" : "empty"
-					}`}
-				/>
 			</div>
 		);
 	});
 	return games.length === 0 ? (
-		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
+		<div className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
-		<div className="slotList" id="scrollId" ref={ref}>
+		<div className="slots-products" id="scrollId" ref={ref}>
 			{games}
 		</div>
 	);

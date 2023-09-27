@@ -71,8 +71,9 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	casino: {
-		titleKey: "lbl_Casino",
-		className: "main casino",
+		iconClassName: "icon-slots-blue",
+		titleKey: "lbl_Slots",
+		className: "lobby slots",
 		hideLogo: true
 	},
 	forgetPassword: {
@@ -323,6 +324,7 @@ const Layout = ({ children }) => {
 					<Login />
 					<Join />
 					<Header
+						icon={pageInfo?.icon}
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}

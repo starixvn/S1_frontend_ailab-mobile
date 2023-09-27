@@ -1,7 +1,8 @@
 import React from "react";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import { Link } from "../../route/link";
-import { bannerMediaUrl } from "../../config";
+import { bannerImgUrl } from "../../config";
 import path from "../../path";
 
 const GameProviders = props => {
@@ -10,7 +11,7 @@ const GameProviders = props => {
 		const content = (
 			<img
 				key={`casino-nav-${k.tpId}`}
-				src={`${bannerMediaUrl}/h5/img/venderlogo/${k.imgName}${
+				src={`${bannerImgUrl}/h5/img/4.0/venderlogo/${k.imgName}${
 					selNav === k.tpId ? "a" : ""
 				}.png`}
 				alt={k.providerImgName ?? k.tpName}
@@ -22,7 +23,9 @@ const GameProviders = props => {
 				<Link
 					to={k.openPath}
 					key={`casino-nav-${k.tpId}`}
-					className={selNav === k.tpId ? "active" : ""}>
+					className={classNames("slots-vender-item", {
+						active: selNav === k.tpId
+					})}>
 					{content}
 				</Link>
 			);
@@ -36,9 +39,10 @@ const GameProviders = props => {
 						? `${path.casino.root}`
 						: `${path.casino.root}/${k.tpId}`
 				}
-				data-testid={`gameProvider_${k.tpId}`}
 				key={`casino-nav-${k.tpId}`}
-				className={selNav === k.tpId ? "active" : ""}
+				className={classNames("slots-vender-item", {
+					active: selNav === k.tpId
+				})}
 				onClick={() => {
 					onChange(selNav === k.tpId ? {} : k);
 				}}>
