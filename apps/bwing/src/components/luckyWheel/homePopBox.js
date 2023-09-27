@@ -5,10 +5,9 @@ import path from "../../path";
 import { bannerImgUrl } from "../../config";
 
 const LuckyWheel = ({ setLuckyWheel }) => {
-	const { root, setRoot } = useContext(rootContext);
+	const { root } = useContext(rootContext);
 	const closePop = () => {
 		setLuckyWheel(false);
-		setRoot(false);
 	};
 
 	return (
