@@ -30,8 +30,10 @@ const HomeMatch = ({ hotEventList, classNameType }) => {
 
 	const swiperParams = {
 		spaceBetween: 10,
-		slidesPerView: 1.2,
-		initialSlide: 1.5
+		slidesPerView: 1.3,
+		initialSlide: 1.5,
+		centeredSlides: true,
+		loop: true
 	};
 
 	return (

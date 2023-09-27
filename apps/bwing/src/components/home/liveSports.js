@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
-import { StreamingModule } from "../streaming/streaming.row";
 import { StreamingNoData } from "../streaming/streaming.noData";
+import HomeStreaming from "../streaming/homeStreaming";
 
 const LiveSports = ({ videoList }) => {
 	const { t } = useTranslation();
@@ -14,8 +14,8 @@ const LiveSports = ({ videoList }) => {
 			</div>
 			<div className="home-livesports mb-2">
 				{videoList?.map(item => (
-					<StreamingModule
-						key={`${item.name}-${item.league}`}
+					<HomeStreaming
+						key={`${item.name}-${item.league}-${item.channel}`}
 						{...item}
 					/>
 				))}

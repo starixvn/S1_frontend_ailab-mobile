@@ -39,13 +39,13 @@ const IndexPage = () => {
 	));
 
 	return (
-		<>
-			<Filter
-				handleSelect={handleSelectCategory}
-				selected={selCategory?.type}
-			/>
-			<div className="liverightModule">
-				<div className="livelist">
+		<div className="wrapper">
+			<div className="col-12">
+				<Filter
+					handleSelect={handleSelectCategory}
+					selected={selCategory?.type}
+				/>
+				<div className="lobby-livesports">
 					{arr.length <= 0 ? (
 						<StreamingNoData />
 					) : (
@@ -53,7 +53,7 @@ const IndexPage = () => {
 					)}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

@@ -78,7 +78,7 @@ const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
 	const rows = defSubMenus(langId).map(({ icon, href, path, displayKey }) => {
 		if (href) {
 			return (
-				<a className="menu-list-item" href={href}>
+				<a className="menu-list-item" href={href} key={displayKey}>
 					<i className={icon} />
 					<span>{i18n[displayKey]}</span>
 				</a>
@@ -86,7 +86,11 @@ const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
 		}
 
 		return (
-			<Link className="menu-list-item" to={path} onClick={closeNavPanel}>
+			<Link
+				className="menu-list-item"
+				to={path}
+				onClick={closeNavPanel}
+				key={displayKey}>
 				<i className={icon} />
 				<span>{i18n[displayKey]}</span>
 			</Link>
