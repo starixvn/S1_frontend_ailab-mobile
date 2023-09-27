@@ -19,7 +19,8 @@ const SportList = () => {
 		slidesPerView: 2.15,
 		spaceBetween: 10,
 		centeredSlides: true,
-		initialSlide: 2.5
+		initialSlide: 2.5,
+		loop: true
 	};
 
 	return (
