@@ -161,8 +161,9 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	sports: {
-		titleKey: "",
+		titleKey: "SPORTS",
 		className: "lobby sports",
+		iconClassName: "icon-soccer-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
@@ -236,6 +237,13 @@ export const defPageInfo = {
 		titleKey: "lbl_SiteNews",
 		className: "lobby news",
 		hideLogo: true
+	},
+	livesports: {
+		titleKey: "LIVE SPORTS",
+		iconClassName: "icon-lottery-blue",
+		className: "lobby news",
+		hideLogo: true,
+		showMenuBar: true
 	}
 };
 
