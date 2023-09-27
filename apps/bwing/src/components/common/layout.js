@@ -205,7 +205,9 @@ export const defPageInfo = {
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
 		className: "lobby livesports",
-		hideLogo: true
+		iconClassName: "icon-soccer-blue",
+		hideLogo: true,
+		showMenuBar: true
 	},
 	home: {
 		titleKey: "",
@@ -237,13 +239,6 @@ export const defPageInfo = {
 		titleKey: "lbl_SiteNews",
 		className: "lobby news",
 		hideLogo: true
-	},
-	livesports: {
-		titleKey: "LIVE SPORTS",
-		iconClassName: "icon-lottery-blue",
-		className: "lobby news",
-		hideLogo: true,
-		showMenuBar: true
 	}
 };
 
