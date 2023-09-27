@@ -16,11 +16,10 @@ const SportList = () => {
 	const { t } = useTranslation();
 
 	const swiperParams = {
+		slidesPerView: 2.15,
 		spaceBetween: 10,
-		slidesPerView: 2,
 		centeredSlides: true,
-		initialSlide: 1.5,
-		loop: true
+		initialSlide: 2.5
 	};
 
 	return (
@@ -35,33 +34,37 @@ const SportList = () => {
 									m.tpGameType === defTpGameType.All)
 						);
 						return (
-							<div className={isMaintain ? "maintain" : ""}>
-								<img
-									onClick={() => {
-										!isMaintain &&
-											GET_ENTER_PAGE({
-												langId: userInfo.langId,
-												tpId,
-												gameId,
-												isLogin: userInfo.isLogin,
-												loginCallback: () =>
-													setNav(defNavPanel.login),
-												tpGameType,
-												appType: hasDesktopLink
-													? defAppType.desktop
-													: null
-											});
-									}}
-									key={`${tpId}_${gameId}`}
-									src={img}
-									alt=""
-								/>
-								{isMaintain && (
-									<div className="tag-maintain">
-										{t("lbl_underMaintenance")}
-									</div>
-								)}
-							</div>
+							<a key={`sports-${tpId}-${tpGameType}-${gameId}`}>
+								<div className={isMaintain ? "maintain" : ""}>
+									<img
+										onClick={() => {
+											!isMaintain &&
+												GET_ENTER_PAGE({
+													langId: userInfo.langId,
+													tpId,
+													gameId,
+													isLogin: userInfo.isLogin,
+													loginCallback: () =>
+														setNav(
+															defNavPanel.login
+														),
+													tpGameType,
+													appType: hasDesktopLink
+														? defAppType.desktop
+														: null
+												});
+										}}
+										key={`${tpId}_${gameId}`}
+										src={img}
+										alt=""
+									/>
+									{isMaintain && (
+										<div className="tag-maintain">
+											{t("lbl_underMaintenance")}
+										</div>
+									)}
+								</div>
+							</a>
 						);
 					}
 				)}

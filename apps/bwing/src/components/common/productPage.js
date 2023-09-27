@@ -129,7 +129,7 @@ const ProductPage = ({ category, titleKey, bannerUrl }) => {
 					className={`lobby-products-item ${showingIcon}${
 						underMaintain ? " lobby-products-item maintain" : ""
 					}`}
-					key={`Game-Panel-${game.displayKey}`}
+					key={`Game-Panel-${game.tpId}-${game.tpGameType}-${game.gameId}`}
 					onClick={
 						underMaintain
 							? () => null

@@ -158,7 +158,7 @@ const VipTable = ({ vipBanner }) => {
 };
 
 VipTable.propTypes = {
-	vipBanner: PropTypes.arrayOf(PropTypes.any).isRequired
+	vipBanner: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default VipTable;

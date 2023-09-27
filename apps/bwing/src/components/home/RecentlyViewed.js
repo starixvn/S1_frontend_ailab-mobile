@@ -144,8 +144,8 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 	if (!recentlyViewedGames || !recentlyViewedGames.length) return null;
 
 	const swiperParams = {
-		spaceBetween: 15,
-		slidesPerView: 1.3,
+		spaceBetween: 10,
+		slidesPerView: 1.9,
 		initialSlide: 1.3
 	};
 
@@ -167,41 +167,42 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 							gameId,
 							isMaintain
 						}) => (
-							<a
-								key={`${tpId}_${tpGameType}_${gameId}`}
-								className={`home-recently-item ${
-									isMaintain ? "maintain" : ""
-								}`}
-								onClick={() =>
-									handleGoToRecentlyViewedGame({
-										selectedTpId: tpId,
-										selectedTpGameType: tpGameType,
-										selectedCategoryId: categoryId,
-										selectedGameId: gameId,
-										isMaintain
-									})
-								}>
-								<div
-									className="home-recently-img"
-									style={{
-										backgroundImage: `url("${
-											gameLogo[userInfo.langId] ??
-											gameLogo.en
-										}")`
-									}}
-								/>
-								<div className="home-recently-info">
-									<span>
-										{gameName[userInfo.langId] ??
-											gameName.en}
-									</span>
-								</div>
-								{isMaintain && (
-									<div className="tag-maintain">
-										{t("lbl_underMaintenance")}
+							<div key={`${tpId}_${tpGameType}_${gameId}`}>
+								<a
+									className={`home-recently-item ${
+										isMaintain ? "maintain" : ""
+									}`}
+									onClick={() =>
+										handleGoToRecentlyViewedGame({
+											selectedTpId: tpId,
+											selectedTpGameType: tpGameType,
+											selectedCategoryId: categoryId,
+											selectedGameId: gameId,
+											isMaintain
+										})
+									}>
+									<div
+										className="home-recently-img"
+										style={{
+											backgroundImage: `url("${
+												gameLogo[userInfo.langId] ??
+												gameLogo.en
+											}")`
+										}}
+									/>
+									<div className="home-recently-info">
+										<span>
+											{gameName[userInfo.langId] ??
+												gameName.en}
+										</span>
 									</div>
-								)}
-							</a>
+									{isMaintain && (
+										<div className="tag-maintain">
+											{t("lbl_underMaintenance")}
+										</div>
+									)}
+								</a>
+							</div>
 						)
 					)}
 				</Swiper>

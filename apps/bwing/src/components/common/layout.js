@@ -203,7 +203,7 @@ export const defPageInfo = {
 	},
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
-		className: "main",
+		className: "lobby livesports",
 		hideLogo: true
 	},
 	home: {
