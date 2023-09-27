@@ -85,6 +85,7 @@ export const defGameInfo = {
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -204,7 +205,8 @@ export const defSlotTpGameType = {
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
-	Endorphina: { tpId: 49, tpGameType: 98 }
+	Endorphina: { tpId: 49, tpGameType: 98 },
+	FaChai: { tpId: 55, tpGameType: 106 }
 };
 
 const gameList = [
@@ -677,6 +679,20 @@ const gameList = [
 				providerImgName: "pg"
 			},
 			{
+				...defGameInfo.Casino_FaChai,
+				parameter: defGameInfo.Casino_FaChai,
+				spanText: "Fa Chai",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
+				path: path.casino.root,
+				providerImgName: "pg",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.slot_fachai)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_MGP,
 				parameter: defGameInfo.Casino_MGP,
 				spanText: "Microgaming",
@@ -698,13 +714,7 @@ const gameList = [
 				spanText: "SPRIBE",
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-spribe.png`,
 				path: path.casino.root,
-				providerImgName: "spribe",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.IM)
-					}
-				]
+				providerImgName: "spribe"
 			},
 			{
 				...defGameInfo.Casino_RedTiger,

@@ -41,7 +41,8 @@ export const defSlotTpGameType = {
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
-	Endorphina: { tpId: 49, tpGameType: 98 }
+	Endorphina: { tpId: 49, tpGameType: 98 },
+	FaChai: { tpId: 55, tpGameType: 106 }
 };
 
 export const productList = langId => {
@@ -329,6 +330,20 @@ export const productList = langId => {
 					path: path.casino.root,
 					icon: "icon icon-PG",
 					displayText: "PG Soft"
+				},
+				{
+					...defGameInfo.Casino_FaChai,
+					parameter: defGameInfo.Casino_FaChai,
+					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
+					path: path.casino.root,
+					icon: "icon icon-PG",
+					displayText: "Fa Chai",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_fachai)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_MGP,
