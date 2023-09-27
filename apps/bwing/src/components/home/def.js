@@ -1,5 +1,6 @@
 // export const methodList = {};
 import moment from "moment";
+import path from "../../path";
 import { defGameInfo } from "../../datas/productList";
 import { bannerImgUrl } from "../../config";
 import { defIconType } from "../../datas/defMenu";
@@ -13,11 +14,15 @@ export const HOT_GAME_LIST = [
 		...defGameInfo.Sports,
 		hasDesktopLink: true
 	},
-	{ displayKey: "lbl_Jackpot", category: "jackpot", href: "casino" },
+	{
+		displayKey: "lbl_Jackpot",
+		category: "jackpot",
+		href: `${path.casino.root}?page=jackpot`
+	},
 	{
 		displayKey: "lbl_LiveCasino",
 		category: "livecasino",
-		href: "liveCasino"
+		href: path.liveCasino.root
 	},
 	{ displayKey: "lbl_Vgaming", category: "vgaming", ...defGameInfo.sabaClub },
 	{
@@ -26,8 +31,8 @@ export const HOT_GAME_LIST = [
 		...defGameInfo.LIVEcasinoOne789
 	},
 	{ displayKey: "lbl_Keno", category: "keno", ...defGameInfo.Keno },
-	{ displayKey: "lbl_Fishing", category: "fishing", href: "fishing" },
-	{ displayKey: "lbl_QuickGames", category: "qgames", href: "games" },
+	{ displayKey: "lbl_Fishing", category: "fishing", href: path.fishing.root },
+	{ displayKey: "lbl_QuickGames", category: "qgames", href: path.games.root },
 	{
 		displayKey: "lbl_Lottery",
 		category: "lottery",

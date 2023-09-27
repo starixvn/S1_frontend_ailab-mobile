@@ -788,7 +788,7 @@ export const defSubMenus = langId => [
 	},
 	{
 		icon: "icon-slots-blue",
-		path: path.casino.root,
+		path: `${path.casino.root}?page=providerList`,
 		displayKey: "lbl_Slots"
 	},
 	{

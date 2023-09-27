@@ -87,10 +87,10 @@ const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
 
 		return (
 			<Link
-				className="menu-list-item"
 				to={path}
-				onClick={closeNavPanel}
-				key={displayKey}>
+				key={displayKey}
+				className="menu-list-item"
+				onClick={closeNavPanel}>
 				<i className={icon} />
 				<span>{i18n[displayKey]}</span>
 			</Link>
