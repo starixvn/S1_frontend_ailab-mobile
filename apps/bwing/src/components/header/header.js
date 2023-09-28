@@ -24,7 +24,7 @@ const vipImg = [
 	`${bannerImgUrl}/h5/img/4.0/vip/vip6.png`
 ];
 
-const Header = ({ hideLogo, title, appHint, setAppHint }) => {
+const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 
 	const { userInfo } = useContext(userInfoContext);
@@ -47,8 +47,13 @@ const Header = ({ hideLogo, title, appHint, setAppHint }) => {
 						className="menubtn icon-menu"
 						onClick={() => handleSideMenuPanel(true)}
 					/>
-					{title && <div className="header-title">{title}</div>}
-					{!hideLogo && (
+					{title && (
+						<div className="header-title">
+							<i className={iconClassName} />
+							{title}
+						</div>
+					)}
+					{!hideLogo && !title && (
 						<a href="/" className="logo">
 							<Logo />
 						</a>
@@ -70,6 +75,7 @@ const Header = ({ hideLogo, title, appHint, setAppHint }) => {
 Header.defaultProps = {
 	hideLogo: null,
 	title: null,
+	iconClassName: null,
 	appHint: false,
 	setAppHint: () => null
 };
@@ -78,7 +84,8 @@ Header.propTypes = {
 	hideLogo: PropTypes.bool,
 	title: PropTypes.string,
 	appHint: PropTypes.bool,
-	setAppHint: PropTypes.func
+	setAppHint: PropTypes.func,
+	iconClassName: PropTypes.string
 };
 
 const AfterLogin = ({ isShow, hideLogo }) => {

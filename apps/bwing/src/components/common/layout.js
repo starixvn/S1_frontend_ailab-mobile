@@ -167,19 +167,37 @@ export const defPageInfo = {
 		showMenuBar: true
 	},
 	fishing: {
-		className: "main",
+		titleKey: "Fishing",
+		className: "lobby fishing",
+		iconClassName: "icon-fishing-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	liveCasino: {
-		titleKey: "",
-		className: "main",
+		titleKey: "LIVECASINO",
+		className: "lobby livacasino",
+		iconClassName: "icon-livecasino-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	games: {
-		titleKey: "",
-		className: "main",
+		titleKey: "GAMES",
+		className: "lobby games",
+		iconClassName: "icon-games-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	lottery: {
+		titleKey: "LOTTERY",
+		className: "lobby lottery",
+		iconClassName: "icon-lottery-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	eSports: {
+		titleKey: "ESPORTS",
+		className: "lobby esports",
+		iconClassName: "icon-esports-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
@@ -300,6 +318,7 @@ const Layout = ({ children }) => {
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
+						iconClassName={pageInfo.iconClassName}
 						hideLogo={pageInfo.hideLogo}
 						showMenuBar={pageInfo.showMenuBar === true}
 						appHint={appHint}
