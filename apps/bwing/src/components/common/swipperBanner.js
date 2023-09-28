@@ -252,7 +252,7 @@ AutoPlay.propTypes = {
 	swiperClass: PropTypes.string
 };
 
-export const AutoPlayWithBtn = ({ Rows }, ref) => {
+export const AutoPlayWithBtn = ({ Rows }) => {
 	const swiperRef = useRef(null);
 	const params = {
 		spaceBetween: 10,
