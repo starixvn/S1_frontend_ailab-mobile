@@ -4289,8 +4289,6 @@ header {
   width: auto;
   height: 6vw;
   margin: 0 !important;
-  -webkit-filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.5));
 }
 .home-download {
   display: -webkit-box;
@@ -5477,6 +5475,7 @@ header {
 }
 .promotion-pop {
   background: #F6F9FF;
+  min-height: 100vh;
 }
 .promotion-pop .btn-group {
   width: -webkit-max-content;
