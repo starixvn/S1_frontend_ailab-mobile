@@ -148,6 +148,7 @@ const Footer = () => {
 								`/${path.member.root}/${path.member.sub.bankInfo.root}`;
 						return (
 							<Link
+								onClick={() => setShowContact(false)}
 								to={`/${path.member.root}`}
 								className={classNames("footer-item", {
 									active: isMatch
@@ -165,6 +166,7 @@ const Footer = () => {
 							location.pathname === `/${path.other.root}`;
 						return (
 							<Link
+								onClick={() => setShowContact(false)}
 								to={`/${path.other.root}`}
 								className={classNames("footer-item", {
 									active: isMatch
