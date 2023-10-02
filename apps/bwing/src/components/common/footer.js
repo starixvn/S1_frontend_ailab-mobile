@@ -27,6 +27,7 @@ const Footer = () => {
 					const isMatch = match !== null;
 					return (
 						<Link
+							onClick={() => setShowContact(false)}
 							to={path.home.root}
 							className={classNames("footer-item", {
 								active: isMatch
@@ -43,6 +44,7 @@ const Footer = () => {
 					const isMatch = match !== null;
 					return (
 						<Link
+							onClick={() => setShowContact(false)}
 							to={`/${path.sports.root}`}
 							className={classNames("footer-item tag-hot-pop", {
 								active: isMatch
@@ -60,6 +62,7 @@ const Footer = () => {
 						const isMatch = match !== null;
 						return (
 							<Link
+								onClick={() => setShowContact(false)}
 								to={`/${path.deposit.root}`}
 								className={classNames("footer-item", {
 									active: isMatch
@@ -79,6 +82,7 @@ const Footer = () => {
 
 						return (
 							<Link
+								onClick={() => setShowContact(false)}
 								to={`/${path.promotion.root}`}
 								className={classNames("footer-item", {
 									active: isMatch
