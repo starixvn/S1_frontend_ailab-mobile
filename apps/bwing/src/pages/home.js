@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
+import { isExpiry } from "@ailab-mobile/promotion";
 import {
 	userInfoContext,
 	popBoxContext,
@@ -54,6 +55,13 @@ const IndexPage = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 	const [promotionList, setPromotionList] = useState([]);
+	const filterPromotionList = promotionList.filter(
+		item =>
+			!isExpiry({
+				...item,
+				isLogin: userInfo.isLogin
+			})
+	);
 	const [hotEventList, setHotEventList] = useState([]);
 	const [leaderBoardList, setLeaderBoardList] = useState([]);
 	const [hotGameList, setHotGameList] = useState([]);
@@ -454,7 +462,7 @@ const IndexPage = () => {
 			<div className="wrapper">
 				<div className="col-12">
 					<HotGames />
-					<HotPromotion promotionList={promotionList} />
+					<HotPromotion promotionList={filterPromotionList} />
 					<HomeMatch hotEventList={hotEventList} />
 					<SportList />
 					<TopWinner leaderBoardList={leaderBoardList} />
