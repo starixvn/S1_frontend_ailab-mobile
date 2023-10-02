@@ -351,7 +351,7 @@ const Payment = props => {
 									const UploadReceipt = async () => {
 										try {
 											const image = await getBase64(
-												bankSlipPopBox.receipt
+												bankSlipPopBox.receiptFile
 											);
 											const resUploadReceipt = await api.payment.UploadReceipt(
 												res.data.data.transId,
@@ -394,7 +394,7 @@ const Payment = props => {
 									};
 
 									await Promise.all([
-										bankSlipPopBox.receipt &&
+										bankSlipPopBox.receiptFile &&
 											UploadReceipt(),
 										bonusCode &&
 											setCustPromo({

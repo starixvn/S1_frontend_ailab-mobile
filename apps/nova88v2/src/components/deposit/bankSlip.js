@@ -109,10 +109,13 @@ class Modal extends Component {
 		if (this.props.bankSlipPopBox.hideSubmit) {
 			const { files } = this.filebox.current;
 			this.props.closePopBoxAndKeepData();
-			this.props.setbankSlipPopBox(prevState => ({
-				...prevState,
-				receipt: files[0]
-			}));
+
+			if (files[0]) {
+				this.props.setbankSlipPopBox(prevState => ({
+					...prevState,
+					receiptFile: files[0]
+				}));
+			}
 		}
 	};
 
