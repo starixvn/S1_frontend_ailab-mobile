@@ -2,7 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 import {
 	popBoxContext,
 	loadingContext,
-	userInfoContext
+	userInfoContext,
+	defNavPanel,
+	navContext
 } from "../components/common/context";
 import { api_GetSlotGamePage } from "../service/api/game";
 import { getUrlParameter } from "../components/common/common";
@@ -13,15 +15,19 @@ import Lobby from "../components/casino/lobby";
 import Slider from "../components/casino/slider";
 import SearchBox from "../components/casino/searchBox";
 import GameProviders from "../components/casino/gameProviders";
+import useSetTimeout from "../components/hook/useSetTimeout";
+import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
+import { defSlotTpGameType } from "../datas/productList";
 
 const Casino = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { setNav } = useContext(navContext);
 
 	const { currencyId } = userInfo;
 	const page = getUrlParameter("page");
-
+	const { throttle } = useSetTimeout();
 	const { maintainList } = useGetTpMaintainList();
 
 	const splitList = window.location.href.split("/");
@@ -44,6 +50,38 @@ const Casino = () => {
 
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
+	};
+
+	const clickPlay = (freePlay, randomGame = null) => {
+		const targetObj = !randomGame ? selGameInfo : randomGame;
+		if (freePlay || userInfo.isLogin) {
+			throttle(
+				() =>
+					GET_CASINO_ENTER_PAGE({
+						tpId: targetObj.tpId,
+						gameId: targetObj.gameId,
+						isFree: freePlay,
+						langId: userInfo.langId,
+						// execFunction:
+						// 	targetObj.tpId === defSpecialSetting.playTech
+						// 		? handleGoToGame.bind(this, {
+						// 				langId: userInfo.langId,
+						// 				tpId: targetObj.tpId,
+						// 				gameId: targetObj.gameId,
+						// 				isFun: freePlay,
+						// 				tpGameType:
+						// 					defSlotTpGameType.PT.tpGameType
+						// 		  })
+						// 		: null,
+						tpGameType: Object.values(defSlotTpGameType).find(
+							obj => targetObj.tpId === obj.tpId
+						).tpGameType
+					}),
+				freePlay ? 0 : 5000
+			);
+		} else {
+			setNav(defNavPanel.login);
+		}
 	};
 
 	const handleCategoryActive = category => {

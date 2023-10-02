@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { func, string, arrayOf, object } from "prop-types";
+import PropTypes, { func, string, arrayOf, object } from "prop-types";
 import {
 	defNavPanel,
 	navContext,
@@ -289,7 +289,7 @@ Panel.defaultProps = {
 	gameList: [],
 	imageUrl: null,
 	searchInput: null,
-	favoriteStr: null,
+	favoriteStr: "",
 	slotDataList: [],
 	providerList: [],
 	favoriteList: [],
@@ -309,11 +309,11 @@ Panel.propTypes = {
 	searchInput: string,
 	activeProvider: object,
 	activeCategory: string,
-	gameList: arrayOf(object),
-	favoriteList: arrayOf(object),
-	slotDataList: arrayOf(object),
-	providerList: arrayOf(object),
-	allCategoryList: arrayOf(object),
+	gameList: arrayOf(PropTypes.any),
+	favoriteList: arrayOf(PropTypes.any),
+	slotDataList: arrayOf(PropTypes.any),
+	providerList: arrayOf(PropTypes.any),
+	allCategoryList: arrayOf(PropTypes.any),
 	setGameList: func,
 	setFavoriteStr: func,
 	setCategoryList: func,
