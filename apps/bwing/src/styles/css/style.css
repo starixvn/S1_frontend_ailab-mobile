@@ -7654,14 +7654,14 @@ main .sideBar button.icon:before {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border: 1px solid #f85b05;
+  border: 1px solid #F38C00;
   border-left: 0;
   border-right: 0;
   padding-left: 2.9vw;
   margin-left: 3px;
 }
 .processArea .process:last-child {
-  border-right: 1px solid #f85b05;
+  border-right: 1px solid #F38C00;
 }
 .processArea .process:last-child:after {
   display: none;
@@ -7669,22 +7669,22 @@ main .sideBar button.icon:before {
 .processArea .process:before {
   content: "";
   position: absolute;
-  width: 2.9vw;
+  width: 3.3vw;
   height: calc(100% + 2px);
   left: 0;
-  background: url(https://banner.bw88.io/h5/img/stepafter.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/4.0/stepafter.png) no-repeat center/cover;
 }
 .processArea .process:after {
   content: "";
   position: absolute;
-  width: 2.9vw;
+  width: 3.3vw;
   height: calc(100% + 2px);
-  right: -2.9vw;
-  background: url(https://banner.bw88.io/h5/img/stepafter.png) no-repeat center/cover;
+  right: -3.3vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/stepafter.png) no-repeat center/cover;
 }
 .processArea .process.active {
-  background: -webkit-gradient(linear, left bottom, left top, from(#f20c05), to(#f85f05));
-  background: linear-gradient(to top, #f20c05, #f85f05);
+  background: -webkit-gradient(linear, left bottom, left top, from(#F38C00), to(#f85f05));
+  background: linear-gradient(to top, #F38C00, #f85f05);
   color: #fff;
 }
 .processArea .process.active:first-child:before {
@@ -7692,7 +7692,7 @@ main .sideBar button.icon:before {
 }
 .processArea .process.active:after {
   content: "";
-  background: url(https://banner.bw88.io/h5/img/stepafter_a.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/4.0/stepafter_a.png) no-repeat center/cover;
   z-index: 1;
 }
 
@@ -9094,6 +9094,7 @@ a.clickBtn:before {
 }
 .inputdate ::-webkit-calendar-picker-indicator {
   background-image: -webkit-linear-gradient(top, transparent, transparent);
+  padding-left: 70vw;
 }
 
 .filter {
@@ -9372,7 +9373,6 @@ input.error {
 }
 
 span.important {
-  background: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   padding: 1vw 2vw;
 }
@@ -9731,6 +9731,10 @@ span.important {
 }
 .otpBtn .icon {
   margin-left: 1vw;
+}
+.otpBtn .icon-error::before {
+  width: unset;
+  height: unset;
 }
 .otpBtn.ver {
   background: #2ca12a;

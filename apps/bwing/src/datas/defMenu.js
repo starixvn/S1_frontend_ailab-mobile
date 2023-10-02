@@ -457,7 +457,7 @@ export const productList = langId => {
 				{
 					// displayText: "Pragmatic Play",
 					icon: "icon icon-PP",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-one789.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-pp.png`,
 					...defGameInfo.LIVEcasinoPP
 				},
 				{

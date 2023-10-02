@@ -30,10 +30,7 @@ const HomeMatch = ({ hotEventList, classNameType }) => {
 
 	const swiperParams = {
 		spaceBetween: 10,
-		slidesPerView: 1.3,
-		initialSlide: 1.5,
-		centeredSlides: true,
-		loop: true
+		slidesPerView: 1.3
 	};
 
 	return (
@@ -59,9 +56,8 @@ const HomeMatch = ({ hotEventList, classNameType }) => {
 							homeOdds,
 							awayOdds
 						}) => (
-							<div key={`${tpId}_${gameId}_${matchId}`}>
+							<div key={`hotEvent-${tpId}_${gameId}_${matchId}`}>
 								<div
-									key={`hotEvent-${sportLeaguesTitle}-${matchId}`}
 									className={`${classNameType}-match-item`}
 									onClick={() =>
 										handleGoToBet({ tpId, gameId, matchId })
