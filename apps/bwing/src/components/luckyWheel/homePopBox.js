@@ -13,9 +13,7 @@ const LuckyWheel = ({ setLuckyWheel }) => {
 	return (
 		root && (
 			<div className="eventLink luckywheel">
-				<button className="icon-close-white-bg" onClick={closePop}>
-					X
-				</button>
+				<button className="icon-close-white-bg" onClick={closePop} />
 				<Link to={`/${path.luckyWheel.root}`}>
 					<img
 						src={`${bannerImgUrl}/h5/img/4.0/luckywheel.gif`}
