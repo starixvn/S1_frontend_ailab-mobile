@@ -117,7 +117,7 @@ export const SPORT_LIST = [
 	{
 		displayText: "IM Sports",
 		img: `${bannerImgUrl}/h5/img/4.0/inplaymatrix.png`,
-		...defGameInfo.eSports_IM,
+		...defGameInfo.sports_IM,
 		hasDesktopLink: true,
 		eventIcon: [
 			{

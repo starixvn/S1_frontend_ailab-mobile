@@ -133,7 +133,6 @@ export const isEventPeriod = ({ startDate, endDate }) => {
 export const passwordCheck = ({ val, i18n }) => {
 	let checked = true;
 	let msg = "";
-
 	const regx = /^(?=.{6,15}$)[a-zA-Z0-9!@#$%^&*]*$/;
 	if (!val) {
 		checked = false;
@@ -142,7 +141,6 @@ export const passwordCheck = ({ val, i18n }) => {
 		checked = false;
 		msg = i18n.lbl_PasswordTooltip;
 	}
-
 	return { checked, msg };
 };
 
