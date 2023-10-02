@@ -26,7 +26,7 @@ const News = ({ news }) => {
 											`/${path.news.root}?imageURL=${imageURL}&content=${content}&title=${title}`
 										)
 									}>
-									${t("lbl_Read_more")} &gt;&gt;
+									{t("lbl_Read_more")} &gt;&gt;
 								</a>
 							</div>
 						</div>

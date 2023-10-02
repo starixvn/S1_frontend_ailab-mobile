@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
 	defNavPanel,
+	i18nContext,
 	navContext,
 	popBoxContext,
 	userInfoContext
@@ -30,10 +31,11 @@ import Checkbox from "../common/checkbox";
 import PromoPopup from "./join.promotion";
 
 const Join = () => {
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { nav, setNav } = useContext(navContext);
+	const { i18n } = useContext(i18nContext);
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const [step, setStep] = useState(1);
@@ -150,7 +152,6 @@ const Join = () => {
 		let checked = true;
 		let msg = "";
 		const regx = /^[0-9\s]*$/;
-
 		if (!val) {
 			checked = false;
 			msg = t("lbl_PhoneRequired");
@@ -603,6 +604,7 @@ const Join = () => {
 								onChange={EditField.bind(this, {
 									col: "Phone"
 								})}
+								tip={inputStatus.Phone.msg}
 								btnStatus={inputStatus.Phone.checked}
 								clickInfo={() => clickInfo("Phone")}
 								testAttr="Phone"
@@ -683,7 +685,7 @@ const Join = () => {
 					)}
 				</div>
 				<div className="join-bottominfo">
-					${t("lbl_PoweredBy")} Bong88
+					{t("lbl_PoweredBy")} Bong88
 				</div>
 			</div>
 			<PromoPopup
