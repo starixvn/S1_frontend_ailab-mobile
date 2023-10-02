@@ -52,6 +52,16 @@ export const defGameInfo = {
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	FishingSG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	FishingSGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
+	Fishing_Zombie_Party: {
+		gameId: "F-ZP01",
+		tpId: 10,
+		tpGameType: 31
+	},
+	Fishing_Alien_Hunter: {
+		gameId: "F-AH01",
+		tpId: 10,
+		tpGameType: 31
+	},
 	Skywind_Ocean_Ruler: { gameId: "sw_or", tpId: 43, tpGameType: 85 },
 	Skywind_Cai_Shen_Da_Hai: {
 		gameId: "sw_cashdaha",
@@ -515,6 +525,26 @@ const gameList = [
 		img: `${bannerImgUrl}/h5/img/hotgameicon/fishing.png`,
 		items: [
 			{
+				...defGameInfo.FishingSG,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-god.png`,
+				spanTextKey: "lbl_FishingSG1"
+			},
+			{
+				...defGameInfo.FishingSGW,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-war.png`,
+				spanTextKey: "lbl_FishingSG2"
+			},
+			{
+				...defGameInfo.Fishing_Zombie_Party,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-zp.png`,
+				spanTextKey: "lbl_Fishing_Zombie_Party"
+			},
+			{
+				...defGameInfo.Fishing_Alien_Hunter,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-ah.png`,
+				spanTextKey: "lbl_Fishing_Alien_Hunter"
+			},
+			{
 				...defGameInfo.fish_AB3,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-paradise.png`,
 				spanTextKey: "lbl_Paradise"
@@ -524,6 +554,11 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-oneshot.png`,
 				spanTextKey: "lbl_Oneshot_Fishing"
 			},
+			{
+				...defGameInfo.Fishing,
+				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-world.png`,
+				spanTextKey: "lbl_FishingGG"
+			}
 			// {
 			// 	...defGameInfo.Skywind_Ocean_Ruler,
 			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-or.png`,
@@ -561,21 +596,6 @@ const gameList = [
 			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-thetyrant.png`,
 			// 	spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
 			// },
-			{
-				...defGameInfo.Fishing,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-world.png`,
-				spanTextKey: "lbl_FishingGG"
-			},
-			{
-				...defGameInfo.FishingSG,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-god.png`,
-				spanTextKey: "lbl_FishingSG1"
-			},
-			{
-				...defGameInfo.FishingSGW,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-war.png`,
-				spanTextKey: "lbl_FishingSG2"
-			}
 		]
 	},
 	{
