@@ -177,11 +177,11 @@ const Payment = props => {
 									window.location.reload();
 								};
 
-								if (bankSlipPopBox.receipt || bonusCode) {
+								if (bankSlipPopBox.receiptFile || bonusCode) {
 									const UploadReceipt = async () => {
 										try {
 											const image = await getBase64(
-												bankSlipPopBox.receipt
+												bankSlipPopBox.receiptFile
 											);
 											const resUploadReceipt = await api_UploadReceipt(
 												res.data.data.transId,

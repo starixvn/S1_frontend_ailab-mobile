@@ -215,13 +215,13 @@ const Payment = props => {
 								};
 
 								if (
-									bankSlipPopBox.receipt ||
+									bankSlipPopBox.receiptFile ||
 									depositPromo?.bonusCode
 								) {
 									const UploadReceipt = async () => {
 										try {
 											const image = await getBase64(
-												bankSlipPopBox.receipt
+												bankSlipPopBox.receiptFile
 											);
 											const resUploadReceipt = await api_UploadReceipt(
 												res.data.data.transId,
