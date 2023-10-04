@@ -4,47 +4,47 @@ export const defBannersUrl = ({ langId }) => {
 	const imgArr =
 		langId === "en"
 			? [
-					`${bannerImgUrl}/h5/img/vip/en/vip_1.png`,
-					`${bannerImgUrl}/h5/img/vip/en/vip_2.png`,
-					`${bannerImgUrl}/h5/img/vip/en/vip_3.png`,
-					`${bannerImgUrl}/h5/img/vip/en/vip_4.png`,
-					`${bannerImgUrl}/h5/img/vip/en/vip_5.png`,
-					`${bannerImgUrl}/h5/img/vip/en/vip_6.png`
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-1.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-2.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-3.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-4.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-5.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/en/vip-6.jpg`
 			  ]
 			: [
-					`${bannerImgUrl}/h5/img/vip/vn/vip_1.png`,
-					`${bannerImgUrl}/h5/img/vip/vn/vip_2.png`,
-					`${bannerImgUrl}/h5/img/vip/vn/vip_3.png`,
-					`${bannerImgUrl}/h5/img/vip/vn/vip_4.png`,
-					`${bannerImgUrl}/h5/img/vip/vn/vip_5.png`,
-					`${bannerImgUrl}/h5/img/vip/vn/vip_6.png`
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-1.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-2.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-3.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-4.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-5.jpg`,
+					`${bannerImgUrl}/h5/img/4.0/vip/vn/vip-6.jpg`
 			  ];
 	return imgArr;
 };
 
 export const defLevelList = [
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip1.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip1.png`,
 		levelName: "lbl_Vintage_Club"
 	},
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip2.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip2.png`,
 		levelName: "lbl_Silver_Club"
 	},
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip3.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip3.png`,
 		levelName: "lbl_Gold_Club"
 	},
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip4.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip4.png`,
 		levelName: "lbl_Titanium_Club"
 	},
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip5.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip5.png`,
 		levelName: "lbl_Diamond_Club"
 	},
 	{
-		imgUrl: `${bannerImgUrl}/h5/img/vip/vip6.png`,
+		imgUrl: `${bannerImgUrl}/h5/img/4.0/vip/vip6.png`,
 		levelName: "lbl_BWING_Club"
 	}
 ];
