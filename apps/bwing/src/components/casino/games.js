@@ -77,7 +77,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 					maintain: isMaintain
 				})}
 				key={`casino-game-${brandName}-${g.gameId}`}>
-				{activeCategory === "new" && <i className="icon icon-new" />}
+				{activeCategory === "new" && <i className="icon tag-new-pop" />}
 				<button>
 					<button
 						type="button"
