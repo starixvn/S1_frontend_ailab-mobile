@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
-import { defNavPanel, navContext, userInfoContext } from "../common/context";
+import PropTypes from "prop-types";
+import {
+	defNavPanel,
+	navContext,
+	popBoxContext,
+	userInfoContext
+} from "../common/context";
 import { bannerImgUrl } from "../../config";
 import { HOT_GAME_LIST } from "./def";
 import { defAppType, GET_ENTER_PAGE } from "../../service/enterPage";
+import { defTpGameType } from "../hook/useGetTpMaintainList";
 
-const HotGames = () => {
+const HotGames = ({ maintainList }) => {
 	const { t } = useTranslation();
+	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
 	const navigate = useNavigate();
@@ -19,19 +27,45 @@ const HotGames = () => {
 		tpGameType,
 		hasDesktopLink
 	}) => {
-		if (tpId) {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: userInfo.isLogin,
-				loginCallback: () => setNav(defNavPanel.login),
-				tpGameType,
-				appType: hasDesktopLink ? defAppType.desktop : null
+		const isMaintain = maintainList.find(
+			({ tpId: maintainTpId, tpGameType: maintainTpGameType }) =>
+				maintainTpId === tpId &&
+				(maintainTpGameType === tpGameType ||
+					maintainTpGameType === defTpGameType.All)
+		);
+
+		if (isMaintain) {
+			setPopBox({
+				isOpen: true,
+				content: t("lbl_underMaintenance"),
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="btn-gray"
+							onClick={() => {
+								setPopBox({ isOpen: false });
+							}}>
+							OK
+						</button>
+					</div>
+				)
 			});
-		}
-		if (href) {
-			navigate(href);
+		} else {
+			if (tpId) {
+				GET_ENTER_PAGE({
+					langId: userInfo.langId,
+					tpId,
+					gameId,
+					isLogin: userInfo.isLogin,
+					loginCallback: () => setNav(defNavPanel.login),
+					tpGameType,
+					appType: hasDesktopLink ? defAppType.desktop : null
+				});
+			}
+			if (href) {
+				navigate(href);
+			}
 		}
 	};
 
@@ -59,6 +93,14 @@ const HotGames = () => {
 			</div>
 		</>
 	);
+};
+
+HotGames.defaultProps = {
+	maintainList: []
+};
+
+HotGames.propTypes = {
+	maintainList: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default HotGames;

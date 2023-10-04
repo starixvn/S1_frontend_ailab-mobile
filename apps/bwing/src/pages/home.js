@@ -45,6 +45,7 @@ import {
 import { api_GetNews } from "../service/api/news";
 import News from "../components/home/news";
 import { HomeBanner } from "../components/home/homeBanner";
+import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -54,6 +55,7 @@ const IndexPage = () => {
 	const { setRoot } = useContext(rootContext);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+	const { maintainList } = useGetTpMaintainList();
 	const [promotionList, setPromotionList] = useState([]);
 	const filterPromotionList = promotionList.filter(
 		item =>
@@ -461,10 +463,10 @@ const IndexPage = () => {
 			)}
 			<div className="wrapper">
 				<div className="col-12">
-					<HotGames />
+					<HotGames maintainList={maintainList} />
 					<HotPromotion promotionList={filterPromotionList} />
 					<HomeMatch hotEventList={hotEventList} />
-					<SportList />
+					<SportList maintainList={maintainList} />
 					<TopWinner leaderBoardList={leaderBoardList} />
 					<Jactpot />
 					<FavoriteSlots hotGameList={hotGameList} />
