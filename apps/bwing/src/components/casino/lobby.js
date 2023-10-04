@@ -24,6 +24,7 @@ const Panel = ({
 	activeProvider,
 	activeCategory,
 	allCategoryList,
+	maintainList,
 	setGameList,
 	setFavoriteStr,
 	setFavoriteList,
@@ -35,10 +36,8 @@ const Panel = ({
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-
 	const [selGameInfo, setSelGameInfo] = useState(null);
 	const gameListRef = useRef(null);
-
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
 		if (userInfo.isLogin) {
 			try {
@@ -229,6 +228,7 @@ const Panel = ({
 				favorite={favoriteList}
 				setFavorite={setFavoriteList}
 				providerList={providerList}
+				maintainList={maintainList}
 				activeProvider={activeProvider}
 				activeCategory={activeCategory}
 				handleSetFavorite={handleSetFavorite}
@@ -294,6 +294,7 @@ Panel.defaultProps = {
 	providerList: [],
 	favoriteList: [],
 	allCategoryList: [],
+	maintainList: [],
 	activeProvider: null,
 	activeCategory: null,
 	setGameList: () => null,
@@ -314,6 +315,7 @@ Panel.propTypes = {
 	slotDataList: arrayOf(PropTypes.any),
 	providerList: arrayOf(PropTypes.any),
 	allCategoryList: arrayOf(PropTypes.any),
+	maintainList: arrayOf(PropTypes.any),
 	setGameList: func,
 	setFavoriteStr: func,
 	setCategoryList: func,

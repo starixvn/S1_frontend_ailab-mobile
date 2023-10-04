@@ -3,10 +3,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
-import {
-	useGetTpMaintainList,
-	defTpGameType
-} from "../hook/useGetTpMaintainList";
+import { defTpGameType } from "../hook/useGetTpMaintainList";
 import { defSlotTpGameType } from "../../datas/productList";
 
 const GamePanel = React.forwardRef((props, ref) => {
@@ -14,6 +11,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 		selectGame,
 		gameList,
 		providerList,
+		maintainList,
 		activeProvider,
 		activeCategory,
 		i18n,
@@ -25,7 +23,6 @@ const GamePanel = React.forwardRef((props, ref) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { langId } = userInfo;
 
-	const { maintainList } = useGetTpMaintainList();
 	if (gameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
@@ -77,7 +74,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 		games.push(
 			<div
 				className={classNames("slots-products-item", {
-					under: isMaintain
+					maintain: isMaintain
 				})}
 				key={`casino-game-${brandName}-${g.gameId}`}>
 				{activeCategory === "new" && <i className="icon icon-new" />}
@@ -109,7 +106,9 @@ const GamePanel = React.forwardRef((props, ref) => {
 					</div>
 				</button>
 				{isMaintain ? (
-					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
+					<div className="tag-maintain">
+						{i18n.lbl_underMaintenance}
+					</div>
 				) : null}
 			</div>
 		);
@@ -128,6 +127,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 GamePanel.defaultProps = {
 	gameList: [],
 	providerList: null,
+	maintainList: [],
 	handleSetFavorite: null,
 	activeCategory: null
 };
@@ -136,6 +136,7 @@ GamePanel.propTypes = {
 	selectGame: PropTypes.func.isRequired,
 	gameList: PropTypes.arrayOf(PropTypes.object),
 	providerList: PropTypes.arrayOf(PropTypes.any),
+	maintainList: PropTypes.arrayOf(PropTypes.any),
 	activeProvider: PropTypes.objectOf(PropTypes.any).isRequired,
 	activeCategory: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,

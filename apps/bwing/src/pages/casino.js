@@ -29,7 +29,6 @@ const Casino = () => {
 	const page = getUrlParameter("page");
 	const { throttle } = useSetTimeout();
 	const { maintainList } = useGetTpMaintainList();
-
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
 
@@ -251,6 +250,7 @@ const Casino = () => {
 							<div className="slots-vender-bar">
 								<GameProviders
 									selNav={activeProvider?.tpId}
+									maintainList={maintainList}
 									onChange={changeActiveProvider}
 									sorted={providerList}
 								/>
@@ -275,6 +275,7 @@ const Casino = () => {
 				{entryPage && (
 					<Entry
 						providerList={providerList}
+						maintainList={maintainList}
 						setEntryPage={setEntryPage}
 						setActiveProvider={setActiveProvider}
 						setProviderList={setProviderList}
@@ -293,6 +294,7 @@ const Casino = () => {
 						activeProvider={activeProvider}
 						activeCategory={activeCategory}
 						allCategoryList={allCategoryList}
+						maintainList={maintainList}
 						setGameList={setGameList}
 						setFavoriteStr={setFavoriteStr}
 						setCategoryList={setCategoryList}

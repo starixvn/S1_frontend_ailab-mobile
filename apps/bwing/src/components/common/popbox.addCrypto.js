@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { i18nContext, userInfoContext, popBoxContext } from "Context";
+import { i18nContext, popBoxContext } from "Context";
 import DropDown from "./dropdown";
 import Inputbox from "./inputbox.info";
 import OTPInputbox from "./inputbox";
@@ -46,7 +46,6 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const [startUnixTime, setStartUnixTime] = useState(null);
 	const { i18n } = useContext(i18nContext);
-	const { userInfo } = useContext(userInfoContext);
 	const [timer, setTimer] = useState(false);
 	const [selectedCurrency, setSelCurrency] = useState(0);
 	const [selectedNetWork, setSelNetWork] = useState(0);
@@ -201,7 +200,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 							btnBar: (
 								<div className="btn-group">
 									<button
-										className="white"
+										className="btn-gray"
 										onClick={closePopbox}>
 										{i18n.lbl_Confirm}
 									</button>
@@ -288,7 +287,7 @@ const AddCryptoWallet = ({ GetCustBankInfo }) => {
 							btnBar: (
 								<div className="btn-group">
 									<button
-										className="white"
+										className="btn-gray"
 										onClick={closePopbox}>
 										{i18n.lbl_Confirm}
 									</button>

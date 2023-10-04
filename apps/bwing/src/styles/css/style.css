@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* http://meyerweb.com/eric/tools/css/reset/
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -3891,6 +3891,27 @@ header {
   top: 1vw;
   left: 1vw;
 }
+.home-hotgame-item .tag-maintain {
+  display: none;
+}
+.home-hotgame-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.home-hotgame-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  width: calc(100% - 4vw);
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: block;
+}
 .home-promo {
   position: relative;
 }
@@ -4559,6 +4580,9 @@ header {
 .lobby .wrapper {
   padding: 0;
 }
+.lobby.sports {
+  padding: 13.5vw 1vw 20vw;
+}
 .lobby.sports i {
   width: 11vw;
   margin-right: 1.5vw;
@@ -5064,7 +5088,7 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #AAAAAA;
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 1vw;
   padding: 1vw 2vw;
@@ -5492,6 +5516,40 @@ header {
 .promotion-pop .btn-group a, .promotion-pop .btn-group button {
   padding: 0 12vw;
 }
+.promotion-pop .ViewAllAmount {
+  padding: 5px 10px;
+  width: calc(100% - 17vw);
+  margin: -0.5vw auto 2vw;
+  background: #F38C00;
+  border-bottom-left-radius: 2vw;
+  border-bottom-right-radius: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: white;
+}
+.promotion-pop .progressBarModule {
+  background: #FFE5C1;
+  width: calc(100% - 17vw);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto 2vw;
+  border: 2px solid #F38C00;
+  border-radius: 3vw;
+}
+.promotion-pop .progressBarModule button.clickBtn {
+  height: 5vw;
+  color: #F38C00;
+}
+.promotion-pop .progressBarModule .progressBar .bar {
+  border: 1px solid #1C317B;
+}
+.promotion-pop .progressBarModule .progressBar .percentage {
+  color: #1C317B;
+}
 .promotion-banner {
   width: 100%;
   display: -webkit-box;
@@ -5596,6 +5654,38 @@ header {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
 }
+.slots-vender-item .tag-maintain {
+  display: none;
+}
+.slots-vender-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.slots-vender-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
 .slots-category {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5626,6 +5716,7 @@ header {
   padding: 2vw;
   font-size: 4.25vw;
   font-weight: 600;
+  color: #1C317B;
 }
 .slots-category-item.active {
   color: #F38C00;
@@ -5755,6 +5846,28 @@ header {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+.slots-products-item .tag-maintain {
+  display: none;
+}
+.slots-products-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.slots-products-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  width: calc(100% - 4vw);
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: block;
+  text-align: center;
 }
 .slots-games {
   display: -webkit-box;
@@ -9163,8 +9276,18 @@ a.clickBtn:before {
   padding: 2vw 0 2vw 8vw;
 }
 
+.specialBonus {
+  padding: 0 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1vw;
+}
 .specialBonus input {
-  width: calc(100% - 20vw + 1px);
+  width: calc(100% - 22vw);
   padding: 2vw;
 }
 .specialBonus input + .btn-group {
@@ -9174,9 +9297,11 @@ a.clickBtn:before {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
+  margin: 0 auto;
 }
 .specialBonus input + .btn-group button {
   padding: 0 2vw;
+  height: 8.5vw;
 }
 
 .slotFunction {
@@ -9827,9 +9952,14 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
-  border-radius: 3px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: calc(100% - 18vw);
+  margin: 1vw auto 0;
+  background: #FFE5C1;
+  border: 2px solid #F38C00;
+  border-top-left-radius: 2vw;
+  border-top-right-radius: 2vw;
 }
 .depositSlip > div {
   display: none;
@@ -9845,7 +9975,7 @@ span.important {
   display: flex;
 }
 .depositSlip > div:first-child > div {
-  color: #58cdff;
+  color: #1C317B;
 }
 .depositSlip > div:last-child {
   display: -webkit-box;
@@ -9856,12 +9986,14 @@ span.important {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border: 1px solid #58cdff;
+  border-right: 2px solid #F38C00;
   padding: 5px 10px;
-  color: white;
+  color: #1C317B;
 }
 .depositSlip > div > div:last-child {
   text-align: right;
+  font-weight: normal;
+  border: 0;
 }
 
 .lightBTitle {
@@ -15262,6 +15394,12 @@ span.important {
   height: 4vw;
   position: absolute;
   margin: 6vw 0 0 6vw;
+}
+.profileGrade .grade .user .item button.icon.icon-email::before {
+  content: "\e907" !important;
+  background: unset;
+  width: unset;
+  height: unset;
 }
 .profileGrade .grade .user .item button.active {
   color: #fff;
