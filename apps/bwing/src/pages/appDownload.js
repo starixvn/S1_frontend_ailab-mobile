@@ -17,7 +17,7 @@ const IndexPage = () => {
 			<main className="downloadArea">
 				<div className="downloadT">
 					<img
-						src={`${bannerImgUrl}/h5/img/logo.png`}
+						src={`${bannerImgUrl}/h5/img/4.0/logo.png`}
 						alt="Bwing"
 						className="logo"
 					/>
