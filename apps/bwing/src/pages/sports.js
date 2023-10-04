@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { isExpiry } from "@ailab-mobile/promotion";
 import HomeMatch from "../components/home/homeMatch";
 import SportList from "../components/home/sportList";
 import { api_hotEvent_GetDataList } from "../service/api/hotEvent";
@@ -13,6 +14,13 @@ export default () => {
 	const { t } = useTranslation();
 	const [hotEventList, setHotEventList] = useState([]);
 	const [promotionList, setPromotionList] = useState([]);
+	const filterPromotionList = promotionList.filter(
+		item =>
+			!isExpiry({
+				...item,
+				isLogin: userInfo.isLogin
+			})
+	);
 	const getHotEventList = async () => {
 		try {
 			const {
@@ -56,7 +64,7 @@ export default () => {
 			<div className="col-12">
 				<HomeMatch hotEventList={hotEventList} classNameType="lobby" />
 				<SportList />
-				<HotPromotion promotionList={promotionList} />
+				<HotPromotion promotionList={filterPromotionList} />
 			</div>
 		</div>
 	);

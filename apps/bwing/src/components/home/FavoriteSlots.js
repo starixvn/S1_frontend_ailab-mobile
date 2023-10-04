@@ -2,10 +2,7 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Swiper from "react-id-swiper";
 import PropTypes from "prop-types";
-import {
-	defTpGameType,
-	useGetTpMaintainList
-} from "../hook/useGetTpMaintainList";
+import { defTpGameType } from "../hook/useGetTpMaintainList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import {
 	defNavPanel,
@@ -15,9 +12,8 @@ import {
 } from "../common/context";
 import { defProductType } from "./def";
 
-const FavoriteSlots = ({ hotGameList }) => {
+const FavoriteSlots = ({ hotGameList, maintainList }) => {
 	const { t } = useTranslation();
-	const { maintainList } = useGetTpMaintainList();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
@@ -38,7 +34,7 @@ const FavoriteSlots = ({ hotGameList }) => {
 				btnBar: (
 					<div className="btn-group">
 						<button
-							className="white"
+							className="btn-gray"
 							onClick={() => {
 								setPopBox({ isOpen: false });
 							}}>
@@ -126,11 +122,13 @@ const FavoriteSlots = ({ hotGameList }) => {
 };
 
 FavoriteSlots.defaultProps = {
-	hotGameList: []
+	hotGameList: [],
+	maintainList: []
 };
 
 FavoriteSlots.propTypes = {
-	hotGameList: PropTypes.arrayOf(PropTypes.any)
+	hotGameList: PropTypes.arrayOf(PropTypes.any),
+	maintainList: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default FavoriteSlots;

@@ -589,7 +589,7 @@ const Panel = () => {
 					btnBar: (
 						<div className="btn-group">
 							<button
-								className="darkGray"
+								className="btn-gray"
 								onClick={() =>
 									setPopBox(prevState => ({
 										...prevState,
@@ -668,7 +668,7 @@ const Panel = () => {
 				hasBtn: true,
 				btnBar: (
 					<div className="btn-group">
-						<button className="darkGray" onClick={closePopBox}>
+						<button className="btn-gray" onClick={closePopBox}>
 							{i18n.lbl_Cancel}
 						</button>
 						<button className="lightBlue" onClick={submitConfirm}>

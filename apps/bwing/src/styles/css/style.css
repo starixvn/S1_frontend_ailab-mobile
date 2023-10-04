@@ -1488,8 +1488,8 @@ header {
 }
 .header-memberinfo .mailtipPop {
   width: 45vw;
-  top: 11vw;
-  right: 5vw;
+  top: 8vw;
+  right: 1vw;
   position: absolute;
   font-size: 3vw;
   color: #fff;
@@ -1607,6 +1607,7 @@ header {
   position: static;
 }
 .header-memberinfo .mailtipPop span {
+  font-family: "Nunito Sans", sans-serif;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -2615,7 +2616,6 @@ header {
           box-sizing: border-box;
   z-index: 11;
   font-size: 3.5vw;
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 }
 #popup.show {
   display: -webkit-box;
@@ -2931,6 +2931,23 @@ header {
 }
 #popup.promoinfo .promotions div.promodule > img {
   width: 100%;
+}
+#popup.promoinfo .promotions div.promodule .info {
+  border-bottom: 1px dotted #58cdff;
+  padding-bottom: 3vw;
+  margin-bottom: 5vw;
+}
+#popup.promoinfo .promotions div.promodule .info ul li {
+  float: none;
+  width: 100%;
+  padding-left: 1vw;
+  border: 0;
+  padding: revert;
+  height: revert;
+  margin: 0;
+}
+#popup.promoinfo .promotions div.promodule .info .title {
+  font-weight: normal;
 }
 #popup.promoinfo .promotions .btnGroup button, #popup.promoinfo .promotions .btnGroup a {
   width: 100%;
@@ -3579,151 +3596,6 @@ header {
   border: 0;
   border-radius: 2px;
 }
-#popup.promosback {
-  background: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: unset;
-          flex-flow: unset;
-  display: none;
-}
-#popup.promosback.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-#popup.promosback .promosbackpop {
-  position: relative;
-  background: rgba(0, 0, 0, 0);
-  margin-bottom: 15vw;
-  -webkit-animation: promosbackpop 2s ease-in-out;
-          animation: promosbackpop 2s ease-in-out;
-}
-#popup.promosback .promosbackpop img {
-  display: block;
-  margin: 0 auto;
-  max-width: 95vw;
-}
-@-webkit-keyframes promosbackpop {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-  }
-  25% {
-    -webkit-transform: scale(1.25, 1.25);
-            transform: scale(1.25, 1.25);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-  75% {
-    -webkit-transform: scale(1.2, 1.2);
-            transform: scale(1.2, 1.2);
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-}
-@keyframes promosbackpop {
-  0% {
-    -webkit-transform: scale(0, 0);
-            transform: scale(0, 0);
-  }
-  25% {
-    -webkit-transform: scale(1.25, 1.25);
-            transform: scale(1.25, 1.25);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-  75% {
-    -webkit-transform: scale(1.2, 1.2);
-            transform: scale(1.2, 1.2);
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-  }
-}
-#popup.promosback .popgo {
-  color: #fff;
-  text-align: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2375eb), color-stop(50%, #2b97f5), to(#33bbff));
-  background: linear-gradient(to bottom, #2375eb 0%, #2b97f5 50%, #33bbff 100%);
-  background: -webkit-linear-gradient(top, #2375eb 0%, #2b97f5 50%, #33bbff 100%);
-  font-size: 4vw;
-  padding: 3vw 0;
-  border-radius: 20vw;
-  min-width: 36vw;
-  -webkit-box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
-          box-shadow: 0 0px 6px 1px rgba(255, 255, 255, 0.2);
-  font-family: "Poppins", sans-serif;
-  -webkit-animation: popgo 2s ease-in-out;
-          animation: popgo 2s ease-in-out;
-}
-@-webkit-keyframes popgo {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes popgo {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-#popup.promosback .closepop {
-  cursor: pointer;
-  display: block;
-  width: 9vw;
-  -webkit-animation: closepop 2.3s ease-in-out;
-          animation: closepop 2.3s ease-in-out;
-}
-@-webkit-keyframes closepop {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes closepop {
-  0% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .fullbanner {
   width: 100%;
@@ -3890,6 +3762,27 @@ header {
   position: absolute;
   top: 1vw;
   left: 1vw;
+}
+.home-hotgame-item .tag-maintain {
+  display: none;
+}
+.home-hotgame-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.home-hotgame-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  width: calc(100% - 4vw);
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: block;
 }
 .home-promo {
   position: relative;
@@ -5067,7 +4960,7 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #AAAAAA;
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 1vw;
   padding: 1vw 2vw;
@@ -5589,6 +5482,9 @@ header {
   font-family: "Bai Jamjuree", sans-serif !important;
 }
 
+.slots .nodata {
+  margin-top: 66vw;
+}
 .slots-vender-bar {
   background: #1C317B;
   display: -webkit-box;
@@ -5632,6 +5528,38 @@ header {
 .slots-vender-item.active img {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
+}
+.slots-vender-item .tag-maintain {
+  display: none;
+}
+.slots-vender-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.slots-vender-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  z-index: 2;
 }
 .slots-category {
   display: -webkit-box;
@@ -5784,15 +5712,38 @@ header {
 }
 .slots-products-item .name {
   width: 100%;
-  font-size: 3.5vw;
+  font-size: 3vw;
   margin-bottom: 0;
   color: #1C317B;
+  word-break: break-all;
   text-transform: uppercase;
   display: -webkit-box;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+.slots-products-item .tag-maintain {
+  display: none;
+}
+.slots-products-item.maintain {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+  position: relative;
+}
+.slots-products-item.maintain .tag-maintain {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%) translateY(50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  width: calc(100% - 4vw);
+  padding: 2vw 0;
+  border-radius: 2vw;
+  display: block;
+  text-align: center;
 }
 .slots-games {
   display: -webkit-box;
@@ -6388,7 +6339,7 @@ main.home {
   padding-top: 18vw;
 }
 main.account {
-  height: 100%;
+  min-height: 100%;
   background: #F6F9FF;
 }
 main .login-bar {
@@ -7065,11 +7016,34 @@ main .sideBar button.icon:before {
   margin-bottom: 15vw;
   -webkit-animation: promosbackpop 2s ease-in-out;
           animation: promosbackpop 2s ease-in-out;
+  text-align: center;
 }
 .promosback img {
   display: block;
   margin: 0 auto;
   max-width: 95vw;
+}
+@-webkit-keyframes promosbackpop {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  25% {
+    -webkit-transform: scale(1.25, 1.25);
+            transform: scale(1.25, 1.25);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  75% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
 }
 @keyframes promosbackpop {
   0% {
@@ -7099,7 +7073,7 @@ main .sideBar button.icon:before {
   background: -webkit-gradient(linear, left top, left bottom, from(#2375eb), color-stop(50%, #2b97f5), to(#33bbff));
   background: linear-gradient(to bottom, #2375eb 0%, #2b97f5 50%, #33bbff 100%);
   font-size: 4vw;
-  margin-bottom: 5vw;
+  margin: 0 auto 5vw;
   padding: 3vw 0;
   border-radius: 20vw;
   min-width: 36vw;
@@ -7108,6 +7082,17 @@ main .sideBar button.icon:before {
   font-family: "Poppins", sans-serif;
   -webkit-animation: popgo 2s ease-in-out;
           animation: popgo 2s ease-in-out;
+}
+@-webkit-keyframes popgo {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes popgo {
   0% {
@@ -7126,6 +7111,20 @@ main .sideBar button.icon:before {
   width: 9vw;
   -webkit-animation: closepop 2.3s ease-in-out;
           animation: closepop 2.3s ease-in-out;
+}
+@-webkit-keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes closepop {
   0% {
@@ -9900,7 +9899,7 @@ span.important {
   display: flex;
 }
 .depositSlip > div:first-child > div {
-  color: #58cdff;
+  color: #1C317B;
 }
 .depositSlip > div:last-child {
   display: -webkit-box;
@@ -11574,11 +11573,11 @@ span.important {
   list-style: none;
   width: 100%;
   margin: 0;
-  color: #aeb2bc;
+  color: #1C317B;
 }
 .subModuleList .subModule .subModuleBody .upload_img {
-  border: 2px dashed #58cdff;
-  background: #010e33;
+  border: 1px dashed #1C317B;
+  background: #F6F9FF;
   width: 100%;
   height: 120px;
   border-radius: 5px;
@@ -11591,10 +11590,10 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #58cdff;
+  color: #1C317B;
 }
 .subModuleList .subModule .subModuleBody .upload_img .icon {
-  color: #58cdff;
+  color: #1C317B;
   font-size: 12px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11899,6 +11898,9 @@ span.important {
   -webkit-box-flex: 1.5;
       -ms-flex: 1.5;
           flex: 1.5;
+}
+.withdrawalBox .txt-lightgray {
+  color: #1C317B;
 }
 
 .gear {

@@ -1,18 +1,16 @@
 import React, { useContext } from "react";
 import Swiper from "react-id-swiper";
 import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
 import { defAppType, GET_ENTER_PAGE } from "../../service/enterPage";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { SPORT_LIST } from "./def";
-import {
-	defTpGameType,
-	useGetTpMaintainList
-} from "../hook/useGetTpMaintainList";
+import { defTpGameType } from "../hook/useGetTpMaintainList";
 
-const SportList = () => {
+const SportList = ({ maintainList }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
-	const { maintainList } = useGetTpMaintainList();
+
 	const { t } = useTranslation();
 
 	const swiperParams = {
@@ -72,6 +70,14 @@ const SportList = () => {
 			</Swiper>
 		</div>
 	);
+};
+
+SportList.defaultProps = {
+	maintainList: []
+};
+
+SportList.propTypes = {
+	maintainList: PropTypes.arrayOf(PropTypes.any)
 };
 
 export default SportList;
