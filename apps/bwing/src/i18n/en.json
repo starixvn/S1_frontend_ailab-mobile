@@ -646,6 +646,8 @@
   "lbl_Home_Download_Description3": "no worries of being denied access",
   "lbl_App_Download_Guide": "App Download Guide",
   "lbl_Read_more": "Read More",
+  "lbl_DepositLoadCardNoticeContent1": "Please ensure you choose the correct telcom provider  and card value. Otherwise, Bwing will not bear any responsibility.",
+  "lbl_DepositLoadCardNoticeContent2": "Our card fee is cheapest in the market, only 25% apply for all telcoms.",
 
 	"==============General==============": "",
 	"lbl_Jackpot": "Jackpot",

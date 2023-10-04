@@ -239,13 +239,13 @@ const Panel = ({
 				setFavoriteStr={setFavoriteStr}
 			/>
 			{selGameInfo === null ? null : (
-				<div className="slotFunctionNew open">
-					<div>
+				<div className="slots-games popup active">
+					<div className="slots-games-item">
 						<button
-							className="icon icon-cancel-circle"
+							className="icon-close-slots"
 							onClick={() => setSelGameInfo(null)}
 						/>
-						<div className="content">
+						<div className="slots-games-img">
 							<img
 								src={`${imageUrl}/${selGameInfo.providerName}/${
 									selGameInfo.imgName[userInfo.langId] ??
@@ -256,27 +256,26 @@ const Panel = ({
 									selGameInfo.gameName.en
 								}
 							/>
-							<div className="mask" />
+							<div className="slots-games-btn">
+								{selGameInfo.playFree ? (
+									<button
+										data-testid="clickFreePlay"
+										className="white"
+										onClick={() => clickPlay(true)}>
+										{i18n.lbl_Demo}
+									</button>
+								) : null}
+								<button
+									className="orange"
+									data-testid="clickPlay"
+									onClick={() => clickPlay(false)}>
+									{i18n.lbl_Play}
+								</button>
+							</div>
 						</div>
-						<div className="title text-blue">
+						<div className="slots-games-name">
 							{selGameInfo.gameName[userInfo.langId] ??
 								selGameInfo.gameName.en}
-						</div>
-						<div className="btn-group">
-							{selGameInfo.playFree ? (
-								<button
-									data-testid="clickFreePlay"
-									className="white"
-									onClick={() => clickPlay(true)}>
-									{i18n.lbl_Demo}
-								</button>
-							) : null}
-							<button
-								className="orange"
-								data-testid="clickPlay"
-								onClick={() => clickPlay(false)}>
-								{i18n.lbl_Play}
-							</button>
 						</div>
 					</div>
 				</div>
