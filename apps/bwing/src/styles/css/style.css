@@ -3023,7 +3023,7 @@ header {
   background: #F6F9FF;
   border: 1px solid #7789bd;
   border-radius: 3px;
-  color: #fff;
+  color: #1C317B;
   width: 100%;
   position: relative;
   height: 9.8vw;
@@ -3041,7 +3041,7 @@ header {
   background: transparent;
   border: 0;
   width: 100%;
-  color: #fff;
+  color: #1C317B;
   font-size: 3.5vw;
   padding: 0;
   margin: 0 1vw;
@@ -7851,6 +7851,11 @@ main .sideBar button.icon:before {
   border-radius: 5px;
   margin-top: 10px;
 }
+.depositBox .btn-group .left,
+.cryptoBox .btn-group .left,
+.withdrawalBox .btn-group .left {
+  color: #1C317B;
+}
 
 .depositInBox {
   width: calc(100% - 4vw);
@@ -11321,6 +11326,9 @@ span.important {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+.addCrypto .addCryptoName .icon.icon-checkbox-checked {
+  color: #1C317B;
 }
 .addCrypto .addCryptoName .addCryptoInfo {
   display: -webkit-box;
