@@ -741,7 +741,7 @@ const Panel = () => {
 						<button className="btn-gray" onClick={closePopBox}>
 							{i18n.lbl_Cancel}
 						</button>
-						<button className="lightBlue" onClick={submitConfirm}>
+						<button className="btn-primary" onClick={submitConfirm}>
 							{i18n.lbl_Submit}
 						</button>
 					</div>

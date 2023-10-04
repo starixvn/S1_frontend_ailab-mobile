@@ -250,7 +250,6 @@ const Casino = () => {
 							<div className="slots-vender-bar">
 								<GameProviders
 									selNav={activeProvider?.tpId}
-									maintainList={maintainList}
 									onChange={changeActiveProvider}
 									sorted={providerList}
 								/>
