@@ -380,7 +380,7 @@ const Payment = props => {
 
 			<div className="btn-group">
 				<button
-					className={canSubmit ? "blue" : "darkGray"}
+					className={canSubmit ? "blue" : "btn-gray"}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>

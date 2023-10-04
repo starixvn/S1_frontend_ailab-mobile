@@ -450,7 +450,7 @@ const Payment = props => {
 		if (isShowSubmit && canSubmit) {
 			result = "blue";
 		} else {
-			result = isShowSubmit ? "darkGray" : "org";
+			result = isShowSubmit ? "btn-gray" : "org";
 		}
 		return result;
 	};

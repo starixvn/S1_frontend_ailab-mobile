@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import moment from "moment";
 import { useTranslation } from "react-i18next";
 
 const Inputbox = ({
@@ -249,7 +250,7 @@ export const InputboxDate = ({
 				type="date"
 				onBlur={onBlur}
 				onChange={onChange}
-				value={value}
+				value={value || moment().format("YYYY-MM-DD")}
 				max={max}
 			/>
 			<IptStatus btnStatus={btnStatus} clickInfo={clickInfo} />

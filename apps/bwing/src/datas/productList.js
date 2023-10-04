@@ -22,6 +22,11 @@ export const defGameInfo = {
 		// tpGameType: 1,
 		tpGameType: 69 // seamless wallet
 	},
+	sports_IM: {
+		tpId: 52,
+		tpGameType: 103,
+		gameId: "IMSB"
+	},
 	CryptoSports: { tpId: 45, tpGameType: 87 },
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	eSports: { tpId: 41, gameId: 43, tpGameType: 69 },
