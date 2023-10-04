@@ -1,0 +1,13 @@
+{
+	"type": "service_account",
+	"project_id": "ailab-resources-385807",
+	"private_key_id": "220772b7ea81e7cd2a5889d551e7d98ed9089872",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQClYR1L3y0+6QE+\nRoZNmiaSivUnHl2YnpxZ1/CqyrA3iaU3g+9mEOmjrBGxkF8wuehBEOwE0m1MbgS8\nTfLfhXEb3bRJ/UpPhYWwDYkinPKLRWWuKmaehilbpZAOwpKKnyGcFvF+TeHMzgX9\nSC6ScGyAqvQN1oTsRMq48FvHd7EsVayu9ppd7MHKfw0RCJVix6IW59BCU3LKlF7J\nvF6KF2Xe5M5vbvz6OIpqCkpN+6zBH0lGpeRVWhttq9pSqxHLH6Jl0bRQgtYayHl8\nyS5F9tOpJiDZ9lznMGjgfhkJgykebcs1opQMveLSB023g2VbORmkwtkhJ5DnFpJr\nV71EnlRJAgMBAAECggEAAQ3r87piCEx7ALckDxBEXlslcfuRvtyFWatJ8lold80t\nsPtrMNGQc8Xaklu9x5/qeP5kdX6+n1CflhsXHnwJexMq8u0lpqPOyjm5M0Ugj2kW\nBgoTf7+SOZkwyxn2zjcdLejANGfHC0O6/7Y7RHK+tllLV1/pQV+059XxzS/tq2nZ\nIJAvUn5H2zJ4BOjY5ny3S7+easbt49adYIPkwoJjAmmuZ8kmnxPvVwzGiA/2Qn1u\n9Ow7NUa0/K28QsNNL2cA0fA/5Mp49gKDz2yWsdhb46FOAIzR2icBbdmLBVr+uC7N\n96Uei3/Ieyzoebp0HaphAB0cwiucjrq9nC2PyBVxqQKBgQDY6bVuvHujxaqe4osg\ny2SCSs4yELODffy++A3lMrAvp5GtoQfmMQLRURpvoLOAMeCM+lJxK8zAmEvgejrr\nrBQotyWbh4CSnfXASwZ+RDghVpX+UqoyUBUOYV1unPB7VF/J5gM0h1gGmmTXp/Al\nyYCi2hv49vVRtMshq4gBzaMwlQKBgQDDLiOGgVCik5chq6lg/Bo+3Je6v1niXvhL\n514/gJFFc6jPpVF/ajWRsM/XtnnpF3Ly0CRlrb1kMimWFL/UaD9Qqw46qYmdW9rm\nkgOPKqjnof25cKKdYjJhoY6epBz/XyBlT8YPZByoD/rm0DSvG1+gDNrT8TGy4xNg\nQbKNbKGj5QKBgF+EUpOnxh4w/dgnVDKlveWuASyEtDfz86c4Xg4Oiw0BEiJOJcdU\nz7PSrfx33HNYA1SxKjqRmgE5TzhTOrzqspnXRGU/fvuROVVq9DoH2lu74CL0zeOH\n5i3F7Dm4PCFi3ydt9P1dmAKYXE2msxZArDeKKgUw4ogPP9/cw/BfWDwdAoGAMoQE\nidF6Tzmnyf0l74YQPOjXFGxmFSLDXNHbINBjyPfwXx3IhBO3HagHgyslTmDVTWb1\npKNc+0vIW6GvLIh2qqg7HI+4oFOfykFMToeaA6l3g8FVNSqvI3mu8fxDzQyP0+jb\nuCwPBqhsJcUJfbC2BTSOhoBMfqIq56TZU6UkCMkCgYB8WJscbgtVfijy+u/iW4Zb\n1MiKaCurNEix8Ri2GarCTyi0bfntJag3uXKkgTjHQGbRjLgqYrf4ZkMKeB7iO7Hg\nHdPSEy7fkf0CX9IGKDtytMI44xvVHlX9QA501zeQsahgAN+AWah2FsLVfA7QvVif\n6goqZPduU7R9zGEbcyZz1w==\n-----END PRIVATE KEY-----\n",
+	"client_email": "ailab-f2e-i18n@ailab-resources-385807.iam.gserviceaccount.com",
+	"client_id": "100258349528047797168",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ailab-f2e-i18n%40ailab-resources-385807.iam.gserviceaccount.com",
+	"universe_domain": "googleapis.com"
+}
