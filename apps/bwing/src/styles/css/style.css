@@ -5691,7 +5691,7 @@ header {
           box-sizing: border-box;
   position: relative;
 }
-.slots-products-item.tag-hot-pop::before {
+.slots-products-item.tag-hot-pop::before, .slots-products-item.tag-new-pop::before {
   position: absolute;
   top: -2vw;
   right: -2vw;
