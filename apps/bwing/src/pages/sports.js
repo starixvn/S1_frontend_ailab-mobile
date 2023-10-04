@@ -7,11 +7,13 @@ import { api_hotEvent_GetDataList } from "../service/api/hotEvent";
 import { popBoxContext, userInfoContext } from "../components/common/context";
 import HotPromotion from "../components/home/hotPromotion";
 import { api_promotion_GetPromotionList } from "../service/api/promotion";
+import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 
 export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
+	const { maintainList } = useGetTpMaintainList();
 	const [hotEventList, setHotEventList] = useState([]);
 	const [promotionList, setPromotionList] = useState([]);
 	const filterPromotionList = promotionList.filter(
@@ -63,7 +65,7 @@ export default () => {
 		<div className="wrapper">
 			<div className="col-12">
 				<HomeMatch hotEventList={hotEventList} classNameType="lobby" />
-				<SportList />
+				<SportList maintainList={maintainList} />
 				<HotPromotion promotionList={filterPromotionList} />
 			</div>
 		</div>
