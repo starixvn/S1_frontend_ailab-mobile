@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Swiper from "react-id-swiper";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
-import { defAppType, GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { SPORT_LIST } from "./def";
 import { defTpGameType } from "../hook/useGetTpMaintainList";
@@ -47,10 +47,7 @@ const SportList = ({ maintainList }) => {
 														setNav(
 															defNavPanel.login
 														),
-													tpGameType,
-													appType: hasDesktopLink
-														? defAppType.desktop
-														: null
+													tpGameType
 												});
 										}}
 										key={`${tpId}_${gameId}`}
