@@ -887,5 +887,7 @@
   "msg_WorldCupTo": "",
   "msg_WrongAmount": "ভুল পরিমাণ",
   "msg_ticketBeenUsed": "",
-  "msg_ticketNotBeenActivated": ""
+  "msg_ticketNotBeenActivated": "",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
 }
