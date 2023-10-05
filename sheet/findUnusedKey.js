@@ -63,7 +63,7 @@ const readFileAndCheckForString = filePath => {
 
 // * 只支援單選
 const arg = process.argv.slice(2)[0];
-const site = `${arg}-desktop`;
+const site = `${arg}-mobile`;
 const sheetsToExtract = [site];
 const filePattern = /\.(js|ts)$/i; // * 匹配以 .js 或 .ts 结尾的文件
 
@@ -80,7 +80,10 @@ const findUnusedKey = async keys => {
 
 	// * 找到未用過的翻譯
 
-	const unusedKey = keys.filter(key => !contents.match(`"${key}"`));
+	// * 找出未符合 t("lbl_Date") 或 i18n.lbl_Date 的翻譯
+	const unusedKey = keys.filter(
+		key => !contents.match(`"${key}"`) && !contents.match(`.${key}`)
+	);
 
 	console.table(unusedKey);
 };
