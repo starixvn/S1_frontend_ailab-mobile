@@ -887,5 +887,7 @@
   "msg_WorldCupTo": "hingga",
   "msg_WrongAmount": "Salah jumlah",
   "msg_ticketBeenUsed": "Tiket yang telah digunakan",
-  "msg_ticketNotBeenActivated": "Tiket yang belum aktif"
+  "msg_ticketNotBeenActivated": "Tiket yang belum aktif",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
 }
