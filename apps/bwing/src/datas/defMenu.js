@@ -114,8 +114,8 @@ export const productList = langId => {
 				{
 					displayText: "IM Sports",
 					img: `${bannerImgUrl}/h5/img/sport/inplaymatrix.png`,
-					...defGameInfo.sports_IM,
-					// hasDesktopLink: true,
+					...defGameInfo.eSports_IM,
+					hasDesktopLink: true,
 					eventIcon: [
 						{
 							icon: defIconType.new,
