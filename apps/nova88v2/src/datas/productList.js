@@ -292,64 +292,72 @@ const defSortSlot = {
 
 const defSortFishing = {
 	[defCurrenyId.THB]: [
+		"fishing_SG",
 		"fishing_SGW_WAR",
+		"fishing_Zombie_Party",
+		"fishing_Alien_Hunter",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
-		"fishing_Skywind_Ocean_Ruler",
-		"fishing_Skywind_Cai_Shen_Da_Hai",
-		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
 		"fishing_Hunting_Monster_Awaken",
-		"fishing_SG",
-		"fishing_CQ9_ONESHOT",
-		"fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		"ICG_FISHING_OF_SAVIORS"
+		"fishing_CQ9_ONESHOT"
+		// "fishing_Skywind_Ocean_Ruler",
+		// "fishing_Skywind_Cai_Shen_Da_Hai",
+		// "fishing_ICG_DRAGONBALL",
+		// "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		// "ICG_FISHING_OF_SAVIORS"
 	],
 	[defCurrenyId.MYR]: [
+		"fishing_SG",
 		"fishing_SGW_WAR",
+		"fishing_Zombie_Party",
+		"fishing_Alien_Hunter",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
-		"fishing_Skywind_Ocean_Ruler",
-		"fishing_Skywind_Cai_Shen_Da_Hai",
-		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
 		"fishing_Hunting_Monster_Awaken",
-		"fishing_SG",
-		"fishing_CQ9_ONESHOT",
-		"fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		"ICG_FISHING_OF_SAVIORS"
+		"fishing_CQ9_ONESHOT"
+		// "fishing_Skywind_Ocean_Ruler",
+		// "fishing_Skywind_Cai_Shen_Da_Hai",
+		// "fishing_ICG_DRAGONBALL",
+		// "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		// "ICG_FISHING_OF_SAVIORS"
 	],
 	[defCurrenyId.IDR]: [
+		"fishing_SG",
 		"fishing_SGW_WAR",
+		"fishing_Zombie_Party",
+		"fishing_Alien_Hunter",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
-		"fishing_Skywind_Ocean_Ruler",
-		"fishing_Skywind_Cai_Shen_Da_Hai",
-		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
 		"fishing_Hunting_Monster_Awaken",
-		"fishing_SG",
-		"fishing_CQ9_ONESHOT",
-		"fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		"ICG_FISHING_OF_SAVIORS"
+		"fishing_CQ9_ONESHOT"
+		// "fishing_Skywind_Ocean_Ruler",
+		// "fishing_Skywind_Cai_Shen_Da_Hai",
+		// "fishing_ICG_DRAGONBALL",
+		// "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		// "ICG_FISHING_OF_SAVIORS"
 	],
 	[defCurrenyId.INR]: [
+		"fishing_SG",
 		"fishing_SGW_WAR",
+		"fishing_Zombie_Party",
+		"fishing_Alien_Hunter",
 		"fishing_CQ9_PARADISE",
 		"fishing_GGYL_WORLD",
-		"fishing_Skywind_Ocean_Ruler",
-		"fishing_Skywind_Cai_Shen_Da_Hai",
-		"fishing_ICG_DRAGONBALL",
 		"fishing_Haiba",
 		"fishing_Hunting_Happy_Fish_5",
 		"fishing_Hunting_Monster_Awaken",
-		"fishing_SG",
-		"fishing_CQ9_ONESHOT",
-		"fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
-		"ICG_FISHING_OF_SAVIORS"
+		"fishing_CQ9_ONESHOT"
+		// "fishing_Skywind_Ocean_Ruler",
+		// "fishing_Skywind_Cai_Shen_Da_Hai",
+		// "fishing_ICG_DRAGONBALL",
+		// "fishing_ICG_THE_TYRANT_AND_THE_PRINCESS",
+		// "ICG_FISHING_OF_SAVIORS"
 	]
 };
 
@@ -1033,6 +1041,59 @@ const gameList = ({ langId, currencyId }) => {
 			customSort: defSortFishing,
 			items: [
 				{
+					...defGameInfo.FishingSG,
+					spanTextKey: "lbl_FishingSG1",
+					img: `${cloudBannerImgURL}/h5/img/fg.png`,
+					allowCurrency: allowedCurrencyList.fishingGod,
+					sortKey: "fishing_SG"
+				},
+				{
+					...defGameInfo.FishingSGW,
+					spanTextKey: "lbl_FishingSG2",
+					img: `${cloudBannerImgURL}/h5/img/fw.png`,
+					sortKey: "fishing_SGW_WAR"
+				},
+				{
+					...defGameInfo.Fishing_Zombie_Party,
+					spanTextKey: "lbl_Fishing_Zombie_Party",
+					img: `${cloudBannerImgURL}/h5/img/fishzp.png`,
+					sortKey: "fishing_Zombie_Party",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Zombie_Party
+							)
+						}
+					]
+				},
+				{
+					...defGameInfo.Fishing_Alien_Hunter,
+					spanTextKey: "lbl_Fishing_Alien_Hunter",
+					img: `${cloudBannerImgURL}/h5/img/fishah.png`,
+					sortKey: "fishing_Alien_Hunter",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Alien_Hunter
+							)
+						}
+					]
+				},
+				{
+					...defGameInfo.Fishing_AB3,
+					spanTextKey: "lbl_Paradise",
+					img: `${cloudBannerImgURL}/h5/img/pd.png`,
+					sortKey: "fishing_CQ9_PARADISE"
+				},
+				{
+					...defGameInfo.FishingGG,
+					spanTextKey: "lbl_FishingGG",
+					img: `${cloudBannerImgURL}/h5/img/ffw.png`,
+					sortKey: "fishing_GGYL_WORLD"
+				},
+				{
 					...defGameInfo.FishingHaiba,
 					spanTextKey: "lbl_Fishing_Haiba",
 					img: `${cloudBannerImgURL}/h5/img/hb.png`,
@@ -1054,23 +1115,19 @@ const gameList = ({ langId, currencyId }) => {
 					allowCurrency: allowedCurrencyList.fishingMonsterAwaken
 				},
 				{
-					...defGameInfo.Fishing_AB3,
-					spanTextKey: "lbl_Paradise",
-					img: `${cloudBannerImgURL}/h5/img/pd.png`,
-					sortKey: "fishing_CQ9_PARADISE"
-				},
+					...defGameInfo.Fishing_AT01,
+					spanTextKey: "lbl_Oneshot_Fishing",
+					img: `${cloudBannerImgURL}/h5/img/of.png`,
+					allowCurrency: allowedCurrencyList.oneShot,
+					sortKey: "fishing_CQ9_ONESHOT"
+				}
+
 				// {
 				// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
 				// 	spanTextKey: "lbl_Game_ICG_DRAGONBALL_FISHING",
 				// 	img: `${cloudBannerImgURL}/h5/img/df.png`,
 				// 	sortKey: "fishing_ICG_DRAGONBALL"
 				// },
-				{
-					...defGameInfo.FishingGG,
-					spanTextKey: "lbl_FishingGG",
-					img: `${cloudBannerImgURL}/h5/img/ffw.png`,
-					sortKey: "fishing_GGYL_WORLD"
-				},
 				// {
 				// 	...defGameInfo.Skywind_Ocean_Ruler,
 				// 	spanTextKey: "Skywind_Ocean_Ruler",
@@ -1095,26 +1152,6 @@ const gameList = ({ langId, currencyId }) => {
 				// 		}
 				// 	]
 				// },
-				{
-					...defGameInfo.FishingSGW,
-					spanTextKey: "lbl_FishingSG2",
-					img: `${cloudBannerImgURL}/h5/img/fw.png`,
-					sortKey: "fishing_SGW_WAR"
-				},
-				{
-					...defGameInfo.FishingSG,
-					spanTextKey: "lbl_FishingSG1",
-					img: `${cloudBannerImgURL}/h5/img/fg.png`,
-					allowCurrency: allowedCurrencyList.fishingGod,
-					sortKey: "fishing_SG"
-				},
-				{
-					...defGameInfo.Fishing_AT01,
-					spanTextKey: "lbl_Oneshot_Fishing",
-					img: `${cloudBannerImgURL}/h5/img/of.png`,
-					allowCurrency: allowedCurrencyList.oneShot,
-					sortKey: "fishing_CQ9_ONESHOT"
-				}
 				// {
 				// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 				// 	spanTextKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS",
@@ -1374,6 +1411,16 @@ export const defGameInfo = {
 	FishingGG: { tpId: 7, gameId: 10, tpGameType: 12 },
 	FishingSG: { tpId: 10, gameId: "F-SF01", tpGameType: 31 },
 	FishingSGW: { tpId: 10, gameId: "F-SF02", tpGameType: 31 },
+	Fishing_Zombie_Party: {
+		gameId: "F-ZP01",
+		tpId: 10,
+		tpGameType: 31
+	},
+	Fishing_Alien_Hunter: {
+		gameId: "F-AH01",
+		tpId: 10,
+		tpGameType: 31
+	},
 	Skywind_Ocean_Ruler: {
 		gameId: "sw_or",
 		tpId: 43,

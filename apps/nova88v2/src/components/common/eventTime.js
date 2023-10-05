@@ -43,5 +43,7 @@ export const eventTime = {
 	liveCasino_BG: { endDate: "2023/12/31 23:59:59" },
 	casino_Nextspin: { endDate: "2023/08/12 11:00:00" },
 	IM: { endDate: "2023/09/28 23:59:59" },
-	casino_Endorphina: { endDate: "2023/10/25 23:59:59" }
+	casino_Endorphina: { endDate: "2023/10/25 23:59:59" },
+	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
+	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" }
 };
