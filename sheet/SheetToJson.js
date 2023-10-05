@@ -13,7 +13,7 @@ const getContents = data => {
 	for (const tab in data) {
 		const files = [...data[tab]];
 
-		const fileName = String(tab).replace("-desktop", "");
+		const fileName = String(tab).replace("-mobile", "");
 
 		for (const file of files) {
 			const content = { ...file };
@@ -37,7 +37,7 @@ const getContents = data => {
 // * 複選 ex: node sheetSort.js nova88v2
 const args = process.argv.slice(2);
 
-const sheetsToExtract = args.map(site => `${site}-desktop`);
+const sheetsToExtract = args.map(site => `${site}-mobile`);
 
 // * 同步 google sheet 版本，可選指定 tab
 
