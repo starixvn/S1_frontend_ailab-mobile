@@ -34,7 +34,7 @@ const getContents = data => {
 	return contents;
 };
 
-// * 只支援單選 ex: node sheetSort.js nova88v2
+// * 複選 ex: node sheetSort.js nova88v2
 const args = process.argv.slice(2);
 
 const sheetsToExtract = args.map(site => `${site}-desktop`);
