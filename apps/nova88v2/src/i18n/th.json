@@ -887,5 +887,7 @@
   "msg_WorldCupTo": "ถึง",
   "msg_WrongAmount": "จำนวนเงินไม่ถูกต้อง",
   "msg_ticketBeenUsed": "ตั๋วที่ถูกใช้งานแล้ว",
-  "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน"
+  "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
 }
