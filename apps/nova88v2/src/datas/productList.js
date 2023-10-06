@@ -716,7 +716,8 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.slot_fachai)
 						}
-					]
+					],
+					allowCurrency: allowedCurrencyList.FaChai
 				},
 				{
 					...defGameInfo.Casino_MGP,
