@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import classNames from "classnames";
+import React, { useState, useContext } from "react";
 import { Link, Match } from "@reach/router";
 import { userInfoContext, i18nContext } from "./context";
 import path from "../../path";
-import { siteInfo } from "../../config";
+import { siteInfo, bannerImgUrl } from "../../config";
 
 const defChatLangSubUrl = {
 	en: 1,
@@ -12,147 +13,175 @@ const defChatLangSubUrl = {
 };
 
 const Footer = () => {
-	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	if (userInfo.isLogin === false) {
-		return (
-			<footer className="footerNew">
-				<Match path={path.promotion.root}>
-					{props => {
-						const isMatch =
-							props.match !== null ||
-							props.location.pathname ===
-								`/${path.promotionInfo.root}`;
-						return (
-							<Link
-								to={`/${path.promotion.root}`}
-								className={`${isMatch ? "open" : ""} hoticon`}>
-								<div className="icon icon-promotion" />
-								<span>{i18n.lbl_Promotion}</span>
-							</Link>
-						);
-					}}
-				</Match>
+	const { userInfo } = useContext(userInfoContext);
 
-				<Match path={path.home.root}>
-					{props => {
-						const isMatch = props.match !== null;
-						return (
-							<Link
-								to={path.home.root}
-								className={isMatch ? "open" : ""}>
-								<div className="icon icon-home" />
-								<span>{i18n.lbl_Home}</span>
-							</Link>
-						);
-					}}
-				</Match>
+	const [showContact, setShowContact] = useState(false);
 
-				<a
-					target="_blank"
-					href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
-						defChatLangSubUrl[userInfo.langId] ?? ""
-					}`}
-					className=""
-					rel="noreferrer">
-					<div className="icon icon-contact" />
-					<span>{i18n.lbl_LiveChat}</span>
-				</a>
+	const { langId, isLogin } = userInfo;
 
-				<Match path={path.other.root}>
-					{props => {
-						const isMatch =
-							props.location.pathname === `/${path.other.root}`;
-						return (
-							<Link
-								to={`/${path.other.root}`}
-								className={isMatch ? "open" : ""}>
-								<div className="icon icon-other" />
-								<span>{i18n.lbl_Other}</span>
-							</Link>
-						);
-					}}
-				</Match>
-			</footer>
-		);
-	}
 	return (
-		<footer className="footerNew">
-			<Match path={path.promotion.root}>
-				{props => {
-					const isMatch =
-						props.match !== null ||
-						props.location.pathname ===
-							`/${path.promotionInfo.root}`;
-					return (
-						<Link
-							to={`/${path.promotion.root}`}
-							className={`${isMatch ? "open" : ""} hoticon`}>
-							<div className="icon icon-promotion" />
-							<span>{i18n.lbl_Promotion}</span>
-						</Link>
-					);
-				}}
-			</Match>
-
-			<Match path={`${path.statement.root}/*`}>
-				{props => {
-					const isMatch =
-						props.match !== null ||
-						props.location.pathname ===
-							`/${path.financialLog.root}`;
-					return (
-						<Link
-							to={`/${path.statement.root}`}
-							className={isMatch ? "open" : ""}>
-							<div className="icon icon-statement1" />
-							<span>{i18n.lbl_Statement}</span>
-						</Link>
-					);
-				}}
-			</Match>
-
+		<footer className="footer">
 			<Match path={path.home.root}>
-				{props => {
-					const isMatch = props.match !== null;
+				{({ match }) => {
+					const isMatch = match !== null;
 					return (
 						<Link
+							onClick={() => setShowContact(false)}
 							to={path.home.root}
-							className={isMatch ? "open" : ""}>
-							<div className="icon icon-home" />
+							className={classNames("footer-item", {
+								active: isMatch
+							})}>
+							<div className="icon-home-outline" />
 							<span>{i18n.lbl_Home}</span>
 						</Link>
 					);
 				}}
 			</Match>
 
-			<a
-				target="_blank"
-				href={`https://direct.lc.chat/${siteInfo().liveChatId}/${
-					defChatLangSubUrl[userInfo.langId] ?? ""
-				}`}
-				className=""
-				rel="noreferrer">
-				<div className="icon icon-contact" />
-				<span>{i18n.lbl_LiveChat}</span>
-			</a>
-
-			<Match path={path.member.root}>
-				{props => {
-					const isMatch =
-						props.location.pathname === `/${path.member.root}` ||
-						props.location.pathname ===
-							`/${path.member.root}/${path.member.sub.bankInfo.root}`;
+			<Match path={path.sports.root}>
+				{({ match }) => {
+					const isMatch = match !== null;
 					return (
 						<Link
-							to={`/${path.member.root}`}
-							className={isMatch ? "open" : ""}>
-							<div className="icon icon-member" />
-							<span>{i18n.lbl_Me}</span>
+							onClick={() => setShowContact(false)}
+							to={`/${path.sports.root}`}
+							className={classNames("footer-item tag-hot-pop", {
+								active: isMatch
+							})}>
+							<div className="icon-soccer-solid" />
+							<span>{i18n.lbl_Sports}</span>
 						</Link>
 					);
 				}}
 			</Match>
+
+			{isLogin ? (
+				<Match path={path.deposit.root}>
+					{({ match }) => {
+						const isMatch = match !== null;
+						return (
+							<Link
+								onClick={() => setShowContact(false)}
+								to={`/${path.deposit.root}`}
+								className={classNames("footer-item", {
+									active: isMatch
+								})}>
+								<div className="icon-deposit-footer" />
+								<span>{i18n.lbl_Deposit}</span>
+							</Link>
+						);
+					}}
+				</Match>
+			) : (
+				<Match path={path.promotion.root}>
+					{({ match, location }) => {
+						const isMatch =
+							match !== null ||
+							location.pathname === `/${path.promotionInfo.root}`;
+
+						return (
+							<Link
+								onClick={() => setShowContact(false)}
+								to={`/${path.promotion.root}`}
+								className={classNames("footer-item", {
+									active: isMatch
+								})}>
+								<div className="icon-promo-white" />
+								<span>{i18n.lbl_Promotion}</span>
+							</Link>
+						);
+					}}
+				</Match>
+			)}
+
+			<div
+				className="footer-item"
+				onClick={() => setShowContact(!showContact)}>
+				<button className="icon-livechat" />
+				<span>{i18n.lbl_Contact}</span>
+				<div
+					className={classNames("footer-pop", {
+						active: showContact
+					})}>
+					<a
+						className="footer-pop-item"
+						rel="noreferrer noopener"
+						href={siteInfo().zaloId}
+						target="_blank">
+						<img
+							src={`${bannerImgUrl}/h5/img/4.0/zalo.png`}
+							alt="Zalo"
+						/>
+						<div>Zalo</div>
+					</a>
+					<a
+						className="footer-pop-item"
+						target="_blank"
+						rel="noreferrer"
+						href={`https://direct.lc.chat/${
+							siteInfo().liveChatId
+						}/${defChatLangSubUrl[langId] ?? ""}`}>
+						<img
+							src={`${bannerImgUrl}/h5/img/4.0/livechat.png`}
+							alt="Live Chat"
+						/>
+						<div>{i18n.lbl_LiveChat}</div>
+					</a>
+					<a
+						className="footer-pop-item"
+						rel="noreferrer noopener"
+						href={siteInfo().telegramId}
+						target="_blank">
+						<img
+							src={`${bannerImgUrl}/h5/img/4.0/telegram.png`}
+							alt="Telegram"
+						/>
+						<div>Telegram</div>
+					</a>
+					<button className="icon-arrow-white" />
+				</div>
+			</div>
+
+			{isLogin ? (
+				<Match path={path.member.root}>
+					{({ location }) => {
+						const isMatch =
+							location.pathname === `/${path.member.root}` ||
+							location.pathname ===
+								`/${path.member.root}/${path.member.sub.bankInfo.root}`;
+						return (
+							<Link
+								onClick={() => setShowContact(false)}
+								to={`/${path.member.root}`}
+								className={classNames("footer-item", {
+									active: isMatch
+								})}>
+								<div className="icon-account-white" />
+								<span>{i18n.lbl_Me}</span>
+							</Link>
+						);
+					}}
+				</Match>
+			) : (
+				<Match path={path.other.root}>
+					{({ location }) => {
+						const isMatch =
+							location.pathname === `/${path.other.root}`;
+						return (
+							<Link
+								onClick={() => setShowContact(false)}
+								to={`/${path.other.root}`}
+								className={classNames("footer-item", {
+									active: isMatch
+								})}>
+								<div className="icon-other-white" />
+								<span>{i18n.lbl_Other}</span>
+							</Link>
+						);
+					}}
+				</Match>
+			)}
 		</footer>
 	);
 };

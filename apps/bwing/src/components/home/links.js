@@ -4,12 +4,12 @@ import { Link, useNavigate } from "@reach/router";
 import { siteInfo, bannerImgUrl } from "../../config";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
-import { defPlatform } from "./defPlatform";
 import { useAppDownLoad } from "../appDownload/useAppDownLoad";
 import useGetSocialChannel, {
 	defDisplayPage,
 	channelIcon
 } from "../hook/useGetSocialChannel";
+import { defPlatform } from "./def";
 
 const Panel = ({ i18n, langId }) => {
 	return (

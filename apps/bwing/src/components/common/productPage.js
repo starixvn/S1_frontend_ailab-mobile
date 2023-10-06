@@ -11,14 +11,13 @@ import {
 	defNavPanel
 } from "./context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import LinksPanel from "../home/links";
 import { productList } from "../../datas/defMenu";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
 
-const ProductPage = ({ category, titleKey }) => {
+const ProductPage = ({ category, titleKey, bannerUrl }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { setNav } = useContext(navContext);
@@ -30,7 +29,7 @@ const ProductPage = ({ category, titleKey }) => {
 	const sport_game = getUrlParameter("game");
 	const sport_tpId = sportStreamDef[sport_game]?.tpId;
 	const sport_gameId = sportStreamDef[sport_game]?.gameId;
-	const matchid = getUrlParameter("matchid");
+	// const matchid = getUrlParameter("matchid");
 	const sport_tpGameType = sportStreamDef[sport_game]?.tpGameType;
 
 	useEffect(() => {
@@ -127,10 +126,10 @@ const ProductPage = ({ category, titleKey }) => {
 			}
 			return (
 				<button
-					className={`gameInBox${showingIcon}${
-						underMaintain ? " under" : ""
+					className={`lobby-products-item ${showingIcon}${
+						underMaintain ? " lobby-products-item maintain" : ""
 					}`}
-					key={`Game-Panel-${game.displayKey}`}
+					key={`Game-Panel-${game.tpId}-${game.tpGameType}-${game.gameId}`}
 					onClick={
 						underMaintain
 							? () => null
@@ -143,32 +142,48 @@ const ProductPage = ({ category, titleKey }) => {
 							  })
 					}>
 					{underMaintain ? (
-						<div className="underBtn">
+						<div className="tag-maintain">
 							{i18n.lbl_underMaintenance}
 						</div>
 					) : null}
 					<img src={game.img} alt={game.displayKey} />
-					<p>{i18n[game.displayKey] ?? game.displayKey}</p>
+					<div className="name">
+						{i18n[game.displayKey] ||
+							game.displayKey ||
+							game.displayText}
+					</div>
 				</button>
 			);
 		});
 
-	return (
-		<>
-			<div className="gameArea">
-				<p className="gameAear__title lightBTitle">
-					{i18n[titleKey].toUpperCase()}
-				</p>
-				<div className="gameBox">{arr}</div>
+	const Banner = () => {
+		return (
+			<div className="lobby-banner">
+				<img src={bannerUrl} alt="" />
 			</div>
-			<LinksPanel i18n={i18n} langId={userInfo.langId} />
-		</>
-	);
+		);
+	};
+
+	const Lobby = () => {
+		return (
+			<div className="wrapper">
+				<div className="col-12">
+					<div className="lobby-top">
+						<Banner />
+					</div>
+					<div className="lobby-products">{arr}</div>
+				</div>
+			</div>
+		);
+	};
+
+	return <Lobby />;
 };
 
 ProductPage.propTypes = {
 	category: PropTypes.string.isRequired,
-	titleKey: PropTypes.string.isRequired
+	titleKey: PropTypes.string.isRequired,
+	bannerUrl: PropTypes.string.isRequired
 };
 
 export default ProductPage;

@@ -367,7 +367,7 @@ const Payment = props => {
 				btnStatus={inputStatus.checked}
 				clickInfo={clickInfo}
 			/>
-			<Note langId={userInfo.langId} />
+			<Note />
 
 			<PromoList
 				amount={Number(amount)}
@@ -380,7 +380,7 @@ const Payment = props => {
 
 			<div className="btn-group">
 				<button
-					className={canSubmit ? "blue" : "darkGray"}
+					className={canSubmit ? "blue" : "btn-gray"}
 					onClick={ClickSubmit}>
 					{i18n.lbl_Submit}
 				</button>
@@ -399,22 +399,9 @@ Payment.propTypes = {
 	checkDepositSpecialCode: PropTypes.func.isRequired
 };
 
-const Note = ({ langId }) => {
+const Note = () => {
 	const { i18n } = useContext(i18nContext);
-	if (langId === "en") {
-		return (
-			<div className="note">
-				<ol>
-					<p>
-						<span className="icon icon-warning" />
-						{i18n.lbl_ImportantNotes}
-					</p>
-					<li>* {i18n.lbl_DepositLoadCardNoticeContent1}</li>
-					<li>* {i18n.lbl_DepositLoadCardNoticeContent2}</li>
-				</ol>
-			</div>
-		);
-	}
+
 	return (
 		<div className="note">
 			<ol>
@@ -422,20 +409,11 @@ const Note = ({ langId }) => {
 					<span className="icon icon-warning" />
 					{i18n.lbl_ImportantNotes}
 				</p>
-				<li>
-					Vui lòng chọn đúng mệnh giá và nhà mạng, nếu quý khách nhập
-					sai, Bwing không chịu trách nhiệm.
-				</li>
-				<li>
-					Phí gạch thẻ rẻ nhất thị trường, 25% cho tất cả các nhà mạng
-				</li>
+				<li>* {i18n.lbl_DepositLoadCardNoticeContent1}</li>
+				<li>* {i18n.lbl_DepositLoadCardNoticeContent2}</li>
 			</ol>
 		</div>
 	);
-};
-
-Note.propTypes = {
-	langId: PropTypes.string.isRequired
 };
 
 export default Payment;

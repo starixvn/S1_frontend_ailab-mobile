@@ -1,88 +1,67 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import classNames from "classnames";
 import {
-	userInfoContext,
 	i18nContext,
 	popBoxContext,
-	navContext,
-	rootContext
+	userInfoContext,
+	msgCountContext
 } from "../common/context";
 import path from "../../path";
 import SubMenu from "./submenu";
-import { LOGOUT } from "../../service/auth";
 import Logo from "../img/logo";
 import { useGetBalance } from "./hook";
-import AppDownloadHint from "./appDownloadHint";
+// import AppDownloadHint from "./appDownloadHint";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 
-const Header = ({ hideLogo, title, appHint, setAppHint }) => {
-	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
-	const { i18n } = useContext(i18nContext);
-	const { root } = useContext(rootContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
-	const { setPopBox } = useContext(popBoxContext);
+const vipImg = [
+	`${bannerImgUrl}/h5/img/4.0/vip/vip1.png`,
+	`${bannerImgUrl}/h5/img/4.0/vip/vip2.png`,
+	`${bannerImgUrl}/h5/img/4.0/vip/vip3.png`,
+	`${bannerImgUrl}/h5/img/4.0/vip/vip4.png`,
+	`${bannerImgUrl}/h5/img/4.0/vip/vip5.png`,
+	`${bannerImgUrl}/h5/img/4.0/vip/vip6.png`
+];
 
-	const { allBalance } = useGetBalance({
-		isLogin: userInfo.isLogin,
-		i18n,
-		setPopBox
-	});
+const Header = ({ hideLogo, title, appHint, setAppHint, iconClassName }) => {
+	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
+
+	const { userInfo } = useContext(userInfoContext);
 
 	const handleSideMenuPanel = isOpen => {
 		setIsOpenSideMenu(isOpen);
 	};
 
-	const handleLogout = () => {
-		LOGOUT(() => {
-			setUserInfo(prevState => ({
-				isLogin: false,
-				langId: prevState.langId
-			}));
-			setNav(() => null);
-		});
-	};
-
-	const vipImg = [
-		`${bannerImgUrl}/h5/img/vip/vip1.png`,
-		`${bannerImgUrl}/h5/img/vip/vip2.png`,
-		`${bannerImgUrl}/h5/img/vip/vip3.png`,
-		`${bannerImgUrl}/h5/img/vip/vip4.png`,
-		`${bannerImgUrl}/h5/img/vip/vip5.png`,
-		`${bannerImgUrl}/h5/img/vip/vip6.png`
-	];
-
 	return (
-		<header id="header">
-			<AppDownloadHint
+		<header>
+			{/* <AppDownloadHint
 				i18n={i18n}
 				root={root}
 				appHint={appHint}
 				setAppHint={setAppHint}
-			/>
-			<div className="headerT">
-				<BeforeLogin
-					onClickSubMenu={() => handleSideMenuPanel(true)}
-					isShow={userInfo.isLogin === false}
-					title={title}
-					hideLogo={hideLogo}
-				/>
+			/> */}
+			<div className="header">
+				<div className="header-content">
+					<button
+						className="menubtn icon-menu"
+						onClick={() => handleSideMenuPanel(true)}
+					/>
+					{title && (
+						<div className="header-title">
+							{iconClassName && <i className={iconClassName} />}
+							{title}
+						</div>
+					)}
+					{!hideLogo && !title && (
+						<a href="/" className="logo">
+							<Logo />
+						</a>
+					)}
+				</div>
 				<AfterLogin
-					onClickSubMenu={() => handleSideMenuPanel(true)}
-					isShow={userInfo.isLogin === true}
 					hideLogo={hideLogo}
-					i18n={i18n}
-					currencyId={userInfo.currencyId}
-					userName={userInfo.userName}
-					userLevel={userInfo.userLevel}
-					allBalance={allBalance}
-					handleLogout={handleLogout}
-					title={title}
-					vipImg={vipImg}
-					userInfo={userInfo}
+					isShow={userInfo.isLogin === true}
 				/>
 			</div>
 			<SubMenu
@@ -96,6 +75,7 @@ const Header = ({ hideLogo, title, appHint, setAppHint }) => {
 Header.defaultProps = {
 	hideLogo: null,
 	title: null,
+	iconClassName: null,
 	appHint: false,
 	setAppHint: () => null
 };
@@ -104,140 +84,75 @@ Header.propTypes = {
 	hideLogo: PropTypes.bool,
 	title: PropTypes.string,
 	appHint: PropTypes.bool,
-	setAppHint: PropTypes.func
+	setAppHint: PropTypes.func,
+	iconClassName: PropTypes.string
 };
 
-const BeforeLogin = ({ onClickSubMenu, isShow, title, hideLogo }) => {
-	return isShow ? (
-		<div className={classNames("headerTLogout")}>
-			<div className="close noPos" onClick={onClickSubMenu}>
-				<span />
-				<span />
-				<span />
-				<span />
-				<span />
-				<span />
-			</div>
-			{title && <div className="heardTitle">{title}</div>}
-			{!hideLogo && (
-				<a href="/">
-					<Logo />
-				</a>
-			)}
-		</div>
-	) : null;
-};
+const AfterLogin = ({ isShow, hideLogo }) => {
+	const { i18n } = useContext(i18nContext);
+	const { msgCount } = useContext(msgCountContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 
-BeforeLogin.defaultProps = {
-	hideLogo: null,
-	title: null,
-	isShow: null,
-	onClickSubMenu: () => null
-};
+	const [showBalance, setShowBalance] = useState(true);
 
-BeforeLogin.propTypes = {
-	hideLogo: PropTypes.bool,
-	title: PropTypes.string,
-	isShow: PropTypes.bool,
-	onClickSubMenu: PropTypes.func
-};
+	const { userName, userLevel, currencyId } = userInfo;
 
-const AfterLogin = ({
-	onClickSubMenu,
-	isShow,
-	i18n,
-	currencyId,
-	userName,
-	userLevel,
-	allBalance,
-	handleLogout,
-	hideLogo,
-	title,
-	vipImg,
-	userInfo
-}) => {
+	const { allBalance } = useGetBalance({
+		i18n,
+		isLogin: userInfo.isLogin,
+		setPopBox
+	});
+
+	const isOnHomePage = window.location.pathname === "/";
+
 	return (
-		isShow && (
-			<>
-				<div className={classNames("headerTLogout")}>
-					<div className="close noPos" onClick={onClickSubMenu}>
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-					</div>
-					<div className="title">{title}</div>
-					{!hideLogo && (
-						<a href="/">
-							<Logo />
-						</a>
-					)}
-					<button onClick={handleLogout} className="icon icon-exit" />
+		isShow &&
+		!hideLogo &&
+		isOnHomePage && (
+			<div className="header-memberinfo">
+				<div>
+					<Link to={`/${path.member.root}`} className="memberbtn">
+						<img src={vipImg[userLevel - 1]} alt="bwing_vip" />
+						<span>{userName}</span>
+					</Link>
+					<Link
+						className="messagebtn icon-message"
+						to={`/${path.message.root}`}>
+						{msgCount && <div className="number">{msgCount}</div>}
+						<MsgPopup userInfo={userInfo} />
+					</Link>
 				</div>
-				{!hideLogo && (
-					<div className="headerTLogin">
-						<div className="login">
-							<Link
-								to={`/${path.deposit.root}`}
-								className="login-btn">
-								{i18n.lbl_Deposit.toUpperCase()}
-							</Link>
-							<a className="icon icon-wallteIcon">
-								<span>{i18n[`Currency_${currencyId}`]} </span>
-								<span>{allBalance}</span>
-							</a>
-							<Link to={`/${path.member.root}`}>
-								{userLevel >= 0 && (
-									<img
-										src={vipImg[userLevel - 1]}
-										alt="bwing_vip"
-									/>
-								)}
-								<span>{userName}</span>
-							</Link>
-							<Link
-								to={`/${path.message.root}`}
-								className="icon icon-mailIcon">
-								<MsgPopup userInfo={userInfo} />
-							</Link>
-						</div>
-					</div>
-				)}
-			</>
+				<a className="walletbtn icon-wallet">
+					<span>{i18n[`Currency_${currencyId}`]}</span>
+					<span>{showBalance ? allBalance : "*****"}</span>
+					{showBalance ? (
+						<button
+							type="button"
+							className="icon-visible"
+							onClick={() => setShowBalance(!showBalance)}
+						/>
+					) : (
+						<button
+							type="button"
+							className="icon-unvisible"
+							onClick={() => setShowBalance(!showBalance)}
+						/>
+					)}
+				</a>
+			</div>
 		)
 	);
 };
 
 AfterLogin.defaultProps = {
-	hideLogo: null,
-	title: null,
 	isShow: null,
-	onClickSubMenu: () => null,
-	i18n: null,
-	currencyId: null,
-	userName: null,
-	userLevel: null,
-	allBalance: null,
-	handleLogout: () => null,
-	vipImg: null,
-	userInfo: null
+	hideLogo: null
 };
 
 AfterLogin.propTypes = {
-	hideLogo: PropTypes.bool,
-	title: PropTypes.string,
 	isShow: PropTypes.bool,
-	onClickSubMenu: PropTypes.func,
-	i18n: PropTypes.objectOf(PropTypes.string),
-	currencyId: PropTypes.number,
-	userName: PropTypes.string,
-	userLevel: PropTypes.number,
-	allBalance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	handleLogout: PropTypes.func,
-	vipImg: PropTypes.arrayOf(PropTypes.string),
-	userInfo: PropTypes.objectOf(PropTypes.any)
+	hideLogo: PropTypes.bool
 };
 
 export default Header;
