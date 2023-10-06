@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import path from "../../path";
 import { bannerImgUrl } from "../../config";
+import { defTpGameType } from "./defGameType";
 
 const Entry = ({ providerList, maintainList }) => {
 	const { t } = useTranslation();
@@ -15,7 +16,9 @@ const Entry = ({ providerList, maintainList }) => {
 				const imgName = tpName.toLowerCase();
 
 				const isMaintain = maintainList.some(
-					({ tpId: maintainTpId }) => maintainTpId === tpId
+					({ tpId: maintainTpId, tpGameType }) =>
+						maintainTpId === tpId &&
+						tpGameType === defTpGameType.All
 				);
 
 				return (
