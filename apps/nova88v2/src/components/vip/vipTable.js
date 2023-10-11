@@ -3,22 +3,17 @@ import PropTypes from "prop-types";
 import {
 	currCustomMapping,
 	defCurrenyId,
-	capitalizeFirstLetter,
-	numFormatToDigits
+	capitalizeFirstLetter
 } from "../common/common";
 import { i18nContext } from "../common/context";
 
-const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
+const VipTable = ({
+	selectedVipTableData,
+	userInfo,
+	vipActiveTabId,
+	number_format_excludeString
+}) => {
 	const { i18n } = useContext(i18nContext);
-
-	// * 因 GetVipBanner response 裡有參雜 string number 故須額外判斷與顯示
-	const number_format_excludeString = input => {
-		if (!isNaN(Number(input))) {
-			return numFormatToDigits(Number(input), 0);
-		}
-
-		return input;
-	};
 
 	return (
 		<div
@@ -298,7 +293,8 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 VipTable.propTypes = {
 	selectedVipTableData: PropTypes.objectOf(PropTypes.any).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	vipActiveTabId: PropTypes.number.isRequired
+	vipActiveTabId: PropTypes.number.isRequired,
+	number_format_excludeString: PropTypes.func.isRequired
 };
 
 export default VipTable;
