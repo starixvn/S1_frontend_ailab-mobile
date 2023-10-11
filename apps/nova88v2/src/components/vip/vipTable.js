@@ -7,7 +7,12 @@ import {
 } from "../common/common";
 import { i18nContext } from "../common/context";
 
-const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
+const VipTable = ({
+	selectedVipTableData,
+	userInfo,
+	vipActiveTabId,
+	number_format_excludeString
+}) => {
 	const { i18n } = useContext(i18nContext);
 
 	return (
@@ -266,7 +271,8 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 VipTable.propTypes = {
 	selectedVipTableData: PropTypes.objectOf(PropTypes.any).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	vipActiveTabId: PropTypes.number.isRequired
+	vipActiveTabId: PropTypes.number.isRequired,
+	number_format_excludeString: PropTypes.func.isRequired
 };
 
 export default VipTable;

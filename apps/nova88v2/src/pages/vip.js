@@ -13,7 +13,8 @@ import api from "../service/api";
 import path from "../path";
 import {
 	defCurrenyId,
-	currencyIdToTimeZone
+	currencyIdToTimeZone,
+	numFormatToDigits
 } from "../components/common/common";
 import { useHandleAllowCurrencies } from "../components/hook/useHandleAllowCurrencies";
 import { VIP_LEVEL } from "../components/vip/def";
@@ -56,6 +57,15 @@ const IndexPage = () => {
 		}
 	};
 
+	// * 因 GetVipBanner response 裡有參雜 string number 故須額外判斷與顯示
+	const number_format_excludeString = input => {
+		if (!isNaN(Number(input))) {
+			return numFormatToDigits(Number(input), 0);
+		}
+
+		return input;
+	};
+
 	const selectedVipTableData = vipBanner?.vipBannerData?.find(
 		item => item.level === vipActiveTabId
 	);
@@ -95,7 +105,12 @@ const IndexPage = () => {
 
 	return (
 		<Layout header={header} mainClass="main vip">
-			<VipBanner i18n={i18n} userInfo={userInfo} vipBanner={vipBanner} />
+			<VipBanner
+				i18n={i18n}
+				userInfo={userInfo}
+				vipBanner={vipBanner}
+				number_format_excludeString={number_format_excludeString}
+			/>
 
 			<div className="vipprogram">
 				{/* 目前只用 en 圖 */}
@@ -127,6 +142,7 @@ const IndexPage = () => {
 					selectedVipTableData={selectedVipTableData}
 					userInfo={userInfo}
 					vipActiveTabId={vipActiveTabId}
+					number_format_excludeString={number_format_excludeString}
 				/>
 			</div>
 
