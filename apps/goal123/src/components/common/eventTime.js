@@ -42,5 +42,6 @@ export const eventTime = {
 	TFGaming: { endDate: "2023/06/30 12:00:00" },
 	casino_Nextspin: { endDate: "2023/08/12 11:00:00" },
 	IM: { endDate: "2023/09/28 23:59:59" },
+	PNG: { endDate: "2023/11/05 23:59:59" },
 	casino_Endorphina: { endDate: "2023/10/25 23:59:59" }
 };

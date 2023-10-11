@@ -173,6 +173,12 @@ const defPlatfrom = [
 		imgName: "spribea"
 	},
 	{
+		...defGameInfo.Casino_PNG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_PNG },
+		imgName: "pnga"
+	},
+	{
 		...defGameInfo.Casino_Endorphina,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_Endorphina },
