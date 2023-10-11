@@ -4,7 +4,12 @@ import { currencyIdToCurrency, capitalizeFirstLetter } from "../common/common";
 import { defbanner } from "./def";
 import { Autoplay } from "../common/swipperBanner";
 
-const VipBanner = ({ i18n, userInfo, vipBanner }) => {
+const VipBanner = ({
+	i18n,
+	userInfo,
+	vipBanner,
+	number_format_excludeString
+}) => {
 	const currencyName = currencyIdToCurrency[userInfo?.currencyId];
 
 	let bannerLangId = userInfo?.langId;
@@ -40,7 +45,9 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 							? null
 							: currencyName}{" "}
 						{upDeposit
-							? upDeposit.split(".")[0]
+							? number_format_excludeString(
+									upDeposit.split(".")[0]
+							  )
 							: i18n.lbl_Vip_NoRestrictions}
 					</span>
 					{upBonus && (
@@ -51,7 +58,11 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 								{item.level === 1 || item.level === 6
 									? null
 									: currencyName}{" "}
-								{upBonus ? upBonus.split(".")[0] : null}
+								{upBonus
+									? number_format_excludeString(
+											upBonus.split(".")[0]
+									  )
+									: null}
 							</span>
 						</div>
 					)}
@@ -100,7 +111,8 @@ const VipBanner = ({ i18n, userInfo, vipBanner }) => {
 VipBanner.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	vipBanner: PropTypes.arrayOf(PropTypes.any).isRequired
+	vipBanner: PropTypes.arrayOf(PropTypes.any).isRequired,
+	number_format_excludeString: PropTypes.func.isRequired
 };
 
 export default VipBanner;
