@@ -221,7 +221,6 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
-		"slot_PEGASUS",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -756,22 +755,6 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "jk",
 					sortKey: "slot_JOKER",
 					allowCurrency: allowedCurrencyList.slotJoker
-				},
-				{
-					...defGameInfo.Casino_PEGASUS,
-					parameter: defGameInfo.Casino_PEGASUS,
-					spanText: "PEGASUS",
-					img: `${cloudBannerImgURL}/h5/img/pegasus.png`,
-					path: path.casino.root,
-					providerImgName: "",
-					sortKey: "slot_PEGASUS",
-					allowCurrency: allowedCurrencyList.slotPegasus,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Pegasus)
-						}
-					]
 				},
 				{
 					...defGameInfo.Casino_RedTiger,
@@ -1391,7 +1374,6 @@ export const defGameInfo = {
 	Casino_PP: { tpId: 5, tpGameType: 7 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_JOKER: { tpId: 9, tpGameType: 13 },
-	Casino_PEGASUS: { tpId: 56, tpGameType: 107 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
