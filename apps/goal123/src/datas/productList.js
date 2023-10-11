@@ -682,9 +682,9 @@ const gameList = [
 				...defGameInfo.Casino_FaChai,
 				parameter: defGameInfo.Casino_FaChai,
 				spanText: "Fa Chai",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-fachai.png`,
 				path: path.casino.root,
-				providerImgName: "pg",
+				providerImgName: "",
 				eventIcon: [
 					{
 						icon: defIconType.new,

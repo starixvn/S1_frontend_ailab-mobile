@@ -331,20 +331,21 @@ export const productList = langId => {
 					icon: "icon icon-PG",
 					displayText: "PG Soft"
 				},
-				{
-					...defGameInfo.Casino_FaChai,
-					parameter: defGameInfo.Casino_FaChai,
-					img: `${bannerImgUrl}/h5/img/slot/pg.png`,
-					path: path.casino.root,
-					icon: "icon icon-PG",
-					displayText: "Fa Chai",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_fachai)
-						}
-					]
-				},
+				// * bwing 改版中，因此先不做(目前沒有圖)
+				// {
+				// 	...defGameInfo.Casino_FaChai,
+				// 	parameter: defGameInfo.Casino_FaChai,
+				// 	img: `${bannerImgUrl}/h5/img/slot/pg.png`,
+				// 	path: path.casino.root,
+				// 	icon: "icon icon-PG",
+				// 	displayText: "Fa Chai",
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(eventTime.slot_fachai)
+				// 		}
+				// 	]
+				// },
 				{
 					...defGameInfo.Casino_MGP,
 					parameter: defGameInfo.Casino_MGP,
