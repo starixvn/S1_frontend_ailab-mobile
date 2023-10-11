@@ -116,6 +116,7 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.USDT
 	],
+	slotPegasus: [defCurrenyId.MYR],
 
 	// game
 	mPoker: [defCurrenyId.THB],
