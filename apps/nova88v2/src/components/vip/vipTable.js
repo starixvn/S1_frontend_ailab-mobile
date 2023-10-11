@@ -3,12 +3,22 @@ import PropTypes from "prop-types";
 import {
 	currCustomMapping,
 	defCurrenyId,
-	capitalizeFirstLetter
+	capitalizeFirstLetter,
+	numFormatToDigits
 } from "../common/common";
 import { i18nContext } from "../common/context";
 
 const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 	const { i18n } = useContext(i18nContext);
+
+	// * 因 GetVipBanner response 裡有參雜 string number 故須額外判斷與顯示
+	const number_format_excludeString = input => {
+		if (!isNaN(Number(input))) {
+			return numFormatToDigits(Number(input), 0);
+		}
+
+		return input;
+	};
 
 	return (
 		<div
@@ -92,7 +102,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					<li>
 						{capitalizeFirstLetter(i18n.lbl_WithdrawalLimitation)}
 					</li>
-					<li>{selectedVipTableData?.withdrawalMax.split(".")[0]}</li>
+					<li>
+						{number_format_excludeString(
+							selectedVipTableData?.withdrawalMax.split(".")[0]
+						)}
+					</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>
@@ -100,7 +114,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 							i18n.lbl_DAILY_TRANSACTIONS_COUNT
 						)}
 					</li>
-					<li>{selectedVipTableData?.times}</li>
+					<li>
+						{number_format_excludeString(
+							selectedVipTableData?.times
+						)}
+					</li>
 				</ul>
 			</div>
 			<div className="viptable-item">
@@ -120,7 +138,9 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 					<li className="">
 						{selectedVipTableData?.upBonus
-							? selectedVipTableData?.upBonus.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.upBonus.split(".")[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -204,7 +224,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					</li>
 					<li className="">
 						{selectedVipTableData?.upDeposit
-							? selectedVipTableData?.upDeposit.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.upDeposit.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -231,7 +255,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					<li className="">
 						{selectedVipTableData?.downDeposit &&
 						Number(selectedVipTableData?.downDeposit) !== 0
-							? selectedVipTableData?.downDeposit.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.downDeposit.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -244,7 +272,11 @@ const VipTable = ({ selectedVipTableData, userInfo, vipActiveTabId }) => {
 					<li className="">
 						{selectedVipTableData?.downTurnover &&
 						Number(selectedVipTableData?.downTurnover) !== 0
-							? selectedVipTableData?.downTurnover.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.downTurnover.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>

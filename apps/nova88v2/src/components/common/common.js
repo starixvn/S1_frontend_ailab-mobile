@@ -381,3 +381,17 @@ export function capitalizeFirstLetter(string = "") {
 		})
 		.join(" ");
 }
+
+// 數字 format 到特定小數點，預設為第二位
+export const numFormatToDigits = (
+	value,
+	digits = 2,
+	minimumFractionDigits = 0
+) => {
+	if (isNaN(value) || value === undefined) return "0";
+	const formatter = new Intl.NumberFormat("en", {
+		maximumFractionDigits: digits,
+		minimumFractionDigits
+	});
+	return formatter.format(Number(value.toFixed(digits)));
+};
