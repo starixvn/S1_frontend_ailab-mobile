@@ -32,7 +32,7 @@ const TopWinner = ({ leaderBoardList }) => {
 									)}
 								</div>
 								<div>{userName}</div>
-								<div>{number_format(wTurnover)}</div>
+								<div>{number_format(wTurnover, false, 0)}</div>
 							</div>
 						)
 					)}
