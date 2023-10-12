@@ -34,7 +34,10 @@ const Jactpot = () => {
 		<div className={`home-jackpot mb-4 ${jPotSuccess ? "" : "maintain"}`}>
 			<div className="home-jackpot-title">{t("lbl_TotalAmount")}</div>
 			<div className="home-jackpot-btn">
-				<button onClick={() => navigate(path.casino.root)}>
+				<button
+					onClick={() =>
+						navigate(`${path.casino.root}?page=jackpot`)
+					}>
 					{t("lbl_Sportsbook_PlayNow")}
 				</button>
 			</div>
