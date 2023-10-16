@@ -351,7 +351,7 @@ const Panel = ({ searchInput }) => {
 						// 		: null,
 						tpGameType: Object.values(defSlotTpGameType).find(
 							obj => targetObj.tpId === obj.tpId
-						).tpGameType
+						)?.tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);
