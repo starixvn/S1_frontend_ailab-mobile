@@ -84,8 +84,9 @@ export const defSlotTpGameType = {
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Kiss918: { tpId: 21, tpGameType: 33 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
+	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	SPRIBE: { tpId: 53, tpGameType: 104 }
+	PEGASUS: { tpId: 56, tpGameType: 107 }
 };
 
 const defSortSports = {
