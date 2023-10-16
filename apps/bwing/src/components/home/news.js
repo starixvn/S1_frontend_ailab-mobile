@@ -23,7 +23,7 @@ const News = ({ news }) => {
 								<a
 									onClick={() =>
 										navigate(
-											`/${path.news.root}?imageURL=${imageURL}&content=${content}&title=${title}`
+											`/${path.news.root}?newsId=${newsId}`
 										)
 									}>
 									{t("lbl_Read_more")} &gt;&gt;
