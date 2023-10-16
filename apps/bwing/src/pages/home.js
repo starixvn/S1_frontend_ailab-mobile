@@ -427,8 +427,11 @@ const IndexPage = () => {
 		getLeaderBoardList();
 		getHotGameList();
 		getRecentlyViewedGames();
-		getNews();
 	}, []);
+
+	useEffect(() => {
+		getNews();
+	}, [userInfo.langId]);
 
 	useEffect(() => {
 		getHotEventList();

@@ -1,19 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "@reach/router";
+import { userInfoContext } from "../components/common/context";
+import { api_GetNews } from "../service/api/news";
 
 const News = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const searchParams = new URLSearchParams(location.search);
-	const imageURL = searchParams.get("imageURL");
-	const content = searchParams.get("content");
-	const title = searchParams.get("title");
+	const paramsNewsId = searchParams.get("newsId");
+	const [news, setNews] = useState([]);
+	const { userInfo } = useContext(userInfoContext);
+
+	const newObject = () => {
+		return news?.find(newObj => newObj?.newsId === Number(paramsNewsId));
+	};
+
+	const { title, imageURL, content } = newObject() || {};
+
+	const getNews = async () => {
+		try {
+			const res = await api_GetNews({
+				langId: userInfo.langId,
+				currencyId: userInfo.currencyId
+			});
+			setNews(res.data.data);
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: t("msg_ApiServerError")
+			});
+		}
+	};
 
 	useEffect(() => {
-		if (!(imageURL && content && title)) {
+		if (!paramsNewsId) {
 			navigate("/");
 		}
 	}, []);
+
+	useEffect(() => {
+		getNews();
+	}, [userInfo?.langId]);
 
 	return (
 		<div className="wrapper">
