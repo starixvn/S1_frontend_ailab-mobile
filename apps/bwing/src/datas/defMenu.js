@@ -621,13 +621,29 @@ export const productList = langId => {
 					displayKey: "lbl_Fishing_Zombie_Party",
 					icon: "icon icon-SG",
 					img: `${bannerImgUrl}/h5/img/fish/fish-zp.png`,
-					...defGameInfo.Fishing_Zombie_Party
+					...defGameInfo.Fishing_Zombie_Party,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Zombie_Party
+							)
+						}
+					]
 				},
 				{
 					displayKey: "lbl_Fishing_Alien_Hunter",
 					icon: "icon icon-SG",
 					img: `${bannerImgUrl}/h5/img/fish/fish-ah.png`,
-					...defGameInfo.Fishing_Alien_Hunter
+					...defGameInfo.Fishing_Alien_Hunter,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Alien_Hunter
+							)
+						}
+					]
 				},
 				{
 					displayKey: "lbl_Paradise",

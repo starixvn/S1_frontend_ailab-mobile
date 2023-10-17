@@ -97,7 +97,11 @@ const VipTable = ({
 					<li>
 						{capitalizeFirstLetter(i18n.lbl_WithdrawalLimitation)}
 					</li>
-					<li>{selectedVipTableData?.withdrawalMax.split(".")[0]}</li>
+					<li>
+						{number_format_excludeString(
+							selectedVipTableData?.withdrawalMax.split(".")[0]
+						)}
+					</li>
 				</ul>
 				<ul className="viptable-item-text">
 					<li>
@@ -105,7 +109,11 @@ const VipTable = ({
 							i18n.lbl_DAILY_TRANSACTIONS_COUNT
 						)}
 					</li>
-					<li>{selectedVipTableData?.times}</li>
+					<li>
+						{number_format_excludeString(
+							selectedVipTableData?.times
+						)}
+					</li>
 				</ul>
 			</div>
 			<div className="viptable-item">
@@ -125,7 +133,9 @@ const VipTable = ({
 					</li>
 					<li className="">
 						{selectedVipTableData?.upBonus
-							? selectedVipTableData?.upBonus.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.upBonus.split(".")[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -209,7 +219,11 @@ const VipTable = ({
 					</li>
 					<li className="">
 						{selectedVipTableData?.upDeposit
-							? selectedVipTableData?.upDeposit.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.upDeposit.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -236,7 +250,11 @@ const VipTable = ({
 					<li className="">
 						{selectedVipTableData?.downDeposit &&
 						Number(selectedVipTableData?.downDeposit) !== 0
-							? selectedVipTableData?.downDeposit.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.downDeposit.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>
@@ -249,7 +267,11 @@ const VipTable = ({
 					<li className="">
 						{selectedVipTableData?.downTurnover &&
 						Number(selectedVipTableData?.downTurnover) !== 0
-							? selectedVipTableData?.downTurnover.split(".")[0]
+							? number_format_excludeString(
+									selectedVipTableData?.downTurnover.split(
+										"."
+									)[0]
+							  )
 							: null}
 					</li>
 				</ul>
