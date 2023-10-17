@@ -487,7 +487,12 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = () => {
-					if (!isClickedRef.current) {
+					if (!selBank) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_SelectBank_Required
+						});
+					} else if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext(
 							selBank.accountNo,
@@ -680,7 +685,9 @@ const Panel = () => {
 				}
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				onClick={SelectBank.bind(this, b)}>
-				{b?.disabled && <div className="mask" />}
+				{b?.disabled && (
+					<div className="mask">{i18n.lbl_underMaintenance}</div>
+				)}
 				<img
 					src={`${paymentImgUrl}/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}

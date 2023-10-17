@@ -531,7 +531,12 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = () => {
-					if (!isClickedRef.current) {
+					if (!selBank) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_SelectBank_Required
+						});
+					} else if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext(
 							selBank.accountNo,
