@@ -202,6 +202,15 @@ const allowedCurrencyList = {
 		defCurrenyId.USD,
 		defCurrenyId.CNY,
 		defCurrenyId.KHM
+	],
+	FaChai: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.VND
 	]
 };
 

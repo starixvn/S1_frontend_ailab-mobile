@@ -188,7 +188,7 @@ const defPlatfrom = [
 		imgName: "im-esports"
 	},
 	{
-		...defGameInfo.casino_SPRIBE,
+		...defGameInfo.Casino_SPRIBE,
 		imgName: "spribe"
 	},
 	{
@@ -199,6 +199,11 @@ const defPlatfrom = [
 	{
 		...defGameInfo.casino_PNG,
 		imgName: "png",
+		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_FaChai,
+		imgName: "casino_fachai",
 		path: path.casino.root
 	}
 ];
