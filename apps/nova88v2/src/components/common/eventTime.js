@@ -45,5 +45,6 @@ export const eventTime = {
 	IM: { endDate: "2023/09/28 23:59:59" },
 	casino_Endorphina: { endDate: "2023/10/25 23:59:59" },
 	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
-	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" }
+	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" },
+	TFGaming: { endDate: "2023/11/20 23:59:59" }
 };
