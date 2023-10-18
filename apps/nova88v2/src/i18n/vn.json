@@ -881,5 +881,6 @@
   "msg_ticketBeenUsed": "Số vé đã sử dụng",
   "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_V8Poker": "V8Poker"
 }

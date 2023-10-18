@@ -191,6 +191,10 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Endorphina,
 		imgName: "casino_end",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.V8Poker,
+		imgName: "v8"
 	}
 ];
 

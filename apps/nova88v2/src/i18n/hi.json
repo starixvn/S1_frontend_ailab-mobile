@@ -881,5 +881,6 @@
   "msg_ticketBeenUsed": "टिकट का इस्तेमाल किया गया है।",
   "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_V8Poker": "V8Poker"
 }
