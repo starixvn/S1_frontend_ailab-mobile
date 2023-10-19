@@ -861,5 +861,9 @@
   "lbl_Read_more": "Read More",
   "lbl_DepositLoadCardNoticeContent1": "Please ensure you choose the correct telcom provider  and card value. Otherwise, Bwing will not bear any responsibility.",
   "lbl_DepositLoadCardNoticeContent2": "Our card fee is cheapest in the market, only 25% apply for all telcoms.",
-  "lbl_Top_Winner_Description": "WIN BIG AND HAVE YOUR NAME WRITTEN ON THE BOARD!"
+  "lbl_Top_Winner_Description": "WIN BIG AND HAVE YOUR NAME WRITTEN ON THE BOARD!",
+  "lbl_Account": "Account",
+  "lbl_Contact": "Contact",
+  "lbl_History": "History",
+  "lbl_APP": "APP"
 }
