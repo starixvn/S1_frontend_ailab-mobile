@@ -27,7 +27,7 @@ const HotGames = ({ maintainList }) => {
 		tpGameType,
 		hasDesktopLink
 	}) => {
-		const isMaintain = maintainList.find(
+		const isMaintain = maintainList?.find(
 			({ tpId: maintainTpId, tpGameType: maintainTpGameType }) =>
 				maintainTpId === tpId &&
 				(maintainTpGameType === tpGameType ||
