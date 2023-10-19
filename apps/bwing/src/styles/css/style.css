@@ -1830,20 +1830,20 @@ header {
   right: 0;
 }
 .eventLink.vgaming {
-  bottom: 75vw;
+  bottom: 70vw;
   right: 0vw;
 }
 .eventLink.vgaming img {
-  width: 35vw;
-  height: 35vw;
+  width: 28vw;
+  height: 28vw;
 }
 .eventLink.luckywheel {
   bottom: 30vw;
   right: 0vw;
 }
 .eventLink.luckywheel img {
-  width: 35vw;
-  height: 38vw;
+  width: 29vw;
+  height: 31vw;
 }
 
 #header ~ .Login, #header ~ .Join {
