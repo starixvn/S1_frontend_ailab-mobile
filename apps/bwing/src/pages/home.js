@@ -450,7 +450,7 @@ const IndexPage = () => {
 		<>
 			<HomeBanner />
 			<Marquee />
-			{userInfo.isLogin === false && (
+			{!userInfo.isLogin && (
 				<div className="login-bar btn-group">
 					<button
 						className="btn-primary"
