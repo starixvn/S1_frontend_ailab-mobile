@@ -765,7 +765,7 @@
   "lbl_Withdrawal": "Rút tiền",
   "lbl_WithdrawalAmount": "Số tiền rút",
   "lbl_WithdrawalCryptoNote": "Tỷ giá chỉ mang tính chất tham khảo. Số tiền thực tế sẽ được quy đổi theo tỷ giá mới nhất.",
-  "lbl_WithdrawalDailyMinMax": "Giới hạn rút tiền hàng ngày: {{min}}/{{max}}",
+  "lbl_WithdrawalDailyMinMax": "Giới hạn rút tiền hàng ngày: {{0}}/{{1}}",
   "lbl_WithdrawalDailyReached": "Bạn Đã Sử Dụng Hết Hạn Mức Trong Ngày.",
   "lbl_WithdrawalHistory": "Lịch sử rút tiền",
   "lbl_WithdrawalLimitation": "GIỚI HẠN RÚT TIỀN HÀNG NGÀY",
