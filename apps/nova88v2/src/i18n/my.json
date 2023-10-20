@@ -881,5 +881,6 @@
   "msg_ticketBeenUsed": "Tiket telah digunakan.",
   "msg_ticketNotBeenActivated": "Tiket belum diaktifkan.",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "Traditional_Lottery": "Traditional Lottery"
 }
