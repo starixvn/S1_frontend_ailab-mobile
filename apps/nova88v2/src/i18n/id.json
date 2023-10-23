@@ -882,5 +882,6 @@
   "msg_ticketNotBeenActivated": "Tiket yang belum aktif",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Pilih rekening bank"
+  "lbl_SelectBank_Required": "Pilih rekening bank",
+  "Traditional_Lottery": "Traditional Lottery"
 }

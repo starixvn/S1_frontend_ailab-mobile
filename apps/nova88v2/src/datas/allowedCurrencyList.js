@@ -194,6 +194,7 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.USDT
 	],
+	Traditional_Lottery: [defCurrenyId.VND],
 
 	// other products
 

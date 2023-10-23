@@ -1249,6 +1249,20 @@ const gameList = ({ langId, currencyId }) => {
 			translateKey: "lbl_Lottery",
 			items: [
 				{
+					...defGameInfo.Traditional_Lottery,
+					img: `${cloudBannerImgURL}/h5/img/gpi789traditional.png`,
+					spanTextKey: "Traditional_Lottery",
+					allowCurrency: allowedCurrencyList.Traditional_Lottery,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Traditional_Lottery
+							)
+						}
+					]
+				},
+				{
 					...defGameInfo.GPI_Keno,
 					img: `${cloudBannerImgURL}/h5/img/gpikeno.png`,
 					spanTextKey: "GPI_Keno",
@@ -1601,6 +1615,11 @@ export const defGameInfo = {
 		tpGameType: 1
 	},
 	CryptoSports: { tpId: 45, tpGameType: 87 },
+	Traditional_Lottery: {
+		tpId: 23,
+		gameId: 2,
+		tpGameType: 37
+	},
 	GPI_Keno: { tpId: 6, gameId: "keno", tpGameType: 88 },
 	GPI_ThaiLottery: { tpId: 6, gameId: "thailottery", tpGameType: 90 },
 	GPI_Fast3: { tpId: 6, gameId: "fast3", tpGameType: 91 },

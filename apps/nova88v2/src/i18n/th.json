@@ -882,5 +882,6 @@
   "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "กรุณาเลือกธนาคาร"
+  "lbl_SelectBank_Required": "กรุณาเลือกธนาคาร",
+  "Traditional_Lottery": "Traditional Lottery"
 }

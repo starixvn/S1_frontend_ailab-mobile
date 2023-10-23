@@ -882,5 +882,6 @@
   "msg_ticketNotBeenActivated": "Ticket not available.",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Please select bank accounts"
+  "lbl_SelectBank_Required": "Please select bank accounts",
+  "Traditional_Lottery": "Traditional Lottery"
 }

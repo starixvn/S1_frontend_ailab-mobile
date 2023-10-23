@@ -213,6 +213,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.TFGaming,
 		imgName: "tfg"
+	},
+	{
+		...defGameInfo.Traditional_Lottery,
+		imgName: "casino_789"
 	}
 ];
 
