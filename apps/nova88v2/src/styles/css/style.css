@@ -4863,6 +4863,9 @@ footer > a.active .circleAnimation::after {
   background: #e6e6e6;
   border-bottom: 0;
 }
+.bankAccount .account .mask {
+  display: none;
+}
 .bankAccount .account.pending {
   position: relative;
   width: calc(100% - 8vw);
@@ -4874,7 +4877,15 @@ footer > a.active .circleAnimation::after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: rgba(40, 73, 133, 0.6);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-size: 3vw;
+  background: rgba(40, 73, 133, 0.8);
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -4910,6 +4921,33 @@ footer > a.active .circleAnimation::after {
 }
 .selectBank button.active, .selectBank a.active {
   border: 2px solid #5574A7;
+}
+.selectBank button .mask, .selectBank a .mask {
+  display: none;
+}
+.selectBank button.pending, .selectBank a.pending {
+  position: relative;
+}
+.selectBank button.pending .mask, .selectBank a.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  background: rgba(40, 73, 133, 0.8);
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  z-index: 1;
+  font-size: 3vw;
 }
 .selectBank a {
   display: -webkit-box;
