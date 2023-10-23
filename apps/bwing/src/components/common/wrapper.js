@@ -9,7 +9,10 @@ import {
 	api_onlineCheck,
 	api_GetMsgCount
 } from "../../service/api/account";
-import { api_payment_GetWithdrawalLimit } from "../../service/api/payment";
+import {
+	api_payment_GetWithdrawalLimit,
+	api_payment_GetWithdrawalBlockSetting
+} from "../../service/api/payment";
 import { IS_LOGGED_IN } from "../../service/auth";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
@@ -53,6 +56,10 @@ export const Wrapper = ({ children }) => {
 	const [theme, setTheme] = useState(themeList.default);
 	const [isShowEWallet, setIsShowEWallet] = useState(false);
 	const isMountedRef = useRef(null);
+
+	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
+		[]
+	);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -249,6 +256,25 @@ export const Wrapper = ({ children }) => {
 					});
 				}
 			);
+
+			api_payment_GetWithdrawalBlockSetting().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setWithdrawalSettingTypeList(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
 		} else if (isMountedRef.current) {
 			setMsgCount(0);
 		}
@@ -271,26 +297,31 @@ export const Wrapper = ({ children }) => {
 			<ct.i18nContext.Provider value={{ i18n, seti18n }}>
 				<ct.walletInfoContext.Provider
 					value={{ walletInfo, setWalletInfo }}>
-					<ct.eWalletContext.Provider
-						value={{ isShowEWallet, setIsShowEWallet }}>
-						<ct.themeContext.Provider value={{ theme, setTheme }}>
-							<ct.popBoxContext.Provider
-								value={{ popBox, setPopBox }}>
-								<ct.navContext.Provider value={{ nav, setNav }}>
-									<ct.msgCountContext.Provider
-										value={{ msgCount, setMsgCount }}>
-										<ct.loadingContext.Provider
-											value={{ loading, setLoading }}>
-											<ct.rootContext.Provider
-												value={{ root, setRoot }}>
-												{children}
-											</ct.rootContext.Provider>
-										</ct.loadingContext.Provider>
-									</ct.msgCountContext.Provider>
-								</ct.navContext.Provider>
-							</ct.popBoxContext.Provider>
-						</ct.themeContext.Provider>
-					</ct.eWalletContext.Provider>
+					<ct.withdrawalBlockSettingContext.Provider
+						value={{ withdrawalSettingTypeList }}>
+						<ct.eWalletContext.Provider
+							value={{ isShowEWallet, setIsShowEWallet }}>
+							<ct.themeContext.Provider
+								value={{ theme, setTheme }}>
+								<ct.popBoxContext.Provider
+									value={{ popBox, setPopBox }}>
+									<ct.navContext.Provider
+										value={{ nav, setNav }}>
+										<ct.msgCountContext.Provider
+											value={{ msgCount, setMsgCount }}>
+											<ct.loadingContext.Provider
+												value={{ loading, setLoading }}>
+												<ct.rootContext.Provider
+													value={{ root, setRoot }}>
+													{children}
+												</ct.rootContext.Provider>
+											</ct.loadingContext.Provider>
+										</ct.msgCountContext.Provider>
+									</ct.navContext.Provider>
+								</ct.popBoxContext.Provider>
+							</ct.themeContext.Provider>
+						</ct.eWalletContext.Provider>
+					</ct.withdrawalBlockSettingContext.Provider>
 				</ct.walletInfoContext.Provider>
 			</ct.i18nContext.Provider>
 		</ct.userInfoContext.Provider>

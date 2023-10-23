@@ -107,6 +107,10 @@ export const Wrapper = ({ children }) => {
 	const [msgCount, setMsgCount] = useState(0);
 	const [theme, setTheme] = useState(themeList.default);
 
+	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
+		[]
+	);
+
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -412,6 +416,25 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 
+			api.payment.GetWithdrawalBlockSetting().then(
+				res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						setWithdrawalSettingTypeList(res.data.data);
+					} else if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				},
+				() => {
+					setPopBox({
+						isOpen: true,
+						content: i18n.msg_ApiServerError
+					});
+				}
+			);
+
 			// if (match?.["*"]) {
 			// 	navigate(`/${userInfo.langId}/${match["*"]}`);
 			// } else {
@@ -457,39 +480,42 @@ export const Wrapper = ({ children }) => {
 						value={{ tpGameTypeSettingList }}>
 						<ct.walletInfoContext.Provider
 							value={{ walletInfo, setWalletInfo }}>
-							<ct.eWalletContext.Provider
-								value={{ isShowEWallet, setIsShowEWallet }}>
-								<ct.themeContext.Provider
-									value={{ theme, setTheme }}>
-									<ct.popBoxContext.Provider
-										value={{ popBox, setPopBox }}>
-										<ct.navContext.Provider
-											value={{ nav, setNav }}>
-											<ct.msgCountContext.Provider
-												value={{
-													msgCount,
-													setMsgCount
-												}}>
-												<ct.loadingContext.Provider
+							<ct.withdrawalBlockSettingContext.Provider
+								value={{ withdrawalSettingTypeList }}>
+								<ct.eWalletContext.Provider
+									value={{ isShowEWallet, setIsShowEWallet }}>
+									<ct.themeContext.Provider
+										value={{ theme, setTheme }}>
+										<ct.popBoxContext.Provider
+											value={{ popBox, setPopBox }}>
+											<ct.navContext.Provider
+												value={{ nav, setNav }}>
+												<ct.msgCountContext.Provider
 													value={{
-														loading,
-														setLoading
+														msgCount,
+														setMsgCount
 													}}>
-													<ct.rootContext.Provider
+													<ct.loadingContext.Provider
 														value={{
-															root,
-															setRoot
+															loading,
+															setLoading
 														}}>
-														<SEO />
+														<ct.rootContext.Provider
+															value={{
+																root,
+																setRoot
+															}}>
+															<SEO />
 
-														{children}
-													</ct.rootContext.Provider>
-												</ct.loadingContext.Provider>
-											</ct.msgCountContext.Provider>
-										</ct.navContext.Provider>
-									</ct.popBoxContext.Provider>
-								</ct.themeContext.Provider>
-							</ct.eWalletContext.Provider>
+															{children}
+														</ct.rootContext.Provider>
+													</ct.loadingContext.Provider>
+												</ct.msgCountContext.Provider>
+											</ct.navContext.Provider>
+										</ct.popBoxContext.Provider>
+									</ct.themeContext.Provider>
+								</ct.eWalletContext.Provider>
+							</ct.withdrawalBlockSettingContext.Provider>
 						</ct.walletInfoContext.Provider>
 					</ct.productTpGameTypeSettingListContext.Provider>
 				</ct.i18nContext.Provider>
