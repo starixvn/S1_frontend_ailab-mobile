@@ -126,7 +126,8 @@ export default ({
 
 const BankCard = props => {
 	return (
-		<div className="addBankName">
+		<div className={`addBankName ${props?.disabled ? "pending" : ""}`}>
+			{props?.disabled && <div className="mask" />}
 			<div className="addBankInfo">
 				<div className="bankName">
 					<img
@@ -143,6 +144,7 @@ const BankCard = props => {
 					)}
 					<div className="checkbox">
 						<input
+							disabled={props.disabled}
 							type="checkbox"
 							id={props.checkKey}
 							onChange={props.selectAccount}

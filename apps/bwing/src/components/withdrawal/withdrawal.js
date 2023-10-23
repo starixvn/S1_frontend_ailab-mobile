@@ -133,13 +133,34 @@ const Panel = () => {
 										obj.accountNo ===
 										res.data.data.defAccountNo
 								);
-								setSelBank(
-									res.data.data.bankInfoDetail?.[
-										defAccountNoIdx === -1
-											? 0
-											: defAccountNoIdx
-									]
+								const noDisabledAccountIdx = res.data.data?.bankInfoDetail.findIndex(
+									obj => !obj.disabled
 								);
+								// * 若有 disabled 則不會 setSelBank 所以有可能不會有預設所選到的 bankCard
+								if (
+									defAccountNoIdx !== -1 &&
+									!res.data.data.bankInfoDetail[
+										defAccountNoIdx
+									]?.disabled
+								) {
+									setSelBank(
+										res.data.data.bankInfoDetail[
+											defAccountNoIdx
+										]
+									);
+								} else if (
+									defAccountNoIdx === -1 &&
+									!res.data.data.bankInfoDetail[0]?.disabled
+								) {
+									setSelBank(res.data.data.bankInfoDetail[0]);
+								} else if (noDisabledAccountIdx) {
+									setSelBank(
+										res.data.data.bankInfoDetail[
+											noDisabledAccountIdx
+										]
+									);
+								}
+
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -510,7 +531,12 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = () => {
-					if (!isClickedRef.current) {
+					if (!selBank) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_SelectBank_Required
+						});
+					} else if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext(
 							selBank.accountNo,
