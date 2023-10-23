@@ -217,6 +217,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Traditional_Lottery,
 		imgName: "casino_789"
+	},
+	{
+		...defGameInfo.V8Poker,
+		imgName: "v8"
 	}
 ];
 
