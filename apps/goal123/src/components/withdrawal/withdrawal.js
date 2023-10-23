@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
@@ -25,6 +26,7 @@ import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import ImportantNote from "./importantNote";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -33,6 +35,9 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
@@ -47,6 +52,11 @@ const Panel = () => {
 	const [pageVerify, setPageVerify] = useState(true);
 	const isMountedRef = useRef(null);
 	const isClickedRef = useRef(false);
+
+	const displayBankCard =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.BankCard
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -745,6 +755,8 @@ const Panel = () => {
 			</>
 		);
 	}
+
+	if (!displayBankCard) return null;
 
 	return content;
 };

@@ -231,4 +231,7 @@ export class PaymentAPI extends BaseAPI {
 
 	GetQRPayInfoList = groupId =>
 		this.paymentRequest.post("/GetQRPayInfoList", { groupId });
+
+	GetWithdrawalBlockSetting = () =>
+		this.paymentRequest.post("GetWithdrawalBlockSetting");
 }

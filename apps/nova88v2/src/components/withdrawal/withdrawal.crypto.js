@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import { defPopBoxType } from "../common/popbox";
@@ -20,6 +21,7 @@ import VIPLevel from "../common/vipLevel";
 import BalancePanel from "./balancePanel";
 import ImportantNote from "./importantNote";
 import RestoreAll from "./restoreAll";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initWarning = {
 	status: defIptStatus.default,
@@ -32,6 +34,9 @@ const Panel = () => {
 	const { setUserInfo, userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
@@ -52,6 +57,11 @@ const Panel = () => {
 
 	const isMountedRef = useRef(null);
 	const isClickedRef = useRef(false);
+
+	const displayCrypto =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.Crypto
+		)?.status ?? true;
 
 	const GetDailyWithdrawalLimit = () => {
 		api.payment.GetWithdrawalLimit().then(
@@ -924,6 +934,8 @@ const Panel = () => {
 					  )
 			);
 	};
+
+	if (!displayCrypto) return null;
 
 	return pageVerify ? (
 		<>
