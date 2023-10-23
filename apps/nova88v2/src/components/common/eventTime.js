@@ -48,5 +48,6 @@ export const eventTime = {
 	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
 	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" },
 	PNG: { endDate: "2023/11/05 23:59:59" },
-	slot_fachai: { endDate: "2023/12/31 23:59:59" }
+	slot_fachai: { endDate: "2023/12/31 23:59:59" },
+	TFGaming: { endDate: "2023/11/20 23:59:59" }
 };
