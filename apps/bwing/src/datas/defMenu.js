@@ -576,6 +576,46 @@ export const productList = langId => {
 			icon_img: `${bannerImgUrl}/h5/img/gameicon/fish.png`,
 			items: [
 				{
+					displayKey: "lbl_FishingSG1",
+					icon: "icon icon-SG",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fg.png`,
+					...defGameInfo.Fishing_SG
+				},
+				{
+					displayKey: "lbl_FishingSG2",
+					icon: "icon icon-SG",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fwar.png`,
+					...defGameInfo.Fishing_SGW
+				},
+				{
+					displayKey: "lbl_Fishing_Zombie_Party",
+					icon: "icon icon-SG",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-zp.png`,
+					...defGameInfo.Fishing_Zombie_Party,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Zombie_Party
+							)
+						}
+					]
+				},
+				{
+					displayKey: "lbl_Fishing_Alien_Hunter",
+					icon: "icon icon-SG",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-ah.png`,
+					...defGameInfo.Fishing_Alien_Hunter,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(
+								eventTime.Fishing_Alien_Hunter
+							)
+						}
+					]
+				},
+				{
 					displayKey: "lbl_Paradise",
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-paradise.png`,
 					icon: "icon icon-cq9",
@@ -634,47 +674,7 @@ export const productList = langId => {
 					icon: "icon icon-gg",
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fworld.png`,
 					...defGameInfo.Fishing
-				},
-				{
-					displayKey: "lbl_FishingSG1",
-					icon: "icon icon-SG",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fg.png`,
-					...defGameInfo.Fishing_SG
-				},
-				{
-					displayKey: "lbl_FishingSG2",
-					icon: "icon icon-SG",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fwar.png`,
-					...defGameInfo.Fishing_SGW
-				},
-        {
-          displayKey: "lbl_Fishing_Zombie_Party",
-          icon: "icon icon-SG",
-          img: `${bannerImgUrl}/h5/img/fish/fish-zp.png`,
-          ...defGameInfo.Fishing_Zombie_Party,
-          eventIcon: [
-            {
-              icon: defIconType.new,
-              inPeriod: isEventPeriod(
-                eventTime.Fishing_Zombie_Party
-              )
-            }
-          ]
-        },
-        {
-          displayKey: "lbl_Fishing_Alien_Hunter",
-          icon: "icon icon-SG",
-          img: `${bannerImgUrl}/h5/img/fish/fish-ah.png`,
-          ...defGameInfo.Fishing_Alien_Hunter,
-          eventIcon: [
-            {
-              icon: defIconType.new,
-              inPeriod: isEventPeriod(
-                eventTime.Fishing_Alien_Hunter
-              )
-            }
-          ]
-        },
+				}
 			]
 		},
 		lottery: {
