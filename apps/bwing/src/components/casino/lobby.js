@@ -7,6 +7,11 @@ import {
 	popBoxContext,
 	userInfoContext
 } from "../common/context";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../hook/useGotoGame";
 import { api_SetFavoriteGame } from "../../service/api/account";
 import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 import { defSlotTpGameType } from "../../datas/productList";
@@ -38,6 +43,9 @@ const Panel = ({
 	const { setNav } = useContext(navContext);
 	const [selGameInfo, setSelGameInfo] = useState(null);
 	const gameListRef = useRef(null);
+
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
 		if (userInfo.isLogin) {
 			try {
@@ -128,7 +136,20 @@ const Panel = ({
 						langId: userInfo.langId,
 						tpGameType: Object.values(defSlotTpGameType).find(
 							obj => targetObj.tpId === obj.tpId
-						).tpGameType
+						).tpGameType,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null
 					}),
 				freePlay ? 0 : 5000
 			);

@@ -12,7 +12,11 @@ import {
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
 import { defProductType } from "../../datas/productList";
-import { defSpecialSetting, useGotoGame } from "../hook/useGotoGame";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
 const RecentlyViewed = ({ recentlyViewedGames }) => {
@@ -114,13 +118,16 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 							isFree: false,
 							langId: userInfo.langId,
 							execFunction:
-								selectedTpId === defSpecialSetting.playTech
+								targetObj.tpId === defSpecialSetting.PG
 									? handleGoToGame.bind(this, {
 											langId: userInfo.langId,
-											tpId: selectedTpId,
-											gameId: selectedGameId,
-											isFun: false,
-											tpGameType: selectedTpGameType
+											tpId: targetObj.tpId,
+											gameId: targetObj.gameId,
+											isFun: freePlay,
+											tpGameType:
+												defSlotTpGameType.PG.tpGameType,
+											loginGameType:
+												defLoginGameType.returnHtml
 									  })
 									: null,
 							tpGameType: selectedTpGameType
