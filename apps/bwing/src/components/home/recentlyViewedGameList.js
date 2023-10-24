@@ -4,7 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { Navigation } from "swiper";
 import { useNavigate } from "@reach/router";
 import { popBoxContext, userInfoContext } from "../common/context";
-import { defSpecialSetting, useGotoGame } from "../hook/useGotoGame";
+import {
+	defSpecialSetting,
+	defLoginGameType,
+	useGotoGame
+} from "../hook/useGotoGame";
 import { api_GetRecentlyViewed } from "../../service/api/game";
 import {
 	defAppType,
@@ -118,13 +122,15 @@ const RecentlyViewedGameList = () => {
 							isFree: false,
 							langId: userInfo.langId,
 							execFunction:
-								selectedTpId === defSpecialSetting.playTech
+								selectedTpId === defSpecialSetting.PG
 									? handleGoToGame.bind(this, {
 											langId: userInfo.langId,
 											tpId: selectedTpId,
 											gameId: selectedGameId,
 											isFun: false,
-											tpGameType: selectedTpGameType
+											tpGameType: selectedTpGameType,
+											loginGameType:
+												defLoginGameType.returnHtml
 									  })
 									: null,
 							tpGameType: selectedTpGameType

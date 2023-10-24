@@ -16,7 +16,13 @@ export const defOpenType = {
 
 export const defSpecialSetting = {
 	playTech: defGameInfo.Casino_PlayTech.tpId,
-	sports_9w: defGameInfo.nineW.tpId
+	sports_9w: defGameInfo.nineW.tpId,
+	PG: defGameInfo.Casino_PG.tpId
+};
+
+export const defLoginGameType = {
+	returlGameUrl: 1,
+	returnHtml: 2
 };
 
 export const open9wSports = ({ url, key, userId }) => {
@@ -161,7 +167,8 @@ export const useGotoGame = ({
 			isFun: _isFun,
 			token,
 			openType = defOpenType._blank,
-			tpGameType
+			tpGameType,
+			loginGameType
 		}) => {
 			let returnData = "";
 			if (_isLogin) {
@@ -178,7 +185,8 @@ export const useGotoGame = ({
 								? api.tp.defGotoGame_AppType.Mobile
 								: api.tp.defGotoGame_AppType.NativeAPP,
 						token: token ?? "",
-						tpGameType: String(tpGameType)
+						tpGameType: String(tpGameType),
+						loginGameType: String(loginGameType)
 					});
 					await api.frontEndLog.LogMessage({
 						userName,
@@ -189,7 +197,7 @@ export const useGotoGame = ({
 					});
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0 && res.data.message) {
-							const result = JSON.parse(res.data.message);
+							const result = res.data.message;
 							setData(() => result);
 							if (_tpId === defSpecialSetting.playTech) {
 								const {
@@ -255,7 +263,17 @@ export const useGotoGame = ({
 									});
 								}
 							} else if (_tpId === defSpecialSetting.sports_9w) {
-								returnData = result;
+								returnData = JSON.parse(result);
+							} else if (_tpId === defSpecialSetting.PG) {
+								if (
+									loginGameType ===
+									defLoginGameType.returnHtml
+								) {
+									const newWindow = window.open();
+									newWindow.document.write(res.data.message);
+								} else {
+									window.open(res.data.message);
+								}
 							}
 							await api.frontEndLog.LogMessage({
 								userName,
