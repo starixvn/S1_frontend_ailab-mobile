@@ -16,8 +16,6 @@ import {
 	api_site_GetBannerV3,
 	defBannerActionMode
 } from "../../service/api/site";
-import { useGotoGame } from "../hook/useGotoGame";
-import { defGameInfo } from "../../datas/productList";
 
 export const ClickLink = ({
 	tpId,
@@ -113,12 +111,6 @@ const Panel = ({ ImgFolder = [], params, swiperClass }) => {
 		ImgFolder,
 		setPopBox,
 		i18n
-	});
-
-	const { handleGoToGame } = useGotoGame({
-		isLogin: userInfo.isLogin,
-		langId: userInfo.langId,
-		autoGetData: false
 	});
 
 	const handleClick = ({
