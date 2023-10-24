@@ -4879,6 +4879,25 @@ button.clickBtn:before {
   font-weight: bold;
 }
 
+.contact-icon {
+  position: fixed;
+  bottom: 36vw;
+  right: 5vw;
+  border-radius: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.contact-icon img {
+  width: 10vw;
+  height: 10vw;
+}
+.contact-icon:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
 .Message {
   padding: 40vw 0 25vw;
   width: 100%;
