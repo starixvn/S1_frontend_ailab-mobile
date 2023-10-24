@@ -25,7 +25,8 @@ export const api_tp_GotoGame = ({
 	fun = null,
 	gameType = "",
 	token = "",
-	tpGameType
+	tpGameType,
+	loginGameType
 }) =>
 	tpRequest.post("/GotoGame", {
 		TpId,
@@ -36,7 +37,8 @@ export const api_tp_GotoGame = ({
 			fun,
 			gameType,
 			token,
-			tpGameType
+			tpGameType,
+			loginGameType
 		}
 	});
 

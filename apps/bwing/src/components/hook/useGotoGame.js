@@ -15,7 +15,13 @@ export const defOpenType = {
 };
 
 export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PlayTech.tpId
+	playTech: defGameInfo.Casino_PlayTech.tpId,
+	PG: defGameInfo.Casino_PG.tpId
+};
+
+export const defLoginGameType = {
+	returlGameUrl: 1,
+	returnHtml: 2
 };
 
 const playTechLaunchGame = (client, game, mode, openType) => {
@@ -119,7 +125,8 @@ export const useGotoGame = ({
 			isFun: _isFun,
 			token,
 			openType = defOpenType._blank,
-			tpGameType
+			tpGameType,
+			loginGameType
 		}) => {
 			if (_isLogin) {
 				api_tp_GotoGame({
@@ -134,11 +141,12 @@ export const useGotoGame = ({
 							? defGotoGame_AppType.Mobile
 							: defGotoGame_AppType.NativeAPP,
 					token: token ?? "",
-					tpGameType: String(tpGameType)
+					tpGameType: String(tpGameType),
+					loginGameType: String(loginGameType)
 				}).then(async res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0 && res.data.message) {
-							const result = JSON.parse(res.data.message);
+							const result = res.data.message;
 							setData(() => result);
 							if (_tpId === defSpecialSetting.playTech) {
 								const {
@@ -199,6 +207,16 @@ export const useGotoGame = ({
 										...result,
 										openType
 									});
+								}
+							} else if (_tpId === defSpecialSetting.PG) {
+								if (
+									loginGameType ===
+									defLoginGameType.returnHtml
+								) {
+									const newWindow = window.open();
+									newWindow.document.write(res.data.message);
+								} else {
+									window.open(res.data.message);
 								}
 							}
 						} else if (

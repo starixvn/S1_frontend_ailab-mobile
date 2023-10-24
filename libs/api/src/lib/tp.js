@@ -37,7 +37,8 @@ export class TpAPI extends BaseAPI {
 		fun = null,
 		gameType = "",
 		token = "",
-		tpGameType
+		tpGameType,
+		loginGameType
 	}) =>
 		this.tpRequest.post("/GotoGame", {
 			TpId,
@@ -48,7 +49,8 @@ export class TpAPI extends BaseAPI {
 				fun,
 				gameType,
 				token,
-				tpGameType
+				tpGameType,
+				loginGameType
 			}
 		});
 }

@@ -7,6 +7,11 @@ import {
 	navContext
 } from "../components/common/context";
 import { api_GetSlotGamePage } from "../service/api/game";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../components/hook/useGotoGame";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import Nav from "../components/casino/nav";
@@ -47,6 +52,8 @@ const Casino = () => {
 		localStorage.getItem("favorite")
 	);
 
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
 	};
@@ -61,17 +68,19 @@ const Casino = () => {
 						gameId: targetObj.gameId,
 						isFree: freePlay,
 						langId: userInfo.langId,
-						// execFunction:
-						// 	targetObj.tpId === defSpecialSetting.playTech
-						// 		? handleGoToGame.bind(this, {
-						// 				langId: userInfo.langId,
-						// 				tpId: targetObj.tpId,
-						// 				gameId: targetObj.gameId,
-						// 				isFun: freePlay,
-						// 				tpGameType:
-						// 					defSlotTpGameType.PT.tpGameType
-						// 		  })
-						// 		: null,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null,
 						tpGameType: Object.values(defSlotTpGameType).find(
 							obj => targetObj.tpId === obj.tpId
 						).tpGameType
