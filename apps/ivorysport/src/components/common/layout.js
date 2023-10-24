@@ -9,12 +9,10 @@ import {
 	i18nContext,
 	defNavPanel,
 	loadingContext,
-	userInfoContext,
-	rootContext
+	userInfoContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { readCookie } from "./common";
 import Modal from "../join/modal";
 import GoTopBtn from "./goTopBtn";
 
@@ -22,7 +20,7 @@ const Layout = ({ children, header, mainClass, goTopBtn }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
-	const { root } = useContext(rootContext);
+
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 
@@ -64,6 +62,16 @@ const Layout = ({ children, header, mainClass, goTopBtn }) => {
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />
 			)}
 			{goTopBtn && <GoTopBtn />}
+			<a
+				href="skype:live:.cid.107160064a80f075?chat"
+				target="_blank"
+				className="contact-icon"
+				rel="noreferrer">
+				<img
+					src={`${process.env.REACT_APP_BANNER_URL}/h5/img/skype-icon.png`}
+					alt=""
+				/>
+			</a>
 		</>
 	);
 };

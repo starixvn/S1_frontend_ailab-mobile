@@ -6,13 +6,15 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { paymentImgURL } from "../../config";
 import api from "../../service/api";
 import AddBankPanel from "./eWallet.add";
 import VIPLevel from "../common/vipLevel";
 import { defCurrenyId } from "../common/common";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const EWallet = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -20,9 +22,17 @@ const EWallet = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [custBankInfo, setCustBankInfo] = useState([]);
 	const [currentPanel, setCurrentPanel] = useState("showBankPanel");
 	const isMountedRef = useRef(null);
+
+	const displayEWallet =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.EWallet
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -193,6 +203,8 @@ const EWallet = () => {
 			/>
 		);
 	});
+
+	if (!displayEWallet) return null;
 
 	return (
 		<>

@@ -1,11 +1,17 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	withdrawalBlockSettingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popbox";
 import path from "../../path";
 import { api_DelCustCryptoWallet } from "../../service/api/accountStrict";
 import { api_GetCustBankInfo } from "../../service/api/account";
 import Member from "../../pages/member";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 export default () => (
 	<Member>
@@ -17,9 +23,17 @@ const CryptoWallet = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [walletInfo, setWalletInfo] = useState([]);
 	const navigate = useNavigate();
 	const isMountedRef = useRef(null);
+
+	const displayCrypto =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.Crypto
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -172,6 +186,9 @@ const CryptoWallet = () => {
 			/> */}
 		</div>
 	));
+
+	if (!displayCrypto) return null;
+
 	return (
 		<>
 			<div className="avatar" />

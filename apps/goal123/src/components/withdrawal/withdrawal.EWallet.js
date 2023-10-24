@@ -10,7 +10,8 @@ import {
 	i18nContext,
 	loadingContext,
 	popBoxContext,
-	userInfoContext
+	userInfoContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { defIptStatus } from "../common/inputStatus";
 import { paymentNoSiteImgURL } from "../../config";
@@ -25,6 +26,7 @@ import {
 	api_account_GetCustEWalletInfo,
 	api_GetWithdrawalAvailableBalance
 } from "../../service/api/account";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -41,6 +43,9 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
 	const [redirectPath, setRedirectPath] = useState(null);
@@ -58,6 +63,11 @@ const Panel = () => {
 	const [selectedEWallet, setSelectedEWallet] = useState(initSelectedEWallet);
 	const isMountedRef = useRef(null);
 	const isClickedRef = useRef(false);
+
+	const displayEWallet =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.EWallet
+		)?.status ?? true;
 
 	const _availableBalance =
 		balanceInfo?.availableBalance !== null &&
@@ -777,6 +787,8 @@ const Panel = () => {
 			</>
 		);
 	}
+
+	if (!displayEWallet) return null;
 
 	return content;
 };

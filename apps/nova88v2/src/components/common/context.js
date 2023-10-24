@@ -13,6 +13,7 @@ export const popBoxContext = createContext({});
 export const themeContext = createContext({});
 export const userInfoContext = createContext({ isLogin: false });
 export const walletInfoContext = createContext({});
+export const withdrawalBlockSettingContext = createContext({});
 export const eWalletContext = createContext({});
 export const msgCountContext = createContext({});
 export const loadingContext = createContext({});
