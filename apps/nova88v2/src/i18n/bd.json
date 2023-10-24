@@ -881,5 +881,6 @@
   "msg_ticketBeenUsed": "",
   "msg_ticketNotBeenActivated": "",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter"
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_SelectBank_Required": "অনুগ্রহ করে ব্যাংক অ্যাকাউন্ট নির্বাচন করুন"
 }

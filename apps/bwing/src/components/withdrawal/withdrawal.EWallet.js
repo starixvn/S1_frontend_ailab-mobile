@@ -5,7 +5,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import RecentDatas from "./withdrawal.recentDatas";
 import { number_format, isConvert, checkAmount } from "../common/common";
@@ -25,6 +26,7 @@ import EWalletCardPanel from "./eWalletCardPanel";
 import AmountPanel from "./amountPanel";
 import { defIptStatus } from "../common/inputbox.hint";
 import ImportantNote from "./importantNote";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -42,6 +44,9 @@ const Panel = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
 	const _isConvert = isConvert(userInfo.currencyId);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [amount, setAmount] = useState("");
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -67,6 +72,11 @@ const Panel = () => {
 		balanceInfo?.availableBalance !== undefined
 			? balanceInfo?.availableBalance
 			: null;
+
+	const displayEWallet =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.EWallet
+		)?.status ?? true;
 
 	const GetDailyWithdrawalLimit = () => {
 		api_payment_GetWithdrawalLimit().then(
@@ -717,6 +727,8 @@ const Panel = () => {
 			</section>
 		);
 	}
+
+	if (!displayEWallet) return null;
 
 	return content;
 };

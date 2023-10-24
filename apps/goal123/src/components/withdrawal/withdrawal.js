@@ -4,7 +4,8 @@ import {
 	i18nContext,
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	withdrawalBlockSettingContext
 } from "../common/context";
 import { number_format, isConvert, checkAmount } from "../common/common";
 import {
@@ -25,6 +26,7 @@ import RecentDatas from "./withdrawal.recentDatas";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import ImportantNote from "./importantNote";
+import { WITHDRAWAL_BLOCK_SETTING_TYPE } from "../../datas/withdrawalSetting";
 
 const initStatus = { checked: null, msg: "" };
 
@@ -33,6 +35,9 @@ const Panel = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { setLoading } = useContext(loadingContext);
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
 	const [balanceInfo, setBalanceInfo] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [amount, setAmount] = useState("");
@@ -47,6 +52,11 @@ const Panel = () => {
 	const [pageVerify, setPageVerify] = useState(true);
 	const isMountedRef = useRef(null);
 	const isClickedRef = useRef(false);
+
+	const displayBankCard =
+		withdrawalSettingTypeList?.find(
+			item => item.type === WITHDRAWAL_BLOCK_SETTING_TYPE.BankCard
+		)?.status ?? true;
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -114,13 +124,36 @@ const Panel = () => {
 										obj.accountNo ===
 										res.data.data.defAccountNo
 								);
-								setSelBank(
-									res.data.data.bankInfoDetail?.[
-										defAccountNoIdx === -1
-											? 0
-											: defAccountNoIdx
-									]
+
+								const noDisabledAccountIdx = res.data.data?.bankInfoDetail.findIndex(
+									obj => !obj.disabled
 								);
+
+								// * 若有 disabled 則不會 setSelBank 所以有可能不會有預設所選到的 bankCard
+								if (
+									defAccountNoIdx !== -1 &&
+									!res.data.data.bankInfoDetail[
+										defAccountNoIdx
+									]?.disabled
+								) {
+									setSelBank(
+										res.data.data.bankInfoDetail[
+											defAccountNoIdx
+										]
+									);
+								} else if (
+									defAccountNoIdx === -1 &&
+									!res.data.data.bankInfoDetail[0]?.disabled
+								) {
+									setSelBank(res.data.data.bankInfoDetail[0]);
+								} else if (noDisabledAccountIdx) {
+									setSelBank(
+										res.data.data.bankInfoDetail[
+											noDisabledAccountIdx
+										]
+									);
+								}
+
 								if (!pageVerify) {
 									setPageVerify(true);
 								}
@@ -454,7 +487,12 @@ const Panel = () => {
 					: Number(amount);
 
 				const handleClickSubmit = () => {
-					if (!isClickedRef.current) {
+					if (!selBank) {
+						setPopBox({
+							isOpen: true,
+							content: i18n.lbl_SelectBank_Required
+						});
+					} else if (!isClickedRef.current) {
 						isClickedRef.current = true;
 						RedirectToNext(
 							selBank.accountNo,
@@ -638,14 +676,18 @@ const Panel = () => {
 	const banks = bankInfo?.bankList?.map(b => {
 		return (
 			<button
+				disabled={b?.disabled}
 				className={
 					selBank?.sysId === b.sysId &&
 					selBank?.accountNo === b.accountNo
-						? "open"
-						: ""
+						? `open ${b?.disabled ? "pending" : ""}`
+						: `${b?.disabled ? "pending" : ""}`
 				}
 				key={`withdrawal-bank-${b.sysId}-${b.accountNo}`}
 				onClick={SelectBank.bind(this, b)}>
+				{b?.disabled && (
+					<div className="mask">{i18n.lbl_underMaintenance}</div>
+				)}
 				<img
 					src={`${paymentImgUrl}/${b.bankLogo?.toLowerCase()}`}
 					alt={b.bankName}
@@ -745,6 +787,8 @@ const Panel = () => {
 			</>
 		);
 	}
+
+	if (!displayBankCard) return null;
 
 	return content;
 };
