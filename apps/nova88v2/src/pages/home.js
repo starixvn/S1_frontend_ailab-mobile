@@ -113,6 +113,48 @@ const IndexPage = () => {
 			});
 		};
 
+		const displaySponsorshipPopup = () => {
+			if (new Date() > new Date(2023, 12, 31)) {
+				openNextPopUp();
+				return;
+			}
+			const cookieName = `Sponsorship${userInfo.userName}`;
+			if (
+				!userInfo.isLogin &&
+				// * 多判斷是否有 accountName 防止 setCookie 紀錄 Guest 狀態時的資料
+				!userInfo.accountName &&
+				readCookie(cookieName) !== "1"
+			) {
+				setCookie(cookieName, "1", 1);
+
+				setPopBox({
+					isOpen: true,
+					className: "sponsorpop",
+					custContent: (
+						<div className="pop sponsor">
+							<img
+								src={`${
+									process.env.REACT_APP_BANNER_URL
+								}/h5/img/sponsorpop-${
+									userInfo?.langId || "en"
+								}.png`}
+								alt="img-sponsorpop"
+							/>
+							<img
+								onClick={() => {
+									setPopBox({ isOpen: false });
+									openNextPopUp();
+								}}
+								src={`${process.env.REACT_APP_BANNER_URL}/h5/img/promosBackPopup/delet.png`}
+								alt=""
+								className="closepop"
+							/>
+						</div>
+					)
+				});
+			}
+		};
+
 		const expiredDisclaimerForVndDate = new Date(2024, 3, 13);
 
 		const disclaimerForVnd = async () => {
@@ -168,7 +210,11 @@ const IndexPage = () => {
 			});
 		};
 
-		const popUpStack = [displayPromotionPopup, disclaimerForVnd];
+		const popUpStack = [
+			displaySponsorshipPopup,
+			displayPromotionPopup,
+			disclaimerForVnd
+		];
 		const openNextPopUp = () => {
 			if (popUpStack.length) {
 				popUpStack.pop()();
