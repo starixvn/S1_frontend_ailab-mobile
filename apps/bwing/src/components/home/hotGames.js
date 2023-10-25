@@ -76,20 +76,23 @@ const HotGames = ({ maintainList }) => {
 				{t("lbl_HOT_GAMES")}
 			</div>
 			<div className="home-hotgame mb-2">
-				{HOT_GAME_LIST.map(({ displayKey, category, ...rest }) => {
-					return (
-						<a
-							key={`${displayKey}_${category}`}
-							className="home-hotgame-item"
-							onClick={() => handleHotGameClick({ ...rest })}>
-							<img
-								src={`${bannerImgUrl}/h5/img/4.0/hotgames/${category}.png`}
-								alt={category}
-							/>
-							<div className="subtitle">{t(displayKey)}</div>
-						</a>
-					);
-				})}
+				{HOT_GAME_LIST.map(
+					({ displayKey, category, icon, ...rest }) => {
+						return (
+							<a
+								key={`${displayKey}_${category}`}
+								className="home-hotgame-item"
+								onClick={() => handleHotGameClick({ ...rest })}>
+								{icon && <i className={icon} />}
+								<img
+									src={`${bannerImgUrl}/h5/img/4.0/hotgames/${category}.png`}
+									alt={category}
+								/>
+								<div className="subtitle">{t(displayKey)}</div>
+							</a>
+						);
+					}
+				)}
 			</div>
 		</>
 	);
