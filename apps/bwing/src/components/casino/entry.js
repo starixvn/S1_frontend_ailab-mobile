@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes, { arrayOf } from "prop-types";
 import { Link } from "@reach/router";
 import classNames from "classnames";
@@ -6,9 +6,12 @@ import { useTranslation } from "react-i18next";
 import path from "../../path";
 import { bannerImgUrl } from "../../config";
 import { defTpGameType } from "./defGameType";
+import { productList } from "../../datas/defMenu";
+import { userInfoContext } from "../common/context";
 
 const Entry = ({ providerList, maintainList }) => {
 	const { t } = useTranslation();
+	const { userInfo } = useContext(userInfoContext);
 	return (
 		<div className="lobby-products">
 			{providerList.map(provider => {
@@ -21,12 +24,25 @@ const Entry = ({ providerList, maintainList }) => {
 						tpGameType === defTpGameType.All
 				);
 
+				const target = productList(userInfo.langId).casino?.items?.find(
+					({ tpId: targetTpId }) => tpId === targetTpId
+				);
+				let showingIcon = "";
+				if (target?.eventIcon) {
+					const eventInPeriodObj = target.eventIcon.find(
+						obj => obj.inPeriod === true
+					);
+					showingIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
+				}
+
 				return (
 					<Link
 						key={tpId}
-						className={`lobby-products-item ${classNames({
-							maintain: isMaintain
-						})}`}
+						className={`lobby-products-item ${showingIcon} ${classNames(
+							{
+								maintain: isMaintain
+							}
+						)}`}
 						to={`/${path.casino.root}/${tpId}`}>
 						<img
 							src={`${bannerImgUrl}/h5/img/4.0/lobby/slots/${imgName}.png`}
