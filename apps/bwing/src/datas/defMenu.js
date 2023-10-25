@@ -301,8 +301,8 @@ export const productList = langId => {
 					...defGameInfo.Casino_Endorphina,
 					parameter: defGameInfo.Casino_Endorphina,
 					path: path.casino.root,
-					displayText: "Endorphina",
-					img: `${bannerImgUrl}/h5/img/slot/endorphina.png`,
+					displayText: "ES",
+					img: `${bannerImgUrl}/h5/img/4.0/slot/endorphina.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
