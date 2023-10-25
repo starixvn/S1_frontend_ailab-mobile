@@ -552,7 +552,7 @@ export const productList = langId => {
 				},
 				{
 					// displayText: "eBET",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-ebet.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/we.png`,
 					...defGameInfo.LIVEcasinoEB
 				},
 				{
