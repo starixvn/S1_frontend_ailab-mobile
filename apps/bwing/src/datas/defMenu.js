@@ -408,7 +408,7 @@ export const productList = langId => {
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.PNG)
+							inPeriod: isEventPeriod(eventTime.slot_PNG)
 						}
 					]
 				},
@@ -469,6 +469,32 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/slot/pt.png`,
 					icon: "icon icon-pt",
 					displayText: "PlayTech"
+				},
+				{
+					...defGameInfo.Casino_FaChai,
+					parameter: defGameInfo.Casino_FaChai,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/fachai.png`,
+					displayText: "Fachai",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_Fachai)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_PNG,
+					parameter: defGameInfo.Casino_PNG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/png.png`,
+					displayText: "Play' n GO",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_PNG)
+						}
+					]
 				}
 				// {
 				// 	...defGameInfo.casino_ICG,

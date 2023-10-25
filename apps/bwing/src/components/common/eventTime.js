@@ -35,6 +35,8 @@ export const eventTime = {
 		endDate: "2022/12/18 23:59:59"
 	},
 	skywind: { endDate: "2022/12/08 11:00:00" },
+	slot_Fachai: { endDate: "2023/12/31 23:59:59" },
+	slot_PNG: { endDate: "2023/11/05 23:59:59" },
 	game_MaxGame: { endDate: "2022/10/13 11:00:00" },
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" },
 	GPI_Lottery: { endDate: "2023/02/11 11:00:00" },
@@ -45,8 +47,6 @@ export const eventTime = {
 	TFGaming: { endDate: "2023/06/30 12:00:00" },
 	casino_Nextspin: { endDate: "2023/08/12 11:00:00" },
 	IM: { endDate: "2023/09/28 23:59:59" },
-	PNG: { endDate: "2023/11/05 23:59:59" },
-	slot_fachai: { endDate: "2023/12/31 23:59:59" },
 	casino_Endorphina: { endDate: "2023/10/25 23:59:59" },
 	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
 	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" }
