@@ -292,7 +292,7 @@ const IndexPage = () => {
 					isOpen: true,
 					content: (
 						<img
-							src={`${bannerImgUrl}/h5/img/nonlogin/300x300_bwing_${userInfo.langId}.jpg`}
+							src={`${bannerImgUrl}/h5/img/4.0/nonlogin/300x300_popup.jpg`}
 							alt="OfficialAnnounce"
 							onClick={toDownloadPage}
 						/>

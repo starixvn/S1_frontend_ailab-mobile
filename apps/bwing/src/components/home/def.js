@@ -28,7 +28,8 @@ export const HOT_GAME_LIST = [
 	{
 		displayKey: "lbl_SEDIE",
 		category: "sedie",
-		...defGameInfo.LIVEcasinoOne789
+		...defGameInfo.LIVEcasinoOne789,
+		icon: "tag-live"
 	},
 	{ displayKey: "lbl_Keno", category: "keno", ...defGameInfo.Keno },
 	{ displayKey: "lbl_Fishing", category: "fishing", href: path.fishing.root },
@@ -36,7 +37,8 @@ export const HOT_GAME_LIST = [
 	{
 		displayKey: "lbl_Lottery",
 		category: "lottery",
-		...defGameInfo.One789_lottery
+		...defGameInfo.One789_lottery,
+		icon: "tag-live"
 	}
 ];
 
