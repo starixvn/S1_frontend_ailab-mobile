@@ -14,7 +14,7 @@ import {
 	readCookie,
 	memberType,
 	currencyCode,
-	defCountryCode
+	defLangByIp
 } from "./common";
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
@@ -36,6 +36,7 @@ const flatLangList = Object.values(defLangGroups);
 
 export const Wrapper = ({ children }) => {
 	const { pathname } = useLocation();
+
 	const navigate = useNavigate();
 	const [i18n, seti18n] = useState(i18nConfig());
 	const { i18n: translationI18n } = useTranslation();
@@ -45,7 +46,7 @@ export const Wrapper = ({ children }) => {
 
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		langId: "en",
+		langId: null,
 		currencyId: null,
 		userName: i18n.lbl_Guest
 	});
@@ -100,7 +101,7 @@ export const Wrapper = ({ children }) => {
 						data: {
 							data: { code }
 						}
-					} = await api_site_GetIpCountry();
+					} = await api.site.GetIpCountry();
 
 					currencyIdByUserIp = currencyCode[code];
 
@@ -131,9 +132,10 @@ export const Wrapper = ({ children }) => {
 			const defaultCurrencyId = await getDefaultCurrencyId();
 			// * 透過幣別取得默認語系
 			const defaultLangId = String(
-				defCountryCode[defaultCurrencyId]
+				defLangByIp[defaultCurrencyId]
 			).toLowerCase();
 
+			console.log(defaultLangId, defaultCurrencyId);
 			let langIdByPath;
 			let currencyIdByPath;
 
@@ -160,6 +162,15 @@ export const Wrapper = ({ children }) => {
 			initCurrencyIdAndLanguage();
 		}
 	}, [userInfo.isLogin]);
+
+	// * 補語系 url
+	useEffect(() => {
+		if (userInfo.langId && userInfo.langId !== pathLang) {
+			console.log(pathLang, userInfo.langId);
+			navigate(String(pathname).replace(pathLang, userInfo.langId));
+		}
+	}, [pathLang, userInfo.langId, userInfo.isLogin]);
+
 	// * 如果帳號是直播主，只允許進入 首頁 及 slots 頁面
 	useEffect(() => {
 		if (userInfo.memberType) {
