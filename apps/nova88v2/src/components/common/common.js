@@ -198,6 +198,42 @@ export const defCurrenyId = {
 	USDT: 96
 };
 
+export const defCountryCode = {
+	2: "MY",
+	4: "TH",
+	13: "CS",
+	3: "CS",
+	15: "ID",
+	51: "VN",
+	72: "KH",
+	74: "BD",
+	61: "HI"
+};
+
+// * 跟桌機用同一張表，用於透過 瀏覽器語言 mapping 出 currencyId
+export const currencyCode = {
+	EN: 2,
+	MY: 2,
+	USD: 3,
+	CS: 3, // * USD
+	Global_EN: 3, // * USD
+	TH: 4,
+	TH_EN: 4,
+	CNY_CH: 13, // * CNY
+	ID: 15,
+	ID_EN: 15,
+	VN: 51,
+	HI_EN: 61,
+	INR: 61,
+	HI: 61,
+	IN: 61,
+	KH: 72,
+	KH_EN: 72,
+	BD: 74,
+	BDT: 74,
+	USDT: 96
+};
+
 export const currencyIdToCurrency = {
 	2: "MYR",
 	3: "USD",
