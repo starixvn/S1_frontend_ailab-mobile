@@ -14,7 +14,11 @@ import Slider from "../components/casino/slider";
 import Nav from "../components/casino/nav";
 import GameProviders from "../components/casino/gameProviders";
 import useHandleLogin from "../components/hook/useHandleLogin";
-import { useGotoGame, defSpecialSetting } from "../components/hook/useGotoGame";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import Games from "../components/casino/games";
 import api from "../service/api";
@@ -338,17 +342,19 @@ const Panel = ({ searchInput }) => {
 						gameId: targetObj.gameId,
 						isFree: freePlay,
 						langId: userInfo.langId,
-						// execFunction:
-						// 	targetObj.tpId === defSpecialSetting.playTech
-						// 		? handleGoToGame.bind(this, {
-						// 				langId: userInfo.langId,
-						// 				tpId: targetObj.tpId,
-						// 				gameId: targetObj.gameId,
-						// 				isFun: freePlay,
-						// 				tpGameType:
-						// 					defSlotTpGameType.PT.tpGameType
-						// 		  })
-						// 		: null,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null,
 						tpGameType: Object.values(defSlotTpGameType).find(
 							obj => targetObj.tpId === obj.tpId
 						).tpGameType

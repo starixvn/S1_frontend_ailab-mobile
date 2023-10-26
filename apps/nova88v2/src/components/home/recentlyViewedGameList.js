@@ -7,7 +7,8 @@ import { popBoxContext, userInfoContext } from "../common/context";
 import {
 	defSpecialSetting,
 	open9wSports,
-	useGotoGame
+	useGotoGame,
+	defLoginGameType
 } from "../hook/useGotoGame";
 import api from "../../service/api";
 import gameList from "../../datas/productList";
@@ -136,13 +137,15 @@ const RecentlyViewedGameList = () => {
 							isFree: false,
 							langId: userInfo.langId,
 							execFunction:
-								selectedTpId === defSpecialSetting.playTech
+								selectedTpId === defSpecialSetting.PG
 									? handleGoToGame.bind(this, {
 											langId: userInfo.langId,
 											tpId: selectedTpId,
 											gameId: selectedGameId,
 											isFun: false,
-											tpGameType: selectedTpGameType
+											tpGameType: selectedTpGameType,
+											loginGameType:
+												defLoginGameType.returnHtml
 									  })
 									: null,
 							tpGameType: selectedTpGameType
