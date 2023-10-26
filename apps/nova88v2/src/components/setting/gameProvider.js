@@ -205,6 +205,11 @@ const defPlatfrom = [
 		...defGameInfo.Casino_FaChai,
 		imgName: "casino_fachai",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_PEGASUS,
+		imgName: "casino_pegasus",
+		path: path.casino.root
 	}
 ];
 
