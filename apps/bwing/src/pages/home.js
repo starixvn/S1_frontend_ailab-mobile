@@ -124,7 +124,7 @@ const IndexPage = () => {
 
 	const getHotGameList = async () => {
 		try {
-			const res = await api_HotGame_GetDataList(userInfo.langId);
+			const res = await api_HotGame_GetDataList();
 			setHotGameList(res.data.data.HotGame);
 		} catch (error) {
 			setPopBox({
@@ -431,7 +431,6 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		getNews();
-		getHotGameList();
 	}, [userInfo.langId]);
 
 	useEffect(() => {
