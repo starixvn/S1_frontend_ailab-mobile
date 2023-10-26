@@ -70,6 +70,7 @@ export const defSlotTpGameType = {
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
+	PNG: { tpId: 54, tpGameType: 105 },
 	Iconic: { tpId: 24, tpGameType: 39 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
@@ -198,6 +199,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
+		"slot_PNG",
 		"slot_GPI",
 		"slot_YGG",
 		"slot_AMB",
@@ -224,6 +226,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
+		"slot_PNG",
 		"slot_GPI",
 		"slot_YGG",
 		"slot_AMB",
@@ -250,6 +253,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
+		"slot_PNG",
 		"slot_GPI",
 		"slot_YGG",
 		"slot_AMB",
@@ -276,6 +280,7 @@ const defSortSlot = {
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
+		"slot_PNG",
 		"slot_GPI",
 		"slot_YGG",
 		"slot_AMB",
@@ -783,6 +788,23 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "cq9",
 					sortKey: "slot_CQ9"
 				},
+
+				{
+					...defGameInfo.Casino_PNG,
+					parameter: defGameInfo.Casino_PNG,
+					spanText: "Play' n Go",
+					img: `${cloudBannerImgURL}/h5/img/slotPlayngo.png`,
+					path: path.casino.root,
+					providerImgName: "png",
+					sortKey: "slot_PNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.PNG)
+						}
+					]
+				},
+
 				{
 					...defGameInfo.Casino_GPI,
 					parameter: defGameInfo.Casino_GPI,
@@ -1375,6 +1397,7 @@ export const defGameInfo = {
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_JOKER: { tpId: 9, tpGameType: 13 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	Casino_PNG: { tpId: 54, tpGameType: 105 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_SG: { tpId: 10, tpGameType: 15 },
