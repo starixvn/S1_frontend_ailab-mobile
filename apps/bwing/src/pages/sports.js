@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { isExpiry } from "@ailab-mobile/promotion";
+import { defCategoryId, isExpiry } from "@ailab-mobile/promotion";
 import HomeMatch from "../components/home/homeMatch";
 import SportList from "../components/home/sportList";
 import { api_hotEvent_GetDataList } from "../service/api/hotEvent";
@@ -18,6 +18,8 @@ export default () => {
 	const [promotionList, setPromotionList] = useState([]);
 	const filterPromotionList = promotionList.filter(
 		item =>
+			(item.categoryId === defCategoryId.SabaSports ||
+				item.categoryId === defCategoryId.SBSW) &&
 			!isExpiry({
 				...item,
 				isLogin: userInfo.isLogin

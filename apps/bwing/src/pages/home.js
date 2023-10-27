@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
-import { isExpiry } from "@ailab-mobile/promotion";
+import { defCategoryId, isExpiry } from "@ailab-mobile/promotion";
 import {
 	userInfoContext,
 	popBoxContext,
@@ -59,6 +59,8 @@ const IndexPage = () => {
 	const [promotionList, setPromotionList] = useState([]);
 	const filterPromotionList = promotionList.filter(
 		item =>
+			(item.categoryId === defCategoryId.SabaSports ||
+				item.categoryId === defCategoryId.SBSW) &&
 			!isExpiry({
 				...item,
 				isLogin: userInfo.isLogin
