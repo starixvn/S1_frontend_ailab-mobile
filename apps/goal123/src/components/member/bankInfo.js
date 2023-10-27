@@ -136,7 +136,8 @@ const BankInfo = () => {
 		let setValue = true;
 		const val = e.target.value;
 		if (col === "BankAccount") {
-			const regex = /^[0-9]*$/;
+			// * 使用者反應有銀行的開頭為 T,eg: T0793686868，因此從原本只限數字改為開放數字及英文
+			const regex = /^[a-zA-Z0-9]*$/;
 			setValue = regex.test(val);
 		}
 
