@@ -134,7 +134,8 @@ const AddBankPanel = ({
 		let val = e.target.value;
 
 		if (col === "BankAccount") {
-			val = val.replace(/\D/g, "");
+			// * 使用者反應有銀行的開頭為 T,eg: T0793686868，因此從原本只限數字改為開放數字及英文
+			val = val.replace(/[^a-zA-Z0-9]+/g, "");
 		} else if (col === "IFSCCode") {
 			val = val.replace(/[\W]/g, "");
 		}
