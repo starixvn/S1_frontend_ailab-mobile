@@ -184,12 +184,17 @@ const defPlatfrom = [
 		imgName: "im-esports"
 	},
 	{
-		...defGameInfo.casino_SPRIBE,
+		...defGameInfo.Casino_SPRIBE,
 		imgName: "spribe"
 	},
 	{
 		...defGameInfo.Casino_Endorphina,
 		imgName: "casino_end",
+		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_FaChai,
+		imgName: "casino_fachai",
 		path: path.casino.root
 	},
 	{

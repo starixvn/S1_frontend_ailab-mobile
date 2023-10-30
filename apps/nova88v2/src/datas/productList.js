@@ -192,6 +192,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
 		"slot_SPRIBE",
@@ -219,6 +220,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
 		"slot_SPRIBE",
@@ -246,6 +248,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
 		"slot_SPRIBE",
@@ -273,6 +276,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
 		"slot_SPRIBE",
@@ -700,13 +704,7 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "sk",
 					img: `${cloudBannerImgURL}/h5/img/nextspin.png`,
 					path: path.casino.root,
-					sortKey: "slot_Nextspin",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Nextspin)
-						}
-					]
+					sortKey: "slot_Nextspin"
 				},
 				{
 					...defGameInfo.Casino_PG,
@@ -716,6 +714,23 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "pg",
 					sortKey: "slot_PG"
+				},
+
+				{
+					...defGameInfo.Casino_FaChai,
+					parameter: defGameInfo.Casino_FaChai,
+					spanText: "Fa Chai",
+					img: `${cloudBannerImgURL}/h5/img/fachai.png`,
+					path: path.casino.root,
+					providerImgName: "",
+					sortKey: "slot_FaChai",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_fachai)
+						}
+					],
+					allowCurrency: allowedCurrencyList.FaChai
 				},
 				{
 					...defGameInfo.Casino_MGP,
@@ -1416,6 +1431,7 @@ export const defGameInfo = {
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
