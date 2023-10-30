@@ -66,11 +66,12 @@ export const defGameInfo = {
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
+	Casino_PNG: { tpId: 54, tpGameType: 105 },
+
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
-	Casino_PNG: { tpId: 54, tpGameType: 105 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
@@ -273,6 +274,13 @@ export const slotPlatform = [
 		path: path.casino.root,
 		imgName: "cq9"
 	},
+
+	{
+		...defGameInfo.Casino_PNG,
+		path: path.casino.root,
+		imgName: "png"
+	},
+
 	{
 		...defGameInfo.casino_ICG,
 		path: path.casino.root,
@@ -304,6 +312,7 @@ export const defSlotTpGameType = {
 	SG: { tpId: 10, tpGameType: 15 },
 	PG: { tpId: 14, tpGameType: 17 },
 	CQ9: { tpId: 16, tpGameType: 29 },
+	PNG: { tpId: 54, tpGameType: 105 },
 	Iconic: { tpId: 24, tpGameType: 39 },
 	// 新的 PlayTech (Seamless Wallet)
 	PlayTech: { tpId: 51, tpGameType: 100 },
@@ -316,7 +325,9 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	SPRIBE: { tpId: 53, tpGameType: 104 }
+	SPRIBE: { tpId: 53, tpGameType: 104 },
+	Endorphina: { tpId: 49, tpGameType: 98 },
+	FaChai: { tpId: 55, tpGameType: 106 }
 };
 
 export const sportStreamDef = {

@@ -58,7 +58,7 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_AMB,
 		path: path.casino.root,
-		imgName: "casino_amb",
+		imgName: "casino_askme",
 		allowCurrencies: allowedCurrencyList.slotAMB
 	},
 	{
@@ -193,7 +193,17 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Endorphina,
-		imgName: "casino_end",
+		imgName: "casino_es",
+		path: path.casino.root
+	},
+	{
+		...defGameInfo.Casino_FaChai,
+		imgName: "casino_fachai",
+		path: path.casino.root
+	},
+	{
+		...defGameInfo.casino_PNG,
+		imgName: "png",
 		path: path.casino.root
 	},
 	{

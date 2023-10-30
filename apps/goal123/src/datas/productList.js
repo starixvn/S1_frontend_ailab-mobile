@@ -217,8 +217,8 @@ export const defSlotTpGameType = {
 	Skywind: { tpId: 43, tpGameType: 82 },
 	SimplePlay: { tpId: 44, tpGameType: 86 },
 	Nextspin: { tpId: 50, tpGameType: 99 },
-	Endorphina: { tpId: 49, tpGameType: 98 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
+	Endorphina: { tpId: 49, tpGameType: 98 },
 	FaChai: { tpId: 55, tpGameType: 106 }
 };
 
@@ -681,10 +681,10 @@ const gameList = [
 			{
 				...defGameInfo.Casino_Endorphina,
 				parameter: defGameInfo.Casino_Endorphina,
-				spanText: "Endorphina",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-endorphina.png`,
+				spanText: "ES",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-es.png`,
 				path: path.casino.root,
-				providerImgName: "endorphina",
+				providerImgName: "es",
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -964,8 +964,8 @@ const gameList = [
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				spanText: "eBET",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ebet.png`
+				spanText: "WE",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-we.png`
 			}
 		]
 	}
