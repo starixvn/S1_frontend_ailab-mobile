@@ -53,7 +53,7 @@ const IndexPage = props => {
 	const filteredSettingTabs = Object.fromEntries(
 		Object.entries(filteredDefTabs()).filter(([_, tabs]) => {
 			if (!tabs.type) return true;
-			const result = withdrawalSettingTypeList.find(typeEnum => {
+			const result = withdrawalSettingTypeList?.find(typeEnum => {
 				return typeEnum.type === tabs.type;
 			})?.status;
 			return result;
