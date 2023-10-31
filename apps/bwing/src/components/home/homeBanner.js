@@ -23,7 +23,6 @@ export const HomeBanner = () => {
 			<SwipperBanner
 				ImgFolder={[defBannerType.Promotions]}
 				params={swipperParam}
-				swiperClass="hotevent"
 			/>
 		</div>
 	);
