@@ -8,7 +8,6 @@ import {
 	ProcessBar,
 	CashBackInfo
 } from "@ailab-mobile/promotion";
-import { useTranslation } from "react-i18next";
 import { popBoxContext } from "../../common/context";
 import PromoRule from "../components/promoRule";
 
@@ -18,7 +17,6 @@ const PromotionInInfoContent = ({
 	config,
 	filterType
 }) => {
-	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { refreshProcessBar, processBarInfo } = useRefreshProcessBar({
 		config
@@ -30,7 +28,6 @@ const PromotionInInfoContent = ({
 		<div id="popup" className="promotion-inner active">
 			<div className="pop">
 				<div className="popTit">
-					{t("lbl_Promotion")}
 					<div
 						className="icon icon-close"
 						onClick={() => setPopBox({ isOpen: false })}
