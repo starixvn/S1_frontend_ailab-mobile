@@ -58,23 +58,33 @@ const IndexPage = props => {
 		return defTab;
 	};
 
-	// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
-	// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
-	if (
-		location.pathname.split("/")[2] === path.withdrawal.root &&
-		Object.keys(filteredSettingTabs()?.withdrawal?.subTabs)?.length !== 0 &&
-		!Object.hasOwn(filteredSettingTabs()?.withdrawal?.subTabs, "withdrawal")
-	) {
-		navigate(
-			`/${userInfo.langId}/${
-				Object.values(filteredSettingTabs()?.withdrawal?.subTabs)[0]?.to
-			}`
-		);
-	}
-
 	const header = <TabPage defTabs={filteredSettingTabs()} />;
 
 	useEffect(() => {
+		console.log(
+			Object.keys(filteredSettingTabs()?.withdrawal?.subTabs)?.length
+		);
+		// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
+		// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
+		if (
+			location.pathname.split("/")[2] === path.withdrawal.root &&
+			Object.keys(filteredSettingTabs()?.withdrawal?.subTabs)?.length !==
+				0 &&
+			filteredSettingTabs()?.withdrawal?.subTabs?.withdrawal === undefined
+		) {
+			navigate(
+				`/${userInfo.langId}/${
+					Object.values(filteredSettingTabs()?.withdrawal?.subTabs)[0]
+						?.to
+				}`
+			);
+		} else if (
+			Object.keys(filteredSettingTabs()?.withdrawal?.subTabs)?.length ===
+			0
+		) {
+			navigate(`/${userInfo.langId}/${path.withdrawalHistory.root}`);
+		}
+
 		if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
 			navigate(`/${userInfo.langId}/${path.cryptoWithdrawal.root}`);
 		}
