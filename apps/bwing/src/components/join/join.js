@@ -669,7 +669,7 @@ const Join = () => {
 									})}
 									id="joinAgreeCheck"
 									className="checkbox-group">
-									<div>{t("lbl_SighUpTerms")}</div>
+									<div>{t("lbl_SignUpTerms")}</div>
 								</Checkbox>
 							</div>
 
