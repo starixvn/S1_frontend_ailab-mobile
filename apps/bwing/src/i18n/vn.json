@@ -575,7 +575,7 @@
   "lbl_SettledDate": "Ngày thanh toán",
   "lbl_SettledTime": "Thời gian thanh toán",
   "lbl_Share_with_friend": "Những phần thưởng hấp dẫn đang chờ bạn. Giới thiệu bạn cùng chơi ngay hôm nay!",
-  "lbl_SighUpTerms": "Tôi đồng ý với Điều Khoản và Điều Kiện và Quy Tắc và Quy Định Đặt Cược của Bwing. Tôi xác nhận tôi đã trên 18 tuổi",
+  "lbl_SignUpTerms": "Tôi đồng ý với Điều Khoản và Điều Kiện và Quy Tắc và Quy Định Đặt Cược của Bwing. Tôi xác nhận tôi đã trên 18 tuổi",
   "lbl_SignUp": "ĐĂNG KÝ",
   "lbl_Silver_Club": "HẠNG BẠC",
   "lbl_SiteNews": "Điểm báo Bwing",
@@ -862,5 +862,7 @@
   "msg_iconForWorldCup": "Biểu tượng cho FIFA World Cup",
   "msg_ticketBeenUsed": "Vé này đã sử dụng",
   "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "msg_worldCuptitleIntro": "Khi các tín đồ bóng đá háo hức hội tụ chuẩn bị cho FIFA World Cup Qatar 2022, biểu tượng của giải đấu như ngọn hải đăng lan tỏa toàn cầu, dẫn lối đến giải đấu nơi mà mọi thứ đều có thể dễ dàng tiếp cận."
+  "msg_worldCuptitleIntro": "Khi các tín đồ bóng đá háo hức hội tụ chuẩn bị cho FIFA World Cup Qatar 2022, biểu tượng của giải đấu như ngọn hải đăng lan tỏa toàn cầu, dẫn lối đến giải đấu nơi mà mọi thứ đều có thể dễ dàng tiếp cận.",
+  "null": "",
+  "Traditional_Lottery": "Traditional Lottery"
 }
