@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "to",
   "msg_WrongAmount": "Wrong amount",
   "msg_ticketBeenUsed": "The ticket has been used.",
-  "msg_ticketNotBeenActivated": "Ticket not available."
+  "msg_ticketNotBeenActivated": "Ticket not available.",
+  "lbl_SelectBank_Required": "Please select bank accounts"
 }

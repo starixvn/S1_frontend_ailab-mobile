@@ -762,5 +762,6 @@
   "msg_changePswSuccessHint": "Bạn có thể sử dụng mật khẩu mới ở lần đăng nhập tiếp theo.",
   "msg_changePswUpdateSuccess": "Cập nhật thành công mật khẩu!",
   "msg_ticketBeenUsed": "Vé này đã sử dụng",
-  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt."
+  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
+  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
 }

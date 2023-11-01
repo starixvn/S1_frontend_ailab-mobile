@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "hingga",
   "msg_WrongAmount": "Amaun yang salah",
   "msg_ticketBeenUsed": "Tiket telah digunakan.",
-  "msg_ticketNotBeenActivated": "Tiket belum diaktifkan."
+  "msg_ticketNotBeenActivated": "Tiket belum diaktifkan.",
+  "lbl_SelectBank_Required": "Sila pilih akaun bank"
 }

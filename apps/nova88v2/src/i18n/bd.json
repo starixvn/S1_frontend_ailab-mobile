@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "",
   "msg_WrongAmount": "ভুল পরিমাণ",
   "msg_ticketBeenUsed": "",
-  "msg_ticketNotBeenActivated": ""
+  "msg_ticketNotBeenActivated": "",
+  "lbl_SelectBank_Required": "অনুগ্রহ করে ব্যাংক অ্যাকাউন্ট নির্বাচন করুন"
 }

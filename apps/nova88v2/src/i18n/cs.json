@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "开始 至",
   "msg_WrongAmount": "金额错误",
   "msg_ticketBeenUsed": "票卷已被使用",
-  "msg_ticketNotBeenActivated": "尚未激活票卷"
+  "msg_ticketNotBeenActivated": "尚未激活票卷",
+  "lbl_SelectBank_Required": "请选择银行账户"
 }

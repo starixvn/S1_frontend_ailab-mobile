@@ -762,5 +762,6 @@
   "msg_changePswSuccessHint": "You can use the new password when you login in next time.",
   "msg_changePswUpdateSuccess": "The update is successful!",
   "msg_ticketBeenUsed": "The ticket has been used.",
-  "msg_ticketNotBeenActivated": "Ticket not available."
+  "msg_ticketNotBeenActivated": "Ticket not available.",
+  "lbl_SelectBank_Required": "Please select bank accounts"
 }

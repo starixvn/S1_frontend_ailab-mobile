@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "",
   "msg_WrongAmount": "ग़लत राशि",
   "msg_ticketBeenUsed": "टिकट का इस्तेमाल किया गया है।",
-  "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।"
+  "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।",
+  "lbl_SelectBank_Required": "कृपया बैंक खातों का चयन करें"
 }

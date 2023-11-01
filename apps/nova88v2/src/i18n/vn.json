@@ -881,5 +881,6 @@
   "msg_WorldCupTo": "đến",
   "msg_WrongAmount": "Số tiền sai",
   "msg_ticketBeenUsed": "Số vé đã sử dụng",
-  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt."
+  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
+  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
 }
