@@ -43,15 +43,17 @@ const IndexPage = props => {
 	const filteredSettingTabs = () => {
 		// * 這裡是多層結構且 defTabs 用 let --> 必須做深層拷貝
 		const defTab = JSON.parse(JSON.stringify(defTabs));
-		const subTabs = Object.fromEntries(
-			Object.entries(defTabs.withdrawal.subTabs).filter(([_, tabs]) => {
+		const subTabs = Object.entries(defTabs.withdrawal.subTabs)
+			.filter(([_, tabs]) => {
 				if (!tabs.type) return true;
 				const result = withdrawalSettingTypeList?.find(typeEnum => {
 					return typeEnum.type === tabs.type;
 				})?.status;
 				return result;
 			})
-		);
+			?.reduce((acc, cur) => {
+				return { ...acc, [cur[0]]: { ...cur[1] } };
+			}, {});
 
 		defTab.withdrawal.subTabs = subTabs;
 
