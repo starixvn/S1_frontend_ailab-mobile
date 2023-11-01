@@ -6226,7 +6226,7 @@ header {
   padding: 10vw 6vw 4vw;
   overflow-x: hidden;
 }
-.login-module > div, .join-module > div {
+.login-module > div, .login-module form, .join-module > div, .join-module form {
   text-align: center;
 }
 .login-module .swiper-container, .join-module .swiper-container {

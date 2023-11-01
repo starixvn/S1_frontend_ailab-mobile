@@ -78,7 +78,8 @@ const Login = () => {
 		}));
 	};
 
-	const handleLogin = () => {
+	const handleLogin = e => {
+		e.preventDefault();
 		const checked = userValue.UserName !== "" && userValue.Password !== "";
 
 		if (checked) {
@@ -160,8 +161,9 @@ const Login = () => {
 
 	return (
 		<div className={`login-module popup ${classNames({ active: isShow })}`}>
-			<div>
+			<form onSubmit={handleLogin}>
 				<button
+					type="button"
 					className="icon-close-white-bg"
 					onClick={() => {
 						setNav(null);
@@ -221,8 +223,11 @@ const Login = () => {
 					onClick={() => setNav(null)}>
 					{t("lbl_ForgetPassword")}
 				</Link>
-				<div onClick={handleLogin} className="btn-group">
-					<button className="btn-primary"> {t("lbl_Login")}</button>
+				<div className="btn-group">
+					<button type="submit" className="btn-primary">
+						{" "}
+						{t("lbl_Login")}
+					</button>
 				</div>
 				<div className="login-message">
 					{t("lbl_DontHaveAccount")}
@@ -230,7 +235,7 @@ const Login = () => {
 						{t("lbl_SignUp")}
 					</a>
 				</div>
-			</div>
+			</form>
 			<div className="join-bottominfo">{t("lbl_PoweredBy")} Bong88</div>
 		</div>
 	);
