@@ -295,9 +295,11 @@
   "lbl_FishingGG": "捕鱼天下",
   "lbl_FishingSG1": "捕鱼天王",
   "lbl_FishingSG2": "捕鱼大战",
+  "lbl_Fishing_Alien_Hunter": "异形猎人",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "玩翻丧尸",
   "lbl_ForgetPassword": "忘记您的密码",
   "lbl_ForgetPwdHint": "若您忘记您的用户名或密码，请提供您的电子邮件后我们将寄新密码至您的邮箱。",
   "lbl_Free": "免费",
@@ -879,8 +881,5 @@
   "msg_WorldCupTo": "开始 至",
   "msg_WrongAmount": "金额错误",
   "msg_ticketBeenUsed": "票卷已被使用",
-  "msg_ticketNotBeenActivated": "尚未激活票卷",
-  "lbl_Fishing_Zombie_Party": "玩翻丧尸",
-  "lbl_Fishing_Alien_Hunter": "异形猎人",
-  "lbl_SelectBank_Required": "请选择银行账户"
+  "msg_ticketNotBeenActivated": "尚未激活票卷"
 }

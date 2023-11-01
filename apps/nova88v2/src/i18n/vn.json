@@ -126,7 +126,7 @@
   "lbl_Check18TC2": "và",
   "lbl_Check18TC3": "của",
   "lbl_Check18TC4": "Tôi xác nhận tôi đã trên 21 tuổi",
-  "lbl_Check18TCTooltip": "Vui lòng bấm vào ô bên trên để xác nhận các yêu cầu đăng ký tài khoản.",
+  "lbl_Check18TCTooltip": "Vui lòng bấm vào ô bên dưới để xác nhận các yêu cầu đăng ký tài khoản.",
   "lbl_CheckConfirm": "Bạn có chắc muốn xóa? Không thể khôi phục lại sau khi xóa!",
   "lbl_City": "Thành phố",
   "lbl_ClaimAmount": "Số tiền đạt",
@@ -295,9 +295,11 @@
   "lbl_FishingGG": "Thánh bắn cá",
   "lbl_FishingSG1": "Bắn cá giao đấu",
   "lbl_FishingSG2": "Thế giới bắn cá",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "Quên ID hoặc mật khẩu?",
   "lbl_ForgetPwdHint": "Nếu bạn quên tên đăng nhập hoặc mật khẩu, vui lòng cung cấp email của bạn, chúng tôi sẽ gửi mật khẩu mới đến địa chỉ email mà bạn đã đăng ký.",
   "lbl_Free": "Chơi Thử",
@@ -879,8 +881,5 @@
   "msg_WorldCupTo": "đến",
   "msg_WrongAmount": "Số tiền sai",
   "msg_ticketBeenUsed": "Số vé đã sử dụng",
-  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
+  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt."
 }

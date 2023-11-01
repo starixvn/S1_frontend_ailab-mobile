@@ -245,6 +245,8 @@
   "lbl_FishingGG": "Fishing World",
   "lbl_FishingSG1": "Fishing God",
   "lbl_FishingSG2": "Fishing War",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_FootballBetting": "Football Betting",
   "lbl_ForgetPassword": "Forgot your Password ",
   "lbl_ForgetPwdSuccess": "Your new password has been sent to your registered e-mail address.",
@@ -760,8 +762,5 @@
   "msg_changePswSuccessHint": "You can use the new password when you login in next time.",
   "msg_changePswUpdateSuccess": "The update is successful!",
   "msg_ticketBeenUsed": "The ticket has been used.",
-  "msg_ticketNotBeenActivated": "Ticket not available.",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Please select bank accounts"
+  "msg_ticketNotBeenActivated": "Ticket not available."
 }

@@ -295,9 +295,11 @@
   "lbl_FishingGG": "Dunia Pancing",
   "lbl_FishingSG1": "Pancingan Tuhan",
   "lbl_FishingSG2": "Perang Pancing",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "Lupa ID atau Kata Sandi",
   "lbl_ForgetPwdHint": "Jika anda lupa username dan password anda, silakan konfirmasi email anda dan kami akan mengirimkan password baru anda ke email terdaftar anda.",
   "lbl_Free": "Gratis",
@@ -879,8 +881,5 @@
   "msg_WorldCupTo": "hingga",
   "msg_WrongAmount": "Salah jumlah",
   "msg_ticketBeenUsed": "Tiket yang telah digunakan",
-  "msg_ticketNotBeenActivated": "Tiket yang belum aktif",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Pilih rekening bank"
+  "msg_ticketNotBeenActivated": "Tiket yang belum aktif"
 }
