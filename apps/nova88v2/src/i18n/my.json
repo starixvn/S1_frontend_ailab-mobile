@@ -295,9 +295,11 @@
   "lbl_FishingGG": "Fishing World",
   "lbl_FishingSG1": "Fishing God",
   "lbl_FishingSG2": "Fishing War",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "Terlupa Kata Laluan anda",
   "lbl_ForgetPwdHint": "Jika anda terlupa nama pengguna atau kata laluan anda, sila beri butiran e-mel anda dan kami akan hantar kata laluan yang baru ke alamat e-mel berdaftar atas nama anda.",
   "lbl_Free": "Percuma",
@@ -880,9 +882,5 @@
   "msg_WrongAmount": "Amaun yang salah",
   "msg_ticketBeenUsed": "Tiket telah digunakan.",
   "msg_ticketNotBeenActivated": "Tiket belum diaktifkan.",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "Sila pilih akaun bank",
-  "Traditional_Lottery": "Traditional Lottery",
-  "lbl_V8Poker": "V8Poker"
+  "lbl_SelectBank_Required": "Sila pilih akaun bank"
 }

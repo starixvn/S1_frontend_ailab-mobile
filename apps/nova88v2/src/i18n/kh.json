@@ -295,9 +295,11 @@
   "lbl_FishingGG": "ពិភពបាញ់ត្រី",
   "lbl_FishingSG1": "ព្រះបាញ់ត្រី",
   "lbl_FishingSG2": "សង្គ្រាមបាញ់ត្រី",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "ត្រីហៃបា",
   "lbl_Fishing_Hunting_Happy_Fish_5": "ត្រីរីករាយ ៥",
   "lbl_Fishing_Hunting_Monster_Awaken": "បិសាចភ្ញាក់ដឹងខ្លួន",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "ភ្លេចពាក្យសម្ងាត់របស់អ្នក",
   "lbl_ForgetPwdHint": "ប្រសិនបើអ្នកភ្លេចឈ្មោះអ្នកប្រើប្រាស់ ឬពាក្យសម្ងាត់របស់អ្នក សូមផ្ដល់អ៊ីម៉ែលរបស់អ្នក ហើយយើងនឹងផ្ញើពាក្យសម្ងាត់ថ្មីរបស់អ្នកទៅកាន់អាសយដ្ឋានអ៊ីម៉ែលរបស់អ្នកដែលបានចុះឈ្មោះ ។",
   "lbl_Free": "ឥតគិតថ្លៃ",
@@ -880,9 +882,5 @@
   "msg_WrongAmount": "ចំនួនទឹកប្រាក់ខុស",
   "msg_ticketBeenUsed": "The ticket has been used.",
   "msg_ticketNotBeenActivated": "Ticket not available.",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
-  "lbl_SelectBank_Required": "សូមជ្រើសរើសគណនីធនាគារ",
-  "Traditional_Lottery": "Traditional Lottery",
-  "lbl_V8Poker": "V8Poker"
+  "lbl_SelectBank_Required": "សូមជ្រើសរើសគណនីធនាគារ"
 }
