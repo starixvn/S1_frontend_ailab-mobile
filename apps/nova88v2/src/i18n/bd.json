@@ -295,9 +295,11 @@
   "lbl_FishingGG": "ফিশিং ওয়ার্ল্ড",
   "lbl_FishingSG1": "ফিশিং গড",
   "lbl_FishingSG2": "ফিশিং ওয়ার",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "ফিশ হাইবা",
   "lbl_Fishing_Hunting_Happy_Fish_5": "হ্যাপি ফিশ ৫",
   "lbl_Fishing_Hunting_Monster_Awaken": "মনস্টার এওকেন",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "আপনি কি পাসওয়ার্ড ভুলে গেছেন",
   "lbl_ForgetPwdHint": "আপনি আপনার ব্যবহারকারীর নাম বা পাসওয়ার্ড ভুলে গেছেন? অনুগ্রহ করে আপনার ইমেল প্রদান করুন এবং আমরা আপনার নিবন্ধিত ইমেল ঠিকানায় আপনার জন্য একটি নতুন পাসওয়ার্ড পাঠাব।",
   "lbl_Free": "বিনামূল্যে",
@@ -880,7 +882,5 @@
   "msg_WrongAmount": "ভুল পরিমাণ",
   "msg_ticketBeenUsed": "",
   "msg_ticketNotBeenActivated": "",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_SelectBank_Required": "অনুগ্রহ করে ব্যাংক অ্যাকাউন্ট নির্বাচন করুন"
 }
