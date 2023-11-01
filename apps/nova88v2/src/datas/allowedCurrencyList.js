@@ -96,6 +96,67 @@ const allowedCurrencyList = {
 		defCurrenyId.KHM,
 		defCurrenyId.VND
 	],
+
+	liveCasino_N2: [
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	liveCasinoSkywind: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	liveCasinoMG: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	liveCasinoPlayTech: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	liveCasinoDG: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	liveCasinoSA: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
 	allbet: [defCurrenyId.MYR, defCurrenyId.IDR, defCurrenyId.THB],
 
 	// slot
@@ -117,7 +178,56 @@ const allowedCurrencyList = {
 		defCurrenyId.USDT
 	],
 	slotPegasus: [defCurrenyId.MYR],
-
+	slotSimplePlay: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	slotMicrogaming: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	slotPGSoft: [
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	slotSkyWind: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
+	slotPlayTech: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
 	// game
 	mPoker: [defCurrenyId.THB],
 	amb: [defCurrenyId.THB],

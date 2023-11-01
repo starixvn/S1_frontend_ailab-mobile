@@ -588,13 +588,15 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.skywind)
 						}
-					]
+					],
+					allowCurrency: allowedCurrencyList.liveCasinoSkywind
 				},
 				{
 					...defGameInfo.LIVEcasinoMG,
 					spanText: "Microgaming",
 					img: `${cloudBannerImgURL}/h5/img/mgp.png`,
-					sortKey: "casino_MG"
+					sortKey: "casino_MG",
+					allowCurrency: allowedCurrencyList.liveCasinoMG
 				},
 				{
 					...defGameInfo.LIVEcasinoEVO,
@@ -607,13 +609,15 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasino_PlayTech,
 					spanText: "PlayTech",
 					img: `${cloudBannerImgURL}/h5/img/ptc.png`,
-					sortKey: "casino_Playtech"
+					sortKey: "casino_Playtech",
+					allowCurrency: allowedCurrencyList.liveCasinoPlayTech
 				},
 				{
 					...defGameInfo.LIVEcasinoN2Live,
 					spanText: "n2-LIVE",
 					img: `${cloudBannerImgURL}/h5/img/n2.png`,
-					sortKey: "casino_N2LIVE"
+					sortKey: "casino_N2LIVE",
+					allowCurrency: allowedCurrencyList.liveCasino_N2
 				},
 				{
 					...defGameInfo.LIVEcasinoWM,
@@ -639,7 +643,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoSA,
 					spanText: "SA Gaming",
 					img: `${cloudBannerImgURL}/h5/img/sa.png`,
-					sortKey: "casino_SA"
+					sortKey: "casino_SA",
+					allowCurrency: allowedCurrencyList.liveCasinoSA
 				},
 				{
 					...defGameInfo.LIVEcasinoAE,
@@ -651,7 +656,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoDG,
 					spanText: "Dream Gaming",
 					img: `${cloudBannerImgURL}/h5/img/dg.png`,
-					sortKey: "casino_DG"
+					sortKey: "casino_DG",
+					allowCurrency: allowedCurrencyList.liveCasinoDG
 				},
 				{
 					...defGameInfo.LIVEcasinoAG,
@@ -735,7 +741,8 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/pg.png`,
 					path: path.casino.root,
 					providerImgName: "pg",
-					sortKey: "slot_PG"
+					sortKey: "slot_PG",
+					allowCurrency: allowedCurrencyList.slotPGSoft
 				},
 
 				{
@@ -761,7 +768,8 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/mg.png`,
 					path: path.casino.root,
 					providerImgName: "mg",
-					sortKey: "slot_MGPSW"
+					sortKey: "slot_MGPSW",
+					allowCurrency: allowedCurrencyList.slotMicrogaming
 				},
 				{
 					...defGameInfo.Casino_Jili,
@@ -914,7 +922,8 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.casino_SimplePlay)
 						}
-					]
+					],
+					allowCurrency: allowedCurrencyList.slotSimplePlay
 				},
 				{
 					...defGameInfo.Casino_Skywind,
@@ -929,7 +938,8 @@ const gameList = ({ langId, currencyId }) => {
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.skywind)
 						}
-					]
+					],
+					allowCurrency: allowedCurrencyList.slotSkyWind
 				},
 				// 新的 PlayTech (Seamless Wallet)
 				{
@@ -939,7 +949,8 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/pt.png`,
 					path: path.casino.root,
 					providerImgName: "pt",
-					sortKey: "slot_Playtech"
+					sortKey: "slot_Playtech",
+					allowCurrency: allowedCurrencyList.slotPlayTech
 				},
 				{
 					...defGameInfo.Casino_918Kiss,
