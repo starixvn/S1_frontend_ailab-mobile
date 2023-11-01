@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "@reach/router";
-import { defNavPanel, navContext } from "../common/context";
+import { defNavPanel, navContext, popBoxContext } from "../common/context";
 import gameList, { defCol, openGameType } from "../../datas/productList";
 import { getEventIcon } from "./category";
 import { GET_ENTER_PAGE, defAppType } from "../../service/enterPage";
@@ -27,6 +27,7 @@ const swipperParam = {
 const Menu = ({ i18n, userInfo }) => {
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
