@@ -50,15 +50,17 @@ const IndexPage = props => {
 	// * 這裡的篩選是從後台 payment Gateway --> Withdrawal Option Status
 	// * 因有多個參數控制同個元件的情形 ex:isShowEWallet 所以這裡分開寫
 
-	const filteredSettingTabs = Object.fromEntries(
-		Object.entries(filteredDefTabs()).filter(([_, tabs]) => {
+	const filteredSettingTabs = Object.entries(filteredDefTabs())
+		.filter(([_, tabs]) => {
 			if (!tabs.type) return true;
 			const result = withdrawalSettingTypeList?.find(typeEnum => {
 				return typeEnum.type === tabs.type;
 			})?.status;
 			return result;
 		})
-	);
+		?.reduce((acc, cur) => {
+			return { ...acc, [cur[0]]: { ...cur[1] } };
+		}, {});
 
 	useEffect(() => {
 		// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
