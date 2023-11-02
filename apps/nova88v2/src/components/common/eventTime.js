@@ -21,6 +21,7 @@ export const eventTime = {
 		startDate: "2021/11/10 11:00:00",
 		endDate: "2021/12/31 23:59:59"
 	},
+	casino_Pegasus: { endDate: "2023/12/02 23:59:59" },
 	casino_NetEnt: { endDate: "2021/12/15 11:00:00" },
 	casino_AdvantPlay: { endDate: "2022/02/25 11:00:00" },
 	liveCasino_EVO: { endDate: "2021/12/15 11:00:00" },
