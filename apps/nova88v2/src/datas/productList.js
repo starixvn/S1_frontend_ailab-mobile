@@ -706,23 +706,8 @@ const gameList = ({ langId, currencyId }) => {
 					parameter: defGameInfo.Casino_Endorphina,
 					spanText: "ES",
 					providerImgName: "casino_es",
-					img: `${cloudBannerImgURL}/h5/img/es.png`,
-					path: path.casino.root,
-					sortKey: "slot_AdvantPlay"
-				},
-				{
-					...defGameInfo.Casino_Endorphina,
-					parameter: defGameInfo.Casino_Endorphina,
-					spanText: "Endorphina",
-					providerImgName: "casino_endorphina",
 					img: `${cloudBannerImgURL}/h5/img/endorphina.png`,
 					path: path.casino.root,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.casino_Endorphina)
-						}
-					],
 					sortKey: "slot_Endorphina"
 				},
 				{
