@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-	JoinBtn,
-	CanJoin,
-	ProcessBar,
-	DetailBtn
-} from "@ailab-mobile/promotion";
+import { JoinBtn, ProcessBar, DetailBtn } from "@ailab-mobile/promotion";
 
 const PromotionCard = ({
 	p,
@@ -27,16 +22,18 @@ const PromotionCard = ({
 			promoStyle = uiSetting?.defPromoDisplayStyle?.claimed;
 		} else if (_isNew && uiSetting?.defPromoDisplayStyle?.new) {
 			promoStyle = uiSetting?.defPromoDisplayStyle?.new;
-		} else if (
-			(!CanJoin({
-				canJoin: p.canJoin,
-				filterType: p.filterType ?? filterType
-			}) ||
-				p.beenUsed) &&
-			uiSetting?.defPromoDisplayStyle?.expired
-		) {
-			promoStyle = uiSetting?.defPromoDisplayStyle?.expired;
 		}
+		// 此段 expired 顯示邏輯因市場需求調整 先隱藏處理 如果後來需求有做調整在打開
+		// else if (
+		// 	(!CanJoin({
+		// 		canJoin: p.canJoin,
+		// 		filterType: p.filterType ?? filterType
+		// 	}) ||
+		// 		p.beenUsed) &&
+		// 	uiSetting?.defPromoDisplayStyle?.expired
+		// ) {
+		// 	promoStyle = uiSetting?.defPromoDisplayStyle?.expired;
+		// }
 
 		return promoStyle;
 	};
