@@ -17,6 +17,7 @@
   "GPI_VNLottery": "VN Lottery",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "lbl_3rdPlace": "3rd Place",
   "lbl_5mins": "5 mins",
   "lbl_789Lottery": "789 Lottery",
@@ -575,8 +576,8 @@
   "lbl_SettledDate": "Settled Date",
   "lbl_SettledTime": "Settled Time",
   "lbl_Share_with_friend": "Attractive offers are waiting for you. Refer Your Friends Now!",
-  "lbl_SignUpTerms": "I agree to the Terms and Conditions and the Rules and Regulations of Bwing. I am at least 18 years of age.",
   "lbl_SignUp": "Sign Up",
+  "lbl_SignUpTerms": "I agree to the Terms and Conditions and the Rules and Regulations of Bwing. I am at least 18 years of age.",
   "lbl_Silver_Club": "SILVER CLUB",
   "lbl_SiteNews": "Bwing News",
   "lbl_Skip": "Skip",
@@ -862,7 +863,5 @@
   "msg_iconForWorldCup": "An icon for new FIFA World Cup",
   "msg_ticketBeenUsed": "The ticket has been used.",
   "msg_ticketNotBeenActivated": "Ticket not available.",
-  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach",
-  "null": "",
-  "Traditional_Lottery": "Traditional Lottery"
+  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach"
 }
