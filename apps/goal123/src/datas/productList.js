@@ -751,6 +751,20 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.Casino_FaChai,
+				parameter: defGameInfo.Casino_FaChai,
+				spanText: "Fa Chai",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-fachai.png`,
+				path: path.casino.root,
+				providerImgName: "",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.slot_fachai)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_MGP,
 				parameter: defGameInfo.Casino_MGP,
 				spanText: "Microgaming",

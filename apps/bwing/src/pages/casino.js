@@ -6,6 +6,10 @@ import {
 	defNavPanel,
 	navContext
 } from "../components/common/context";
+import {
+	defSpecialSetting,
+	defLoginGameType
+} from "../components/hook/useGotoGame";
 import { api_GetSlotGamePage } from "../service/api/game";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
@@ -49,38 +53,6 @@ const Casino = () => {
 
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
-	};
-
-	const clickPlay = (freePlay, randomGame = null) => {
-		const targetObj = !randomGame ? selGameInfo : randomGame;
-		if (freePlay || userInfo.isLogin) {
-			throttle(
-				() =>
-					GET_CASINO_ENTER_PAGE({
-						tpId: targetObj.tpId,
-						gameId: targetObj.gameId,
-						isFree: freePlay,
-						langId: userInfo.langId,
-						// execFunction:
-						// 	targetObj.tpId === defSpecialSetting.playTech
-						// 		? handleGoToGame.bind(this, {
-						// 				langId: userInfo.langId,
-						// 				tpId: targetObj.tpId,
-						// 				gameId: targetObj.gameId,
-						// 				isFun: freePlay,
-						// 				tpGameType:
-						// 					defSlotTpGameType.PT.tpGameType
-						// 		  })
-						// 		: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
-							obj => targetObj.tpId === obj.tpId
-						).tpGameType
-					}),
-				freePlay ? 0 : 5000
-			);
-		} else {
-			setNav(defNavPanel.login);
-		}
 	};
 
 	const handleCategoryActive = category => {
@@ -226,6 +198,105 @@ const Casino = () => {
 				content: String(error)
 			});
 			setLoading(false);
+		}
+	};
+
+	const randomArray = array => array.sort(() => Math.random() - 0.5);
+
+	const renderSlot = () => {
+		const targetList = slotDataList.find(
+			item => item[0] === activeCategory
+		);
+		const filterHandle = item => {
+			if (Object.keys(activeProvider).length > 0) {
+				return (
+					item.tpId === activeProvider?.tpId &&
+					Object.values(item.gameName).find(obj =>
+						obj.toLowerCase().includes(searchInput.toLowerCase())
+					)
+				);
+			}
+			return Object.values(item.gameName).find(obj =>
+				obj.toLowerCase().includes(searchInput.toLowerCase())
+			);
+		};
+		if (targetList) {
+			if (targetList[0] === "myFavorite") {
+				const tempList = [];
+				const resultList = [];
+				let storageStr = favoriteStr ?? "";
+				if (storageStr && storageStr.charAt(0) === "&") {
+					storageStr = storageStr.substring(1, storageStr.length);
+				}
+				const storageList = storageStr?.split("&") ?? [];
+				storageList.forEach(str => {
+					const chars = str.split("_");
+					tempList.push({
+						tpId: chars[0],
+						gameId: str.replace(`${chars[0]}_`, "")
+					});
+				});
+				const allList = slotDataList.find(item => item[0] === "all")[1];
+				tempList.forEach(favObj => {
+					const result = allList.find(
+						allObj =>
+							Number(allObj.tpId) === Number(favObj.tpId) &&
+							allObj.gameId === favObj.gameId
+					);
+					if (result) {
+						resultList.push(result);
+					}
+				});
+				const filterList = resultList.filter(item =>
+					filterHandle(item)
+				);
+				setGameList(filterList);
+			} else {
+				const filterList =
+					targetList[0] === "all" &&
+					Object.keys(activeProvider).length === 0
+						? randomArray(
+								targetList[1]?.filter(item =>
+									filterHandle(item)
+								)
+						  )
+						: targetList[1]?.filter(item => filterHandle(item));
+				setGameList(filterList);
+			}
+		}
+	};
+
+	const clickPlay = (freePlay, randomGame = null) => {
+		const targetObj = !randomGame ? selGameInfo : randomGame;
+		if (freePlay || userInfo.isLogin) {
+			throttle(
+				() =>
+					GET_CASINO_ENTER_PAGE({
+						tpId: targetObj.tpId,
+						gameId: targetObj.gameId,
+						isFree: freePlay,
+						langId: userInfo.langId,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null,
+						tpGameType: Object.values(defSlotTpGameType).find(
+							obj => targetObj.tpId === obj.tpId
+						).tpGameType
+					}),
+				freePlay ? 0 : 5000
+			);
+		} else {
+			setNav(defNavPanel.login);
 		}
 	};
 

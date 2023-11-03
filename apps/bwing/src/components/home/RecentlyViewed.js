@@ -3,6 +3,11 @@ import { useTranslation } from "react-i18next";
 import Swiper from "react-id-swiper";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
+import {
+	defSpecialSetting,
+	defLoginGameType,
+	useGotoGame
+} from "../hook/useGotoGame";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { productList } from "../../datas/defMenu";
 import path from "../../path";
@@ -12,7 +17,6 @@ import {
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
 import { defProductType } from "../../datas/productList";
-import { defSpecialSetting, useGotoGame } from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
 const RecentlyViewed = ({ recentlyViewedGames }) => {
@@ -114,13 +118,15 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 							isFree: false,
 							langId: userInfo.langId,
 							execFunction:
-								selectedTpId === defSpecialSetting.playTech
+								selectedTpId === defSpecialSetting.PG
 									? handleGoToGame.bind(this, {
 											langId: userInfo.langId,
 											tpId: selectedTpId,
 											gameId: selectedGameId,
 											isFun: false,
-											tpGameType: selectedTpGameType
+											tpGameType: selectedTpGameType,
+											loginGameType:
+												defLoginGameType.returnHtml
 									  })
 									: null,
 							tpGameType: selectedTpGameType

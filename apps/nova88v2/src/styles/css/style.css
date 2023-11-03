@@ -2408,6 +2408,7 @@ footer > a.active .circleAnimation::after {
   transition: 0.7s;
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&display=swap");
 }
 #popup.active {
   visibility: visible;
@@ -3543,6 +3544,77 @@ footer > a.active .circleAnimation::after {
   }
 }
 #popup.vninfopop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background-color: unset;
+}
+#popup.sponsorpop {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+}
+#popup.sponsorpop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.sponsorpop .sponsor {
+  background: rgba(0, 0, 0, 0);
+  margin-bottom: 15vw;
+  position: relative;
+  -webkit-animation: sponsor 0.3s linear 0.2s backwards;
+          animation: sponsor 0.3s linear 0.2s backwards;
+}
+#popup.sponsorpop .sponsor img {
+  display: block;
+  margin: 0 auto;
+  max-width: 85vw;
+}
+@-webkit-keyframes sponsor {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.95) translateY(1em);
+            transform: scale(0.95) translateY(1em);
+  }
+}
+@keyframes sponsor {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.95) translateY(1em);
+            transform: scale(0.95) translateY(1em);
+  }
+}
+#popup.sponsorpop .closepop {
+  cursor: pointer;
+  display: block;
+  width: 7vw;
+  position: absolute;
+  left: 50%;
+  bottom: -5vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.sponsorpop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
 }
 

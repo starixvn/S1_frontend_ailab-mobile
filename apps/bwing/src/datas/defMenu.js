@@ -482,19 +482,6 @@ export const productList = langId => {
 							inPeriod: isEventPeriod(eventTime.slot_Fachai)
 						}
 					]
-				},
-				{
-					...defGameInfo.Casino_PNG,
-					parameter: defGameInfo.Casino_PNG,
-					path: path.casino.root,
-					img: `${bannerImgUrl}/h5/img/slot/png.png`,
-					displayText: "Play' n GO",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_PNG)
-						}
-					]
 				}
 				// {
 				// 	...defGameInfo.casino_ICG,
