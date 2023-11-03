@@ -211,7 +211,7 @@ const IndexPage = () => {
 		};
 
 		const popUpStack = [
-			// displaySponsorshipPopup,
+			displaySponsorshipPopup,
 			displayPromotionPopup,
 			disclaimerForVnd
 		];
