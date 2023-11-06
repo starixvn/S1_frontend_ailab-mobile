@@ -431,6 +431,7 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		getNews();
+		getHotGameList();
 	}, [userInfo.langId]);
 
 	useEffect(() => {
