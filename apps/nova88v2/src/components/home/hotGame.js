@@ -20,7 +20,8 @@ const HotGame = ({ i18n, userInfo }) => {
 	useEffect(() => {
 		api.hotGame
 			.GetDataList({
-				currencyId: userInfo.currencyId
+				currencyId: userInfo.currencyId,
+				langId: userInfo.langId
 			})
 			.then(res => {
 				if (res.data.errorCode === 0) {
