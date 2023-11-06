@@ -863,5 +863,8 @@
   "msg_iconForWorldCup": "An icon for new FIFA World Cup",
   "msg_ticketBeenUsed": "The ticket has been used.",
   "msg_ticketNotBeenActivated": "Ticket not available.",
-  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach"
+  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach",
+  "null": "",
+  "lbl_Footer_Sports": "Sports",
+  "lbl_Footer_Promotion": "Promotion"
 }
