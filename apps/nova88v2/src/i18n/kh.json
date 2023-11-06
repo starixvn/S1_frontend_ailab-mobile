@@ -31,6 +31,7 @@
   "Label_Share": "ធ្វើការចែករំលែក",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "អ្នកផ្តល់សេវាហ្គេម",
   "lbl_2nd": "ជ័យលាភីលេខ ១",
   "lbl_3rd": "ជ័យលាភីលេខ ២",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "See More",
   "lbl_SelectAll": "ជ្រើសរើសទាំងអស់",
   "lbl_SelectBank": "ជ្រើសរើសធនាគារ",
+  "lbl_SelectBank_Required": "សូមជ្រើសរើសគណនីធនាគារ",
   "lbl_SelectChannel": "ជ្រើសរើសឆានែល",
   "lbl_SetHomePage": "កំណត់ជាទំព័រដើម",
   "lbl_SettledDate": "កាលបរិច្ឆេទទូទាត់",
@@ -693,6 +695,7 @@
   "lbl_Username": "ឈ្មោះ​អ្នកប្រើប្រាស់",
   "lbl_UsernameInvalid": "អក្សរក្រមលេខចន្លោះពី ៦-១៨ (A-Z, a-z, ០-៩) តួតែប៉ុណ្ណោះ។",
   "lbl_UsernameTooltip": "ដើម្បីសុវត្ថិភាព យើងសូមណែនាំអ្នកកុំប្រើឈ្មោះពិតក្នុងឈ្មោះអ្នកប្រើប្រាស់ របស់អ្នក។",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "វីអាយភី",
   "lbl_VIP_Club": "",
   "lbl_VIP_Diamond": "",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "to",
   "msg_WrongAmount": "ចំនួនទឹកប្រាក់ខុស",
   "msg_ticketBeenUsed": "The ticket has been used.",
-  "msg_ticketNotBeenActivated": "Ticket not available.",
-  "lbl_SelectBank_Required": "សូមជ្រើសរើសគណនីធនាគារ"
+  "msg_ticketNotBeenActivated": "Ticket not available."
 }

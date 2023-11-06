@@ -31,6 +31,7 @@
   "Label_Share": "Kongsi",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "Pembekal Permainan",
   "lbl_2nd": "Naib Johan Ke-1",
   "lbl_3rd": "Naib Johan Ke-2",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "See More",
   "lbl_SelectAll": "Pilih semual",
   "lbl_SelectBank": "Pilih Bank",
+  "lbl_SelectBank_Required": "Sila pilih akaun bank",
   "lbl_SelectChannel": "Pilih Saluran",
   "lbl_SetHomePage": "Tetapkan sebagai Halaman Utama",
   "lbl_SettledDate": "Tarikh Penyelesaian",
@@ -693,6 +695,7 @@
   "lbl_Username": "Nama Pengguna",
   "lbl_UsernameInvalid": "6-18 aksara alfaangka (A-Z, a-z, 0-9) sahaja.",
   "lbl_UsernameTooltip": "Untuk tujuan keselamatan, kami cadangkan nama pengguna anda tidak mengguna nama benar anda.",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "VIP",
   "lbl_VIP_Club": "",
   "lbl_VIP_Diamond": "",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "hingga",
   "msg_WrongAmount": "Amaun yang salah",
   "msg_ticketBeenUsed": "Tiket telah digunakan.",
-  "msg_ticketNotBeenActivated": "Tiket belum diaktifkan.",
-  "lbl_SelectBank_Required": "Sila pilih akaun bank"
+  "msg_ticketNotBeenActivated": "Tiket belum diaktifkan."
 }

@@ -31,6 +31,7 @@
   "Label_Share": "แชร์",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "ผู้ให้บริการเกม",
   "lbl_2nd": "รองชนะเลิศอันดับ 1",
   "lbl_3rd": "รองชนะเลิศอันดับ 2",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "See More",
   "lbl_SelectAll": "เลือกทั้งหมด",
   "lbl_SelectBank": "เลือกธนาคาร",
+  "lbl_SelectBank_Required": "กรุณาเลือกธนาคาร",
   "lbl_SelectChannel": "เลือกช่อง",
   "lbl_SetHomePage": "ตั้งเป็นโฮมเพจ",
   "lbl_SettledDate": "วันที่ทำรายการสำเร็จ",
@@ -693,6 +695,7 @@
   "lbl_Username": "ชื่อผู้ใช้",
   "lbl_UsernameInvalid": "ตัวอักษรและตัวเลข 6-18 ตัว (A-Z, a-z, 0-9) เท่านั้น",
   "lbl_UsernameTooltip": "เพื่อความปลอดภัยเราแนะนำให้คุณใช้ชื่อผู้ใช้ที่ไม่มีชื่อจริงของคุณ",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "VIP",
   "lbl_VIP_Club": "",
   "lbl_VIP_Diamond": "",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "ถึง",
   "msg_WrongAmount": "จำนวนเงินไม่ถูกต้อง",
   "msg_ticketBeenUsed": "ตั๋วที่ถูกใช้งานแล้ว",
-  "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน",
-  "lbl_SelectBank_Required": "กรุณาเลือกธนาคาร"
+  "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน"
 }

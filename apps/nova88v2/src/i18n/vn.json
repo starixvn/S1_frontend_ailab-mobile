@@ -31,6 +31,7 @@
   "Label_Share": "CHIA SẺ",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "Nhà cung cấp trò chơi",
   "lbl_2nd": "Giải Nhất ",
   "lbl_3rd": "Giải Nhì",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "Xem Thêm",
   "lbl_SelectAll": "Chọn hết",
   "lbl_SelectBank": "Chọn ngân hàng",
+  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng",
   "lbl_SelectChannel": "Chọn tài khoản nạp",
   "lbl_SetHomePage": "Đặt làm trang chủ",
   "lbl_SettledDate": "Ngày thanh toán",
@@ -693,6 +695,7 @@
   "lbl_Username": "Tên đăng nhập",
   "lbl_UsernameInvalid": "6-18 ký tự chữ và số (A-Z, a-z, 0-9)",
   "lbl_UsernameTooltip": "Để bảo mật, chúng tôi khuyến cáo tên đăng nhập không chứa tên thật của bạn",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "VIP",
   "lbl_VIP_Club": "Câu lạc bộ",
   "lbl_VIP_Diamond": "Kim cương",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "đến",
   "msg_WrongAmount": "Số tiền sai",
   "msg_ticketBeenUsed": "Số vé đã sử dụng",
-  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
+  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt."
 }

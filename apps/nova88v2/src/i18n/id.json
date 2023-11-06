@@ -31,6 +31,7 @@
   "Label_Share": "Bagikan",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "Penyedia permainan",
   "lbl_2nd": "JUARA 2",
   "lbl_3rd": "JUARA 3",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "See More",
   "lbl_SelectAll": "Pilih Semua",
   "lbl_SelectBank": "Pilih Bank",
+  "lbl_SelectBank_Required": "Pilih rekening bank",
   "lbl_SelectChannel": "Pilih Saluran",
   "lbl_SetHomePage": "Atur sebagai homepage",
   "lbl_SettledDate": "Tanggal di Selesaikan",
@@ -693,6 +695,7 @@
   "lbl_Username": "Nama pengguna",
   "lbl_UsernameInvalid": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) saja.",
   "lbl_UsernameTooltip": "Demi keamanan, kami menyarankan agar Username anda berbeda dengan nama asli anda.",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "VIP",
   "lbl_VIP_Club": "",
   "lbl_VIP_Diamond": "",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "hingga",
   "msg_WrongAmount": "Salah jumlah",
   "msg_ticketBeenUsed": "Tiket yang telah digunakan",
-  "msg_ticketNotBeenActivated": "Tiket yang belum aktif",
-  "lbl_SelectBank_Required": "Pilih rekening bank"
+  "msg_ticketNotBeenActivated": "Tiket yang belum aktif"
 }

@@ -31,6 +31,7 @@
   "Label_Share": "शेयर करना",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "ibi_GameProvider": "खेल प्रदाता",
   "lbl_2nd": "1st Runner Up",
   "lbl_3rd": "2nd Runner Up",
@@ -580,6 +581,7 @@
   "lbl_SeeMore": "See More",
   "lbl_SelectAll": "सभी का चयन करे",
   "lbl_SelectBank": "बैंक का चयन करें",
+  "lbl_SelectBank_Required": "कृपया बैंक खातों का चयन करें",
   "lbl_SelectChannel": "चैनल चुनें",
   "lbl_SetHomePage": "मुखपृष्ठ के रूप में स्थित करे",
   "lbl_SettledDate": "निस्तारण की तारीख",
@@ -693,6 +695,7 @@
   "lbl_Username": "उपयोगकर्ता नाम/ यूज़र नाम",
   "lbl_UsernameInvalid": "6-18 अल्फ़ान्यूमेरिक (A-Z, a-z, 0-9) ",
   "lbl_UsernameTooltip": "सुरक्षा के लिए, हम अनुशंसा करते हैं कि आपके उपयोगकर्ता नाम में आपका वास्तविक नाम शामिल न हो.",
+  "lbl_V8Poker": "V8Poker",
   "lbl_VIP": "वीआईपी",
   "lbl_VIP_Club": "",
   "lbl_VIP_Diamond": "",
@@ -881,6 +884,5 @@
   "msg_WorldCupTo": "",
   "msg_WrongAmount": "ग़लत राशि",
   "msg_ticketBeenUsed": "टिकट का इस्तेमाल किया गया है।",
-  "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।",
-  "lbl_SelectBank_Required": "कृपया बैंक खातों का चयन करें"
+  "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।"
 }
