@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
+import useClickOutside from "../hook/useClickOutSide";
 
 const Inputbox = ({
 	icon,
@@ -32,8 +33,12 @@ const Inputbox = ({
 	areaCode,
 	border,
 	hint,
-	isShowHint
+	activeInfoMsg,
+	setActiveInfoMsg
 }) => {
+	const ref = useClickOutside(() => {
+		setActiveInfoMsg("");
+	});
 	const { t } = useTranslation();
 	let Title = null;
 	const handlePaste = () => {
@@ -86,8 +91,10 @@ const Inputbox = ({
 						clickInfo={clickInfo}
 						border={border}
 					/>
-					{isShowHint && (
-						<div className="inputbox-tip-popup">{t(hint)}</div>
+					{activeInfoMsg !== "" && activeInfoMsg === hint && (
+						<div className="inputbox-tip-popup" ref={ref}>
+							{t(hint)}
+						</div>
 					)}
 				</div>
 				{isShowPaste && (
@@ -139,7 +146,8 @@ Inputbox.defaultProps = {
 	areaCode: null,
 	border: true,
 	hint: "",
-	isShowHint: false
+	activeInfoMsg: "",
+	setActiveInfoMsg: () => ""
 };
 
 Inputbox.propTypes = {
@@ -171,7 +179,8 @@ Inputbox.propTypes = {
 	areaCode: PropTypes.string,
 	border: PropTypes.bool,
 	hint: PropTypes.string,
-	isShowHint: PropTypes.bool
+	activeInfoMsg: PropTypes.string,
+	setActiveInfoMsg: PropTypes.func
 };
 
 export const IptStatus = ({ btnStatus, clickInfo, hideInfoBtn, border }) => {

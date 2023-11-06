@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { IptStatus } from "./inputbox.info";
+import useClickOutside from "../hook/useClickOutSide";
 
 const Inputbox = ({
 	placeholder,
@@ -18,8 +19,12 @@ const Inputbox = ({
 	border,
 	hideInfoBtn,
 	hint,
-	isShowHint
+	activeInfoMsg,
+	setActiveInfoMsg
 }) => {
+	const ref = useClickOutside(() => {
+		setActiveInfoMsg("");
+	});
 	const [showingPsw, setShowingPsw] = useState(false);
 	const { t } = useTranslation();
 	const showPswHandler = () => {
@@ -62,8 +67,10 @@ const Inputbox = ({
 						clickInfo={clickInfo}
 						border={border}
 					/>
-					{isShowHint && (
-						<div className="inputbox-tip-popup">{t(hint)}</div>
+					{activeInfoMsg !== "" && activeInfoMsg === hint && (
+						<div className="inputbox-tip-popup" ref={ref}>
+							{t(hint)}
+						</div>
 					)}
 				</div>
 			</div>
@@ -91,7 +98,8 @@ Inputbox.defaultProps = {
 	border: true,
 	hideInfoBtn: true,
 	hint: "",
-	isShowHint: false
+	activeInfoMsg: "",
+	setActiveInfoMsg: () => ""
 };
 
 Inputbox.propTypes = {
@@ -109,7 +117,8 @@ Inputbox.propTypes = {
 	border: PropTypes.bool,
 	hideInfoBtn: PropTypes.bool,
 	hint: PropTypes.string,
-	isShowHint: PropTypes.bool
+	activeInfoMsg: PropTypes.string,
+	setActiveInfoMsg: PropTypes.func
 };
 
 export default Inputbox;

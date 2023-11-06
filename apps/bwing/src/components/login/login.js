@@ -39,6 +39,7 @@ const Login = () => {
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const [userValue, setUserValue] = useState(initUserValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
+	const [activeInfoMsg, setActiveInfoMsg] = useState("");
 
 	const isShow =
 		nav === defNavPanel.login || pathname === `/${path.login.root}`;
@@ -69,13 +70,7 @@ const Login = () => {
 	};
 
 	const clickInfo = col => {
-		setInputStatus(prev => ({
-			...prev,
-			[col]: {
-				...prev[col],
-				isShowHint: !inputStatus[col].isShowHint
-			}
-		}));
+		setActiveInfoMsg(inputStatus[col].hint);
 	};
 
 	const handleLogin = e => {
@@ -105,8 +100,7 @@ const Login = () => {
 						UserName: {
 							checked: false,
 							msg: message,
-							hint: "lbl_UsernameTooltip",
-							isShowHint: false
+							hint: "lbl_UsernameTooltip"
 						}
 					}));
 				} else if (errorCode === 1001) {
@@ -115,8 +109,7 @@ const Login = () => {
 						Password: {
 							checked: false,
 							msg: message,
-							hint: "lbl_PasswordTooltip",
-							isShowHint: false
+							hint: "lbl_PasswordTooltip"
 						}
 					}));
 				}
@@ -137,14 +130,12 @@ const Login = () => {
 				UserName: {
 					checked: userNameCheck,
 					msg: userNameCheck ? "" : t("msg_UsernameReq"),
-					hint: "lbl_UsernameTooltip",
-					isShowHint: false
+					hint: "lbl_UsernameTooltip"
 				},
 				Password: {
 					checked: passwordCheck,
 					msg: passwordCheck ? "" : t("msg_PasswordReq"),
-					hint: "lbl_PasswordTooltip",
-					isShowHint: false
+					hint: "lbl_PasswordTooltip"
 				}
 			});
 		}
@@ -197,7 +188,8 @@ const Login = () => {
 					inputBoxNewClass="inputbox-item primary"
 					border={false}
 					hint={inputStatus.UserName.hint}
-					isShowHint={inputStatus.UserName.isShowHint}
+					activeInfoMsg={activeInfoMsg}
+					setActiveInfoMsg={setActiveInfoMsg}
 				/>
 
 				<InputboxPWD
@@ -213,8 +205,9 @@ const Login = () => {
 					inputBoxNewClass="inputbox-item primary"
 					border={false}
 					hint={inputStatus.Password.hint}
-					isShowHint={inputStatus.Password.isShowHint}
 					hideInfoBtn={false}
+					activeInfoMsg={activeInfoMsg}
+					setActiveInfoMsg={setActiveInfoMsg}
 				/>
 
 				<Link
