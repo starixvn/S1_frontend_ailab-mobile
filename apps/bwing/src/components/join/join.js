@@ -46,6 +46,7 @@ const Join = () => {
 	const [banner, setBanner] = useState([]);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
+	const [activeInfoMsg, setActiveInfoMsg] = useState("");
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const urlAffId = getUrlParameter("AffId") || readCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || readCookie("AffCode");
@@ -206,13 +207,7 @@ const Join = () => {
 	};
 
 	const clickInfo = col => {
-		setInputStatus(prev => ({
-			...prev,
-			[col]: {
-				...prev[col],
-				isShowHint: !inputStatus[col].isShowHint
-			}
-		}));
+		setActiveInfoMsg(inputStatus[col].hint);
 	};
 
 	const checkAffiliate = async ({ formAffCode }) => {
@@ -528,7 +523,8 @@ const Join = () => {
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
 								hint={inputStatus.UserName.hint}
-								isShowHint={inputStatus.UserName.isShowHint}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 							<InputboxPWD
 								placeholder={t("lbl_Password")}
@@ -545,6 +541,8 @@ const Join = () => {
 								icon="icon-password"
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 							<InputboxPWD
 								placeholder={t("lbl_ConfirmPassword")}
@@ -561,6 +559,8 @@ const Join = () => {
 								icon="icon-password"
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
 							<div className="btn-group">
@@ -591,7 +591,8 @@ const Join = () => {
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
 								hint={inputStatus.RealName.hint}
-								isShowHint={inputStatus.RealName.isShowHint}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
 							<Inputbox
@@ -612,7 +613,8 @@ const Join = () => {
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
 								hint={inputStatus.Phone.hint}
-								isShowHint={inputStatus.Phone.isShowHint}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
 							<Inputbox
@@ -630,7 +632,8 @@ const Join = () => {
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
 								hint={inputStatus.Email.hint}
-								isShowHint={inputStatus.Email.isShowHint}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 							<Inputbox
 								icon="icon-affiliate"
@@ -649,7 +652,8 @@ const Join = () => {
 								inputBoxNewClass="inputbox-item primary"
 								border={false}
 								hint={inputStatus.Affiliate.hint}
-								isShowHint={inputStatus.Affiliate.isShowHint}
+								activeInfoMsg={activeInfoMsg}
+								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
 							<ReCAPTCHA
