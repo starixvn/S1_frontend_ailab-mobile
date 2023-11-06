@@ -80,7 +80,7 @@ const IndexPage = () => {
 				langId: userInfo.langId,
 				currencyId: userInfo.currencyId
 			});
-			setPromotionList(data);
+			setPromotionList(data ?? []);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
@@ -96,7 +96,7 @@ const IndexPage = () => {
 			} = await api_hotEvent_GetDataList({
 				langId: userInfo.langId
 			});
-			setHotEventList(data);
+			setHotEventList(data ?? []);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
@@ -113,7 +113,7 @@ const IndexPage = () => {
 				BeforeDays: 0,
 				EventCode: "202104"
 			});
-			setLeaderBoardList(res.data.data);
+			setLeaderBoardList(res.data.data ?? []);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
@@ -124,8 +124,8 @@ const IndexPage = () => {
 
 	const getHotGameList = async () => {
 		try {
-			const res = await api_HotGame_GetDataList();
-			setHotGameList(res.data.data.HotGame);
+			const res = await api_HotGame_GetDataList(userInfo.langId);
+			setHotGameList(res.data.data.HotGame ?? []);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
@@ -141,7 +141,7 @@ const IndexPage = () => {
 			});
 			if (res.data.errorCode === 0) {
 				const { recentlyViewedList } = res.data.data;
-				setRecentlyViewedGames(recentlyViewedList);
+				setRecentlyViewedGames(recentlyViewedList ?? []);
 			}
 		} catch (error) {
 			setPopBox({
@@ -157,7 +157,7 @@ const IndexPage = () => {
 				langId: userInfo.langId,
 				currencyId: userInfo.currencyId
 			});
-			setNews(res.data.data);
+			setNews(res.data.data ?? []);
 		} catch (error) {
 			setPopBox({
 				isOpen: true,

@@ -50,7 +50,7 @@ const Footer = () => {
 								active: isMatch
 							})}>
 							<div className="icon-soccer-solid" />
-							<span>{i18n.lbl_Sports}</span>
+							<span>{i18n.lbl_Footer_Sports}</span>
 						</Link>
 					);
 				}}
@@ -88,7 +88,7 @@ const Footer = () => {
 									active: isMatch
 								})}>
 								<div className="icon-promo-white" />
-								<span>{i18n.lbl_Promotion}</span>
+								<span>{i18n.lbl_Footer_Promotion}</span>
 							</Link>
 						);
 					}}
