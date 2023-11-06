@@ -29,7 +29,7 @@ export const useGetTpMaintainList = () => {
 						);
 						const _arr = [...set]?.map(item => JSON.parse(item));
 
-						setMaintainList(_arr);
+						setMaintainList(_arr || []);
 					} else {
 						setPopBox({
 							isOpen: true,
