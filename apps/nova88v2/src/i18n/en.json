@@ -295,11 +295,9 @@
   "lbl_FishingGG": "Fishing World",
   "lbl_FishingSG1": "Fishing God",
   "lbl_FishingSG2": "Fishing War",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "Forgot your Password",
   "lbl_ForgetPwdHint": "If you have forgotten your username or password, please provide your email and we will send your new password to your registered email address.",
   "lbl_Free": "Free",
@@ -882,5 +880,7 @@
   "msg_WrongAmount": "Wrong amount",
   "msg_ticketBeenUsed": "The ticket has been used.",
   "msg_ticketNotBeenActivated": "Ticket not available.",
-  "lbl_SelectBank_Required": "Please select bank accounts"
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_V8Poker": "V8Poker"
 }

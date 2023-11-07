@@ -1036,6 +1036,19 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "games_kingMaker"
 				},
 				{
+					...defGameInfo.V8Poker,
+					img: `${cloudBannerImgURL}/h5/img/v8.png`,
+					spanTextKey: "lbl_V8Poker",
+					sortKey: "games_V8Poker",
+					allowCurrency: allowedCurrencyList.V8Poker,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.V8Poker)
+						}
+					]
+				},
+				{
 					...defGameInfo.IM_Avaitor,
 					img: `${cloudBannerImgURL}/h5/img/gameSpribeAviator.png`,
 					spanText: "Avaitor",
@@ -1548,6 +1561,11 @@ export const defGameInfo = {
 		tpGameType: 95
 	},
 	kingMaker: { tpId: 11, tpGameType: 52 },
+	V8Poker: {
+		tpId: 25,
+		tpGameType: 47,
+		gameId: 0
+	},
 	amb: { tpId: 30, tpGameType: 50 },
 	nineW: { tpId: 31, tpGameType: 51 },
 	Casino_Jili: { tpId: 32, tpGameType: 53 },
