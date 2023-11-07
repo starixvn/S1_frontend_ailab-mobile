@@ -20,7 +20,7 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
-import Join from "../join/join.refactor";
+import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
@@ -71,8 +71,9 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	casino: {
-		titleKey: "lbl_Casino",
-		className: "main casino",
+		iconClassName: "icon-slots-blue",
+		titleKey: "lbl_Slots",
+		className: "lobby slots",
 		hideLogo: true
 	},
 	forgetPassword: {
@@ -97,7 +98,7 @@ export const defPageInfo = {
 	},
 	promotion: {
 		titleKey: "lbl_Promotion",
-		className: "main promotions",
+		className: "lobby promotion",
 		hideLogo: true
 	},
 	kyc: {
@@ -117,7 +118,7 @@ export const defPageInfo = {
 	},
 	other: {
 		titleKey: "lbl_Other",
-		className: "main",
+		className: "account",
 		hideLogo: true
 	},
 	howToDeposit: {
@@ -156,41 +157,62 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	vip: {
-		titleKey: "VIP",
+		titleKey: "lbl_VIP",
 		className: "main vip",
 		hideLogo: true
 	},
 	sports: {
-		titleKey: "",
-		className: "main",
+		titleKey: "lbl_Sports",
+		className: "lobby sports",
+		iconClassName: "icon-soccer-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	fishing: {
-		className: "main",
+		titleKey: "lbl_Fishing",
+		className: "lobby fishing",
+		iconClassName: "icon-fishing-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	liveCasino: {
-		titleKey: "",
-		className: "main",
+		titleKey: "lbl_LiveCasino",
+		className: "lobby livacasino",
+		iconClassName: "icon-livecasino-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	games: {
-		titleKey: "",
-		className: "main",
+		titleKey: "lbl_Games",
+		className: "lobby games",
+		iconClassName: "icon-games-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	lottery: {
+		titleKey: "lbl_Lottery",
+		className: "lobby lottery",
+		iconClassName: "icon-lottery-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
+	eSports: {
+		titleKey: "lbl_eSports",
+		className: "lobby esports",
+		iconClassName: "icon-esports-blue",
 		hideLogo: false,
 		showMenuBar: true
 	},
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
-		className: "main",
-		hideLogo: true
+		iconClassName: "icon-lottery-blue",
+		className: "lobby news",
+		hideLogo: true,
+		showMenuBar: true
 	},
 	home: {
 		titleKey: "",
-		className: "",
+		className: "home",
 		hideLogo: false,
 		showMenuBar: true,
 		hideBtn: true,
@@ -212,6 +234,11 @@ export const defPageInfo = {
 	worldCup: {
 		titleKey: "lbl_FIFAWorldCup",
 		className: "",
+		hideLogo: true
+	},
+	news: {
+		titleKey: "lbl_SiteNews",
+		className: "lobby news",
 		hideLogo: true
 	}
 };
@@ -249,10 +276,6 @@ const Layout = ({ children }) => {
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [appHint, setAppHint] = useState(false);
-	if (root) {
-		pageInfo.className = userInfo.isLogin ? "mainLogin" : "mainLogout";
-	}
-
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -298,17 +321,20 @@ const Layout = ({ children }) => {
 				children
 			) : (
 				<>
+					<Login />
+					<Join />
 					<Header
+						icon={pageInfo?.icon}
 						hideModal={pageInfo.hideModal}
 						hideBtn={pageInfo.hideBtn}
 						title={i18n[pageInfo.titleKey] ?? pageInfo.titleKey}
+						iconClassName={pageInfo.iconClassName}
 						hideLogo={pageInfo.hideLogo}
 						showMenuBar={pageInfo.showMenuBar === true}
 						appHint={appHint}
 						setAppHint={setAppHint}
 					/>
-					<Join />
-					<Login />
+
 					<main
 						className={`${pageInfo.className ?? ""} ${
 							appHint && root ? "active" : ""
@@ -324,12 +350,12 @@ const Layout = ({ children }) => {
 			{displayVgaming && root && (
 				<div className="eventLink vgaming">
 					<button
-						className="icon icon-close"
+						className="icon-close-white-bg"
 						onClick={() => setDisplayVgaming(false)}
 					/>
 					<img
 						className="vgimg"
-						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
 						onClick={() => clickGame(defGameInfo.sabaClub)}
 					/>

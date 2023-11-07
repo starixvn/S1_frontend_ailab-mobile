@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
-import moment from "moment";
 import PropTypes from "prop-types";
+import moment from "moment";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
-import { navContext, defNavPanel, popBoxContext } from "../common/context";
-import config, { bannerImgUrl } from "../../config";
+import {
+	navContext,
+	defNavPanel,
+	popBoxContext,
+	userInfoContext
+} from "../common/context";
+import config from "../../config";
 import path from "../../path";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 
 export const StreamingModule = ({
-	i18n,
-	langId,
-	isLogin,
 	isStreamingPage,
 	league,
 	home,
@@ -25,21 +28,26 @@ export const StreamingModule = ({
 	gameId,
 	actStatus
 }) => {
+	const {
+		userInfo: { isLogin, langId }
+	} = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
+	const { t } = useTranslation();
+
 	const handleLogin = () => {
 		setNav(defNavPanel.login);
 	};
 
-	const ClickLiveTv = e => {
+	const ClickLiveTv = () => {
 		if (isStreamingPage) {
 			if (!isLogin) {
 				handleLogin();
 			} else if (actStatus === 1) {
 				setPopBox({
 					isOpen: true,
-					content: i18n.lbl_streaming_please_make_deposit,
+					content: t("lbl_streaming_please_make_deposit"),
 					hasBtn: true,
 					btnBar: (
 						<div className="btn-group">
@@ -50,7 +58,7 @@ export const StreamingModule = ({
 										isOpen: false
 									}))
 								}>
-								{i18n.lbl_Close}
+								{t("lbl_Close")}
 							</button>
 						</div>
 					)
@@ -80,73 +88,113 @@ export const StreamingModule = ({
 		}
 	};
 
-	const tags = () => {
-		if (window.location.pathname === `/${path.streaming.root}`) {
-			if (nowPlaying) {
-				return (
-					<>
-						<span
-							className="started"
-							onClick={e => {
-								e.stopPropagation();
-								ClickLiveTv();
-							}}>
-							{i18n.lbl_Started}
-						</span>
-						<button
-							onClick={e => {
-								e.stopPropagation();
-								clickSportBook();
-							}}
-							className="sportsbook">
-							{i18n.lbl_Streaming_SPORTSBOOK}
-						</button>
-					</>
-				);
-			}
-			return (
-				<>
-					<span className="started">{i18n.lbl_Not_Started}</span>
-					<button className="sportsbook">
-						{i18n.lbl_Streaming_SPORTSBOOK}
-					</button>
-				</>
-			);
-		}
-
-		return null;
-	};
+	// const tags = () => {
+	// 	if (window.location.pathname === `/${path.streaming.root}`) {
+	// 		if (nowPlaying) {
+	// 			return (
+	// 				<>
+	// 					<span
+	// 						className="started"
+	// 						onClick={e => {
+	// 							e.stopPropagation();
+	// 							ClickLiveTv();
+	// 						}}>
+	// 						{t("lbl_Started")}
+	// 					</span>
+	// 					<button
+	// 						onClick={e => {
+	// 							e.stopPropagation();
+	// 							clickSportBook();
+	// 						}}
+	// 						className="sportsbook">
+	// 						{t("lbl_Streaming_SPORTSBOOK")}
+	// 					</button>
+	// 				</>
+	// 			);
+	// 		}
+	// 		return (
+	// 			<>
+	// 				<span className="started">{t("lbl_Not_Started")}</span>
+	// 				<button className="sportsbook">
+	// 					{t("lbl_Streaming_SPORTSBOOK")}
+	// 				</button>
+	// 			</>
+	// 		);
+	// 	}
+	//
+	// 	return null;
+	// };
 
 	return (
-		<div className="liveBox">
-			<div>
-				<div className="gametitle">{league}</div>
-				<button className={`youtube${nowPlaying ? "" : " close"}`} />
-				{tags()}
-			</div>
-			<div className="teamName">
-				<div>
-					<h1>{i18n.lbl_Streaming_Home.toUpperCase()}</h1>
-					<p>{home}</p>
+		<>
+			<div className="lobby-livesports-item">
+				<div className="lobby-livesports-league">
+					<div className="info left" onClick={() => ClickLiveTv()}>
+						{t("lbl_Started")}
+					</div>
+					<div className="title">{league}</div>
+					<div
+						className="info right"
+						onClick={() => clickSportBook()}>
+						{t("lbl_Streaming_SPORTSBOOK")}
+					</div>
 				</div>
-				<div className={nowPlaying ? " active" : ""}>
-					<div className="point">{homeScore ?? 0}</div>
-					<div>
-						<img src={`${bannerImgUrl}/h5/img/vsIcon.png`} alt="" />
-						<p>
+				<div className="lobby-livesports-team">
+					<div className="left">
+						<div>{t("lbl_Streaming_Home").toUpperCase()}</div>
+						<div className="name">{home}</div>
+					</div>
+					<div className="center">
+						<div>VS</div>
+						<div>
 							{nowPlaying
 								? "LIVE"
 								: moment(timeStart).format("MM/DD HH:mm")}
-						</p>
+						</div>
 					</div>
-					<div className="point">{awayScore ?? 0}</div>
-				</div>
-				<div>
-					<h1>{i18n.lbl_Streaming_Away.toUpperCase()}</h1>
-					<p>{away}</p>
+					<div className="right">
+						<div>{t("lbl_Streaming_Away").toUpperCase()}</div>
+						<div className="name">{away}</div>
+					</div>
 				</div>
 			</div>
-		</div>
+			{/*
+			<div className="liveBox">
+				<div>
+					<div className="gametitle">{league}</div>
+					<button
+						className={`youtube${nowPlaying ? "" : " close"}`}
+					/>
+					{tags()}
+				</div>
+				<div className="teamName">
+					<div>
+						<h1>{t("lbl_Streaming_Home").toUpperCase()}</h1>
+						<p>{home}</p>
+					</div>
+					<div className={nowPlaying ? " active" : ""}>
+						<div className="point">{homeScore ?? 0}</div>
+						<div>
+							<img
+								src={`${bannerImgUrl}/h5/img/vsIcon.png`}
+								alt=""
+							/>
+							<p>
+								{nowPlaying
+									? "LIVE"
+									: moment(timeStart).format("MM/DD HH:mm")}
+							</p>
+						</div>
+						<div className="point">{awayScore ?? 0}</div>
+					</div>
+					<div>
+						<h1>{t("lbl_Streaming_Away").toUpperCase()}</h1>
+						<p>{away}</p>
+					</div>
+				</div>
+			</div>
+			*/}
+		</>
 	);
 };
 
@@ -154,16 +202,12 @@ StreamingModule.defaultProps = {
 	isStreamingPage: false,
 	homeScore: null,
 	awayScore: null,
-	isLogin: null,
 	actStatus: 1,
 	tpId: null,
 	gameId: null
 };
 
 StreamingModule.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired,
-	isLogin: PropTypes.bool,
 	isStreamingPage: PropTypes.bool,
 	league: PropTypes.string.isRequired,
 	home: PropTypes.string.isRequired,

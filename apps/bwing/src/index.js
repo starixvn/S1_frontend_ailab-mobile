@@ -9,6 +9,7 @@ import "./styles/css/style-dark.css";
 import "./styles/css/style.css";
 import "./styles/css/font.css";
 import "./styles/css/swiper.css";
+import "swiper/swiper-bundle.min.css";
 import { siteId } from "./config";
 import { api_shield_GetEndpoint } from "./service/api/shield";
 import useShieldCheck, {
