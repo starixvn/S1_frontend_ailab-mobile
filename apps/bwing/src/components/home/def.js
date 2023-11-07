@@ -12,7 +12,7 @@ export const HOT_GAME_LIST = [
 		displayKey: "lbl_Sports",
 		category: "sports",
 		...defGameInfo.Sports,
-		hasDesktopLink: true
+		hasDesktopLink: false
 	},
 	{
 		displayKey: "lbl_Jackpot",
