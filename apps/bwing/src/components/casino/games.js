@@ -1,11 +1,9 @@
+import classNames from "classnames";
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
-import {
-	useGetTpMaintainList,
-	defTpGameType
-} from "../hook/useGetTpMaintainList";
+import { defTpGameType } from "../hook/useGetTpMaintainList";
 import { defSlotTpGameType } from "../../datas/productList";
 
 const GamePanel = React.forwardRef((props, ref) => {
@@ -13,6 +11,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 		selectGame,
 		gameList,
 		providerList,
+		maintainList,
 		activeProvider,
 		activeCategory,
 		i18n,
@@ -22,7 +21,8 @@ const GamePanel = React.forwardRef((props, ref) => {
 		setFavoriteStr
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
-	const { maintainList } = useGetTpMaintainList();
+	const { langId } = userInfo;
+
 	if (gameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
@@ -73,14 +73,20 @@ const GamePanel = React.forwardRef((props, ref) => {
 
 		games.push(
 			<div
-				className={`info${isMaintain ? " under" : ""}`}
+				className={classNames("slots-products-item", {
+					maintain: isMaintain,
+					"tag-new-pop": activeCategory === "new"
+				})}
 				key={`casino-game-${brandName}-${g.gameId}`}>
-				{activeCategory === "new" ? (
-					<i className="icon icon-new" />
-				) : null}
 				<button>
+					<button
+						type="button"
+						onClick={onToggleFavorite}
+						className={`icon-fav-${
+							_isFavorite ? "solid" : "outline"
+						}`}
+					/>
 					<img
-						data-testid="gameImg"
 						onClick={
 							isMaintain
 								? () => null
@@ -91,31 +97,28 @@ const GamePanel = React.forwardRef((props, ref) => {
 										})
 						}
 						src={`${imgUrl}/${brandName}/${
-							g.imgName[userInfo.langId] ?? g.imgName.en
+							g.imgName[langId] ?? g.imgName.en
 						}`}
-						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
+						alt={g.gameName[langId] ?? g.gameName.en}
 					/>
+					<div className="name">
+						{g.gameName[langId] ?? g.gameName.en}
+					</div>
 				</button>
-				<span data-testid="providerName">{gameProviderName}</span>
 				{isMaintain ? (
-					<div className="underBtn">{i18n.lbl_underMaintenance}</div>
+					<div className="tag-maintain">
+						{i18n.lbl_underMaintenance}
+					</div>
 				) : null}
-				<span
-					onClick={onToggleFavorite}
-					data-testid="favBtn"
-					className={`icon icon-star-${
-						_isFavorite ? "full" : "empty"
-					}`}
-				/>
 			</div>
 		);
 	});
 	return games.length === 0 ? (
-		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
+		<div className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
 		</div>
 	) : (
-		<div className="slotList" id="scrollId" ref={ref}>
+		<div className="slots-products" id="scrollId" ref={ref}>
 			{games}
 		</div>
 	);
@@ -124,6 +127,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 GamePanel.defaultProps = {
 	gameList: [],
 	providerList: null,
+	maintainList: [],
 	handleSetFavorite: null,
 	activeCategory: null
 };
@@ -132,6 +136,7 @@ GamePanel.propTypes = {
 	selectGame: PropTypes.func.isRequired,
 	gameList: PropTypes.arrayOf(PropTypes.object),
 	providerList: PropTypes.arrayOf(PropTypes.any),
+	maintainList: PropTypes.arrayOf(PropTypes.any),
 	activeProvider: PropTypes.objectOf(PropTypes.any).isRequired,
 	activeCategory: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,

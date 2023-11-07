@@ -295,9 +295,11 @@
   "lbl_FishingGG": "โลกแห่งการตกปลา",
   "lbl_FishingSG1": "พระเจ้าตกปลา",
   "lbl_FishingSG2": "สงครามตกปลา",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "ลืมชื่อที่ใช้ในการเข้าระบบหรือรหัส",
   "lbl_ForgetPwdHint": "หากคุณลืมชื่อผู้ใช้หรือรหัสผ่านโปรดระบุอีเมลของคุณและเราจะส่งรหัสผ่านใหม่ไปยังอีเมลที่คุณลงทะเบียนไว้",
   "lbl_Free": "ฟรี",
@@ -880,7 +882,5 @@
   "msg_WrongAmount": "จำนวนเงินไม่ถูกต้อง",
   "msg_ticketBeenUsed": "ตั๋วที่ถูกใช้งานแล้ว",
   "msg_ticketNotBeenActivated": "ตั๋วที่ยังไม่ได้เปิดใช้งาน",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_SelectBank_Required": "กรุณาเลือกธนาคาร"
 }

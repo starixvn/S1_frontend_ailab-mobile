@@ -81,6 +81,7 @@ const BankInfo = () => {
 				}
 			);
 		}
+		setLoading(false);
 	}, [
 		i18n.lbl_ImportantNote,
 		i18n.msg_ApiServerError,

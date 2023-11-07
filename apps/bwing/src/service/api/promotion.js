@@ -35,5 +35,8 @@ export const api_promotion_GetRebateExcludeGameList = ({
 // 		LockedAmount
 // 	});
 
-// export const api_promotion_GetPromotionList = ({ langId }) =>
-// 	promotionRequest.post(`/GetPromotionListV3/${langId}`);
+export const api_promotion_GetPromotionList = ({ langId, currencyId }) =>
+	promotionRequest.post(`/GetPromotionListV3/${langId}`, {
+		CurrencyId: currencyId,
+		DeviceType: defDeviceType.Mobile
+	});

@@ -9,7 +9,6 @@ import {
 } from "../common/context";
 import { api_ForgetPwd } from "../../service/api/site";
 import Inputbox from "../common/inputbox.info";
-import path from "../../path";
 
 export default () => {
 	const { i18n } = useContext(i18nContext);

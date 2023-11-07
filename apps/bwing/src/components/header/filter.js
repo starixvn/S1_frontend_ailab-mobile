@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { i18nContext } from "Context";
 import { defStreamingCategory } from "../streaming/defStreaming";
 
 const Panel = ({ handleSelect, selected }) => {
 	const { i18n } = useContext(i18nContext);
-
 	const clickQuickSelect = type => {
 		if (selected !== type) {
 			handleSelect(type);
@@ -14,24 +13,23 @@ const Panel = ({ handleSelect, selected }) => {
 
 	const quickSelectArr = Object.values(defStreamingCategory).map(item => {
 		return (
-			<a
+			<div
 				key={`streaming-quickSelect-${item.displayKey}`}
-				className={item.type === selected ? "open" : ""}
+				className={`lobby-scrollbar-item ${
+					item.type === selected ? "active" : ""
+				}`}
 				onClick={clickQuickSelect.bind(this, item.type)}>
 				{i18n[item.displayKey] ?? item.displayKey}
-			</a>
+			</div>
 		);
 	});
 
-	return (
-		<div className="sporttv">
-			<div className="tag">{quickSelectArr}</div>
-		</div>
-	);
+	return <div className="lobby-scrollbar">{quickSelectArr}</div>;
 };
 
 Panel.propTypes = {
-	handleSelect: PropTypes.func.isRequired
+	handleSelect: PropTypes.func.isRequired,
+	selected: PropTypes.string.isRequired
 };
 
 export default Panel;

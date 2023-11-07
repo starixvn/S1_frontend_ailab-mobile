@@ -1,24 +1,23 @@
 .textYellow {
-  color: #ffe164;
+  color: #F38C00;
 }
 
 .textRed {
-  color: #ff6464;
+  color: #fe5555;
 }
 
 .textGreen {
-  color: #51ce47;
+  color: #2ab81f;
 }
 
 .textGray {
-  color: #b0b0b0;
+  color: #8f8e8e;
 }
 
 .textBlue {
-  color: #58cdff;
+  color: #1C317B;
 }
 
 .blue {
-  background-color: #58cdff;
-}
-/*# sourceMappingURL=color-group.css.map */
+  background-color: #1C317B;
+}/*# sourceMappingURL=color-group.css.map */
