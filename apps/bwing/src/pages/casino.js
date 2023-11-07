@@ -7,6 +7,7 @@ import {
 	navContext
 } from "../components/common/context";
 import {
+  useGotoGame,
 	defSpecialSetting,
 	defLoginGameType
 } from "../components/hook/useGotoGame";
@@ -32,6 +33,7 @@ const Casino = () => {
 	const { currencyId } = userInfo;
 	const page = getUrlParameter("page");
 	const { throttle } = useSetTimeout();
+  const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];

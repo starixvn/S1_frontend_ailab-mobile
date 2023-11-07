@@ -79,9 +79,9 @@ import LuckyWheel from "./pages/luckyWheel";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
+import News from "./pages/news";
 import Lottery from "./pages/lottery";
 import Esports from "./pages/esports";
-import News from "./pages/news";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -175,8 +175,8 @@ const Index = () => {
 							<Fishing path={path.fishing.root} />
 							<Sports path={path.sports.root} />
 							<LiveCasino path={path.liveCasino.root} />
-							<Esports path={path.eSports.root} />
 							<Lottery path={path.lottery.root} />
+							<Esports path={path.eSports.root} />
 							<HowToDeposit path={path.howToDeposit.root} />
 							<HowToWithdraw path={path.howToWithdraw.root} />
 							<HowToPlay path={path.howToPlay.root} />

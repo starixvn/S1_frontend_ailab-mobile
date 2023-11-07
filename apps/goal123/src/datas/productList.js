@@ -71,7 +71,6 @@ export const defGameInfo = {
 	Casino_All: { tpId: 0 },
 	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
-	Casino_PNG: { tpId: 54, tpGameType: 105 },
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_YGG: { tpId: 8, tpGameType: 14 },
 	Casino_SG: { tpId: 10, tpGameType: 15 },
@@ -735,20 +734,6 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
 				path: path.casino.root,
 				providerImgName: "mg"
-			},
-			{
-				...defGameInfo.Casino_FaChai,
-				parameter: defGameInfo.Casino_FaChai,
-				spanText: "Fa Chai",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-fachai.png`,
-				path: path.casino.root,
-				providerImgName: "",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.slot_fachai)
-					}
-				]
 			},
 			{
 				...defGameInfo.Casino_FaChai,
