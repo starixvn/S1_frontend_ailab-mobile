@@ -68,7 +68,7 @@ const IndexPage = props => {
 		if (
 			location.pathname.split("/")[1] === path.withdrawal.root &&
 			Object.keys(filteredSettingTabs)?.length !== 0 &&
-			!Object.hasOwn(filteredSettingTabs, "default")
+			filteredSettingTabs?.default === undefined
 		) {
 			navigate(
 				`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`

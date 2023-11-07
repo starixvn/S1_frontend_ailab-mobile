@@ -70,8 +70,6 @@ export const defGameInfo = {
 
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
-	Casino_FaChai: { tpId: 55, tpGameType: 106 },
-	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
@@ -80,6 +78,8 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
+	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },

@@ -7,7 +7,7 @@ const { outputData, sortData, SHEET_URL_ID } = require("./sheet");
 // * 可吃參數 ex: node SheetSort.js nova88 common
 const args = process.argv.slice(2);
 
-const sheetsToExtract = args.map(site => `${site}-desktop`);
+const sheetsToExtract = args.map(site => `${site}-mobile`);
 
 // * 單純整理當前 google sheet 排序，可選指定 tab
 extractSheets(
