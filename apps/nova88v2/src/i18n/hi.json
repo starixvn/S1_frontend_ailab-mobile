@@ -295,9 +295,11 @@
   "lbl_FishingGG": "मछली पकड़ने की दुनिया",
   "lbl_FishingSG1": "मछली पकड़ने वाला भगवान",
   "lbl_FishingSG2": "मछली पकड़ने का युद्ध",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Haiba": "Fish Haiba",
   "lbl_Fishing_Hunting_Happy_Fish_5": "Happy Fish 5",
   "lbl_Fishing_Hunting_Monster_Awaken": "Monster Awaken",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_ForgetPassword": "अपनी या पासवर्ड भूल गए?",
   "lbl_ForgetPwdHint": "यदि आप अपना उपयोगकर्ता नाम या पासवर्ड भूल गए हैं, तो कृपया अपना ईमेल प्रदान करें और हम आपका नया पासवर्ड आपके पंजीकृत ईमेल पते पर भेज देंगे।",
   "lbl_Free": "नि: शुल्क",
@@ -880,7 +882,5 @@
   "msg_WrongAmount": "ग़लत राशि",
   "msg_ticketBeenUsed": "टिकट का इस्तेमाल किया गया है।",
   "msg_ticketNotBeenActivated": "टिकट सक्रिय नहीं किया गया है।",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_SelectBank_Required": "कृपया बैंक खातों का चयन करें"
 }

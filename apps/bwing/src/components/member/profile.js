@@ -1,8 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	navContext,
+	i18nContext,
+	popBoxContext,
+	userInfoContext
+} from "../common/context";
 import ProfileDetail from "./profile.detail";
 import path from "../../path";
+import { LOGOUT } from "../../service/auth";
 import ProfileWallet from "./profile.wallet";
 import { defLevelList } from "../vip/def";
 import VerificationPanel from "./verificationPanel";
@@ -10,8 +16,9 @@ import useVerifyEmail from "./hook/useVerifyEmail";
 
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
-	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const levelInfo = userInfo.userLevel
 		? defLevelList[Number(userInfo.userLevel) - 1]
 		: {};
@@ -22,6 +29,16 @@ const Panel = () => {
 		setPopBox,
 		setUserInfo
 	});
+
+	const handleLogout = () => {
+		LOGOUT(() => {
+			setUserInfo(prevState => ({
+				isLogin: false,
+				langId: prevState.langId
+			}));
+			setNav(() => null);
+		});
+	};
 
 	return (
 		tokenPassed && (
@@ -42,18 +59,19 @@ const Panel = () => {
 				<ProfileWallet />
 				<ProfileDetail />
 
-				{userInfo.accountName &&
-				userInfo.birth_d &&
-				userInfo.phoneNo &&
-				userInfo.email ? (
-					<div className="btn-group">
-						<Link
-							className="purple"
-							to={`/${path.changePassword.root}`}>
-							{i18n.lbl_ChangePassword.toUpperCase()}
-						</Link>
-					</div>
-				) : null}
+				<div className="btn-group">
+					<Link
+						className="btn-primary"
+						to={`/${path.changePassword.root}`}>
+						{i18n.lbl_ChangePassword.toUpperCase()}
+					</Link>
+					<button
+						type="button"
+						className="btn-primary"
+						onClick={handleLogout}>
+						{i18n.lbl_Logout}
+					</button>
+				</div>
 			</>
 		)
 	);

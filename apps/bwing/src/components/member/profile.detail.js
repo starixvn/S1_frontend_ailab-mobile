@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { INPUT_PATTERN } from "@ailab-mobile/format-pattern";
-import { Redirect, Link } from "@reach/router";
+import { Redirect } from "@reach/router";
 import moment from "moment";
 import Inputbox, { InputboxDate } from "../common/inputbox.info";
 import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
@@ -26,7 +26,7 @@ const Panel = () => {
 	const _initUserValue = initUserValue(userInfo);
 	const [userValue, setUserValue] = useState(_initUserValue);
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
-	const _areaCode = country ? areaCode[country].AreaCode : "";
+	const _areaCode = country ? areaCode[country]?.AreaCode : "";
 
 	const _infoList = infoList(i18n, userInfo, _areaCode);
 	const legalDate = moment().subtract(18, "year");
@@ -547,11 +547,6 @@ const Panel = () => {
 			!userInfo.phoneNo ||
 			!userInfo.email ? (
 				<div className="btn-group">
-					<Link
-						className="purple"
-						to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword.toUpperCase()}
-					</Link>
 					<button
 						className="blue"
 						onClick={checkSubmitHandler}

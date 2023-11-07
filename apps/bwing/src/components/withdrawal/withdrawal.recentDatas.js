@@ -36,7 +36,7 @@ const RecentDatas = props => {
 	return (
 		<>
 			<div className="btn-group">
-				<button className="switch left" onClick={HandleOpen}>
+				<button className="switch" onClick={HandleOpen}>
 					{i18n.lbl_RecentTransactions.toUpperCase()}
 					<i
 						className={`icon icon-circle-right${

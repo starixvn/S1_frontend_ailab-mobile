@@ -209,10 +209,7 @@ class Marquee extends Component {
 		const style = this.state.pos === null ? {} : { left: this.state.pos };
 		return this.state.redirectPath === null ? (
 			<div className="marquee" id="Marquee">
-				<div className="marqueeIcon">
-					<div className="icon icon-marquee" />
-				</div>
-				<div ref={this.content} className="marquee-box">
+				<div ref={this.content} className="marquee-box icon-speaker">
 					<div
 						className="marquee-run"
 						ref={this.marquee}

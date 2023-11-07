@@ -121,7 +121,7 @@
   "lbl_Check18TC2": "và",
   "lbl_Check18TC3": "của",
   "lbl_Check18TC4": "Tôi xác nhận tôi đã trên 18 tuổi",
-  "lbl_Check18TCTooltip": "Vui lòng bấm vào ô bên trên để xác nhận các yêu cầu đăng ký tài khoản.",
+  "lbl_Check18TCTooltip": "Vui lòng bấm vào ô bên dưới để xác nhận các yêu cầu đăng ký tài khoản.",
   "lbl_CheckConfirm": "Bạn có chắc muốn xóa? Không thể khôi phục lại sau khi xóa!",
   "lbl_ClaimAmount": "Số tiền đạt",
   "lbl_ClaimAmountRange": "Khoảng tiền nạp",
@@ -245,6 +245,8 @@
   "lbl_FishingGG": "Thế giới bắn cá",
   "lbl_FishingSG1": "Thánh bắn cá",
   "lbl_FishingSG2": "Bắn cá giao đấu",
+  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
+  "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_FootballBetting": "Cá cược Bóng Bầu Dục",
   "lbl_ForgetPassword": "Quên ID hoặc mật khẩu?",
   "lbl_ForgetPwdSuccess": "Mật khẩu mới của bạn đã được gửi đến địa chỉ email đã đăng ký của bạn.",
@@ -761,7 +763,5 @@
   "msg_changePswUpdateSuccess": "Cập nhật thành công mật khẩu!",
   "msg_ticketBeenUsed": "Vé này đã sử dụng",
   "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "lbl_Fishing_Zombie_Party": "Zombie Party",
-  "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
 }

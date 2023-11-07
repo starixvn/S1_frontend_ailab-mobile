@@ -97,3 +97,8 @@ export const shieldRequest = axios.create({
 	withCredentials: true,
 	baseURL: `${rootURL}/api/Shield`
 });
+
+export const newsRequest = axios.create({
+	withCredentials: true,
+	baseURL: `${rootURL}/api/News`
+});

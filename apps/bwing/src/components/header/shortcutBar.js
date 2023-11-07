@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { func } from "prop-types";
 import { Link } from "@reach/router";
 import {
 	i18nContext,
@@ -17,12 +18,7 @@ const ShortcutBar = ({ closeSubMenu }) => {
 		setNav(defNavPanel.login);
 	};
 
-	const NavLink = ({
-		checkProfile,
-		redirectPath,
-		checkBankInfo,
-		...passProps
-	}) => {
+	const NavLink = ({ ...passProps }) => {
 		let _passProps = passProps;
 		if (userInfo.isLogin === false) {
 			_passProps = { ...passProps, to: "/", onClick: ShowLogin };
@@ -32,19 +28,29 @@ const ShortcutBar = ({ closeSubMenu }) => {
 	};
 
 	return (
-		<div className="depositArea">
-			<NavLink to={`/${path.deposit.root}`} checkProfile={true}>
+		<div className="menu-function">
+			<NavLink className="icon-deposit" to={`/${path.deposit.root}`}>
 				{i18n.lbl_Deposit}
 			</NavLink>
-			{/* <NavLink to={`/${path.transfer.root}`}>{i18n.lbl_Transfer}</NavLink> */}
-			<NavLink to={`/${path.statement.root}`}>
+			<NavLink
+				className="icon-withdrawal"
+				to={`/${path.withdrawal.root}`}>
+				{i18n.lbl_Withdrawal}
+			</NavLink>
+			<NavLink className="icon-statement" to={`/${path.statement.root}`}>
 				{i18n.lbl_Statement}
 			</NavLink>
-			<NavLink to={`/${path.withdrawal.root}`} checkProfile={true}>
-				{i18n.lbl_Withdrawal}
+			<NavLink
+				className="icon-history"
+				to={`${path.deposit.root}/${path.depositHistory.root}`}>
+				{i18n.lbl_History}
 			</NavLink>
 		</div>
 	);
+};
+
+ShortcutBar.propTypes = {
+	closeSubMenu: func.isRequired
 };
 
 export default ShortcutBar;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext, useState } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { paymentImgUrl } from "../../config";
 import { api_DelCustBankInfo } from "../../service/api/accountStrict";
 import { popBoxContext } from "../common/context";
@@ -98,6 +98,7 @@ export default ({
 		return (
 			<BankCard
 				key={_key}
+				i18n={i18n}
 				checkKey={`${item.sysId}-${item.accountNo}`}
 				{...item}
 				selectAccount={SelectBank.bind(this, item)}
@@ -127,7 +128,9 @@ export default ({
 const BankCard = props => {
 	return (
 		<div className={`addBankName ${props?.disabled ? "pending" : ""}`}>
-			{props?.disabled && <div className="mask" />}
+			{props?.disabled && (
+				<div className="mask">{props?.i18n.lbl_underMaintenance}</div>
+			)}
 			<div className="addBankInfo">
 				<div className="bankName">
 					<img

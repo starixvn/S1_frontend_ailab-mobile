@@ -1,9 +1,11 @@
 import React from "react";
-import { bannerImgUrl } from "../../config";
+import { useTranslation } from "react-i18next";
 
-export const StreamingNoData = ({ i18n }) => (
-	<div className="notv active">
-		<img src={`${bannerImgUrl}/h5/img/notvicon.png`} alt="nostreaming" />
-		<p>{i18n.lbl_Streaming_NoData}</p>
-	</div>
-);
+export const StreamingNoData = () => {
+	const { t } = useTranslation();
+	return (
+		<div className="nodata icon icon-nodata">
+			<div className="txt-white">{t("msg_NoData")}</div>
+		</div>
+	);
+};
