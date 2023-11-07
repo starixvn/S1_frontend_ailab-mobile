@@ -1800,11 +1800,12 @@ header {
   text-overflow: ellipsis;
   white-space: nowrap;
   width: calc(100% - 2vw);
-  margin: 0 auto;
+  margin: 0 auto -1vw;
   text-align: center;
+  line-height: 2;
 }
 .menu-list-item i {
-  margin-bottom: 2vw;
+  margin-bottom: 1.5vw;
 }
 .menu-bottom {
   margin-top: 5vw;
@@ -3745,7 +3746,8 @@ header {
 }
 .home-hotgame-item .subtitle {
   position: absolute;
-  bottom: 1vw;
+  bottom: 0;
+  line-height: 2;
   left: 50%;
   width: 100%;
   overflow: hidden;
@@ -3757,7 +3759,7 @@ header {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   color: #fff;
-  font-size: 4.25vw;
+  font-size: 4vw;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -4300,13 +4302,14 @@ header {
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  margin: 2.5vw auto 0 auto;
+  margin: 1vw auto;
   font-weight: 500;
   width: 83vw;
   padding-left: 5vw;
   text-align: center;
   text-transform: uppercase;
   color: #1C317B;
+  line-height: 2;
 }
 .home-livesports-content {
   display: -webkit-box;
@@ -4321,7 +4324,7 @@ header {
 .home-livesports-team {
   position: absolute;
   bottom: 0;
-  margin-bottom: 4vw;
+  margin-bottom: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4353,6 +4356,7 @@ header {
   overflow: hidden;
   text-align: center;
   color: #fff;
+  line-height: 2;
 }
 .home-livesports-score {
   position: absolute;
@@ -4963,6 +4967,7 @@ header {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  line-height: 2;
 }
 .lobby-products-item.maintain {
   -webkit-filter: grayscale(1);
