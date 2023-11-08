@@ -16,15 +16,15 @@ export const defLinkType = {
 };
 
 export const channelIcon = {
-	Youtube: "icon icon-youtube",
-	Telegram: "icon icon-telegram",
-	Facebook: "icon icon-facebook",
-	Twitter: "icon icon-twitter",
-	Instagram: "icon icon-instagram",
-	LINE: "icon icon-line",
-	Livechat: "icon icon-chat",
-	WhatsApp: "icon icon-whatsapp",
-	"E-mail": "icon icon-envelope"
+	Youtube: "youtube",
+	Telegram: "tga",
+	Facebook: "fb",
+	Twitter: "twitter",
+	Instagram: "ig",
+	LINE: "line",
+	Livechat: "chat",
+	WhatsApp: "whatsapp",
+	"E-mail": "email"
 };
 
 const useGetSocialChannel = ({ langId, currencyId, displayPage }) => {

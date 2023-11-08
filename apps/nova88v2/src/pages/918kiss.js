@@ -4,7 +4,7 @@ import Kiss918 from "../components/918kiss/918kiss";
 import { userInfoContext } from "../components/common/context";
 import useBeforeLoginCheck from "../components/hook/useBeforeLoginCheck";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
+import { Footer } from "../components/common/footer";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);

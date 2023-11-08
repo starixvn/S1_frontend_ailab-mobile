@@ -140,9 +140,6 @@ export default {
 	vip: {
 		root: "vip"
 	},
-	contactUs: {
-		root: "contactUs"
-	},
 	gameProvider: {
 		root: "game-provider"
 	},
@@ -160,9 +157,6 @@ export default {
 	},
 	cryptoWallet: {
 		root: "crypto-wallet"
-	},
-	myAccount: {
-		root: "my-account"
 	},
 	appDownload: {
 		root: "app-download"

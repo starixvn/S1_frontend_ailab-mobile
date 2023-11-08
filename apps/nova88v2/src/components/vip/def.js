@@ -15,42 +15,48 @@ export const defbanner = langId => [
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_VINTAGE,
-		levelText: "vintage"
+		levelText: "vintage",
+		displayKey: "lbl_VIP_Vintage"
 	},
 	{
 		url: `${cloudBannerImgURL}/h5/img/silver${
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_SILVER,
-		levelText: "silver"
+		levelText: "silver",
+		displayKey: "lbl_VIP_Silver"
 	},
 	{
 		url: `${cloudBannerImgURL}/h5/img/gold${
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_GOLD,
-		levelText: "gold"
+		levelText: "gold",
+		displayKey: "lbl_VIP_Gold"
 	},
 	{
 		url: `${cloudBannerImgURL}/h5/img/titanium${
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_TITANIUM,
-		levelText: "titanium"
+		levelText: "titanium",
+		displayKey: "lbl_VIP_Titanium"
 	},
 	{
 		url: `${cloudBannerImgURL}/h5/img/diamond${
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_DIAMOND,
-		levelText: "diamond"
+		levelText: "diamond",
+		displayKey: "lbl_VIP_Diamond"
 	},
 	{
 		url: `${cloudBannerImgURL}/h5/img/nova${
 			langId ? `-${langId}` : langId
 		}.png`,
 		level: VIP_LEVEL.VIP_LEVEL_NOVA,
-		levelText: "nova"
+		levelText: "nova",
+		displayKey: "lbl_VIP_Nova"
 	}
 ];
 
