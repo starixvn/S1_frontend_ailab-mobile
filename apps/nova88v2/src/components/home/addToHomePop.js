@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { setCookie, readCookie, validImgLang } from "../common/common";
+import React, { useState, useEffect, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { userInfoContext } from "Context";
 import { cloudBannerImgURL } from "../../config";
+import { setCookie, readCookie, validImgLang } from "../common/common";
 
 const ua = window.navigator.userAgent;
 const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
@@ -13,8 +14,13 @@ const isSafari =
 	navigator.userAgent.indexOf("FxiOS") == -1;
 const iOSSafari = iOS && isSafari;
 
-const AddToHomePop = ({ i18n, userInfo }) => {
-	const _langId = validImgLang(userInfo.langId);
+const AddToHomePop = () => {
+	const { t } = useTranslation();
+
+	const { userInfo } = useContext(userInfoContext);
+	const { langId } = userInfo;
+
+	const _langId = validImgLang(langId);
 	const [addToHomePop, setAddToHomePop] = useState(false);
 
 	useEffect(() => {
@@ -28,32 +34,30 @@ const AddToHomePop = ({ i18n, userInfo }) => {
 		setAddToHomePop(false);
 	};
 
-	return addToHomePop && iOSSafari ? (
-		<div className="favouriteModule">
-			<div className="favourite">
-				<img
-					src={`${cloudBannerImgURL}/h5/img/icon_256_Nova88_1.png`}
-					alt="Nova88"
-				/>
-				<div>
-					{i18n.lbl_AddToHome_Hint}
+	return (
+		addToHomePop &&
+		iOSSafari && (
+			<div className="favouriteModule">
+				<div className="favourite">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/icon_256_Nova88_1.png`}
+						alt="Nova88"
+					/>
 					<div>
-						<a href={`/ac/teaching_${_langId}.html`}>
-							{i18n.lbl_AddToHome_Tutorial}
-						</a>
-						<button onClick={clickNotShowing}>
-							{i18n.lbl_Skip}
-						</button>
+						{t("lbl_AddToHome_Hint")}
+						<div>
+							<a href={`/ac/teaching_${_langId}.html`}>
+								{t("lbl_AddToHome_Tutorial")}
+							</a>
+							<button onClick={clickNotShowing}>
+								{t("lbl_Skip")}
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	) : null;
+		)
+	);
 };
 
-AddToHomePop.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
-};
-
-export default AddToHomePop;
+export { AddToHomePop };

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext } from "../components/common/context";
 // import { SEO } from "../components/seo/seo";
 import Event from "../components/ranking/event";
@@ -14,24 +14,25 @@ import useHandleLogin from "../components/hook/useHandleLogin";
 import BtnBar from "../components/common/btnBar";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
-import { Link } from "../route/link";
-import path from "../path";
 
 export default () => {
+	const navigate = useNavigate();
+
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
 
 	const { handleLogin } = useHandleLogin();
+
 	const { selected, handleSelect } = useHandleSelect({
 		defaultSelect: defBtns.Event.value,
 		handleLogin,
 		isLogin
 	});
 	const link = (
-		<Link to={path.home.root}>
+		<a onClick={() => navigate(-1)}>
 			<i className="icon icon-keyboard_arrow_left" />
-		</Link>
+		</a>
 	);
 
 	if (userInfo.isLogin !== false && !userInfo.lastLogin) return null;
@@ -60,7 +61,7 @@ export default () => {
 					isLogin={isLogin}
 				/>
 			</Header>
-			<Layout mainClass="main rankingNew" header={false}>
+			<Layout mainClass="main rankingNew" noHeader>
 				<Event
 					isOpen={defBtns[selected].elemType === defElemType.Event}
 					i18n={i18n}

@@ -1,189 +1,138 @@
-import React, { useRef, useState } from "react";
-import PropTypes from "prop-types";
-import useInterval from "../hook/useInterval";
-import { Link } from "../../route/link";
-import path from "../../path";
-import defNav from "../casino/defNav";
-import { cloudBannerImgURL } from "../../config";
+import Swiper from "react-id-swiper";
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import {
+	popBoxContext,
+	userInfoContext,
+	productTpGameTypeSettingListContext
+} from "Context";
+import { defDeviceType } from "@ailab-mobile/api";
+import {
+	SlotGameCategoryEnum,
+	useGetSlotGamePageQuery
+} from "@ailab-mobile/service";
+import {
+	defTpGameType,
+	useGetTpMaintainList
+} from "../hook/useGetTpMaintainList";
+import { defSlotTpGameType } from "../../datas/productList";
+import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 
-const defaultElementHeight = 17;
-const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-const animateDelaySec = 800;
-
-const Jackpot = ({ i18n, userInfo }) => {
-	const jackpotRef = useRef();
-	const intervalTimer = useRef();
-
-	const _currencyId = userInfo?.currencyId;
-
-	const _currency = _currencyId ? i18n[`Currency_${_currencyId}`] : "";
-	const [value, setValue] = useState({ curr: "", prev: "" });
-	const [jPotSuccess, setJPotSuccess] = useState(false);
-
-	const supportAnimation = typeof document.getAnimations === "function";
-
-	useInterval(() => {
-		if (_currency && !jPotSuccess) {
-			try {
-				intervalTimer.current = supportAnimation
-					? 2000 + animateDelaySec
-					: 0;
-
-				const ticker = new Ticker({
-					info: 2,
-					casino: "hotspin88am",
-					currency:
-						_currency === "CNY" ? "cny" : _currency?.toLowerCase()
-				});
-
-				if (ticker) {
-					setJPotSuccess(true);
-				}
-
-				ticker.attachToTextBox("tick");
-				ticker.tick();
-			} catch (error) {}
-		}
-	}, 1000);
-
-	useInterval(() => {
-		setValue(prev => ({
-			curr: jackpotRef.current.innerText,
-			prev: prev.curr
-		}));
-	}, intervalTimer.current);
-
-	return (
-		<Link to={path.casino.root} state={{ nav: defNav.PROMO.key }}>
-			<span id="tick" ref={jackpotRef} style={{ display: "none" }} />
-			<div className={`jpot${jPotSuccess ? "" : " active"}`}>
-				<div className="jpot-btn">
-					<button>{i18n.lbl_PlayNow}</button>
-				</div>
-				<div className="jpot-item">
-					<img
-						src={`${cloudBannerImgURL}/h5/img/homepage/jpot-item.png`}
-						alt="jpot-item"
-					/>
-				</div>
-				<div className="number">
-					<div>{_currency}</div>
-					<div className="numberRow-module">
-						<ShowingNum
-							value={value}
-							currency={_currency}
-							supportAnimation={supportAnimation}
-						/>
-					</div>
-				</div>
-				{!jPotSuccess && (
-					<div className="under">{i18n.lbl_underMaintenance}</div>
-				)}
-			</div>
-		</Link>
-	);
+const defSwipperConfig = {
+	containerClass: "jackpot-container",
+	slidesPerView: 3.2,
+	spaceBetween: 10
 };
 
-Jackpot.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
-};
+const Jackpot = () => {
+	const { t } = useTranslation();
 
-const ShowingNum = ({ value, currency, supportAnimation }) => {
-	let currTotal = [];
-	let prevTotal = [];
-	if (currency === "THB") {
-		currTotal = String(value.curr).substr(1).split("");
-		prevTotal = String(value.prev).substr(1).split("");
-	} else {
-		currTotal = String(value.curr).split(" ")[0].split("");
-		prevTotal = String(value.prev).split(" ")[0].split("");
-	}
-	const elementList = document.querySelectorAll(
-		".jpot .number .numberRow > div.active"
+	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { isLogin, langId, currencyId } = userInfo;
+
+	const { tpGameTypeSettingList } = useContext(
+		productTpGameTypeSettingListContext
 	);
 
-	const arr = currTotal.map((val, idx) => {
-		const isNumber = !isNaN(Number(val));
-		const key = `jackpot-${idx}line`;
-		let valArr = [];
+	const { maintainList } = useGetTpMaintainList();
 
-		if (isNumber) {
-			const prevVal = Number(prevTotal[idx]);
-			if (prevVal <= val) {
-				valArr = numberArray.slice(prevVal, Number(val) + 1);
-			} else {
-				const valArr1 = numberArray.slice(prevVal);
-				const valArr2 = numberArray.slice(0, Number(val) + 1);
-				valArr = [...valArr1, ...valArr2];
-			}
-
-			return (
-				<div className="numberRow" key={key}>
-					<div className="active">
-						{valArr.map((n, i) => (
-							// eslint-disable-next-line react/no-array-index-key
-							<div key={`jackpot-num-${i}`}>{n}</div>
-						))}
-					</div>
-				</div>
-			);
-		}
-
-		return (
-			<div key={key}>
-				<div>{val}</div>
-			</div>
-		);
+	const {
+		data: {
+			data: {
+				imgUrl,
+				providerList = [],
+				jackpot: apiJackpotList = []
+			} = {}
+		} = {}
+	} = useGetSlotGamePageQuery({
+		currencyId,
+		deviceType: defDeviceType.Mobile,
+		slotGameCategoryList: [SlotGameCategoryEnum.Jackpot]
 	});
 
-	if (supportAnimation) {
-		const currAmount = currTotal.filter(
-			item => item !== "," && item !== "."
-		);
-		if (currAmount.length > 0) {
-			const prevAmount = prevTotal.filter(
-				item => item !== "," && item !== "."
-			);
+	if (apiJackpotList.length === 0) return null;
 
-			currAmount.forEach((n, idx) => {
-				const height =
-					prevAmount[idx] <= n
-						? n - prevAmount[idx]
-						: 10 - Math.abs(n - prevAmount[idx]);
-				const elem = elementList?.[idx];
+	const jackpotList = apiJackpotList.map(
+		({ tpId, gameId, imgName, gameName }) => {
+			const tpGameType = Object.values(defSlotTpGameType).find(
+				({ tpId: slotTpId }) => slotTpId === tpId
+			)?.tpGameType;
 
-				if (elem) {
-					const elemHeight = elem.querySelector("div").offsetHeight;
-					const movingHeight =
-						(elemHeight ?? defaultElementHeight) * Number(height);
+			const brandTpName = providerList.find(
+				({ tpId: providerTpId }) => providerTpId === tpId
+			)?.tpName;
 
-					elem.style.top = 0;
-					if (elem.animate) {
-						elem.animate(
-							{ top: `-${movingHeight}px`, easing: "ease" },
-							2000
-						);
-					}
+			const onClickGame = () => {
+				const underMaintain = maintainList.some(
+					({ tpId: maintainTpId, tpGameType: maintainTpGameType }) =>
+						maintainTpId === tpId &&
+						(maintainTpGameType === defTpGameType.All ||
+							maintainTpGameType === tpGameType)
+				);
 
-					Promise.all(
-						elem
-							.getAnimations()
-							.map(animation => animation.finished)
-					).then(() => {
-						elem.style.top = `-${movingHeight}px`;
+				const isLiveHostNoPlay = tpGameTypeSettingList?.find(
+					({ tpId: settingTpId, gameType: settingTpGameType }) =>
+						settingTpId === tpId && settingTpGameType === tpGameType
+				)?.noPlay;
+
+				if (underMaintain) {
+					setPopBox({
+						isOpen: true,
+						content: t("lbl_underMaintenance")
+					});
+				} else if (isLiveHostNoPlay) {
+					setPopBox({
+						isOpen: true,
+						title: t("lbl_Information"),
+						content: (
+							<div
+								style={{
+									color: "red"
+								}}>
+								{t("lbl_InaccessibleWithoutPermission")}
+							</div>
+						)
+					});
+				} else if (!isLogin) {
+					handleLogin();
+				} else {
+					GET_CASINO_ENTER_PAGE({
+						tpId,
+						langId,
+						gameId,
+						tpGameType,
+						isFree: false
 					});
 				}
-			});
+			};
+
+			return (
+				<div key={gameId} onClick={onClickGame}>
+					<a>
+						<div className="jackpot-item">
+							<img
+								src={`${imgUrl}/${brandTpName}/${
+									imgName[langId] || imgName.en
+								}`}
+								alt={gameId}
+							/>
+							<span>{gameName[langId] || gameName.en}</span>
+						</div>
+					</a>
+				</div>
+			);
 		}
-	}
+	);
 
-	return arr;
+	return (
+		<>
+			<div className="home-title">{t("lbl_Jackpot")}</div>
+			<div className="home-jackpot-swiper">
+				<Swiper {...defSwipperConfig}>{jackpotList}</Swiper>
+			</div>
+		</>
+	);
 };
 
-ShowingNum.propTypes = {
-	value: PropTypes.objectOf(PropTypes.string).isRequired
-};
-
-export default Jackpot;
+export { Jackpot };

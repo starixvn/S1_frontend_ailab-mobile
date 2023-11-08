@@ -65,8 +65,8 @@ export const useGetPromotions = ({
 	}, [langId]);
 
 	useEffect(() => {
-		getPromotionList();
-	}, [getPromotionList]);
+		if (langId) getPromotionList();
+	}, [langId]);
 
 	const promotionList = filterExpiry
 		? promotion.filter(p => !isExpiry({ ...p, isLogin }))

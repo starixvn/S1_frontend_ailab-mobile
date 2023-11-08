@@ -1,204 +1,131 @@
-import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import PropTypes from "prop-types";
-import { defCurrenyId } from "apps/nova88v2/src/components/common/common";
-import { cloudBannerImgURL } from "../../config";
-import { Link } from "../../route/link";
-import path from "../../path";
+import { useTranslation } from "react-i18next";
+import React, { useContext, useEffect } from "react";
+import { userInfoContext } from "Context";
 import { useGetSEODatas } from "../seo/seo";
+import { getAffiliateLink } from "../common/common";
+import { cloudBannerImgURL } from "../../config";
 import useGetSocialChannel, {
-	defDisplayPage,
-	channelIcon
+	channelIcon,
+	defDisplayPage
 } from "../hook/useGetSocialChannel";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
-const Bottom = ({ i18n, langId, currencyId }) => {
-	const _currencyId = currencyId;
+const defaultCuracaoScript = "a7019fa5-9f9a-468b-92da-4890f6a6e4a7";
+const defaultXCMScript = "226e4de2-30aa-4077-951b-d440012994f3";
+
+const Bottom = () => {
+	const { t } = useTranslation();
+
+	const { userInfo } = useContext(userInfoContext);
+	const { langId, currencyId } = userInfo;
 
 	const { socialChannel } = useGetSocialChannel({
 		langId,
-		currencyId: _currencyId,
+		currencyId,
 		displayPage: defDisplayPage.Footer
 	});
 
-	const getCurrencyLink = (targetCurrencyId, targetLangId) => {
-		if (targetCurrencyId === defCurrenyId.MYR) {
-			return ` https://aff.nova88mas102.com/?lang=${targetLangId}`;
-		}
-		if (targetCurrencyId === defCurrenyId.INR) {
-			return `https://aff.nova88india.com/?lang=${targetLangId}`;
-		}
-		return `https://aff.nova88bkk.com/?lang=${targetLangId}`;
-	};
-
-	const snsArr = socialChannel.map(el => (
-		<a
-			key={`channel-${el.channelName}`}
-			className={channelIcon[el.channelName]}
-			href={el.link}
-			target="_blank"
-			rel="noreferrer noopener"
-		/>
-	));
-
-	return (
-		<>
-			<Link to={path.appDownload.root}>
-				<img
-					className="spokesperson"
-					src={`${cloudBannerImgURL}/h5/img/app/appdownload-${langId}.jpg`}
-					alt="Go To Download App"
-				/>
-			</Link>
-			<div className="footerModule">
-				<img
-					className="spokesperson"
-					src={`${cloudBannerImgURL}/h5/img/homepage/spokesperson.png`}
-					alt="Endorser"
-				/>
-				<div className="middle">
-					<div className="social">
-						{socialChannel.length > 0 && snsArr}
-					</div>
-					<div className="border" />
-					<License i18n={i18n} />
-				</div>
-				<div className="aff">
-					<a
-						className="title"
-						style={
-							allowedCurrencyList.affiliate.includes(currencyId)
-								? {}
-								: { pointerEvents: "none" }
-						}
-						href={getCurrencyLink(currencyId, langId)}
-						target="_blank"
-						rel="noreferrer noopener">
-						{i18n.lbl_AffiliateProgram}
-					</a>
-					<p>{i18n.lbl_Cookie_Reminder}</p>
-				</div>
-			</div>
-		</>
-	);
-};
-
-Bottom.defaultProps = {
-	currencyId: null
-};
-
-Bottom.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	langId: PropTypes.string.isRequired,
-	currencyId: PropTypes.number
-};
-
-const defaultScript = "a7019fa5-9f9a-468b-92da-4890f6a6e4a7";
-const defaultXCMScript = "226e4de2-30aa-4077-951b-d440012994f3";
-
-const License = ({ i18n }) => {
 	const { SEODatas } = useGetSEODatas();
 	const showLicenseLogo = SEODatas?.activeDomain ?? false;
 
-	const CuracaoScript = SEODatas?.script ?? defaultScript;
-	const formattedCuracaoScript = CuracaoScript?.replaceAll("-", "_");
-
+	const CuracaoScript = SEODatas?.script ?? defaultCuracaoScript;
 	const XCMScript = SEODatas?.xcmScript ?? defaultXCMScript;
+
+	const formattedCuracaoScript = CuracaoScript?.replaceAll("-", "_");
 	const formattedXCMScript = XCMScript?.replaceAll("-", "_");
 
 	useEffect(() => {
 		try {
 			if (showLicenseLogo) {
-				// apg_a7019fa5_9f9a_468b_92da_4890f6a6e4a7.init();
-				// xcm_226e4de2_30aa_4077_951b_d440012994f3.init();
-				`apg_${formattedCuracaoScript}`.init();
-				`xcm_${formattedXCMScript}`.init();
+				const apgScript = window[`apg_${formattedCuracaoScript}`];
+				const xcmScript = window[`xcm_${formattedXCMScript}`];
+				apgScript?.init();
+				xcmScript?.init();
 			}
 		} catch (error) {}
 	}, [showLicenseLogo]);
 
 	return (
-		<>
-			<div className="license">
-				{showLicenseLogo && (
-					<>
-						<div>
-							{i18n.lbl_Gaming_License}
+		<div className="home-bottom">
+			<div className="home-bottom-top">
+				<div className="bottom-social">
+					{socialChannel?.map(({ link, channelName }) => (
+						<a
+							key={channelName}
+							href={link}
+							target="_blank"
+							rel="noreferrer noopener">
 							<img
-								src={`${cloudBannerImgURL}/h5/img/license_tick.png`}
-								alt="vaild gaming license"
+								src={`${cloudBannerImgURL}/h5/img/4.0/${channelIcon[channelName]}.png`}
+								alt={channelName}
 							/>
-						</div>
-						<div>
-							{/* <div
-							id="apg-a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
-							data-apg-seal-id="a7019fa5-9f9a-468b-92da-4890f6a6e4a7"
+						</a>
+					))}
+				</div>
+				<div className="bottom-license">
+					<div>
+						{t("lbl_Gaming_License")}
+						<img
+							className="icon-tick"
+							src={`${cloudBannerImgURL}/h5/img/4.0/license-tick.png`}
+							alt="license-tick"
+						/>
+					</div>
+					<div>
+						<div
+							id={`apg-${CuracaoScript}`}
+							data-apg-seal-id={CuracaoScript}
 							data-apg-image-size="48"
 							data-apg-image-type="basic-small"
-						/> */}
-							{/* <div
-							id="xcm-226e4de2-30aa-4077-951b-d440012994f3"
-							data-xcm-seal-id="226e4de2-30aa-4077-951b-d440012994f3"
+						/>
+						<div
+							id={`xcm-${XCMScript}`}
+							data-xcm-seal-id={XCMScript}
 							data-xcm-image-size="36"
 							data-xcm-image-type="basic-small"
-						/> */}
-							<div
-								id={`apg-${CuracaoScript}`}
-								data-apg-seal-id={CuracaoScript}
-								data-apg-image-size="48"
-								data-apg-image-type="basic-small"
-							/>
-							<div
-								id={`xcm-${XCMScript}`}
-								data-xcm-seal-id={XCMScript}
-								data-xcm-image-size="36"
-								data-xcm-image-type="basic-small"
-							/>
-							<div>
-								<a
-									href="https://www.begambleaware.org/"
-									target="_blank"
-									rel="noreferrer">
-									<img
-										src="https://banner.0814media.net/h5/img/aware.png"
-										alt=""
-									/>
-								</a>
-							</div>
+						/>
+						<div>
+							<a
+								href="https://www.begambleaware.org/"
+								target="_blank"
+								rel="noreferrer">
+								<img
+									src={`${cloudBannerImgURL}/h5/img/aware.png`}
+									alt="begambleaware"
+								/>
+							</a>
 						</div>
-					</>
-				)}
+					</div>
+					<Helmet>
+						<script
+							type="text/javascript"
+							src={`https://${CuracaoScript}.snippet.antillephone.com/apg-seal.js?v=${Date.now()}`}
+						/>
+						<script
+							type="text/javascript"
+							src={`https://${XCMScript}.seals-xcm.certria.com/xcm-seal.js?v=${Date.now()}`}
+						/>
+					</Helmet>
+				</div>
 			</div>
-			<LicenseHelmet script={CuracaoScript} xcmScript={XCMScript} />
-		</>
+			<div className="home-bottom-aff">
+				<a
+					className="title"
+					style={
+						allowedCurrencyList.affiliate.includes(currencyId)
+							? {}
+							: { pointerEvents: "none" }
+					}
+					href={getAffiliateLink(currencyId, langId)}
+					target="_blank"
+					rel="noreferrer noopener">
+					{t("lbl_AffiliateProgram")}
+				</a>
+				<p>{t("lbl_Cookie_Reminder")}</p>
+			</div>
+		</div>
 	);
 };
 
-License.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired
-};
-
-const LicenseHelmet = ({ script, xcmScript }) => (
-	<Helmet>
-		<script
-			type="text/javascript"
-			src={`https://${script}.snippet.antillephone.com/apg-seal.js?v=${Date.now()}`}
-		/>
-		<script
-			type="text/javascript"
-			src={`https://${xcmScript}.seals-xcm.certria.com/xcm-seal.js?v=${Date.now()}`}
-		/>
-	</Helmet>
-);
-
-LicenseHelmet.defaultProps = {
-	script: null,
-	xcmScript: null
-};
-
-LicenseHelmet.propTypes = {
-	script: PropTypes.string,
-	xcmScript: PropTypes.string
-};
-
-export default Bottom;
+export { Bottom };
