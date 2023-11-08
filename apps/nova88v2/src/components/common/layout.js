@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { isDateRange } from "@ailab-mobile/common";
 import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useMatch, useNavigate } from "@reach/router";
-import Footer from "./footer";
+import { Footer } from "./footer";
 import Header from "../header/header";
 import {
 	navContext,
@@ -24,7 +24,7 @@ import GoTopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
 import { angpaoAllowedCurrencies, angPaoEventPeriod } from "../../pages/angpao";
 
-const Layout = ({ children, header, mainClass, goTopBtn }) => {
+const Layout = ({ children, header, mainClass, goTopBtn, noHeader }) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
@@ -50,6 +50,9 @@ const Layout = ({ children, header, mainClass, goTopBtn }) => {
 
 	const _mainClass = mainClass ?? "";
 
+	let showHeader = noHeader ? null : header;
+	if (!header && !noHeader) showHeader = <Header title="" hideLogo={true} />;
+
 	useEffect(() => {
 		if (userInfo.isLogin && userInfo.isResetPwd) {
 			navigate(`/${userInfo.langId}/${path.changePassword.root}`);
@@ -59,7 +62,7 @@ const Layout = ({ children, header, mainClass, goTopBtn }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{header ?? <Header title="" hideLogo={true} />}
+			{showHeader}
 			<main
 				style={position}
 				className={`${_mainClass} ${
@@ -152,14 +155,16 @@ Layout.defaultProps = {
 	children: null,
 	header: null,
 	mainClass: null,
-	goTopBtn: true
+	goTopBtn: true,
+	noHeader: false
 };
 
 Layout.propTypes = {
 	children: PropTypes.node,
 	header: PropTypes.node,
 	mainClass: PropTypes.string,
-	goTopBtn: PropTypes.bool
+	goTopBtn: PropTypes.bool,
+	noHeader: PropTypes.bool
 };
 
 RotationHint.propTypes = {
