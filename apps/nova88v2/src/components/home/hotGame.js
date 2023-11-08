@@ -1,133 +1,137 @@
-import React, { useContext, useState, useEffect } from "react";
-import Marquee from "react-fast-marquee";
-import PropTypes from "prop-types";
-import { popBoxContext } from "../common/context";
-import { defProductType } from "../../datas/hotGameList";
-import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
+import Swiper from "react-id-swiper";
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import {
+	userInfoContext,
+	popBoxContext,
+	productTpGameTypeSettingListContext
+} from "Context";
+import { defDeviceType } from "@ailab-mobile/api";
+import { useGetHotGameDataListQuery } from "@ailab-mobile/service";
 import useHandleLogin from "../hook/useHandleLogin";
 import {
-	useGetTpMaintainList,
-	defTpGameType
+	defTpGameType,
+	useGetTpMaintainList
 } from "../hook/useGetTpMaintainList";
-import api from "../../service/api";
+import { cloudBannerImgURL } from "../../config";
+import { defProductType } from "../../datas/hotGameList";
+import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 
-const HotGame = ({ i18n, userInfo }) => {
+const defSwipperConfig = {
+	containerClass: "hotgame-container",
+	slidesPerView: 3.2,
+	spaceBetween: 10
+};
+
+const HotGame = () => {
+	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
-	const { handleLogin } = useHandleLogin();
+	const {
+		userInfo: { isLogin, langId, currencyId }
+	} = useContext(userInfoContext);
+
+	const { tpGameTypeSettingList } = useContext(
+		productTpGameTypeSettingListContext
+	);
+
 	const { maintainList } = useGetTpMaintainList();
-	const [gameList, setGameList] = useState([]);
+	const { handleLogin } = useHandleLogin();
 
-	useEffect(() => {
-		api.hotGame
-			.GetDataList({
-				currencyId: userInfo.currencyId,
-				langId: userInfo.langId
-			})
-			.then(res => {
-				if (res.data.errorCode === 0) {
-					setGameList(res.data.data?.HotGame ?? []);
-				} else {
-					setPopBox({
-						isOpen: true,
-						content: `[${res.data.errorCode}] ${res.data.message}`
-					});
-				}
-			});
-	}, [userInfo.currencyId]);
-
-	const clickGame = ({ tpId, gameId, tpCategory, tpGameType }) => {
-		if (
-			maintainList?.some(
-				m =>
-					m.tpId === tpId &&
-					(m.tpGameType === tpGameType ||
-						m.tpGameType === defTpGameType.All)
-			)
-		) {
-			setPopBox({
-				isOpen: true,
-				content: i18n.lbl_underMaintenance,
-				hasBtn: true,
-				btnBar: (
-					<div className="btn-group">
-						<button
-							className="white"
-							onClick={() => {
-								setPopBox({ isOpen: false });
-							}}>
-							OK
-						</button>
-					</div>
-				)
-			});
-		} else if (userInfo.isLogin === false) {
-			handleLogin();
-		} else if (tpCategory === defProductType.Slots) {
-			GET_CASINO_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isFree: false,
-				tpGameType
-			});
-		} else {
-			GET_ENTER_PAGE({
-				langId: userInfo.langId,
-				tpId,
-				gameId,
-				isLogin: userInfo.isLogin,
-				loginCallback: handleLogin,
-				tpGameType
-			});
-		}
-	};
-
-	const gameArr = gameList?.map(game => {
-		return (
-			<div key={`hotGame-${game.gameName}`} className="hotGamModule">
-				<img src={game.gameLogo} alt={game.gameName} />
-				<div className="hotgametitle">
-					<img alt={game.tpName} src={game.tpLogo} />
-					<div>
-						<div className="hotgame-name">{game.gameName}</div>
-						<div>
-							{`${i18n[`lbl_tpCategory_${game.tpCategory}`]} ${
-								game.tpName
-							}`}
-						</div>
-					</div>
-				</div>
-				<div className="btn-group">
-					<button
-						onClick={clickGame.bind(this, {
-							tpId: game?.tpId,
-							gameId: game?.gameId,
-							tpCategory: game?.tpCategory,
-							tpGameType: game.tpGameType,
-							specialUrl: game?.specialUrl ?? ""
-						})}>
-						{i18n.lbl_PlayNow}
-					</button>
-				</div>
-			</div>
-		);
+	const {
+		data: { data: { HotGame: apiHotGameList = [] } = {} } = {}
+	} = useGetHotGameDataListQuery({
+		langId,
+		currencyId,
+		deviceType: defDeviceType.Mobile
 	});
 
+	// * 如果沒有資料，整個元件都不渲染
+	if (apiHotGameList.length === 0) return null;
+
+	const hotGameList = apiHotGameList.map(
+		({ tpId, gameId, gameLogo, gameName, tpCategory, tpGameType }) => {
+			const onClickGame = () => {
+				const underMaintain = maintainList.some(
+					({ tpId: maintainTpId, tpGameType: maintainTpGameType }) =>
+						tpId === maintainTpId &&
+						(maintainTpGameType === defTpGameType.All ||
+							maintainTpGameType === tpGameType)
+				);
+
+				const isLiveHostNoPlay = tpGameTypeSettingList?.find(
+					({ tpId: settingTpId, gameType: settingTpGameType }) =>
+						settingTpId === tpId && settingTpGameType === tpGameType
+				)?.noPlay;
+
+				if (underMaintain) {
+					setPopBox({
+						isOpen: true,
+						content: t("lbl_underMaintenance")
+					});
+				} else if (isLiveHostNoPlay) {
+					setPopBox({
+						isOpen: true,
+						title: t("lbl_Information"),
+						content: (
+							<div
+								style={{
+									color: "red"
+								}}>
+								{t("lbl_InaccessibleWithoutPermission")}
+							</div>
+						)
+					});
+				} else if (!isLogin) {
+					handleLogin();
+				} else if (tpCategory === defProductType.Slots) {
+					GET_CASINO_ENTER_PAGE({
+						tpId,
+						langId,
+						gameId,
+						tpGameType,
+						isFree: false
+					});
+				} else {
+					GET_ENTER_PAGE({
+						tpId,
+						langId,
+						gameId,
+						isLogin,
+						tpGameType,
+						loginCallback: handleLogin
+					});
+				}
+			};
+
+			return (
+				<div key={gameName} onClick={onClickGame}>
+					<a>
+						<div className="hotgame-item">
+							<img src={gameLogo} alt={gameName} />
+							<span>{gameName}</span>
+						</div>
+					</a>
+				</div>
+			);
+		}
+	);
+
 	return (
-		gameArr && (
-			<>
-				<div className="moduleTitle">{i18n.lbl_HotGame}</div>
-				<Marquee speed={60} className="hotGame" gradient={false}>
-					{gameArr}
-				</Marquee>
-			</>
-		)
+		<>
+			<div className="home-title">{t("lbl_HotGame")}</div>
+			<div className="home-hotgame">
+				<div className="hotgame-bn">
+					<img
+						src={`${cloudBannerImgURL}/h5/img/4.0/hotgame-bn.png`}
+						alt="Hot Game"
+					/>
+				</div>
+				<div className="home-hotgame-swiper">
+					<Swiper {...defSwipperConfig}>{hotGameList}</Swiper>
+				</div>
+			</div>
+		</>
 	);
 };
 
-HotGame.propTypes = {
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
-};
-
-export default HotGame;
+export { HotGame };

@@ -6,23 +6,20 @@ const swipperParam = {
 	spaceBetween: 30,
 	centeredSlides: true,
 	effect: "fade",
-	autoplay: {
-		delay: 5000,
-		disableOnInteraction: false
-	},
-	pagination: {
-		el: ".swiper-pagination",
-		clickable: true
-	},
+	loop: true,
 	rebuildOnUpdate: true
 };
 
-export default () => {
+const Slider = () => {
 	return (
-		<SwipperBanner
-			ImgFolder={[api.site.defBannerType.Promotions]}
-			filterHideInHome={true}
-			params={swipperParam}
-		/>
+		<div className="home-mainbanner">
+			<SwipperBanner
+				ImgFolder={[api.site.defBannerType.Promotions]}
+				filterHideInHome={true}
+				params={swipperParam}
+			/>
+		</div>
 	);
 };
+
+export { Slider };

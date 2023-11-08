@@ -2,20 +2,24 @@ import React, { useContext } from "react";
 import QRCode from "qrcode.react";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
+import { useNavigate } from "@reach/router";
 import { i18nContext } from "../components/common/context";
-import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
-import Footer from "../components/common/footer";
 import path from "../path";
 import { Link } from "../route/link";
 import { cloudBannerImgURL } from "../config";
+import { Footer } from "../components/common/footer";
 import GoTopBtn from "../components/common/goTopBtn";
+import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 
 const IndexPage = () => {
+	const navigateTo = useNavigate();
+
 	const { i18n } = useContext(i18nContext);
+
 	const { appLinkDatas } = useAppDownLoad();
 
-	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
+	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
 
 	return (
 		<>
@@ -28,6 +32,9 @@ const IndexPage = () => {
 								alt="Back To Nova88"
 							/>
 						</Link>
+						<a onClick={() => navigateTo(-1)}>
+							<i className="icon icon-keyboard_arrow_left" />
+						</a>
 					</div>
 					<div className="appPage">
 						<div className="appTitle">{i18n.lbl_AppDownload}</div>

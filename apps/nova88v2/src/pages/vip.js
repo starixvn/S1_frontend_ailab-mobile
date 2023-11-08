@@ -33,7 +33,7 @@ const IndexPage = () => {
 	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const header = <Header title="VIP" hideLogo={true} />;
+
 	const [vipBanner, setVipBanner] = useState([]);
 	// 預設 vintage
 	const [vipActiveTabId, setVipActiveTabId] = useState(
@@ -102,6 +102,14 @@ const IndexPage = () => {
 			isMountedRef.current = false;
 		};
 	});
+
+	const goBackBtn = (
+		<a onClick={() => navigate(-1)}>
+			<i className="icon icon-keyboard_arrow_left" />
+		</a>
+	);
+
+	const header = <Header title="VIP" hideLogo={true} link={goBackBtn} />;
 
 	return (
 		<Layout header={header} mainClass="main vip">
