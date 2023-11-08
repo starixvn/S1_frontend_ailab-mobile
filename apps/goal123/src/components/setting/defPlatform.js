@@ -153,12 +153,6 @@ const defPlatfrom = [
 		imgName: "nextspina"
 	},
 	{
-		...defGameInfo.Casino_Endorphina,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Endorphina },
-		imgName: "endorphinaa"
-	},
-	{
 		...defGameInfo.sports_IM,
 		imgName: "im-sportsa"
 	},
