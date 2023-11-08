@@ -43,12 +43,7 @@ const allowedCurrencyList = {
 	],
 
 	// ==== transfer ====
-	transferFunds: [
-		defCurrenyId.INR,
-		defCurrenyId.BDT,
-		defCurrenyId.USD,
-		defCurrenyId.VND
-	],
+	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 
 	// ==== withdrawal ====
 	bankCard: [
@@ -114,6 +109,15 @@ const allowedCurrencyList = {
 		defCurrenyId.USDT
 	],
 	slotPegasus: [defCurrenyId.MYR],
+	FaChai: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.VND
+	],
 
 	// game
 	mPoker: [defCurrenyId.THB],
@@ -204,13 +208,14 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY,
 		defCurrenyId.KHM
 	],
-	FaChai: [
+	PP: [
 		defCurrenyId.MYR,
-		defCurrenyId.THB,
-		defCurrenyId.IDR,
-		defCurrenyId.INR,
-		defCurrenyId.BDT,
 		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
 		defCurrenyId.VND
 	]
 };

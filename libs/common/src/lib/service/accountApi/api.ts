@@ -1,6 +1,16 @@
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
 
+const accountApiUrl = {
+	getRefFriendDetail: "Account/GetRefFriendDetail",
+	getReferralSummary: "Account/GetReferralSummaryV2",
+	getReferralSettingDetail: "Account/GetReferralSettingDetail",
+	getReferralCode: "Account/GetReferralCode",
+	setLanguage: "Account/SetLanguage",
+	getCustBonusWallet: "Account/GetCustBonusWallet",
+	getCustVIPProgress: "Account/GetCustVIPProgress"
+};
+
 export const accountApi = rootApi.injectEndpoints({
 	endpoints: builder => ({
 		getRefFriendDetail: builder.query<
@@ -21,7 +31,7 @@ export const accountApi = rootApi.injectEndpoints({
 			}
 		>({
 			query: data => ({
-				url: "Account/GetRefFriendDetail",
+				url: accountApiUrl.getRefFriendDetail,
 				method: "POST",
 				data
 			})
@@ -37,7 +47,7 @@ export const accountApi = rootApi.injectEndpoints({
 			null
 		>({
 			query: () => ({
-				url: "Account/GetReferralSummaryV2",
+				url: accountApiUrl.getReferralSummary,
 				method: "POST"
 			})
 		}),
@@ -66,13 +76,58 @@ export const accountApi = rootApi.injectEndpoints({
 			null
 		>({
 			query: () => ({
-				url: "Account/GetReferralSettingDetail",
+				url: accountApiUrl.getReferralSettingDetail,
 				method: "POST"
 			})
 		}),
 		getReferralCode: builder.query<IAxiosResponse<string>, null>({
 			query: () => ({
-				url: "Account/getReferralCode",
+				url: accountApiUrl.getReferralCode,
+				method: "POST"
+			})
+		}),
+		setLanguage: builder.mutation<IAxiosResponse<void>, { langId: string }>(
+			{
+				query: ({ langId }) => ({
+					url: accountApiUrl.setLanguage,
+					method: "POST",
+					data: { langId }
+				})
+			}
+		),
+		getCustBonusWallet: builder.query<
+			IAxiosResponse<
+				{
+					tpId: number;
+					bonus: number;
+					status: number;
+					bonusId: number;
+					rollover: number;
+					turnover: number;
+					fullFillType: number;
+					promoCategoryId: number;
+					expiryTime: null | string;
+				}[]
+			>,
+			void
+		>({
+			query: () => ({
+				url: accountApiUrl.getCustBonusWallet,
+				method: "POST"
+			})
+		}),
+		getCustVIPProgress: builder.query<
+			IAxiosResponse<{
+				currentVipLevel: null | number;
+				upDeposit: null | number;
+				actualDeposit: null | number;
+				downDeposit: null | number;
+				downTurnover: null | number;
+			}>,
+			void
+		>({
+			query: () => ({
+				url: accountApiUrl.getCustVIPProgress,
 				method: "POST"
 			})
 		})
@@ -83,5 +138,8 @@ export const {
 	useLazyGetRefFriendDetailQuery,
 	useLazyGetReferralSettingDetailQuery,
 	useGetReferralSummaryV2Query,
-	useGetReferralCodeQuery
+	useGetReferralCodeQuery,
+	useSetLanguageMutation,
+	useGetCustBonusWalletQuery,
+	useGetCustVIPProgressQuery
 } = accountApi;

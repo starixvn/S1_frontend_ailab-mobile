@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useNavigate, useLocation } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import {
 	i18nContext,
 	popBoxContext,
@@ -22,9 +22,8 @@ const Panel = () => {
 	const { setMsgCount } = useContext(msgCountContext);
 	const { setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { setPopUp } = useContext(popUpMsgContext);
-	const { GetPopupMsg } = useGetPopUpMsg({ setPopUp });
-	const location = useLocation();
+	const { popUp, setPopUp } = useContext(popUpMsgContext);
+	const { GetPopupMsg, ReadPopupMsg } = useGetPopUpMsg({ setPopUp });
 	const showMessageRef = useRef(null);
 	const [msgList, setMsgList] = useState([]);
 	const [msgContent, setMsgContent] = useState([]);
@@ -58,23 +57,22 @@ const Panel = () => {
 		if (userInfo.isLogin) {
 			GetMsgList({
 				loading: true,
-				pageNumber: location?.state?.pageNumber
+				pageNumber: popUp?.pageNumber
 			});
 		} else {
 			navigate(`/${userInfo.langId}`);
 		}
-	}, [userInfo.isLogin, location.state]);
+	}, [userInfo.isLogin]);
 
 	useEffect(() => {
 		if (
-			location?.state?.pageNumber > 1 &&
-			!location?.state?.popupShowed &&
+			popUp?.pageNumber > 1 &&
+			!popUp?.popupShowed &&
 			showMessageRef.current
 		) {
 			showMessageRef.current?.scrollIntoView({
 				behavior: "smooth"
 			});
-			location.state.popupShowed = true;
 		}
 	}, [msgContent, showMessageRef]);
 
@@ -97,19 +95,17 @@ const Panel = () => {
 								if (data !== null) {
 									setMsgList(data);
 									const msg = data.find(
-										el => el.id === location.state.id
+										el => el.id === popUp?.id
 									);
 
 									if (pageNumber && msg) {
-										if (
-											openContentState !==
-											location.state.id
-										) {
+										if (openContentState !== popUp?.id) {
 											openContent(
-												location.state.id,
+												popUp.id,
 												msg.flag,
 												msg.isBatch
 											);
+											ReadPopupMsg();
 										}
 
 										setPageInfo(() => ({
