@@ -75,60 +75,116 @@ export const isExpiry = ({
 		: moment(moment.unix(periodTo)).isBefore(new moment());
 };
 
-export const SPORT_LIST = [
-	{
-		displayText: "SBOBET",
-		img: `${bannerImgUrl}/h5/img/4.0/sbobet.png`,
-		...defGameInfo.sportSbo,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.sportSbo)
-			}
-		],
-		hasDesktopLink: true
-	},
-	{
-		displayKey: "lbl_CryptoSports",
-		img: `${bannerImgUrl}/h5/img/4.0/cryptosports.png`,
-		...defGameInfo.CryptoSports
-	},
-	{
-		displayKey: "lbl_SabaSport",
-		img: `${bannerImgUrl}/h5/img/4.0/sabasport.png`,
-		...defGameInfo.Sports,
-		hasDesktopLink: true
-	},
-	{
-		displayKey: "lbl_BTISport",
-		img: `${bannerImgUrl}/h5/img/4.0/btisport.png`,
-		...defGameInfo.BTISport,
-		hasDesktopLink: true
-	},
-	{
-		displayKey: "lbl_VirtualSports",
-		img: `${bannerImgUrl}/h5/img/4.0/virtualsport.png`,
-		...defGameInfo.VirtualSports,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.sports_virtualSports)
-			}
-		]
-	},
-	{
-		displayText: "IM Sports",
-		img: `${bannerImgUrl}/h5/img/4.0/inplaymatrix.png`,
-		...defGameInfo.eSports_IM,
-		hasDesktopLink: true,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.IM)
-			}
-		]
-	}
-];
+export const SPORT_LIST = {
+	en: [
+		{
+			displayText: "SBOBET",
+			img: `${bannerImgUrl}/h5/img/4.0/sbobet.png`,
+			...defGameInfo.sportSbo,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sportSbo)
+				}
+			],
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_CryptoSports",
+			img: `${bannerImgUrl}/h5/img/4.0/cryptosports.png`,
+			...defGameInfo.CryptoSports
+		},
+		{
+			displayKey: "lbl_SabaSport",
+			img: `${bannerImgUrl}/h5/img/4.0/sabasport.png`,
+			...defGameInfo.Sports,
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_BTISport",
+			img: `${bannerImgUrl}/h5/img/4.0/btisport.png`,
+			...defGameInfo.BTISport,
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_VirtualSports",
+			img: `${bannerImgUrl}/h5/img/4.0/virtualsport.png`,
+			...defGameInfo.VirtualSports,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sports_virtualSports)
+				}
+			]
+		},
+		{
+			displayText: "IM Sports",
+			img: `${bannerImgUrl}/h5/img/4.0/inplaymatrix.png`,
+			...defGameInfo.eSports_IM,
+			hasDesktopLink: true,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.IM)
+				}
+			]
+		}
+	],
+	vn: [
+		{
+			displayText: "SBOBET",
+			img: `${bannerImgUrl}/h5/img/4.0/sbobet-vn.png`,
+			...defGameInfo.sportSbo,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sportSbo)
+				}
+			],
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_CryptoSports",
+			img: `${bannerImgUrl}/h5/img/4.0/cryptosports-vn.png`,
+			...defGameInfo.CryptoSports
+		},
+		{
+			displayKey: "lbl_SabaSport",
+			img: `${bannerImgUrl}/h5/img/4.0/sabasport-vn.png`,
+			...defGameInfo.Sports,
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_BTISport",
+			img: `${bannerImgUrl}/h5/img/4.0/btisport-vn.png`,
+			...defGameInfo.BTISport,
+			hasDesktopLink: true
+		},
+		{
+			displayKey: "lbl_VirtualSports",
+			img: `${bannerImgUrl}/h5/img/4.0/virtualsport-vn.png`,
+			...defGameInfo.VirtualSports,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.sports_virtualSports)
+				}
+			]
+		},
+		{
+			displayText: "IM Sports",
+			img: `${bannerImgUrl}/h5/img/4.0/inplaymatrix-vn.png`,
+			...defGameInfo.eSports_IM,
+			hasDesktopLink: true,
+			eventIcon: [
+				{
+					icon: defIconType.new,
+					inPeriod: isEventPeriod(eventTime.IM)
+				}
+			]
+		}
+	]
+};
 
 export const rankMap = {
 	1: "1st",
