@@ -24,7 +24,7 @@ const SportList = ({ maintainList }) => {
 	return (
 		<div className="home-sports mb-2">
 			<Swiper {...swiperParams}>
-				{SPORT_LIST.map(
+				{SPORT_LIST[userInfo.langId].map(
 					({ img, tpId, gameId, tpGameType, hasDesktopLink }) => {
 						const isMaintain = maintainList?.some(
 							m =>
