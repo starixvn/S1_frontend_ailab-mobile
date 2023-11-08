@@ -431,3 +431,13 @@ export const numFormatToDigits = (
 	});
 	return formatter.format(Number(value.toFixed(digits)));
 };
+
+export const getAffiliateLink = (targetCurrencyId, targetLangId) => {
+	if (targetCurrencyId === defCurrenyId.MYR) {
+		return ` https://aff.nova88mas102.com/?lang=${targetLangId}`;
+	}
+	if (targetCurrencyId === defCurrenyId.INR) {
+		return `https://aff.nova88india.com/?lang=${targetLangId}`;
+	}
+	return `https://aff.nova88bkk.com/?lang=${targetLangId}`;
+};
