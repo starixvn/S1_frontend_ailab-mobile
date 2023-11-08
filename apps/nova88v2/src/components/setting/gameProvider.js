@@ -97,11 +97,6 @@ const defPlatfrom = [
 		path: path.casino.root,
 		imgName: "casino_cq9"
 	},
-	{
-		...defGameInfo.casino_ICG,
-		path: path.casino.root,
-		imgName: "casino_icg"
-	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
 	// 	imgName: "kiss",
@@ -120,10 +115,6 @@ const defPlatfrom = [
 	{
 		...defGameInfo.kingMaker,
 		imgName: "km"
-	},
-	{
-		...defGameInfo.amb,
-		imgName: "amb"
 	},
 	{
 		...defGameInfo.Casino_MGP,
@@ -165,11 +156,6 @@ const defPlatfrom = [
 		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_918Kiss,
-		imgName: "casino_kiss918",
-		path: path.casino.root
-	},
-	{
 		...defGameInfo.Casino_Skywind,
 		imgName: "sk",
 		path: path.casino.root
@@ -178,10 +164,6 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Nextspin,
 		imgName: "casino_nextspin",
 		path: path.casino.root
-	},
-	{
-		...defGameInfo.Casino_Endorphina,
-		imgName: "casino_end"
 	},
 	{
 		...defGameInfo.ESport_IM,
@@ -194,16 +176,6 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_Endorphina,
 		imgName: "casino_es",
-		path: path.casino.root
-	},
-	{
-		...defGameInfo.Casino_FaChai,
-		imgName: "casino_fachai",
-		path: path.casino.root
-	},
-	{
-		...defGameInfo.casino_PNG,
-		imgName: "png",
 		path: path.casino.root
 	},
 	{
