@@ -48,7 +48,7 @@ export const defLangGroups = {
 		img: `${cloudBannerImgURL}/h5/img/in.jpg`,
 		lang: [
 			{ value: "en", displayText: "English" },
-			{ value: "hi", displayText: "Hindi" }
+			{ value: "hi", displayText: "हिंदी" }
 		],
 		countryName: "India",
 		currencyId: defCurrenyId.INR
