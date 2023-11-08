@@ -97,11 +97,6 @@ const defPlatfrom = [
 		path: path.casino.root,
 		imgName: "casino_cq9"
 	},
-	{
-		...defGameInfo.casino_ICG,
-		path: path.casino.root,
-		imgName: "casino_icg"
-	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
 	// 	imgName: "kiss",
@@ -162,11 +157,6 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_SimplePlay,
 		imgName: "casino_simpleplay",
-		path: path.casino.root
-	},
-	{
-		...defGameInfo.Casino_918Kiss,
-		imgName: "casino_kiss918",
 		path: path.casino.root
 	},
 	{
