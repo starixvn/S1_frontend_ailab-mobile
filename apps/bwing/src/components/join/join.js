@@ -432,6 +432,14 @@ const Join = () => {
 		}
 	};
 
+	const handleClose = () => {
+		navigate(path.home.root);
+		setInputStatus(initStatus);
+		setUserValue(initValue);
+		setStep(1);
+		setNav(null);
+	};
+
 	useEffect(() => {
 		setReCaptchaKey(reCaptchaKey + 1);
 	}, [userInfo.langId]);
@@ -485,12 +493,7 @@ const Join = () => {
 				<div>
 					<button
 						className="icon-close-white-bg"
-						onClick={() => {
-							setNav(null);
-							setStep(1);
-							setInputStatus(initStatus);
-							setUserValue(initValue);
-						}}
+						onClick={handleClose}
 					/>
 					<img
 						className="join-logo"
