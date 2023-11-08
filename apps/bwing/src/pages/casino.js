@@ -7,11 +7,6 @@ import {
 	navContext
 } from "../components/common/context";
 import { api_GetSlotGamePage } from "../service/api/game";
-import {
-	defLoginGameType,
-	defSpecialSetting,
-	useGotoGame
-} from "../components/hook/useGotoGame";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import Nav from "../components/casino/nav";
@@ -20,6 +15,11 @@ import Lobby from "../components/casino/lobby";
 import Slider from "../components/casino/slider";
 import SearchBox from "../components/casino/searchBox";
 import GameProviders from "../components/casino/gameProviders";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
 import { defSlotTpGameType } from "../datas/productList";
@@ -33,6 +33,7 @@ const Casino = () => {
 	const { currencyId } = userInfo;
 	const page = getUrlParameter("page");
 	const { throttle } = useSetTimeout();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
@@ -51,8 +52,6 @@ const Casino = () => {
 	const [favoriteStr, setFavoriteStr] = useState(
 		localStorage.getItem("favorite")
 	);
-
-	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);

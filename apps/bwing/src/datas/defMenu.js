@@ -354,7 +354,6 @@ export const productList = langId => {
 					icon: "icon icon-mg",
 					displayText: "Microgaming"
 				},
-
 				{
 					...defGameInfo.Casino_Jili,
 					parameter: defGameInfo.Casino_Jili,

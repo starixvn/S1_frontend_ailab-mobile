@@ -45,7 +45,7 @@ const FavoriteSlots = ({ hotGameList, maintainList }) => {
 			});
 		} else if (userInfo.isLogin === false) {
 			setNav(defNavPanel.login);
-		} else if (tpCategory === defProductType.Slots) {
+		} else if (tpCategory === defProductType.slots) {
 			GET_CASINO_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,

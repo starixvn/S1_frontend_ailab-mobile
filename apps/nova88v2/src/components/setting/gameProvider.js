@@ -82,7 +82,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
-		imgName: "eb"
+		imgName: "we"
 	},
 	// {
 	// 	...defGameInfo.LIVEcasinoMW,
@@ -115,6 +115,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.kingMaker,
 		imgName: "km"
+	},
+	{
+		...defGameInfo.amb,
+		imgName: "casino_askme"
 	},
 	{
 		...defGameInfo.Casino_MGP,

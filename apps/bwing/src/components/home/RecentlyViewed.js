@@ -12,7 +12,6 @@ import {
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
 import { defProductType } from "../../datas/productList";
-
 import { defSpecialSetting, useGotoGame,defLoginGameType } from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
@@ -107,29 +106,29 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 				if (isMaintain) {
 					return;
 				}
-        throttle(
-          () =>
-            GET_CASINO_ENTER_PAGE({
-              tpId: selectedTpId,
-              gameId: selectedGameId,
-              isFree: false,
-              langId: userInfo.langId,
-              execFunction:
-                selectedTpId === defSpecialSetting.PG
-                  ? handleGoToGame.bind(this, {
-                    langId: userInfo.langId,
-                    tpId: selectedTpId,
-                    gameId: selectedGameId,
-                    isFun: false,
-                    tpGameType: selectedTpGameType,
-                    loginGameType:
-                    defLoginGameType.returnHtml
-                  })
-                  : null,
-              tpGameType: selectedTpGameType
-            }),
-          5000
-        );
+				throttle(
+					() =>
+						GET_CASINO_ENTER_PAGE({
+							tpId: selectedTpId,
+							gameId: selectedGameId,
+							isFree: false,
+							langId: userInfo.langId,
+							execFunction:
+								selectedTpId === defSpecialSetting.PG
+									? handleGoToGame.bind(this, {
+											langId: userInfo.langId,
+											tpId: selectedTpId,
+											gameId: selectedGameId,
+											isFun: false,
+											tpGameType: selectedTpGameType,
+											loginGameType:
+												defLoginGameType.returnHtml
+									  })
+									: null,
+							tpGameType: selectedTpGameType
+						}),
+					5000
+				);
 			}
 		} else {
 			handleOpenGame({
