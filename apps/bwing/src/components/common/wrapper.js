@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { node } from "prop-types";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { navigate } from "@reach/router";
 import * as ct from "./context";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import {
@@ -18,9 +19,10 @@ import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
 import { getUrlParameter, setCookie, deleteCookie, readCookie } from "./common";
 import i18nConfig from "../../i18n/config";
-import { defSpecialPath } from "../../path";
+import path, { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
 import { siteInfo } from "../../config";
+import DefLangs from "../../datas/defLangs";
 
 const isSpecialPath = () => {
 	return (
@@ -56,7 +58,6 @@ export const Wrapper = ({ children }) => {
 	const [theme, setTheme] = useState(themeList.default);
 	const [isShowEWallet, setIsShowEWallet] = useState(false);
 	const isMountedRef = useRef(null);
-
 	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
 		[]
 	);
@@ -94,6 +95,17 @@ export const Wrapper = ({ children }) => {
 			deleteCookie("AffId");
 			deleteCookie("RefId");
 			deleteCookie("Aff");
+		}
+		// 當 join referral link 含語系帶入url時倒轉至join頁面
+		const { pathname, search } = window.location;
+		const langArray = Object.values(DefLangs);
+		if (
+			langArray.some(({ value: langId }) =>
+				pathname.includes(`/${langId}/${path.join.root}`)
+			)
+		) {
+			navigate(`/${path.join.root}${search}`);
+			window.location.reload();
 		}
 	}, []);
 
