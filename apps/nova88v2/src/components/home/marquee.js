@@ -1,37 +1,37 @@
+import PropTypes from "prop-types";
 import React, { Component, useContext, createRef } from "react";
 import { useNavigate } from "@reach/router";
-import PropTypes from "prop-types";
-import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
-
-import { GET_LANG_ID } from "../../service/language";
+import { popBoxContext, userInfoContext, i18nContext } from "Context";
 import path from "../../path";
 import api from "../../service/api";
+import { GET_LANG_ID } from "../../service/language";
 import useHandleLogin from "../hook/useHandleLogin";
 
-const Panel = () => {
+const Marquee = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
-	const { handleLogin } = useHandleLogin();
-
 	const { popBox, setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
+
 	const langId = GET_LANG_ID(userInfo.langId);
 
+	const { handleLogin } = useHandleLogin();
+
 	return (
-		<Marquee
-			handleLogin={handleLogin}
-			setPopBox={setPopBox}
-			userIsLogin={userInfo.isLogin}
-			langId={langId}
-			popBoxIsOpen={popBox.isOpen}
+		<MarqueeComponent
 			i18n={i18n}
+			langId={langId}
 			navigate={navigate}
+			setPopBox={setPopBox}
 			currencyId={userInfo.currencyId}
+			isLogin={userInfo.isLogin}
+			popBoxIsOpen={popBox.isOpen}
+			handleLogin={handleLogin}
 		/>
 	);
 };
 
-class Marquee extends Component {
+class MarqueeComponent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -43,30 +43,28 @@ class Marquee extends Component {
 		this.content = createRef();
 	}
 
-	shouldComponentUpdate = (nextProps, nextState) => {
+	shouldComponentUpdate = nextProps => {
 		if (this.props.langId !== nextProps.langId) {
-			this.GetAnnouncement(nextProps.langId, nextProps.currencyId);
+			this.getAnnouncement(nextProps.langId, nextProps.currencyId);
 		}
 		return true;
 	};
 
 	componentDidMount = () => {
 		this.isMountedRef = true;
-		this.GetAnnouncement(this.props.langId, this.props.currencyId);
+		this.getAnnouncement(this.props.langId, this.props.currencyId);
 		this.intervalId = setInterval(
-			this.GetAnnouncement.bind(this, this.props.langId),
+			this.getAnnouncement.bind(this, this.props.langId),
 			60000
 		);
 	};
 
-	SetPos = () => {
+	setPos = () => {
 		if (
 			this.isMountedRef &&
 			!this.props.popBoxIsOpen &&
 			this.state.prev !== null
 		) {
-			// let style = window.getComputedStyle(this.content.current, null);
-			// let outerBox = parseFloat(style.width);
 			const style = window.getComputedStyle(this.marquee.current, null);
 			const outerBox = parseFloat(style.width);
 			this.setState(prev => {
@@ -93,11 +91,12 @@ class Marquee extends Component {
 			const style = window.getComputedStyle(this.marquee.current, null);
 			const pos = parseFloat(style.width);
 
+			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ pos });
 		}
 	};
 
-	GetAnnouncement = (langId, currencyId) => {
+	getAnnouncement = (langId, currencyId) => {
 		api.message.GetAnnouncement({ langId, currencyId }).then(
 			res => {
 				if (res.data.errorCode === 0) {
@@ -124,7 +123,7 @@ class Marquee extends Component {
 
 					if (upd) {
 						if (this.intervalId_Pos === undefined) {
-							this.intervalId_Pos = setInterval(this.SetPos, 25);
+							this.intervalId_Pos = setInterval(this.setPos, 25);
 						}
 
 						if (this.isMountedRef) {
@@ -155,8 +154,8 @@ class Marquee extends Component {
 		);
 	};
 
-	ClickMarquee = item => {
-		if (this.props.userIsLogin) {
+	clickMarquee = item => {
+		if (this.props.isLogin) {
 			const content = item.content.split("\\n").join("　");
 			const GoToAnnouncement = () => {
 				this.props.setPopBox({
@@ -174,11 +173,21 @@ class Marquee extends Component {
 				btnBar: (
 					<div className="btn-group">
 						<button className="blue" onClick={GoToAnnouncement}>
-							{this.props.i18n.lbl_More ?? "More"}
+							{this.props.i18n.lbl_More}
 						</button>
 					</div>
 				)
 			});
+		} else {
+			this.props.handleLogin();
+		}
+	};
+
+	clickMore = () => {
+		if (this.props.isLogin) {
+			this.props.navigate(
+				`/${this.props.langId}/${path.announcement.root}`
+			);
 		} else {
 			this.props.handleLogin();
 		}
@@ -189,8 +198,9 @@ class Marquee extends Component {
 			return (
 				<button
 					key={`announcement-${item.id}`}
+					className="white"
 					style={{ paddingLeft: "2rem" }}
-					onClick={this.ClickMarquee.bind(this, item)}>
+					onClick={this.clickMarquee.bind(this, item)}>
 					{item.subject}
 				</button>
 			);
@@ -199,7 +209,6 @@ class Marquee extends Component {
 		const style = this.state.pos === null ? {} : { left: this.state.pos };
 		return (
 			<div id="Marquee">
-				<div className="icon icon-marquee" />
 				<div ref={this.content} className="marquee-box">
 					<div
 						className="marquee-run"
@@ -208,20 +217,23 @@ class Marquee extends Component {
 						{rows}
 					</div>
 				</div>
+				<button className="btn-more" onClick={this.clickMore}>
+					{this.props.i18n.lbl_More}
+				</button>
 			</div>
 		);
 	}
 }
 
-Marquee.defaultProps = {
+MarqueeComponent.defaultProps = {
 	langId: `en`,
-	userIsLogin: true,
+	isLogin: true,
 	currencyId: null
 };
 
-Marquee.propTypes = {
+MarqueeComponent.propTypes = {
 	langId: PropTypes.string,
-	userIsLogin: PropTypes.bool,
+	isLogin: PropTypes.bool,
 	setPopBox: PropTypes.func.isRequired,
 	popBoxIsOpen: PropTypes.bool.isRequired,
 	handleLogin: PropTypes.func.isRequired,
@@ -230,4 +242,4 @@ Marquee.propTypes = {
 	currencyId: PropTypes.number
 };
 
-export default Panel;
+export { Marquee };
