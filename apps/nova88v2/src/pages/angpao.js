@@ -7,7 +7,7 @@ import { isDateRange } from "@ailab-mobile/common";
 import { AngpaoWrapper, DrawPrizeEventIdEnum } from "@ailab-mobile/wrapper";
 import { userInfoContext } from "../components/common/context";
 import path from "../path";
-import Footer from "../components/common/footer";
+import { Footer } from "../components/common/footer";
 import GoTopBtn from "../components/common/goTopBtn";
 import { defCurrenyId } from "../components/common/common";
 
