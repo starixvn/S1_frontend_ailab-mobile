@@ -474,7 +474,7 @@ const Join = () => {
 		} else {
 			GetSiteCurrencyList();
 		}
-	}, []);
+	}, [step]);
 
 	return (
 		<>
