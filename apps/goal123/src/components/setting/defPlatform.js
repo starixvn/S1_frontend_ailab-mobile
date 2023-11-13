@@ -167,16 +167,10 @@ const defPlatfrom = [
 		imgName: "spribea"
 	},
 	{
-		...defGameInfo.LIVEcasinoEB,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.LIVEcasinoEB },
-		imgName: "we"
-	},
-	{
 		...defGameInfo.Casino_Endorphina,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_Endorphina },
-		imgName: "es"
+		imgName: "endorphinaa"
 	},
 	{
 		...defGameInfo.Casino_FaChai,

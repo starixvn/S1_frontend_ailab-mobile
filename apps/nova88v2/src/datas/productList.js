@@ -613,8 +613,8 @@ const gameList = ({ langId, currencyId }) => {
 				},
 				{
 					...defGameInfo.LIVEcasinoEB,
-					spanText: "WE",
-					img: `${cloudBannerImgURL}/h5/img/we.png`,
+					spanText: "eBET",
+					img: `${cloudBannerImgURL}/h5/img/eb.png`,
 					sortKey: "casino_EBET"
 				},
 				{
@@ -680,9 +680,9 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.Casino_Endorphina,
 					parameter: defGameInfo.Casino_Endorphina,
-					spanText: "ES",
-					providerImgName: "casino_es",
-					img: `${cloudBannerImgURL}/h5/img/es.png`,
+					spanText: "Endorphina",
+					providerImgName: "casino_endorphina",
+					img: `${cloudBannerImgURL}/h5/img/endorphina.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{
@@ -852,8 +852,8 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.Casino_AMB,
 					parameter: defGameInfo.Casino_AMB,
-					spanText: "Askmeslot",
-					img: `${cloudBannerImgURL}/h5/img/askme.png`,
+					spanText: "AMBSlot",
+					img: `${cloudBannerImgURL}/h5/img/am.png`,
 					providerImgName: "am",
 					allowCurrency: allowedCurrencyList.slotAMB,
 					path: path.casino.root,
