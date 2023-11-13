@@ -135,7 +135,6 @@ export const Wrapper = ({ children }) => {
 				defLangByIp[defaultCurrencyId]
 			).toLowerCase();
 
-			console.log(defaultLangId, defaultCurrencyId);
 			let langIdByPath;
 			let currencyIdByPath;
 
@@ -147,7 +146,8 @@ export const Wrapper = ({ children }) => {
 						lang.some(({ value }) => value === pathLang)
 				);
 
-				langIdByPath = pathLang;
+				// * 找得到 result 才使用來自 url 的語系
+				langIdByPath = result && pathLang;
 				currencyIdByPath = result?.currencyId;
 			}
 			setUserInfo(prev => ({
@@ -166,7 +166,6 @@ export const Wrapper = ({ children }) => {
 	// * 補語系 url
 	useEffect(() => {
 		if (userInfo.langId && userInfo.langId !== pathLang) {
-			console.log(pathLang, userInfo.langId);
 			navigate(String(pathname).replace(pathLang, userInfo.langId));
 		}
 	}, [pathLang, userInfo.langId, userInfo.isLogin]);
