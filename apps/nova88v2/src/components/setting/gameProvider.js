@@ -58,7 +58,7 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_AMB,
 		path: path.casino.root,
-		imgName: "casino_amb",
+		imgName: "casino_askme",
 		allowCurrencies: allowedCurrencyList.slotAMB
 	},
 	{
@@ -82,7 +82,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
-		imgName: "eb"
+		imgName: "we"
 	},
 	// {
 	// 	...defGameInfo.LIVEcasinoMW,
@@ -118,7 +118,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.amb,
-		imgName: "amb"
+		imgName: "casino_askme"
 	},
 	{
 		...defGameInfo.Casino_MGP,
@@ -179,7 +179,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Endorphina,
-		imgName: "casino_end",
+		imgName: "casino_es",
 		path: path.casino.root
 	},
 	{
