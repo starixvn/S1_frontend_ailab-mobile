@@ -207,6 +207,11 @@ const defPlatfrom = [
 	{
 		...defGameInfo.V8Poker,
 		imgName: "v8"
+	},
+	{
+		...defGameInfo.Casino_BNG,
+		imgName: "casino_bng",
+		path: path.casino.root
 	}
 ];
 

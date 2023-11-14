@@ -173,12 +173,6 @@ const defPlatfrom = [
 		imgName: "we"
 	},
 	{
-		...defGameInfo.Casino_PNG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PNG },
-		imgName: "pnga"
-	},
-	{
 		...defGameInfo.Casino_Endorphina,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_Endorphina },
@@ -189,6 +183,18 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_FaChai },
 		imgName: "fachai"
+	},
+	{
+		...defGameInfo.Casino_PNG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_PNG },
+		imgName: "pnga"
+	},
+	{
+		...defGameInfo.Casino_BNG,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_BNG },
+		imgName: "bnga"
 	}
 ];
 

@@ -302,7 +302,7 @@ export const productList = langId => {
 					parameter: defGameInfo.Casino_Endorphina,
 					path: path.casino.root,
 					displayText: "ES",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/slot/es.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/slot/endorphina.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -480,6 +480,19 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.slot_Fachai)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_BNG,
+					parameter: defGameInfo.Casino_BNG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/bng.png`,
+					displayText: "BNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_BNG)
 						}
 					]
 				},

@@ -71,6 +71,7 @@ export const defGameInfo = {
 	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
+	Casino_BNG: { tpId: 57, tpGameType: 108 },
 	Casino_NetEnt: { tpId: 37, tpGameType: 64 },
 	Casino_RedTiger: { tpId: 38, tpGameType: 65 },
 	Casino_AdvantPlay: { tpId: 39, tpGameType: 67 },
