@@ -97,6 +97,7 @@ export const defGameInfo = {
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
+	Casino_BNG: { tpId: 57, tpGameType: 108 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -712,6 +713,20 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
 				path: path.casino.root,
 				providerImgName: "pg"
+			},
+			{
+				...defGameInfo.Casino_BNG,
+				parameter: defGameInfo.Casino_BNG,
+				spanText: "BNG",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-bng.png`,
+				path: path.casino.root,
+				providerImgName: "",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.slot_bng)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_FaChai,

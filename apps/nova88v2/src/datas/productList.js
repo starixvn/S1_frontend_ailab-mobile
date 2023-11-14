@@ -186,6 +186,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_BNG",
 		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
@@ -214,6 +215,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_BNG",
 		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
@@ -243,6 +245,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_BNG",
 		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
@@ -271,6 +274,7 @@ const defSortSlot = {
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
+		"slot_BNG",
 		"slot_FaChai",
 		"slot_MGPSW",
 		"slot_JI",
@@ -710,7 +714,21 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "pg",
 					sortKey: "slot_PG"
 				},
-
+				{
+					...defGameInfo.Casino_BNG,
+					parameter: defGameInfo.Casino_BNG,
+					spanText: "BNG",
+					img: `${cloudBannerImgURL}/h5/img/bng.png`,
+					path: path.casino.root,
+					providerImgName: "",
+					sortKey: "slot_BNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_fachai)
+						}
+					]
+				},
 				{
 					...defGameInfo.Casino_FaChai,
 					parameter: defGameInfo.Casino_FaChai,
@@ -1426,6 +1444,7 @@ export const defGameInfo = {
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
+	Casino_BNG: { tpId: 57, tpGameType: 108 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },
 	Fishing_AT05: { tpId: 16, gameId: "AT05", tpGameType: 44 },
 	Fishing_AT01: { tpId: 16, gameId: "AT01", tpGameType: 44 },
