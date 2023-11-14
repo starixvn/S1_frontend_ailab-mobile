@@ -15,8 +15,8 @@ const Entry = ({ providerList, maintainList }) => {
 	return (
 		<div className="lobby-products">
 			{providerList.map(provider => {
-				const { tpId, tpName } = provider;
-				const imgName = tpName.toLowerCase();
+				const { tpId, gameImgDisplayText } = provider;
+				const imgName = gameImgDisplayText.toLowerCase();
 
 				const isMaintain = maintainList.some(
 					({ tpId: maintainTpId, tpGameType }) =>
