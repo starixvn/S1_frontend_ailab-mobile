@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import { useMatch, useLocation, useNavigate } from "@reach/router";
+import { useLocation, useNavigate } from "@reach/router";
 import * as ct from "./context";
 import { IS_LOGGED_IN } from "../../service/auth";
-import { GET_LANG_ID, isVaildLang } from "../../service/language";
 import themeList from "../../datas/theme";
 import useInterval from "../hook/useInterval";
 import {
@@ -13,17 +12,17 @@ import {
 	setCookie,
 	deleteCookie,
 	readCookie,
-	langMappingCurr,
-	defCurrenyId,
-	memberType
+	memberType,
+	currencyCode,
+	defLangByIp
 } from "./common";
-
 import i18nConfig from "../../i18n/config";
 import api from "../../service/api";
 import { siteInfo } from "../../config";
 import path, { defSpecialPath } from "../../path";
 import { defType } from "../hook/useHandleLineLogin";
 import SEO from "../seo/seo";
+import defLangGroups from "../../datas/defLangs";
 
 const isSpecialPath = () => {
 	return (
@@ -33,53 +32,22 @@ const isSpecialPath = () => {
 	);
 };
 
-export const getDefaultCurrencyId = () => {
-	const defaultPathLang = () => {
-		const urlLang =
-			typeof document === `undefined`
-				? ""
-				: window.location.pathname.split("/")?.[1];
-		const cookieLang = readCookie(siteInfo()?.langCookie);
-		const _defaultLang = GET_LANG_ID();
-
-		let result = _defaultLang;
-		if (isVaildLang(urlLang)) {
-			result = urlLang;
-		} else if (isVaildLang(cookieLang)) {
-			result = cookieLang;
-		}
-		return result;
-	};
-
-	let result = siteInfo()?.siteDefaultCurrencyId;
-
-	const langId = defaultPathLang();
-	if (langId !== "en" && langId !== "cs") {
-		result = defCurrenyId[langMappingCurr[langId]];
-	}
-
-	const cookieCurrencyId = readCookie(siteInfo()?.currencyCookie);
-	if (cookieCurrencyId) {
-		result = Number(cookieCurrencyId);
-	}
-	return result;
-};
+const flatLangList = Object.values(defLangGroups);
 
 export const Wrapper = ({ children }) => {
 	const { pathname } = useLocation();
+
 	const navigate = useNavigate();
 	const [i18n, seti18n] = useState(i18nConfig());
 	const { i18n: translationI18n } = useTranslation();
 	const [loading, setLoading] = useState(false);
 	const [root, setRoot] = useState(false);
 	const [tpGameTypeSettingList, setTpGameTypeSettingList] = useState(null);
-	const match = useMatch("/:langId/*");
 
-	const urlLangId = isVaildLang(match?.langId) ? match.langId : null;
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		langId: urlLangId ?? GET_LANG_ID(),
-		currencyId: getDefaultCurrencyId(),
+		langId: null,
+		currencyId: null,
 		userName: i18n.lbl_Guest
 	});
 
@@ -111,6 +79,10 @@ export const Wrapper = ({ children }) => {
 		[]
 	);
 
+	const pathLang =
+		typeof window !== `undefined` &&
+		window.location.pathname.split("/")?.[1];
+
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -118,6 +90,85 @@ export const Wrapper = ({ children }) => {
 			isMountedRef.current = false;
 		};
 	});
+
+	// * 登入前 => 設定登入前的默認語系與幣別
+	useEffect(() => {
+		const getDefaultCurrencyId = async () => {
+			const getCurrencyIdByUserIp = async () => {
+				let currencyIdByUserIp;
+				try {
+					const {
+						data: {
+							data: { code }
+						}
+					} = await api.site.GetIpCountry();
+
+					currencyIdByUserIp = currencyCode[code];
+
+					return currencyIdByUserIp;
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					console.error(error);
+				}
+
+				return currencyIdByUserIp;
+			};
+
+			// * cookie 幣別
+			const currencyIdByCookie = readCookie(siteInfo().currencyCookie);
+			// * 使用者當前 ip 幣別
+			const currencyIdByUserIp = await getCurrencyIdByUserIp();
+			// * 默認幣別
+			const defaultCurrencyId = currencyCode.USD;
+
+			const currencyId =
+				currencyIdByCookie || currencyIdByUserIp || defaultCurrencyId;
+
+			return Number(currencyId);
+		};
+
+		const initCurrencyIdAndLanguage = async () => {
+			// * 取得默認幣別
+			const defaultCurrencyId = await getDefaultCurrencyId();
+			// * 透過幣別取得默認語系
+			const defaultLangId = String(
+				defLangByIp[defaultCurrencyId]
+			).toLowerCase();
+
+			let langIdByPath;
+			let currencyIdByPath;
+
+			// * 如果 path 有帶語系，優先使用 path
+			if (pathLang) {
+				const result = flatLangList.find(
+					({ currencyId, lang }) =>
+						currencyId === defaultCurrencyId &&
+						lang.some(({ value }) => value === pathLang)
+				);
+
+				// * 找得到 result 才使用來自 url 的語系
+				langIdByPath = result && pathLang;
+				currencyIdByPath = result?.currencyId;
+			}
+			setUserInfo(prev => ({
+				...prev,
+				langId: langIdByPath || defaultLangId,
+				currencyId: currencyIdByPath || defaultCurrencyId
+			}));
+		};
+
+		// * null 不能進來，所以不使用 falsey
+		if (userInfo.isLogin === false) {
+			initCurrencyIdAndLanguage();
+		}
+	}, [userInfo.isLogin]);
+
+	// * 補語系 url
+	useEffect(() => {
+		if (userInfo.langId && userInfo.langId !== pathLang) {
+			navigate(String(pathname).replace(pathLang, userInfo.langId));
+		}
+	}, [pathLang, userInfo.langId, userInfo.isLogin]);
 
 	// * 如果帳號是直播主，只允許進入 首頁 及 slots 頁面
 	useEffect(() => {
@@ -452,25 +503,10 @@ export const Wrapper = ({ children }) => {
 	]);
 
 	useEffect(() => {
-		const { siteLangList } = siteInfo();
-		let lang = GET_LANG_ID(userInfo?.langId);
-		if (!siteLangList.includes(lang)) {
-			lang = defaultLang;
-		}
-
-		seti18n(i18nConfig(lang));
-		translationI18n.changeLanguage(lang);
-		i18next.changeLanguage(lang);
+		seti18n(i18nConfig(userInfo?.langId));
+		translationI18n.changeLanguage(userInfo?.langId);
+		i18next.changeLanguage(userInfo?.langId);
 	}, [userInfo.langId]);
-
-	// * 設定路徑中的語系
-	useEffect(() => {
-		const { siteLangList } = siteInfo();
-		const langFromUrl = pathname?.split("/")[1];
-		if (!siteLangList.includes(langFromUrl)) {
-			navigate(`/${i18next.language}${pathname}`);
-		}
-	}, [pathname]);
 
 	return (
 		<ct.popUpMsgContext.Provider value={{ setPopUp, popUp }}>

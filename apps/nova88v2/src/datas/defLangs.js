@@ -1,7 +1,7 @@
 import { defCurrenyId } from "../components/common/common";
 import { cloudBannerImgURL } from "../config";
 
-export default {
+export const defLangGroups = {
 	MY: {
 		country: "MY",
 		img: `${cloudBannerImgURL}/h5/img/ch.jpg`,
@@ -94,3 +94,5 @@ export default {
 		currencyId: defCurrenyId.USD
 	}
 };
+
+export default defLangGroups;
