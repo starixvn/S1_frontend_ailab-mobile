@@ -40,9 +40,7 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 			<div>
 				<div className="menu-top">
 					<button className="icon-arrow" onClick={closeNavPanel} />
-					<a href="/">
-						<Logo className="logo" />
-					</a>
+					<Logo className="logo" />
 					<div className="currencybtn" onClick={setLanguage}>
 						<div className="currencybtn-content">
 							<img

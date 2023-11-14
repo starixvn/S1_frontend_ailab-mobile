@@ -119,9 +119,7 @@ const AfterLogin = ({ isShow, hideLogo }) => {
 					<Link
 						className="messagebtn icon-message"
 						to={`/${path.message.root}`}>
-						{msgCount ? (
-							<div className="number">{msgCount}</div>
-						) : null}
+						{msgCount && <div className="number">{msgCount}</div>}
 						<MsgPopup userInfo={userInfo} />
 					</Link>
 				</div>
