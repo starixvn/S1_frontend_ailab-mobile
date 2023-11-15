@@ -164,7 +164,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 						}}>
 						<img
 							src={b.bannerMobileUrl}
-							className="banner"
+							className="mainbanner"
 							alt={b.bannerName ?? ""}
 						/>
 					</div>
@@ -178,7 +178,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 					to={redirectLink}>
 					<img
 						src={b.bannerMobileUrl}
-						className="banner"
+						className="mainbanner"
 						alt={b.bannerName ?? ""}
 					/>
 				</Link>
@@ -191,7 +191,7 @@ const Panel = ({ ImgFolder = [], params }) => {
 				onClick={() => handleClick(b)}>
 				<img
 					src={b.bannerMobileUrl}
-					className="banner"
+					className="mainbanner"
 					alt={b.bannerName ?? ""}
 				/>
 			</button>

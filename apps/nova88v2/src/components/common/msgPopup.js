@@ -1,41 +1,31 @@
 import React, { useContext } from "react";
-import { popUpMsgContext } from "Context";
 import { useNavigate } from "@reach/router";
+import { popUpMsgContext, userInfoContext } from "Context";
 import path from "../../path";
 import useGetPopUpMsg from "../hook/useGetPopUpMsg";
 
-export default function Component({ userInfo }) {
+export default function Component() {
 	const navigate = useNavigate();
+
 	const { popUp, setPopUp } = useContext(popUpMsgContext);
+	const { userInfo } = useContext(userInfoContext);
+
 	const { ReadPopupMsg } = useGetPopUpMsg({ setPopUp });
 
 	return popUp.id !== "" ? (
 		<div
-			className="msgPop"
-			onClick={e => {
-				e.preventDefault();
-				e.stopPropagation();
+			className="message-popup"
+			onClick={() => {
+				navigate(`/${userInfo?.langId}/${path.message.root}`, {
+					state: {
+						id: popUp.id,
+						pageNumber: popUp.pageNumber,
+						popupShowed: false
+					}
+				});
+				ReadPopupMsg();
 			}}>
-			<div
-				onClick={() => {
-					navigate(`/${userInfo?.langId}/${path.message.root}`, {
-						state: {
-							id: popUp.id,
-							pageNumber: popUp.pageNumber,
-							popupShowed: false
-						}
-					});
-				}}>
-				{popUp.popupMessage}
-			</div>
-			<button
-				className="icon icon-close"
-				onClick={e => {
-					e.preventDefault();
-					e.stopPropagation();
-					ReadPopupMsg();
-				}}
-			/>
+			{popUp.popupMessage}
 		</div>
 	) : null;
 }
