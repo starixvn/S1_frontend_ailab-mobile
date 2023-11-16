@@ -22,6 +22,7 @@ import {
 	api_GetSiteCurrencyList,
 	api_site_AffiliateCheck,
 	api_site_GetAffiliateAgent,
+	api_site_GetRecaptchaInfo,
 	api_site_Signup
 } from "../../service/api/site";
 import { initStatus, initValue, reCaptchaEnum, VN_AREACODE } from "./def";
@@ -45,6 +46,7 @@ const Join = () => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [banner, setBanner] = useState([]);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
+	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const [activeInfoMsg, setActiveInfoMsg] = useState("");
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
@@ -285,7 +287,8 @@ const Join = () => {
 	};
 
 	const clickSubmit = async () => {
-		const _reCaptchaCheck = reCaptchaToken !== "";
+		const _reCaptchaCheck =
+			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		// * 機器人驗證沒過直接 return 出去
 		if (!_reCaptchaCheck) return;
 
@@ -440,6 +443,22 @@ const Join = () => {
 		setNav(null);
 	};
 
+	const getRecaptchaSiteKey = async () => {
+		try {
+			const res = await api_site_GetRecaptchaInfo();
+			const { country, siteKey } = res.data.data;
+			setRecaptchaInfo({
+				country,
+				siteKey
+			});
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: error
+			});
+		}
+	};
+
 	useEffect(() => {
 		setReCaptchaKey(reCaptchaKey + 1);
 	}, [userInfo.langId]);
@@ -477,6 +496,7 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
+		getRecaptchaSiteKey();
 		if (urlAffiliate) {
 			checkAffiliate({});
 		} else {
@@ -659,13 +679,16 @@ const Join = () => {
 								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
-							<ReCAPTCHA
-								key={reCaptchaKey}
-								class="g-recaptcha"
-								sitekey="6LdzkRciAAAAAMuli_1oYaulJv-LHcT0wNZtaK69"
-								onChange={handleReCaptchaChange}
-								hl={reCaptchaEnum[userInfo.langId]}
-							/>
+							{Object.keys(recaptchaInfo).length > 0 &&
+								recaptchaInfo.country !== "CN" && (
+									<ReCAPTCHA
+										key={reCaptchaKey}
+										class="g-recaptcha"
+										sitekey={recaptchaInfo.siteKey}
+										onChange={handleReCaptchaChange}
+										hl={reCaptchaEnum[userInfo.langId]}
+									/>
+								)}
 
 							<div className="join-message">
 								<Checkbox
