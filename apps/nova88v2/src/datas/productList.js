@@ -725,7 +725,7 @@ const gameList = ({ langId, currencyId }) => {
 					eventIcon: [
 						{
 							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_fachai)
+							inPeriod: isEventPeriod(eventTime.slot_bng)
 						}
 					]
 				},
