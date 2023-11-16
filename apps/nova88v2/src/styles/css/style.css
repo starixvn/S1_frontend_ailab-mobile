@@ -14342,6 +14342,10 @@ main {
 main.active {
   padding: 23.5vw 0 0;
 }
+main .banner {
+  height: 37.5vw;
+  display: block;
+}
 
 #Marquee {
   background: white;
@@ -15545,6 +15549,9 @@ main.active {
 .menu-bottom-item .option .country-item > div:last-child {
   width: 50vw;
 }
+.menu-bottom-item .option .country-item > div button.active {
+  color: #FF7600;
+}
 .menu-bottom-item .option .country-item:first-child {
   padding-top: 0;
 }
@@ -15805,10 +15812,11 @@ main.active {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.after .menu-top-balance > div:nth-child(2) button {
+.after .menu-top-balance > div:nth-child(2) a {
   background: #FF7600;
   padding: 1.7vw 4vw;
   border-radius: 20px;
+  font-size: 3.5vw;
 }
 .after .menu-vip {
   height: 30vw;
