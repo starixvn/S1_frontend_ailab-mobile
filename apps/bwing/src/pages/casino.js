@@ -10,7 +10,6 @@ import { api_GetSlotGamePage } from "../service/api/game";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import Nav from "../components/casino/nav";
-import Entry from "../components/casino/entry";
 import Lobby from "../components/casino/lobby";
 import Slider from "../components/casino/slider";
 import SearchBox from "../components/casino/searchBox";
@@ -33,14 +32,13 @@ const Casino = () => {
 	const { currencyId } = userInfo;
 	const page = getUrlParameter("page");
 	const { throttle } = useSetTimeout();
-  const { handleGoToGame } = useGotoGame({ autoGetData: false });
-  const { maintainList } = useGetTpMaintainList();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
+	const { maintainList } = useGetTpMaintainList();
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
 
 	const [imageUrl, setImageUrl] = useState("");
 	const [gameList, setGameList] = useState([]);
-	const [entryPage, setEntryPage] = useState();
 	const [searchInput, setSearchInput] = useState("");
 	const [providerList, setProviderList] = useState([]);
 	const [categoryList, setCategoryList] = useState([]);
@@ -60,32 +58,32 @@ const Casino = () => {
 	const clickPlay = (freePlay, randomGame = null) => {
 		const targetObj = !randomGame ? selGameInfo : randomGame;
 		if (freePlay || userInfo.isLogin) {
-      throttle(
-        () =>
-          GET_CASINO_ENTER_PAGE({
-            tpId: targetObj.tpId,
-            gameId: targetObj.gameId,
-            isFree: freePlay,
-            langId: userInfo.langId,
-            execFunction:
-              targetObj.tpId === defSpecialSetting.PG
-                ? handleGoToGame.bind(this, {
-                  langId: userInfo.langId,
-                  tpId: targetObj.tpId,
-                  gameId: targetObj.gameId,
-                  isFun: freePlay,
-                  tpGameType:
-                  defSlotTpGameType.PG.tpGameType,
-                  loginGameType:
-                  defLoginGameType.returnHtml
-                })
-                : null,
-            tpGameType: Object.values(defSlotTpGameType).find(
-              obj => targetObj.tpId === obj.tpId
-            ).tpGameType
-          }),
-        freePlay ? 0 : 5000
-      );
+			throttle(
+				() =>
+					GET_CASINO_ENTER_PAGE({
+						tpId: targetObj.tpId,
+						gameId: targetObj.gameId,
+						isFree: freePlay,
+						langId: userInfo.langId,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null,
+						tpGameType: Object.values(defSlotTpGameType).find(
+							obj => targetObj.tpId === obj.tpId
+						).tpGameType
+					}),
+				freePlay ? 0 : 5000
+			);
 		} else {
 			setNav(defNavPanel.login);
 		}
@@ -241,10 +239,6 @@ const Casino = () => {
 		getSlotGameData();
 	}, []);
 
-	useEffect(() => {
-		if (page === "providerList") setEntryPage(true);
-	}, [page]);
-
 	return (
 		<div className="wrapper">
 			<div className="col-12">
@@ -253,62 +247,46 @@ const Casino = () => {
 						<Slider />
 					</div>
 
-					{!entryPage && (
-						<>
-							<div className="slots-vender-bar">
-								<GameProviders
-									selNav={activeProvider?.tpId}
-									onChange={changeActiveProvider}
-									sorted={providerList}
-								/>
-							</div>
-							<div className="slots-category">
-								<div className="slots-category-menu">
-									<Nav
-										categoryList={categoryList}
-										selNav={activeCategory}
-										onChange={handleCategoryActive}
-									/>
-								</div>
-								<SearchBox
-									searchInput={searchInput}
-									setSearchInput={setSearchInput}
-								/>
-							</div>
-						</>
-					)}
+					<div className="slots-vender-bar">
+						<GameProviders
+							selNav={activeProvider?.tpId}
+							onChange={changeActiveProvider}
+							sorted={providerList}
+						/>
+					</div>
+					<div className="slots-category">
+						<div className="slots-category-menu">
+							<Nav
+								categoryList={categoryList}
+								selNav={activeCategory}
+								onChange={handleCategoryActive}
+							/>
+						</div>
+						<SearchBox
+							searchInput={searchInput}
+							setSearchInput={setSearchInput}
+						/>
+					</div>
 				</div>
 
-				{entryPage && (
-					<Entry
-						providerList={providerList}
-						maintainList={maintainList}
-						setEntryPage={setEntryPage}
-						setActiveProvider={setActiveProvider}
-						setProviderList={setProviderList}
-					/>
-				)}
-
-				{!entryPage && (
-					<Lobby
-						imageUrl={imageUrl}
-						gameList={gameList}
-						favoriteStr={favoriteStr}
-						slotDataList={slotDataList}
-						providerList={providerList}
-						favoriteList={favoriteList}
-						searchInput={searchInput}
-						activeProvider={activeProvider}
-						activeCategory={activeCategory}
-						allCategoryList={allCategoryList}
-						maintainList={maintainList}
-						setGameList={setGameList}
-						setFavoriteStr={setFavoriteStr}
-						setCategoryList={setCategoryList}
-						setFavoriteList={setFavoriteList}
-						setActiveCategory={setActiveCategory}
-					/>
-				)}
+				<Lobby
+					imageUrl={imageUrl}
+					gameList={gameList}
+					favoriteStr={favoriteStr}
+					slotDataList={slotDataList}
+					providerList={providerList}
+					favoriteList={favoriteList}
+					searchInput={searchInput}
+					activeProvider={activeProvider}
+					activeCategory={activeCategory}
+					allCategoryList={allCategoryList}
+					maintainList={maintainList}
+					setGameList={setGameList}
+					setFavoriteStr={setFavoriteStr}
+					setCategoryList={setCategoryList}
+					setFavoriteList={setFavoriteList}
+					setActiveCategory={setActiveCategory}
+				/>
 			</div>
 		</div>
 	);
