@@ -11,7 +11,8 @@ import {
 	api_site_GetAffiliateAgent,
 	api_site_Signup,
 	api_ExistsEmail,
-	api_site_AffiliateCheck
+	api_site_AffiliateCheck,
+	api_site_GetRecaptchaInfo
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
@@ -46,6 +47,7 @@ const Join = () => {
 	const [banner, setBanner] = useState([]);
 	const [promoPopup, setPromoPopup] = useState(false);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
+	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 
@@ -54,6 +56,23 @@ const Join = () => {
 	const urlAffiliate = urlAffId || urlAffCode;
 
 	const isMountedRef = useRef(null);
+
+	const getRecaptchaSiteKey = async () => {
+		try {
+			const res = await api_site_GetRecaptchaInfo();
+			const { country, siteKey } = res.data.data;
+			setRecaptchaInfo({
+				country,
+				siteKey
+			});
+		} catch (error) {
+			setPopBox({
+				isOpen: true,
+				content: error
+			});
+		}
+	};
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -100,6 +119,7 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
+		getRecaptchaSiteKey();
 		if (urlAffiliate) {
 			checkAffiliate({});
 		} else {
@@ -346,7 +366,8 @@ const Join = () => {
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		const EmailCheck = await emailCheck({ val: userValue.Email });
-		const reCaptchaCheck = reCaptchaToken !== "";
+		const reCaptchaCheck =
+			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
 		});
@@ -601,13 +622,17 @@ const Join = () => {
 						})}
 					/>
 
-					<ReCAPTCHA
-						key={reCaptchaKey}
-						class="g-recaptcha"
-						sitekey="6LfhmRciAAAAAFSX-wXBxMISia2lpS5_SQ7aa7-E"
-						onChange={handleReCaptchaChange}
-						hl={reCaptchaEnum[userInfo.langId]}
-					/>
+					{Object.keys(recaptchaInfo).length > 0 &&
+						recaptchaInfo.country !== "CN" && (
+							<ReCAPTCHA
+								key={reCaptchaKey}
+								class="g-recaptcha"
+								sitekey={recaptchaInfo.siteKey}
+								onChange={handleReCaptchaChange}
+								hl={reCaptchaEnum[userInfo.langId]}
+							/>
+						)}
+
 					<Checkbox
 						Checked={userValue.Checkbox}
 						className={`Terms${
