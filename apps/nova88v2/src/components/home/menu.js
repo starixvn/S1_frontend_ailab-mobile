@@ -244,6 +244,11 @@ const Menu = () => {
 													? { pointerEvents: "none" }
 													: null
 											}>
+											{isNew && (
+												<div className="new-icon">
+													New
+												</div>
+											)}
 											<img src={img} alt={tpGameType} />
 											{underMaintain && (
 												<div className="under-text">
