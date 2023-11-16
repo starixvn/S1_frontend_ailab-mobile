@@ -328,7 +328,8 @@ export const defSlotTpGameType = {
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	FaChai: { tpId: 55, tpGameType: 106 }
+	FaChai: { tpId: 55, tpGameType: 106 },
+	BNG: { tpId: 57, tpGameType: 108 }
 };
 
 export const sportStreamDef = {

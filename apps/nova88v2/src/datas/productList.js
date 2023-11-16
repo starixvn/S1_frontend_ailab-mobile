@@ -76,7 +76,8 @@ export const defSlotTpGameType = {
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	PEGASUS: { tpId: 56, tpGameType: 107 }
+	PEGASUS: { tpId: 56, tpGameType: 107 },
+	BNG: { tpId: 57, tpGameType: 108 }
 };
 
 const defSortSports = {
