@@ -10,7 +10,6 @@ import { api_GetSlotGamePage } from "../service/api/game";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import Nav from "../components/casino/nav";
-import Entry from "../components/casino/entry";
 import Lobby from "../components/casino/lobby";
 import Slider from "../components/casino/slider";
 import SearchBox from "../components/casino/searchBox";
@@ -40,7 +39,6 @@ const Casino = () => {
 
 	const [imageUrl, setImageUrl] = useState("");
 	const [gameList, setGameList] = useState([]);
-	const [entryPage, setEntryPage] = useState();
 	const [searchInput, setSearchInput] = useState("");
 	const [providerList, setProviderList] = useState([]);
 	const [categoryList, setCategoryList] = useState([]);
@@ -241,10 +239,6 @@ const Casino = () => {
 		getSlotGameData();
 	}, []);
 
-	useEffect(() => {
-		if (page === "providerList") setEntryPage(true);
-	}, [page]);
-
 	return (
 		<div className="wrapper">
 			<div className="col-12">
@@ -253,62 +247,46 @@ const Casino = () => {
 						<Slider />
 					</div>
 
-					{!entryPage && (
-						<>
-							<div className="slots-vender-bar">
-								<GameProviders
-									selNav={activeProvider?.tpId}
-									onChange={changeActiveProvider}
-									sorted={providerList}
-								/>
-							</div>
-							<div className="slots-category">
-								<div className="slots-category-menu">
-									<Nav
-										categoryList={categoryList}
-										selNav={activeCategory}
-										onChange={handleCategoryActive}
-									/>
-								</div>
-								<SearchBox
-									searchInput={searchInput}
-									setSearchInput={setSearchInput}
-								/>
-							</div>
-						</>
-					)}
+					<div className="slots-vender-bar">
+						<GameProviders
+							selNav={activeProvider?.tpId}
+							onChange={changeActiveProvider}
+							sorted={providerList}
+						/>
+					</div>
+					<div className="slots-category">
+						<div className="slots-category-menu">
+							<Nav
+								categoryList={categoryList}
+								selNav={activeCategory}
+								onChange={handleCategoryActive}
+							/>
+						</div>
+						<SearchBox
+							searchInput={searchInput}
+							setSearchInput={setSearchInput}
+						/>
+					</div>
 				</div>
 
-				{entryPage && (
-					<Entry
-						providerList={providerList}
-						maintainList={maintainList}
-						setEntryPage={setEntryPage}
-						setActiveProvider={setActiveProvider}
-						setProviderList={setProviderList}
-					/>
-				)}
-
-				{!entryPage && (
-					<Lobby
-						imageUrl={imageUrl}
-						gameList={gameList}
-						favoriteStr={favoriteStr}
-						slotDataList={slotDataList}
-						providerList={providerList}
-						favoriteList={favoriteList}
-						searchInput={searchInput}
-						activeProvider={activeProvider}
-						activeCategory={activeCategory}
-						allCategoryList={allCategoryList}
-						maintainList={maintainList}
-						setGameList={setGameList}
-						setFavoriteStr={setFavoriteStr}
-						setCategoryList={setCategoryList}
-						setFavoriteList={setFavoriteList}
-						setActiveCategory={setActiveCategory}
-					/>
-				)}
+				<Lobby
+					imageUrl={imageUrl}
+					gameList={gameList}
+					favoriteStr={favoriteStr}
+					slotDataList={slotDataList}
+					providerList={providerList}
+					favoriteList={favoriteList}
+					searchInput={searchInput}
+					activeProvider={activeProvider}
+					activeCategory={activeCategory}
+					allCategoryList={allCategoryList}
+					maintainList={maintainList}
+					setGameList={setGameList}
+					setFavoriteStr={setFavoriteStr}
+					setCategoryList={setCategoryList}
+					setFavoriteList={setFavoriteList}
+					setActiveCategory={setActiveCategory}
+				/>
 			</div>
 		</div>
 	);
