@@ -17,6 +17,7 @@ const Slider = () => {
 				ImgFolder={[api.site.defBannerType.Promotions]}
 				filterHideInHome={true}
 				params={swipperParam}
+				imgClassName="mainbanner"
 			/>
 		</div>
 	);

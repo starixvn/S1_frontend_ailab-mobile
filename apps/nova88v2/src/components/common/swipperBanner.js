@@ -92,7 +92,7 @@ export const useGetBanner = ({ langId, ImgFolder, currencyId }) => {
 	return { banner };
 };
 
-const Panel = ({ ImgFolder = [], params }) => {
+const Panel = ({ ImgFolder = [], params, imgClassName }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { banner } = useGetBanner({
 		langId: userInfo.langId,
@@ -164,8 +164,8 @@ const Panel = ({ ImgFolder = [], params }) => {
 						}}>
 						<img
 							src={b.bannerMobileUrl}
-							className="mainbanner"
 							alt={b.bannerName ?? ""}
+							className={imgClassName}
 						/>
 					</div>
 				);
@@ -178,8 +178,8 @@ const Panel = ({ ImgFolder = [], params }) => {
 					to={redirectLink}>
 					<img
 						src={b.bannerMobileUrl}
-						className="mainbanner"
 						alt={b.bannerName ?? ""}
+						className={imgClassName}
 					/>
 				</Link>
 			);
@@ -191,8 +191,8 @@ const Panel = ({ ImgFolder = [], params }) => {
 				onClick={() => handleClick(b)}>
 				<img
 					src={b.bannerMobileUrl}
-					className="mainbanner"
 					alt={b.bannerName ?? ""}
+					className={imgClassName}
 				/>
 			</button>
 		);
@@ -203,12 +203,14 @@ const Panel = ({ ImgFolder = [], params }) => {
 
 Panel.defaultProps = {
 	ImgFolder: [],
-	params: null
+	params: null,
+	imgClassName: ""
 };
 
 Panel.propTypes = {
 	ImgFolder: PropTypes.arrayOf(PropTypes.any),
-	params: PropTypes.objectOf(PropTypes.any)
+	params: PropTypes.objectOf(PropTypes.any),
+	imgClassName: PropTypes.string
 };
 
 export const BannerWithStaticImages = ({

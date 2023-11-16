@@ -804,7 +804,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_PEGASUS,
 					parameter: defGameInfo.Casino_PEGASUS,
 					spanText: "PEGASUS",
-					img: `${cloudBannerImgURL}/h5/img/pegasus.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotpegasus.png`,
 					path: path.casino.root,
 					providerImgName: "",
 					sortKey: "slot_PEGASUS",
