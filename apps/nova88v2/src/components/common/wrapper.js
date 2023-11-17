@@ -139,11 +139,9 @@ export const Wrapper = ({ children }) => {
 			let currencyIdByPath;
 
 			// * 如果 path 有帶語系，優先使用 path
-			if (pathLang) {
-				const result = flatLangList.find(
-					({ currencyId, lang }) =>
-						currencyId === defaultCurrencyId &&
-						lang.some(({ value }) => value === pathLang)
+			if (pathLang && pathLang !== "en") {
+				const result = flatLangList.find(({ currencyId, lang }) =>
+					lang.some(({ value }) => value === pathLang)
 				);
 
 				// * 找得到 result 才使用來自 url 的語系
