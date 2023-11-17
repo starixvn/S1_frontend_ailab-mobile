@@ -30,6 +30,14 @@ export const GET_CASINO_ENTER_PAGE = ({
 		const _errorPageUrl = errorPageUrl(langId);
 		const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2${_tpGameType}`;
+		const url = `${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`;
+		// * stage 環境， log url 提供資訊 debug
+		if (
+			window.location.href.indexOf("stag") !== -1 ||
+			window.location.href.indexOf("localhost") !== -1
+		) {
+			console.log("GET_CASINO_ENTER_PAGE", url);
+		}
 
 		window
 			.open(
@@ -111,6 +119,14 @@ export const GET_ENTER_PAGE = ({
 	} else if (execFunction) {
 		execFunction();
 	} else if (result.actionType === _ACTION_TYPE.blank) {
+		// * stage 環境， log url 提供資訊 debug
+		if (
+			window.location.href.indexOf("stag") !== -1 ||
+			window.location.href.indexOf("localhost") !== -1
+		) {
+			console.log("GET_ENTER_PAGE", entPageUrl);
+		}
+
 		window.open(
 			entPageUrl,
 			result.windowKey,
