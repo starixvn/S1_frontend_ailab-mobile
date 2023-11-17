@@ -14626,6 +14626,7 @@ main .swiper-container {
   width: 100%;
   -webkit-filter: drop-shadow(0 5px 5px #D8D8D8);
           filter: drop-shadow(0 5px 5px #D8D8D8);
+  border-radius: 15px;
 }
 .home-gamelist > div .gamelist-item .text {
   display: none;
@@ -15222,6 +15223,8 @@ main .swiper-container {
   z-index: 3;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-filter: drop-shadow(0 7px 6px #C5C5C5);
+          filter: drop-shadow(0 7px 6px #C5C5C5);
 }
 .footer-item {
   display: -webkit-box;
@@ -15447,10 +15450,10 @@ main .swiper-container {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 6vw;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin: 6vw 8vw 0;
 }
 .menu-center a {
   display: -webkit-box;
@@ -15490,6 +15493,7 @@ main .swiper-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 50vw;
 }
 .menu-bottom-item .info {
   display: -webkit-box;
@@ -15594,7 +15598,7 @@ main .swiper-container {
   border-radius: 30px;
 }
 .menu-bottom-item .option-item {
-  padding: 5vw 0 0;
+  padding: 5vw 0;
 }
 .menu-bottom-item .option button {
   color: #585858;

@@ -95,7 +95,6 @@ const ShortcutPanel = () => {
 				<span>{t("lbl_LiveChat")}</span>
 			</a>
 			<a
-				className="title"
 				style={
 					allowedCurrencyList.affiliate.includes(currencyId)
 						? {}
