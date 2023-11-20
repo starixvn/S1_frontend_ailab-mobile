@@ -15467,8 +15467,8 @@ main .swiper-container {
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 20vw;
-          flex: 0 0 20vw;
+      -ms-flex: 0 0 19vw;
+          flex: 0 0 19vw;
   margin: 8vw 1vw 0;
   color: #0A1B38;
 }
