@@ -22,12 +22,7 @@ import Layout from "../components/common/layout";
 import VipBanner from "../components/vip/vipBanner";
 import VipMedal from "../components/vip/vipMedal";
 import VipTable from "../components/vip/vipTable";
-
-export const vipAllowCurrencies = [
-	defCurrenyId.MYR,
-	defCurrenyId.THB,
-	defCurrenyId.IDR
-];
+import allowedCurrencyList from "../datas/allowedCurrencyList";
 
 const IndexPage = () => {
 	const navigate = useNavigate();
@@ -43,7 +38,7 @@ const IndexPage = () => {
 	const isMountedRef = useRef(null);
 
 	useHandleAllowCurrencies({
-		allowCurrencies: vipAllowCurrencies,
+		allowCurrencies: allowedCurrencyList.VIP,
 		isLogin: userInfo.isLogin,
 		currencyId: userInfo.currencyId,
 		langId: userInfo.langId,
