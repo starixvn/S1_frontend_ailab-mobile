@@ -71,6 +71,9 @@ const IndexPage = () => {
 	);
 
 	useEffect(() => {
+		// * 當 userInfo 非 null 時，才 call api
+		if (!userInfo?.currencyId) return;
+
 		const getVipBanner = async () => {
 			await api.site
 				.GetVipBanner({ CurrencyId: userInfo?.currencyId })
@@ -94,7 +97,7 @@ const IndexPage = () => {
 				);
 		};
 		getVipBanner();
-	}, []);
+	}, [userInfo?.currencyId]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
