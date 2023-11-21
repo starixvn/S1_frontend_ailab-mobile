@@ -4,3 +4,4 @@ export * from "./rootApi";
 export * from "./authApi";
 export * from "./accountApi";
 export * from "./promotionApi";
+export * from "./paymentApi";

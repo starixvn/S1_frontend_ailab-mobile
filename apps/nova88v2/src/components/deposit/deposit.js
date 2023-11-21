@@ -15,6 +15,7 @@ import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
 import AutoDeposit from "./deposit.autoDeposit";
+import QuickTransfer from "./deposit.quickTransfer";
 import LinePay from "./deposit.linePay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
@@ -60,6 +61,7 @@ const Panel = () => {
 	} = useGetUserPaymentData({
 		userInfo
 	});
+
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -178,7 +180,7 @@ const Panel = () => {
 			bankList={paymentList[defPayType.autoDeposit] ?? []}
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
-			userPaymentSwitch={userPaymentSwitch}
+			userPaymentSwistch={userPaymentSwitch}
 			promoList={promoList}
 			depositPromoMsg={depositPromoMsg}
 			asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
@@ -273,6 +275,18 @@ const Panel = () => {
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
+	} else if (selected === defPayType.quickTransfer) {
+		content = (
+			<QuickTransfer
+				payType={defPayType.quickTransfer}
+				promoList={promoList}
+				paymentList={paymentList[defPayType.quickTransfer] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			/>
+		);
 	}
 
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
@@ -291,7 +305,8 @@ const Panel = () => {
 					[defPayType.cryptoPay]: [],
 					[defPayType.linePay]: [],
 					[defPayType.topUpCard]: [],
-					[defPayType.qrPay]: []
+					[defPayType.qrPay]: [],
+					[defPayType.quickTransfer]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
