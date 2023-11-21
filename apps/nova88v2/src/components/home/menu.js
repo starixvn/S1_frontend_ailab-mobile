@@ -250,11 +250,6 @@ const Menu = () => {
 												</div>
 											)}
 											<img src={img} alt={tpGameType} />
-											{underMaintain && (
-												<div className="under-text">
-													{t("lbl_underMaintenance")}
-												</div>
-											)}
 										</Link>
 									) : (
 										<button
@@ -272,11 +267,6 @@ const Menu = () => {
 												</div>
 											)}
 											<img src={img} alt={tpGameType} />
-											{underMaintain && (
-												<div className="under-text">
-													{t("lbl_underMaintenance")}
-												</div>
-											)}
 										</button>
 									);
 								}
