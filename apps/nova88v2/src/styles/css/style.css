@@ -14365,7 +14365,7 @@ main .swiper-container {
   z-index: 1;
 }
 #Marquee .marquee-box {
-  width: 90vw;
+  width: 95vw;
   height: 8vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -14602,6 +14602,8 @@ main .swiper-container {
   padding: 0 2vw;
   margin-top: 2vw;
   background: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .home-gamelist > div {
   display: -webkit-box;
@@ -14673,6 +14675,7 @@ main .swiper-container {
           filter: drop-shadow(0 0 5px black);
   z-index: 2;
   top: 10vw;
+  font-size: 2.5vw;
 }
 .under img {
   -webkit-filter: grayscale(1) !important;
@@ -15249,9 +15252,6 @@ main .swiper-container {
 .footer-item img {
   width: 6vw;
 }
-.footer-item span {
-  color: #D1D1D1;
-}
 .footer-item.active :not(.plus) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15272,6 +15272,12 @@ main .swiper-container {
   width: 12vw;
   height: 3vw;
   margin-top: -1vw;
+}
+.footer-title {
+  color: #D1D1D1;
+  text-align: center;
+  width: 20vw;
+  line-height: 3vw;
 }
 .footer .plus {
   position: relative;
@@ -15453,7 +15459,7 @@ main .swiper-container {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  margin: 6vw 8vw 0;
+  margin: 6vw 7vw 0;
 }
 .menu-center a {
   display: -webkit-box;
@@ -15554,7 +15560,7 @@ main .swiper-container {
   width: 100%;
 }
 .menu-bottom-item .option .country-item > div:last-child {
-  width: 50vw;
+  width: 60vw;
 }
 .menu-bottom-item .option .country-item > div button.active {
   color: #FF7600;
@@ -15791,6 +15797,12 @@ main .swiper-container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.after .menu-top .profile-item .message-popup > div {
+  width: 25vw;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .after .menu-top .profile-item .message-popup::before {
   position: absolute;

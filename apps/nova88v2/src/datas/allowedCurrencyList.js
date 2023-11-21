@@ -48,12 +48,7 @@ const allowedCurrencyList = {
 	],
 
 	// ==== transfer ====
-	transferFunds: [
-		defCurrenyId.INR,
-		defCurrenyId.BDT,
-		defCurrenyId.USD,
-		defCurrenyId.VND
-	],
+	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
 
 	// ==== withdrawal ====
 	bankCard: [

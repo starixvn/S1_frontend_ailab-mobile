@@ -24,7 +24,14 @@ import GoTopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
 import { angpaoAllowedCurrencies, angPaoEventPeriod } from "../../pages/angpao";
 
-const Layout = ({ children, header, mainClass, goTopBtn, noHeader }) => {
+const Layout = ({
+	header,
+	children,
+	goTopBtn,
+	noHeader,
+	mainClass,
+	showAppHint
+}) => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
@@ -66,7 +73,8 @@ const Layout = ({ children, header, mainClass, goTopBtn, noHeader }) => {
 			<main
 				style={position}
 				className={`${_mainClass} ${
-					readCookie("AppDownloadHint") !== "1" && root
+					(showAppHint || readCookie("AppDownloadHint") !== "1") &&
+					root
 						? "active"
 						: ""
 				}`}>
@@ -156,7 +164,8 @@ Layout.defaultProps = {
 	header: null,
 	mainClass: null,
 	goTopBtn: true,
-	noHeader: false
+	noHeader: false,
+	showAppHint: true
 };
 
 Layout.propTypes = {
@@ -164,7 +173,8 @@ Layout.propTypes = {
 	header: PropTypes.node,
 	mainClass: PropTypes.string,
 	goTopBtn: PropTypes.bool,
-	noHeader: PropTypes.bool
+	noHeader: PropTypes.bool,
+	showAppHint: PropTypes.bool
 };
 
 RotationHint.propTypes = {

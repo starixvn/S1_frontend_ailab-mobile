@@ -1,3 +1,5 @@
+import classNames from "classnames";
+import { bool, func } from "prop-types";
 import { Link } from "@Router";
 import { useTranslation } from "react-i18next";
 import React, { useContext, useState, useEffect } from "react";
@@ -16,7 +18,7 @@ import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import { tpWalletsListType } from "../transfer/transfer.def";
 
-const Header = () => {
+const Header = ({ showAppHint, setShowAppHint }) => {
 	const { t } = useTranslation();
 
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +30,6 @@ const Header = () => {
 		listType: tpWalletsListType.allWallets
 	});
 
-	const [showAppHint, setShowAppHint] = useState(true);
 	const [showBalance, setShowBalance] = useState(true);
 
 	const onReloadBalance = () => {
@@ -57,7 +58,10 @@ const Header = () => {
 	return (
 		<header id="header">
 			{showAppHint && (
-				<div className="appdownload active">
+				<div
+					className={classNames("appdownload", {
+						active: showAppHint
+					})}>
 					<button
 						className="icon icon-close"
 						onClick={handleCloseAppDownload}
@@ -134,6 +138,11 @@ const Header = () => {
 			</div>
 		</header>
 	);
+};
+
+Header.propTypes = {
+	showAppHint: bool.isRequired,
+	setShowAppHint: func.isRequired
 };
 
 export { Header };

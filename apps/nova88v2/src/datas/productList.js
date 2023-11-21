@@ -612,8 +612,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoN2Live,
 					spanText: "n2-LIVE",
 					allowCurrency: allowedCurrencyList.liveCasino_N2,
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-n2.png`,
-					sortKey: "casino_N2LIVE"
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-n2.png`
 				},
 				{
 					...defGameInfo.LIVEcasinoWM,

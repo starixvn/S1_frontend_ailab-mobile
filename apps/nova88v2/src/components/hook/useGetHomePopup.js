@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import React, { useContext } from "react";
+import { useNavigate } from "@reach/router";
 import { popBoxContext, userInfoContext } from "Context";
 import { defDeviceType } from "@ailab-mobile/api";
 import {
@@ -12,6 +13,7 @@ import { setCookie, readCookie } from "../common/common";
 
 const useGetHomePopup = () => {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);

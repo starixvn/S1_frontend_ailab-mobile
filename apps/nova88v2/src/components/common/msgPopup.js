@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "@reach/router";
 import { popUpMsgContext, userInfoContext } from "Context";
-import path from "../../path";
 import useGetPopUpMsg from "../hook/useGetPopUpMsg";
+import path from "../../path";
 
 export default function Component() {
 	const navigate = useNavigate();
@@ -10,20 +10,17 @@ export default function Component() {
 	const { popUp, setPopUp } = useContext(popUpMsgContext);
 	const { userInfo } = useContext(userInfoContext);
 
-	const { ReadPopupMsg } = useGetPopUpMsg({ setPopUp });
+	const { GetPopupMsg } = useGetPopUpMsg({ setPopUp });
+
+	useEffect(() => {
+		GetPopupMsg();
+	}, []);
 
 	return popUp.id !== "" ? (
 		<div
 			className="message-popup"
 			onClick={() => {
-				navigate(`/${userInfo?.langId}/${path.message.root}`, {
-					state: {
-						id: popUp.id,
-						pageNumber: popUp.pageNumber,
-						popupShowed: false
-					}
-				});
-				ReadPopupMsg();
+				navigate(`/${userInfo?.langId}/${path.message.root}`);
 			}}>
 			{popUp.popupMessage}
 		</div>

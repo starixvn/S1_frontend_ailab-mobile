@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { rootContext, userInfoContext } from "Context";
 import Layout from "../components/common/layout";
 import useGetHomePopup from "../components/hook/useGetHomePopup";
@@ -25,6 +25,8 @@ const Home = () => {
 
 	const { openHomePopup } = useGetHomePopup();
 
+	const [showAppHint, setShowAppHint] = useState(true);
+
 	useEffect(() => {
 		setRoot(true);
 		return () => setRoot(false);
@@ -34,9 +36,13 @@ const Home = () => {
 		if (isLogin !== null) openHomePopup();
 	}, [isLogin, accountName]);
 
+	const header = (
+		<Header showAppHint={showAppHint} setShowAppHint={setShowAppHint} />
+	);
+
 	return (
 		<PromotionWrapper>
-			<Layout header={<Header />}>
+			<Layout header={header} showAppHint={showAppHint}>
 				<Marquee />
 				<Slider />
 				<Menu />
