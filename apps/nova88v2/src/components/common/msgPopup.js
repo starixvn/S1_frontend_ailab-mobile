@@ -22,7 +22,7 @@ export default function Component() {
 			onClick={() => {
 				navigate(`/${userInfo?.langId}/${path.message.root}`);
 			}}>
-			{popUp.popupMessage}
+			<div>{popUp.popupMessage}</div>
 		</div>
 	) : null;
 }

@@ -22,7 +22,7 @@ export const channelIcon = {
 	Twitter: "twitter",
 	Instagram: "ig",
 	LINE: "line",
-	Livechat: "chat",
+	Livechat: "livechat",
 	WhatsApp: "whatsapp",
 	"E-mail": "email"
 };

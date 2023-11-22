@@ -225,6 +225,16 @@ const allowedCurrencyList = {
 		defCurrenyId.INR,
 		defCurrenyId.VND
 	],
+	FaChai: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.INR,
+		defCurrenyId.BDT,
+		defCurrenyId.USD,
+		defCurrenyId.VND
+	],
+
 	// game
 	mPoker: [defCurrenyId.THB],
 	amb: [defCurrenyId.THB],
@@ -316,13 +326,14 @@ const allowedCurrencyList = {
 		defCurrenyId.KHM,
 		defCurrenyId.VND
 	],
-	FaChai: [
+	PP: [
 		defCurrenyId.MYR,
-		defCurrenyId.THB,
-		defCurrenyId.IDR,
-		defCurrenyId.INR,
-		defCurrenyId.BDT,
 		defCurrenyId.USD,
+		defCurrenyId.THB,
+		defCurrenyId.CNY,
+		defCurrenyId.IDR,
+		defCurrenyId.KHM,
+		defCurrenyId.BDT,
 		defCurrenyId.VND
 	],
 	V8Poker: [

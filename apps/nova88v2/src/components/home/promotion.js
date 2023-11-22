@@ -7,7 +7,7 @@ import { useGetPromotions } from "../hook/useGetPromotions";
 import { useHandlePromotionInfo } from "../promotion/promotionInfo.popbox";
 
 const defSwipperConfig = {
-	containerClass: "home-promos",
+	containerClass: "home-promos-container",
 	slidesPerView: 1.05,
 	spaceBetween: 10
 };
@@ -53,7 +53,9 @@ const Promotion = () => {
 	return (
 		<>
 			<div className="home-title">{t("lbl_Promotion")}</div>
-			<Swiper {...defSwipperConfig}>{promoList}</Swiper>
+			<div className="home-promos-swiper">
+				<Swiper {...defSwipperConfig}>{promoList}</Swiper>
+			</div>
 		</>
 	);
 };

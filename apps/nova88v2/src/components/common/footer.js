@@ -3,7 +3,7 @@ import { Match } from "@reach/router";
 import React, { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "@Router";
-import { rootContext, userInfoContext } from "Context";
+import { rootContext, userInfoContext, msgCountContext } from "Context";
 import path from "../../path";
 import { cloudBannerImgURL } from "../../config";
 import { defLiveChatLangIdToCurrencyId } from "./common";
@@ -13,6 +13,7 @@ const Footer = () => {
 	const { t } = useTranslation();
 
 	const { root } = useContext(rootContext);
+	const { msgCount } = useContext(msgCountContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin, langId, currencyId } = userInfo;
 
@@ -105,7 +106,8 @@ const Footer = () => {
 							return (
 								<Link
 									className={classNames("footer-item", {
-										active: isMatch
+										active: isMatch,
+										me: msgCount > 0
 									})}
 									to={path.setting.root}>
 									<img

@@ -16,6 +16,7 @@ import {
 import { cloudBannerImgURL } from "../../config";
 import { defProductType } from "../../datas/hotGameList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
 
 const defSwipperConfig = {
 	containerClass: "hotgame-container",
@@ -122,7 +123,11 @@ const HotGame = () => {
 			<div className="home-hotgame">
 				<div className="hotgame-bn">
 					<img
-						src={`${cloudBannerImgURL}/h5/img/4.0/hotgame-bn.png`}
+						src={`${cloudBannerImgURL}/h5/img/4.0/hotgame-bn${
+							allowedCurrencyList.PP.includes(currencyId)
+								? ""
+								: "-spad"
+						}.png`}
 						alt="Hot Game"
 					/>
 				</div>

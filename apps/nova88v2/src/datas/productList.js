@@ -549,7 +549,7 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "Pragmatic Play",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-PP.png`,
 					sortKey: "casino_PP",
-					allowCurrency: getPPAllowCurrencies()
+					allowCurrency: allowedCurrencyList.PP
 				},
 				{
 					...defGameInfo.LIVEcasinoBG,
@@ -613,7 +613,8 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.LIVEcasinoN2Live,
 					spanText: "n2-LIVE",
 					allowCurrency: allowedCurrencyList.liveCasino_N2,
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-n2.png`
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-n2.png`,
+					sortKey: "casino_N2LIVE"
 				},
 				{
 					...defGameInfo.LIVEcasinoWM,
@@ -677,7 +678,7 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotPP.png`,
 					path: path.casino.root,
 					sortKey: "slot_PP",
-					allowCurrency: getPPAllowCurrencies()
+					allowCurrency: allowedCurrencyList.PP
 				},
 				{
 					...defGameInfo.Casino_SG,
@@ -821,7 +822,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_NoLimitCity,
 					parameter: defGameInfo.Casino_NoLimitCity,
 					spanText: "NoLimit City",
-					img: `${cloudBannerImgURL}/h5/img/nlc.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotnlc.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{
