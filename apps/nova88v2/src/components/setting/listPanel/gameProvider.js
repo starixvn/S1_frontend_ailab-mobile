@@ -193,6 +193,11 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_BNG,
 		imgName: "casino_bng"
+	},
+	{
+		...defGameInfo.Casino_NoLimitCity,
+		imgName: "casino_nlc",
+		path: path.casino.root
 	}
 ];
 

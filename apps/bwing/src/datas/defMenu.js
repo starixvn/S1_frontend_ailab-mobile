@@ -42,7 +42,8 @@ export const defSlotTpGameType = {
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	FaChai: { tpId: 55, tpGameType: 106 }
+	FaChai: { tpId: 55, tpGameType: 106 },
+	NoLimitCity: { tpId: 59, tpGameType: 111 }
 };
 
 export const productList = langId => {
@@ -373,6 +374,18 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.IM)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_NoLimitCity,
+					parameter: defGameInfo.Casino_NoLimitCity,
+					path: path.casino.root,
+					displayText: "NoLimit City",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_NoLimitCity)
 						}
 					]
 				},

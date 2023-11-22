@@ -67,8 +67,6 @@ export const defGameInfo = {
 	Casino_GPI: { tpId: 6, tpGameType: 11 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
 	Casino_PNG: { tpId: 54, tpGameType: 105 },
-
-	// 新的 PlayTech (Seamless Wallet)
 	Casino_PlayTech: { tpId: 51, gameId: "0", tpGameType: 100 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Casino_BNG: { tpId: 57, tpGameType: 108 },
@@ -81,6 +79,7 @@ export const defGameInfo = {
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
+	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -329,7 +328,8 @@ export const defSlotTpGameType = {
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
 	FaChai: { tpId: 55, tpGameType: 106 },
-	BNG: { tpId: 57, tpGameType: 108 }
+	BNG: { tpId: 57, tpGameType: 108 },
+	NoLimitCity: { tpId: 59, tpGameType: 111 }
 };
 
 export const sportStreamDef = {
