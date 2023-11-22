@@ -679,10 +679,10 @@ const gameList = [
 			{
 				...defGameInfo.Casino_Endorphina,
 				parameter: defGameInfo.Casino_Endorphina,
-				spanText: "Endorphina",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-endorphina.png`,
+				spanText: "ES",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-es.png`,
 				path: path.casino.root,
-				providerImgName: "endorphina",
+				providerImgName: "es",
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -985,8 +985,8 @@ const gameList = [
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
-				spanText: "eBET",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ebet.png`
+				spanText: "WE",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-we.png`
 			}
 		]
 	}

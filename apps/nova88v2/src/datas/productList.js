@@ -33,13 +33,6 @@ export const getPPAllowCurrencies = () => {
 		: Object.values(defCurrenyId);
 };
 
-export const getKiss918AllowCurrencies = () => {
-	const KissDestroyDate = "2023-08-14 23:59:59";
-	return isDateRange({ endDate: KissDestroyDate })
-		? []
-		: Object.values(defCurrenyId);
-};
-
 export const getCurrencyLink = (targetCurrencyId, langId) => {
 	if (targetCurrencyId === defCurrenyId.MYR) {
 		return ` https://aff.nova88mas102.com/?lang=${langId}`;
@@ -631,8 +624,8 @@ const gameList = ({ langId, currencyId }) => {
 				},
 				{
 					...defGameInfo.LIVEcasinoEB,
-					spanText: "eBET",
-					img: `${cloudBannerImgURL}/h5/img/eb.png`,
+					spanText: "WE",
+					img: `${cloudBannerImgURL}/h5/img/we.png`,
 					sortKey: "casino_EBET"
 				},
 				{
@@ -698,9 +691,9 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.Casino_Endorphina,
 					parameter: defGameInfo.Casino_Endorphina,
-					spanText: "Endorphina",
-					providerImgName: "casino_endorphina",
-					img: `${cloudBannerImgURL}/h5/img/endorphina.png`,
+					spanText: "ES",
+					providerImgName: "casino_es",
+					img: `${cloudBannerImgURL}/h5/img/es.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{
@@ -878,8 +871,8 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.Casino_AMB,
 					parameter: defGameInfo.Casino_AMB,
-					spanText: "AMBSlot",
-					img: `${cloudBannerImgURL}/h5/img/am.png`,
+					spanText: "Askmeslot",
+					img: `${cloudBannerImgURL}/h5/img/askme.png`,
 					providerImgName: "am",
 					allowCurrency: allowedCurrencyList.slotAMB,
 					path: path.casino.root,
@@ -939,22 +932,6 @@ const gameList = ({ langId, currencyId }) => {
 					path: path.casino.root,
 					providerImgName: "pt",
 					sortKey: "slot_Playtech"
-				},
-				{
-					...defGameInfo.Casino_918Kiss,
-					parameter: defGameInfo.Casino_918Kiss,
-					spanText: "918Kiss",
-					img: `${cloudBannerImgURL}/h5/img/918kiss.png`,
-					path: path.casino.root,
-					providerImgName: "casino_kiss918",
-					sortKey: "slot_kiss918",
-					allowCurrency: getKiss918AllowCurrencies(),
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_918Kiss)
-						}
-					]
 				}
 				// {
 				// 	...productList.mega888,
@@ -1464,7 +1441,6 @@ export const defGameInfo = {
 	Casino_All: { tpId: 0 },
 	Casino_MGP: { tpId: 34, tpGameType: 57 },
 	Casino_PP: { tpId: 5, tpGameType: 7 },
-	casino_ICG: { tpId: 24, tpGameType: 39 },
 	Casino_JOKER: { tpId: 9, tpGameType: 13 },
 	Casino_PEGASUS: { tpId: 56, tpGameType: 107 },
 	Casino_CQ9: { tpId: 16, tpGameType: 29 },
@@ -1485,7 +1461,6 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
-	Casino_918Kiss: { tpId: 21, tpGameType: 33 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },

@@ -3,11 +3,6 @@ import { useTranslation } from "react-i18next";
 import Swiper from "react-id-swiper";
 import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
-import {
-	defSpecialSetting,
-	defLoginGameType,
-	useGotoGame
-} from "../hook/useGotoGame";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { productList } from "../../datas/defMenu";
 import path from "../../path";
@@ -17,6 +12,11 @@ import {
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
 import { defProductType } from "../../datas/productList";
+import {
+	defSpecialSetting,
+	useGotoGame,
+	defLoginGameType
+} from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
 const RecentlyViewed = ({ recentlyViewedGames }) => {

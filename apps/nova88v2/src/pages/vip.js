@@ -16,7 +16,6 @@ import {
 	currencyIdToTimeZone,
 	numFormatToDigits
 } from "../components/common/common";
-import { useHandleAllowCurrencies } from "../components/hook/useHandleAllowCurrencies";
 import { VIP_LEVEL } from "../components/vip/def";
 import Layout from "../components/common/layout";
 import VipBanner from "../components/vip/vipBanner";
@@ -37,14 +36,11 @@ const IndexPage = () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const isMountedRef = useRef(null);
 
-	useHandleAllowCurrencies({
-		allowCurrencies: allowedCurrencyList.VIP,
-		isLogin: userInfo.isLogin,
-		currencyId: userInfo.currencyId,
-		langId: userInfo.langId,
-		redirectPath: `/${userInfo.langId}`,
-		i18n
-	});
+	if (
+		userInfo?.currencyId !== null &&
+		!allowedCurrencyList.VIP.includes(userInfo.currencyId)
+	)
+		navigate(`/${userInfo.langId}`);
 
 	const openJoinPop = () => {
 		if (!userInfo.isLogin) {
@@ -66,6 +62,9 @@ const IndexPage = () => {
 	);
 
 	useEffect(() => {
+		// * 當 userInfo 非 null 時，才 call api
+		if (!userInfo?.currencyId) return;
+
 		const getVipBanner = async () => {
 			await api.site
 				.GetVipBanner({ CurrencyId: userInfo?.currencyId })
@@ -89,7 +88,7 @@ const IndexPage = () => {
 				);
 		};
 		getVipBanner();
-	}, []);
+	}, [userInfo?.currencyId]);
 
 	useEffect(() => {
 		isMountedRef.current = true;

@@ -24,7 +24,7 @@ const vipImg = [
 	`${bannerImgUrl}/h5/img/4.0/vip/vip6.png`
 ];
 
-const Header = ({ hideLogo, title, appHint, setAppHint, iconClassName }) => {
+const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 
 	const { userInfo } = useContext(userInfoContext);

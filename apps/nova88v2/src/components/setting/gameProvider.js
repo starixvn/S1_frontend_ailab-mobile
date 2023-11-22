@@ -58,7 +58,7 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_AMB,
 		path: path.casino.root,
-		imgName: "casino_amb",
+		imgName: "casino_askme",
 		allowCurrencies: allowedCurrencyList.slotAMB
 	},
 	{
@@ -82,7 +82,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.LIVEcasinoEB,
-		imgName: "eb"
+		imgName: "we"
 	},
 	// {
 	// 	...defGameInfo.LIVEcasinoMW,
@@ -96,11 +96,6 @@ const defPlatfrom = [
 		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
 		imgName: "casino_cq9"
-	},
-	{
-		...defGameInfo.casino_ICG,
-		path: path.casino.root,
-		imgName: "casino_icg"
 	},
 	// {
 	// 	...defGameInfo.Casino_918Kiss,
@@ -123,7 +118,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.amb,
-		imgName: "amb"
+		imgName: "casino_askme"
 	},
 	{
 		...defGameInfo.Casino_MGP,
@@ -165,11 +160,6 @@ const defPlatfrom = [
 		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_918Kiss,
-		imgName: "casino_kiss918",
-		path: path.casino.root
-	},
-	{
 		...defGameInfo.Casino_Skywind,
 		imgName: "sk",
 		path: path.casino.root
@@ -193,7 +183,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Endorphina,
-		imgName: "casino_end",
+		imgName: "casino_es",
 		path: path.casino.root
 	},
 	{
