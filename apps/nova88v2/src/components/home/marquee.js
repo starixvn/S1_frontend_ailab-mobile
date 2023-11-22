@@ -217,9 +217,6 @@ class MarqueeComponent extends Component {
 						{rows}
 					</div>
 				</div>
-				<button className="btn-more" onClick={this.clickMore}>
-					{this.props.i18n.lbl_More}
-				</button>
 			</div>
 		);
 	}
