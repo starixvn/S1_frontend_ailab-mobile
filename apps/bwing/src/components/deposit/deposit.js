@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
+import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
 import {
 	i18nContext,
 	userInfoContext,
@@ -15,6 +16,7 @@ import LocalBank from "./deposit.localBank";
 import LoadCardPay from "./deposit.loadCardPay";
 import CryptoPay from "./deposit.cryptoPay";
 import QRPay from "./deposit.qrPay";
+import QuickTransfer from "./deposit.quickTransfer";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
@@ -52,6 +54,8 @@ const Panel = () => {
 		i18n
 	});
 
+	const [getDepositQuickTransfer] = useLazyGetDepositQuickTransferQuery();
+
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
 	const isMountedRef = useRef(null);
@@ -72,7 +76,8 @@ const Panel = () => {
 			[defPayType.localBank]: [],
 			[defPayType.loadCardPay]: [],
 			[defPayType.cryptoPay]: [],
-			[defPayType.qrPay]: []
+			[defPayType.qrPay]: [],
+			[defPayType.quickTransfer]: []
 		};
 
 		const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -146,6 +151,22 @@ const Panel = () => {
 				defaultSelect,
 				defPayType.qrPay,
 				payments[defPayType.qrPay]
+			);
+		} catch (error) {}
+
+		try {
+			const {
+				data: depositQuickTransferResponse
+			} = await getDepositQuickTransfer();
+			const quickTransferGroupList =
+				depositQuickTransferResponse?.data?.QuickTransfer?.data || [];
+
+			payments[defPayType.quickTransfer] = quickTransferGroupList;
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.quickTransfer,
+				payments[defPayType.quickTransfer]
 			);
 		} catch (error) {}
 
@@ -233,6 +254,15 @@ const Panel = () => {
 		content = (
 			<QRPay
 				paymentList={paymentList[defPayType.qrPay] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				GetAllPayment={GetAllPayment}
+			/>
+		);
+	} else if (selectedOption === defPayType.quickTransfer) {
+		content = (
+			<QuickTransfer
+				paymentList={paymentList[defPayType.quickTransfer] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 				GetAllPayment={GetAllPayment}

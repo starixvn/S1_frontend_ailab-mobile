@@ -17,6 +17,7 @@
   "GPI_VNLottery": "VN Lottery",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "lbl_3rdPlace": "3rd Place",
   "lbl_5mins": "5 mins",
   "lbl_AGCasino": "Phoenix Suite",
@@ -194,6 +195,7 @@
   "lbl_DepositType5": "TOP-UP CARD",
   "lbl_DepositType6": "QR Pay",
   "lbl_DepositType8": "Crypto Wallet",
+  "lbl_DepositType9": "Quick Transfer",
   "lbl_Detail": "By Detail",
   "lbl_Details": "Details",
   "lbl_Diamond_Club": "DIAMOND CLUB",
@@ -508,6 +510,7 @@
   "lbl_SelectAll": "Select All",
   "lbl_SelectBank": "Select Bank",
   "lbl_SelectBankHint": "Please select the bank",
+  "lbl_SelectBank_Required": "Please select bank accounts",
   "lbl_SelectChannel": "Select Channel",
   "lbl_SelectCryptoHint": "Please select the wallet",
   "lbl_SelectFile": "Select File",
@@ -762,6 +765,5 @@
   "msg_changePswSuccessHint": "You can use the new password when you login in next time.",
   "msg_changePswUpdateSuccess": "The update is successful!",
   "msg_ticketBeenUsed": "The ticket has been used.",
-  "msg_ticketNotBeenActivated": "Ticket not available.",
-  "lbl_SelectBank_Required": "Please select bank accounts"
+  "msg_ticketNotBeenActivated": "Ticket not available."
 }

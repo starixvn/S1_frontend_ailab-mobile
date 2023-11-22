@@ -7177,6 +7177,18 @@ span.important {
   width: auto;
   height: 100%;
 }
+.depositModule_mobile .selectModule .icon-quick::before,
+.depositModule_online .selectModule .icon-quick::before,
+.depositModule_local .selectModule .icon-quick::before,
+.depositModule_topupMobile .selectModule .icon-quick::before,
+.depositModule_Crpyto .selectModule .icon-quick::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.goal123.org/h5/img/quick-transfer.png) center/cover;
+}
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,
 .depositModule_local .input-group,

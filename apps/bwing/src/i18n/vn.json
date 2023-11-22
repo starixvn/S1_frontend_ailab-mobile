@@ -215,6 +215,7 @@
   "lbl_DepositType5": "THẺ CÀO",
   "lbl_DepositType6": "QR Pay",
   "lbl_DepositType8": "Crypto Wallet",
+  "lbl_DepositType9": "Quick Transfer",
   "lbl_Detail": "Chi tiết",
   "lbl_Details": "Chi tiết",
   "lbl_Diamond_Club": "HẠNG KIM CƯƠNG",
@@ -273,6 +274,8 @@
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_FootballBetting": "Cá cược Bóng Bầu Dục",
+  "lbl_Footer_Promotion": "Khuyến Mãi",
+  "lbl_Footer_Sports": "Thể Thao",
   "lbl_ForgetPassword": "Quên ID hoặc mật khẩu?",
   "lbl_ForgetPwdSuccess": "Mật khẩu mới đã được gửi đến địa chỉ email đăng ký của bạn.",
   "lbl_Free": "CHƠI THỬ",
@@ -863,8 +866,5 @@
   "msg_iconForWorldCup": "Biểu tượng cho FIFA World Cup",
   "msg_ticketBeenUsed": "Vé này đã sử dụng",
   "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "msg_worldCuptitleIntro": "Khi các tín đồ bóng đá háo hức hội tụ chuẩn bị cho FIFA World Cup Qatar 2022, biểu tượng của giải đấu như ngọn hải đăng lan tỏa toàn cầu, dẫn lối đến giải đấu nơi mà mọi thứ đều có thể dễ dàng tiếp cận.",
-  "null": "",
-  "lbl_Footer_Sports": "Thể Thao",
-  "lbl_Footer_Promotion": "Khuyến Mãi"
+  "msg_worldCuptitleIntro": "Khi các tín đồ bóng đá háo hức hội tụ chuẩn bị cho FIFA World Cup Qatar 2022, biểu tượng của giải đấu như ngọn hải đăng lan tỏa toàn cầu, dẫn lối đến giải đấu nơi mà mọi thứ đều có thể dễ dàng tiếp cận."
 }
