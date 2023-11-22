@@ -30,13 +30,6 @@
 			"tags": [],
 			"implicitDependencies": ["demo"]
 		},
-		"nova88": {
-			"tags": []
-		},
-		"nova88-e2e": {
-			"tags": [],
-			"implicitDependencies": ["nova88"]
-		},
 		"promotion": {
 			"tags": []
 		},
