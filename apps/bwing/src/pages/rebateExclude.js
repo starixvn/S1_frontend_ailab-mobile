@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../components/common/context";
 import { api_promotion_GetRebateExcludeGameList } from "../service/api/promotion";
+import path from "../path";
 
 const RebateExclude = () => {
 	const { t } = useTranslation();
@@ -48,7 +49,7 @@ const RebateExclude = () => {
 		<>
 			<div className="subheader">
 				<div className="subheader__container">
-					<a href="https://www.nova88.net/" />
+					<a href={path.home.root} />
 				</div>
 			</div>
 			<main className="exclude">
