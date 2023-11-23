@@ -250,11 +250,6 @@ const gameList = [
 				spanTextKey: "lbl_Vgaming"
 			},
 			{
-				...defGameInfo.Fishing,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing.jpg`,
-				spanTextKey: "lbl_Fishing"
-			},
-			{
 				...defGameInfo.VirtualSports,
 				img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
 				spanTextKey: "lbl_VirtualSports"
