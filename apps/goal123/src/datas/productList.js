@@ -569,12 +569,8 @@ const gameList = [
 				...defGameInfo.fish_AT01,
 				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-oneshot.png`,
 				spanTextKey: "lbl_Oneshot_Fishing"
-			},
-			{
-				...defGameInfo.Fishing,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-world.png`,
-				spanTextKey: "lbl_FishingGG"
 			}
+
 			// {
 			// 	...defGameInfo.Skywind_Ocean_Ruler,
 			// 	img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-or.png`,
