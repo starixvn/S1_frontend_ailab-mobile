@@ -17,6 +17,7 @@
   "GPI_VNLottery": "Số Đề",
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
+  "Traditional_Lottery": "Traditional Lottery",
   "lbl_3rdPlace": "Hạng 3",
   "lbl_5mins": "5 phút",
   "lbl_AGCasino": "Sảnh Phoenix",
@@ -194,6 +195,7 @@
   "lbl_DepositType5": "THẺ CÀO",
   "lbl_DepositType6": "QR Pay",
   "lbl_DepositType8": "Crypto Wallet",
+  "lbl_DepositType9": "Quick Transfer",
   "lbl_Detail": "Chi tiết",
   "lbl_Details": "Chi tiết",
   "lbl_Diamond_Club": "HẠNG KIM CƯƠNG",
@@ -242,7 +244,6 @@
   "lbl_Financial": "Tiền vốn",
   "lbl_FinancialLog": "Chi tiết Giao dịch",
   "lbl_Fishing": "Bắn Cá",
-  "lbl_FishingGG": "Thế giới bắn cá",
   "lbl_FishingSG1": "Thánh bắn cá",
   "lbl_FishingSG2": "Bắn cá giao đấu",
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
@@ -508,6 +509,7 @@
   "lbl_SelectAll": "Chọn hết",
   "lbl_SelectBank": "Chọn ngân hàng",
   "lbl_SelectBankHint": "Chọn ngân hàng",
+  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng",
   "lbl_SelectChannel": "Chọn tài khoản nạp",
   "lbl_SelectCryptoHint": "Chọn Ví tiền ảo",
   "lbl_SelectFile": "Select File",
@@ -762,6 +764,5 @@
   "msg_changePswSuccessHint": "Bạn có thể sử dụng mật khẩu mới ở lần đăng nhập tiếp theo.",
   "msg_changePswUpdateSuccess": "Cập nhật thành công mật khẩu!",
   "msg_ticketBeenUsed": "Vé này đã sử dụng",
-  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt.",
-  "lbl_SelectBank_Required": "Xin lựa chọn tài khoản ngân hàng"
+  "msg_ticketNotBeenActivated": "Vé này chưa được kích hoạt."
 }

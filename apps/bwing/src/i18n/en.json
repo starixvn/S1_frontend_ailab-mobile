@@ -215,6 +215,7 @@
   "lbl_DepositType5": "TOP-UP CARD",
   "lbl_DepositType6": "QR Pay",
   "lbl_DepositType8": "Crypto Wallet",
+  "lbl_DepositType9": "Quick Transfer",
   "lbl_Detail": "By Detail",
   "lbl_Details": "Details",
   "lbl_Diamond_Club": "DIAMOND CLUB",
@@ -267,12 +268,13 @@
   "lbl_Financial": "Financial",
   "lbl_FinancialLog": "Financial Log",
   "lbl_Fishing": "Fishing",
-  "lbl_FishingGG": "Fishing World",
   "lbl_FishingSG1": "Fishing God",
   "lbl_FishingSG2": "Fishing War",
   "lbl_Fishing_Alien_Hunter": "Alien Hunter",
   "lbl_Fishing_Zombie_Party": "Zombie Party",
   "lbl_FootballBetting": "Football Betting",
+  "lbl_Footer_Promotion": "Promotion",
+  "lbl_Footer_Sports": "Sports",
   "lbl_ForgetPassword": "Forgot your Password ",
   "lbl_ForgetPwdSuccess": "Your new password has been sent to your registered e-mail address.",
   "lbl_Free": "DEMO",
@@ -863,8 +865,5 @@
   "msg_iconForWorldCup": "An icon for new FIFA World Cup",
   "msg_ticketBeenUsed": "The ticket has been used.",
   "msg_ticketNotBeenActivated": "Ticket not available.",
-  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach",
-  "null": "",
-  "lbl_Footer_Sports": "Sports",
-  "lbl_Footer_Promotion": "Promotion"
+  "msg_worldCuptitleIntro": "As fans gear up for the FIFA World Cup Qatar 2022 the emblem serves as beacon across the globe; drawing them a new type of tournament where everything is within easy reach"
 }
