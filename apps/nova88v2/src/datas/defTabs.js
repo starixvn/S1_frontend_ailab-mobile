@@ -37,33 +37,6 @@ export const withdrawal = {
 				mainClass: "main withdrawal",
 				type: 1
 			},
-			cryptoWithdrawal: {
-				to: path.cryptoWithdrawal.root,
-				displayKey: "lbl_CryptoWithdrawal",
-				mainClass: "main crypto",
-				type: 4
-			}
-		}
-	},
-	withdrawalHistory: {
-		to: `${path.withdrawalHistory.root}`,
-		displayKey: "lbl_WithdrawalHistory",
-		mainClass: "main history"
-	}
-};
-
-export const withdrawalWithEWallet = {
-	withdrawal: {
-		to: `${path.withdrawal.root}`,
-		displayKey: "lbl_Withdrawal",
-		mainClass: "main",
-		subTabs: {
-			withdrawal: {
-				to: path.withdrawal.root,
-				displayKey: "lbl_Withdrawal",
-				mainClass: "main withdrawal",
-				type: 1
-			},
 			eWalletWithdrawal: {
 				to: path.eWalletWithdrawal.root,
 				displayKey: "lbl_EWalletWithdrawal",
@@ -85,12 +58,18 @@ export const withdrawalWithEWallet = {
 	}
 };
 
-export const withdrawalWithoutBankInfo = {
+export const withdrawalWithOutEWallet = {
 	withdrawal: {
 		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
 		mainClass: "main",
 		subTabs: {
+			withdrawal: {
+				to: path.withdrawal.root,
+				displayKey: "lbl_Withdrawal",
+				mainClass: "main withdrawal",
+				type: 1
+			},
 			cryptoWithdrawal: {
 				to: path.cryptoWithdrawal.root,
 				displayKey: "lbl_CryptoWithdrawal",
@@ -161,58 +140,12 @@ export const myWallet = {
 				mainClass: "main Wallet",
 				type: 1
 			},
-			cryptoWallet: {
-				to: path.cryptoWallet.root,
-				displayKey: "lbl_CryptoWallet",
-				mainClass: "main Wallet",
-				type: 4
-			}
-		}
-	}
-};
-
-export const myWalletWithEWallet = {
-	myWallet: {
-		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet",
-		mainClass: "main"
-	},
-	bankInfo: {
-		to: path.bankInfo.root,
-		displayKey: "lbl_BankInfo",
-		subTabs: {
-			bankInfo: {
-				to: path.bankInfo.root,
-				displayKey: "lbl_BankInfo",
-				mainClass: "main Wallet",
-				type: 1
-			},
 			eWallet: {
 				to: path.eWallet.root,
 				displayKey: "lbl_EWallet",
 				mainClass: "main Wallet",
 				type: 3
 			},
-			cryptoWallet: {
-				to: path.cryptoWallet.root,
-				displayKey: "lbl_CryptoWallet",
-				mainClass: "main Wallet",
-				type: 4
-			}
-		}
-	}
-};
-
-export const myWalletWithoutBankInfo = {
-	myWallet: {
-		to: `${path.wallet.root}`,
-		displayKey: "lbl_MyWallet",
-		mainClass: "main"
-	},
-	bankInfo: {
-		to: path.bankInfo.root,
-		displayKey: "lbl_BankInfo",
-		subTabs: {
 			cryptoWallet: {
 				to: path.cryptoWallet.root,
 				displayKey: "lbl_CryptoWallet",
