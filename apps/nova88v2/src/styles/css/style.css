@@ -14499,8 +14499,9 @@ main .swiper-container {
           flex-direction: column;
   height: 21vw;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 15vw;
-          flex: 0 0 15vw;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin: 0 1vw;
   position: relative;
 }
 .home-sidebar button > div:last-child {
@@ -14508,7 +14509,7 @@ main .swiper-container {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 15vw;
+  width: 20vw;
 }
 .home-sidebar button .new-icon {
   position: absolute;
@@ -14552,10 +14553,10 @@ main .swiper-container {
   background: #FF6A97;
 }
 .home-sidebar .btn-sports.active.btn-slots .btn-circle, .home-sidebar .btn-esports.active.btn-slots .btn-circle, .home-sidebar .btn-exchange.active.btn-slots .btn-circle, .home-sidebar .btn-casino.active.btn-slots .btn-circle, .home-sidebar .btn-slots.active.btn-slots .btn-circle, .home-sidebar .btn-games.active.btn-slots .btn-circle, .home-sidebar .btn-fishing.active.btn-slots .btn-circle, .home-sidebar .btn-games.active.btn-slots .btn-circle, .home-sidebar .btn-four.active.btn-slots .btn-circle, .home-sidebar .btn-lottery.active.btn-slots .btn-circle {
-  background: #FF7600;
+  background: #DB55FB;
 }
 .home-sidebar .btn-sports.active.btn-slots::after, .home-sidebar .btn-esports.active.btn-slots::after, .home-sidebar .btn-exchange.active.btn-slots::after, .home-sidebar .btn-casino.active.btn-slots::after, .home-sidebar .btn-slots.active.btn-slots::after, .home-sidebar .btn-games.active.btn-slots::after, .home-sidebar .btn-fishing.active.btn-slots::after, .home-sidebar .btn-games.active.btn-slots::after, .home-sidebar .btn-four.active.btn-slots::after, .home-sidebar .btn-lottery.active.btn-slots::after {
-  background: #FF7600;
+  background: #DB55FB;
 }
 .home-sidebar .btn-sports.active.btn-games .btn-circle, .home-sidebar .btn-esports.active.btn-games .btn-circle, .home-sidebar .btn-exchange.active.btn-games .btn-circle, .home-sidebar .btn-casino.active.btn-games .btn-circle, .home-sidebar .btn-slots.active.btn-games .btn-circle, .home-sidebar .btn-games.active.btn-games .btn-circle, .home-sidebar .btn-fishing.active.btn-games .btn-circle, .home-sidebar .btn-games.active.btn-games .btn-circle, .home-sidebar .btn-four.active.btn-games .btn-circle, .home-sidebar .btn-lottery.active.btn-games .btn-circle {
   background: #FFCD04;
@@ -15252,8 +15253,8 @@ main .swiper-container {
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 20vw;
-          flex: 0 0 20vw;
+      -ms-flex: 0 0 21vw;
+          flex: 0 0 21vw;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -15276,19 +15277,17 @@ main .swiper-container {
           align-items: center;
   color: #0A1B38;
 }
-.footer-item.active :not(.plus)::after {
-  display: block;
-  content: "";
-  background: url(https://banner.0814media.net/h5/img/4.0/footer-bottom.svg) no-repeat center/cover;
-  width: 12vw;
-  height: 3vw;
-  margin-top: -1vw;
+.footer-item.active :not(.plus).footer-title {
+  border-bottom: 2.5px solid #FF7600;
+  padding-bottom: 2vw;
 }
 .footer-title {
   color: #D1D1D1;
   text-align: center;
-  width: 20vw;
   line-height: 3vw;
+  margin: 1vw 0 0;
+  white-space: nowrap;
+  font-size: 2.5vw;
 }
 .footer .plus {
   position: relative;
@@ -15357,7 +15356,7 @@ main .swiper-container {
   width: 7vw;
 }
 .footer .me::after {
-  top: 10vw;
+  top: 8.5vw;
   right: 6vw;
   position: absolute;
   display: block;
