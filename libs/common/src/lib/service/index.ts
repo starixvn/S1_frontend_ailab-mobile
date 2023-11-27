@@ -5,3 +5,7 @@ export * from "./authApi";
 export * from "./promotionApi";
 export * from "./accountApi";
 export * from "./promotionApi";
+export * from "./siteApi";
+export * from "./hotEventApi";
+export * from "./hotGameApi";
+export * from "./gameApi";
