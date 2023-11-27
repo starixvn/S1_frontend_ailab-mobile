@@ -528,7 +528,7 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.TFGaming,
 					spanText: "TFGaming",
-					img: `${cloudBannerImgURL}/h5/img/esportTFG.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/esports/esportTFG.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -714,15 +714,6 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotNextspin.png`,
 					path: path.casino.root,
 					sortKey: "slot_Nextspin"
-				},
-				{
-					...defGameInfo.Casino_Skywind,
-					parameter: defGameInfo.Casino_Skywind,
-					spanText: "Skywind",
-					providerImgName: "sk",
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotsk.png`,
-					path: path.casino.root,
-					sortKey: "slot_Skywind"
 				},
 				{
 					...defGameInfo.Casino_PG,
@@ -1061,7 +1052,7 @@ const gameList = ({ langId, currencyId }) => {
 				},
 				{
 					...defGameInfo.V8Poker,
-					img: `${cloudBannerImgURL}/h5/img/v8.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/v8.png`,
 					spanTextKey: "lbl_V8Poker",
 					sortKey: "games_V8Poker",
 					allowCurrency: allowedCurrencyList.V8Poker,
