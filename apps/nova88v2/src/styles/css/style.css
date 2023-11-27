@@ -14395,7 +14395,7 @@ main .swiper-container {
           align-items: center;
   width: 100%;
   overflow: hidden;
-  padding: 2.5vw 0 1vw;
+  padding: 2vw 0 1vw;
   position: relative;
   z-index: 1;
 }
@@ -15010,7 +15010,7 @@ main .swiper-container {
   margin-right: 6vw;
 }
 .home-appdownload-content .text {
-  margin: 10vw 0 0 10vw;
+  margin: 2vw 0 0 10vw;
   color: #0A1B38;
 }
 .home-appdownload-content .text div {
@@ -15507,7 +15507,7 @@ main .swiper-container {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  margin: 6vw 8vw 0;
+  margin: 6vw 7vw 0;
 }
 .menu-center a {
   display: -webkit-box;
