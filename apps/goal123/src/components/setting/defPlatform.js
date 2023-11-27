@@ -177,7 +177,7 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PNG },
 		imgName: "pnga"
-	},	
+	},
 	{
 		...defGameInfo.LIVEcasinoEB,
 		path: path.casino.root,
@@ -207,6 +207,12 @@ const defPlatfrom = [
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_BNG },
 		imgName: "bnga"
+	},
+	{
+		...defGameInfo.Casino_NoLimitCity,
+		path: path.casino.root,
+		parameter: { ...defGameInfo.Casino_NoLimitCity },
+		imgName: "nlca"
 	}
 ];
 

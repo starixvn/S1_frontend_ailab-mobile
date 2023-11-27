@@ -97,6 +97,7 @@ export const defGameInfo = {
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Casino_BNG: { tpId: 57, tpGameType: 108 },
+	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },
 	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
@@ -219,7 +220,8 @@ export const defSlotTpGameType = {
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
 	FaChai: { tpId: 55, tpGameType: 106 },
-	BNG: { tpId: 57, tpGameType: 108 }
+	BNG: { tpId: 57, tpGameType: 108 },
+	NoLimitCity: { tpId: 59, tpGameType: 111 }
 };
 
 const gameList = [
@@ -788,6 +790,19 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-spribe.png`,
 				path: path.casino.root,
 				providerImgName: "spribe"
+			},
+			{
+				...defGameInfo.Casino_NoLimitCity,
+				parameter: defGameInfo.Casino_NoLimitCity,
+				spanText: "NoLimit City",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nlc.png`,
+				path: path.casino.root,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.slot_NoLimitCity)
+					}
+				]
 			},
 			{
 				...defGameInfo.Casino_RedTiger,
