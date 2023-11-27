@@ -14369,7 +14369,7 @@ main .swiper-container {
           align-items: center;
   width: 100%;
   overflow: hidden;
-  padding: 2.5vw 0 1vw;
+  padding: 2vw 0 1vw;
   position: relative;
   z-index: 1;
 }
@@ -14987,7 +14987,7 @@ main .swiper-container {
   margin-right: 6vw;
 }
 .home-appdownload-content .text {
-  margin: 10vw 0 0 10vw;
+  margin: 2vw 0 0 10vw;
   color: #0A1B38;
 }
 .home-appdownload-content .text div {
