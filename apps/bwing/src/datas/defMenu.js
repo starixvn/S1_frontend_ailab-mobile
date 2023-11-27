@@ -708,7 +708,7 @@ export const productList = langId => {
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-of.png`,
 					icon: "icon icon-cq9",
 					...defGameInfo.Fishing_AT01
-				},
+				}
 				// {
 				// 	displayKey: "Skywind_Ocean_Ruler",
 				// 	img: `${bannerImgUrl}/h5/img/fish/fish-or.png`,
@@ -751,12 +751,6 @@ export const productList = langId => {
 				// 	icon: "icon icon-ICG",
 				// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS
 				// },
-				{
-					displayKey: "lbl_FishingGG",
-					icon: "icon icon-gg",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/fishing/fish-fworld.png`,
-					...defGameInfo.Fishing
-				}
 			]
 		},
 		lottery: {
