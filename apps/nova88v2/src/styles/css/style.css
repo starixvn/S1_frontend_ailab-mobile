@@ -15356,8 +15356,8 @@ main .swiper-container {
   width: 7vw;
 }
 .footer .me::after {
-  top: 8.5vw;
-  right: 6vw;
+  top: 9vw;
+  right: 7vw;
   position: absolute;
   display: block;
   content: "";
