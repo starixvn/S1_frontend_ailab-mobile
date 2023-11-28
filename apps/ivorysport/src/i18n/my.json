@@ -898,5 +898,6 @@
 	"lbl_GameName": "Nama Permainan",
 
 	"lbl_IceHockey": "Hoki ais",
-	"lbl_Baseball": "besbol"
+	"lbl_Baseball": "besbol",
+	"Label_Header_WinLossAmountHint": "Nota: Jumlah kerugian menang pertaruhan mungkin mempunyai sedikit perbezaan disebabkan isu pembundaran。"
 }
