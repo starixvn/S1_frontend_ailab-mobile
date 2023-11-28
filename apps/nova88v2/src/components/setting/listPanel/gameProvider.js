@@ -198,6 +198,14 @@ const defPlatfrom = [
 		...defGameInfo.Casino_NoLimitCity,
 		imgName: "casino_nlc",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.TFGaming,
+		imgName: "tfg"
+	},
+	{
+		...defGameInfo.V8Poker,
+		imgName: "v8"
 	}
 ];
 
