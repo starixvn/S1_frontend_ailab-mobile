@@ -520,6 +520,17 @@ const gameList = ({ langId, currencyId }) => {
 							inPeriod: isEventPeriod(eventTime.IM)
 						}
 					]
+				},
+				{
+					...defGameInfo.TFGaming,
+					spanText: "TFGaming",
+					img: `${cloudBannerImgURL}/h5/img/esportTFG.png`,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.TFGaming)
+						}
+					]
 				}
 			]
 		},
@@ -1376,6 +1387,11 @@ export const defGameInfo = {
 		tpId: 52,
 		gameId: "ESPORTSBULL",
 		tpGameType: 102
+	},
+	TFGaming: {
+		tpId: 48,
+		gameId: 0,
+		tpGameType: 97
 	},
 	LIVEcasinoN2Live: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },

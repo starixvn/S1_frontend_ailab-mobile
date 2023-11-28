@@ -191,6 +191,10 @@ const defPlatfrom = [
 		...defGameInfo.casino_PNG,
 		imgName: "png",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.TFGaming,
+		imgName: "tfg"
 	}
 ];
 
