@@ -195,6 +195,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.TFGaming,
 		imgName: "tfg"
+	},
+	{
+		...defGameInfo.V8Poker,
+		imgName: "v8"
 	}
 ];
 
