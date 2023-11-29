@@ -10592,6 +10592,7 @@ span.important {
   top: calc(50% + 1.5vw);
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  z-index: 4;
 }
 .recently .swiper-button-next::before, .recently .swiper-button-prev::before {
   content: "\ea40";
