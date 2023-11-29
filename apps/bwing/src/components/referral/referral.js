@@ -91,20 +91,10 @@ const Referral = ({ userInfo, i18n, setPopBox }) => {
 		const res = await api_account_GetReferralSettingDetail();
 		const { errorCode, data, message } = res.data;
 
-		const closePopBox = () => {
-			setReferralBox({ isOpen: false });
-		};
-
 		if (errorCode === 0) {
 			setReferralBox({
 				isOpen: true,
-				content: (
-					<ReferralPopBox
-						data={data}
-						closePopBox={closePopBox}
-						t={t}
-					/>
-				)
+				content: <ReferralPopBox data={data} t={t} />
 			});
 		} else {
 			setPopBox({
