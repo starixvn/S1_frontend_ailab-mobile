@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import Swiper from "react-id-swiper";
 import QRCode from "qrcode.react";
+import "swiper/swiper-bundle.min.css";
+import SwiperCore, { Pagination } from "swiper";
 import { bannerImgUrl } from "../../config";
 import { userInfoContext } from "../common/context";
 
@@ -15,6 +17,8 @@ const stepList = [
 	}
 ];
 
+SwiperCore.use([Pagination]);
+
 const ReferralInfo = ({ referralCode, onCopy }) => {
 	const {
 		userInfo: { langId }
@@ -24,6 +28,8 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 	const referralLink = `${link_default}/${langId}/join?AffId=${referralCode}`;
 	const welcomeMessage = t("lbl_Referral_Welcome_Goal123");
 	const params = {
+		slidesPerView: 1,
+		spaceBetween: 10,
 		pagination: {
 			el: ".swiper-pagination",
 			clickable: true
