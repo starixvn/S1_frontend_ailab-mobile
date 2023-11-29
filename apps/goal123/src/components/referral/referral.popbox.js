@@ -29,7 +29,7 @@ export default () => {
 export const ReferralPopBox = ({ data, t }) => (
 	<div className="promotions">
 		<div className="promodule">
-			<img src={data.referralContent.bannerUrl} alt="banner" />
+			<img src={data.referralContent?.bannerUrl} alt="banner" />
 			<div className="protitle">{data.referralContent?.title}</div>
 			<div className="text">{data.referralContent?.description}</div>
 			<div className="info promotionInfo">
