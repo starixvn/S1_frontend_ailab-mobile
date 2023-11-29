@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import ReloadSpin from "../common/reloadSpin";
 import { number_format, isConvert } from "../common/common";
 import { tpWalletsListType } from "../transfer/transfer.def";
@@ -8,6 +9,7 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 
 const Balance = ({ i18n, userInfo }) => {
 	const [showingBalance, setShowingBalance] = useState(true);
+	const [showInfoIcon, setShowInfoIcon] = useState(false);
 	const { mainWalletInfo, GetBalance } = useGetBalance({
 		isLogin: userInfo.isLogin
 	});
@@ -33,6 +35,10 @@ const Balance = ({ i18n, userInfo }) => {
 		setShowingBalance(prev => !prev);
 	};
 
+	const toggleShowInfoIcon = () => {
+		setShowInfoIcon(prev => !prev);
+	};
+
 	return (
 		<div className="Balance">
 			<button
@@ -42,6 +48,17 @@ const Balance = ({ i18n, userInfo }) => {
 				onClick={clickEye}>
 				{i18n[`Currency_${userInfo.currencyId}`]}{" "}
 			</button>
+
+			<button
+				className={classNames("icon icon-information", {
+					active: showInfoIcon
+				})}
+				onClick={toggleShowInfoIcon}>
+				<div className="note">
+					{i18n.Label_Header_WinLossAmountHint}
+				</div>
+			</button>
+
 			{showingBalance ? (
 				<div>
 					{`$${balance}`}

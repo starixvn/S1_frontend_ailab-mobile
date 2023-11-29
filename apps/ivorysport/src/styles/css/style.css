@@ -3593,10 +3593,11 @@ footer > a.active .circleAnimation::after {
       -ms-flex-align: center;
           align-items: center;
   font-size: 4vw;
+  position: relative;
 }
-.Balance .icon-minus, .Balance .icon-plus {
+.Balance .icon-minus, .Balance .icon-plus, .Balance .icon-information {
   text-align: left;
-  margin-right: 2vw;
+  margin-right: 0.5vw;
   font-size: 3.5vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3605,15 +3606,49 @@ footer > a.active .circleAnimation::after {
       -ms-flex-align: center;
           align-items: center;
 }
-.Balance .icon-minus:before, .Balance .icon-plus:before {
+.Balance .icon-minus:before, .Balance .icon-plus:before, .Balance .icon-information:before {
   display: none;
 }
-.Balance .icon-minus:after, .Balance .icon-plus:after {
+.Balance .icon-minus:after, .Balance .icon-plus:after, .Balance .icon-information:after {
   font-size: 3.5vw;
   background: white;
   color: #596e6a;
   border-radius: 100%;
   margin-left: 1vw;
+}
+.Balance .icon-information {
+  margin-right: 1.5vw;
+}
+.Balance .icon-information::after {
+  content: "\e951";
+  background: transparent;
+  color: white;
+}
+.Balance .icon-information.active .note {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.Balance .note {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 5vw;
+  right: 0;
+  color: #1a3732;
+  background: rgb(204, 230, 225);
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  width: 47vw;
+  border-radius: 5px;
+  padding: 1vw;
+  font-size: 3vw;
+  text-align: left;
+  white-space: wrap;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 1;
 }
 .Balance .icon-minus:after {
   content: "\e94e";
