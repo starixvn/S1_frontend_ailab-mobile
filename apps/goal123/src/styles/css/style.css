@@ -999,7 +999,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: calc(100% - 16vw);
   height: calc(100% - 16vw);
   position: fixed;
-  z-index: 9;
+  z-index: 11;
   top: 0;
   left: 0;
   -webkit-box-align: center;
