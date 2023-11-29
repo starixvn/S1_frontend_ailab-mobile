@@ -145,6 +145,7 @@ export const Referral = () => {
 					{t("lbl_More_Info")}
 				</button>
 				<div className="refer">
+					<img src="" alt="" />
 					<ReferralInfo referralCode={referralCode} onCopy={onCopy} />
 					<ReferralStatus referralSum={referralSum} />
 				</div>

@@ -23,9 +23,7 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 	const link_default = window.location.origin;
 	const referralLink = `${link_default}/${langId}/join?AffId=${referralCode}`;
 	const welcomeMessage = t("lbl_Referral_Welcome_Goal123");
-	const swiperParams = {
-		slidesPerView: 1,
-		spaceBetween: 10,
+	const params = {
 		pagination: {
 			el: ".swiper-pagination",
 			clickable: true
@@ -36,18 +34,22 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 		<div className="refer-info">
 			<div className="refer-info-step">
 				<div className="title">{t("lbl_Your_link_invite")}</div>
-				<Swiper {...swiperParams}>
+				<Swiper {...params}>
 					{stepList.map(({ subtitle, description }, key) => (
-						<div className="step-item" key={subtitle}>
-							<div className="step-title">
-								{t("lbl_Step", { step: key })}
+						<div key={subtitle}>
+							<div className="step-item">
+								<div className="step-title">
+									{t("lbl_Step", { step: key + 1 })}
+								</div>
+								<img
+									src={`${bannerImgUrl}/h5/img/referral/referral-step-0${
+										key + 1
+									}.svg`}
+									alt=""
+								/>
+								<div className="subtitle">{t(subtitle)}</div>
+								<p>{t(description)}</p>
 							</div>
-							<img
-								src={`${bannerImgUrl}/h5/img/referral/referral-step-0${key}.svg`}
-								alt=""
-							/>
-							<div className="subtitle">{t(subtitle)}</div>
-							<p>{t(description)}</p>
 						</div>
 					))}
 				</Swiper>
