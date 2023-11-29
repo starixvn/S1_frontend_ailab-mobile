@@ -42,10 +42,10 @@ const EventSwipper = ({ userInfo }) => {
 				}
 			},
 			() => {
-				setPopBox({
-					isOpen: true,
-					content: i18n.msg_ApiServerError
-				});
+				// setPopBox({
+				// 	isOpen: true,
+				// 	content: i18n.msg_ApiServerError
+				// });
 			}
 		);
 	};
