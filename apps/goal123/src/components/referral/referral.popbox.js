@@ -32,48 +32,6 @@ export const ReferralPopBox = ({ data, t }) => (
 			<img src={data.referralContent?.bannerUrl} alt="banner" />
 			<div className="protitle">{data.referralContent?.title}</div>
 			<div className="text">{data.referralContent?.description}</div>
-			<div className="info promotionInfo">
-				<ul>
-					<li>
-						<span>{t("lbl_ReferralReward")}</span>
-						<span>{data.referralReward}</span>
-					</li>
-					<li>
-						<span>{t("lbl_FriendsInvitationLimit")}</span>
-						<span>{data.invitationLimit}</span>
-					</li>
-					<li>
-						<span>{t("lbl_DepositRequirement")}</span>
-						<span>{data.agentDeposit}</span>
-					</li>
-					<li>
-						<span>{t("lbl_ValidBetRequirement")}</span>
-						<span>{data.agentValidBet}</span>
-					</li>
-				</ul>
-			</div>
-			<div className="info promotionInfo">
-				<ul>
-					<li>
-						<span>{t("lbl_ReferredFreeCredit")}</span>
-						<span>{data.memberReward}</span>
-					</li>
-					<li>
-						<span>{t("lbl_DepositRequirement")}</span>
-						<span>{data.deposit}</span>
-					</li>
-					<li>
-						<span>{t("lbl_ValidBetRequirement")}</span>
-						<span>{data.vaildBet}</span>
-					</li>
-					<li>
-						<span>{t("lbl_TermPeriodWithin")}</span>
-						<span>
-							{data.periodDays} ({t("lbl_Days")})
-						</span>
-					</li>
-				</ul>
-			</div>
 			<div
 				className="text"
 				dangerouslySetInnerHTML={{
