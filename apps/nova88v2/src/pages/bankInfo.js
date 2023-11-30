@@ -7,11 +7,7 @@ import {
 } from "../components/common/context";
 import BankInfo from "../components/profile/bankInfo";
 import Layout from "../components/common/layout";
-import {
-	myWallet,
-	myWalletWithEWallet,
-	myWalletWithoutBankInfo
-} from "../datas/defTabs";
+import { myWallet } from "../datas/defTabs";
 import TabPage, { getMainClass } from "../components/common/tabPage";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import path from "../path";
@@ -24,12 +20,7 @@ const IndexPage = props => {
 		withdrawalBlockSettingContext
 	);
 
-	let defTabs = myWallet;
-	if (allowedCurrencyList.eWallet.includes(userInfo.currencyId)) {
-		defTabs = myWalletWithEWallet;
-	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
-		defTabs = myWalletWithoutBankInfo;
-	}
+	const defTabs = myWallet;
 
 	// * 這裡的篩選是從後台 payment Gateway --> Withdrawal Option Status
 	// * 因有多個參數控制同個元件的情形 ex:isShowEWallet 所以這裡分開寫

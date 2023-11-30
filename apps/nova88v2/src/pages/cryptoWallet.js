@@ -1,30 +1,16 @@
 import React, { useContext } from "react";
-import {
-	userInfoContext,
-	withdrawalBlockSettingContext
-} from "../components/common/context";
+import { withdrawalBlockSettingContext } from "../components/common/context";
 import Layout from "../components/common/layout";
 import CryptoWallet from "../components/cryptoWallet/cryptoWallet";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import {
-	myWallet,
-	myWalletWithEWallet,
-	myWalletWithoutBankInfo
-} from "../datas/defTabs";
-import allowedCurrencyList from "../datas/allowedCurrencyList";
+import { myWallet } from "../datas/defTabs";
 
 const IndexPage = props => {
-	const { userInfo } = useContext(userInfoContext);
 	const { withdrawalSettingTypeList } = useContext(
 		withdrawalBlockSettingContext
 	);
 
-	let defTabs = myWallet;
-	if (allowedCurrencyList.eWallet.includes(userInfo.currencyId)) {
-		defTabs = myWalletWithEWallet;
-	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
-		defTabs = myWalletWithoutBankInfo;
-	}
+	const defTabs = myWallet;
 
 	// * 這裡的篩選是從後台 payment Gateway --> Withdrawal Option Status
 	// * 因有多個參數控制同個元件的情形 ex:isShowEWallet 所以這裡分開寫
