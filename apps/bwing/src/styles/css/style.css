@@ -3601,6 +3601,24 @@ header {
   border: 0;
   border-radius: 2px;
 }
+#popup.referal-detail .popTit {
+  position: relative;
+  font-weight: 700;
+}
+#popup.referal-detail .icon-close::before {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  border-radius: 10px;
+  border: 1px solid #1C317B;
+  padding: 2px;
+}
+#popup.referal-detail .info ul {
+  margin-top: 0.5vw;
+}
+#popup.referal-detail .info.infoBlack {
+  background: #fff;
+}
 
 .fullbanner {
   width: 100%;
