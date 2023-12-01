@@ -3604,6 +3604,7 @@ header {
 #popup.referal-detail .popTit {
   position: relative;
   font-weight: 700;
+  background: #F38C00;
 }
 #popup.referal-detail .icon-close::before {
   position: absolute;
@@ -3612,6 +3613,9 @@ header {
   border-radius: 10px;
   border: 1px solid #1C317B;
   padding: 2px;
+}
+#popup.referal-detail .info {
+  margin: 1vw 0;
 }
 #popup.referal-detail .info ul {
   margin-top: 0.5vw;
