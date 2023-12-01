@@ -14336,7 +14336,7 @@ input[type=number] {
       -ms-flex-align: center;
           align-items: center;
   font-size: 4vw;
-  margin-top: -0.5vw;
+  height: 4.5vw;
   font-weight: 600;
 }
 .header-balance span {
@@ -15731,7 +15731,7 @@ main .swiper-container {
 .after .menu-top .profile-item > div > div {
   margin-left: 2vw;
 }
-.after .menu-top .profile-item > div > div button {
+.after .menu-top .profile-item > div > div a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15740,7 +15740,7 @@ main .swiper-container {
           align-items: center;
   margin-top: -1vw;
 }
-.after .menu-top .profile-item > div > div button::after {
+.after .menu-top .profile-item > div > div a::after {
   display: block;
   content: "";
   background: url(https://banner.0814media.net/h5/img/4.0/right.png) no-repeat center/cover;
@@ -15995,7 +15995,7 @@ main .swiper-container {
   position: absolute;
   bottom: 2.5vw;
   right: 7vw;
-  color: #EFEFEF;
+  color: #b9b9b9;
 }
 .after .menu-vip .vip-text.next {
   display: -webkit-box;
