@@ -8316,6 +8316,17 @@ p.txt-blue12 {
   margin-right: 1vw;
 }
 
+.referral .recentTransactions .smallTitle {
+  color: #1C317B;
+}
+.referral .recentTransactions .smallTitle i.icon::before {
+  -webkit-filter: drop-shadow(0px 0px 2px #1C317B);
+          filter: drop-shadow(0px 0px 2px #1C317B);
+}
+.referral .recentTransactions .smallTitle .icon-history:before {
+  content: "";
+}
+
 .countryCode {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13119,9 +13130,9 @@ body main.main.referral {
 .refer {
   position: relative;
   margin-top: 98vw;
-  margin-bottom: 10vw;
-  padding: 5vw 5vw 6vw;
-  border-radius: 5vw 5vw 3vw 3vw;
+  margin-bottom: 1vw;
+  padding: 5vw 5vw 3vw;
+  border-radius: 5vw;
   background: #1C317B;
 }
 .refer .title {
