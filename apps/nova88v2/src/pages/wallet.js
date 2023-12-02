@@ -88,6 +88,9 @@ const Wallet = () => {
 			/>
 		);
 	});
+
+	// * 直接拿 bonusWallets 第一個值 (改為單一錢包後，一次只會回傳一筆)
+	const bonusWallet = Object.values(bonusWallets || {})[0];
 	return (
 		<>
 			<div className="walletTotal">
@@ -100,7 +103,7 @@ const Wallet = () => {
 			<MainWallet
 				currencyId={userInfo.currencyId}
 				balance={mainWalletInfo.balance}
-				bonusWallet={bonusWallets[0]}
+				bonusWallet={bonusWallet}
 			/>
 			{_tpWalletArrs}
 			<div className="btn-group">
