@@ -89,7 +89,7 @@ const Wallet = () => {
 		);
 	});
 
-	// * 直接拿 bonusWallets 第一個值 (改為單一錢包後，一次只會回傳一筆)
+	// * 直接拿 bonusWallets 第一個值當作主錢包的獎金資訊 (改為單一錢包後，一次只會回傳一筆)
 	const bonusWallet = Object.values(bonusWallets || {})[0];
 	return (
 		<>
