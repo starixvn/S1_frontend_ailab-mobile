@@ -12,7 +12,9 @@ const ReferralHistoryDetails = ({
 	const { t } = useTranslation();
 
 	return (
-		<div id="popup" className={classNames("detailpop", { active })}>
+		<div
+			id="popup"
+			className={classNames("detailpop", "referal-detail", { active })}>
 			<div className="pop">
 				<div className="popTit">
 					{t("lbl_Details")}
