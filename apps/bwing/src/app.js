@@ -69,7 +69,7 @@ import VIP from "./pages/vip";
 import VipInner from "./pages/vip-inner";
 
 import FriendReferral from "./pages/referral";
-import ReferFriends from "./components/referral/referFriends";
+import Referral from "./components/referral/referral";
 import ReferralHistory from "./components/referral/referral.history";
 import AppDownload from "./pages/appDownload";
 
@@ -111,7 +111,7 @@ const Index = () => {
 								<EWallet path={path.member.sub.eWallet.root} />
 							</Member>
 							<FriendReferral path={path.referral.root}>
-								<ReferFriends path={path.referral.sub.root} />
+								<Referral path={path.referral.sub.root} />
 								<ReferralHistory
 									path={path.referral.sub.history.root}
 								/>

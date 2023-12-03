@@ -11,11 +11,7 @@ import TabPage, { getMainClass } from "../components/common/tabPage";
 import WithdrawalEWallet from "../components/withdrawal/withdrawal.EWallet";
 import CryptoWithdrawal from "../components/withdrawal/withdrawal.crypto";
 import Withdrawal from "../components/withdrawal/withdrawal";
-import {
-	withdrawal,
-	withdrawalWithEWallet,
-	withdrawalWithoutBankInfo
-} from "../datas/defTabs";
+import { withdrawal, withdrawalWithOutEWallet } from "../datas/defTabs";
 import path from "../path";
 import allowedCurrencyList from "../datas/allowedCurrencyList";
 
@@ -29,13 +25,8 @@ const IndexPage = props => {
 	);
 
 	let defTabs = withdrawal;
-	if (
-		allowedCurrencyList.eWallet.includes(userInfo.currencyId) &&
-		isShowEWallet
-	) {
-		defTabs = withdrawalWithEWallet;
-	} else if (!allowedCurrencyList.bankCard.includes(userInfo.currencyId)) {
-		defTabs = withdrawalWithoutBankInfo;
+	if (!isShowEWallet) {
+		defTabs = withdrawalWithOutEWallet;
 	}
 
 	// * 這裡的篩選是從後台 payment Gateway --> Withdrawal Option Status
@@ -63,9 +54,6 @@ const IndexPage = props => {
 	const header = <TabPage defTabs={filteredSettingTabs()} />;
 
 	useEffect(() => {
-		console.log(
-			Object.keys(filteredSettingTabs()?.withdrawal?.subTabs)?.length
-		);
 		// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
 		// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
 		if (

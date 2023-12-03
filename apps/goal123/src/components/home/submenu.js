@@ -127,10 +127,7 @@ const defSubMenus = [
 			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
 			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
 			// },
-			{
-				...defGameInfo.Fishing,
-				displayKey: "lbl_FishingGG"
-			},
+
 			{
 				...defGameInfo.FishingSG,
 				displayKey: "lbl_FishingSG1"

@@ -98,10 +98,10 @@ const IndexPage = () => {
 			});
 			setHotEventList(data ?? []);
 		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
+			// setPopBox({
+			// 	isOpen: true,
+			// 	content: t("msg_ApiServerError")
+			// });
 		}
 	};
 
