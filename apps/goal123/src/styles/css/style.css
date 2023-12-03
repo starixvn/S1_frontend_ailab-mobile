@@ -6736,7 +6736,7 @@ span.important {
 }
 
 .main.referral {
-  padding: 25vw 0vw 30vw;
+  padding: 25vw 0vw 18vw;
   width: 100%;
 }
 .main.referral .tag {
@@ -6744,7 +6744,7 @@ span.important {
 }
 
 .refer {
-  padding: 0 4.2vw 2vw;
+  padding: 0 4.2vw 1vw;
   margin-top: -4vw;
   border-radius: 4vw;
   background: #fff;
