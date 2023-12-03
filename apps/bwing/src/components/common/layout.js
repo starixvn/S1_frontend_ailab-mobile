@@ -147,8 +147,8 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	referral: {
-		titleKey: "lbl_friendReferral",
-		className: "main",
+		titleKey: "lbl_Referral",
+		className: "main referral",
 		hideLogo: true
 	},
 	mysteryBox: {

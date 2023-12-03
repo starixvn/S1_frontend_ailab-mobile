@@ -9,7 +9,7 @@ import ReferralWrapper from "../components/referral/referral.wrapper";
 const defTabs = {
 	default: {
 		to: `/${path.referral.root}`,
-		displayKey: "lbl_ReferFriends",
+		displayKey: "lbl_Referral",
 		excludeMath: path.referral.sub.history.root
 	},
 	History: {
@@ -23,7 +23,7 @@ const IndexPage = props => {
 
 	return (
 		<ReferralWrapper>
-			<Layout title={i18n.lbl_friendReferral}>
+			<Layout title={i18n.lbl_friendReferral} mainClass="main referral">
 				<TabPage defTabs={defTabs}>{props.children}</TabPage>
 			</Layout>
 		</ReferralWrapper>

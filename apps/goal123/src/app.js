@@ -57,7 +57,7 @@ import Angpao from "./pages/angpao";
 import LuckyWheel from "./pages/luckyWheel";
 
 import FriendReferral from "./pages/referral";
-import ReferFriends from "./components/referral/referFriends";
+import Referral from "./components/referral/referral";
 import ReferralHistory from "./components/referral/referral.history";
 
 import VIP from "./pages/vip";
@@ -91,7 +91,7 @@ const Index = () => {
 						<CryptoWallet path={path.cryptoWallet.root} />
 
 						<FriendReferral path={path.referral.root}>
-							<ReferFriends path={path.referral.sub.root} />
+							<Referral path={path.referral.sub.root} />
 							<ReferralHistory
 								path={path.referral.sub.history.root}
 							/>
