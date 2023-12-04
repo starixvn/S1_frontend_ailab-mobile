@@ -3601,6 +3601,28 @@ header {
   border: 0;
   border-radius: 2px;
 }
+#popup.referal-detail .popTit {
+  position: relative;
+  font-weight: 700;
+  background: #F38C00;
+}
+#popup.referal-detail .icon-close::before {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  border-radius: 10px;
+  border: 1px solid #1C317B;
+  padding: 2px;
+}
+#popup.referal-detail .info {
+  margin: 1vw 0;
+}
+#popup.referal-detail .info ul {
+  margin-top: 0.5vw;
+}
+#popup.referal-detail .info.infoBlack {
+  background: #fff;
+}
 
 .fullbanner {
   width: 100%;
@@ -8314,6 +8336,17 @@ p.txt-blue12 {
 }
 .smallTitle i.icon:before {
   margin-right: 1vw;
+}
+
+.referral .recentTransactions .smallTitle {
+  color: #1C317B;
+}
+.referral .recentTransactions .smallTitle i.icon::before {
+  -webkit-filter: drop-shadow(0px 0px 2px #1C317B);
+          filter: drop-shadow(0px 0px 2px #1C317B);
+}
+.referral .recentTransactions .smallTitle .icon-history:before {
+  content: "";
 }
 
 .countryCode {
@@ -13119,9 +13152,9 @@ body main.main.referral {
 .refer {
   position: relative;
   margin-top: 98vw;
-  margin-bottom: 10vw;
-  padding: 5vw 5vw 6vw;
-  border-radius: 5vw 5vw 3vw 3vw;
+  margin-bottom: 1vw;
+  padding: 5vw 5vw 3vw;
+  border-radius: 5vw;
   background: #1C317B;
 }
 .refer .title {
@@ -13802,6 +13835,18 @@ body main.main.referral {
 .depositModule_topupmobile .selectModule .infoAccount ul li img,
 .depositModule_crptopay .selectModule .infoAccount ul li img {
   width: 15vw;
+}
+.depositModule_mobile .selectModule .icon-quick::before,
+.depositModule_online .selectModule .icon-quick::before,
+.depositModule_local .selectModule .icon-quick::before,
+.depositModule_topupmobile .selectModule .icon-quick::before,
+.depositModule_crptopay .selectModule .icon-quick::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.bw88.io/h5/img/quick-transfer.png) center/cover;
 }
 .depositModule_mobile .inputBox,
 .depositModule_online .inputBox,

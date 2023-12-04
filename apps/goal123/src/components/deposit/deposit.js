@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
+import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
 import moment from "moment";
 import {
 	i18nContext,
@@ -15,6 +16,7 @@ import LocalBank from "./deposit.localBank";
 import LoadCardPay from "./deposit.loadCardPay";
 import CryptoPay from "./deposit.cryptoPay";
 import QRPay from "./deposit.qrPay";
+import QuickTransfer from "./deposit.quickTransfer";
 import {
 	api_GetDepositInfoRecent,
 	api_GetMobilePayGroupList,
@@ -53,6 +55,8 @@ const Panel = () => {
 		setPopBox
 	});
 
+	const [getDepositQuickTransfer] = useLazyGetDepositQuickTransferQuery();
+
 	PageVerify(userInfo, i18n, setPopBox, navigate, setPageVerify, false);
 
 	const isMountedRef = useRef(null);
@@ -74,7 +78,8 @@ const Panel = () => {
 			[defPayType.localBank]: [],
 			[defPayType.cryptoPay]: [],
 			[defPayType.loadCardPay]: [],
-			[defPayType.qrPay]: []
+			[defPayType.qrPay]: [],
+			[defPayType.quickTransfer]: []
 		};
 
 		const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -187,6 +192,29 @@ const Panel = () => {
 			}
 		} catch (error) {}
 
+		try {
+			const {
+				data: depositQuickTransferResponse
+			} = await getDepositQuickTransfer();
+			const quickTransferGroupList =
+				depositQuickTransferResponse?.data?.QuickTransfer?.data || [];
+
+			payments[defPayType.quickTransfer] = quickTransferGroupList;
+
+			defaultSelect = setDefaultSelect(
+				defaultSelect,
+				defPayType.quickTransfer,
+				payments[defPayType.quickTransfer]
+			);
+
+			if (res.data.errorCode !== 0) {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		} catch (error) {}
+
 		if (isMountedRef.current) {
 			setLoading(false);
 			setPaymentList(payments);
@@ -276,7 +304,17 @@ const Panel = () => {
 				GetAllPayment={GetAllPayment}
 			/>
 		);
+	} else if (selectedOption === defPayType.quickTransfer) {
+		content = (
+			<QuickTransfer
+				payType={selectedOption}
+				paymentList={paymentList[defPayType.quickTransfer] ?? []}
+				promoList={promoList}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+			/>
+		);
 	}
+
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
 	useEffect(() => {
 		if (userInfo.isLogin) {

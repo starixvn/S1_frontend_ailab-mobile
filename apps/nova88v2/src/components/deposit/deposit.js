@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
+import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
 import {
 	i18nContext,
 	userInfoContext,
@@ -14,6 +15,7 @@ import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
 import AutoDeposit from "./deposit.autoDeposit";
+import QuickTransfer from "./deposit.quickTransfer";
 import LinePay from "./deposit.linePay";
 import api from "../../service/api";
 import RecentDatas from "./deposit.recentDatas";
@@ -59,6 +61,7 @@ const Panel = () => {
 	} = useGetUserPaymentData({
 		userInfo
 	});
+
 	const [paymentList, setPaymentList] = useState({});
 	const [recentDatas, setRecentDatas] = useState([]);
 	const [pageVerify, setPageVerify] = useState(true);
@@ -68,6 +71,9 @@ const Panel = () => {
 		i18n,
 		setPopBox
 	});
+
+	const [getDepositQuickTransfer] = useLazyGetDepositQuickTransferQuery();
+
 	const depositPromoMsg = userInfo?.phoneVerified
 		? ""
 		: i18n.lbl_Nova_DepositPromoMsg1;
@@ -174,7 +180,7 @@ const Panel = () => {
 			bankList={paymentList[defPayType.autoDeposit] ?? []}
 			userPaymentData={_userPaymentData}
 			handleUserPaymentData={handleUserPaymentData}
-			userPaymentSwitch={userPaymentSwitch}
+			userPaymentSwistch={userPaymentSwitch}
 			promoList={promoList}
 			depositPromoMsg={depositPromoMsg}
 			asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
@@ -269,6 +275,18 @@ const Panel = () => {
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
+	} else if (selected === defPayType.quickTransfer) {
+		content = (
+			<QuickTransfer
+				payType={defPayType.quickTransfer}
+				promoList={promoList}
+				paymentList={paymentList[defPayType.quickTransfer] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			/>
+		);
 	}
 
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
@@ -287,7 +305,8 @@ const Panel = () => {
 					[defPayType.cryptoPay]: [],
 					[defPayType.linePay]: [],
 					[defPayType.topUpCard]: [],
-					[defPayType.qrPay]: []
+					[defPayType.qrPay]: [],
+					[defPayType.quickTransfer]: []
 				};
 
 				const setDefaultSelect = (currentValue, payType, dataList) =>
@@ -434,9 +453,32 @@ const Panel = () => {
 					}
 				} catch (error) {}
 
+				try {
+					const {
+						data: depositQuickTransferResponse
+					} = await getDepositQuickTransfer();
+					const quickTransferGroupList =
+						depositQuickTransferResponse?.data?.QuickTransfer
+							?.data || [];
+
+					payments[defPayType.quickTransfer] = quickTransferGroupList;
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.quickTransfer,
+						payments[defPayType.quickTransfer]
+					);
+
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPaymentList(payments);
+
 					HandleSelect(userPaymentData?.payType ?? defaultSelect);
 				}
 			};

@@ -4,7 +4,8 @@ export const defPayType = {
 	mobilePay: "mobilePay",
 	loadCardPay: "loadCardPay",
 	cryptoPay: "cryptoPay",
-	qrPay: "qrPay"
+	qrPay: "qrPay",
+	quickTransfer: "quickTransfer"
 };
 
 export const defPayment = {
@@ -37,5 +38,10 @@ export const defPayment = {
 		displayKey: "lbl_QRPay",
 		creditTimeKey: "lbl_Instant",
 		icon: "icon icon-qrcode"
+	},
+	[defPayType.quickTransfer]: {
+		displayKey: "lbl_DepositType9",
+		creditTimeKey: "lbl_Instant",
+		icon: "icon-quick"
 	}
 };
