@@ -136,6 +136,7 @@ const IndexPage = () => {
 				</div>
 				<VipMedal
 					i18n={i18n}
+					langId={userInfo.langId}
 					vipActiveTabId={vipActiveTabId}
 					setVipActiveTabId={setVipActiveTabId}
 				/>

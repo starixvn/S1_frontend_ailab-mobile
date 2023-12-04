@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "@Router";
 import {
 	popBoxContext,
@@ -8,6 +8,7 @@ import {
 	productTpGameTypeSettingListContext
 } from "Context";
 import { useGetTpIdsQuery } from "@ailab-mobile/service";
+import { getUrlParameter } from "../common/common";
 import { cloudBannerImgURL } from "../../config";
 import {
 	useGotoGame,
@@ -44,6 +45,11 @@ const Menu = () => {
 	const selectedGameList = gameList({ langId, currencyId }).find(
 		({ category }) => category === selectedCategory
 	)?.items;
+
+	useEffect(() => {
+		const prevPage = getUrlParameter("prev");
+		if (prevPage === defCol.slots) setSelectedCategory(defCol.slots);
+	}, []);
 
 	return (
 		<>

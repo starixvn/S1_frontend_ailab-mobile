@@ -1639,7 +1639,7 @@ export const defCol = {
 	sports: "sports",
 	virtualsports: "virtualsports",
 	livecasino: "livecasino",
-	slot: "slot",
+	slots: "slots",
 	game: "game",
 	cockFighting: "cockFighting",
 	kelo: "kelo",
