@@ -99,7 +99,7 @@ const Platform = ({ langId, isLogin }) => {
 			}
 
 			return p.parameter ? (
-				<Link key={key} to={`/${p.path}`} state={p.parameter}>
+				<Link key={key} to={`/${p.path}/${p.tpId}`} state={p.parameter}>
 					<img
 						alt={p.imgName}
 						src={`${bannerImgUrl}/h5/img/footer/${

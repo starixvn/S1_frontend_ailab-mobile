@@ -79,7 +79,8 @@ export const defSlotTpGameType = {
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	PEGASUS: { tpId: 56, tpGameType: 107 }
+	PEGASUS: { tpId: 56, tpGameType: 107 },
+	Amigo: { tpId: 60, tpGameType: 112 }
 };
 
 const defSortSports = {
@@ -183,6 +184,7 @@ const defSortSlot = {
 		"slot_PP",
 		"slot_SG",
 		"slot_AdvantPlay",
+		"slot_Amigo",
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
@@ -211,6 +213,7 @@ const defSortSlot = {
 		"slot_PP",
 		"slot_SG",
 		"slot_AdvantPlay",
+		"slot_Amigo",
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
@@ -240,6 +243,7 @@ const defSortSlot = {
 		"slot_PP",
 		"slot_SG",
 		"slot_AdvantPlay",
+		"slot_Amigo",
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
@@ -268,6 +272,7 @@ const defSortSlot = {
 		"slot_PP",
 		"slot_SG",
 		"slot_AdvantPlay",
+		"slot_Amigo",
 		"slot_Endorphina",
 		"slot_Nextspin",
 		"slot_PG",
@@ -687,6 +692,22 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/apnew.png`,
 					path: path.casino.root,
 					sortKey: "slot_AdvantPlay"
+				},
+				{
+					...defGameInfo.Casino_Amigo,
+					parameter: defGameInfo.Casino_Amigo,
+					spanText: "Amigo Gaming",
+					providerImgName: "amigo",
+					img: `${cloudBannerImgURL}/h5/img/amigo.png`,
+					path: path.casino.root,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.casino_Amigo)
+						}
+					],
+					sortKey: "slot_Amigo",
+					allowCurrency: allowedCurrencyList.slotAmigo
 				},
 				{
 					...defGameInfo.Casino_Endorphina,
@@ -1447,6 +1468,7 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
+	Casino_Amigo: { tpId: 60, tpGameType: 112 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Fishing_AB3: { tpId: 16, gameId: "AB3", tpGameType: 44 },

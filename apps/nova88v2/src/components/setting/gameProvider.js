@@ -199,6 +199,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.V8Poker,
 		imgName: "v8"
+	},
+	{
+		...defGameInfo.Casino_Amigo,
+		imgName: "casino_amigo"
 	}
 ];
 
