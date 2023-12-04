@@ -78,6 +78,7 @@ export const defGameInfo = {
 	Casino_SimplePlay: { tpId: 44, tpGameType: 86 },
 	Casino_Nextspin: { tpId: 50, tpGameType: 99 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
+	Casino_Amigo: { tpId: 60, tpGameType: 112 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
@@ -329,7 +330,8 @@ export const defSlotTpGameType = {
 	Endorphina: { tpId: 49, tpGameType: 98 },
 	FaChai: { tpId: 55, tpGameType: 106 },
 	BNG: { tpId: 57, tpGameType: 108 },
-	NoLimitCity: { tpId: 59, tpGameType: 111 }
+	NoLimitCity: { tpId: 59, tpGameType: 111 },
+	Amigo: { tpId: 60, tpGameType: 112 }
 };
 
 export const sportStreamDef = {
