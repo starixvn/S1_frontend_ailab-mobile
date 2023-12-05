@@ -62,7 +62,7 @@ const ShortcutPanel = () => {
 						src={`${cloudBannerImgURL}/h5/img/4.0/88reward.png`}
 						alt="88reward"
 					/>
-					<span>88Reward</span>
+					<span>{t("lbl_88Reward")}</span>
 				</a>
 			)}
 			{getLeaderBoardSupportCurrencyId().includes(currencyId) && (
