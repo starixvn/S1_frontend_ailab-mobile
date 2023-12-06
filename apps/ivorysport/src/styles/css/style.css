@@ -9441,4 +9441,38 @@ input:-webkit-autofill:active {
   font-size: 3vw;
   margin-top: 1vw;
   font-weight: normal;
+}
+.home-license {
+  width: calc(100% - 10vw);
+  padding: 5vw 0;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #839591;
+}
+.home-license .title {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 3vw;
+  margin-bottom: 1vw;
+}
+.home-license .title img {
+  width: 4vw;
+  margin-left: 1vw;
+}
+.home-license img {
+  width: 20vw;
 }/*# sourceMappingURL=style.css.map */

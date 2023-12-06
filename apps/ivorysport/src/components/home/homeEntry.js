@@ -52,45 +52,65 @@ const HomeEntry = () => {
 	const { handleLogin } = useHandleLogin();
 
 	return (
-		<div className="home-entry">
-			{homeEntryList.map(
-				({
-					tpId,
-					gameId,
-					tpGameType,
-					displayKey,
-					description,
-					imgUrl
-				}) => (
-					<Fragment key={tpId}>
-						<div
-							className="home-entry-item"
-							onClick={() =>
-								GET_ENTER_PAGE({
-									langId: userInfo.langId,
-									tpId,
-									gameId,
-									isLogin: userInfo.isLogin,
-									loginCallback: handleLogin,
-									execFunction: null,
-									specialUrl: "",
-									tpGameType
-								})
-							}>
-							<img
-								src={`${cloudBannerImgURL}/h5/img/${imgUrl}`}
-								alt={imgUrl}
-							/>
+		<>
+			<div className="home-entry">
+				{homeEntryList.map(
+					({
+						tpId,
+						gameId,
+						tpGameType,
+						displayKey,
+						description,
+						imgUrl
+					}) => (
+						<Fragment key={tpId}>
+							<div
+								className="home-entry-item"
+								onClick={() =>
+									GET_ENTER_PAGE({
+										langId: userInfo.langId,
+										tpId,
+										gameId,
+										isLogin: userInfo.isLogin,
+										loginCallback: handleLogin,
+										execFunction: null,
+										specialUrl: "",
+										tpGameType
+									})
+								}>
+								<img
+									src={`${cloudBannerImgURL}/h5/img/${imgUrl}`}
+									alt={imgUrl}
+								/>
 
-							<div className="home-entry-info">
-								{t(displayKey)}
-								<span>{description}</span>
+								<div className="home-entry-info">
+									{t(displayKey)}
+									<span>{description}</span>
+								</div>
 							</div>
-						</div>
-					</Fragment>
-				)
-			)}
-		</div>
+						</Fragment>
+					)
+				)}
+			</div>
+			<div className="home-license">
+				<div className="title">
+					{t("lbl_Gaming_License")}
+					<img
+						src="https://banner.ivorysport.com/h5/img/license_tick.png"
+						alt=""
+					/>
+				</div>
+				<a
+					href="https://www.pagcor.ph/regulatory/cop.php"
+					target="_blank"
+					rel="noreferrer">
+					<img
+						src="https://banner.ivorysport.com/h5/img/pagcor.png"
+						alt=""
+					/>
+				</a>
+			</div>
+		</>
 	);
 };
 
