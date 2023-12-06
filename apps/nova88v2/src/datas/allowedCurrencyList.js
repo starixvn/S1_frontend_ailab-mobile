@@ -242,7 +242,8 @@ const allowedCurrencyList = {
 		defCurrenyId.CNY,
 		defCurrenyId.USD,
 		defCurrenyId.INR,
-		defCurrenyId.VND
+		defCurrenyId.VND,
+		defCurrenyId.KHM
 	],
 
 	// game
