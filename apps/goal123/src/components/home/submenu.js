@@ -21,6 +21,7 @@ import DefLangs from "../../datas/defLangs";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 import {
 	useGetTpMaintainList,
 	defTpGameType
@@ -492,11 +493,23 @@ const WalletInfo = ({ i18n, userInfo }) => {
 		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
 	});
+	const { bonusWallets, GetBonusBalance } = useGetBonusBalance({
+		isLogin: userInfo.isLogin
+	});
 
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const tpWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
 
 	const balance = !allWalletBalance
 		? 0
@@ -505,6 +518,7 @@ const WalletInfo = ({ i18n, userInfo }) => {
 	const clickReloadSpin = () => {
 		GetBalance();
 		GetTpWalletList({ langId: userInfo.langId });
+		GetBonusBalance();
 	};
 
 	const clickEye = () => {

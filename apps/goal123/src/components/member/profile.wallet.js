@@ -117,9 +117,11 @@ const Wallet = ({
 						i18n={i18n}
 						currencyId={currencyId}
 						titleKey={b.titleKey}
-						balance={b.balance}
+						bonus={b.bonus}
 						func_GetBalance={b.func_GetBalance}
 						bonusWallet={b.bonusWallet}
+						turnover={b.turnover}
+						rollover={b.rollover}
 					/>
 				);
 			});
