@@ -113,7 +113,7 @@
 	"lbl_UsernameInvalid": "6-18 alphanumeric (A-Z, a-z, 0-9) characters only.",
 	"lbl_PasswordTooltip": "6-15 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"lbl_Password": "Password",
-	"lbl_TermsConditions": "Terms And Conditions",
+	"lbl_TermsConditions": "Terms and Conditions, Terms of Use",
 	"lbl_TermsAndConditions": "Terms & Conditions",
 	"msg_EnterRealName": "Please enter your real name.",
 	"lbl_RealName": "Real Name",
@@ -645,9 +645,9 @@
 
 	"==============================================Join====================================": "",
 
-	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby acknowledge that I am above 21 years old and have read and accepted your ",
+	"lbl_Check18TC1": "By clicking the JOIN NOW button, I hereby declare that I am at least twenty-one (21) years of age or above, and that I am not among those persons disqualified under the law to engage in remote gambling activities. I also declare that I have read, fully understood, and accepted your ",
 	"lbl_PromoCode": "Promo Code",
-	"lbl_Check18TC2": ".",
+	"lbl_Check18TC2": ", and other relevant policies.",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_Check18TC3": "of",
 	"lbl_Check18TC4": "I acknowledge I am at least 18 years of age.",
