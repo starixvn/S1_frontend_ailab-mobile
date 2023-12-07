@@ -175,6 +175,21 @@ const defSortCasino = {
 		"casino_WM",
 		"casino_EBET",
 		"casino_N2LIVE"
+	],
+	[defCurrenyId.BDT]: [
+		"casino_BG",
+		"casino_YEEBET",
+		"casino_Skywind",
+		"casino_MG",
+		"casino_EVO",
+		"casino_DG",
+		"casino_PT",
+		"casino_Playtech",
+		"casino_AE",
+		"casino_SA",
+		"casino_AG",
+		"casino_EBET",
+		"casino_N2LIVE"
 	]
 };
 

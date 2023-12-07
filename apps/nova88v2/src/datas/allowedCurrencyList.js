@@ -142,7 +142,8 @@ const allowedCurrencyList = {
 		defCurrenyId.USD,
 		defCurrenyId.KHM,
 		defCurrenyId.INR,
-		defCurrenyId.VND
+		defCurrenyId.VND,
+		defCurrenyId.BDT
 	],
 	liveCasinoSA: [
 		defCurrenyId.MYR,
