@@ -12,7 +12,7 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 	const { t } = useTranslation();
 	const link_default = window.location.origin;
 	const referralLink = `${link_default}/${langId}/join?AffId=${referralCode}`;
-	const welcomeMessage = t("lbl_Referral_Welcome_Bwing");
+	const welcomeMessage = t("lbl_Referral_Welcome");
 
 	return (
 		<div className="refer-info">
