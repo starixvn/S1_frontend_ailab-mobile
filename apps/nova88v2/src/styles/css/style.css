@@ -15946,6 +15946,18 @@ main .swiper-container {
 .after .menu-vip.nova .right {
   background: #efefef;
 }
+.after .menu-vip.nova .vip-text {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left > div:last-child {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left > div:last-child div {
+  color: #b9b9b9;
+}
 .after .menu-vip .left {
   margin: 4vw 5.9vw 4vw 4vw;
 }
@@ -15966,6 +15978,8 @@ main .swiper-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .after .menu-vip .left > div:last-child > div {
   color: #efefef;

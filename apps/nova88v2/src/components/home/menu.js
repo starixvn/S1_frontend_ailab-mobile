@@ -42,9 +42,20 @@ const Menu = () => {
 
 	const [selectedCategory, setSelectedCategory] = useState(defCol.sports);
 
-	const selectedGameList = gameList({ langId, currencyId }).find(
+	const selectedGame = gameList({ langId, currencyId }).find(
 		({ category }) => category === selectedCategory
-	)?.items;
+	);
+
+	let sortedGameList = selectedGame?.items;
+
+	if (selectedGame?.customSort?.[currencyId]) {
+		const temp = [];
+		selectedGame.customSort?.[currencyId].forEach(gameName => {
+			const game = sortedGameList.find(el => el.sortKey === gameName);
+			if (game) temp.push(game);
+		});
+		sortedGameList = temp;
+	}
 
 	useEffect(() => {
 		const prevPage = getUrlParameter("prev");
@@ -100,8 +111,8 @@ const Menu = () => {
 
 			<div className="home-gamelist">
 				<div className={`${selectedCategory} active`}>
-					{selectedGameList &&
-						selectedGameList
+					{sortedGameList &&
+						sortedGameList
 							.filter(({ tpId, tpGameType, allowCurrency }) => {
 								// filter site tpId
 								const isInSiteTpList = siteTpIdList?.includes(
