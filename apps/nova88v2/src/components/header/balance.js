@@ -5,6 +5,7 @@ import { number_format, isConvert } from "../common/common";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 
 const Balance = ({ i18n, userInfo }) => {
 	const [showingBalance, setShowingBalance] = useState(true);
@@ -15,11 +16,23 @@ const Balance = ({ i18n, userInfo }) => {
 		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
 	});
+	const { bonusWallets, GetBonusBalance } = useGetBonusBalance({
+		isLogin: userInfo.isLogin
+	});
 
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const tpWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
 	const balance = !allWalletBalance
 		? 0
 		: number_format(allWalletBalance, isConvert(userInfo.currencyId));
@@ -27,6 +40,7 @@ const Balance = ({ i18n, userInfo }) => {
 	const clickReloadSpin = () => {
 		GetBalance();
 		GetTpWalletList();
+		GetBonusBalance();
 	};
 
 	const clickEye = () => {
