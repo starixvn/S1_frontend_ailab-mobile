@@ -113,7 +113,7 @@
 	"lbl_UsernameInvalid": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) saja.",
 	"lbl_PasswordTooltip": "6-15 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &",
 	"lbl_Password": "Kata Sandi",
-	"lbl_TermsConditions": "syarat & ketentuan",
+	"lbl_TermsConditions": "Syarat dan Ketentuan Anda, Syarat Penggunaan",
 	"lbl_TermsAndConditions": "syarat & ketentuan",
 	"msg_EnterRealName": "Silakan masukkan nama asli anda",
 	"lbl_RealName": "Nama asli",
@@ -635,9 +635,9 @@
 
 	"-============================================Join===================================": "",
 
-	"lbl_Check18TC1": "Dengan meng-klik GABUNG SEKARANG, saya menyatakan hahwa saya berumur diatas 21 tahun dan telah membaca dan menyetujui ",
+	"lbl_Check18TC1": "Dengan mengklik tombol GABUNG SEKARANG, saya dengan ini menyatakan bahwa saya setidaknya berusia dua puluh satu (21) tahun atau lebih, dan saya tidak termasuk orang yang didiskualifikasi berdasarkan hukum untuk terlibat dalam aktivitas perjudian online. Saya juga menyatakan bahwa saya telah membaca, memahami sepenuhnya, dan menerima ",
 	"lbl_PromoCode": "Kode Promo",
-	"lbl_Check18TC2": ".",
+	"lbl_Check18TC2": ", dan terkait kebijakan lainnya.",
 	"lbl_PreferredCurrencyToolTip": "Mata uang yang dipilih tidak dapat diubah setelah melakukan pendaftaran.",
 	"lbl_Check18TC3": "Dari",
 	"lbl_Check18TC4": "Saya mengakui bahwa saya setidaknya berusia atau 18 tahun atau diatas.",
