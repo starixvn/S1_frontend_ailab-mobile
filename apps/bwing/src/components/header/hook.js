@@ -3,7 +3,8 @@ import { userInfoContext } from "../common/context";
 import {
 	api_GetBalnace,
 	api_account_GetTpWalletList,
-	api_account_GetTpWalletBalance
+	api_account_GetTpWalletBalance,
+	api_account_GetCustBonusWallet
 } from "../../service/api/account";
 import { number_format } from "../common/common";
 import { tpWalletsListType } from "../transfer/transfer";
@@ -12,6 +13,8 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const [mainWalletBalance, setMainWalletBalance] = useState(0);
 	const [tpWalletsList, setTpWalletsList] = useState([]);
+	const [bonusWallets, setBonusWallet] = useState({});
+
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -24,6 +27,7 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 	useEffect(() => {
 		if (isLogin) {
 			GetBalance();
+			GetBonusBalance();
 		}
 	}, [isLogin]);
 
@@ -123,10 +127,37 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 		);
 	};
 
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const GetBonusBalance = async () => {
+		const res = await api_account_GetCustBonusWallet();
+
+		const { errorCode, message, data } = res.data;
+		if (errorCode === 0) {
+			const result = {};
+			data.forEach(b => {
+				result[b.tpId] = b;
+			});
+			setBonusWallet(result);
+		} else {
+			setPopBox({
+				isOpen: true,
+				content: `[${errorCode}] ${message}`
+			});
+		}
+	};
+
+	const tpWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = mainWalletBalance + otherWalletBalance;
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletBalance + tpWalletBalance + bonusWalletsBalance;
 
 	const allBalance = !allWalletBalance
 		? 0

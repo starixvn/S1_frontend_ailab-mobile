@@ -5,17 +5,13 @@ import Layout from "../components/common/layout";
 import { Link } from "../route/link";
 import path from "../path";
 import TabPage, { getMainClass } from "../components/common/tabPage";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext
-} from "../components/common/context";
-import api from "../service/api";
+import { i18nContext, userInfoContext } from "../components/common/context";
 import { number_format, isConvert } from "../components/common/common";
 import { tpWalletsListType } from "../components/transfer/transfer.def";
 import ReloadSpin from "../components/common/reloadSpin";
 import useGetBalance from "../components/hook/useGetMainBalance";
 import useGetTpBalance from "../components/hook/useGetTpBalance";
+import useGetBonusBalance from "../components/hook/useGetBonusBalance";
 import { myWallet as bankInfoTabs } from "../datas/defTabs";
 import allowedCurrencyList from "../datas/allowedCurrencyList";
 
@@ -23,9 +19,11 @@ const Wallet = () => {
 	const navigate = useNavigate();
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
-	const [bonusWallets, setBonusWallet] = useState({});
 	const { mainWalletInfo, GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
+
+	const { bonusWallets, GetBonusBalance } = useGetBonusBalance({
 		isLogin: userInfo.isLogin
 	});
 
@@ -38,33 +36,12 @@ const Wallet = () => {
 	const refresh = () => {
 		GetTpWalletList();
 		GetBalance();
+		GetBonusBalance();
 	};
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			setLists(tpWalletsList);
-			api.account.GetCustBonusWallet().then(
-				res => {
-					if (res.data.errorCode === 0) {
-						const result = {};
-						res.data.data.forEach(b => {
-							result[b.tpId] = b;
-						});
-						setBonusWallet(result);
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
 		} else {
 			navigate(`/${userInfo.langId}`);
 		}

@@ -5,6 +5,7 @@ import { number_format } from "../common/common";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 
@@ -17,11 +18,23 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 		isLogin: userInfo.isLogin,
 		listType: tpWalletsListType.allWallets
 	});
+	const { bonusWallets, GetBonusBalance } = useGetBonusBalance({
+		isLogin: userInfo.isLogin
+	});
 
-	const otherWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+	const tpWalletBalance = tpWalletsList?.reduce((prev, curr) => {
 		return prev + curr.balance;
 	}, 0);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
 
 	const balance = !allWalletBalance
 		? 0
@@ -30,6 +43,7 @@ const HeaderShortcut = ({ userInfo, i18n }) => {
 	const clickReloadSpin = () => {
 		GetBalance();
 		GetTpWalletList({ langId: userInfo.langId });
+		GetBonusBalance();
 	};
 
 	const clickEye = () => {
