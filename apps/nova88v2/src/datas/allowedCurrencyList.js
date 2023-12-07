@@ -118,6 +118,17 @@ const allowedCurrencyList = {
 		defCurrenyId.USD,
 		defCurrenyId.VND
 	],
+	slotAmigo: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.BDT,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.USD,
+		defCurrenyId.INR,
+		defCurrenyId.VND,
+		defCurrenyId.KHM
+	],
 
 	// game
 	mPoker: [defCurrenyId.THB],

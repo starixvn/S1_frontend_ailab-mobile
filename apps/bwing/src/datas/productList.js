@@ -76,6 +76,7 @@ export const defGameInfo = {
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },
+	Casino_Amigo: { tpId: 60, tpGameType: 112 },
 	Fishing: { gameId: 10, tpId: 7, tpGameType: 12 },
 	Fishing_SG: { gameId: "F-SF01", tpId: 10, tpGameType: 31 },
 	Fishing_SGW: { gameId: "F-SF02", tpId: 10, tpGameType: 31 },
@@ -267,7 +268,8 @@ export const defSlotTpGameType = {
 	Endorphina: { tpId: 49, tpGameType: 98 },
 	FaChai: { tpId: 55, tpGameType: 106 },
 	BNG: { tpId: 57, tpGameType: 108 },
-	NoLimitCity: { tpId: 59, tpGameType: 111 }
+	NoLimitCity: { tpId: 59, tpGameType: 111 },
+	Amigo: { tpId: 60, tpGameType: 112 }
 };
 
 export const sportStreamDef = {

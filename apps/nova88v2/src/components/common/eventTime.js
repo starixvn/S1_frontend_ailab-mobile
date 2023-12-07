@@ -51,5 +51,6 @@ export const eventTime = {
 	PNG: { endDate: "2023/11/05 23:59:59" },
 	TFGaming: { endDate: "2023/12/28 23:59:59" },
 	V8Poker: { endDate: "2023/12/28 23:59:59" },
-	slot_NoLimitCity: { endDate: "2023/12/31 23:59:59" }
+	slot_NoLimitCity: { endDate: "2023/12/31 23:59:59" },
+	casino_Amigo: { endDate: "2023/12/31 23:59:59" }
 };
