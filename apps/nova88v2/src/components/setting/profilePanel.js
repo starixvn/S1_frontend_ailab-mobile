@@ -16,6 +16,7 @@ import {
 import { cloudBannerImgURL } from "../../config";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import { defbanner } from "../vip/def";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
@@ -41,11 +42,24 @@ const PeofilePanel = () => {
 		isLogin,
 		listType: tpWalletsListType.afterTransWallets
 	});
+	const { bonusWallets } = useGetBonusBalance({ isLogin });
 
-	let total = tpWalletsList.reduce((accumulator, currentValue) => {
-		return accumulator + currentValue.balance;
-	}, 0);
-	total += mainWalletInfo.balance;
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const tpWalletBalance = tpWalletsList.reduce(
+		(accumulator, currentValue) => {
+			return accumulator + currentValue.balance;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
 
 	const vipLevelData = defbanner(langId).find(
 		({ level }) => level === userLevel
@@ -94,7 +108,7 @@ const PeofilePanel = () => {
 					<div>{t("lbl_Balance")}</div>
 					<div>
 						{currencyIdToCurrency[currencyId]}{" "}
-						{number_format(total, isConvert(currencyId))}
+						{number_format(allWalletBalance, isConvert(currencyId))}
 						<Link to={path.deposit.root}>{t("lbl_Deposit")}</Link>
 					</div>
 				</div>
