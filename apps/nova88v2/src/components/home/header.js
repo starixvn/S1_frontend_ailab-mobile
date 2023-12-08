@@ -16,6 +16,7 @@ import ReloadSpin from "../common/reloadSpin";
 import { cloudBannerImgURL } from "../../config";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../transfer/transfer.def";
 
 const Header = ({ showAppHint, setShowAppHint }) => {
@@ -29,12 +30,14 @@ const Header = ({ showAppHint, setShowAppHint }) => {
 		isLogin,
 		listType: tpWalletsListType.allWallets
 	});
+	const { bonusWallets, GetBonusBalance } = useGetBonusBalance({ isLogin });
 
 	const [showBalance, setShowBalance] = useState(true);
 
 	const onReloadBalance = () => {
 		GetBalance();
 		GetTpWalletList();
+		GetBonusBalance();
 	};
 
 	const handleCloseAppDownload = () => {
@@ -42,11 +45,21 @@ const Header = ({ showAppHint, setShowAppHint }) => {
 		setShowAppHint(false);
 	};
 
-	const otherWalletBalance = tpWalletsList?.reduce(
+	const tpWalletBalance = tpWalletsList?.reduce(
 		(prev, curr) => prev + curr.balance,
 		0
 	);
-	const allWalletBalance = mainWalletInfo.balance + otherWalletBalance;
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
+
 	const balance = !allWalletBalance
 		? 0
 		: number_format(allWalletBalance, isConvert(currencyId));

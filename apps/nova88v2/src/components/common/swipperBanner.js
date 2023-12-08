@@ -81,7 +81,7 @@ export const useGetBanner = ({ langId, ImgFolder, currencyId }) => {
 			}
 		};
 
-		getBanner();
+		if (langId) getBanner();
 
 		return () => {
 			mounted = false;

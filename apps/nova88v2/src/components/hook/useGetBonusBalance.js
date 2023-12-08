@@ -8,8 +8,8 @@ export default ({ isLogin }) => {
 
 	const GetBonusBalance = async () => {
 		const res = await api.account.GetCustBonusWallet();
-
 		const { errorCode, message, data } = res.data;
+
 		if (errorCode === 0) {
 			const result = {};
 			data.forEach(b => {
