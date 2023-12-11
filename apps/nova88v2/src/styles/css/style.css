@@ -4337,6 +4337,9 @@ main .gameList .icon-new {
   background: #e6e6e6;
   border-bottom: 0;
 }
+.bankAccount .account .mask {
+  display: none;
+}
 .bankAccount .account.pending {
   position: relative;
   width: calc(100% - 8vw);
@@ -4348,7 +4351,15 @@ main .gameList .icon-new {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: rgba(40, 73, 133, 0.6);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-size: 3vw;
+  background: rgba(40, 73, 133, 0.8);
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -4384,6 +4395,33 @@ main .gameList .icon-new {
 }
 .selectBank button.active, .selectBank a.active {
   border: 2px solid #5574A7;
+}
+.selectBank button .mask, .selectBank a .mask {
+  display: none;
+}
+.selectBank button.pending, .selectBank a.pending {
+  position: relative;
+}
+.selectBank button.pending .mask, .selectBank a.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  background: rgba(40, 73, 133, 0.8);
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  z-index: 1;
+  font-size: 3vw;
 }
 .selectBank a {
   display: -webkit-box;
@@ -14248,7 +14286,7 @@ input:-webkit-autofill:active {
       -ms-flex-align: center;
           align-items: center;
   font-size: 4vw;
-  margin-top: -0.5vw;
+  height: 4.5vw;
   font-weight: 600;
 }
 .header-balance span {
@@ -14307,7 +14345,7 @@ main .swiper-container {
           align-items: center;
   width: 100%;
   overflow: hidden;
-  padding: 2.5vw 0 1vw;
+  padding: 2vw 0 1vw;
   position: relative;
   z-index: 1;
 }
@@ -14437,8 +14475,9 @@ main .swiper-container {
           flex-direction: column;
   height: 21vw;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 15vw;
-          flex: 0 0 15vw;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin: 0 1vw;
   position: relative;
 }
 .home-sidebar button > div:last-child {
@@ -14446,7 +14485,7 @@ main .swiper-container {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 15vw;
+  width: 20vw;
 }
 .home-sidebar button .new-icon {
   position: absolute;
@@ -14490,10 +14529,10 @@ main .swiper-container {
   background: #FF6A97;
 }
 .home-sidebar .btn-sports.active.btn-slots .btn-circle, .home-sidebar .btn-esports.active.btn-slots .btn-circle, .home-sidebar .btn-exchange.active.btn-slots .btn-circle, .home-sidebar .btn-casino.active.btn-slots .btn-circle, .home-sidebar .btn-slots.active.btn-slots .btn-circle, .home-sidebar .btn-games.active.btn-slots .btn-circle, .home-sidebar .btn-fishing.active.btn-slots .btn-circle, .home-sidebar .btn-games.active.btn-slots .btn-circle, .home-sidebar .btn-four.active.btn-slots .btn-circle, .home-sidebar .btn-lottery.active.btn-slots .btn-circle {
-  background: #FF7600;
+  background: #DB55FB;
 }
 .home-sidebar .btn-sports.active.btn-slots::after, .home-sidebar .btn-esports.active.btn-slots::after, .home-sidebar .btn-exchange.active.btn-slots::after, .home-sidebar .btn-casino.active.btn-slots::after, .home-sidebar .btn-slots.active.btn-slots::after, .home-sidebar .btn-games.active.btn-slots::after, .home-sidebar .btn-fishing.active.btn-slots::after, .home-sidebar .btn-games.active.btn-slots::after, .home-sidebar .btn-four.active.btn-slots::after, .home-sidebar .btn-lottery.active.btn-slots::after {
-  background: #FF7600;
+  background: #DB55FB;
 }
 .home-sidebar .btn-sports.active.btn-games .btn-circle, .home-sidebar .btn-esports.active.btn-games .btn-circle, .home-sidebar .btn-exchange.active.btn-games .btn-circle, .home-sidebar .btn-casino.active.btn-games .btn-circle, .home-sidebar .btn-slots.active.btn-games .btn-circle, .home-sidebar .btn-games.active.btn-games .btn-circle, .home-sidebar .btn-fishing.active.btn-games .btn-circle, .home-sidebar .btn-games.active.btn-games .btn-circle, .home-sidebar .btn-four.active.btn-games .btn-circle, .home-sidebar .btn-lottery.active.btn-games .btn-circle {
   background: #FFCD04;
@@ -14921,7 +14960,7 @@ main .swiper-container {
   margin-right: 6vw;
 }
 .home-appdownload-content .text {
-  margin: 10vw 0 0 10vw;
+  margin: 2vw 0 0 10vw;
   color: #0A1B38;
 }
 .home-appdownload-content .text div {
@@ -15187,8 +15226,8 @@ main .swiper-container {
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 20vw;
-          flex: 0 0 20vw;
+      -ms-flex: 0 0 21vw;
+          flex: 0 0 21vw;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -15197,9 +15236,6 @@ main .swiper-container {
 }
 .footer-item img {
   width: 6vw;
-}
-.footer-item span {
-  color: #D1D1D1;
 }
 .footer-item.active :not(.plus) {
   display: -webkit-box;
@@ -15214,18 +15250,17 @@ main .swiper-container {
           align-items: center;
   color: #0A1B38;
 }
-.footer-item.active :not(.plus)::after {
-  display: block;
-  content: "";
-  background: url(https://banner.0814media.net/h5/img/4.0/footer-bottom.svg) no-repeat center/cover;
-  width: 12vw;
-  height: 3vw;
-  margin-top: -1vw;
+.footer-item.active :not(.plus).footer-title {
+  border-bottom: 2.5px solid #FF7600;
+  padding-bottom: 2vw;
 }
 .footer-title {
+  color: #D1D1D1;
   text-align: center;
-  width: 20vw;
   line-height: 3vw;
+  margin: 1vw 0 0;
+  white-space: nowrap;
+  font-size: 2.5vw;
 }
 .footer .plus {
   position: relative;
@@ -15294,8 +15329,8 @@ main .swiper-container {
   width: 7vw;
 }
 .footer .me::after {
-  top: 10vw;
-  right: 6vw;
+  top: 9vw;
+  right: 7vw;
   position: absolute;
   display: block;
   content: "";
@@ -15422,7 +15457,7 @@ main .swiper-container {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  margin: 6vw 8vw 0;
+  margin: 6vw 7vw 0;
 }
 .menu-center a {
   display: -webkit-box;
@@ -15523,7 +15558,7 @@ main .swiper-container {
   width: 100%;
 }
 .menu-bottom-item .option .country-item > div:last-child {
-  width: 50vw;
+  width: 60vw;
 }
 .menu-bottom-item .option .country-item > div button.active {
   color: #FF7600;
@@ -15646,7 +15681,7 @@ main .swiper-container {
 .after .menu-top .profile-item > div > div {
   margin-left: 2vw;
 }
-.after .menu-top .profile-item > div > div button {
+.after .menu-top .profile-item > div > div a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15655,7 +15690,7 @@ main .swiper-container {
           align-items: center;
   margin-top: -1vw;
 }
-.after .menu-top .profile-item > div > div button::after {
+.after .menu-top .profile-item > div > div a::after {
   display: block;
   content: "";
   background: url(https://banner.0814media.net/h5/img/4.0/right.png) no-repeat center/cover;
@@ -15852,6 +15887,18 @@ main .swiper-container {
 .after .menu-vip.nova .right {
   background: #efefef;
 }
+.after .menu-vip.nova .vip-text {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left > div:last-child {
+  color: #8d8d8d;
+}
+.after .menu-vip.nova .left > div:last-child div {
+  color: #b9b9b9;
+}
 .after .menu-vip .left {
   margin: 4vw 5.9vw 4vw 4vw;
 }
@@ -15872,6 +15919,8 @@ main .swiper-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .after .menu-vip .left > div:last-child > div {
   color: #efefef;
@@ -15910,7 +15959,7 @@ main .swiper-container {
   position: absolute;
   bottom: 2.5vw;
   right: 7vw;
-  color: #EFEFEF;
+  color: #FFF;
 }
 .after .menu-vip .vip-text.next {
   display: -webkit-box;
