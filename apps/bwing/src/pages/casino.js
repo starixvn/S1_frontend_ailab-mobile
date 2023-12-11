@@ -243,9 +243,7 @@ const Casino = () => {
 		<div className="wrapper">
 			<div className="col-12">
 				<div className="lobby-top">
-					<div className="lobby-banner">
-						<Slider />
-					</div>
+					<Slider />
 
 					<div className="slots-vender-bar">
 						<GameProviders
