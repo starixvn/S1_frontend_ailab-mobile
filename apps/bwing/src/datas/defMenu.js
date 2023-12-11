@@ -42,7 +42,8 @@ export const defSlotTpGameType = {
 	Nextspin: { tpId: 50, tpGameType: 99 },
 	SPRIBE: { tpId: 53, tpGameType: 104 },
 	Endorphina: { tpId: 49, tpGameType: 98 },
-	FaChai: { tpId: 55, tpGameType: 106 }
+	FaChai: { tpId: 55, tpGameType: 106 },
+	NoLimitCity: { tpId: 59, tpGameType: 111 }
 };
 
 export const productList = langId => {
@@ -377,6 +378,18 @@ export const productList = langId => {
 					]
 				},
 				{
+					...defGameInfo.Casino_NoLimitCity,
+					parameter: defGameInfo.Casino_NoLimitCity,
+					path: path.casino.root,
+					displayText: "NoLimit City",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_NoLimitCity)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_RedTiger,
 					parameter: defGameInfo.Casino_RedTiger,
 					path: path.casino.root,
@@ -480,6 +493,19 @@ export const productList = langId => {
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.slot_Fachai)
+						}
+					]
+				},
+				{
+					...defGameInfo.Casino_BNG,
+					parameter: defGameInfo.Casino_BNG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/bng.png`,
+					displayText: "BNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_BNG)
 						}
 					]
 				},

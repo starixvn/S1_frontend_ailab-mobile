@@ -4,7 +4,7 @@ import { i18nContext, rootContext } from "../components/common/context";
 import MysteryBox from "../components/mysteryBox/mysterBox";
 import { isEventPeriod } from "../components/common/common";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
+import { Footer } from "../components/common/footer";
 import { Link } from "../route/link";
 import path from "../path";
 import { eventTime } from "../components/common/eventTime";

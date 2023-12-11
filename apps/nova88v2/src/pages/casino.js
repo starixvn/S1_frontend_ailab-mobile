@@ -603,13 +603,12 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const [searchInput, setSearchInput] = useState("");
 	const link = (
-		<Link to={path.home.root}>
+		<Link to={`?prev=${path.casino.root}`}>
 			<i className="icon icon-keyboard_arrow_left" />
 		</Link>
 	);
 	const header = (
 		<Header
-			isShowInput={true}
 			searchInput={searchInput}
 			setSearchInput={setSearchInput}
 			title={i18n.lbl_Slots}
