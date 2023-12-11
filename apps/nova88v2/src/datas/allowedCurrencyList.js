@@ -41,6 +41,7 @@ const allowedCurrencyList = {
 		defCurrenyId.IDR,
 		defCurrenyId.INR
 	],
+	"4D": [defCurrenyId.MYR],
 
 	// ==== transfer ====
 	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],
@@ -180,6 +181,9 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.USDT
 	],
+
+	// 4D
+	haoLong: [defCurrenyId.MYR],
 
 	// lottery
 	indo4d: [defCurrenyId.IDR],
