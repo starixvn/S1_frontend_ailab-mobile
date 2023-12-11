@@ -193,6 +193,11 @@ const defPlatfrom = [
 		path: path.casino.root
 	},
 	{
+		...defGameInfo.Casino_BNG,
+		imgName: "casino_bng",
+		path: path.casino.root
+	},
+	{
 		...defGameInfo.TFGaming,
 		imgName: "tfg"
 	},
