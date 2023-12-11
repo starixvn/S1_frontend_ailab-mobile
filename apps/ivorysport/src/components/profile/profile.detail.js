@@ -3,6 +3,7 @@ import { useNavigate } from "@reach/router";
 import { i18nContext, userInfoContext, popBoxContext } from "Context";
 import { INPUT_PATTERN } from "@ailab-mobile/format-pattern";
 import PropTypes from "prop-types";
+
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown.profile";
 import PhoneInputbox from "../common/inputbox.profile";
@@ -13,7 +14,9 @@ import {
 	initWarning,
 	initValue,
 	infoList,
-	otpCol
+	otpCol,
+	getOccupationOptions,
+	getIncomeSourceOptions
 } from "./profile.detail.def";
 import { defPopBoxType } from "../common/popbox";
 import { redirectToPrev } from "./profile.redirect";
@@ -30,10 +33,52 @@ const Panel = () => {
 	const [monthSelectedIdx, setMonthSelectedIdx] = useState();
 	const [daySelectedIdx, setDaySelectedIdx] = useState();
 	const [AreaCodeIdx, setAreaCodeIdx] = useState(0);
+	const [occupationWarning, setOccupationWarning] = useState("");
+	const [sourceOfIncomeWarning, setSourceOfIncomeWarning] = useState("");
 
 	const { showTips, showTipHandler } = useTip();
 
 	const isMountedRef = useRef(null);
+
+	const occupationOptions = getOccupationOptions(i18n);
+	const incomeSourceOptions = getIncomeSourceOptions(i18n);
+
+	const isNewUser =
+		userInfo.birth_d === null &&
+		userInfo.birth_m === null &&
+		userInfo.birth_y === null &&
+		(userInfo.occupation === 0 || userInfo.sourceOfIncome === 0);
+
+	const onSelectOccupation = i => {
+		const occupationAsString = (i + 1).toString();
+		setUserValue(prev => ({ ...prev, occupation: occupationAsString }));
+	};
+
+	const onSelectSourceOfIncome = i => {
+		const sourceOfIncomeAsString = (i + 1).toString();
+		setUserValue(prev => ({
+			...prev,
+			sourceOfIncome: sourceOfIncomeAsString
+		}));
+	};
+
+	const checkOccupation = () => {
+		if (userValue.occupation === "") {
+			setOccupationWarning(i18n.lbl_SubmitWarning);
+			return false;
+		}
+		setOccupationWarning("");
+		return true;
+	};
+
+	const checkSourceOfIncome = () => {
+		if (userValue.sourceOfIncome === "") {
+			setSourceOfIncomeWarning(i18n.lbl_SubmitWarning);
+			return false;
+		}
+		setSourceOfIncomeWarning("");
+		return true;
+	};
 
 	const _areaCode =
 		userInfo?.areaCode ??
@@ -223,8 +268,14 @@ const Panel = () => {
 		} else {
 			phoneCheck = await checkPhone(userValue.phoneNo);
 		}
-
-		const checked = accountNameCheck && birthCheck && phoneCheck;
+		const occupationValid = checkOccupation();
+		const sourceOfIncomeValid = checkSourceOfIncome();
+		const checked =
+			accountNameCheck &&
+			birthCheck &&
+			phoneCheck &&
+			occupationValid &&
+			sourceOfIncomeValid;
 
 		if (checked) {
 			setUserValue(prevState => ({
@@ -277,7 +328,18 @@ const Panel = () => {
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
 					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
-					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
+					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo,
+
+					Occupation:
+						userInfo.occupation && userInfo.occupation !== ""
+							? userInfo.occupation
+							: userValue.occupation,
+
+					SourceOfIncome:
+						userInfo.sourceOfIncome &&
+						userInfo.sourceOfIncome !== ""
+							? userInfo.sourceOfIncome
+							: userValue.sourceOfIncome
 				};
 
 				api.accountStrict.SetProfile(profileData).then(
@@ -416,7 +478,7 @@ const Panel = () => {
 	const arr = _infoList
 		.filter(item => {
 			let result =
-				userInfo[item.infoTitle] ||
+				userInfo[item.infoTitle] ??
 				(item.infoTitle === "birth" && item.birth_d);
 
 			if (
@@ -425,6 +487,10 @@ const Panel = () => {
 					item.infoTitle === "perCountry")
 			) {
 				result = false;
+			}
+
+			if (!isNaN(Number(result))) {
+				result = true;
 			}
 
 			return result;
@@ -459,6 +525,44 @@ const Panel = () => {
 					testAttr="accountName"
 				/>
 			) : null}
+			{isNewUser && userInfo.occupation === 0 && (
+				<div>
+					<Dropdown
+						defaultOption={
+							userValue.occupation ? null : i18n.lbl_Occupation
+						}
+						i18n={i18n}
+						mainKey="profile-occupation"
+						options={occupationOptions}
+						onSelectItem={onSelectOccupation}
+						selectedIdx={userValue.occupation - 1}
+						hideInfo={true}
+					/>
+				</div>
+			)}
+			{occupationWarning && (
+				<div style={{ color: "red" }}>{occupationWarning}</div>
+			)}
+			{isNewUser && userInfo.sourceOfIncome === 0 && (
+				<div>
+					<Dropdown
+						defaultOption={
+							userValue.sourceOfIncome
+								? null
+								: i18n.lbl_SourceOfIncome
+						}
+						i18n={i18n}
+						mainKey="profile-sourceOfIncome"
+						options={incomeSourceOptions}
+						onSelectItem={onSelectSourceOfIncome}
+						selectedIdx={userValue.sourceOfIncome - 1}
+						hideInfo={true}
+					/>
+				</div>
+			)}
+			{sourceOfIncomeWarning && (
+				<div style={{ color: "red" }}>{sourceOfIncomeWarning}</div>
+			)}
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
 				<Birthday
 					i18n={i18n}
@@ -508,13 +612,11 @@ const Panel = () => {
 					/>
 				</div>
 			) : null}
-			{!userInfo?.accountName ||
-			!userInfo?.birth_d ||
-			!userInfo?.phoneNo ? (
+			{isNewUser && (
 				<div className="btn-group" data-testid="submitBtn">
 					<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
 				</div>
-			) : null}
+			)}
 			<div className="profile">{arr}</div>)
 		</>
 	);

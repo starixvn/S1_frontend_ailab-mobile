@@ -23,7 +23,35 @@ export const initValue = {
 	addressCity: "",
 	addressPostCode: "",
 	addressState: "",
-	addressCountry: ""
+	addressCountry: "",
+	occupation: "",
+	sourceOfIncome: ""
+};
+
+export const getOccupationOptions = i18n => [
+	{ id: 0, displayText: i18n.lbl_SelfEmployed, value: 1 },
+	{ id: 1, displayText: i18n.lbl_Employed, value: 2 },
+	{ id: 2, displayText: i18n.lbl_Retired, value: 3 },
+	{ id: 3, displayText: i18n.lbl_Others, value: 4 }
+];
+
+export const getIncomeSourceOptions = i18n => [
+	{ id: 0, displayText: i18n.lbl_OwnSaving, value: 1 },
+	{ id: 1, displayText: i18n.lbl_Loan, value: 2 },
+	{ id: 2, displayText: i18n.lbl_Others, value: 3 }
+];
+
+export const occupationEnum = {
+	1: "lbl_SelfEmployed",
+	2: "lbl_Employed",
+	3: "lbl_Retired",
+	4: "lbl_Others"
+};
+
+export const incomeSourceEnum = {
+	1: "lbl_OwnSaving",
+	2: "lbl_Loan",
+	3: "lbl_Others"
 };
 
 export const initWarning = {
@@ -127,6 +155,30 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			infoTitle: "lastLogin",
 			colTitle: i18n.lbl_LastLogin,
 			content: date_format(userInfo.lastLogin)
+		},
+		{
+			infoTitle: "currentAddress",
+			colTitle: i18n.lbl_CurrentAddress,
+			content: userInfo.currentAddress || "-"
+		},
+		{
+			infoTitle: "nationality",
+			colTitle: i18n.lbl_Nationality,
+			content: userInfo.nationality
+		},
+		{
+			infoTitle: "occupation",
+			colTitle: i18n.lbl_Occupation,
+			content: occupationEnum[userInfo.occupation]
+				? i18n[occupationEnum[userInfo.occupation]]
+				: "-"
+		},
+		{
+			infoTitle: "sourceOfIncome",
+			colTitle: i18n.lbl_SourceOfIncome,
+			content: incomeSourceEnum[userInfo.sourceOfIncome]
+				? i18n[incomeSourceEnum[userInfo.sourceOfIncome]]
+				: "-"
 		},
 		{
 			infoTitle: "addressLineFirst",
