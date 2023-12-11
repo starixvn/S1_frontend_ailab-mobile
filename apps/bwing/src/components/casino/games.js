@@ -67,17 +67,18 @@ const GamePanel = React.forwardRef((props, ref) => {
 			}
 		};
 
-		const brandName = providerList.find(obj => obj.tpId === g.tpId)?.tpName;
 		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
 			?.gameImgDisplayText;
-
+		const gameImage = `${imgUrl}/${gameProviderName}/${
+			g.imgName[langId] ?? g.imgName.en
+		}`;
 		games.push(
 			<div
 				className={classNames("slots-products-item", {
 					maintain: isMaintain,
 					"tag-new-pop": activeCategory === "new"
 				})}
-				key={`casino-game-${brandName}-${g.gameId}`}>
+				key={`casino-game-${gameProviderName}-${g.gameId}`}>
 				<button>
 					<button
 						type="button"
@@ -96,9 +97,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 											providerName: gameProviderName
 										})
 						}
-						src={`${imgUrl}/${brandName}/${
-							g.imgName[langId] ?? g.imgName.en
-						}`}
+						src={gameImage}
 						alt={g.gameName[langId] ?? g.gameName.en}
 					/>
 					<div className="name">
