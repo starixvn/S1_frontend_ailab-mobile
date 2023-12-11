@@ -1,15 +1,15 @@
+import classNames from "classnames";
 import React, { useContext } from "react";
-import Header from "../components/header/header";
+import { userInfoContext } from "Context";
 import Layout from "../components/common/layout";
 import Content from "../components/setting/setting";
-import { i18nContext } from "../components/common/context";
 
 const IndexPage = () => {
-	const { i18n } = useContext(i18nContext);
+	const { userInfo } = useContext(userInfoContext);
+	const { isLogin } = userInfo;
+
 	return (
-		<Layout
-			header={<Header title={i18n.lbl_More} hideLogo={true} />}
-			mainClass="more">
+		<Layout mainClass={classNames("menu", { after: isLogin })} noHeader>
 			<Content />
 		</Layout>
 	);

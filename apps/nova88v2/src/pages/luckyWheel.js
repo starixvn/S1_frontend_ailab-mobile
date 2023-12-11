@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, useNavigate } from "@reach/router";
 import {
 	i18nContext,
 	rootContext,
@@ -12,7 +12,7 @@ import {
 	defCurrenyId
 } from "../components/common/common";
 import Header from "../components/header/header";
-import Footer from "../components/common/footer";
+import { Footer } from "../components/common/footer";
 import { Link } from "../route/link";
 import path from "../path";
 import { eventTime } from "../components/common/eventTime";
@@ -89,6 +89,8 @@ export const LuckyWheelPop = () => {
 };
 
 const IndexPage = () => {
+	const navigateTo = useNavigate();
+
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 
@@ -104,9 +106,20 @@ const IndexPage = () => {
 	if (!isPassCurrencyIdPermission || !isInPeriod)
 		return <Redirect to={`/${userInfo.langId}`} noThrow />;
 
+	const goBackBtn = (
+		<a onClick={() => navigateTo(-1)}>
+			<i className="icon icon-keyboard_arrow_left" />
+		</a>
+	);
+
 	return (
 		<>
-			<Header title={i18n.lbl_LuckyBox} hideLogo={true} />
+			<Header
+				link={goBackBtn}
+				title={i18n.lbl_LuckyBox}
+				hideLogo={true}
+				titleClass="title"
+			/>
 			<main className="main wheelEvent">
 				<LuckyWheel />
 			</main>

@@ -38,43 +38,44 @@ export default ({ isLogin, listType }) => {
 	});
 
 	const GetTpWalletList = useCallback(() => {
-		api.account
-			.GetTpWalletList({
-				ListType: listType,
-				langId: userInfo.langId
-			})
-			.then(
-				res => {
-					if (res.data.errorCode === 0) {
-						if (isMountedRef.current) {
-							res.data.data?.forEach(i => {
-								GetTpWalletBalance(i.tpId);
-								setTpWalletsList(prev =>
-									updateTpWalletsList({
-										prev,
-										tpId: i.tpId,
-										balance: null,
-										tpName: i.tpName,
-										walletMode: i.walletMode
-									})
-								);
+		if (userInfo.langId)
+			api.account
+				.GetTpWalletList({
+					ListType: listType,
+					langId: userInfo.langId
+				})
+				.then(
+					res => {
+						if (res.data.errorCode === 0) {
+							if (isMountedRef.current) {
+								res.data.data?.forEach(i => {
+									GetTpWalletBalance(i.tpId);
+									setTpWalletsList(prev =>
+										updateTpWalletsList({
+											prev,
+											tpId: i.tpId,
+											balance: null,
+											tpName: i.tpName,
+											walletMode: i.walletMode
+										})
+									);
+								});
+							}
+						} else {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
 							});
 						}
-					} else {
+					},
+					() => {
 						setPopBox({
 							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
+							content: i18n.msg_ApiServerError
 						});
 					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-	}, [listType, setPopBox, i18n]);
+				);
+	}, [userInfo.langId, listType]);
 
 	const GetTpWalletBalance = tpId => {
 		api.account.GetTpWalletBalance({ TpId: tpId }).then(

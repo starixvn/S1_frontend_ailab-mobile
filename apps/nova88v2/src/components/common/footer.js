@@ -1,273 +1,195 @@
-import React, { useContext, useState } from "react";
+import classNames from "classnames";
 import { Match } from "@reach/router";
-
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "@Router";
-import {
-	userInfoContext,
-	i18nContext,
-	msgCountContext,
-	rootContext,
-	eWalletContext
-} from "./context";
+import { rootContext, userInfoContext, msgCountContext } from "Context";
 import path from "../../path";
-import MsgPopup from "./msgPopup";
+import { cloudBannerImgURL } from "../../config";
+import { defLiveChatLangIdToCurrencyId } from "./common";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
-import { defCurrenyId, defLiveChatLangIdToCurrencyId } from "./common";
 
 const Footer = () => {
-	const { userInfo } = useContext(userInfoContext);
+	const { t } = useTranslation();
+
 	const { root } = useContext(rootContext);
-	const { i18n } = useContext(i18nContext);
 	const { msgCount } = useContext(msgCountContext);
-	const [openWalletMenu, setOpenWalletMenu] = useState(false);
+	const { userInfo } = useContext(userInfoContext);
+	const { isLogin, langId, currencyId } = userInfo;
 
-	const handleWalletMenu = isClose => {
-		setOpenWalletMenu(prev => (isClose === true ? false : !prev));
-	};
-
-	const liveChatLangId = () => {
-		if (defLiveChatLangIdToCurrencyId[userInfo.langId] === undefined) {
-			return defLiveChatLangIdToCurrencyId.en;
-		}
-
-		return defLiveChatLangIdToCurrencyId[userInfo.langId];
-	};
-
-	const footer =
-		userInfo.isLogin === false ? (
-			<footer id="footer">
-				<Match path={`/:langId/${path.home.root}`}>
-					{props => {
-						const isMatch = props.match !== null || root;
-						return (
-							<Link
-								to={path.home.root}
-								className={`icon icon-home${
-									isMatch ? " active" : ""
-								}`}>
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_Home}</span>
-							</Link>
-						);
-					}}
-				</Match>
-				<Match path={`/:langId/${path.promotion.root}`}>
-					{props => {
-						const isMatch =
-							props.match !== null ||
-							props.location.pathname ===
-								`/${path.promotionInfo.root}`;
-						return (
-							<Link
-								to={path.promotion.root}
-								className={`icon icon-gift${
-									isMatch ? " active" : ""
-								}`}>
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_Promotion}</span>
-								<div className="icon icon-mediafire">HOT</div>
-							</Link>
-						);
-					}}
-				</Match>
-
-				<a
-					rel="noreferrer"
-					target="_blank"
-					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
-					className="icon icon-contact">
-					<div className="circleAnimation" />
-					<span>{i18n.lbl_LiveChat}</span>
-				</a>
-
-				<Match path={`/:langId/${path.setting.root}`}>
-					{props => {
-						const isMatch = props.location.pathname?.includes(
-							`/${path.setting.root}`
-						);
-						return (
-							<Link
-								to={path.setting.root}
-								className={`icon icon-menu${
-									isMatch ? " active" : ""
-								}`}>
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_More}</span>
-							</Link>
-						);
-					}}
-				</Match>
-			</footer>
-		) : (
-			<footer id="footer">
-				<Match path={`/:langId/${path.home.root}`}>
-					{props => {
-						const isMatch = props.match !== null || root;
-						return (
-							<Link
-								onClick={handleWalletMenu.bind(this, true)}
-								to={path.home.root}
-								className={`icon icon-home${
-									isMatch && !openWalletMenu ? " active" : ""
-								}`}>
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_Home}</span>
-							</Link>
-						);
-					}}
-				</Match>
-				<Match path={`/:langId/${path.promotion.root}`}>
-					{props => {
-						const isMatch =
-							props.match !== null ||
-							props.location.pathname ===
-								`/${path.promotionInfo.root}`;
-						return (
-							<Link
-								onClick={handleWalletMenu.bind(this, true)}
-								to={path.promotion.root}
-								className={`icon icon-gift${
-									isMatch && !openWalletMenu ? " active" : ""
-								}`}>
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_Promotion}</span>
-								<div className="icon icon-mediafire">HOT</div>
-							</Link>
-						);
-					}}
-				</Match>
-
-				<a
-					className={`icon icon-icon32px_wallet${
-						openWalletMenu ? " icon-close active" : ""
-					}`}
-					onClick={handleWalletMenu}>
-					<div className="circleAnimation" />
-					<span>{i18n.lbl_Wallet}</span>
-				</a>
-
-				<a
-					rel="noreferrer"
-					target="_blank"
-					href={`https://direct.lc.chat/11638088/${liveChatLangId()}`}
-					className="icon icon-contact">
-					<span>{i18n.lbl_LiveChat}</span>
-				</a>
-
-				<Match path={`/:langId/${path.setting.root}`}>
-					{props => {
-						const isMatch = props.location.pathname?.includes(
-							`/${path.setting.root}`
-						);
-						return (
-							<Link
-								onClick={handleWalletMenu.bind(this, true)}
-								to={path.setting.root}
-								className={`icon icon-menu${
-									isMatch && !openWalletMenu ? " active" : ""
-								}`}>
-								{msgCount > 0 ? (
-									<div className="icon icon-envelope" />
-								) : null}
-								<MsgPopup userInfo={userInfo} />
-								<div className="circleAnimation" />
-								<span>{i18n.lbl_More}</span>
-							</Link>
-						);
-					}}
-				</Match>
-			</footer>
-		);
+	const [footerPopup, setFooterPopup] = useState(false);
 
 	return (
-		<>
-			{footer}
-			{userInfo.isLogin ? (
-				<FooterWalletMenu
-					userInfo={userInfo}
-					isOpen={openWalletMenu}
-					handleWalletMenu={handleWalletMenu}
-					i18n={i18n}
-				/>
-			) : null}
-		</>
+		isLogin && (
+			<>
+				<footer id="footer" className="footer">
+					<Match path={`/:langId/${path.home.root}`}>
+						{({ match }) => {
+							const isMatch = match !== null || root;
+							return (
+								<Link
+									className={classNames("footer-item", {
+										active: isMatch
+									})}
+									to={path.home.root}>
+									<img
+										src={`${cloudBannerImgURL}/h5/img/4.0/footer/home${
+											isMatch ? "-dark" : ""
+										}.png`}
+										alt="Home"
+									/>
+									<span className="footer-title">
+										{t("lbl_Home")}
+									</span>
+								</Link>
+							);
+						}}
+					</Match>
+					<Match path={`/:langId/${path.promotion.root}`}>
+						{({ match, location }) => {
+							const isMatch =
+								match !== null ||
+								location.pathname?.includes(
+									`/${path.promotion.root}`
+								);
+							return (
+								<Link
+									className={classNames("footer-item", {
+										active: isMatch
+									})}
+									to={path.promotion.root}>
+									<img
+										src={`${cloudBannerImgURL}/h5/img/4.0/footer/gift${
+											isMatch ? "-dark" : ""
+										}.png`}
+										alt="Poromotion"
+									/>
+									<span className="footer-title">
+										{t("lbl_Promotion")}
+									</span>
+								</Link>
+							);
+						}}
+					</Match>
+
+					<a
+						className={classNames("footer-item plus", {
+							active: footerPopup
+						})}
+						onClick={() => {
+							setFooterPopup(prev => !prev);
+						}}
+					/>
+
+					<a
+						rel="noreferrer"
+						target="_blank"
+						href={`https://direct.lc.chat/11638088/${
+							defLiveChatLangIdToCurrencyId[langId] ??
+							defLiveChatLangIdToCurrencyId.en
+						}`}
+						className="footer-item">
+						<img
+							src={`${cloudBannerImgURL}/h5/img/4.0/footer/livechat.png`}
+							alt="Livechat"
+						/>
+						<span className="footer-title">
+							{t("lbl_LiveChat")}
+						</span>
+					</a>
+
+					<Match path={`/:langId/${path.setting.root}`}>
+						{({ location }) => {
+							const isMatch = location.pathname?.includes(
+								`/${path.setting.root}`
+							);
+							return (
+								<Link
+									className={classNames("footer-item", {
+										active: isMatch,
+										me: msgCount > 0
+									})}
+									to={path.setting.root}>
+									<img
+										src={`${cloudBannerImgURL}/h5/img/4.0/footer/me${
+											isMatch ? "-dark" : ""
+										}.png`}
+										alt="Me"
+									/>
+									<span className="footer-title">
+										{t("lbl_Me")}
+									</span>
+								</Link>
+							);
+						}}
+					</Match>
+				</footer>
+
+				<div
+					className={classNames("footer-popup", {
+						active: footerPopup
+					})}>
+					<div className="footer-popup-item">
+						<Link to={path.deposit.root}>
+							<div className="footer-popup-img">
+								<img
+									src={`${cloudBannerImgURL}/h5/img/4.0/footer/deposit.png`}
+									alt="Deposit"
+								/>
+							</div>
+						</Link>
+						<div className="footer-popup-title">
+							{t("lbl_Deposit")}
+						</div>
+					</div>
+
+					<div className="footer-popup-item">
+						<Link to={path.withdrawal.root}>
+							<div className="footer-popup-img">
+								<img
+									src={`${cloudBannerImgURL}/h5/img/4.0/footer/withdrawal.png`}
+									alt="Withdrawal"
+								/>
+							</div>
+						</Link>
+						<div className="footer-popup-title">
+							{t("lbl_Withdrawal")}
+						</div>
+					</div>
+
+					{allowedCurrencyList.transferFunds.includes(currencyId) && (
+						<div className="footer-popup-item">
+							<Link to={path.transfer.root}>
+								<div className="footer-popup-img">
+									<img
+										src={`${cloudBannerImgURL}/h5/img/4.0/footer/transfer.png`}
+										alt="Transfer"
+									/>
+								</div>
+							</Link>
+							<div className="footer-popup-title">
+								{t("lbl_Transfer")}
+							</div>
+						</div>
+					)}
+
+					<div className="footer-popup-item">
+						<Link to={path.message.root}>
+							<div className="footer-popup-img">
+								<img
+									src={`${cloudBannerImgURL}/h5/img/4.0/footer/massage.png`}
+									alt="Message"
+								/>
+							</div>
+						</Link>
+						<div className="footer-popup-title">
+							{t("lbl_Message")}
+						</div>
+					</div>
+				</div>
+			</>
+		)
 	);
 };
 
-const FooterWalletMenu = ({
-	userInfo,
-	isOpen,
-	handleWalletMenu,
-	i18n = {}
-}) => {
-	const { isShowEWallet } = useContext(eWalletContext);
-	// 因目前BDT幣別不支援localBank,故先隱藏
-	const withdrawalLink = () => {
-		if (userInfo.currencyId === defCurrenyId.BDT && isShowEWallet) {
-			return path.eWalletWithdrawal.root;
-		}
-		if (userInfo.currencyId === defCurrenyId.BDT && !isShowEWallet) {
-			return path.cryptoWithdrawal.root;
-		}
-		return path.withdrawal.root;
-	};
-	return (
-		<div
-			className={`walletMenu${isOpen ? " active" : ""}${
-				allowedCurrencyList.transferFunds.includes(userInfo.currencyId)
-					? " five-style"
-					: ""
-			}`}>
-			<div className="walletModule">
-				<Link
-					className="icon icon-icon32px_wallet"
-					to={path.wallet.root}
-					onClick={handleWalletMenu}>
-					<span>{i18n.lbl_MyWallet}</span>
-				</Link>
-				<Link
-					className="icon icon-icon32px_Withdraw"
-					to={withdrawalLink()}
-					onClick={handleWalletMenu}>
-					<span>{i18n.lbl_Withdrawal}</span>
-				</Link>
-				<Link
-					className="icon icon-icon32px_deposit"
-					to={path.deposit.root}
-					onClick={handleWalletMenu}>
-					<span>{i18n.lbl_Deposit}</span>
-				</Link>
-				{allowedCurrencyList.transferFunds.includes(
-					userInfo.currencyId
-				) && (
-					<Link
-						className="icon icon-icon32px_Funds-transfer"
-						to={path.transfer.root}
-						onClick={handleWalletMenu}>
-						<span>{i18n.lbl_Transfer}</span>
-					</Link>
-				)}
-				<Link
-					className="icon icon-icon32px_History"
-					to={path.statement.root}
-					onClick={handleWalletMenu}>
-					<span>{i18n.lbl_Statement}</span>
-				</Link>
-			</div>
-		</div>
-	);
-};
-
-FooterWalletMenu.defaultProps = {
-	isOpen: false
-};
-
-FooterWalletMenu.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	isOpen: PropTypes.bool,
-	handleWalletMenu: PropTypes.func.isRequired
-};
-
-export default Footer;
+export { Footer };

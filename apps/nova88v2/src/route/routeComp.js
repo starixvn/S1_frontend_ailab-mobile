@@ -11,8 +11,7 @@ import ForgetPwd from "../components/login/forgetPwd";
 import ResetPwd from "../components/login/resetPwd";
 
 import Setting from "../pages/setting";
-import ContactUs from "../components/setting/contactUs";
-import GameProvider from "../components/setting/gameProvider";
+import GameProvider from "../components/setting/listPanel/gameProvider";
 import Whoami from "../pages/whoami";
 import PromotionInfo from "../pages/promotionInfo";
 
@@ -59,7 +58,6 @@ import MysteryBox from "../pages/mysteryBox";
 import LuckyWheel from "../pages/luckyWheel";
 import Streaming from "../pages/streaming";
 import CryptoWallet from "../pages/cryptoWallet";
-import MyAccount from "../components/setting/myAccount";
 import AppDownload from "../pages/appDownload";
 import CheckSpeed from "../pages/checkSpeed";
 import AppEntPage from "../pages/appEntPage";
@@ -83,7 +81,6 @@ const RouteComponents = () => {
 			<Casino path={`/:langId/${path.casino.root}`} />
 			<Casino path={`/:langId/${path.casino.root}/:tpId`} />
 			<Setting path={`/:langId/${path.setting.root}`} />
-			<ContactUs path={`/:langId/${path.contactUs.root}`} />
 			<GameProvider path={`/:langId/${path.gameProvider.root}`} />
 
 			<Whoami path={path.whoami.root} />
@@ -148,7 +145,6 @@ const RouteComponents = () => {
 			<LuckyWheel path={`/:langId/${path.luckyWheel.root}`} />
 			{/* <Kiss918 path={`/:langId/${path.kiss918.root}`} /> */}
 			<Streaming path={`/:langId/${path.streaming.root}`} />
-			<MyAccount path={`/:langId/${path.myAccount.root}`} />
 			<AppDownload path={`/:langId/${path.appDownload.root}`} />
 			<CheckSpeed path={`/:langId/${path.checkSpeed.root}`} />
 			<AppEntPage path={`/${defSpecialPath.appentpage}`} />
