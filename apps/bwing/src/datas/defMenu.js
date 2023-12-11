@@ -484,6 +484,19 @@ export const productList = langId => {
 					]
 				},
 				{
+					...defGameInfo.Casino_BNG,
+					parameter: defGameInfo.Casino_BNG,
+					path: path.casino.root,
+					img: `${bannerImgUrl}/h5/img/slot/bng.png`,
+					displayText: "BNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_BNG)
+						}
+					]
+				},
+				{
 					...defGameInfo.Casino_PNG,
 					parameter: defGameInfo.Casino_PNG,
 					path: path.casino.root,
