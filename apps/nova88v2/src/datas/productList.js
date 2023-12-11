@@ -543,7 +543,7 @@ const gameList = ({ langId, currencyId }) => {
 				{
 					...defGameInfo.TFGaming,
 					spanText: "TFGaming",
-					img: `${cloudBannerImgURL}/h5/img/esportTFG.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/esports/esportTFG.png`,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -744,7 +744,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_BNG,
 					parameter: defGameInfo.Casino_BNG,
 					spanText: "BNG",
-					img: `${cloudBannerImgURL}/h5/img/bng.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/bng.png`,
 					path: path.casino.root,
 					providerImgName: "",
 					sortKey: "slot_BNG",
@@ -835,7 +835,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_NoLimitCity,
 					parameter: defGameInfo.Casino_NoLimitCity,
 					spanText: "NoLimit City",
-					img: `${cloudBannerImgURL}/h5/img/nlc.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotnlc.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{
@@ -1068,7 +1068,7 @@ const gameList = ({ langId, currencyId }) => {
 				},
 				{
 					...defGameInfo.V8Poker,
-					img: `${cloudBannerImgURL}/h5/img/v8.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/v8.png`,
 					spanTextKey: "lbl_V8Poker",
 					sortKey: "games_V8Poker",
 					allowCurrency: allowedCurrencyList.V8Poker,
