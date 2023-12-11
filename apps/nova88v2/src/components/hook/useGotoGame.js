@@ -186,7 +186,9 @@ export const useGotoGame = ({
 								: api.tp.defGotoGame_AppType.NativeAPP,
 						token: token ?? "",
 						tpGameType: String(tpGameType),
-						loginGameType: String(loginGameType)
+						loginGameType: loginGameType
+							? String(loginGameType)
+							: ""
 					});
 					await api.frontEndLog.LogMessage({
 						userName,
@@ -264,16 +266,13 @@ export const useGotoGame = ({
 								}
 							} else if (_tpId === defSpecialSetting.sports_9w) {
 								returnData = JSON.parse(result);
-							} else if (_tpId === defSpecialSetting.PG) {
-								if (
-									loginGameType ===
-									defLoginGameType.returnHtml
-								) {
-									const newWindow = window.open();
-									newWindow.document.write(res.data.message);
-								} else {
-									window.open(res.data.message);
-								}
+							} else if (
+								loginGameType === defLoginGameType.returnHtml
+							) {
+								const newWindow = window.open();
+								newWindow.document.write(res.data.message);
+							} else {
+								window.open(res.data.message);
 							}
 							await api.frontEndLog.LogMessage({
 								userName,

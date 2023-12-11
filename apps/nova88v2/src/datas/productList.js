@@ -1332,6 +1332,26 @@ const gameList = ({ langId, currencyId }) => {
 			]
 		},
 		{
+			category: "4d",
+			categoryIcon: "four",
+			translateKey: "lbl_4D",
+			allowCurrency: allowedCurrencyList["4D"],
+			items: [
+				{
+					...defGameInfo.HaoLong,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/4d/haolong.png`,
+					allowCurrency: allowedCurrencyList.haoLong,
+					useGotoGame: true,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.HaoLong)
+						}
+					]
+				}
+			]
+		},
+		{
 			category: "lottery",
 			categoryIcon: "lottery",
 			translateKey: "lbl_Lottery",
@@ -1604,6 +1624,11 @@ export const defGameInfo = {
 		tpId: 43,
 		name: "Skywind_Cai_Shen_Da_Hai",
 		tpGameType: 85
+	},
+	HaoLong: {
+		tpId: 58,
+		gameId: "HL",
+		tpGameType: 110
 	},
 	CockFighting: { tpId: 17, tpGameType: 27 },
 	// VirtualSports: {
