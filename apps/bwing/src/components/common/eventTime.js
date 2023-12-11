@@ -36,7 +36,7 @@ export const eventTime = {
 	},
 	skywind: { endDate: "2022/12/08 11:00:00" },
 	slot_Fachai: { endDate: "2023/12/31 23:59:59" },
-	slot_BNG: { endDate: "2023/12/31 23:59:59" },
+	slot_BNG: { endDate: "2024/01/11 23:59:59" },
 	slot_PNG: { endDate: "2023/11/05 23:59:59" },
 	game_MaxGame: { endDate: "2022/10/13 11:00:00" },
 	casino_SimplePlay: { endDate: "2022/11/13 11:00:00" },
@@ -53,5 +53,5 @@ export const eventTime = {
 	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
 	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" },
 	PNG: { endDate: "2023/11/05 23:59:59" },
-	slot_NoLimitCity: { endDate: "2023/12/31 23:59:59" }
+	slot_NoLimitCity: { endDate: "2024/01/11 23:59:59" }
 };

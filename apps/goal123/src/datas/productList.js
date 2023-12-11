@@ -761,6 +761,20 @@ const gameList = [
 				]
 			},
 			{
+				...defGameInfo.Casino_BNG,
+				parameter: defGameInfo.Casino_BNG,
+				spanText: "BNG",
+				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-bng.png`,
+				path: path.casino.root,
+				providerImgName: "",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.slot_bng)
+					}
+				]
+			},
+			{
 				...defGameInfo.Casino_FaChai,
 				parameter: defGameInfo.Casino_FaChai,
 				spanText: "Fa Chai",

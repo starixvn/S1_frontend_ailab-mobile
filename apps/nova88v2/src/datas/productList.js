@@ -208,6 +208,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -239,6 +240,7 @@ const defSortSlot = {
 		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_PEGASUS",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -269,6 +271,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -299,6 +302,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -747,6 +751,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.Casino_Nextspin,
 					parameter: defGameInfo.Casino_Nextspin,
 					spanText: "Nextspin",
+					providerImgName: "sk",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotNextspin.png`,
 					path: path.casino.root,
 					sortKey: "slot_Nextspin"
@@ -857,6 +862,7 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "NoLimit City",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotnlc.png`,
 					path: path.casino.root,
+					sortKey: "slot_NoLimitCity",
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -1224,6 +1230,12 @@ const gameList = ({ langId, currencyId }) => {
 					spanTextKey: "lbl_Paradise",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/fishing/paradise.png`,
 					sortKey: "fishing_CQ9_PARADISE"
+				},
+				{
+					...defGameInfo.FishingGG,
+					spanTextKey: "lbl_FishingGG",
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/fishing/fishGG.png`,
+					sortKey: "fishing_GGYL_WORLD"
 				},
 				{
 					...defGameInfo.FishingHaiba,
