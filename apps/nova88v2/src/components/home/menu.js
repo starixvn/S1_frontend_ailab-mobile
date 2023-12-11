@@ -10,11 +10,7 @@ import {
 import { useGetTpIdsQuery } from "@ailab-mobile/service";
 import { getUrlParameter } from "../common/common";
 import { cloudBannerImgURL } from "../../config";
-import {
-	useGotoGame,
-	open9wSports,
-	defSpecialSetting
-} from "../hook/useGotoGame";
+import { useGotoGame, open9wSports } from "../hook/useGotoGame";
 import {
 	defTpGameType,
 	useGetTpMaintainList
@@ -198,11 +194,7 @@ const Menu = () => {
 									const onClickGame = async () => {
 										if (isLiveHostNoPlay) {
 											showNoPlayPopBox();
-										} else if (
-											tpId ===
-												defSpecialSetting.sports_9w &&
-											isLogin
-										) {
+										} else if (isUseGotoGame) {
 											const result = await handleGoToGame(
 												{
 													tpId,

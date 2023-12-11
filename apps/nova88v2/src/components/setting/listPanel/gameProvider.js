@@ -190,6 +190,10 @@ const defPlatfrom = [
 		...defGameInfo.Casino_NoLimitCity,
 		imgName: "casino_nlc",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.HaoLong,
+		imgName: "haolong"
 	}
 ];
 
