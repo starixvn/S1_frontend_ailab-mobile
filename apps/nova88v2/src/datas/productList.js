@@ -208,6 +208,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -239,6 +240,7 @@ const defSortSlot = {
 		"slot_SPRIBE",
 		"slot_JOKER",
 		"slot_PEGASUS",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -269,6 +271,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -299,6 +302,7 @@ const defSortSlot = {
 		"slot_JI",
 		"slot_SPRIBE",
 		"slot_JOKER",
+		"slot_NoLimitCity",
 		"slot_RedTiger",
 		"slot_NetEnt",
 		"slot_CQ9",
@@ -724,15 +728,14 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "Amigo Gaming",
 					providerImgName: "amigo",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotamigo.png`,
-					path: path.casino.root,
+					sortKey: "slot_Amigo",
+					allowCurrency: allowedCurrencyList.slotAmigo,
 					eventIcon: [
 						{
 							icon: defIconType.new,
 							inPeriod: isEventPeriod(eventTime.casino_Amigo)
 						}
-					],
-					sortKey: "slot_Amigo",
-					allowCurrency: allowedCurrencyList.slotAmigo
+					]
 				},
 				{
 					...defGameInfo.Casino_Endorphina,
@@ -761,6 +764,21 @@ const gameList = ({ langId, currencyId }) => {
 					providerImgName: "pg",
 					sortKey: "slot_PG",
 					allowCurrency: allowedCurrencyList.slotPGSoft
+				},
+				{
+					...defGameInfo.Casino_BNG,
+					parameter: defGameInfo.Casino_BNG,
+					spanText: "BNG",
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/bng.png`,
+					path: path.casino.root,
+					providerImgName: "",
+					sortKey: "slot_BNG",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.slot_bng)
+						}
+					]
 				},
 				{
 					...defGameInfo.Casino_BNG,
@@ -860,6 +878,7 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "NoLimit City",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotnlc.png`,
 					path: path.casino.root,
+					sortKey: "slot_NoLimitCity",
 					eventIcon: [
 						{
 							icon: defIconType.new,

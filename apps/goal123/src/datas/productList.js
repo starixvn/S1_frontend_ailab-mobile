@@ -98,7 +98,6 @@ export const defGameInfo = {
 	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_Amigo: { tpId: 60, tpGameType: 112 },
 	Casino_Endorphina: { tpId: 49, tpGameType: 98 },
-	Casino_SPRIBE: { tpId: 53, tpGameType: 104 },
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Casino_BNG: { tpId: 57, tpGameType: 108 },
 	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },

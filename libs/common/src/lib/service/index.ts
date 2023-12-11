@@ -9,3 +9,7 @@ export * from "./hotEventApi";
 export * from "./hotGameApi";
 export * from "./gameApi";
 export * from "./paymentApi";
+export * from "./siteApi";
+export * from "./hotEventApi";
+export * from "./hotGameApi";
+export * from "./gameApi";

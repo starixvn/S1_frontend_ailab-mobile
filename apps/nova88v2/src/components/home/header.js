@@ -4,6 +4,7 @@ import { Link } from "@Router";
 import { useTranslation } from "react-i18next";
 import React, { useContext, useState, useEffect } from "react";
 import { userInfoContext } from "Context";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	setCookie,
 	isConvert,
@@ -18,6 +19,10 @@ import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import useGetBonusBalance from "../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../transfer/transfer.def";
+
+export const christmasPeriod = {
+	endDate: "2023-12-26 23:59:59"
+};
 
 const Header = ({ showAppHint, setShowAppHint }) => {
 	const { t } = useTranslation();
@@ -93,7 +98,11 @@ const Header = ({ showAppHint, setShowAppHint }) => {
 			<div className="header-module">
 				<a className="header-logo" href={`/${langId}`}>
 					<img
-						src={`${cloudBannerImgURL}/h5/img/4.0/logo_w.png`}
+						src={`${cloudBannerImgURL}/h5/img/4.0/${
+							isDateRange(christmasPeriod)
+								? "christmas-logo"
+								: "logo_w"
+						}.png`}
 						alt="logo"
 					/>
 				</a>

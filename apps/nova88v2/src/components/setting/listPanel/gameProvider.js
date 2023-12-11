@@ -192,7 +192,8 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_BNG,
-		imgName: "casino_bng"
+		imgName: "casino_bng",
+		path: path.casino.root
 	},
 	{
 		...defGameInfo.Casino_NoLimitCity,
@@ -200,16 +201,9 @@ const defPlatfrom = [
 		path: path.casino.root
 	},
 	{
-		...defGameInfo.TFGaming,
-		imgName: "tfg"
-	},
-	{
-		...defGameInfo.V8Poker,
-		imgName: "v8"
-	},
-	{
 		...defGameInfo.Casino_Amigo,
-		imgName: "casino_amigo"
+		imgName: "casino_nlc",
+		path: path.casino.root
 	}
 ];
 
