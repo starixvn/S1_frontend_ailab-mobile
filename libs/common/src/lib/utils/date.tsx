@@ -10,10 +10,10 @@ export const isDateRange = ({ startDate, endDate }: IEventPeriod) => {
 	const today = moment().format(DATETIME_LOCAL);
 
 	if (startDate && !endDate)
-		return moment(today).isSameOrBefore(startDate, "second");
+		return moment(today).isSameOrAfter(startDate, "second");
 
 	if (!startDate && endDate)
-		return moment(today).isSameOrAfter(endDate, "second");
+		return moment(today).isSameOrBefore(endDate, "second");
 
 	// * 防呆，如果結束時間大於開始時間
 	if (moment(startDate).isAfter(endDate)) return false;
