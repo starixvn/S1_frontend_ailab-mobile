@@ -26,35 +26,9 @@ import {
 import AmountInput from "./deposit.amountInput";
 import { useHandleAmount } from "../hook/useHandleAmount";
 import api from "../../service/api";
-import DepositChannel, {
-	defDepChannelValue,
-	defDepositChannel
-} from "./localbank.depositChannel";
 import PromoList, { setCustPromo } from "./promoList";
 
 const payType = "localBank";
-
-const useHandleSelect = () => {
-	const [selData, setSelectData] = useState(null);
-	const [warning, setWarning] = useState({ msg: "", status: null });
-
-	const HandleSelectData = idx => {
-		if (idx !== null) {
-			setSelectData(idx);
-			setWarning({ msg: "", status: null });
-		}
-	};
-
-	const SetWarning = msg => {
-		if (msg) {
-			setWarning({ msg, status: 1 });
-		} else {
-			setWarning({ msg, status: null });
-		}
-	};
-
-	return { selData, warning, HandleSelectData, SetWarning };
-};
 
 const Payment = props => {
 	const {
@@ -76,7 +50,6 @@ const Payment = props => {
 	const { setLoading } = useContext(loadingContext);
 	const [selBank, setBank] = useState({});
 	const [accountInfo, setAccountInfo] = useState({});
-	const [custBankInfo, setCustBankInfo] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
 		requiredAmount: null,
@@ -98,20 +71,6 @@ const Payment = props => {
 		lastAmount: userPaymentData?.amount
 	});
 
-	const {
-		selData: selDepositChannel,
-		warning: depositChannelWarning,
-		HandleSelectData: HandleDepositChannel,
-		SetWarning: depositChannelSetWarning
-	} = useHandleSelect();
-
-	const {
-		selData: selBankAccount,
-		warning: bankAccountlWarning,
-		HandleSelectData: HandleBankAccount,
-		SetWarning: bankAccountSetWarning
-	} = useHandleSelect();
-
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -127,48 +86,6 @@ const Payment = props => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [paymentList.length, userPaymentData.payType]);
-
-	useEffect(() => {
-		if (userInfo.isLogin) {
-			api.account.GetCustBankInfo().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							const { data } = res.data;
-							if (data !== null) {
-								const bankInfoDetail =
-									data.bankInfoDetail ?? [];
-								const getBankInfoArr = bankInfoDetail.map(
-									i => ({
-										displayText: `${i.bankName} / ${i.accountNo} / ${userInfo.accountName}`,
-										bankName: i.bankName,
-										image: i.bankLogo,
-										accountNo: i.accountNo,
-										SysId: i.sysId
-									})
-								);
-								setCustBankInfo(() => getBankInfoArr);
-							}
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}]${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							content: i18n.msg_ApiServerError
-						});
-					}
-					setLoading(false);
-				}
-			);
-		}
-	}, [i18n, setPopBox, userInfo.isLogin, userInfo.accountName]);
 
 	const SelectBank = bankInfo => {
 		setLoading(true);
@@ -241,27 +158,12 @@ const Payment = props => {
 	};
 
 	const ClickSubmit = async () => {
-		let result =
+		const result =
 			selBank.sysId &&
 			amount !== "" &&
 			VaildAmount({ _amount: amount }) &&
 			selBank.canSubmit &&
 			canSubmit;
-
-		if (selDepositChannel === null) {
-			depositChannelSetWarning(i18n.lbl_LocalBankDepositChannelTip);
-			result = false;
-		} else if (
-			(defDepositChannel[selDepositChannel].value ===
-				defDepChannelValue.OnlineBanking &&
-				selBankAccount === null) ||
-			(defDepositChannel[selDepositChannel].value ===
-				defDepChannelValue.ATM &&
-				selBankAccount === null)
-		) {
-			bankAccountSetWarning(i18n.lbl_LocalBankBankAccountTip);
-			result = false;
-		}
 
 		if (result && !processing) {
 			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
@@ -295,27 +197,11 @@ const Payment = props => {
 					isOpen: false
 				}));
 
-				let channelData = {};
-				if (
-					defDepositChannel[selDepositChannel].value ===
-						defDepChannelValue.OnlineBanking ||
-					defDepositChannel[selDepositChannel].value ===
-						defDepChannelValue.ATM
-				) {
-					channelData = {
-						fromChannel:
-							defDepositChannel[selDepositChannel]?.value,
-						fromSysId: custBankInfo[selBankAccount]?.SysId,
-						fromAccountNum: custBankInfo[selBankAccount]?.accountNo
-					};
-				}
-
 				api.payment
 					.DepositReqWireTransfer({
 						amount: real_amount,
 						sysId,
-						bankId: selBank.bankId,
-						...channelData
+						bankId: selBank.bankId
 					})
 					.then(
 						async res => {
@@ -331,17 +217,6 @@ const Payment = props => {
 											amount: real_amount,
 											sysId
 										};
-
-										if (Object.keys(channelData)?.length) {
-											userData.localBankChannel = channelData;
-										} else if (selDepositChannel) {
-											userData.localBankChannel = {
-												fromChannel:
-													defDepositChannel[
-														selDepositChannel
-													]?.value
-											};
-										}
 
 										handleUserPaymentData({ userData });
 
@@ -495,19 +370,6 @@ const Payment = props => {
 				accountInfo={accountInfo}
 				displayKey="bankName"
 				_isConvert={_isConvert}
-				// deposit channel
-				DepositChannelProps={{
-					HandleDepositChannel,
-					selDepositChannel,
-					depositChannelWarning
-				}}
-				BankAccountProps={{
-					HandleBankAccount,
-					selBankAccount,
-					custBankInfo,
-					bankAccountlWarning
-				}}
-				userPaymentData={userPaymentData?.localBankChannel}
 				// deposit amount
 				amount={amount}
 				SelectAmount={SelectAmount}
@@ -571,9 +433,6 @@ const GroupList = ({
 	imgKeyWithExtension,
 	accountInfo,
 	_isConvert,
-	DepositChannelProps,
-	BankAccountProps,
-	userPaymentData,
 	amount,
 	SelectAmount,
 	EditAmount,
@@ -587,7 +446,7 @@ const GroupList = ({
 	const [selectedBank, setSelectedBank] = useState(dataList[0]);
 	const rows = dataList?.map(data => {
 		const _mainKey = `${mainKey}-${data[idKey]}`;
-		const { bankCode, canSubmit, maxAmount, minAmount } = data;
+		const { bankCode, bankName, canSubmit, maxAmount, minAmount } = data;
 
 		return (
 			<div key={_mainKey}>
@@ -612,7 +471,7 @@ const GroupList = ({
 					<i className="icon icon-icon32px_check" />
 					{data.canSubmit === false && <div className="mask" />}
 				</div>
-				<div className="subtitle">{bankCode}</div>
+				<div className="subtitle">{bankName}</div>
 				{minAmount === null || maxAmount === null ? null : (
 					<div className="subinfo">
 						<span>
@@ -649,7 +508,7 @@ const GroupList = ({
 								}`}
 								alt={selectedBank.bankLogo ?? ""}
 							/>
-							<div>{selectedBank.bankCode}</div>
+							<div>{selectedBank.bankName}</div>
 						</li>
 						<CopyBtn value={accountInfo.accountName} />
 						<CopyBtn value={accountInfo.accountNo} />
@@ -671,22 +530,24 @@ const GroupList = ({
 						</div>
 					</>
 				)}
-				<DepositChannel
-					i18n={i18n}
-					DepositChannelProps={DepositChannelProps}
-					BankAccountProps={BankAccountProps}
-					userPaymentData={userPaymentData}
-				/>
-				<div className="btn-group">
-					<button
-						onClick={SubmitProof.bind(
-							this,
-							selectedBank,
-							accountInfo
-						)}>
-						{i18n.lbl_UploadReceipt}
-					</button>
+
+				<div className="title">
+					<span>*</span>
+					{i18n.lbl_SubmitProof}
 				</div>
+				<div className="infoModule">
+					<div className="btn-group">
+						<button
+							onClick={SubmitProof.bind(
+								this,
+								selectedBank,
+								accountInfo
+							)}>
+							{i18n.lbl_UploadReceipt}
+						</button>
+					</div>
+				</div>
+
 				<AmountInput
 					title={i18n.lbl_DepositAmount}
 					channel={selectedBank}
@@ -730,9 +591,6 @@ GroupList.defaultProps = {
 	dataList: null,
 	imgKeyWithExtension: false,
 	accountInfo: {},
-	DepositChannelProps: {},
-	BankAccountProps: {},
-	userPaymentData: {},
 	amount: "",
 	SelectAmount: () => null,
 	EditAmount: () => null,
@@ -754,9 +612,6 @@ GroupList.propTypes = {
 	imgKeyWithExtension: PropTypes.bool,
 	accountInfo: PropTypes.objectOf(PropTypes.any),
 	_isConvert: PropTypes.bool.isRequired,
-	DepositChannelProps: PropTypes.objectOf(PropTypes.any),
-	BankAccountProps: PropTypes.objectOf(PropTypes.any),
-	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	amount: PropTypes.string,
 	SelectAmount: PropTypes.func,
 	EditAmount: PropTypes.func,
