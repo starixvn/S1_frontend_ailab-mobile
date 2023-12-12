@@ -67,14 +67,16 @@ const GamePanel = React.forwardRef((props, ref) => {
 			}
 		};
 
-		const brandName = providerList.find(obj => obj.tpId === g.tpId)?.tpName;
 		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
 			?.gameImgDisplayText;
+		const gameImage = `${imgUrl}/${gameProviderName}/${
+			g.imgName[userInfo.langId] ?? g.imgName.en
+		}`;
 
 		games.push(
 			<div
 				className={`info${isMaintain ? " star active" : ""}`}
-				key={`casino-game-${brandName}-${g.gameId}`}>
+				key={`casino-game-${gameProviderName}-${g.gameId}`}>
 				{activeCategory === "new" ? (
 					<i className="icon icon-new" />
 				) : null}
@@ -87,13 +89,10 @@ const GamePanel = React.forwardRef((props, ref) => {
 								: () =>
 										selectGame({
 											...g,
-											brandName,
-											providerName: gameProviderName
+											brandName: gameProviderName
 										})
 						}
-						src={`${imgUrl}/${brandName}/${
-							g.imgName[userInfo.langId] ?? g.imgName.en
-						}`}
+						src={gameImage}
 						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
 					/>
 				</button>
