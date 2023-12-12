@@ -19,6 +19,7 @@ const useShieldCheck = () => {
 	const android_firefox = is_firefox && is_android;
 
 	const getShieldData = () => {
+		return;
 		if (isShieldLoaded && !android_firefox) {
 			getDeviceResult().then(
 				// on success
