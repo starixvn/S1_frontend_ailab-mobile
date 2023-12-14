@@ -202,7 +202,7 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.Casino_Amigo,
-		imgName: "casino_nlc",
+		imgName: "casino_amigo",
 		path: path.casino.root
 	},
 	{
