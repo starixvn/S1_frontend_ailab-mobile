@@ -43,10 +43,9 @@ const Panel = () => {
 	const occupationOptions = getOccupationOptions(i18n);
 	const incomeSourceOptions = getIncomeSourceOptions(i18n);
 
+	// * 如果生日已填寫且 occupation 和 sourceOfIncome 視為舊用戶(setProfile已送出過)
 	const isNewUser =
-		userInfo.birth_d === null &&
-		userInfo.birth_m === null &&
-		userInfo.birth_y === null &&
+		!userInfo.birth_d &&
 		(userInfo.occupation === 0 || userInfo.sourceOfIncome === 0);
 
 	const onSelectOccupation = i => {
