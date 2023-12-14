@@ -17,10 +17,9 @@ const useShieldCheck = () => {
 	const isShieldLoaded = scriptArr.find(el => el.src === shieldScript);
 
 	const android_firefox = is_firefox && is_android;
-
+	const functionLoaded = window?.getDeviceResult !== undefined;
 	const getShieldData = () => {
-		return;
-		if (isShieldLoaded && !android_firefox) {
+		if (functionLoaded && !android_firefox) {
 			getDeviceResult().then(
 				// on success
 				res => {
