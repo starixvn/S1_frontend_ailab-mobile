@@ -204,6 +204,10 @@ const defPlatfrom = [
 		...defGameInfo.Casino_Amigo,
 		imgName: "casino_nlc",
 		path: path.casino.root
+	},
+	{
+		...defGameInfo.HaoLong,
+		imgName: "haolong"
 	}
 ];
 
