@@ -14,12 +14,13 @@ export class TpAPI extends BaseAPI {
 
 	GetTransferRecent = () => this.tpRequest.post("/GetTransferRecent");
 
-	TransferEX = ({ FromTpId, ToTpId, Amount, TransferAction }) =>
+	TransferEX = ({ FromTpId, ToTpId, Amount, TransferAction, LangId }) =>
 		this.tpRequest.post("/TransferEX", {
 			FromTpId,
 			ToTpId,
 			Amount,
-			TransferAction
+			TransferAction,
+			LangId
 		});
 
 	Transfer = ({ TpId, amount, direction }) =>
