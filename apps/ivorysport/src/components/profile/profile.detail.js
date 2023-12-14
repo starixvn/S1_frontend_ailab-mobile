@@ -541,7 +541,7 @@ const Panel = () => {
 				</div>
 			)}
 			{occupationWarning && (
-				<div style={{ color: "red" }}>{occupationWarning}</div>
+				<div className="tip active">{occupationWarning}</div>
 			)}
 			{isNewUser && userInfo.sourceOfIncome === 0 && (
 				<div>
@@ -561,7 +561,7 @@ const Panel = () => {
 				</div>
 			)}
 			{sourceOfIncomeWarning && (
-				<div style={{ color: "red" }}>{sourceOfIncomeWarning}</div>
+				<div className="tip active">{sourceOfIncomeWarning}</div>
 			)}
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
 				<Birthday
