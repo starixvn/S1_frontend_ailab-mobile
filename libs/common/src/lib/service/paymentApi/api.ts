@@ -1,9 +1,10 @@
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
-import { IDepositQuickTransferInfo } from "./type";
+import { IDepositChatTransferInfo, IDepositQuickTransferInfo } from "./type";
 
 export const paymentApiUrl = {
-	getDepositQuickTransfer: "Payment/GetPayInfoQuickTransfer"
+	getDepositQuickTransfer: "Payment/GetPayInfoQuickTransfer",
+	getDepositChatTransfer: "Payment/GetPayInfoChatTransfer"
 };
 
 export const paymentApi = rootApi.injectEndpoints({
@@ -18,8 +19,22 @@ export const paymentApi = rootApi.injectEndpoints({
 				url: paymentApiUrl.getDepositQuickTransfer,
 				method: "POST"
 			})
+		}),
+		getDepositChatTransfer: builder.query<
+			IAxiosResponse<{
+				ChatTransfer: { data: IDepositChatTransferInfo[] };
+			}>,
+			void
+		>({
+			query: () => ({
+				url: paymentApiUrl.getDepositChatTransfer,
+				method: "POST"
+			})
 		})
 	})
 });
 
-export const { useLazyGetDepositQuickTransferQuery } = paymentApi;
+export const {
+	useLazyGetDepositQuickTransferQuery,
+	useLazyGetDepositChatTransferQuery
+} = paymentApi;

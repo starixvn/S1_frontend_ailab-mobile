@@ -23,3 +23,24 @@ export interface IDepositQuickTransferInfo {
 	amountList: number[];
 	depositType: number;
 }
+
+export interface IDepositChatTransferInfo {
+	groupId: number;
+	groupName: string;
+	minAmount: number;
+	maxAmount: number;
+	supportChannels: {
+		payId: number;
+		payName: string;
+		groupId: number;
+		groupName: string;
+		channelId: number;
+		channelName: string;
+		mode: number;
+		minAmount: number;
+		maxAmount: number;
+		amountRule: number;
+		amountList: null | number[];
+		depositType: number;
+	}[];
+}
