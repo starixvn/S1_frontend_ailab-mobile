@@ -8730,6 +8730,15 @@ span.important {
   background: url(https://banner.0814media.net/h5/img/quick-transfer.png) center/cover;
 }
 
+.icon-dou::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/chat-transfer.png) center/cover;
+}
+
 .submenu {
   background: #E4E4E4;
   padding: 2vw 2vw 0;
