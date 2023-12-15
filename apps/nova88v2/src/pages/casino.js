@@ -609,6 +609,7 @@ const IndexPage = () => {
 	);
 	const header = (
 		<Header
+			isShowInput={true}
 			searchInput={searchInput}
 			setSearchInput={setSearchInput}
 			title={i18n.lbl_Slots}
