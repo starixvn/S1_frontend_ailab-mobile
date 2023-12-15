@@ -1,11 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import {
-	i18nContext,
-	userInfoContext,
-	popBoxContext,
-	loadingContext
-} from "../common/context";
+import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
 import config, { paymentImgURL } from "../../config";
 import { debounce, isConvert, number_format } from "../common/common";
 import GroupList from "./deposit.groupList";
@@ -29,7 +24,6 @@ const Payment = props => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { setLoading } = useContext(loadingContext);
 
 	const [selGroup, setSelGroup] = useState(null);
 	const [selbank, setBank] = useState({});
@@ -77,8 +71,6 @@ const Payment = props => {
 	const SelectPayment = paymentProps => {
 		const { groupInfo, userData } = paymentProps;
 		if (selGroup?.payId !== groupInfo.payId || userData) {
-			setLoading(true);
-
 			setSelGroup(groupInfo);
 
 			if (groupInfo.supportBanks.length > 0) {
