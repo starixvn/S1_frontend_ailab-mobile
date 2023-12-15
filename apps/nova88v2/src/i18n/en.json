@@ -105,6 +105,8 @@
   "lbl_BecomingDistinguishedPlayer": "Becoming A Distinguished Player",
   "lbl_BeforeAmount": "Before Amount",
   "lbl_BetNow": "Bet Now",
+  "lbl_BigWinProfit_Description1": "We're giving <div>【{{userName}}】</div> a standing ovation!",
+  "lbl_BigWinProfit_Description2": "He is not just making <button>{{venderName}}</button> <span>more thrilling, but got all of us buzzing with excitement!</span>\n\n",
   "lbl_Birthday": "Birthday",
   "lbl_Bonus": "Bonus",
   "lbl_BonusAmount": "Bonus Amount",
