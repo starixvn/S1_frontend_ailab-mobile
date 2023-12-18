@@ -91,7 +91,8 @@ export const useTransfer = ({
 				FromTpId,
 				ToTpId,
 				Amount: real_amount,
-				TransferAction
+				TransferAction,
+				LangId: userInfo.langId
 			});
 
 			if (isMountedRef.current) {
