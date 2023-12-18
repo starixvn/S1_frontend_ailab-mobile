@@ -11411,7 +11411,6 @@ span.important {
   color: white;
   width: calc(100% - 25vw);
   text-align: left;
-  list-style: decimal;
   line-height: 6vw;
 }
 .wheelEvent .info > div.other ul {
@@ -16163,7 +16162,11 @@ main .swiper-container {
   background: linear-gradient(90deg, rgb(30, 62, 119) 0%, rgb(50, 95, 177) 100%);
   padding: 2vw;
   border-radius: 50px;
-  padding: 3vw 34vw;
+  padding: 3vw;
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-align: center;
 }
 .after .btn-logout {
