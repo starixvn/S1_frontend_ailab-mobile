@@ -1,4 +1,4 @@
-interface IDepositQuickTransferBankInfo {
+interface IDepositBankInfo {
 	sysId: number;
 	bankName: string;
 	bankCode: string;
@@ -9,7 +9,7 @@ interface IDepositQuickTransferBankInfo {
 
 export interface IDepositQuickTransferInfo {
 	selectBank: boolean;
-	supportBanks: IDepositQuickTransferBankInfo[];
+	supportBanks: IDepositBankInfo[];
 	payId: number;
 	payName: string;
 	groupId: number;
@@ -25,22 +25,18 @@ export interface IDepositQuickTransferInfo {
 }
 
 export interface IDepositChatTransferInfo {
+	selectBank: boolean;
+	supportBanks: IDepositBankInfo[];
+	payId: number;
+	payName: string;
 	groupId: number;
-	groupName: string;
+	groupName: string | null;
+	channelId: number;
+	channelName: string;
+	mode: number;
 	minAmount: number;
 	maxAmount: number;
-	supportChannels: {
-		payId: number;
-		payName: string;
-		groupId: number;
-		groupName: string;
-		channelId: number;
-		channelName: string;
-		mode: number;
-		minAmount: number;
-		maxAmount: number;
-		amountRule: number;
-		amountList: null | number[];
-		depositType: number;
-	}[];
+	amountRule: number;
+	amountList: number[];
+	depositType: number;
 }
