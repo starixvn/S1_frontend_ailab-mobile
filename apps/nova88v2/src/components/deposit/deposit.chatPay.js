@@ -1,6 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { i18nContext, userInfoContext, popBoxContext } from "../common/context";
+import {
+	i18nContext,
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import config, { paymentImgURL } from "../../config";
 import { debounce, isConvert, number_format } from "../common/common";
 import GroupList from "./deposit.groupList";
@@ -9,7 +14,7 @@ import { useHandleAmount } from "../hook/useHandleAmount";
 import PromoList from "./promoList";
 import { defPayType } from "./deposit.def";
 
-const payType = defPayType.quickTransfer;
+const payType = defPayType.douDouPay;
 
 const Payment = props => {
 	const {
@@ -20,13 +25,15 @@ const Payment = props => {
 		asyncPromotionConfirmPopBox,
 		checkDepositSpecialCode
 	} = props;
+
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const [selGroup, setSelGroup] = useState(null);
-	const [selChannel, setSelChannel] = useState({});
-	const [channelList, setChannelList] = useState([]);
+	const { setLoading } = useContext(loadingContext);
 
+	const [selGroup, setSelGroup] = useState(null);
+	const [selbank, setBank] = useState({});
+	const [bankList, setBankList] = useState([]);
 	const [depositPromo, setDepositPromo] = useState({
 		bonusCode: null,
 		requiredAmount: null,
@@ -41,8 +48,8 @@ const Payment = props => {
 		VaildAmount
 	} = useHandleAmount({
 		currencyId: userInfo.currencyId,
-		minAmount: selChannel?.minAmount,
-		maxAmount: selChannel?.maxAmount,
+		minAmount: selbank?.minAmount,
+		maxAmount: selbank?.maxAmount,
 		i18n,
 		digits: 0,
 		lastAmount: userPaymentData?.amount
@@ -69,36 +76,37 @@ const Payment = props => {
 
 	const SelectPayment = paymentProps => {
 		const { groupInfo, userData } = paymentProps;
+		if (selGroup?.payId !== groupInfo.payId || userData) {
+			setLoading(true);
 
-		if (selGroup?.groupId !== groupInfo.groupId || userData) {
 			setSelGroup(groupInfo);
 
-			if (groupInfo.supportChannels.length > 0) {
-				setChannelList(groupInfo.supportChannels);
+			if (groupInfo.supportBanks.length > 0) {
+				setBankList(groupInfo.supportBanks);
 
-				let channelIndex = groupInfo.supportChannels.findIndex(
+				let bankIdx = groupInfo.supportBanks.findIndex(
 					obj =>
-						obj.channelId === userPaymentData?.channelId &&
-						groupInfo?.channelId === userPaymentData?.channelId
+						obj.sysId === userPaymentData?.sysId &&
+						groupInfo?.payId === userPaymentData?.payId
 				);
-				channelIndex = channelIndex === -1 ? 0 : channelIndex;
+				bankIdx = bankIdx === -1 ? 0 : bankIdx;
 
 				SelectBank({
 					groupInfo,
-					bankInfo: groupInfo.supportChannels[channelIndex]
+					bankInfo: groupInfo.supportBanks[bankIdx]
 				});
 			} else {
-				setSelChannel({
+				setBank({
 					maxAmount: groupInfo.maxAmount,
 					minAmount: groupInfo.minAmount
 				});
-				setChannelList([]);
+				setBankList([]);
 			}
 		}
 	};
 
-	const SelectBank = ({ bankInfo }) => {
-		setSelChannel(bankInfo);
+	const SelectBank = ({ groupInfo, bankInfo }) => {
+		setBank(bankInfo);
 	};
 
 	const ClickSubmit = async () => {
@@ -129,9 +137,10 @@ const Payment = props => {
 				}
 			}
 
-			const { groupId } = selGroup;
-			const { channelId } = selChannel;
-
+			const { payId, channelId } = selGroup;
+			let { sysId } = selbank;
+			let bankLogo = null;
+			let bankName = null;
 			const RedirectToNext = debounce(() => {
 				setPopBox(prevState => ({
 					...prevState,
@@ -139,10 +148,10 @@ const Payment = props => {
 				}));
 
 				const userData = {
-					payType: defPayType.douDouPay,
+					payType: "onlineBank",
 					amount: resultAmount,
-					groupId,
-					channelId
+					payId,
+					sysId
 				};
 
 				handleUserPaymentData({ userData });
@@ -161,6 +170,7 @@ const Payment = props => {
 				const paramsUrl = [
 					`channelId=${channelId}`,
 					`amount=${resultAmount}`,
+					sysId && `sysId=${sysId}`,
 					bonusCode && `BonusCode=${bonusCode}`
 				]
 					.filter(Boolean)
@@ -171,7 +181,55 @@ const Payment = props => {
 				RefreshPage();
 			}, 1000);
 
-			RedirectToNext();
+			if (selGroup.selBank) {
+				sysId = selbank.sysId;
+				bankLogo = selbank.bankLogo;
+				bankName = selbank.bankName;
+
+				setPopBox({
+					isOpen: true,
+					title: i18n.lbl_ImportantNote,
+					content: (
+						<>
+							<p>{i18n.lbl_ConfirmDeposit}</p>
+							<img
+								className="bankimg"
+								src={`${paymentImgURL}/square/${bankLogo?.toLowerCase()}`}
+								alt={bankName}
+							/>
+							<div>
+								<span>{i18n.lbl_DepositAmount} :</span>{" "}
+								{number_format(resultAmount, _isConvert, 0)}
+							</div>
+						</>
+					),
+					hasBtn: true,
+					btnBar: (
+						<div className="btn-group">
+							<button
+								className="white"
+								onClick={() =>
+									setPopBox(prevState => ({
+										...prevState,
+										isOpen: false
+									}))
+								}>
+								{i18n.lbl_Cancel}
+							</button>
+							<button
+								className="orange"
+								onClick={RedirectToNext.bind(
+									this,
+									resultAmount
+								)}>
+								{i18n.lbl_Submit}
+							</button>
+						</div>
+					)
+				});
+			} else {
+				RedirectToNext();
+			}
 		}
 	};
 
@@ -183,29 +241,30 @@ const Payment = props => {
 				title={i18n.lbl_PaymentModes}
 				dataList={paymentList}
 				SelectPayment={SelectPayment}
-				selected={selGroup?.groupId}
+				selected={selGroup?.payId}
 				mainKey={`deposit-full-${payType}-groupList`}
-				imgKey="groupName"
-				idKey="groupId"
+				imgKey="payName"
+				idKey="payId"
 				prefixImgUrl={`${paymentImgURL}/`}
 				bindFullObj={true}
-				displayKey="groupName"
+				displayKey="payName"
 				_isConvert={_isConvert}
 				i18n={i18n}
 			/>
 			<GroupList
-				title={i18n.lbl_SelectChannel}
-				dataList={channelList}
+				title={i18n.lbl_SelectBank}
+				channel={selbank}
+				dataList={bankList}
 				SelectPayment={SelectBank}
-				selected={selChannel?.channelId}
-				mainKey={`deposit-full-${payType}-channelId`}
-				imgKey="channelName"
-				idKey="channelId"
-				prefixImgUrl={`${paymentImgURL}/`}
-				imgKeyWithExtension={false}
+				selected={selbank?.sysId}
+				mainKey={`deposit-full-${payType}-bankList`}
+				imgKey="bankLogo"
+				idKey="sysId"
 				bindFullObj={true}
+				prefixImgUrl={`${paymentImgURL}/square/`}
+				imgKeyWithExtension={true}
 				bindingItem={selGroup}
-				displayKey="channelName"
+				displayKey="bankName"
 				_isConvert={_isConvert}
 				i18n={i18n}
 			/>
@@ -213,9 +272,7 @@ const Payment = props => {
 			<AmountInput
 				title={i18n.lbl_DepositAmount}
 				channel={
-					selGroup?.selectBank
-						? selChannel
-						: { ...selChannel, ...selGroup }
+					selGroup?.selectBank ? selbank : { ...selbank, ...selGroup }
 				}
 				i18n={i18n}
 				_isConvert={_isConvert}
@@ -229,11 +286,7 @@ const Payment = props => {
 					selGroup?.selectBank
 						? i18n.lbl_AmountTooltip.replace(
 								"{{0}}",
-								number_format(
-									selChannel?.minAmount,
-									_isConvert,
-									0
-								)
+								number_format(selbank?.minAmount, _isConvert, 0)
 						  )
 						: i18n.lbl_AmountTooltip.replace(
 								"{{0}}",
