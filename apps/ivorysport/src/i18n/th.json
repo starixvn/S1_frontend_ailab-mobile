@@ -363,6 +363,21 @@
 	"lbl_4th": "รองชนะเลิศอันดับ 3",
 
 	"-==================-==========================Profile-===================================": "",
+
+
+	"lbl_PleaseChoose": "กรุณาเลือก",
+	"lbl_CurrentAddress": "ที่อยู่ปัจจุบัน",
+	"lbl_Nationality": "สัญชาติ",
+	"lbl_SourceOfIncome": "แหล่งที่มาของรายได้",
+	"lbl_OwnSaving": "เงินออม",
+	"lbl_Loan": "เงินกู้",
+	"lbl_Occupation": "อาชีพ",
+	"lbl_SelfEmployed": "อาชีพอิสระ",
+	"lbl_Employed": "ลูกจ้าง",
+	"lbl_Retired": "เกษียณแล้ว",
+	"lbl_Others": "อื่นๆ",
+	"lbl_SubmitWarning": "นี่เป็นฟิลด์ที่จำเป็นต้องกรอก。",
+
 	"lbl_Month1": "มกราคม",
 	"lbl_Month2": "กุมภาพันธ์",
 	"lbl_Month3": "มีนาคม",
