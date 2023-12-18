@@ -90,8 +90,9 @@ const Payment = props => {
 
 		if (result) {
 			const resultAmount = _isConvert ? amount * 1000 : Number(amount);
-			const { channelId } = payment;
+			const { channelId, payName } = payment;
 			const { sysId, bankLogo, bankName } = selbank;
+			const payImgName = `${payName}.png`;
 			let { bonusCode } = depositPromo;
 
 			if (depositPromo.specialCode) {
@@ -132,8 +133,10 @@ const Payment = props => {
 					<>
 						<p>{i18n.lbl_ConfirmDeposit}</p>
 						<img
-							src={`${paymentImgUrl}/${bankLogo?.toLowerCase()}`}
-							alt={bankName}
+							src={`${paymentImgUrl}/${(
+								bankLogo || payImgName
+							)?.toLowerCase()}`}
+							alt={bankName || payName}
 						/>
 						<div>
 							<ul>
