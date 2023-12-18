@@ -178,62 +178,73 @@ const useGetHomePopup = () => {
 				const { data: bigWinData } = await getPopUpDataList({
 					defDeviceType: defDeviceType.Mobile
 				}).unwrap();
-				setCookie(cookieName, "1", 1);
-				setPopBox({
-					isOpen: true,
-					className: "bigwinpop",
-					custContent: (
-						<div className={`bigwin ${langId}`}>
-							<div className="bigwin-img" />
-							<div className="bigwin-text">
-								<Trans
-									i18nKey="lbl_BigWinProfit_Description1"
-									values={{
-										userName: bigWinData?.userName ?? "-"
-									}}
-									components={{
-										div: <div className="name" />
-									}}
-								/>
-								<div>
+
+				// 該userName回傳null表示不顯示彈窗
+				if (bigWinData.userName !== null) {
+					setCookie(cookieName, "1", 1);
+					setPopBox({
+						isOpen: true,
+						className: "bigwinpop",
+						custContent: (
+							<div className={`bigwin ${langId}`}>
+								<div className="bigwin-img" />
+								<div className="bigwin-text">
 									<Trans
-										i18nKey="lbl_BigWinProfit_Description2"
+										i18nKey="lbl_BigWinProfit_Description1"
 										values={{
-											venderName:
-												bigWinData?.gameName ?? "-"
+											userName:
+												bigWinData?.userName ?? "-"
 										}}
 										components={{
-											button: (
-												<button className="vender" />
-											),
-											span: <sapn />
+											div: <div className="name" />
 										}}
 									/>
+									<div>
+										<Trans
+											i18nKey="lbl_BigWinProfit_Description2"
+											values={{
+												venderName:
+													bigWinData?.gameName ?? "-"
+											}}
+											components={{
+												button: (
+													<button className="vender" />
+												),
+												span: (
+													<sapn
+														style={{
+															width: "50vw"
+														}}
+													/>
+												)
+											}}
+										/>
+									</div>
 								</div>
+								<div className="bigwin-number">
+									${t(`Currency_${userInfo.currencyId}`)}{" "}
+									{number_format(bigWinData?.amount ?? 0)}
+								</div>
+								<img
+									className="money"
+									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+									alt=""
+								/>
+								<img
+									className="money-two"
+									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+									alt=""
+								/>
+								<img
+									src={`${cloudBannerImgURL}/desktop/img/promosBackPopup/delet.png`}
+									alt=""
+									className="closepop"
+									onClick={() => setPopBox({ isOpen: false })}
+								/>
 							</div>
-							<div className="bigwin-number">
-								${t(`Currency_${userInfo.currencyId}`)}{" "}
-								{number_format(bigWinData?.amount ?? 0)}
-							</div>
-							<img
-								className="money"
-								src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
-								alt=""
-							/>
-							<img
-								className="money-two"
-								src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
-								alt=""
-							/>
-							<img
-								src={`${cloudBannerImgURL}/desktop/img/promosBackPopup/delet.png`}
-								alt=""
-								className="closepop"
-								onClick={() => setPopBox({ isOpen: false })}
-							/>
-						</div>
-					)
-				});
+						)
+					});
+				}
 			} catch (error) {
 				setPopBox({
 					isOpen: true,
