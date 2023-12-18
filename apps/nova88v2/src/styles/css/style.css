@@ -11376,7 +11376,6 @@ span.important {
   color: white;
   width: calc(100% - 25vw);
   text-align: left;
-  list-style: decimal;
   line-height: 6vw;
 }
 .wheelEvent .info > div.other ul {
