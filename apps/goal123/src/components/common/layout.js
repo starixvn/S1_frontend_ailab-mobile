@@ -1,8 +1,8 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { isDateRange, products } from "@ailab-mobile/common";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
-import { isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -22,7 +22,6 @@ import GoTopBtn from "./goTopBtn";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { api_liveStreaming_GetDataList } from "../../service/api/liveStreaming";
 import { bannerImgUrl } from "../../config";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 
@@ -37,7 +36,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [luckyWheel, setLuckyWheel] = useState(false);
-	const [displayVgaming, setDisplayVgaming] = useState(true);
+	const [displayVGaming, setDisplayVGaming] = useState(true);
 	const [displayLiveStreaming, setDisplayLiveStreaming] = useState(false);
 	const [liveStreamingList, setLiveStreamingList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -125,17 +124,17 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && !displayLiveStreaming && !isLoading && (
+			{displayVGaming && root && !displayLiveStreaming && !isLoading && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon icon-close"
-						onClick={() => setDisplayVgaming(false)}
+						onClick={() => setDisplayVGaming(false)}
 					/>
 					<img
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}

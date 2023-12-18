@@ -15,7 +15,6 @@ import {
 	defTpGameType,
 	useGetTpMaintainList
 } from "../hook/useGetTpMaintainList";
-import { defSlotTpGameType } from "../../datas/productList";
 import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 
 const defSwipperConfig = {
@@ -55,7 +54,7 @@ const Jackpot = () => {
 
 	const jackpotList = apiJackpotList.map(
 		({ tpId, gameId, imgName, gameName }) => {
-			const tpGameType = Object.values(defSlotTpGameType).find(
+			const tpGameType = providerList?.find(
 				({ tpId: slotTpId }) => slotTpId === tpId
 			)?.tpGameType;
 

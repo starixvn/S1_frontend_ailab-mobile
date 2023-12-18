@@ -1,57 +1,28 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import React, { useContext, useState, useEffect } from "react";
-import { Link } from "@Router";
-import {
-	popBoxContext,
-	userInfoContext,
-	productTpGameTypeSettingListContext
-} from "Context";
-import { useGetTpIdsQuery } from "@ailab-mobile/service";
+import { menuIconTypeEnum } from "@ailab-mobile/common";
+import React, { useState, useEffect, useContext } from "react";
+import { userInfoContext } from "../common/context";
 import { getUrlParameter } from "../common/common";
 import { cloudBannerImgURL } from "../../config";
-import { useGotoGame, open9wSports } from "../hook/useGotoGame";
-import {
-	defTpGameType,
-	useGetTpMaintainList
-} from "../hook/useGetTpMaintainList";
-import useHandleLogin from "../hook/useHandleLogin";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
-import gameList, { defCol, defIconType } from "../../datas/productList";
+import { useMenu } from "../hook/useMenu";
+import { isShowEventIcon, defCol } from "../../datas/defMenu";
 
 const Menu = () => {
+	const {
+		userInfo: { langId }
+	} = useContext(userInfoContext);
 	const { t } = useTranslation();
-	const { userInfo } = useContext(userInfoContext);
-	const { langId, isLogin, currencyId } = userInfo;
-
-	const { setPopBox } = useContext(popBoxContext);
-	const { tpGameTypeSettingList } = useContext(
-		productTpGameTypeSettingListContext
-	);
-
-	const { data: { data: siteTpIdList = [] } = {} } = useGetTpIdsQuery();
-
-	const { maintainList } = useGetTpMaintainList();
-
-	const { handleLogin } = useHandleLogin();
-	const { handleGoToGame } = useGotoGame({ autoGetData: false });
-
 	const [selectedCategory, setSelectedCategory] = useState(defCol.sports);
+	const { menuList, onClickProductItem } = useMenu();
 
-	const selectedGame = gameList({ langId, currencyId }).find(
-		({ category }) => category === selectedCategory
-	);
+	const selectedGames =
+		menuList?.find(({ category }) => category === selectedCategory)?.data ||
+		[];
 
-	let sortedGameList = selectedGame?.items;
-
-	if (selectedGame?.customSort?.[currencyId]) {
-		const temp = [];
-		selectedGame.customSort?.[currencyId].forEach(gameName => {
-			const game = sortedGameList.find(el => el.sortKey === gameName);
-			if (game) temp.push(game);
-		});
-		sortedGameList = temp;
-	}
+	const onClickCategory = category => {
+		if (category !== selectedCategory) setSelectedCategory(category);
+	};
 
 	useEffect(() => {
 		const prevPage = getUrlParameter("prev");
@@ -61,251 +32,87 @@ const Menu = () => {
 	return (
 		<>
 			<div className="home-sidebar">
-				{gameList({ langId, currencyId })
-					.filter(({ allowCurrency }) => {
-						// filter allow currency if exist
-						const isAllowCurrency =
-							!allowCurrency ||
-							allowCurrency.includes(currencyId);
-
-						return isAllowCurrency;
-					})
-					.map(({ items, category, categoryIcon, translateKey }) => {
-						const isNew = items.some(
-							({ eventIcon }) =>
-								eventIcon &&
-								eventIcon.some(
-									({ icon, inPeriod }) =>
-										icon === defIconType.new && inPeriod
-								)
-						);
-
-						const onClickCategory = () => {
-							if (category !== selectedCategory)
-								setSelectedCategory(category);
-						};
+				{menuList.map(mainMenuItem => {
+					const { category, categoryIcon, displayKey, data } =
+						mainMenuItem || {};
+					// * 查看 subMenu 是否有在顯示範圍的 New Icon( 手機貌似只有 New Tag )
+					const isNew = data.some(subMenuItem => {
+						const { iconType, iconStartTime, iconEndTime } =
+							subMenuItem || {};
 
 						return (
-							<button
-								className={classNames(`btn-${categoryIcon}`, {
-									active: selectedCategory === category
-								})}
-								key={category}
-								onClick={onClickCategory}>
-								{isNew && <div className="new-icon">New</div>}
-								<div className="btn-circle">
-									<img
-										src={`${cloudBannerImgURL}/h5/img/4.0/${categoryIcon}-icon.png`}
-										alt={category}
-									/>
-								</div>
-								<div>{t(translateKey)}</div>
-							</button>
+							isShowEventIcon(iconStartTime, iconEndTime) &&
+							iconType === menuIconTypeEnum.New
 						);
-					})}
+					});
+
+					return (
+						<button
+							className={classNames(`btn-${categoryIcon}`, {
+								active: selectedCategory === category
+							})}
+							key={category}
+							onClick={() => onClickCategory(category)}>
+							{isNew && <div className="new-icon">New</div>}
+							<div className="btn-circle">
+								<img
+									src={`${cloudBannerImgURL}/h5/img/4.0/${categoryIcon}-icon.png`}
+									alt={categoryIcon}
+								/>
+							</div>
+							<div>{t(displayKey)}</div>
+						</button>
+					);
+				})}
 			</div>
 
 			<div className="home-gamelist">
 				<div className={`${selectedCategory} active`}>
-					{sortedGameList &&
-						sortedGameList
-							.filter(({ tpId, tpGameType, allowCurrency }) => {
-								// filter site tpId
-								const isInSiteTpList = isLogin
-									? siteTpIdList?.includes(tpId)
-									: true;
+					{selectedGames.map(subMenuItem => {
+						const {
+							tpGameIdNo,
+							productName,
+							iconType,
+							iconStartTime,
+							iconEndTime,
+							isInMaintain,
+							mobileHeaderPicUrl
+						} = subMenuItem || {};
 
-								// filter allow currency if exist (after login)
-								const isAllowCurrency =
-									!allowCurrency ||
-									allowCurrency?.includes(currencyId);
+						const displayName =
+							subMenuItem?.currencyGameName &&
+							subMenuItem?.currencyGameName[langId] &&
+							subMenuItem?.currencyGameName[langId];
 
-								// filter tpGameTypeSettingList if exist and not showing when noShow is true
-								const isShowLiveHost =
-									tpGameTypeSettingList?.length === 0 ||
-									!tpGameTypeSettingList?.find(
-										({
-											tpId: settingTpId,
-											gameType: settingTpGameType
-										}) =>
-											settingTpId === tpId &&
-											settingTpGameType === tpGameType
-									)?.noShow;
+						// * 後端這裡是字串格式 需做處理
+						const suBMenuImage =
+							mobileHeaderPicUrl &&
+							JSON.parse(mobileHeaderPicUrl)[0];
 
-								return (
-									isInSiteTpList &&
-									isAllowCurrency &&
-									isShowLiveHost
-								);
-							})
-							.map(
-								({
-									img,
-									tpId,
-									path,
-									gameId,
-									eventIcon,
-									tpGameType,
-									spanText,
-									spanTextKey,
-									useGotoGame: isUseGotoGame
-								}) => {
-									const isNew = eventIcon?.some(
-										({ icon, inPeriod }) =>
-											icon === defIconType.new && inPeriod
-									);
+						const isNew =
+							isShowEventIcon(iconStartTime, iconEndTime) &&
+							iconType === menuIconTypeEnum.New;
 
-									const underMaintain = maintainList?.some(
-										({
-											tpId: maintainTpId,
-											tpGameType: maintainTpGameType
-										}) =>
-											maintainTpId === tpId &&
-											(maintainTpGameType ===
-												defTpGameType.All ||
-												maintainTpGameType ===
-													tpGameType)
-									);
-
-									const isLiveHostNoPlay = tpGameTypeSettingList?.find(
-										({
-											tpId: settingTpId,
-											gameType: settingTpGameType
-										}) =>
-											settingTpId === tpId &&
-											settingTpGameType === tpGameType
-									)?.noPlay;
-
-									const showNoPlayPopBox = () => {
-										setPopBox({
-											isOpen: true,
-											title: t("lbl_Information"),
-											content: (
-												<div
-													style={{
-														color: "red"
-													}}>
-													{t(
-														"lbl_InaccessibleWithoutPermission"
-													)}
-												</div>
-											)
-										});
-									};
-
-									const onClickGame = async () => {
-										if (isLiveHostNoPlay) {
-											showNoPlayPopBox();
-										} else if (isUseGotoGame) {
-											if (!isLogin) {
-												handleLogin();
-											} else {
-												const result = await handleGoToGame(
-													{
-														tpId,
-														langId,
-														gameId,
-														isLogin,
-														tpGameType
-													}
-												);
-												const { url, key, userId } =
-													result ?? {};
-												open9wSports({
-													url,
-													key,
-													userId
-												});
-											}
-										} else {
-											GET_ENTER_PAGE({
-												tpId,
-												langId,
-												gameId,
-												isLogin,
-												tpGameType,
-												loginCallback: handleLogin,
-												execFunction: isUseGotoGame
-													? handleGoToGame.bind(
-															this,
-															{
-																tpId,
-																langId,
-																gameId,
-																isLogin,
-																tpGameType
-															}
-													  )
-													: null
-											});
-										}
-									};
-
-									return path ? (
-										<Link
-											key={`${tpId}-${tpGameType}-${img}`}
-											// redirect if is not live host no play
-											to={
-												!isLiveHostNoPlay &&
-												`${path}/${tpId}`
-											}
-											className={classNames(
-												"gamelist-item",
-												{ under: underMaintain }
-											)}
-											onClick={
-												isLiveHostNoPlay
-													? showNoPlayPopBox
-													: null
-											}
-											style={
-												underMaintain
-													? { pointerEvents: "none" }
-													: null
-											}>
-											<div className="gamelist-img">
-												{isNew && (
-													<div className="new-icon">
-														New
-													</div>
-												)}
-												<img
-													src={img}
-													alt={tpGameType}
-												/>
-												<div className="gamelist-title">
-													{t(spanTextKey) || spanText}
-												</div>
-											</div>
-										</Link>
-									) : (
-										<button
-											key={`${tpId}-${tpGameType}-${img}`}
-											className={classNames(
-												"gamelist-item",
-												{
-													under: underMaintain
-												}
-											)}
-											onClick={onClickGame}>
-											<div className="gamelist-img">
-												{isNew && (
-													<div className="new-icon">
-														New
-													</div>
-												)}
-												<img
-													src={img}
-													alt={tpGameType}
-												/>
-												<div className="gamelist-title">
-													{t(spanTextKey) || spanText}
-												</div>
-											</div>
-										</button>
-									);
-								}
-							)}
+						return (
+							<button
+								key={tpGameIdNo}
+								className={classNames("gamelist-item", {
+									under: isInMaintain
+								})}
+								onClick={() => onClickProductItem(subMenuItem)}>
+								<div className="gamelist-img">
+									{isNew && (
+										<div className="new-icon">New</div>
+									)}
+									<img src={suBMenuImage} alt={productName} />
+									<div className="gamelist-title">
+										{displayName ||
+											subMenuItem?.productName}
+									</div>
+								</div>
+							</button>
+						);
+					})}
 				</div>
 			</div>
 		</>

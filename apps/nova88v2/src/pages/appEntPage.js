@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { products } from "@ailab-mobile/common";
 import {
 	useGotoGame,
-	defSpecialSetting,
 	open9wSports,
 	defOpenType
 } from "../components/hook/useGotoGame";
@@ -22,7 +22,7 @@ export default () => {
 
 	useEffect(() => {
 		const appGoToGame = async () => {
-			if (tpId === defSpecialSetting.sports_9w) {
+			if (tpId === products.Nova88Exchange.tpId) {
 				const result = await handleGoToGame({
 					isLogin: true,
 					langId,

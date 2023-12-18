@@ -324,7 +324,7 @@ const IndexPage = () => {
 			<Slider />
 			<EventSwipper userInfo={userInfo} />
 			<Marquee />
-			<Menu i18n={i18n} userInfo={userInfo} />
+			<Menu />
 			{userInfo.isLogin && <RecentlyViewedGameList />}
 			<PlaytechJactpot />
 			<Top10Winner i18n={i18n} setPopBox={setPopBox} />
