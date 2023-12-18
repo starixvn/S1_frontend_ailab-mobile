@@ -19,7 +19,11 @@ const GroupList = ({
 	showMinMaxHint,
 	_isConvert
 }) => {
-	const rows = dataList
+	// * 有些資料是用 redux toolkit fetch 而來 (ex: quickTransfer)
+	// * redux 裡的陣列會出現 frozen 以防止 redux state 發生突變的情形 (The array is frozen to prevent mutation of the redux state.)
+	// * 透過 dataList => [...dataList] 解決
+	// * https://stackoverflow.com/questions/53420055/error-while-sorting-array-of-objects-cannot-assign-to-read-only-property-2-of
+	const rows = [...dataList]
 		?.sort((a, b) => {
 			// payId=0時,payName=LetsPay
 			if (a.payId === 0 && b.payId !== 0) {
