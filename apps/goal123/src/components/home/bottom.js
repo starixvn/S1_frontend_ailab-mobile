@@ -3,17 +3,44 @@ import PropTypes from "prop-types";
 import TandC from "../../service/t_and_c";
 import { siteInfo, bannerImgUrl } from "../../config";
 import defPlatform from "../setting/defPlatform";
+import { useMenu } from "../hook/useMenu";
 
 const Bottom = ({ i18n, langId }) => {
-	const platformRows = defPlatform.map(item => {
+	const { menuData } = useMenu();
+
+	const platFormProducts = menuData.flatMap(mainMenuItem => {
+		const { data } = mainMenuItem || {};
+
+		const productLists = data?.flatMap(subMenuItem => {
+			const defProduct = defPlatform.find(
+				product => product.tpGameIdNo === subMenuItem.tpGameIdNo
+			);
+			if (defProduct) {
+				return {
+					...subMenuItem,
+					...defProduct
+				};
+			}
+
+			return [];
+		});
+
+		return productLists;
+	});
+
+	const platformRows = platFormProducts?.map(subMenuItem => {
+		const { imgName } = subMenuItem || {};
 		return (
-			<img
-				key={`platform-${item.tpId}`}
-				alt="logo"
-				src={`${bannerImgUrl}/h5/img/footer/${item.imgName}.png`}
-			/>
+			imgName && (
+				<img
+					key={imgName}
+					alt="logo"
+					src={`${bannerImgUrl}/h5/img/footer/${imgName}.png`}
+				/>
+			)
 		);
 	});
+
 	return (
 		<>
 			<div className="infoCenter">

@@ -15,6 +15,7 @@ import AppDownloadHint from "../home/appDownload";
 import Submenu from "../home/submenu";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
+import { useMenu } from "../hook/useMenu";
 
 const Header = ({
 	title,
@@ -26,6 +27,7 @@ const Header = ({
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { menuData, onClickProductItem } = useMenu();
 
 	const handleSideMenuPanel = isOpen => {
 		setIsOpenSideMenu(isOpen);
@@ -59,6 +61,8 @@ const Header = ({
 					<Submenu
 						handleSideMenuPanel={handleSideMenuPanel}
 						isOpenSideMenu={isOpenSideMenu}
+						menuData={menuData}
+						onClickProductItem={onClickProductItem}
 					/>
 				)}
 			</div>

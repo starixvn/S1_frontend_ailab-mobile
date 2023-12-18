@@ -103,7 +103,7 @@ const EventSwipper = ({ userInfo }) => {
 		return (
 			<div
 				className="hotDiv"
-				key={`hotEvent-${sportLeaguesTitle}`}
+				key={matchId}
 				onClick={goToBet.bind(this, { tpId, gameId, matchId })}>
 				<h1>{sportLeaguesTitle}</h1>
 				<div className="teamL">

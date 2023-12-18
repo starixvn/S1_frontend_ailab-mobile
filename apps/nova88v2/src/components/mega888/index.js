@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Swiper from "react-id-swiper";
+import { products, defDeepLinkId } from "@ailab-mobile/common";
 import { userInfoContext, i18nContext } from "../common/context";
-import { productList, defDeepLinkId } from "../../datas/productList";
 import ButtonWithCopyBtn from "../common/btnWithCopyBtn";
 import { useGotoGame } from "../hook/useGotoGame";
 import { cloudBannerImgURL, siteInfo } from "../../config";
@@ -29,8 +29,8 @@ export default () => {
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
-		tpId: productList.mega888.tpId,
-		tpGameType: productList.mega888.tpGameType,
+		tpId: products.Mega888.tpId,
+		tpGameType: products.Mega888.tpGameType,
 		allowBeforeLogin: true
 	});
 

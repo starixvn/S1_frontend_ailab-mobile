@@ -7,23 +7,19 @@ import {
 	loadingContext,
 	productTpGameTypeSettingListContext
 } from "Context";
+import { products } from "@ailab-mobile/common";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import Slider from "../components/casino/slider";
 import Nav from "../components/casino/nav";
 import GameProviders from "../components/casino/gameProviders";
 import useHandleLogin from "../components/hook/useHandleLogin";
-import {
-	defLoginGameType,
-	defSpecialSetting,
-	useGotoGame
-} from "../components/hook/useGotoGame";
+import { defLoginGameType, useGotoGame } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import Games from "../components/casino/games";
 import api from "../service/api";
 import path from "../path";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
-import { defSlotTpGameType } from "../datas/productList";
 import { defProductType } from "../datas/hotGameList";
 
 const Panel = ({ searchInput }) => {
@@ -54,6 +50,7 @@ const Panel = ({ searchInput }) => {
 	const gameListRef = useRef(null);
 	const splitList = window.location.href.split("/");
 	const pathTpId = splitList[splitList.length - 1];
+
 	const getSlotGameData = async () => {
 		setLoading(true);
 		try {
@@ -342,21 +339,18 @@ const Panel = ({ searchInput }) => {
 						isFree: freePlay,
 						langId: userInfo.langId,
 						execFunction:
-							targetObj.tpId === defSpecialSetting.PG
+							targetObj.tpId === products.PGSoft.tpId
 								? handleGoToGame.bind(this, {
 										langId: userInfo.langId,
 										tpId: targetObj.tpId,
 										gameId: targetObj.gameId,
 										isFun: freePlay,
-										tpGameType:
-											defSlotTpGameType.PG.tpGameType,
+										tpGameType: products.PGSoft.tpGameType,
 										loginGameType:
 											defLoginGameType.returnHtml
 								  })
 								: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
-							obj => targetObj.tpId === obj.tpId
-						)?.tpGameType
+						tpGameType: activeProvider?.tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);

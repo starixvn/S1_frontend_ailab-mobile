@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
+import { products } from "@ailab-mobile/common";
 import { userInfoContext, i18nContext } from "../common/context";
-import { productList } from "../../datas/productList";
 import ButtonWithCopyBtn from "../common/btnWithCopyBtn";
 import { useGotoGame } from "../hook/useGotoGame";
 import { cloudBannerImgURL } from "../../config";
@@ -11,7 +11,7 @@ export default () => {
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
-		tpId: productList.oneGame.tpId
+		tpId: products.OneGamingPoker.tpId
 	});
 
 	const clickDownload = () => {

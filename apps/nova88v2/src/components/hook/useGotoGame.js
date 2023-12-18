@@ -5,19 +5,13 @@ import React, {
 	useCallback,
 	useRef
 } from "react";
-import { defGameInfo } from "../../datas/productList";
+import { products } from "@ailab-mobile/common";
 import { popBoxContext, i18nContext, userInfoContext } from "../common/context";
 import api from "../../service/api";
 
 export const defOpenType = {
 	_blank: "_blank",
 	_self: "_self"
-};
-
-export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PlayTech.tpId,
-	sports_9w: defGameInfo.nineW.tpId,
-	PG: defGameInfo.Casino_PG.tpId
 };
 
 export const defLoginGameType = {
@@ -179,9 +173,11 @@ export const useGotoGame = ({
 						gameId: _gameId,
 						fun: _isFun ? "1" : "0",
 						gameType:
-							_tpId === defSpecialSetting.playTech ? "slots" : "",
+							_tpId === products.NewPlayTechSlot.tpId
+								? "slots"
+								: "",
 						AppType:
-							_tpId === defSpecialSetting.playTech
+							_tpId === products.NewPlayTechSlot.tpId
 								? api.tp.defGotoGame_AppType.Mobile
 								: api.tp.defGotoGame_AppType.NativeAPP,
 						token: token ?? "",
@@ -201,7 +197,7 @@ export const useGotoGame = ({
 						if (res.data.errorCode === 0 && res.data.message) {
 							const result = res.data.message;
 							setData(() => result);
-							if (_tpId === defSpecialSetting.playTech) {
+							if (_tpId === products.NewPlayTechSlot.tpId) {
 								const {
 									account: username,
 									password,
@@ -264,7 +260,7 @@ export const useGotoGame = ({
 										openType
 									});
 								}
-							} else if (_tpId === defSpecialSetting.sports_9w) {
+							} else if (_tpId === products.Nova88Exchange.tpId) {
 								returnData = JSON.parse(result);
 							} else if (
 								loginGameType === defLoginGameType.returnHtml

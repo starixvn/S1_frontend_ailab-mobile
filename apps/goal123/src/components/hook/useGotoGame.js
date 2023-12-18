@@ -5,23 +5,13 @@ import React, {
 	useCallback,
 	useRef
 } from "react";
-import { defGameInfo } from "../../datas/productList";
+import { defLoginGameType, products } from "@ailab-mobile/common";
 import { popBoxContext, i18nContext } from "../common/context";
 import { api_tp_GotoGame, defGotoGame_AppType } from "../../service/api/tp";
 
 export const defOpenType = {
 	_blank: "_blank",
 	_self: "_self"
-};
-
-export const defSpecialSetting = {
-	playTech: defGameInfo.Casino_PlayTech.tpId,
-	PG: defGameInfo.Casino_PG.tpId
-};
-
-export const defLoginGameType = {
-	returlGameUrl: 1,
-	returnHtml: 2
 };
 
 const playTechLaunchGame = (client, game, mode, openType) => {
@@ -46,7 +36,7 @@ const launchGame = ({
 	lang,
 	openType = defOpenType._blank
 }) => {
-	const real = mode == "real" ? 1 : 0;
+	const real = mode === "real" ? 1 : 0;
 	// Optional Variables
 	const lobbyUrl = "";
 	const logoutUrl = "";
@@ -54,7 +44,7 @@ const launchGame = ({
 	const depositUrl = "";
 
 	// Slots,Table Games and other non-live games
-	if (client == "ngm_desktop" || client == "ngm_mobile") {
+	if (client === "ngm_desktop" || client === "ngm_mobile") {
 		iapiSetClientParams(
 			client,
 			`language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}&backurl=${lobbyUrl}`
@@ -63,7 +53,7 @@ const launchGame = ({
 	}
 
 	// Live Games
-	if (client == "live_desk" || client == "live_mob") {
+	if (client === "live_desk" || client === "live_mob") {
 		iapiSetClientParams(
 			client,
 			`&launch_alias=${game}&language=${lang}&real=${real}&lobby=${lobbyUrl}&logout=${logoutUrl}&deposit=${depositUrl}&support=${supportUrl}`
@@ -135,9 +125,9 @@ export const useGotoGame = ({
 					gameId: _gameId,
 					fun: _isFun ? "1" : "0",
 					gameType:
-						_tpId === defSpecialSetting.playTech ? "slots" : "",
+						_tpId === products.NewPlayTechSlot.tpId ? "slots" : "",
 					AppType:
-						_tpId === defSpecialSetting.playTech
+						_tpId === products.NewPlayTechSlot.tpId
 							? defGotoGame_AppType.Mobile
 							: defGotoGame_AppType.NativeAPP,
 					token: token ?? "",
@@ -148,7 +138,7 @@ export const useGotoGame = ({
 						if (res.data.errorCode === 0 && res.data.message) {
 							const result = res.data.message;
 							setData(() => result);
-							if (_tpId === defSpecialSetting.playTech) {
+							if (_tpId === products.NewPlayTechSlot.tpId) {
 								const {
 									account: username,
 									password,
@@ -158,7 +148,7 @@ export const useGotoGame = ({
 
 								await iapiSetCallout("Login", response => {
 									if (response.errorCode) {
-										if (response.errorCode == 48) {
+										if (response.errorCode === 48) {
 											setPopBox({
 												isOpen: true,
 												content: `[${response.errorCode}] Login failed, error: ${response.errorCode} ,playerMessage: ${response.actions.PlayerActionShowMessage[0].message}`,
@@ -208,7 +198,7 @@ export const useGotoGame = ({
 										openType
 									});
 								}
-							} else if (_tpId === defSpecialSetting.PG) {
+							} else if (_tpId === products.PGSoft.tpId) {
 								if (
 									loginGameType ===
 									defLoginGameType.returnHtml

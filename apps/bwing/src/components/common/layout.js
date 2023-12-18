@@ -1,6 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { isDateRange } from "@ailab-mobile/common";
+import { isDateRange, products } from "@ailab-mobile/common";
 import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useLocation, useNavigate } from "@reach/router";
 import Footer from "./footer";
@@ -25,7 +25,6 @@ import GoTopBtn from "./goTopBtn";
 import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defGameInfo } from "../../datas/productList";
 
 export const defPageInfo = {
 	default: {
@@ -357,7 +356,7 @@ const Layout = ({ children }) => {
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}

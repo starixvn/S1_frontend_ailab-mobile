@@ -6,9 +6,9 @@ import React, {
 	lazy,
 	Suspense
 } from "react";
+import { products } from "@ailab-mobile/common";
 import { popBoxContext, userInfoContext, i18nContext } from "../common/context";
 import api from "../../service/api";
-import { productList } from "../../datas/productList";
 import AppDownload from "./appDownload";
 import { cloudBannerImgURL } from "../../config";
 
@@ -76,7 +76,7 @@ const Kiss918 = () => {
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
-		tpId: productList.kiss918.tpId
+		tpId: products.Kiss918.tpId
 	});
 	const { InstallGuide } = GetImageContent(userInfo);
 	const [downloadColOpen, setDownloadColOpen] = useState(false);
