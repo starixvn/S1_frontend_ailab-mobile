@@ -5,7 +5,7 @@ import {
 	popBoxContext,
 	rootContext
 } from "Context";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import age21Image from "../styles/img/homepage/21age.png";
 import pagcorImage from "../styles/img/homepage/pagcor.png";
 import Layout from "../components/common/layout";
@@ -50,7 +50,41 @@ const IndexPage = () => {
 					hideCloseBtn: true,
 					content: (
 						<>
-							<div>{t("Label_General_Verify21Years")}</div>
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "center",
+									flexDirection: "column",
+									alignItems: "center",
+									textAlign: "center"
+								}}>
+								{t("Label_General_Verify21Years")}
+
+								<br />
+								<br />
+								<p>
+									<Trans
+										i18nKey="Label_General_AgreeTermsCondition"
+										components={{
+											Link: (
+												<span
+													style={{
+														fontWeight: 700
+													}}>
+													<a
+														href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+														rel="noreferrer"
+														target="_blank">
+														{t(
+															"Label_General_Exit"
+														)}
+													</a>
+												</span>
+											)
+										}}
+									/>
+								</p>
+							</div>
 							<div className="btn-group">
 								<button className="white" onClick={onOK}>
 									{t("Label_General_Already21Years")}
@@ -63,6 +97,7 @@ const IndexPage = () => {
 									{t("Label_General_Exit")}
 								</a>
 							</div>
+
 							<div
 								style={{
 									display: "flex",
