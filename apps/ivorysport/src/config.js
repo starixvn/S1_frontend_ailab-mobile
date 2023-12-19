@@ -13,6 +13,7 @@ export const siteInfo = () => {
 		siteId: 5,
 		langCookie: "IvorysportLangId",
 		currencyCookie: "ivorysportCurrencyId",
+		ageVerificationCookie: `${siteName}-age-verification`,
 		siteDefaultLang: "en",
 		siteDefaultCurrencyId: defCurrenyId.MYR,
 		siteLangList: [
