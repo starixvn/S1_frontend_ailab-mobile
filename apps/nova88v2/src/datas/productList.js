@@ -721,7 +721,7 @@ const gameList = ({ langId, currencyId }) => {
 					parameter: defGameInfo.Casino_Amigo,
 					spanText: "Amigo Gaming",
 					providerImgName: "amigo",
-					img: `${cloudBannerImgURL}/h5/img/amigo.png`,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotamigo.png`,
 					path: path.casino.root,
 					eventIcon: [
 						{
