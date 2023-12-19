@@ -6,6 +6,8 @@ import {
 	rootContext
 } from "Context";
 import { useTranslation } from "react-i18next";
+import age21Image from "../styles/img/homepage/21age.png";
+import pagcorImage from "../styles/img/homepage/pagcor.png";
 import Layout from "../components/common/layout";
 import Slider from "../components/home/slider";
 import Marquee from "../components/home/marquee";
@@ -60,6 +62,22 @@ const IndexPage = () => {
 									rel="noreferrer">
 									{t("Label_General_Exit")}
 								</a>
+							</div>
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "center"
+								}}>
+								<img
+									style={{ height: "64px" }}
+									src={pagcorImage}
+									alt="img-pagcor"
+								/>
+								<img
+									style={{ height: "64px" }}
+									src={age21Image}
+									alt="img-pagcor"
+								/>
 							</div>
 						</>
 					)
