@@ -1,5 +1,10 @@
 {
 	"---------------------------------------------General---------------------------------------------": "",
+	"Label_General_Exit": "退出",
+	"Label_General_AgeVerification": "年龄验证",
+	"Label_General_Verify21Years": "请验证您是否年满21岁或更年长以进入此网站",
+	"Label_General_Already21Years": "我已年滿21歲",
+
 	"lbl_Max": "最高",
 	"lbl_Min": "最低",
 	"lbl_AboutUs": "关于我们",
@@ -381,7 +386,6 @@
 	"lbl_Retired": "退休",
 	"lbl_Others": "其他的",
 	"lbl_SubmitWarning": "此为必填项目",
-	
 
 	"lbl_Month1": "一月",
 	"lbl_Month2": "二月",

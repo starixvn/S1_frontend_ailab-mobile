@@ -1,5 +1,9 @@
 {
 	"======================================General=========================================": "",
+	"Label_General_Exit": "EXIT",
+	"Label_General_AgeVerification": "Age Verification",
+	"Label_General_Verify21Years": "Please verify that you are 21 years old or older to enter this site",
+	"Label_General_Already21Years": "I AM OVER 21 YEARS OLD",
 	"lbl_Max": "Max",
 	"lbl_Min": "Min",
 	"lbl_AboutUs": "About Us",

@@ -1,5 +1,10 @@
 {
 	"-==================-==================General-==================-=====================": "",
+	"Label_General_Exit": "Keluar",
+	"Label_General_AgeVerification": "Verifikasi Usia",
+	"Label_General_Verify21Years": "Harap verifikasi bahwa Anda berusia 21 tahun atau lebih untuk masuk ke situs ini",
+	"Label_General_Already21Years": "Saya berusia lebih dari 21 tahun",
+
 	"lbl_Max": "Maksimum",
 	"lbl_Min": "Minimum",
 	"lbl_AboutUs": "Tentang Kami",
