@@ -7,7 +7,8 @@ export const defPayType = {
 	linePay: "linePay",
 	topUpCard: "topUpCard",
 	qrPay: "qrPay",
-	quickTransfer: "quickTransfer"
+	quickTransfer: "quickTransfer",
+	douDouPay: "doudouPay"
 };
 
 export const defPayment = {
@@ -55,5 +56,10 @@ export const defPayment = {
 		displayKey: "lbl_DepositType9",
 		creditTimeKey: "lbl_Instant",
 		icon: "icon-quick"
+	},
+	[defPayType.douDouPay]: {
+		displayKey: "lbl_DepositType10",
+		creditTimeKey: "lbl_Instant",
+		icon: "icon-dou"
 	}
 };
