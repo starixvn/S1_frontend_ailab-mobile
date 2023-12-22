@@ -368,6 +368,21 @@
 	"lbl_3rd": "季军",
 	"lbl_4th": "殿军",
 	"-==================--=========================Profile--==================================": "",
+
+	"lbl_PleaseChoose": "请选择",
+	"lbl_CurrentAddress": "目前地址",
+	"lbl_Nationality": "国籍",
+	"lbl_SourceOfIncome": "收入來源",
+	"lbl_OwnSaving": "自有儲蓄",
+	"lbl_Loan": "貸款",
+	"lbl_Occupation": "職業",
+	"lbl_SelfEmployed": "自僱",
+	"lbl_Employed": "就業",
+	"lbl_Retired": "退休",
+	"lbl_Others": "其他的",
+	"lbl_SubmitWarning": "此为必填项目",
+	
+
 	"lbl_Month1": "一月",
 	"lbl_Month2": "二月",
 	"lbl_Month3": "三月",

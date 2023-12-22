@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
-import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
+import {
+	useLazyGetDepositChatTransferQuery,
+	useLazyGetDepositQuickTransferQuery
+} from "@ailab-mobile/service";
 import {
 	i18nContext,
 	userInfoContext,
@@ -11,6 +14,7 @@ import {
 } from "../common/context";
 import PageVerify from "./deposit.pageVerify";
 import MobilePay from "./deposit.mobilePay";
+import ChatPay from "./deposit.chatPay";
 import OnlineBanking from "./deposit.onlineBanking";
 import LocalBank from "./deposit.localBank";
 import CryptoPay from "./deposit.cryptoPay";
@@ -73,6 +77,8 @@ const Panel = () => {
 	});
 
 	const [getDepositQuickTransfer] = useLazyGetDepositQuickTransferQuery();
+
+	const [getDepositChatTransfer] = useLazyGetDepositChatTransferQuery();
 
 	const depositPromoMsg = userInfo?.phoneVerified
 		? ""
@@ -287,6 +293,18 @@ const Panel = () => {
 				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
 			/>
 		);
+	} else if (selected === defPayType.douDouPay) {
+		content = (
+			<ChatPay
+				payType={defPayType.douDouPay}
+				promoList={promoList}
+				paymentList={paymentList[defPayType.douDouPay] ?? []}
+				userPaymentData={_userPaymentData}
+				handleUserPaymentData={handleUserPaymentData}
+				checkDepositSpecialCode={checkDepositSpecialCode}
+				asyncPromotionConfirmPopBox={asyncPromotionConfirmPopBox}
+			/>
+		);
 	}
 
 	const [isCancelSubmit, setIsCancelSubmit] = useState(false);
@@ -475,6 +493,30 @@ const Panel = () => {
 						});
 					}
 				} catch (error) {}
+
+				try {
+					const {
+						data: depositChatTransferResponse
+					} = await getDepositChatTransfer();
+					const quickTransferGroupList =
+						depositChatTransferResponse?.data?.ChatTransfer?.data ||
+						[];
+
+					payments[defPayType.douDouPay] = quickTransferGroupList;
+					defaultSelect = setDefaultSelect(
+						defaultSelect,
+						defPayType.douDouPay,
+						payments[defPayType.douDouPay]
+					);
+
+					if (res.data.errorCode !== 0) {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				} catch (error) {}
+
 				if (isMountedRef.current) {
 					setLoading(false);
 					setPaymentList(payments);

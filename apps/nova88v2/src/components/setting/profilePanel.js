@@ -115,35 +115,41 @@ const PeofilePanel = () => {
 			</div>
 			<div className="wallet-box">
 				<div className="wallet-list">
-					<div className="wallet-list-item mainwallet">
-						{t("lbl_MainWallet")}
-						<div>
-							{currencyIdToCurrency[currencyId]}{" "}
-							{number_format(
-								mainWalletInfo?.balance,
-								isConvert(currencyId)
-							)}
-						</div>
-					</div>
-					{tpWalletsList?.map(({ id, balance, displayText }) => {
-						return (
-							<div
-								key={id}
-								className="wallet-list-item ninewallet">
-								{displayText}
-								<div>
-									{currencyIdToCurrency[currencyId]}{" "}
-									{number_format(
-										balance,
-										isConvert(currencyId)
-									)}
-								</div>
+					<div>
+						<div className="wallet-list-item main-wallet">
+							{t("lbl_MainWallet")}
+							<div>
+								{currencyIdToCurrency[currencyId]}{" "}
+								{number_format(
+									mainWalletInfo?.balance,
+									isConvert(currencyId)
+								)}
 							</div>
-						);
-					})}
-					{allowedCurrencyList.transferFunds.includes(currencyId) && (
-						<Link to={path.transfer.root}>{t("lbl_Transfer")}</Link>
-					)}
+						</div>
+						{tpWalletsList?.map(({ id, balance, displayText }) => {
+							return (
+								<div
+									key={id}
+									className="wallet-list-item ninewallet">
+									{displayText}
+									<div>
+										{currencyIdToCurrency[currencyId]}{" "}
+										{number_format(
+											balance,
+											isConvert(currencyId)
+										)}
+									</div>
+								</div>
+							);
+						})}
+						{allowedCurrencyList.transferFunds.includes(
+							currencyId
+						) && (
+							<Link to={path.transfer.root}>
+								{t("lbl_Transfer")}
+							</Link>
+						)}
+					</div>
 				</div>
 				<div className="bank-list">
 					<Link to={path.withdrawal.root}>
