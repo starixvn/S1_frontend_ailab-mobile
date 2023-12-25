@@ -150,6 +150,8 @@ const Menu = () => {
 									gameId,
 									eventIcon,
 									tpGameType,
+									spanText,
+									spanTextKey,
 									useGotoGame: isUseGotoGame
 								}) => {
 									const isNew = eventIcon?.some(
@@ -261,12 +263,20 @@ const Menu = () => {
 													? { pointerEvents: "none" }
 													: null
 											}>
-											{isNew && (
-												<div className="new-icon">
-													New
+											<div className="gamelist-img">
+												{isNew && (
+													<div className="new-icon">
+														New
+													</div>
+												)}
+												<img
+													src={img}
+													alt={tpGameType}
+												/>
+												<div className="gamelist-title">
+													{t(spanTextKey) || spanText}
 												</div>
-											)}
-											<img src={img} alt={tpGameType} />
+											</div>
 										</Link>
 									) : (
 										<button
@@ -278,12 +288,20 @@ const Menu = () => {
 												}
 											)}
 											onClick={onClickGame}>
-											{isNew && (
-												<div className="new-icon">
-													New
+											<div className="gamelist-img">
+												{isNew && (
+													<div className="new-icon">
+														New
+													</div>
+												)}
+												<img
+													src={img}
+													alt={tpGameType}
+												/>
+												<div className="gamelist-title">
+													{t(spanTextKey) || spanText}
 												</div>
-											)}
-											<img src={img} alt={tpGameType} />
+											</div>
 										</button>
 									);
 								}
