@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { defPrize } from "./def";
 import { GET_LANG_ID } from "../../service/language";
-import { GetCurrencyName } from "../common/common";
+import { GetCurrencyName, number_format } from "../common/common";
 import { cloudBannerImgURL, siteInfo } from "../../config";
 
 export const Prize = ({ currencyId, langId, i18n }) => {
@@ -17,13 +17,19 @@ export const Prize = ({ currencyId, langId, i18n }) => {
 	);
 };
 
-const PrizeList = ({ userInfo, i18n }) => {
+const PrizeList = ({ userInfo, i18n, leaderboardRankingBonus }) => {
 	const { currencyId, langId } = userInfo;
 	const getPrize = Prize({ currencyId, langId, i18n });
 
 	const rows = getPrize.map((item, index) => {
-		const { rank, prizes } = item;
-		prizes.splice(0, 1);
+		// 用 ranking 比對 api 資料
+		const { rank, ranking } = item;
+
+		// prizes 改成取 api 的資料
+		const currentRankingData = leaderboardRankingBonus.find(
+			rankingData => rankingData.ranking === ranking
+		);
+		const { minPoint = 0, bonus = 0 } = currentRankingData ?? {};
 
 		let trophy = "";
 		if (index > 2) {
@@ -33,14 +39,13 @@ const PrizeList = ({ userInfo, i18n }) => {
 		}
 
 		return (
-			<li key={`prizes-${rank}-${prizes}`}>
+			<li key={`prizes-${rank}`}>
 				<div>
 					<img src={trophy} alt="prize" />
 					{rank}
 				</div>
-				{prizes.map(prize => (
-					<div key={`prize-${rank}-${prize}`}>{prize}</div>
-				))}
+				<div>{number_format(minPoint, false, 0)}</div>
+				<div>{number_format(bonus, false, 0)}</div>
 			</li>
 		);
 	});
@@ -65,7 +70,8 @@ PrizeList.defaultProps = {};
 
 PrizeList.propTypes = {
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired
+	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
+	leaderboardRankingBonus: PropTypes.array.isRequired
 };
 
 export default PrizeList;
