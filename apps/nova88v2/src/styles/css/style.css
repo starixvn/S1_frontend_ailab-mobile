@@ -14138,7 +14138,7 @@ input[type=number] {
 }
 .btn-group.transferAll .clickBtn {
   max-width: 6vw;
-  padding: 0;
+  padding: 0.5vw 1vw;
 }
 .btn-group.transferAll .transfer-btn, .btn-group.transferAll .red {
   height: 100%;
@@ -14821,15 +14821,24 @@ main .swiper-container {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 23vw;
           flex: 0 0 23vw;
-  height: 25vw;
+  height: 31vw;
   position: relative;
   margin-right: 1vw;
 }
-.home-gamelist > div .gamelist-item img {
+.home-gamelist > div .gamelist-item .gamelist-img {
+  color: #000;
+  text-align: center;
+}
+.home-gamelist > div .gamelist-item .gamelist-img img {
   width: 100%;
   -webkit-filter: drop-shadow(0 5px 5px #D8D8D8);
           filter: drop-shadow(0 5px 5px #D8D8D8);
   border-radius: 15px;
+}
+.home-gamelist > div .gamelist-item .gamelist-img > div {
+  width: 23vw;
+  line-height: 3.5vw;
+  word-wrap: break-word;
 }
 .home-gamelist > div .gamelist-item .text {
   display: none;
