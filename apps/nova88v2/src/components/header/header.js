@@ -32,7 +32,8 @@ const Header = ({
 	searchInput,
 	setSearchInput,
 	appHint,
-	setAppHint
+	setAppHint,
+	lobbyPath
 }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -56,7 +57,7 @@ const Header = ({
 		if (title) {
 			return isShowInput ? (
 				<div className="title searchBar">
-					<Link to={path.home.root}>
+					<Link to={lobbyPath || path.home.root}>
 						<i className="icon icon-keyboard_arrow_left" />
 					</Link>
 					{title}
@@ -172,7 +173,8 @@ Header.propTypes = {
 	searchInput: PropTypes.string,
 	setSearchInput: PropTypes.func,
 	appHint: PropTypes.bool,
-	setAppHint: PropTypes.func
+	setAppHint: PropTypes.func,
+	lobbyPath: PropTypes.string.isRequired
 };
 
 HeaderTitle.defaultProps = {
