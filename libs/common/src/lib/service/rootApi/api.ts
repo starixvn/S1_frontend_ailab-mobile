@@ -10,6 +10,11 @@ import { axiosBaseQuery } from "../axiosBaseQuery";
 export const rootApi = createApi({
 	reducerPath: "rootApi",
 	baseQuery: axiosBaseQuery({ baseUrl }),
-	tagTypes: ["AUTH_API_POST", "ANGPAO_POST"],
+	tagTypes: [
+		"AUTH_API_POST",
+		"ANGPAO_POST",
+		"DRAGONEGG_DRAW",
+		"DRAGONEGG_BLESSING"
+	],
 	endpoints: () => ({})
 });
