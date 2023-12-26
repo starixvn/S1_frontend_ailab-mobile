@@ -82,6 +82,7 @@ import RebateExclude from "./pages/rebateExclude";
 import News from "./pages/news";
 import Lottery from "./pages/lottery";
 import Esports from "./pages/esports";
+import DragonEgg from "./pages/dragonEgg";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -200,6 +201,7 @@ const Index = () => {
 								path={`/:langId/${path.rebateExclude.root}`}
 							/>
 							<News path={path.news.root} />
+							<DragonEgg path={path.dragonEgg.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

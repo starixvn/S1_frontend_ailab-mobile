@@ -5,6 +5,7 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Oswald:wght@600;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -6256,6 +6257,68 @@ span.important {
   background: #cecece;
   color: rgb(92, 92, 92);
 }
+.eventLink.dragonegg img {
+  width: 24vw;
+  height: 26vw;
+  -webkit-animation: dragonegg 1.5s ease-in-out 0s infinite normal none;
+          animation: dragonegg 1.5s ease-in-out 0s infinite normal none;
+}
+@-webkit-keyframes dragonegg {
+  0%, 100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-2px) rotate(-6deg);
+            transform: translateX(-2px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(2px) rotate(6deg);
+            transform: translateX(2px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-2px) rotate(-3.6deg);
+            transform: translateX(-2px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(2px) rotate(2.4deg);
+            transform: translateX(2px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-2px) rotate(-1.2deg);
+            transform: translateX(-2px) rotate(-1.2deg);
+  }
+}
+@keyframes dragonegg {
+  0%, 100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-2px) rotate(-6deg);
+            transform: translateX(-2px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(2px) rotate(6deg);
+            transform: translateX(2px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-2px) rotate(-3.6deg);
+            transform: translateX(-2px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(2px) rotate(2.4deg);
+            transform: translateX(2px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-2px) rotate(-1.2deg);
+            transform: translateX(-2px) rotate(-1.2deg);
+  }
+}
 
 .event {
   height: auto;
@@ -10973,4 +11036,690 @@ span.important {
   -webkit-line-clamp: 1;
   color: #1f3258;
   font-size: 3.5vw;
+}
+
+.dragonegg-event {
+  min-width: auto;
+  padding-top: 0;
+  padding-bottom: 15vw;
+  background: #560000;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 3.5vw;
+}
+.dragonegg-event button, .dragonegg-event a {
+  font-family: "Source Sans 3", sans-serif;
+}
+.dragonegg-event .event-banner {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+}
+.dragonegg-event .event-main {
+  position: relative;
+  z-index: 1;
+  margin-top: -12vw;
+  padding-top: 22vw;
+  height: 154vw;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_bg.png) no-repeat center/cover;
+}
+.dragonegg-event .event-task {
+  padding: 0 5vw;
+}
+.dragonegg-event .event-task-title {
+  position: absolute;
+  top: 7vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-family: "EB Garamond", serif;
+  font-size: 5vw;
+  font-weight: bold;
+}
+.dragonegg-event .event-task-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 251, 236)), to(rgb(255, 242, 199)));
+  background: linear-gradient(180deg, rgb(255, 251, 236) 0%, rgb(255, 242, 199) 100%);
+  margin-bottom: 3vw;
+  border-radius: 5px;
+  padding: 2vw;
+  -webkit-box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+  min-height: 10vw;
+}
+.dragonegg-event .event-task-item img {
+  width: 11vw;
+}
+.dragonegg-event .event-task-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #a06000;
+  width: 60vw;
+  margin-right: 2vw;
+  padding-bottom: 4vw;
+}
+.dragonegg-event .event-task-info .text {
+  color: #a06000;
+  font-weight: bold;
+  line-height: 1.2;
+  height: 8.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.dragonegg-event .event-task-btn {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_btn.png) no-repeat center/cover;
+  width: 20vw;
+  height: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+  font-size: 3.5vw;
+}
+.dragonegg-event .event-task-btn.active {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_btn_f.png) no-repeat center/cover;
+  color: #8e8e8e;
+}
+.dragonegg-event .event-draw {
+  text-align: center;
+}
+.dragonegg-event .event-draw img {
+  width: 90vw;
+}
+.dragonegg-event .event-draw-egg {
+  position: relative;
+}
+.dragonegg-event .event-draw-value {
+  position: absolute;
+  top: 10vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #fff;
+  font-size: 10vw;
+  font-weight: 600;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+.dragonegg-event .event-draw-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 12vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.dragonegg-event .event-draw .draw-single {
+  width: 34vw;
+  height: 11vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4vw;
+  font-weight: 600;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center/cover;
+  color: #6b6b6b;
+}
+.dragonegg-event .event-draw .draw-single.active {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn.png) no-repeat center/cover;
+  color: #fff;
+}
+.dragonegg-event .event-draw .draw-ten {
+  width: 34vw;
+  height: 11vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4vw;
+  font-weight: 600;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center/cover;
+  color: #6b6b6b;
+}
+.dragonegg-event .event-draw .draw-ten.active {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_ten.png) no-repeat center/cover;
+  color: #fff;
+}
+.dragonegg-event .event-collection {
+  height: 55vw;
+  margin-top: -35vw;
+  margin-bottom: 5vw;
+  position: relative;
+  z-index: 2;
+  padding-top: 35vw;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center/cover;
+}
+.dragonegg-event .event-collection.vn {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/5fu_bg_vn.png) no-repeat center/cover;
+}
+.dragonegg-event .event-collection-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #aa0804;
+  color: #fff0be;
+  padding: 0 3vw;
+  margin: 5vw auto 1.5vw;
+  width: calc(100% - 15vw);
+  min-height: 15.5vw;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 4.5vw;
+  opacity: 0.8;
+}
+.dragonegg-event .event-collection-btn img {
+  width: 15vw;
+  -webkit-filter: contrast(50%);
+          filter: contrast(50%);
+}
+.dragonegg-event .event-collection-btn.active {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(254, 165, 68)), to(rgb(235, 34, 11)));
+  background: linear-gradient(180deg, rgb(254, 165, 68) 0%, rgb(235, 34, 11) 100%);
+  -webkit-filter: drop-shadow(0px 0px 3px #fef571);
+          filter: drop-shadow(0px 0px 3px #fef571);
+  opacity: 1;
+}
+.dragonegg-event .event-collection-btn.active img {
+  width: 15vw;
+  -webkit-filter: contrast(1);
+          filter: contrast(1);
+}
+.dragonegg-event .event-collection-text {
+  color: #fff0be;
+  text-align: center;
+}
+.dragonegg-event .event-fu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 8vw;
+}
+.dragonegg-event .event-fu-item img {
+  width: 15vw;
+}
+.dragonegg-event .event-fu.active .event-fu-item img {
+  -webkit-filter: grayscale(1) brightness(1.2) contrast(50%);
+          filter: grayscale(1) brightness(1.2) contrast(50%);
+}
+.dragonegg-event .event-history {
+  width: calc(100% - 20vw);
+  padding: 14vw 5vw 5vw;
+  margin: 0 auto;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/rewards_bg.png) no-repeat center/cover;
+  height: 49vw;
+  position: relative;
+}
+.dragonegg-event .event-history-title {
+  position: absolute;
+  top: 3vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #ffed98;
+  font-size: 4vw;
+  font-weight: bold;
+}
+.dragonegg-event .event-history-table .top-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-history-table .top-title div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f6cd63;
+  color: #7e4c02;
+  border: 0;
+  padding: 1vw 0;
+  border-radius: 0 10px 0 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.dragonegg-event .event-history-table .top-title div:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin-right: 0.5vw;
+  border-radius: 10px 0 0 0;
+}
+.dragonegg-event .event-history-table .content {
+  height: 35vw;
+  overflow: auto;
+  border-radius: 0 0 10px 10px;
+}
+.dragonegg-event .event-history-table .content div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-history-table .content div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: #FFE8BB;
+  width: 100%;
+  color: #CA2121;
+  border-bottom: 1px solid #7e4c02;
+  padding: 1vw 0;
+}
+.dragonegg-event .event-history-table .content div div:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin-right: 0.5vw;
+}
+.dragonegg-event .event-info {
+  color: #f6cd63;
+  margin: 5vw auto;
+  padding: 0 5vw;
+  font-size: 3.5vw;
+}
+.dragonegg-event .event-info .title {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #f6cd63;
+  margin-bottom: 2vw;
+}
+.dragonegg-event .event-info .text {
+  color: #f6cd63;
+  margin-bottom: 2vw;
+}
+.dragonegg-event .event-info .sponsor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-info .sponsor div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  background: rgba(0, 0, 0, 0.25);
+  margin-right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  padding: 2vw;
+}
+.dragonegg-event .event-info .sponsor div img {
+  width: 30vw;
+}
+.dragonegg-event .progress {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(102, 0, 1)), to(rgb(189, 1, 0)));
+  background: linear-gradient(180deg, rgb(102, 0, 1) 0%, rgb(189, 1, 0) 100%);
+  position: relative;
+  border: 1.5px solid #fff;
+  border-radius: 2vw;
+  width: 100%;
+  height: 2vw;
+  -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.dragonegg-event .progress-bar {
+  height: 2vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 227, 133)), to(rgb(255, 163, 19)));
+  background: linear-gradient(180deg, rgb(255, 227, 133) 0%, rgb(255, 163, 19) 100%);
+  border-radius: 2vw;
+}
+.dragonegg-event .progress-info {
+  position: absolute;
+  right: 0;
+  bottom: -5vw;
+  font-size: 3.5vw;
+  font-weight: bold;
+}
+
+.dragonegg-pop {
+  background: rgba(0, 0, 0, 0.8) !important;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  position: relative;
+  font-family: "Source Sans 3", sans-serif;
+}
+.dragonegg-pop .close-btn {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 7vw;
+  height: 7vw;
+  position: absolute;
+  bottom: calc(50% - 50vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.dragonegg-pop .pop {
+  margin-top: -30vw;
+}
+.dragonegg-pop .dragonegg-frame {
+  width: 100%;
+  height: 97vw;
+  padding: 42vw 5vw 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/choose_bg.png) no-repeat center/cover;
+}
+.dragonegg-pop .dragonegg-draw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3vw;
+}
+.dragonegg-pop .dragonegg-draw .egg {
+  position: relative;
+}
+.dragonegg-pop .dragonegg-draw .egg img {
+  width: 25vw;
+}
+.dragonegg-pop .dragonegg-draw .egg::after {
+  content: "";
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/choose_egg_l.png) no-repeat center/cover;
+  position: absolute;
+  top: -2vw;
+  right: 0;
+  width: 15vw;
+  height: 12vw;
+  display: none;
+}
+.dragonegg-pop .dragonegg-draw .egg:hover::after {
+  display: block;
+}
+.dragonegg-pop .dragonegg-egg {
+  position: absolute;
+  bottom: 4vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-weight: bold;
+}
+.dragonegg-pop .dragonegg-egg span {
+  color: #f6cd63;
+}
+
+.dragonegg-result-pop {
+  background: rgba(0, 0, 0, 0.8) !important;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  position: relative;
+  font-family: "Source Sans 3", sans-serif;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  overflow-y: auto;
+}
+.dragonegg-result-pop .close-btn {
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 7vw;
+  height: 7vw;
+  position: absolute;
+  top: 7vw;
+  right: 7vw;
+}
+.dragonegg-result-pop.single .title {
+  margin-top: 3vw;
+}
+.dragonegg-result-pop.next-try {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+.dragonegg-result-pop.next-try .dragonegg-result-frame::before {
+  display: none;
+}
+.dragonegg-result-pop.next-try .dragonegg-result-frame img {
+  margin-top: -3vw;
+  margin-bottom: 3vw;
+  -webkit-animation: none;
+          animation: none;
+}
+.dragonegg-result-pop.ten-draw .dragonegg-result-frame::before {
+  display: none;
+}
+.dragonegg-result-pop.ten-draw .dragonegg-result-frame img {
+  width: 60vw;
+}
+.dragonegg-result-pop .dragonegg-result-frame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.dragonegg-result-pop .dragonegg-result-frame::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 58vw;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/winning_bg.png) no-repeat center/cover;
+  -webkit-animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+          animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+}
+.dragonegg-result-pop .dragonegg-result-frame .title {
+  font-size: 10vw;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #B1010B;
+}
+.dragonegg-result-pop .dragonegg-result-frame .rewards-title {
+  color: #f6cd63;
+  font-size: 5vw;
+  font-weight: bold;
+}
+.dragonegg-result-pop .dragonegg-result-frame img {
+  width: 75vw;
+  -webkit-animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+          animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+}
+.dragonegg-result-pop .dragonegg-result-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2vw;
+}
+.dragonegg-result-pop .dragonegg-result-list div {
+  margin-bottom: 2vw;
+  line-height: 1.2;
+}
+.dragonegg-result-pop .dragonegg-result-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red-outline {
+  border: 2px solid #ef4646;
+  border-radius: 5px;
+  -webkit-filter: drop-shadow(1px 1px 3px #ef4646);
+          filter: drop-shadow(1px 1px 3px #ef4646);
+  color: #ef4646;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red-outline.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red-outline.half {
+  width: 47%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(250, 83, 83)), to(rgb(191, 9, 11)));
+  background: linear-gradient(180deg, rgb(250, 83, 83) 0%, rgb(191, 9, 11) 100%);
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-red.half {
+  width: 48.5%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(249, 132, 66)), to(rgb(201, 78, 10)));
+  background: linear-gradient(180deg, rgb(249, 132, 66) 0%, rgb(201, 78, 10) 100%);
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org.half {
+  width: 48.5%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-egg {
+  font-weight: bold;
+  text-align: center;
+}
+.dragonegg-result-pop .dragonegg-result-egg span {
+  color: #f6cd63;
+}
+.dragonegg-result-pop .dragonegg-result-share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background: #5B0604;
+  color: #fff;
+  font-weight: bold;
+  padding: 2vw 3vw;
+  margin: 5vw auto;
+}
+.dragonegg-result-pop .dragonegg-result-share img {
+  width: 5vw;
+  margin-left: 2vw;
+}
+
+.mr-2 {
+  margin-right: 2vw;
+}
+
+@-webkit-keyframes bigger {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bigger {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }/*# sourceMappingURL=style.css.map */
