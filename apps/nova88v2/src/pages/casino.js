@@ -7,7 +7,6 @@ import {
 	loadingContext,
 	productTpGameTypeSettingListContext
 } from "Context";
-import { Link } from "../route/link";
 import Layout from "../components/common/layout";
 import Header from "../components/header/header";
 import Slider from "../components/casino/slider";
@@ -602,11 +601,8 @@ Panel.defaultProps = {
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const [searchInput, setSearchInput] = useState("");
-	const link = (
-		<Link to={`?prev=${path.casino.root}`}>
-			<i className="icon icon-keyboard_arrow_left" />
-		</Link>
-	);
+	const slotPath = `/?prev=${path.casino.root}`;
+
 	const header = (
 		<Header
 			isShowInput={true}
@@ -614,7 +610,7 @@ const IndexPage = () => {
 			setSearchInput={setSearchInput}
 			title={i18n.lbl_Slots}
 			hideLogo={true}
-			link={link}
+			lobbyPath={slotPath}
 		/>
 	);
 
