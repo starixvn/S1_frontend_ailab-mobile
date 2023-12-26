@@ -53,5 +53,9 @@ export const eventTime = {
 	Fishing_Alien_Hunter: { endDate: "2023/11/05 23:59:59" },
 	Fishing_Zombie_Party: { endDate: "2023/11/05 23:59:59" },
 	PNG: { endDate: "2023/11/05 23:59:59" },
-	slot_NoLimitCity: { endDate: "2024/01/11 23:59:59" }
+	slot_NoLimitCity: { endDate: "2024/01/11 23:59:59" },
+	dragonEgg: {
+		startDate: "2023/12/12 00:00:00",
+		endDate: "2024/02/29 23:59:59"
+	}
 };

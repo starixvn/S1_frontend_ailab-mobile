@@ -4337,6 +4337,9 @@ main .gameList .icon-new {
   background: #e6e6e6;
   border-bottom: 0;
 }
+.bankAccount .account .mask {
+  display: none;
+}
 .bankAccount .account.pending {
   position: relative;
   width: calc(100% - 8vw);
@@ -4348,7 +4351,15 @@ main .gameList .icon-new {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: rgba(40, 73, 133, 0.6);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-size: 3vw;
+  background: rgba(40, 73, 133, 0.8);
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -4384,6 +4395,33 @@ main .gameList .icon-new {
 }
 .selectBank button.active, .selectBank a.active {
   border: 2px solid #5574A7;
+}
+.selectBank button .mask, .selectBank a .mask {
+  display: none;
+}
+.selectBank button.pending, .selectBank a.pending {
+  position: relative;
+}
+.selectBank button.pending .mask, .selectBank a.pending .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  background: rgba(40, 73, 133, 0.8);
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  z-index: 1;
+  font-size: 3vw;
 }
 .selectBank a {
   display: -webkit-box;
@@ -8498,6 +8536,15 @@ span.important {
   height: 10vw;
   margin: 0 auto !important;
   background: url(https://banner.0814media.net/h5/img/topup.png) center/cover;
+}
+
+.icon-quick::before {
+  content: "";
+  display: block;
+  width: 10vw;
+  height: 10vw;
+  margin: 0 auto !important;
+  background: url(https://banner.0814media.net/h5/img/quick-transfer.png) center/cover;
 }
 
 .submenu {
@@ -14557,27 +14604,15 @@ main .swiper-container {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 23vw;
           flex: 0 0 23vw;
-  height: 31vw;
+  height: 25vw;
   position: relative;
-  font-size: 3.2vw;
-  font-weight: 400;
   margin-right: 1vw;
 }
-.home-gamelist > div .gamelist-item .gamelist-img {
-  color: #000;
-  text-align: center;
-  font-weight: 500;
-}
-.home-gamelist > div .gamelist-item .gamelist-img img {
+.home-gamelist > div .gamelist-item img {
   width: 100%;
   -webkit-filter: drop-shadow(0 5px 5px #D8D8D8);
           filter: drop-shadow(0 5px 5px #D8D8D8);
   border-radius: 15px;
-}
-.home-gamelist > div .gamelist-item .gamelist-img .gamelist-title {
-  width: 23vw;
-  line-height: 3.5vw;
-  word-wrap: break-word;
 }
 .home-gamelist > div .gamelist-item .text {
   display: none;
@@ -16079,4 +16114,1281 @@ main .swiper-container {
   padding: 3vw 0;
   color: #D1D1D1;
   margin: 5vw 0 0;
+}
+
+.dragonegg-event {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-en.jpg) no-repeat top/contain;
+  padding-top: 0;
+  position: relative;
+  height: auto;
+}
+.dragonegg-event.en {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-en.jpg) no-repeat top/contain;
+}
+.dragonegg-event.my {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-my.jpg) no-repeat top/contain;
+}
+.dragonegg-event.cs {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-cs.jpg) no-repeat top/contain;
+}
+.dragonegg-event.id {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-id.jpg) no-repeat top/contain;
+}
+.dragonegg-event.th {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-th.jpg) no-repeat top/contain;
+}
+.dragonegg-event.vn {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-vn.jpg) no-repeat top/contain;
+}
+.dragonegg-event .event-back {
+  padding: 2vw 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.dragonegg-event .event-back .icon-back {
+  position: relative;
+}
+.dragonegg-event .event-back .icon-back::after {
+  content: "";
+  display: inline-block;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/icon-back.svg) no-repeat center/cover;
+  width: 2vw;
+  height: 3vw;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.dragonegg-event .event-back a, .dragonegg-event .event-back button {
+  color: #fff;
+  font-size: 3.5vw;
+  margin-left: 3vw;
+}
+.dragonegg-event .event-main {
+  position: relative;
+  margin-top: 43vw;
+}
+.dragonegg-event .event-main-title {
+  padding: 2vw 0;
+  background: linear-gradient(358deg, #FFB800 -14.83%, #FD3D00 69.39%);
+  border-radius: 5.5vw 5.5vw 0 0;
+  border: 1.5vw solid #FFBF75;
+  -webkit-box-shadow: 0 -2px 6px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 -2px 6px 0 rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 4.6vw;
+  text-align: center;
+  position: relative;
+  top: -3.5vw;
+  margin: 0 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 0.8vw;
+}
+.dragonegg-event .event-main-title::before {
+  content: "";
+  display: inline-block;
+  width: 6.8vw;
+  height: 7.8vw;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/title-egg.png) no-repeat center/cover;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(-14deg);
+          transform: translateY(-50%) rotate(-14deg);
+  left: 4vw;
+  -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.dragonegg-event .event-main-title::after {
+  content: "";
+  display: inline-block;
+  width: 6.8vw;
+  height: 7.8vw;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/title-egg.png) no-repeat center/cover;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(14deg);
+          transform: translateY(-50%) rotate(14deg);
+  right: 4vw;
+  -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
+}
+.dragonegg-event .event-task {
+  background: #FFBF75;
+  padding: 0 5vw 3vw;
+  border-radius: 10vw 10vw 0 0;
+  position: relative;
+}
+.dragonegg-event .event-task-item {
+  border-radius: 6vw;
+  background: white;
+  border: 0.9vw solid #F57200;
+  height: 22.8vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 1.4vw;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+.dragonegg-event .event-task-info {
+  padding-left: 4vw;
+  width: 72%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
+.dragonegg-event .event-task-info .text {
+  color: #00286B;
+  font-weight: 500;
+  margin-top: 1vw;
+  line-height: 1.3;
+  padding-right: 5vw;
+}
+.dragonegg-event .event-task-info .progress {
+  background: #D7D7D7;
+  margin-top: 1vw;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2) inset;
+  width: 56vw;
+  height: 4vw;
+  border-radius: 15px;
+  position: relative;
+}
+.dragonegg-event .event-task-info .progress-bar {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-8.98%, #007365), color-stop(44.19%, #00C1AA), color-stop(96.83%, #6BFEEC));
+  background: linear-gradient(0deg, #007365 -8.98%, #00C1AA 44.19%, #6BFEEC 96.83%);
+  height: 4vw;
+  border-radius: 15px;
+}
+.dragonegg-event .event-task-info .progress-info {
+  color: #949494;
+  font-weight: 500;
+  text-align: right;
+  padding-right: 7vw;
+  margin-top: 1.1vw;
+}
+.dragonegg-event .event-task-info .progress-info span {
+  color: #FF7600;
+}
+.dragonegg-event .event-task-inner {
+  width: 28%;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-4.99%, #FD0400), color-stop(48.32%, #FF7600), color-stop(100.97%, #FFA95F)), -webkit-gradient(linear, left bottom, left top, color-stop(-4.99%, #FD0400), color-stop(48.32%, #FF7600), color-stop(100.97%, #FFA95F));
+  background: linear-gradient(0deg, #FD0400 -4.99%, #FF7600 48.32%, #FFA95F 100.97%), linear-gradient(0deg, #FD0400 -4.99%, #FF7600 48.32%, #FFA95F 100.97%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 0 5vw 5vw 0;
+}
+.dragonegg-event .event-task-inner.active {
+  background: #E9E9E9;
+}
+.dragonegg-event .event-task-one {
+  width: 10vw;
+}
+.dragonegg-event .event-task-two {
+  width: 19vw;
+}
+.dragonegg-event .event-task-btn {
+  font-size: 3.5vw;
+  font-weight: 700;
+  letter-spacing: 0.1vw;
+}
+.dragonegg-event .event-task-btn.active {
+  color: #949494;
+}
+.dragonegg-event .event-draw {
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/draw-bg-1.jpg) no-repeat center/contain;
+  position: relative;
+  width: 100%;
+  height: 70vw;
+  padding: 25vw 0;
+  margin-top: -2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.dragonegg-event .event-draw-img {
+  width: 100%;
+}
+.dragonegg-event .event-draw-egg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.dragonegg-event .event-draw-value {
+  width: 36vw;
+  border-radius: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 3.8vw;
+  color: #113158;
+  font-weight: 900;
+  background: #fff;
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3) inset;
+          box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.3) inset;
+  margin-top: -15.2vw;
+}
+.dragonegg-event .event-draw-value span {
+  margin-left: 1.5vw;
+  font-size: 6vw;
+  color: transparent;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(18.34%, #FD0000), color-stop(75.64%, #FF7600));
+  background: linear-gradient(0deg, #FD0000 18.34%, #FF7600 75.64%);
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+.dragonegg-event .event-draw-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: 24vw;
+}
+.dragonegg-event .event-draw-btn a,
+.dragonegg-event .event-draw-btn button {
+  font-weight: 800;
+  font-size: 4.5vw;
+  border-radius: 10vw;
+  padding: 2.8vw 8vw;
+  margin: 0 0 2.4vw;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.dragonegg-event .event-draw-btn .draw-single {
+  border: 2px solid #fff;
+  text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(14.58%, #E9E9E9), color-stop(78.12%, #BCBCBC));
+  background: linear-gradient(180deg, #E9E9E9 14.58%, #BCBCBC 78.12%);
+}
+.dragonegg-event .event-draw-btn .draw-single.active {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-1.53%, #FD0000), color-stop(39.53%, #FF7600), color-stop(68.18%, #FE9A5E), color-stop(108.16%, #FFBC82));
+  background: linear-gradient(0deg, #FD0000 -1.53%, #FF7600 39.53%, #FE9A5E 68.18%, #FFBC82 108.16%);
+  -webkit-box-shadow: 0px 0px 16px 2px #FF6B00;
+          box-shadow: 0px 0px 16px 2px #FF6B00;
+}
+.dragonegg-event .event-draw-btn .draw-ten {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(14.58%, #E9E9E9), color-stop(78.12%, #BCBCBC));
+  background: linear-gradient(180deg, #E9E9E9 14.58%, #BCBCBC 78.12%);
+  font-size: 3.6vw;
+  -webkit-box-shadow: 0px 0px 11px 1px rgba(107, 107, 107, 0.9);
+          box-shadow: 0px 0px 11px 1px rgba(107, 107, 107, 0.9);
+}
+.dragonegg-event .event-draw-btn .draw-ten.active {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(18.34%, #FD0000), color-stop(75.64%, #FF7600));
+  background: linear-gradient(0deg, #FD0000 18.34%, #FF7600 75.64%);
+  -webkit-box-shadow: 0px 0px 14px 2px #FFDA7C;
+          box-shadow: 0px 0px 14px 2px #FFDA7C;
+}
+.dragonegg-event .event-collection {
+  border-radius: 10vw;
+  border: 0.9vw solid #FFBF75;
+  margin: -10vw 5vw 0;
+  padding: 0 3vw;
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.dragonegg-event .event-collection a,
+.dragonegg-event .event-collection button {
+  text-align: center;
+  padding: 2.8vw 8vw;
+  font-weight: 800;
+  font-size: 4vw;
+  margin: 0 0 5.5vw;
+  border-radius: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.dragonegg-event .event-collection .event-main-title {
+  margin: 0 4vw;
+  top: -4.5vw;
+  width: 92%;
+}
+.dragonegg-event .event-collection-text {
+  text-align: center;
+}
+.dragonegg-event .event-collection-get {
+  width: 14vw;
+  height: 14vw;
+  border: 0.6vw solid #FF7600;
+  border-radius: 50%;
+  position: relative;
+}
+.dragonegg-event .event-collection-get img {
+  width: 16vw;
+  position: absolute;
+  bottom: 1.2vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.dragonegg-event .event-collection-noget {
+  width: 14vw;
+  height: 14vw;
+}
+.dragonegg-event .event-collection-noget img {
+  width: 14vw;
+}
+.dragonegg-event .event-collection-btn {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(14.58%, #E9E9E9), color-stop(78.12%, #BCBCBC));
+  background: linear-gradient(180deg, #E9E9E9 14.58%, #BCBCBC 78.12%);
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+}
+.dragonegg-event .event-collection-btn.active {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-8.98%, #FD2E00), color-stop(70.98%, #FF7600));
+  background: linear-gradient(0deg, #FD2E00 -8.98%, #FF7600 70.98%);
+  -webkit-box-shadow: 0px 0px 14px 2px #FFDA7C;
+          box-shadow: 0px 0px 14px 2px #FFDA7C;
+}
+.dragonegg-event .event-collection-received {
+  color: #FFCD82;
+  border: 2px solid #FFCD82;
+}
+.dragonegg-event .event-collection-received img {
+  width: 4vw;
+  margin-left: 1vw;
+}
+.dragonegg-event .event-fu-inner {
+  height: 24vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5vw;
+}
+.dragonegg-event .event-fu-item {
+  margin: 0 1vw;
+}
+.dragonegg-event .event-title {
+  font-size: 4.7vw;
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+}
+.dragonegg-event .event-history {
+  background: #FFBF75;
+  margin-top: 5vw;
+  padding: 6vw 0 11.5vw;
+  border-radius: 0 0 8vw 8vw;
+  position: relative;
+}
+.dragonegg-event .event-history::before {
+  content: "";
+  display: block;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/draw-bg-2.jpg) no-repeat center/contain;
+  width: 100%;
+  height: 20vw;
+  position: absolute;
+  top: -4.5vw;
+  z-index: 0;
+}
+.dragonegg-event .event-history .event-title {
+  color: #BD0213;
+  margin: 11.5vw 0 3vw;
+}
+.dragonegg-event .event-history-table {
+  border-radius: 4.4vw;
+  margin-top: 4vw;
+  background: #C6C6C6;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 5vw;
+}
+.dragonegg-event .event-history-table .top-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4.4vw 4.4vw 0 0;
+}
+.dragonegg-event .event-history-table .top-title > div {
+  background: #BD0213;
+  color: #fff;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2.5vw 5vw;
+}
+.dragonegg-event .event-history-table .top-title > div:first-child {
+  width: 25vw;
+  margin: 0 0.25vw 0.5vw 0;
+  border-radius: 4.4vw 0 0 0;
+}
+.dragonegg-event .event-history-table .top-title > div:last-child {
+  margin: 0 0 0.5vw 0.25vw;
+  border-radius: 0 4.4vw 0 0;
+}
+.dragonegg-event .event-history-table .content {
+  overflow-y: scroll;
+  height: 50vw;
+  background: #C6C6C6;
+  border-radius: 0 0 4.4vw 4.4vw;
+}
+.dragonegg-event .event-history-table .content > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.dragonegg-event .event-history-table .content > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  width: 100%;
+  padding: 2.5vw 5vw;
+  color: #0A1B38;
+  font-weight: 600;
+  line-height: 1.2;
+  height: 3.5vw;
+}
+.dragonegg-event .event-history-table .content > div > div:first-child {
+  width: 25vw;
+  margin: 0 0.25vw 0.5vw 0;
+}
+.dragonegg-event .event-history-table .content > div > div:last-child {
+  margin: 0 0 0.5vw 0.25vw;
+}
+.dragonegg-event .event-info.logbefore {
+  margin-top: 43vw;
+}
+.dragonegg-event .event-info-tc {
+  padding: 0 5vw;
+}
+.dragonegg-event .event-info-tc .event-title {
+  margin-top: 7.6vw;
+}
+.dragonegg-event .event-info-tc .text {
+  color: #fff;
+  margin-top: 3vw;
+  line-height: 1.3;
+}
+.dragonegg-event .event-info-sponsor {
+  margin-top: 8vw;
+  background: #92010E;
+  border-radius: 14vw 14vw 0 0;
+  padding: 4.5vw 0 22vw;
+}
+.dragonegg-event .event-info-sponsor.logbefore {
+  padding: 4.5vw 0 8vw;
+}
+.dragonegg-event .event-info-sponsor .sponsor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.dragonegg-event .event-info-sponsor .sponsor > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.dragonegg-event .event-info-sponsor .sponsor > div img {
+  width: 33vw;
+  margin-right: 5vw;
+}
+.dragonegg-event .event-info-sponsor .sponsor > div::after {
+  content: "";
+  display: inline-block;
+  width: 0.3vw;
+  height: 8vw;
+  background: #D3D3D3;
+  margin-left: 1vw;
+}
+.dragonegg-event .event-info-sponsor .sponsor > div:last-child::after {
+  display: none;
+}
+.dragonegg-event .event-info-sponsor .sponsor > div:last-child img {
+  margin-right: unset;
+  margin-left: 5vw;
+}
+
+#popup.dragonegg-pop {
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-break: break-all;
+  width: 100%;
+  height: 100%;
+}
+#popup.dragonegg-pop .pop {
+  margin-top: -25vw;
+}
+#popup.dragonegg-pop .pop:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background: transparent;
+}
+#popup.dragonegg-pop .close-btn::after {
+  content: "";
+  display: block;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 6vw;
+  height: 6vw;
+  position: absolute;
+  bottom: 24%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+#popup.dragonegg-pop.eggs.active .dragonegg-frame {
+  position: relative;
+}
+#popup.dragonegg-pop.eggs.active .dragonegg-frame img {
+  width: 60vw;
+}
+#popup.dragonegg-pop.eggs.active .dragonegg-frame .egg-check {
+  -webkit-animation: egg-check 1s cubic-bezier(0.15, 0.4, 0.88, 0.63);
+          animation: egg-check 1s cubic-bezier(0.15, 0.4, 0.88, 0.63);
+}
+@-webkit-keyframes egg-check {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  20% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  35% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  40% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  45% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  50% {
+    -webkit-transform: rotate(6deg);
+            transform: rotate(6deg);
+  }
+  55% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  60% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  65% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  70% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  75% {
+    -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+  }
+  80% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  85% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  90% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  95% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  100% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+}
+@keyframes egg-check {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  20% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  35% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  40% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  45% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  50% {
+    -webkit-transform: rotate(6deg);
+            transform: rotate(6deg);
+  }
+  55% {
+    -webkit-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+  }
+  60% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  65% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  70% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  75% {
+    -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+  }
+  80% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+  85% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  90% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  95% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  100% {
+    -webkit-transform: rotate(1deg);
+            transform: rotate(1deg);
+  }
+}
+#popup.dragonegg-pop.eggs.active .dragonegg-frame .egg-broken {
+  position: absolute;
+  top: -1%;
+  -webkit-animation: egg-broken 3.5s cubic-bezier(0.16, 0.6, 0.51, 0.95) 1s;
+          animation: egg-broken 3.5s cubic-bezier(0.16, 0.6, 0.51, 0.95) 1s;
+  opacity: 0;
+}
+@-webkit-keyframes egg-broken {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes egg-broken {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.choose.active .pop {
+  -webkit-animation: choose 0.35s cubic-bezier(0.15, 0.4, 0.88, 0.63);
+          animation: choose 0.35s cubic-bezier(0.15, 0.4, 0.88, 0.63);
+}
+@-webkit-keyframes choose {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes choose {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+#popup .dragonegg-frame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup .dragonegg-frame .title {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-8.98%, #FD2E00), color-stop(70.98%, #FF7600));
+  background: linear-gradient(0deg, #FD2E00 -8.98%, #FF7600 70.98%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  font-size: 10vw;
+  font-weight: 900;
+  line-height: 1.15;
+  -webkit-text-stroke: 1px #FFDE68;
+  text-align: center;
+  margin-bottom: 1.2vw;
+}
+#popup .dragonegg-frame .text {
+  font-size: 5vw;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 8vw;
+  text-transform: capitalize;
+  font-weight: 600;
+  word-break: break-word;
+}
+#popup .dragonegg-draw {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 8vw;
+}
+#popup .dragonegg-draw-bg {
+  width: 106%;
+  position: absolute;
+  bottom: -10vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+#popup .dragonegg-draw .egg img {
+  width: 31vw;
+}
+#popup .dragonegg-egg {
+  margin-top: 6vw;
+  color: #00B2FF;
+  font-weight: 600;
+  font-size: 3.8vw;
+}
+#popup .dragonegg-egg span {
+  font-size: 5vw;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(18.34%, #FD0000), color-stop(75.64%, #FF7600));
+  background: linear-gradient(0deg, #FD0000 18.34%, #FF7600 75.64%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+#popup.dragonegg-result-pop {
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-break: break-all;
+  width: 100%;
+  height: 100%;
+  padding: 2vw;
+}
+#popup.dragonegg-result-pop .close-btn::after {
+  content: "";
+  display: block;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 6vw;
+  height: 6vw;
+  position: absolute;
+  top: -4vw;
+  right: 1vw;
+}
+#popup.dragonegg-result-pop .pop {
+  margin-top: 8vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-animation: pop 0.55s cubic-bezier(0.15, 0.95, 0.55, 2);
+          animation: pop 0.55s cubic-bezier(0.15, 0.95, 0.55, 2);
+}
+#popup.dragonegg-result-pop .pop.single:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo), #popup.dragonegg-result-pop .pop.next-try:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo), #popup.dragonegg-result-pop .pop.ten-draw:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background: transparent;
+}
+@-webkit-keyframes pop {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes pop {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+#popup.dragonegg-result-pop .pop.next-try .dragonegg-result-frame .title {
+  font-size: 9vw;
+  margin-top: 3vw;
+}
+#popup.dragonegg-result-pop .pop.ten-draw .dragonegg-result-btn {
+  margin-top: 5vw;
+}
+#popup.dragonegg-result-pop .pop.ten-draw .dragonegg-result-btn .btn-receive {
+  -webkit-filter: drop-shadow(0px 0px 18px #FFB800);
+          filter: drop-shadow(0px 0px 18px #FFB800);
+}
+#popup.dragonegg-result-pop .pop.ten-draw .dragonegg-result-share {
+  margin-top: 3vw;
+}
+#popup.dragonegg-result-pop .pop.ten-draw .pop {
+  margin-top: 5vw;
+}
+#popup.dragonegg-result-pop .pop.ten-draw .title {
+  padding-bottom: 10vw;
+}
+#popup.dragonegg-result-pop .pop.ten-draw .close-btn::after {
+  top: -5vw;
+}
+#popup.dragonegg-result-pop .pop.single .rewards-title {
+  color: #FF7600;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.55);
+}
+#popup .dragonegg-result-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 4.5vw;
+  width: 100%;
+  margin-top: -10vw;
+}
+#popup .dragonegg-result-btn a,
+#popup .dragonegg-result-btn button {
+  text-transform: uppercase;
+  padding: 2.8vw 5vw;
+  font-weight: 800;
+  font-size: 3.8vw;
+  text-align: center;
+  border-radius: 10vw;
+  margin: 0 1vw 3.5vw;
+}
+#popup .dragonegg-result-btn .btn-receive {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-8.98%, #FD2E00), color-stop(52.34%, #FF7600), color-stop(95.79%, #FFA558));
+  background: linear-gradient(0deg, #FD2E00 -8.98%, #FF7600 52.34%, #FFA558 95.79%);
+  -webkit-filter: drop-shadow(0px 0px 29px #FFB800);
+          filter: drop-shadow(0px 0px 29px #FFB800);
+  padding: 3.6vw 5vw;
+  font-size: 5vw;
+  letter-spacing: 0.2vw;
+  width: 100%;
+  margin-bottom: 4vw;
+}
+#popup .dragonegg-result-btn .btn-playdraw {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#popup .dragonegg-result-btn .btn-oneplay, #popup .dragonegg-result-btn .btn-tenplay {
+  width: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-17.65%, #C62400), color-stop(39.39%, #FF3002), color-stop(82.04%, #FFA18C));
+  background: linear-gradient(0deg, #C62400 -17.65%, #FF3002 39.39%, #FFA18C 82.04%);
+}
+#popup .dragonegg-result-btn .btn-confirm {
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(16.98%, #A5CDFD), color-stop(51.35%, #4D94EA), color-stop(90.1%, #0060D4));
+  background: linear-gradient(180deg, #A5CDFD 16.98%, #4D94EA 51.35%, #0060D4 90.1%);
+}
+#popup .dragonegg-result-egg {
+  margin: -2vw 0 0;
+  color: #00B2FF;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#popup .dragonegg-result-egg span {
+  font-size: 6vw;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(18.34%, #FD0000), color-stop(75.64%, #FF7600));
+  background: linear-gradient(0deg, #FD0000 18.34%, #FF7600 75.64%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  margin-left: 1vw;
+  margin-top: 0.5vw;
+}
+#popup .dragonegg-result-share {
+  text-transform: uppercase;
+  border-radius: 10vw;
+  font-weight: 800;
+  font-size: 3.5vw;
+  border: 2px solid #1C67FF;
+  color: #1C67FF;
+  padding: 1.8vw 3.8vw;
+  text-align: center;
+  margin: 4vw 35vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#popup .dragonegg-result-share img {
+  margin-left: 1vw;
+  width: 3.2vw;
+}
+#popup .dragonegg-result-frame .title {
+  text-align: center;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(-8.98%, #FD2E00), color-stop(70.98%, #FF7600));
+  background: linear-gradient(0deg, #FD2E00 -8.98%, #FF7600 70.98%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  font-size: 8vw;
+  font-weight: 900;
+  line-height: 1.2;
+  -webkit-text-stroke: 1px #FFDE68;
+}
+#popup .dragonegg-result-frame .rewards-title {
+  font-size: 5vw;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 8vw;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+#popup .dragonegg-result-frame img {
+  width: 100%;
+  margin-top: -4vw;
+  display: block;
+  margin: 0 auto;
+}
+#popup .dragonegg-result-list {
+  background: #C6C6C6;
+  margin: 0 3vw;
+  text-align: center;
+  position: relative;
+  border-radius: 5vw;
+}
+#popup .dragonegg-result-list::after {
+  content: "";
+  display: inline-block;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/popup-10-light.png) no-repeat center/cover;
+  width: 60vw;
+  height: 60vw;
+  position: absolute;
+  top: -21vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+#popup .dragonegg-result-list > div {
+  background: #fff;
+  color: #0A1B38;
+  font-size: 3.3vw;
+  font-weight: 600;
+  padding: 1.2vw 0;
+  margin: 0 0 1.3vw;
+}
+#popup .dragonegg-result-list > div.list-title {
+  background: #BD0213;
+  color: #fff;
+  font-size: 4.5vw;
+  font-weight: 700;
+  border-radius: 5vw 5vw 0 0;
+  position: relative;
+}
+#popup .dragonegg-result-list > div.list-title::before {
+  content: "";
+  display: inline-block;
+  width: 18vw;
+  height: 18vw;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/popup-10-reward.png) no-repeat center/cover;
+  position: absolute;
+  top: -9vw;
+  left: 4lvw;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+#popup .dragonegg-result-list > div.list-title::after {
+  content: "";
+  display: inline-block;
+  width: 18vw;
+  height: 18vw;
+  background: url(https://banner.0814media.net/h5/img/event/dragonegg/popup-10-reward.png) no-repeat center/cover;
+  position: absolute;
+  top: -9vw;
+  right: 4lvw;
+}
+#popup .dragonegg-result-list > div:last-child {
+  margin-bottom: unset;
+  border-radius: 0 0 5vw 5vw;
+}
+
+.eventLink.dragonegg-float {
+  bottom: 38vw;
+  right: 1vw;
+}
+.eventLink.dragonegg-float .icon-close {
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  top: -3vw;
+}
+.eventLink .dragonegg-egg {
+  width: 28vw;
+  height: 28vw;
+}
+.eventLink .dragonegg-egg > img {
+  -webkit-animation: dragonegg-egg-img 0.4s infinite;
+          animation: dragonegg-egg-img 0.4s infinite;
+}
+@-webkit-keyframes dragonegg-egg-img {
+  0% {
+    -webkit-transform: rotate(0.5deg);
+            transform: rotate(0.5deg);
+  }
+  20% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  40% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  60% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  80% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+@keyframes dragonegg-egg-img {
+  0% {
+    -webkit-transform: rotate(0.5deg);
+            transform: rotate(0.5deg);
+  }
+  20% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  40% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  60% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  80% {
+    -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
 }/*# sourceMappingURL=style.css.map */
