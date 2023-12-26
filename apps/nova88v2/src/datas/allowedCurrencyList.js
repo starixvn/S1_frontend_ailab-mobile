@@ -41,6 +41,12 @@ const allowedCurrencyList = {
 		defCurrenyId.IDR,
 		defCurrenyId.INR
 	],
+	dragonEgg: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.VND
+	],
 
 	// ==== transfer ====
 	transferFunds: [defCurrenyId.INR, defCurrenyId.BDT, defCurrenyId.USD],

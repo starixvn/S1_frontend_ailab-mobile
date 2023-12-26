@@ -25,7 +25,8 @@
 			"@ailab-mobile/components": ["libs/components/src/index.ts"],
 			"@ailab-mobile/service": ["libs/common/src/lib/service/index.ts"],
 			"@ailab-mobile/store": ["libs/common/src/lib/store/index.ts"],
-			"@ailab-mobile/wrapper": ["libs/wrapper/src/index.ts"]
+			"@ailab-mobile/wrapper": ["libs/wrapper/src/index.ts"],
+			"@ailab-mobile/hooks": ["libs/common/src/lib/hooks/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
