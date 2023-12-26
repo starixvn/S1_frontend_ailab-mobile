@@ -1,0 +1,696 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rufina:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap");
+.dragonegg-event {
+  min-width: auto;
+  padding-top: 0;
+  padding-bottom: 15vw;
+  background: #112b83;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 3.5vw;
+}
+.dragonegg-event button, .dragonegg-event a {
+  font-family: "Source Sans 3", sans-serif;
+}
+.dragonegg-event .event-banner {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+}
+.dragonegg-event .event-main {
+  position: relative;
+  z-index: 3;
+  margin-top: -10vw;
+  padding-top: 19vw;
+  height: 130vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_bg.png) no-repeat center/cover;
+}
+.dragonegg-event .event-task {
+  padding: 0 5vw;
+}
+.dragonegg-event .event-task-title {
+  position: absolute;
+  top: 5.5vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-family: "Rufina", serif;
+  font-size: 5vw;
+  font-weight: bold;
+  color: #fff;
+}
+.dragonegg-event .event-task-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fffae7), to(#fffefc));
+  background: linear-gradient(180deg, #fffae7 0%, #fffefc 100%);
+  margin-bottom: 3vw;
+  border-radius: 20px;
+  padding: 2vw;
+  -webkit-box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+  min-height: 10vw;
+}
+.dragonegg-event .event-task-item img {
+  width: 11vw;
+}
+.dragonegg-event .event-task-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #0067c6;
+  width: 68vw;
+  margin-right: 2vw;
+  padding-bottom: 4vw;
+}
+.dragonegg-event .event-task-info .text {
+  color: #0067c6;
+  font-weight: bold;
+  line-height: 1.2;
+  height: 8.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.dragonegg-event .event-task-btn {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_btn.png) no-repeat center/cover;
+  width: 20vw;
+  height: 8.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+  font-size: 3.5vw;
+  padding-bottom: 2.5vw;
+  margin-bottom: -2.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-event .event-task-btn.active {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_btn_f.png) no-repeat center/cover;
+  color: #8e8e8e;
+}
+.dragonegg-event .event-draw {
+  text-align: center;
+  position: relative;
+}
+.dragonegg-event .event-draw img {
+  width: 72vw;
+}
+.dragonegg-event .event-draw-egg {
+  position: relative;
+}
+.dragonegg-event .event-draw-value {
+  position: absolute;
+  top: 9vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #fff;
+  font-size: 10vw;
+  font-weight: 600;
+  -webkit-filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+.dragonegg-event .event-draw-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.dragonegg-event .event-draw .draw-single {
+  width: 35.75vw;
+  height: 11.8vw;
+  padding-bottom: 1.5vw;
+  margin-right: 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4vw;
+  font-weight: 600;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center/cover;
+  color: #6b6b6b;
+}
+.dragonegg-event .event-draw .draw-single.active {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn.png) no-repeat center/cover;
+  color: #fff;
+}
+.dragonegg-event .event-draw .draw-ten {
+  width: 35.75vw;
+  height: 11.8vw;
+  padding-bottom: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4vw;
+  font-weight: 600;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center/cover;
+  color: #6b6b6b;
+}
+.dragonegg-event .event-draw .draw-ten.active {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_ten.png) no-repeat center/cover;
+  color: #fff;
+}
+.dragonegg-event .event-collection {
+  height: 115vw;
+  margin-top: -15vw;
+  margin-bottom: 5vw;
+  position: relative;
+  z-index: 2;
+  padding-top: 62vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center/cover;
+}
+.dragonegg-event .event-collection.vn {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/5fu_bg_vn.png) no-repeat center/cover;
+}
+.dragonegg-event .event-collection-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #6c4100;
+  color: #c5a36a;
+  padding: 0 3vw;
+  margin: 0 auto 4.5vw;
+  width: calc(100% - 20vw);
+  border-radius: 10vw;
+  min-height: 16vw;
+  font-weight: 600;
+  font-size: 4.5vw;
+  opacity: 0.8;
+}
+.dragonegg-event .event-collection-btn img {
+  width: 15vw;
+  -webkit-filter: contrast(50%);
+          filter: contrast(50%);
+}
+.dragonegg-event .event-collection-btn.active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fcab21), to(#e9620b));
+  background: linear-gradient(180deg, #fcab21 0%, #e9620b 100%);
+  -webkit-filter: drop-shadow(0px 0px 3px #fef571);
+          filter: drop-shadow(0px 0px 3px #fef571);
+  opacity: 1;
+  color: #fff;
+}
+.dragonegg-event .event-collection-btn.active img {
+  width: 15vw;
+  -webkit-filter: contrast(1);
+          filter: contrast(1);
+}
+.dragonegg-event .event-collection-text {
+  color: #fff0be;
+  text-align: center;
+}
+.dragonegg-event .event-fu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 8vw;
+}
+.dragonegg-event .event-fu-item img {
+  width: 16.5vw;
+}
+.dragonegg-event .event-fu.active .event-fu-item img {
+  -webkit-filter: grayscale(1) brightness(1.2) contrast(50%);
+          filter: grayscale(1) brightness(1.2) contrast(50%);
+}
+.dragonegg-event .event-history {
+  width: calc(100% - 20vw);
+  padding: 19vw 5vw 5vw;
+  margin: 0 auto;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/rewards_bg.png) no-repeat center/cover;
+  height: 45vw;
+  position: relative;
+}
+.dragonegg-event .event-history-title {
+  position: absolute;
+  top: 9vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #a06000;
+  font-size: 4vw;
+  font-weight: bold;
+}
+.dragonegg-event .event-history-table {
+  height: 43vw;
+  overflow: auto;
+  border-radius: 10px;
+}
+.dragonegg-event .event-history-table div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-history-table div:first-child div {
+  background: #a06000;
+  color: #fff;
+  border: 0;
+}
+.dragonegg-event .event-history-table div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: #fff;
+  width: 100%;
+  color: #a06000;
+  border-bottom: 1px solid #a06000;
+  padding: 1vw 0;
+}
+.dragonegg-event .event-history-table div div:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin-right: 1vw;
+}
+.dragonegg-event .event-info {
+  color: #FFF;
+  margin: 5vw auto;
+  padding: 0 5vw;
+  font-size: 3.5vw;
+}
+.dragonegg-event .event-info .title {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #FFF;
+  margin-bottom: 2vw;
+}
+.dragonegg-event .event-info .text {
+  color: #FFF;
+  margin-bottom: 2vw;
+}
+.dragonegg-event .event-info .sponsor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-info .sponsor div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  background: rgba(0, 0, 0, 0.25);
+  margin-right: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  padding: 2vw;
+}
+.dragonegg-event .event-info .sponsor div img {
+  width: 30vw;
+}
+.dragonegg-event .progress {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e1e1e), to(#005ab7));
+  background: linear-gradient(180deg, #1e1e1e 0%, #005ab7 100%);
+  position: relative;
+  border: 1.5px solid #fff;
+  border-radius: 2vw;
+  width: 100%;
+  height: 2vw;
+  -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.dragonegg-event .progress-bar {
+  height: 2vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fac48a), to(#ea8003));
+  background: linear-gradient(180deg, #fac48a 0%, #ea8003 100%);
+  border-radius: 2vw;
+}
+.dragonegg-event .progress-info {
+  position: absolute;
+  right: 0;
+  bottom: -5vw;
+  font-size: 3.5vw;
+  font-weight: bold;
+}
+
+.dragonegg-pop {
+  background: rgba(0, 0, 0, 0.8) !important;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  position: relative;
+  font-family: "Source Sans 3", sans-serif;
+  padding: 0 !important;
+}
+.dragonegg-pop .close-btn {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 7vw;
+  height: 7vw;
+  position: absolute;
+  bottom: calc(50% - 50vw);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.dragonegg-pop .pop {
+  width: 100% !important;
+  margin-top: -55vw;
+}
+.dragonegg-pop .dragonegg-frame {
+  width: 100%;
+  height: 124vw;
+  padding: 70vw 5vw 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/choose_bg.png) no-repeat center/cover;
+}
+.dragonegg-pop .dragonegg-draw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3vw;
+}
+.dragonegg-pop .dragonegg-draw .egg {
+  position: relative;
+}
+.dragonegg-pop .dragonegg-draw .egg img {
+  width: 23vw;
+}
+.dragonegg-pop .dragonegg-draw .egg::after {
+  content: "";
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/choose_egg_l.png) no-repeat center/cover;
+  position: absolute;
+  top: 0;
+  right: -1vw;
+  width: 25vw;
+  height: 25vw;
+  display: none;
+}
+.dragonegg-pop .dragonegg-draw .egg:hover::after {
+  display: block;
+}
+.dragonegg-pop .dragonegg-egg {
+  position: absolute;
+  bottom: 1vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-weight: bold;
+  color: #fff;
+}
+.dragonegg-pop .dragonegg-egg span {
+  color: #ffce66;
+}
+
+.dragonegg-result-pop {
+  background: rgba(0, 0, 0, 0.8) !important;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  position: relative;
+  font-family: "Source Sans 3", sans-serif;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+  overflow-y: auto;
+}
+.dragonegg-result-pop button, .dragonegg-result-pop a {
+  font-family: "Source Sans 3", sans-serif !important;
+}
+.dragonegg-result-pop .close-btn {
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/icon-close.svg) no-repeat center/cover;
+  width: 7vw;
+  height: 7vw;
+  position: absolute;
+  top: 7vw;
+  right: 7vw;
+}
+.dragonegg-result-pop.single .title {
+  margin-top: 5vw;
+}
+.dragonegg-result-pop.next-try {
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+}
+.dragonegg-result-pop.next-try .dragonegg-result-frame::before {
+  display: none;
+}
+.dragonegg-result-pop.next-try .dragonegg-result-frame img {
+  margin-top: -3vw;
+  margin-bottom: 3vw;
+  -webkit-animation: none;
+          animation: none;
+}
+.dragonegg-result-pop.ten-draw .dragonegg-result-frame::before {
+  display: none;
+}
+.dragonegg-result-pop.ten-draw .dragonegg-result-frame img {
+  width: 60vw;
+}
+.dragonegg-result-pop .dragonegg-result-frame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.dragonegg-result-pop .dragonegg-result-frame::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 58vw;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/winning_bg.png) no-repeat center/cover;
+  -webkit-animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+          animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+}
+.dragonegg-result-pop .dragonegg-result-frame .title {
+  font-size: 10vw;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #B1010B;
+}
+.dragonegg-result-pop .dragonegg-result-frame .rewards-title {
+  color: #f6cd63;
+  font-size: 5vw;
+  font-weight: bold;
+}
+.dragonegg-result-pop .dragonegg-result-frame img {
+  width: 75vw;
+  -webkit-animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+          animation: 0.3s bigger cubic-bezier(0.4, 0.94, 0.56, 1.59);
+}
+.dragonegg-result-pop .dragonegg-result-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2vw;
+  color: #fff;
+}
+.dragonegg-result-pop .dragonegg-result-list div {
+  margin-bottom: 2vw;
+  line-height: 1.2;
+}
+.dragonegg-result-pop .dragonegg-result-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue-outline {
+  border: 2px solid #369fff;
+  border-radius: 5px;
+  -webkit-filter: drop-shadow(1px 1px 3px #369fff);
+          filter: drop-shadow(1px 1px 3px #369fff);
+  color: #369fff;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue-outline.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue-outline.half {
+  width: 46.5%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue {
+  background: -webkit-gradient(linear, left top, left bottom, from(#1d2fc5), to(#061b94));
+  background: linear-gradient(180deg, #1d2fc5 0%, #061b94 100%);
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-blue.half {
+  width: 47%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(249, 132, 66)), to(rgb(201, 78, 10)));
+  background: linear-gradient(180deg, rgb(249, 132, 66) 0%, rgb(201, 78, 10) 100%);
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 4.5vw;
+  font-weight: bold;
+  padding: 1.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org.full {
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-btn .btn-org.half {
+  width: 47%;
+  margin-bottom: 3vw;
+}
+.dragonegg-result-pop .dragonegg-result-egg {
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+.dragonegg-result-pop .dragonegg-result-egg span {
+  color: #f6cd63;
+}
+.dragonegg-result-pop .dragonegg-result-share {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  background: #03214e;
+  color: #fff;
+  font-weight: bold;
+  padding: 2vw 3vw;
+  margin: 5vw auto;
+}
+.dragonegg-result-pop .dragonegg-result-share img {
+  width: 5vw;
+  margin-left: 2vw;
+}
+
+.mr-2 {
+  margin-right: 2vw;
+}
+
+@-webkit-keyframes bigger {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bigger {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}/*# sourceMappingURL=event.css.map */
