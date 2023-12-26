@@ -254,7 +254,7 @@
   "lbl_DownloadAppStep4": "เปิด 'Mini Puzzle Game' เพื่อเปิดแอป 'Nova88'",
   "lbl_Downloads": "ดาวน์โหลด",
   "lbl_DragonEgg_10Again": "อีก 10 ครั้ง",
-  "lbl_DragonEgg_BlessingHints": "รวบรวมไข่ 5 ใบเพื่อรับ $888",
+  "lbl_DragonEgg_BlessingHints": "รวบรวมไข่ 5 ใบเพื่อรับ ${{amount}}",
   "lbl_DragonEgg_CONGRATULATIONS": "ขอแสดงความยินดี",
   "lbl_DragonEgg_ClickFor10": "คลิก 10 ครั้ง",
   "lbl_DragonEgg_Confirm": "ยืนยัน",

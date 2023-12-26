@@ -254,7 +254,7 @@
   "lbl_DownloadAppStep4": "打开 '迷你 Puzzle 游戏' 以打开 'Nova88' app",
   "lbl_Downloads": "下载",
   "lbl_DragonEgg_10Again": "再抽 10 次",
-  "lbl_DragonEgg_BlessingHints": "收集五枚福蛋获得 $888 奖励",
+  "lbl_DragonEgg_BlessingHints": "收集五枚福蛋获得 ${{amount}} 奖励",
   "lbl_DragonEgg_CONGRATULATIONS": "恭喜",
   "lbl_DragonEgg_ClickFor10": "10连抽",
   "lbl_DragonEgg_Confirm": "确认",
