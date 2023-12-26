@@ -12,6 +12,7 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
+import { getUrlParameter } from "../common/common";
 
 const swipperParam = {
 	spaceBetween: 5,
@@ -32,6 +33,7 @@ const Menu = ({ i18n, userInfo }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
+	const target = getUrlParameter("target");
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -63,6 +65,10 @@ const Menu = ({ i18n, userInfo }) => {
 			);
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
+
+	useEffect(() => {
+		if (target) setSelectedCol(target);
+	}, []);
 
 	const showSubPanel = ({ panel }) => {
 		if (selectedCol !== panel) {
