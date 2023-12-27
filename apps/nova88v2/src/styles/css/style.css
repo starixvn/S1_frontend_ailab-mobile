@@ -16876,6 +16876,9 @@ main .swiper-container {
 .dragonegg-event .event-history-table .top-title > div:last-child {
   margin: 0 0 0.5vw 0.25vw;
 }
+.dragonegg-event .event-info.logbefore {
+  margin-top: 43vw;
+}
 .dragonegg-event .event-info-tc {
   padding: 0 5vw;
 }
@@ -16885,12 +16888,16 @@ main .swiper-container {
 .dragonegg-event .event-info-tc .text {
   color: #fff;
   margin-top: 3vw;
+  line-height: 1.3;
 }
 .dragonegg-event .event-info-sponsor {
   margin-top: 8vw;
   background: #92010E;
   border-radius: 14vw 14vw 0 0;
   padding: 4.5vw 0 22vw;
+}
+.dragonegg-event .event-info-sponsor.logbefore {
+  padding: 4.5vw 0 8vw;
 }
 .dragonegg-event .event-info-sponsor .sponsor {
   display: -webkit-box;

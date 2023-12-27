@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { cloudBannerImgURL } from "../../config";
@@ -30,13 +31,13 @@ export const prizeAmout = {
 const Info = () => {
 	const { t } = useTranslation();
 	const {
-		userInfo: { currencyId }
+		userInfo: { isLogin, currencyId }
 	} = useContext(userInfoContext);
 
 	if (!currencyId) return null;
 
 	return (
-		<div className="event-info">
+		<div className={classNames("event-info", { logbefore: !isLogin })}>
 			<div className="event-info-tc">
 				<div className="event-title">
 					{t("lbl_DragonEgg_Terms&Conditions")}
@@ -72,7 +73,10 @@ const Info = () => {
 				<div className="text">- {t("lbl_DragonEgg_Terms16")}</div>
 			</div>
 
-			<div className="event-info-sponsor">
+			<div
+				className={classNames("event-info-sponsor", {
+					logbefore: !isLogin
+				})}>
 				<div className="event-title">{t("lbl_DragonEgg_Sponsor")}</div>
 				<div className="sponsor">
 					<div>
