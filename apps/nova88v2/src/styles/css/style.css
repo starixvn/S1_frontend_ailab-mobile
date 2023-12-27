@@ -14837,7 +14837,7 @@ main .swiper-container {
           filter: drop-shadow(0 5px 5px #D8D8D8);
   border-radius: 15px;
 }
-.home-gamelist > div .gamelist-item .gamelist-img > div {
+.home-gamelist > div .gamelist-item .gamelist-img .gamelist-title {
   width: 23vw;
   line-height: 3.5vw;
   word-wrap: break-word;

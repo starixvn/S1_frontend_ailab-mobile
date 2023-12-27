@@ -265,7 +265,7 @@ const Menu = () => {
 													src={img}
 													alt={tpGameType}
 												/>
-												<div>
+												<div className="gamelist-title">
 													{t(spanTextKey) || spanText}
 												</div>
 											</div>
@@ -290,7 +290,7 @@ const Menu = () => {
 													src={img}
 													alt={tpGameType}
 												/>
-												<div>
+												<div className="gamelist-title">
 													{t(spanTextKey) || spanText}
 												</div>
 											</div>
