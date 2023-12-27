@@ -11,3 +11,4 @@ export * from "./hotGameApi";
 export * from "./gameApi";
 export * from "./eventApi";
 export * from "./bigWinApi";
+export * from "./eventsApi";

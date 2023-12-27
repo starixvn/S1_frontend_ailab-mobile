@@ -1,3 +1,4 @@
 export const eventIds = {
-	luckyWheel: 10
+	luckyWheel: 10,
+	dragonEgg: 16
 };

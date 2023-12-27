@@ -1,7 +1,5 @@
 import React, { useContext, Component, useEffect } from "react";
 import PropTypes from "prop-types";
-import { isDateRange } from "@ailab-mobile/common";
-import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useMatch, useNavigate } from "@reach/router";
 import { Footer } from "./footer";
 import Header from "../header/header";
@@ -22,7 +20,8 @@ import { MysteryBoxPop } from "../../pages/mysteryBox";
 import Modal from "../join/modal";
 import GoTopBtn from "./goTopBtn";
 import { eventTime } from "./eventTime";
-import { angpaoAllowedCurrencies, angPaoEventPeriod } from "../../pages/angpao";
+import allowedCurrencyList from "../../datas/allowedCurrencyList";
+import DragonEggPop from "../dragonEgg/homeLink";
 
 const Layout = ({
 	header,
@@ -84,14 +83,14 @@ const Layout = ({
 
 			{/* 僅限過年期間不顯示 */}
 			{isEventPeriod(eventTime.luckyWheel) &&
-			!isDateRange(angPaoEventPeriod) ? (
+			!isEventPeriod(eventTime.dragonEgg) ? (
 				<LuckyWheelPop />
 			) : null}
 
 			{/* 僅限過年期間顯示且只支援部分幣別 */}
-			{isDateRange(angPaoEventPeriod) &&
-				angpaoAllowedCurrencies.includes(userInfo.currencyId) &&
-				root && <AngpaoFloatLink />}
+			{isEventPeriod(eventTime.dragonEgg) &&
+				allowedCurrencyList.dragonEgg.includes(userInfo.currencyId) &&
+				root && <DragonEggPop />}
 
 			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
 			<Footer />
