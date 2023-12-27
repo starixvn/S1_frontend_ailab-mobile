@@ -419,11 +419,14 @@
 .dragonegg-pop .dragonegg-frame {
   width: 100%;
   height: 124vw;
-  padding: 70vw 5vw 0;
+  padding: 70vw 10vw 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-align: center;
   position: relative;
+  color: #C60000;
+  font-size: 4vw;
+  font-weight: bold;
   background: url(https://banner.bw88.io/h5/img/event/dragonegg/choose_bg.png) no-repeat center/cover;
 }
 .dragonegg-pop .dragonegg-draw {
@@ -547,7 +550,7 @@
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   -webkit-text-stroke-width: 1.5px;
-  -webkit-text-stroke-color: #B1010B;
+  -webkit-text-stroke-color: #C17900;
 }
 .dragonegg-result-pop .dragonegg-result-frame .rewards-title {
   color: #f6cd63;

@@ -16356,10 +16356,28 @@ main .swiper-container {
 }
 
 .dragonegg-event {
-  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner.jpg) no-repeat top/contain;
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-en.jpg) no-repeat top/contain;
   padding-top: 0;
   position: relative;
   height: auto;
+}
+.dragonegg-event.en {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-en.jpg) no-repeat top/contain;
+}
+.dragonegg-event.my {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-my.jpg) no-repeat top/contain;
+}
+.dragonegg-event.cs {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-cs.jpg) no-repeat top/contain;
+}
+.dragonegg-event.id {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-id.jpg) no-repeat top/contain;
+}
+.dragonegg-event.th {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-th.jpg) no-repeat top/contain;
+}
+.dragonegg-event.vn {
+  background: #BD0213 url(https://banner.0814media.net/h5/img/event/dragonegg/banner-vn.jpg) no-repeat top/contain;
 }
 .dragonegg-event .event-back {
   padding: 2vw 3vw;
@@ -16552,6 +16570,19 @@ main .swiper-container {
   width: 100%;
   padding: 25vw 0;
   margin-top: -2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .dragonegg-event .event-draw-img {
   width: 100%;
@@ -16613,15 +16644,14 @@ main .swiper-container {
           justify-content: center;
   position: absolute;
   bottom: 24vw;
-  width: 100%;
 }
 .dragonegg-event .event-draw-btn a,
 .dragonegg-event .event-draw-btn button {
   font-weight: 800;
   font-size: 4.5vw;
   border-radius: 10vw;
-  padding: 2.8vw 0;
-  margin: 0 25vw 2.4vw;
+  padding: 2.8vw 8vw;
+  margin: 0 0 2.4vw;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16682,7 +16712,7 @@ main .swiper-container {
 .dragonegg-event .event-collection a,
 .dragonegg-event .event-collection button {
   text-align: center;
-  padding: 2.8vw 3vw;
+  padding: 2.8vw 8vw;
   font-weight: 800;
   font-size: 4vw;
   margin: 0 0 5.5vw;
@@ -16696,7 +16726,6 @@ main .swiper-container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 62%;
 }
 .dragonegg-event .event-collection .event-main-title {
   margin: 0 4vw;
@@ -16905,9 +16934,6 @@ main .swiper-container {
   margin-left: 5vw;
 }
 
-#popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
-  background: transparent;
-}
 #popup.dragonegg-pop {
   background: rgba(0, 0, 0, 0.85);
   -webkit-box-align: center;
@@ -16925,6 +16951,9 @@ main .swiper-container {
 #popup.dragonegg-pop .pop {
   margin-top: -25vw;
 }
+#popup.dragonegg-pop .pop:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background: transparent;
+}
 #popup.dragonegg-pop .close-btn::after {
   content: "";
   display: block;
@@ -16933,9 +16962,9 @@ main .swiper-container {
   height: 6vw;
   position: absolute;
   bottom: 24%;
-  left: 47%;
-  -webkit-transform: translateY(-53%);
-          transform: translateY(-53%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 #popup.dragonegg-pop.eggs.active .dragonegg-frame {
   position: relative;
@@ -17251,6 +17280,9 @@ main .swiper-container {
   -webkit-animation: pop 0.55s cubic-bezier(0.15, 0.95, 0.55, 2);
           animation: pop 0.55s cubic-bezier(0.15, 0.95, 0.55, 2);
 }
+#popup.dragonegg-result-pop .pop.single:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo), #popup.dragonegg-result-pop .pop.next-try:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo), #popup.dragonegg-result-pop .pop.ten-draw:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background: transparent;
+}
 @-webkit-keyframes pop {
   0% {
     -webkit-transform: scale(0);
@@ -17432,6 +17464,8 @@ main .swiper-container {
 #popup .dragonegg-result-frame img {
   width: 100%;
   margin-top: -4vw;
+  display: block;
+  margin: 0 auto;
 }
 #popup .dragonegg-result-list {
   background: #C6C6C6;
