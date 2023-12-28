@@ -9,9 +9,9 @@ import {
 import { useNavigate } from "@reach/router";
 import path from "../../path";
 import { cloudBannerImgURL } from "../../config";
-import { number_format } from "../common/common";
+import { isConvert, number_format } from "../common/common";
 import { defCol } from "../../datas/productList";
-import { popBoxContext } from "../common/context";
+import { popBoxContext, userInfoContext } from "../common/context";
 import { DrawPopBox, PrizePopBox } from "./popBox";
 import { eventIds } from "../../datas/eventId";
 
@@ -20,8 +20,13 @@ const Task = () => {
 	const navigate = useNavigate();
 
 	const { setPopBox } = useContext(popBoxContext);
+	const {
+		userInfo: { currencyId }
+	} = useContext(userInfoContext);
 
 	const { eggTicket, missionList } = useGragonEgg();
+
+	const _isConvert = isConvert(currencyId);
 
 	const goMission = ({ type, tpCategoryId }) => {
 		let targetPath = "";
@@ -97,17 +102,24 @@ const Task = () => {
 									{type ===
 									PromotionMissionTypeEnum.referFriend ? (
 										<div className="progress-info">
-											{progressAmount} /{goalAmount}
+											<span>{progressAmount}</span> /
+											{goalAmount}
 										</div>
 									) : (
 										<div className="progress-info">
+											<span>
+												{number_format(
+													progressAmount,
+													_isConvert,
+													0
+												)}
+											</span>
+											/
 											{number_format(
-												progressAmount,
-												true,
+												goalAmount,
+												_isConvert,
 												0
 											)}
-											/
-											{number_format(goalAmount, true, 0)}
 										</div>
 									)}
 								</div>

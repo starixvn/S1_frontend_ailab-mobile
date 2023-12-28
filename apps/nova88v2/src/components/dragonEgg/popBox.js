@@ -138,7 +138,7 @@ export const PrizePopBox = ({ isMulti }) => {
 					prizeList[0]?.drawPrizeType === DrawPrizeTypeEnum.noPrize,
 				single:
 					!isMultiDraw &&
-					!prizeList[0]?.drawPrizeType === DrawPrizeTypeEnum.noPrize
+					prizeList[0]?.drawPrizeType !== DrawPrizeTypeEnum.noPrize
 			})}>
 			<button
 				className="close-btn"
