@@ -781,21 +781,6 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
-					...defGameInfo.Casino_BNG,
-					parameter: defGameInfo.Casino_BNG,
-					spanText: "BNG",
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/bng.png`,
-					path: path.casino.root,
-					providerImgName: "",
-					sortKey: "slot_BNG",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(eventTime.slot_bng)
-						}
-					]
-				},
-				{
 					...defGameInfo.Casino_FaChai,
 					parameter: defGameInfo.Casino_FaChai,
 					spanText: "Fa Chai",
@@ -1341,6 +1326,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.HaoLong,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/4d/haolong.png`,
 					allowCurrency: allowedCurrencyList.haoLong,
+					spanText: "Grand Dragon",
 					useGotoGame: true,
 					eventIcon: [
 						{
