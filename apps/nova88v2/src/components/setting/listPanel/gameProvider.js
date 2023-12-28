@@ -203,11 +203,13 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_Amigo,
 		imgName: "casino_amigo",
-		path: path.casino.root
+		path: path.casino.root,
+		allowCurrencies: allowedCurrencyList.slotAmigo
 	},
 	{
 		...defGameInfo.HaoLong,
-		imgName: "haolong"
+		imgName: "haolong",
+		allowCurrencies: allowedCurrencyList.haoLong
 	}
 ];
 

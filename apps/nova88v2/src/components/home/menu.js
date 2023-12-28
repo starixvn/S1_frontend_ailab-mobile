@@ -111,11 +111,11 @@ const Menu = () => {
 						sortedGameList
 							.filter(({ tpId, tpGameType, allowCurrency }) => {
 								// filter site tpId
-								const isInSiteTpList = siteTpIdList?.includes(
-									tpId
-								);
+								const isInSiteTpList = isLogin
+									? siteTpIdList?.includes(tpId)
+									: true;
 
-								// filter allow currency if exist
+								// filter allow currency if exist (after login)
 								const isAllowCurrency =
 									!allowCurrency ||
 									allowCurrency?.includes(currencyId);
@@ -197,18 +197,26 @@ const Menu = () => {
 										if (isLiveHostNoPlay) {
 											showNoPlayPopBox();
 										} else if (isUseGotoGame) {
-											const result = await handleGoToGame(
-												{
-													tpId,
-													langId,
-													gameId,
-													isLogin,
-													tpGameType
-												}
-											);
-											const { url, key, userId } =
-												result ?? {};
-											open9wSports({ url, key, userId });
+											if (!isLogin) {
+												handleLogin();
+											} else {
+												const result = await handleGoToGame(
+													{
+														tpId,
+														langId,
+														gameId,
+														isLogin,
+														tpGameType
+													}
+												);
+												const { url, key, userId } =
+													result ?? {};
+												open9wSports({
+													url,
+													key,
+													userId
+												});
+											}
 										} else {
 											GET_ENTER_PAGE({
 												tpId,

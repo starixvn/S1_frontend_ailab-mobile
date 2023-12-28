@@ -15,7 +15,8 @@ import {
 	HotEventAPI,
 	GameAPI,
 	HotGameAPI,
-	FrontEndLogAPI
+	FrontEndLogAPI,
+	LiveStreamingAPI
 } from "@ailab-mobile/api";
 
 import config from "../config";
@@ -37,5 +38,6 @@ export default {
 	hotEvent: new HotEventAPI(config),
 	game: new GameAPI(config),
 	hotGame: new HotGameAPI(config),
-	frontEndLog: new FrontEndLogAPI(config)
+	frontEndLog: new FrontEndLogAPI(config),
+	liveStreaming: new LiveStreamingAPI(config)
 };
