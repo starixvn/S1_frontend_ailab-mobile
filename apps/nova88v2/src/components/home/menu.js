@@ -10,11 +10,7 @@ import {
 import { useGetTpIdsQuery } from "@ailab-mobile/service";
 import { getUrlParameter } from "../common/common";
 import { cloudBannerImgURL } from "../../config";
-import {
-	useGotoGame,
-	open9wSports,
-	defSpecialSetting
-} from "../hook/useGotoGame";
+import { useGotoGame, open9wSports } from "../hook/useGotoGame";
 import {
 	defTpGameType,
 	useGetTpMaintainList
@@ -115,11 +111,11 @@ const Menu = () => {
 						sortedGameList
 							.filter(({ tpId, tpGameType, allowCurrency }) => {
 								// filter site tpId
-								const isInSiteTpList = siteTpIdList?.includes(
-									tpId
-								);
+								const isInSiteTpList = isLogin
+									? siteTpIdList?.includes(tpId)
+									: true;
 
-								// filter allow currency if exist
+								// filter allow currency if exist (after login)
 								const isAllowCurrency =
 									!allowCurrency ||
 									allowCurrency?.includes(currencyId);
@@ -198,23 +194,27 @@ const Menu = () => {
 									const onClickGame = async () => {
 										if (isLiveHostNoPlay) {
 											showNoPlayPopBox();
-										} else if (
-											tpId ===
-												defSpecialSetting.sports_9w &&
-											isLogin
-										) {
-											const result = await handleGoToGame(
-												{
-													tpId,
-													langId,
-													gameId,
-													isLogin,
-													tpGameType
-												}
-											);
-											const { url, key, userId } =
-												result ?? {};
-											open9wSports({ url, key, userId });
+										} else if (isUseGotoGame) {
+											if (!isLogin) {
+												handleLogin();
+											} else {
+												const result = await handleGoToGame(
+													{
+														tpId,
+														langId,
+														gameId,
+														isLogin,
+														tpGameType
+													}
+												);
+												const { url, key, userId } =
+													result ?? {};
+												open9wSports({
+													url,
+													key,
+													userId
+												});
+											}
 										} else {
 											GET_ENTER_PAGE({
 												tpId,
