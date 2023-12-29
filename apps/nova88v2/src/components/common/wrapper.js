@@ -181,7 +181,6 @@ export const Wrapper = ({ children }) => {
 	// * 補語系 url
 	useEffect(() => {
 		if (userInfo.langId && userInfo.langId !== pathLang) {
-			console.log(userInfo.langId);
 			navigate(String(pathname).replace(pathLang, userInfo.langId));
 		}
 	}, [pathLang, userInfo.langId, userInfo.isLogin]);
