@@ -195,7 +195,7 @@
   "lbl_Deduction": "khấu trừ doanh số",
   "lbl_Deposit": "Nạp tiền",
   "lbl_DepositAmount": "Tiền nạp",
-  "lbl_DepositAmountNote": "(Unit là IDR 50 = IDR 50,000)",
+  "lbl_DepositAmountNote": "(Unit là VND 50 = VND 50,000)",
   "lbl_DepositChannel": "Kênh nạp tiền",
   "lbl_DepositChannel_1": "Ngân hàng trực tuyến",
   "lbl_DepositChannel_2": "Máy gửi tiền mặt",
