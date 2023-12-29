@@ -70,7 +70,7 @@ export const useGragonEgg = () => {
 		try {
 			const res = await drawMultiPrizeMutation({
 				eventId,
-				drawTimes: 2
+				drawTimes: 10
 			}).unwrap();
 
 			return res;
