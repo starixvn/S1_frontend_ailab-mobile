@@ -148,6 +148,23 @@ export const Wrapper = ({ children }) => {
 				langIdByPath = result && pathLang;
 				currencyIdByPath = result?.currencyId;
 			}
+
+			// 需另外判斷 en 是否存在於當前選擇的幣別語系中，若存在則寫入 en , 確保 langId 寫入正確
+			if (pathLang && pathLang === "en") {
+				const filteredLangList = flatLangList.filter(
+					({ currencyId }) => currencyId === defaultCurrencyId
+				);
+				const { lang = [] } = filteredLangList[0] ?? {};
+
+				const isInclude = !!lang.find(
+					({ value }) => value === pathLang
+				);
+
+				if (isInclude) {
+					langIdByPath = pathLang;
+				}
+			}
+
 			setUserInfo(prev => ({
 				...prev,
 				langId: langIdByPath || defaultLangId,
@@ -164,6 +181,7 @@ export const Wrapper = ({ children }) => {
 	// * 補語系 url
 	useEffect(() => {
 		if (userInfo.langId && userInfo.langId !== pathLang) {
+			console.log(userInfo.langId);
 			navigate(String(pathname).replace(pathLang, userInfo.langId));
 		}
 	}, [pathLang, userInfo.langId, userInfo.isLogin]);
