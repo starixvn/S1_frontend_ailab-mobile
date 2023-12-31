@@ -62,7 +62,7 @@ const PeofilePanel = () => {
 		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
 
 	const vipLevelData = defbanner(langId).find(
-		({ level }) => level === userLevel
+		({ level }) => level === custVIPProgress?.currentVipLevel
 	);
 
 	const nextVipLevelText = defbanner(langId).find(
