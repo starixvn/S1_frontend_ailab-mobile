@@ -138,8 +138,7 @@ const useGetHomePopup = () => {
 			return;
 		}
 
-		const showLang =
-			ipCountryData?.code === "VN" && langId === "vn" ? "vn" : "en";
+		const showLang = langId === "vn" ? "vn" : "en";
 
 		setCookie(cookieName, "1", 1);
 		setPopBox({
@@ -153,14 +152,20 @@ const useGetHomePopup = () => {
 					/>
 					<button
 						className="popgoto"
-						onClick={() => setPopBox({ isOpen: false })}>
+						onClick={() => {
+							setPopBox({ isOpen: false });
+							openHomePopup();
+						}}>
 						{t("lbl_JoinNow")}
 					</button>
 					<img
 						className="closepop"
 						src={`${cloudBannerImgURL}/h5/img/promosBackPopup/delet.png`}
 						alt="delete"
-						onClick={() => setPopBox({ isOpen: false })}
+						onClick={() => {
+							setPopBox({ isOpen: false });
+							openHomePopup();
+						}}
 					/>
 				</div>
 			)
