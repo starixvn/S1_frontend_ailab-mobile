@@ -1083,7 +1083,6 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.sabaClub,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/vg.png`,
 					spanTextKey: "lbl_Vgaming",
-					allowCurrency: allowedCurrencyList.vGaming,
 					sortKey: "games_VGaming"
 				},
 				{

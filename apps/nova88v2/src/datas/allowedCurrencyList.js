@@ -138,16 +138,6 @@ const allowedCurrencyList = {
 	// game
 	mPoker: [defCurrenyId.THB],
 	amb: [defCurrenyId.THB],
-	vGaming: [
-		defCurrenyId.MYR,
-		defCurrenyId.IDR,
-		defCurrenyId.THB,
-		defCurrenyId.BDT,
-		defCurrenyId.CNY,
-		defCurrenyId.USD,
-		defCurrenyId.KHM,
-		defCurrenyId.INR
-	],
 	spaceman: [
 		defCurrenyId.MYR,
 		defCurrenyId.IDR,
@@ -155,7 +145,8 @@ const allowedCurrencyList = {
 		defCurrenyId.BDT,
 		defCurrenyId.CNY,
 		defCurrenyId.USD,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
 
 	// fishing
@@ -225,7 +216,8 @@ const allowedCurrencyList = {
 		defCurrenyId.INR,
 		defCurrenyId.USD,
 		defCurrenyId.CNY,
-		defCurrenyId.KHM
+		defCurrenyId.KHM,
+		defCurrenyId.VND
 	],
 	PP: [
 		defCurrenyId.MYR,
