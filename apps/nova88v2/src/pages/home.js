@@ -17,6 +17,7 @@ import {
 	Bottom,
 	AddToHomePop
 } from "../components/home";
+import LiveStreamingPop from "./liveStreamingPop";
 
 const Home = () => {
 	const { setRoot } = useContext(rootContext);
@@ -54,6 +55,7 @@ const Home = () => {
 				<Partner />
 				<Bottom />
 				<AddToHomePop />
+				<LiveStreamingPop />
 			</Layout>
 		</PromotionWrapper>
 	);
