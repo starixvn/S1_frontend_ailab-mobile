@@ -1,4 +1,4 @@
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import React, { useContext } from "react";
 import { useNavigate } from "@reach/router";
 import { popBoxContext, userInfoContext } from "Context";
@@ -189,40 +189,15 @@ const useGetHomePopup = () => {
 							<div className={`bigwin ${langId}`}>
 								<div className="bigwin-img" />
 								<div className="bigwin-text">
-									<Trans
-										i18nKey="lbl_BigWinProfit_Description1"
-										values={{
-											userName:
-												bigWinData?.userName ?? "-"
-										}}
-										components={{
-											div: <div className="name" />
-										}}
-									/>
-									<div>
-										<Trans
-											i18nKey="lbl_BigWinProfit_Description2"
-											values={{
-												venderName:
-													bigWinData?.gameName ?? "-"
-											}}
-											components={{
-												button: (
-													<button className="vender" />
-												),
-												span: (
-													<sapn
-														style={{
-															width: "50vw"
-														}}
-													/>
-												)
-											}}
-										/>
+									<div className="bigwin-name">
+										{bigWinData?.userName ?? "-"}
 									</div>
+									<button className="vender">
+										{bigWinData?.gameName ?? "-"}
+									</button>
 								</div>
 								<div className="bigwin-number">
-									${t(`Currency_${userInfo.currencyId}`)}{" "}
+									{t(`Currency_${userInfo.currencyId}`)}{" "}
 									{number_format(bigWinData?.amount ?? 0)}
 								</div>
 								<img
