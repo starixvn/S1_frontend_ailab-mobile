@@ -2,18 +2,19 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
+import classNames from "classnames";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
 import {
 	getUrlParameter,
 	getCookie,
 	defCurrenyId,
-	getCombineLangId,
 	defCurrencyToLang
 } from "../common/common";
 import { Link } from "../../route/link";
 import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
+import DropdownProfile from "../common/dropdown.profile";
 import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
 import InputboxPart from "../common/inputbox.profile";
@@ -25,7 +26,9 @@ import {
 	initStatus,
 	currencyToAreacode,
 	reCaptchaEnum,
-	limitCountryNum
+	limitCountryNum,
+	OCCUPATION_OPTIONS,
+	SOURCE_OF_INCOME_OPTIONS
 } from "./join.def";
 import defLang from "../../datas/defLangs";
 import { Iov_GetBlackBox } from "../common/iovation";
@@ -54,10 +57,12 @@ const JoinStep2 = ({
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { t } = useTranslation();
+
 	const [siteCurrency, setSiteCurrencyState] = useState([]);
 	const [defaultOption, setDefaultOption] = useState(
 		i18n.lbl_PrefferedCurrency
 	);
+
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
@@ -219,6 +224,15 @@ const JoinStep2 = ({
 			const result = checkRealName({ val });
 			checked = result.checked;
 			msg = result.msg;
+		} else if (
+			col === "nationality" ||
+			col === "country" ||
+			col === "city"
+		) {
+			const result = requireCheck(val);
+
+			checked = result.checked;
+			msg = result.msg;
 		}
 
 		setHintStatus(prev => ({
@@ -309,6 +323,18 @@ const JoinStep2 = ({
 		return { checked, msg };
 	};
 
+	const requireCheck = val => {
+		let checked = true;
+		let msg = "";
+
+		if (val === "") {
+			checked = false;
+			msg = "";
+		}
+
+		return { checked, msg };
+	};
+
 	const checkAll = async () => {
 		try {
 			const _reCaptchaCheck =
@@ -332,11 +358,18 @@ const JoinStep2 = ({
 				val: userValue.RealName
 			});
 
+			const _nationalityCheck = requireCheck(userValue.nationality);
+			const _countryCheck = requireCheck(userValue.country);
+			const _cityCheck = requireCheck(userValue.city);
+
 			const checked =
 				_phoneCheck.checked &&
 				_emailCheck.checked &&
 				_currencyCheck.checked &&
-				_realNameCheck.checked;
+				_realNameCheck.checked &&
+				_nationalityCheck.checked &&
+				_countryCheck.checked &&
+				_cityCheck.checked;
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -357,6 +390,18 @@ const JoinStep2 = ({
 					RealName: {
 						checked: _realNameCheck.checked,
 						msg: _realNameCheck.msg
+					},
+					nationality: {
+						checked: _nationalityCheck.checked,
+						msg: "" // * 僅提供紅匡input警示
+					},
+					country: {
+						checked: _countryCheck.checked,
+						msg: "" // * 僅提供紅匡input警示
+					},
+					city: {
+						checked: _cityCheck.checked,
+						msg: "" // * 僅提供紅匡input警示
 					}
 				}));
 			}
@@ -383,6 +428,7 @@ const JoinStep2 = ({
 				return langList.includes(defaultLangId) ? defaultLangId : "en";
 			};
 			const signupLangId = getSignupLangId();
+
 			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
@@ -397,7 +443,16 @@ const JoinStep2 = ({
 				Birth_y: yearOptions[userValue.Birth_y]?.value,
 				RealName: userValue.RealName,
 				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReCaptchaToken: reCaptchaToken,
+
+				// * Ivorysport 額外的欄位
+				Occupation: userValue.occupation.value,
+				SourceOfIncome: userValue.sourceOfIncome.value,
+				Nationality: userValue.nationality,
+				Country: userValue.country,
+				City: userValue.city,
+				PostCode: userValue.postCode,
+				LineFirst: userValue.lineFirst
 			};
 
 			if (AffId) {
@@ -593,6 +648,113 @@ const JoinStep2 = ({
 				tip={hintStatus.Birth.msg}
 				testAttr="BirthDay"
 			/>
+
+			{/* // * Birth Dropdown */}
+			<DropdownProfile
+				defaultOption={t(
+					OCCUPATION_OPTIONS[userValue.occupation.index].displayKey
+				)}
+				mainKey="join_Occupation"
+				options={OCCUPATION_OPTIONS}
+				i18n={i18n}
+				selectedIdx={userValue.occupation.index}
+				hideInfo={true}
+				onSelectItem={i => {
+					EditField("occupation", {
+						index: i,
+						value: OCCUPATION_OPTIONS[i].value
+					});
+				}}
+			/>
+
+			{/* // * Source of Income */}
+			<DropdownProfile
+				defaultOption={t(
+					SOURCE_OF_INCOME_OPTIONS[userValue.sourceOfIncome.index]
+						.displayKey
+				)}
+				mainKey="join_source"
+				options={SOURCE_OF_INCOME_OPTIONS}
+				i18n={i18n}
+				selectedIdx={userValue.sourceOfIncome.index}
+				hideInfo={true}
+				onSelectItem={i => {
+					EditField("occupation", {
+						index: i,
+						value: SOURCE_OF_INCOME_OPTIONS[i].value
+					});
+				}}
+			/>
+
+			{/* // * Nationality */}
+			<div className="infoModule">
+				<div
+					className={classNames("inputBox", {
+						error: hintStatus.nationality.checked === false
+					})}>
+					<input
+						value={userValue.nationality}
+						placeholder={i18n.lbl_Nationality}
+						onBlur={e => {
+							checkValue("nationality", e);
+						}}
+						onChange={e => {
+							EditField("nationality", e);
+						}}
+					/>
+				</div>
+			</div>
+
+			<div className="infoModule parts address">
+				<div
+					className={classNames("inputBox", {
+						error: hintStatus.country.checked === false
+					})}>
+					<input
+						value={userValue.country}
+						placeholder={i18n.lbl_Country}
+						onBlur={e => {
+							checkValue("country", e);
+						}}
+						onChange={e => {
+							EditField("country", e);
+						}}
+					/>
+				</div>
+
+				<div className="inputBox">
+					<input
+						value={userValue.city}
+						placeholder={i18n.lbl_City}
+						onBlur={e => {
+							checkValue("city", e);
+						}}
+						onChange={e => {
+							EditField("city", e);
+						}}
+					/>
+				</div>
+
+				<div className="inputBox">
+					<input
+						placeholder={i18n.lbl_PostCode}
+						onChange={e => {
+							EditField("postCode", e);
+						}}
+					/>
+				</div>
+			</div>
+
+			<div className="infoModule">
+				<div className="inputBox">
+					<input
+						placeholder={i18n.lbl_Line_1}
+						onChange={e => {
+							EditField("lineFirst", e);
+						}}
+					/>
+				</div>
+			</div>
 
 			{Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (

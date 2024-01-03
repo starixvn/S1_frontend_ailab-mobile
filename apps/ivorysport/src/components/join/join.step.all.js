@@ -36,16 +36,27 @@ const JoinStepAll = () => {
 	}, []);
 
 	const EditField = (col, e) => {
-		let val = e.target.value;
+		let val = null;
+		if (
+			// * 儲存下拉選單資訊
+			col === "occupation" ||
+			col === "sourceOfIncome"
+		) {
+			val = e; // * e = {index, value}
+		} else {
+			val = e.target.value;
 
-		if (col === "UserName") {
-			val = val.replace(/[\W_]/g, "");
-		} else if (col === "RealName") {
-			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?\[\]\\`~{}]+/gu, "");
-		} else if (col === "Phone") {
-			val = val.replace(/[^0-9]+/g, "");
+			if (col === "UserName") {
+				val = val.replace(/[\W_]/g, "");
+			} else if (col === "RealName") {
+				val = val.replace(
+					/[\d\-!@#$%^&_()+";~～<>=|?\[\]\\`~{}]+/gu,
+					""
+				);
+			} else if (col === "Phone") {
+				val = val.replace(/[^0-9]+/g, "");
+			}
 		}
-
 		setUserValue(prev => ({
 			...prev,
 			[col]: val
