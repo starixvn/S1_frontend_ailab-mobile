@@ -5,11 +5,17 @@ import { popBoxContext, userInfoContext } from "Context";
 import { defDeviceType } from "@ailab-mobile/api";
 import {
 	useGetIpCountryQuery,
-	useLazyGetPopUpPromotionQuery
+	useLazyGetPopUpPromotionQuery,
+	useLazyGetPopUpDataListQuery
 } from "@ailab-mobile/service";
 import path from "../../path";
 import { cloudBannerImgURL } from "../../config";
-import { setCookie, readCookie } from "../common/common";
+import {
+	setCookie,
+	readCookie,
+	defCurrenyId as defCurrencyList,
+	number_format
+} from "../common/common";
 
 const useGetHomePopup = () => {
 	const { t } = useTranslation();
@@ -22,6 +28,8 @@ const useGetHomePopup = () => {
 	const { data: { data: ipCountryData = {} } = {} } = useGetIpCountryQuery();
 
 	const [getPopUpPromotion] = useLazyGetPopUpPromotionQuery();
+
+	const [getPopUpDataList] = useLazyGetPopUpDataListQuery();
 
 	const showSponsorshipPopup = () => {
 		if (new Date() > new Date(2023, 12, 31)) {
@@ -164,10 +172,73 @@ const useGetHomePopup = () => {
 		});
 	};
 
+	const showBigWinProfitPopup = async () => {
+		const cookieName = `BigWinProfit${userInfo.userName}`;
+		if (
+			userInfo.isLogin &&
+			readCookie(cookieName) !== "1" &&
+			userInfo.currencyId === defCurrencyList.IDR
+		) {
+			try {
+				const { data: bigWinData } = await getPopUpDataList({
+					defDeviceType: defDeviceType.Mobile
+				}).unwrap();
+
+				// 該userName回傳null表示不顯示彈窗
+				if (bigWinData.userName !== null) {
+					setCookie(cookieName, "1", 1);
+					setPopBox({
+						isOpen: true,
+						className: "bigwinpop",
+						custContent: (
+							<div className={`bigwin ${langId}`}>
+								<div className="bigwin-img" />
+								<div className="bigwin-text">
+									<div className="bigwin-name">
+										{bigWinData?.userName ?? "-"}
+									</div>
+									<button className="vender">
+										{bigWinData?.gameName ?? "-"}
+									</button>
+								</div>
+								<div className="bigwin-number">
+									{t(`Currency_${userInfo.currencyId}`)}{" "}
+									{number_format(bigWinData?.amount ?? 0)}
+								</div>
+								<img
+									className="money"
+									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+									alt=""
+								/>
+								<img
+									className="money-two"
+									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+									alt=""
+								/>
+								<img
+									src={`${cloudBannerImgURL}/desktop/img/promosBackPopup/delet.png`}
+									alt=""
+									className="closepop"
+									onClick={() => setPopBox({ isOpen: false })}
+								/>
+							</div>
+						)
+					});
+				}
+			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: error
+				});
+			}
+		}
+	};
+
 	const popUpStack = [
 		showSponsorshipPopup,
 		showPromotionPopup,
-		showDisclaimerForVnd
+		showDisclaimerForVnd,
+		showBigWinProfitPopup
 	];
 
 	const openHomePopup = () => {
