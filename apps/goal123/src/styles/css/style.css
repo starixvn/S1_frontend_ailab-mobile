@@ -3,8 +3,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -2833,6 +2831,98 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   border: 1px solid #a3a3a3;
   color: #1f3258 !important;
+}
+
+.mission-content {
+  margin: 20px 4px 0 3px;
+}
+.mission-title {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(245, 142, 35)), color-stop(70%, rgb(245, 172, 35)));
+  background: linear-gradient(90deg, rgb(245, 142, 35) 0%, rgb(245, 172, 35) 70%);
+  padding: 2px 0 0 5px;
+  font-size: 12px;
+}
+.mission-progress {
+  background: #ffffff;
+  padding: 20px 0 20px 10px;
+  color: #2a4fa4;
+}
+.mission-progress > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.mission-progress > div .state {
+  background: #000;
+  height: 20px;
+  width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3px;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 20px 0 0 20px;
+}
+.mission-progress > div .state.completed {
+  background: #007aff;
+}
+.mission-progress > div .state.undone {
+  background: #858585;
+}
+.mission-progress-item .progress {
+  background: white;
+  height: 8px;
+  width: 220px;
+  border-radius: 20px;
+}
+.mission-progress-item .progress .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(31, 50, 88)), color-stop(70%, rgb(98, 173, 255)));
+  background: linear-gradient(90deg, rgb(31, 50, 88) 0%, rgb(98, 173, 255) 70%);
+  height: 8px;
+  border-radius: 20px;
+}
+.mission-progress-item .mission-number {
+  margin-left: 3px;
+  color: #8d8d8d;
+  text-align: end;
+  font-size: 12px;
+}
+.mission-progress-item.turnover .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(#e90900), color-stop(70%, rgb(245, 151, 35)));
+  background: linear-gradient(90deg, #e90900 0%, rgb(245, 151, 35) 70%);
+}
+.mission-progress-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 17px;
+  width: 220px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  color: #1f3258;
+}
+.mission-progress-text > div {
+  margin-bottom: 5px;
 }
 
 .pending, .reject, .cancelled, .approved {
@@ -6735,273 +6825,6 @@ span.important {
   color: #fab617;
 }
 
-.main.referral {
-  padding: 25vw 0vw 18vw;
-  width: 100%;
-}
-.main.referral .tag {
-  z-index: 4;
-}
-
-.refer {
-  padding: 0 4.2vw 1vw;
-  margin-top: -4vw;
-  border-radius: 4vw;
-  background: #fff;
-}
-.refer-banner {
-  width: 100vw;
-}
-.refer-moreinfo {
-  background: #EA2329;
-  width: 40vw;
-  height: 10.5vw;
-  border-radius: 12vw;
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 105vw;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  z-index: 4;
-  font-family: "Geologica", sans-serif;
-  font-weight: 800;
-  letter-spacing: 0.35px;
-  color: #fff;
-  font-size: 3.8vw;
-  text-transform: uppercase;
-  z-index: 1;
-}
-.refer .title {
-  font-family: "Geologica", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 900;
-  font-size: 4.6vw;
-  color: #620A0F;
-  margin-bottom: 2vw;
-}
-.refer .subtitle {
-  font-family: "Geologica", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 700;
-  font-size: 4.2vw;
-  margin-bottom: 2vw;
-  text-align: center;
-}
-.refer-info-step .swiper-container {
-  position: relative;
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
-  padding: 1vw 0 10vw;
-  z-index: 3;
-}
-.refer-info-step .swiper-pagination {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-.refer-info-step .swiper-pagination .swiper-pagination-bullet-active {
-  background: #EA2329;
-  width: 2.6vw;
-  height: 2.6vw;
-}
-.refer-info-step .step-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-transform: uppercase;
-  border-radius: 4.2vw;
-  margin: 2vw 12vw 0;
-  background: #fff;
-  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-  padding: 0vw 6vw 7.5vw;
-  height: 60vw;
-}
-.refer-info-step .step-item p {
-  text-transform: capitalize;
-  font-family: "Noto Sans", sans-serif;
-  text-align: center;
-  margin-top: 3vw;
-  font-size: 3.5vw;
-}
-.refer-info-step .step-item .subtitle {
-  margin-top: 3vw;
-}
-.refer-info-step .step-item img {
-  width: 17.6vw;
-}
-.refer-info-step .step-title {
-  font-family: "Geologica", sans-serif;
-  font-weight: 700;
-  font-size: 4.2vw;
-  background: #284985;
-  color: #fff;
-  padding: 3vw 7vw;
-  text-align: center;
-  border-radius: 0 0 4vw 4vw;
-  margin-bottom: 6.5vw;
-}
-.refer-info-share {
-  margin: 3.5vw 0 0;
-  text-align: center;
-}
-.refer-info-share .social {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.refer-info-share .social img {
-  width: 8.6vw;
-  margin-right: 4vw;
-}
-.refer-info-share .social img:last-child {
-  margin-right: unset;
-}
-.refer-info-copy .copy {
-  position: relative;
-  margin-bottom: 4.8vw;
-}
-.refer-info-copy .copy .icon-copy-text::after {
-  content: "";
-  display: block;
-  margin: 0 auto;
-  width: 6vw;
-  height: 8vw;
-  cursor: pointer;
-  background: url(https://banner.goal123.org/h5/img/referral/icon-copy.svg) no-repeat center/6vw 8vw;
-  position: absolute;
-  right: 4vw;
-  bottom: calc(50% - 4vw);
-  z-index: 2;
-}
-.refer-info-copy .copy input {
-  width: 100%;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background: #fff;
-}
-.refer-info-copy .copy input[type=text] {
-  padding: 3.2vw 13vw 3.2vw 4.2vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 3vw;
-  border: unset;
-  -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
-          filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.3));
-  color: #727272;
-  font-family: "Noto Sans", sans-serif;
-  font-size: 3.5vw;
-}
-.refer-info-copy .copy input[type=text]:focus, .refer-info-copy .copy input[type=text]:focus-visible {
-  border: unset;
-  outline: unset;
-}
-.refer-info-qr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 2vw 0 4.8vw;
-}
-.refer-img-qr {
-  border: 1px solid rgba(102, 102, 102, 0.35);
-  border-radius: 4vw;
-  padding: 5vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.refer-status {
-  margin-bottom: 6vw;
-}
-.refer-status .title {
-  margin: 12vw 0 3vw;
-  font-size: 6vw;
-}
-.refer-status-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.refer-status-item .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  width: 100%;
-  background: #fff;
-  border-radius: 3vw 3vw 4vw 4vw;
-  padding: 4vw 0 7.5vw 0;
-  margin-bottom: 3vw;
-  -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-  font-family: "Geologica", sans-serif;
-  font-weight: 700;
-  font-size: 4vw;
-  color: #284985;
-}
-.refer-status-item .card > div, .refer-status-item .card span {
-  color: #EA2329;
-  font-weight: 900;
-  font-size: 5.6vw;
-  margin-top: 4vw;
-}
-.refer-status-item .card > div span, .refer-status-item .card span span {
-  margin-right: 3vw;
-}
-
 .depositModule_mobile,
 .depositModule_online,
 .depositModule_local,
@@ -7404,18 +7227,6 @@ span.important {
 .depositModule_Crpyto .selectModule .qrCode img {
   width: auto;
   height: 100%;
-}
-.depositModule_mobile .selectModule .icon-quick::before,
-.depositModule_online .selectModule .icon-quick::before,
-.depositModule_local .selectModule .icon-quick::before,
-.depositModule_topupMobile .selectModule .icon-quick::before,
-.depositModule_Crpyto .selectModule .icon-quick::before {
-  content: "";
-  display: block;
-  width: 10vw;
-  height: 10vw;
-  margin: 0 auto !important;
-  background: url(https://banner.goal123.org/h5/img/quick-transfer.png) center/cover;
 }
 .depositModule_mobile .input-group,
 .depositModule_online .input-group,

@@ -13,7 +13,8 @@ export const defPromotionType = {
 	walletBonus: 5,
 	rebate: 6,
 	cashback: 7,
-	static: 8
+	static: 8,
+	missionBonus: 11
 };
 
 export const defFilterType = {
