@@ -59,7 +59,8 @@ export const GET_ENTER_PAGE = ({
 	specialUrl,
 	tpGameType,
 	bettype,
-	appType
+	appType,
+	isLiveStreaming
 }) => {
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
@@ -72,12 +73,13 @@ export const GET_ENTER_PAGE = ({
 	const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 	const _betType = bettype ? `&bettype=${bettype}` : "";
 	const _appType = appType ? `&AppType=${appType}` : "&AppType=2";
+	const liveStreamingId = isLiveStreaming ? 1 : 0;
 
 	const entPageUrl = `${
 		config.openURL
 	}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&CashierUrl=${cashierUrl}&&LobbyUrl=${lobbyUrl}&matchid=${
 		_matchid || ""
-	}&errorUrl=${_errorPageUrl}${_appType}${
+	}&IsLiveStreaming=${liveStreamingId}&errorUrl=${_errorPageUrl}${_appType}${
 		specialUrl ?? ""
 	}${_tpGameType}${_betType}`;
 

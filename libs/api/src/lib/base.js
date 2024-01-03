@@ -105,5 +105,10 @@ export default class BaseAPI {
 			withCredentials: true,
 			baseURL: `${apiUrl}/api/FrontEndLog`
 		});
+
+		this.liveStreamingRequest = axios.create({
+			withCredentials: true,
+			baseURL: `${apiUrl}/api/LiveStreaming`
+		});
 	}
 }
