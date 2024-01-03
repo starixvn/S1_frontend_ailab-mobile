@@ -15,4 +15,5 @@ export * from "./lib/hotEvent";
 export * from "./lib/game";
 export * from "./lib/hotGame";
 export * from "./lib/frontEndLog";
+export * from "./lib/liveStreaming";
 export * from "./lib/base";
