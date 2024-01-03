@@ -192,7 +192,7 @@ export const PrizePopBox = ({ isMulti }) => {
 				{eggTicket === 0 && !isMultiDraw && (
 					<div className="dragonegg-result-btn">
 						<button
-							className="btn-red-outline full"
+							className="btn-confirm"
 							onClick={() => setPopBox({ isOpen: false })}>
 							{t("lbl_DragonEgg_Confirm")}
 						</button>
@@ -203,13 +203,7 @@ export const PrizePopBox = ({ isMulti }) => {
 					prizeList[0]?.drawPrizeType !==
 						DrawPrizeTypeEnum.noPrize) && (
 					<button
-						className={classNames("btn-receive", {
-							// full:
-							// 	(isMultiDraw && eggTicket < 10) ||
-							// 	prizeList[0]?.drawPrizeType !==
-							// 		DrawPrizeTypeEnum.noPrize,
-							// "half mr-2": isMultiDraw && eggTicket >= 10
-						})}
+						className="btn-receive"
 						onClick={() => setPopBox({ isOpen: false })}>
 						{t("lbl_DragonEgg_Received")}
 					</button>
@@ -218,10 +212,7 @@ export const PrizePopBox = ({ isMulti }) => {
 					{/* 單抽且可再單抽 */}
 					{!isMultiDraw && eggTicket > 0 && (
 						<button
-							className={classNames("btn-oneplay", {
-								// full: eggTicket < 10,
-								// "half mr-2": eggTicket >= 10
-							})}
+							className="btn-oneplay"
 							onClick={() => {
 								getPrize({ multiDraw: false });
 							}}>

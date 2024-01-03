@@ -8,13 +8,13 @@ import { defCurrenyId, currCustomMapping } from "../common/common";
 export const prizeAmout = {
 	[defCurrenyId.MYR]: {
 		min: "18",
-		max: "l6",
+		max: "68",
 		blessing: "888"
 	},
 	[defCurrenyId.THB]: {
 		min: "130",
 		max: "530",
-		blessing: "5888"
+		blessing: "5,888"
 	},
 	[defCurrenyId.IDR]: {
 		min: "58K",

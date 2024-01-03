@@ -98,7 +98,9 @@ const Collection = () => {
 					src={`${bannerImgUrl}/h5/img/event/dragonegg/5fu_coin.png`}
 					alt="5fu_coin"
 				/>
-				VND $888,000,000
+				{stickerResult.isClaimedBigPrize
+					? t("lbl_DragonEgg_Received")
+					: "VND $4,588,000"}
 			</button>
 			<div className="event-collection-text">
 				{t("lbl_DragonEgg_BlessingHints")}

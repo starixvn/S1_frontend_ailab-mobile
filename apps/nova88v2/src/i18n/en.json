@@ -254,7 +254,7 @@
   "lbl_DownloadAppStep4": "Open ‘Mini Puzzle Game’ to launch the ‘Nova88’ app",
   "lbl_Downloads": "Download",
   "lbl_DragonEgg_10Again": "10 AGAIN",
-  "lbl_DragonEgg_BlessingHints": "Collect Five Blessings Eggs Get $888",
+  "lbl_DragonEgg_BlessingHints": "Collect Five Blessings Eggs Get ${{amount}}",
   "lbl_DragonEgg_CONGRATULATIONS": "CONGRATULATIONS",
   "lbl_DragonEgg_ClickFor10": "CLICK FOR 10",
   "lbl_DragonEgg_Confirm": "CONFIRM",
