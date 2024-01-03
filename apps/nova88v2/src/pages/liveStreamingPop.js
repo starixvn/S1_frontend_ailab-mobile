@@ -65,7 +65,8 @@ const LiveStreamingLink = () => {
 			isLogin,
 			tpGameType: 1,
 			matchid: matchId,
-			loginCallback: handleLogin
+			loginCallback: handleLogin,
+			liveStreamingId: true
 		});
 	};
 
