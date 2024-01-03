@@ -156,13 +156,11 @@ export const PrizePopBox = ({ isMulti }) => {
 			<div className="dragonegg-result-btn">
 				{/* 單抽且無法再抽 */}
 				{eggTicket === 0 && !isMultiDraw && (
-					<div className="dragonegg-result-btn">
-						<button
-							className="btn-red-outline full"
-							onClick={() => setPopBox({ isOpen: false })}>
-							{t("lbl_DragonEgg_Confirm")}
-						</button>
-					</div>
+					<button
+						className="btn-blue-outline full"
+						onClick={() => setPopBox({ isOpen: false })}>
+						{t("lbl_DragonEgg_Confirm")}
+					</button>
 				)}
 				{/* 單抽有獎或10抽 */}
 				{(isMultiDraw ||
