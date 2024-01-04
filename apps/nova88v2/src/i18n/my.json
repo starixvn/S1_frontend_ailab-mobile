@@ -254,7 +254,7 @@
   "lbl_DownloadAppStep4": "Buka 'Mini Puzzle Game' untuk melancarkan aplikasi 'Nova88'",
   "lbl_Downloads": "Muat turun",
   "lbl_DragonEgg_10Again": "10 LAGI",
-  "lbl_DragonEgg_BlessingHints": "Kumpul Lima Telur Berkat Dapatkan $888",
+  "lbl_DragonEgg_BlessingHints": "Kumpul Lima Telur Berkat Dapatkan ${{amount}}",
   "lbl_DragonEgg_CONGRATULATIONS": "TAHNIAH",
   "lbl_DragonEgg_ClickFor10": "CABUTAN 10 KALI",
   "lbl_DragonEgg_Confirm": "SAHKAN",
