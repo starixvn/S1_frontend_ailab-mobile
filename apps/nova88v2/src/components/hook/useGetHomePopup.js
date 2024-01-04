@@ -16,11 +16,15 @@ import {
 	defCurrenyId as defCurrencyList,
 	number_format
 } from "../common/common";
+import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
+import { defLoginGameType, defSpecialSetting } from "./useGotoGame";
+import { defSlotTpGameType } from "../../datas/productList";
+import useSetTimeout from "./useSetTimeout";
 
 const useGetHomePopup = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-
+	const { throttle } = useSetTimeout();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { langId, isLogin, userName, accountName } = userInfo;
@@ -192,29 +196,72 @@ const useGetHomePopup = () => {
 						className: "bigwinpop",
 						custContent: (
 							<div className={`bigwin ${langId}`}>
-								<div className="bigwin-img" />
-								<div className="bigwin-text">
-									<div className="bigwin-name">
-										{bigWinData?.userName ?? "-"}
+								<div
+									onClick={() => {
+										throttle(
+											() =>
+												GET_CASINO_ENTER_PAGE({
+													tpId: bigWinData.tpId,
+													gameId: bigWinData.gameId,
+													isFree: false,
+													langId: userInfo.langId,
+													execFunction:
+														bigWinData.tpId ===
+														defSpecialSetting.PG
+															? handleGoToGame.bind(
+																	this,
+																	{
+																		langId:
+																			userInfo.langId,
+																		tpId:
+																			bigWinData.tpId,
+																		gameId:
+																			bigWinData.gameId,
+																		isFun: false,
+																		tpGameType:
+																			defSlotTpGameType
+																				.PG
+																				.tpGameType,
+																		loginGameType:
+																			defLoginGameType.returnHtml
+																	}
+															  )
+															: null,
+													tpGameType: Object.values(
+														defSlotTpGameType
+													).find(
+														obj =>
+															bigWinData.tpId ===
+															obj.tpId
+													)?.tpGameType
+												}),
+											5000
+										);
+									}}>
+									<div className="bigwin-img" />
+									<div className="bigwin-text">
+										<div className="bigwin-name">
+											{bigWinData?.userName ?? "-"}
+										</div>
+										<button className="vender">
+											{bigWinData?.gameName ?? "-"}
+										</button>
 									</div>
-									<button className="vender">
-										{bigWinData?.gameName ?? "-"}
-									</button>
+									<div className="bigwin-number">
+										{t(`Currency_${userInfo.currencyId}`)}{" "}
+										{number_format(bigWinData?.amount ?? 0)}
+									</div>
+									<img
+										className="money"
+										src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+										alt=""
+									/>
+									<img
+										className="money-two"
+										src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
+										alt=""
+									/>
 								</div>
-								<div className="bigwin-number">
-									{t(`Currency_${userInfo.currencyId}`)}{" "}
-									{number_format(bigWinData?.amount ?? 0)}
-								</div>
-								<img
-									className="money"
-									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
-									alt=""
-								/>
-								<img
-									className="money-two"
-									src={`${cloudBannerImgURL}/h5/img/4.0/money.gif`}
-									alt=""
-								/>
 								<img
 									src={`${cloudBannerImgURL}/desktop/img/promosBackPopup/delet.png`}
 									alt=""
