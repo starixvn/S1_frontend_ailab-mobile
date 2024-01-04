@@ -65,7 +65,10 @@ const LiveStreamingLink = () => {
 			isLogin,
 			tpGameType: 1,
 			matchid: matchId,
-			loginCallback: handleLogin,
+			loginCallback: () => {
+				handleLogin();
+				setPopBox({ isOpen: false });
+			},
 			liveStreamingId: true
 		});
 	};
