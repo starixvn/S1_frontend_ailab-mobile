@@ -652,7 +652,7 @@ const gameList = ({ langId, currencyId }) => {
 				},
 				{
 					...defGameInfo.LIVEcasinoEB,
-					spanText: "eBET",
+					spanText: "WE",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-we.png`,
 					sortKey: "casino_EBET"
 				},
