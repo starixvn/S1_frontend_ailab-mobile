@@ -3147,6 +3147,7 @@ main .gameList .icon-new {
       -ms-flex-flow: unset;
           flex-flow: unset;
   display: none;
+  z-index: 1;
 }
 #popup.bigwinpop.active {
   display: -webkit-box;
@@ -3154,6 +3155,9 @@ main .gameList .icon-new {
   display: flex;
 }
 #popup.bigwinpop .bigwin {
+  width: 100%;
+}
+#popup.bigwinpop .bigwin > div {
   margin-bottom: 40vw;
   position: relative;
   -webkit-animation: vninfopop-inner 1.5s ease-in-out;
@@ -3322,10 +3326,11 @@ main .gameList .icon-new {
   width: 7vw;
   position: absolute;
   right: 45vw;
-  bottom: 0;
+  bottom: 60vw;
   opacity: 0.7;
   -webkit-animation: closepop 2s ease-in-out;
           animation: closepop 2s ease-in-out;
+  z-index: 4;
 }
 #popup.bigwinpop .closepop:hover {
   opacity: 1;
