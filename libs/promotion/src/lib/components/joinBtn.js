@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { Link, Redirect } from "@reach/router";
 import {
@@ -20,16 +20,8 @@ export const JoinBtn = ({
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox(
 		config
 	);
-	const isMountedRef = useRef(null);
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [processing, setProcessing] = useState(false);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
 
 	const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
 
@@ -53,67 +45,65 @@ export const JoinBtn = ({
 							: 0
 				})
 				.then(res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (func_GetPromotionDetail) {
-								func_GetPromotionDetail(
-									userInfo.langId,
-									bonusCode,
-									filterType
-								);
-							} else if (func_CallBack) {
-								func_CallBack();
-							}
-							handlePopBox({
-								content: <p>{i18n?.lbl_ClaimSucceed}</p>,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											onClick={clickClose}
-											className={
-												uiSetting.popBox?.submitBtn ??
-												"btn-check"
-											}>
-											OK
-										</button>
-									</div>
-								)
-							});
-						} else if (res.data.errorCode === -5) {
-							const RedirectToProfile = () => {
-								setRedirectPath(
-									`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
-								);
-								clickClose();
-							};
-							handlePopBox({
-								content: <p>{i18n?.msg_OTPHint}</p>,
-								btnBar: (
-									<div className="btn-group">
-										<button
-											className={
-												uiSetting.popBox?.cancelBtn ??
-												"blue"
-											}
-											onClick={clickClose}>
-											{i18n?.lbl_Later}
-										</button>
-										<button
-											onClick={RedirectToProfile}
-											className={
-												uiSetting.popBox?.submitBtn ??
-												"btn-check"
-											}>
-											{i18n?.lbl_GoNow}
-										</button>
-									</div>
-								)
-							});
-						} else {
-							handleErrorPopBox({ ...res.data, uiSetting });
+					if (res.data.errorCode === 0) {
+						if (func_GetPromotionDetail) {
+							func_GetPromotionDetail(
+								userInfo.langId,
+								bonusCode,
+								filterType
+							);
+						} else if (func_CallBack) {
+							func_CallBack();
 						}
-						setProcessing(false);
+						handlePopBox({
+							content: <p>{i18n?.lbl_ClaimSucceed}</p>,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										onClick={clickClose}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else if (res.data.errorCode === -5) {
+						const RedirectToProfile = () => {
+							setRedirectPath(
+								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+							);
+							clickClose();
+						};
+						handlePopBox({
+							content: <p>{i18n?.msg_OTPHint}</p>,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className={
+											uiSetting.popBox?.cancelBtn ??
+											"blue"
+										}
+										onClick={clickClose}>
+										{i18n?.lbl_Later}
+									</button>
+									<button
+										onClick={RedirectToProfile}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										{i18n?.lbl_GoNow}
+									</button>
+								</div>
+							)
+						});
+					} else {
+						handleErrorPopBox({ ...res.data, uiSetting });
 					}
+					setProcessing(false);
 				});
 		}
 	};
@@ -197,7 +187,8 @@ export const JoinBtn = ({
 				userInfo.isLogin &&
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
-					_promo.promotionType === defPromotionType.firstDeposit)
+					_promo.promotionType === defPromotionType.firstDeposit ||
+					_promo.promotionType === defPromotionType.missionBonus)
 			) {
 				handlePopBox({
 					content: (

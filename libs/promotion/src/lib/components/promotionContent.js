@@ -4,6 +4,7 @@ import { JoinBtn } from "./joinBtn";
 import DepositRecord from "./depositRecord";
 import ProcessBar from "./processBar";
 import PromoRule from "./promoRule";
+import Mission from "./promotionMission";
 import { defPromotionType } from "../common/def";
 import CashBackInfo from "./cashBackInfo";
 
@@ -45,6 +46,7 @@ const PromoContent = ({
 			currencyId={config?.userInfo?.currencyId}
 			filterType={filterType}
 		/>
+
 		<ProcessBar
 			{...promotionInfo}
 			custRollOver={
@@ -56,6 +58,12 @@ const PromoContent = ({
 			RefreshProcessBar={RefreshProcessBar.bind(this, promotionInfo)}
 			config={config}
 		/>
+
+		{promotionInfo.promotionType === defPromotionType.missionBonus &&
+			!promotionInfo.isJoin && (
+				<Mission promotionInfo={promotionInfo} config={config} />
+			)}
+
 		<PromoRule
 			promotionInfo={promotionInfo}
 			ruleCols={config?.ruleCols}

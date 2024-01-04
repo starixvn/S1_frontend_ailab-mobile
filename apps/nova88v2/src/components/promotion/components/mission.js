@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../../common/context";
-import { isConvert, number_format } from "../../common/common";
+import { number_format } from "../../common/common";
 
 const Mission = ({ promotionInfo }) => {
 	const [targetTask, setTargetTask] = useState({});
@@ -33,8 +33,6 @@ const Mission = ({ promotionInfo }) => {
 
 	const getTaskStatusProgress = (target = 0, current = 0) =>
 		current >= target ? "100%" : `${(current / target) * 100}%`;
-
-	const _isConvert = isConvert(currencyId);
 
 	useEffect(() => {
 		if (tierAmountList.length > 0) {
@@ -69,22 +67,14 @@ const Mission = ({ promotionInfo }) => {
 								<div>{t("lbl_Deposit").toUpperCase()}</div>
 								<div>
 									{t(`Currency_${currencyId}`)}{" "}
-									{number_format(
-										requiredAmount,
-										_isConvert,
-										0
-									)}
+									{number_format(requiredAmount, false, 0)}
 								</div>
 							</div>
 							<div>
 								<div>{t("lbl_Turnover").toUpperCase()}</div>
 								<div>
 									{t(`Currency_${currencyId}`)}{" "}
-									{number_format(
-										requiredTurnover,
-										_isConvert,
-										0
-									)}
+									{number_format(requiredTurnover, false, 0)}
 								</div>
 							</div>
 							<div>
@@ -101,7 +91,7 @@ const Mission = ({ promotionInfo }) => {
 								<div>{t("lbl_Bonus").toUpperCase()}</div>
 								<div>
 									{t(`Currency_${currencyId}`)}{" "}
-									{number_format(bonus, _isConvert, 0)}
+									{number_format(bonus, false, 0)}
 								</div>
 							</div>
 						</div>

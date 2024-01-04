@@ -113,7 +113,8 @@ const LockedAmountPopBox = ({
 	const options = canJoinTierAmountList?.map((el, i) => ({
 		id: i,
 		displayText: `${i18n.lbl_DepositAmount} ${el.requiredAmount} / ${i18n.lbl_Bonus} ${el.bonusAmount}`,
-		lockedAmount: el.lockedAmount
+		lockedAmount: el.lockedAmount,
+		bonusAmount: el.bonusAmount
 	}));
 
 	const onSelectItem = i => {
@@ -125,7 +126,11 @@ const LockedAmountPopBox = ({
 	const onSetClaimPromotion = () => {
 		SetClaimPromotion({
 			bonusCode,
-			LockedAmount: options[selectedIdx].lockedAmount
+			// 後端期望promotionType為missionBonus的話帶bonusAmount
+			LockedAmount:
+				promotionType === defPromotionType.missionBonus
+					? options[selectedIdx].bonusAmount
+					: options[selectedIdx].lockedAmount
 		});
 	};
 
