@@ -87,6 +87,7 @@ export const eventsApi = rootApi.injectEndpoints({
 
 export const {
 	useCheckPromotionMissionQuery,
+	useLazyCheckPromotionMissionQuery,
 	useLazyGetCustBlessingsStickerQuery,
 	useLazyGetCustDrawPrizeListQuery,
 	useDrawPrizeMutation,

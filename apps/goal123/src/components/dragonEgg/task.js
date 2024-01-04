@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import {
@@ -11,7 +11,7 @@ import path from "../../path";
 import { bannerImgUrl } from "../../config";
 import { number_format } from "../common/common";
 import { defCol } from "../../datas/productList";
-import { popBoxContext } from "../common/context";
+import { popBoxContext, userInfoContext } from "../common/context";
 import { DrawPopBox, PrizePopBox } from "./popBox";
 import { eventIds } from "../../datas/eventIds";
 
@@ -20,8 +20,11 @@ const Task = () => {
 	const navigate = useNavigate();
 
 	const { setPopBox } = useContext(popBoxContext);
+	const {
+		userInfo: { langId }
+	} = useContext(userInfoContext);
 
-	const { eggTicket, missionList } = useGragonEgg();
+	const { eggTicket, missionList, getMissionList } = useGragonEgg();
 
 	const goMission = ({ type, tpCategoryId }) => {
 		let targetPath = "";
@@ -60,6 +63,10 @@ const Task = () => {
 			});
 		}
 	};
+
+	useEffect(() => {
+		getMissionList();
+	}, [langId]);
 
 	return (
 		<div className="event-main">

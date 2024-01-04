@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import {
@@ -21,10 +21,10 @@ const Task = () => {
 
 	const { setPopBox } = useContext(popBoxContext);
 	const {
-		userInfo: { currencyId }
+		userInfo: { langId, currencyId }
 	} = useContext(userInfoContext);
 
-	const { eggTicket, missionList } = useGragonEgg();
+	const { eggTicket, missionList, getMissionList } = useGragonEgg();
 
 	const _isConvert = isConvert(currencyId);
 
@@ -65,6 +65,10 @@ const Task = () => {
 			});
 		}
 	};
+
+	useEffect(() => {
+		getMissionList();
+	}, [langId]);
 
 	return (
 		<div className="event-main">

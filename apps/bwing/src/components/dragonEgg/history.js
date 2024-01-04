@@ -9,7 +9,7 @@ const History = () => {
 
 	const [history, setHistory] = useState([]);
 
-	const { getDrawPrizeList } = useGragonEgg();
+	const { eggTicket, getDrawPrizeList } = useGragonEgg();
 
 	const getPrizeList = async () => {
 		const { data } = await getDrawPrizeList({
@@ -21,7 +21,7 @@ const History = () => {
 
 	useEffect(() => {
 		getPrizeList();
-	}, []);
+	}, [eggTicket]);
 
 	return (
 		history?.length > 0 && (

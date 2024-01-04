@@ -3,10 +3,12 @@ import {
 	IAxiosResponse,
 	IGetCustBlessingsStickerData,
 	IGetCustDrawPrizeListData,
+	ICheckPromotionMissionData,
 	useDrawPrizeMutation,
 	useMultiDrawPrizeMutation,
 	useLazyGetCustDrawPrizeListQuery,
 	useCheckPromotionMissionQuery,
+	useLazyCheckPromotionMissionQuery,
 	useClaimNewYearBigPrizeMutation,
 	useLazyGetCustBlessingsStickerQuery
 } from "../service";
@@ -36,6 +38,8 @@ export const useGragonEgg = () => {
 		} = {}
 	} = useCheckPromotionMissionQuery();
 
+	const [gePromotiontMissionList] = useLazyCheckPromotionMissionQuery();
+
 	const [getCustBlessingsSticker] = useLazyGetCustBlessingsStickerQuery();
 
 	const [getCustDrawPrizeList] = useLazyGetCustDrawPrizeListQuery();
@@ -45,6 +49,17 @@ export const useGragonEgg = () => {
 	const [drawMultiPrizeMutation] = useMultiDrawPrizeMutation();
 
 	const [claimNewYearBigPrizeMutation] = useClaimNewYearBigPrizeMutation();
+
+	const getMissionList = async (): Promise<
+		IAxiosResponse<ICheckPromotionMissionData> | Error
+	> => {
+		try {
+			const res = await gePromotiontMissionList().unwrap();
+			return res;
+		} catch (error) {
+			return error as Error;
+		}
+	};
 
 	const drawOnePrize = async ({
 		eventId
@@ -139,6 +154,7 @@ export const useGragonEgg = () => {
 		eggTicket,
 		missionList,
 		drawPrize,
+		getMissionList,
 		getDrawPrizeList,
 		claimBlessingPrize,
 		getBlessingSticker
