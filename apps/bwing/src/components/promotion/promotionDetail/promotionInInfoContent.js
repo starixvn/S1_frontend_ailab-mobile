@@ -100,11 +100,14 @@ const PromotionInInfoContent = ({
 								config={config}
 							/>
 						)}
-					<PromoRule
-						promotionInfo={promotionInfo}
-						ruleCols={config?.ruleCols}
-						config={config}
-					/>
+					{promotionInfo.promotionType !==
+						defPromotionType.missionBonus && (
+						<PromoRule
+							promotionInfo={promotionInfo}
+							ruleCols={config?.ruleCols}
+							config={config}
+						/>
+					)}
 
 					<CashBackInfo
 						cashBackDetails={promotionInfo.cashBackDetails}

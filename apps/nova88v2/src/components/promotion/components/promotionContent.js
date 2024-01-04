@@ -61,7 +61,9 @@ const PromoContent = ({
 			!promotionInfo.isJoin && (
 				<PromoMission promotionInfo={promotionInfo} />
 			)}
-		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		{promotionInfo.promotionType !== defPromotionType.missionBonus && (
+			<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		)}
 		<CashBackInfo
 			bonusCode={promotionInfo.bonusCode}
 			cashBackDetails={promotionInfo.cashBackDetails}
