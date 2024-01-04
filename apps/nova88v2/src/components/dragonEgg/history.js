@@ -34,12 +34,16 @@ const History = () => {
 						<div>{t("lbl_Date")}</div>
 						<div>{t("lbl_DragonEgg_EventRewards")}</div>
 					</div>
-					{history?.map(({ drawTime, prizeName }) => (
-						<div key={`${drawTime}-${prizeName}`}>
-							<div>{moment(drawTime).format("MM/DD HH:mm")}</div>
-							<div>{prizeName}</div>
-						</div>
-					))}
+					<div className="content">
+						{history?.map(({ drawTime, prizeName }) => (
+							<div key={`${drawTime}-${prizeName}`}>
+								<div>
+									{moment(drawTime).format("MM/DD HH:mm")}
+								</div>
+								<div>{prizeName}</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		)

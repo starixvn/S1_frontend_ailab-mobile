@@ -30,18 +30,20 @@ const History = () => {
 					{t("lbl_DragonEgg_RewardHistory")}
 				</div>
 				<div className="event-history-table">
-					<div>
+					<div className="top-title">
 						<div>{t("lbl_Date")}</div>
 						<div>{t("lbl_Referral_rewards")}</div>
 					</div>
-					{history?.map(({ drawTime, prizeName }) => (
-						<div key={`${drawTime}-${prizeName}`}>
-							<div>
-								{moment(drawTime).format("MM/DD HH:mm:ss")}
+					<div className="content">
+						{history?.map(({ drawTime, prizeName }) => (
+							<div key={`${drawTime}-${prizeName}`}>
+								<div>
+									{moment(drawTime).format("MM/DD HH:mm:ss")}
+								</div>
+								<div>{prizeName}</div>
 							</div>
-							<div>{prizeName}</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 		)
