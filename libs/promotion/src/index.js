@@ -32,6 +32,7 @@ export { default as CashBackInfo } from "./lib/components/cashBackInfo";
 export { Stamp } from "./lib/components/stamp";
 export { default as ProcessBar } from "./lib/components/processBar";
 export { default as DetailBtn } from "./lib/components/detailBtn";
+export { default as Mission } from "./lib/components/promotionMission";
 // * hook
 export { useHandlePopBox } from "./lib/hook/useHandlePopBox";
 export { useRefreshProcessBar } from "./lib/hook/useRefreshProcessBar";

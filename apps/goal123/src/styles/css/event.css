@@ -266,22 +266,46 @@
   font-size: 4vw;
   font-weight: bold;
 }
-.dragonegg-event .event-history-table {
-  height: 43vw;
-  overflow: auto;
-  border-radius: 10px;
-}
-.dragonegg-event .event-history-table div {
+.dragonegg-event .event-history-table .top-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.dragonegg-event .event-history-table div:first-child div {
+.dragonegg-event .event-history-table .top-title div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background: #f6cd63;
   color: #7e4c02;
   border: 0;
+  padding: 1vw 0;
+  border-radius: 0 10px 0 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.dragonegg-event .event-history-table div div {
+.dragonegg-event .event-history-table .top-title div:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20vw;
+          flex: 0 0 20vw;
+  margin-right: 0.5vw;
+  border-radius: 10px 0 0 0;
+}
+.dragonegg-event .event-history-table .content {
+  height: 35vw;
+  overflow: auto;
+  border-radius: 0 0 10px 10px;
+}
+.dragonegg-event .event-history-table .content div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.dragonegg-event .event-history-table .content div div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,11 +322,11 @@
   border-bottom: 1px solid #7e4c02;
   padding: 1vw 0;
 }
-.dragonegg-event .event-history-table div div:first-child {
+.dragonegg-event .event-history-table .content div div:first-child {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 20vw;
           flex: 0 0 20vw;
-  margin-right: 1vw;
+  margin-right: 0.5vw;
 }
 .dragonegg-event .event-info {
   color: #f6cd63;
