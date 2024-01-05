@@ -22,6 +22,10 @@ const Mission = ({ promotionInfo, config }) => {
 
 	const currentDate = moment().format("MM/DD");
 
+	const currencyName = currencyId
+		? t(`Currency_${currencyId}`)
+		: t("Currency_51");
+
 	const getTaskStatusClassName = (target = 0, current = 0) =>
 		current >= target ? "completed" : "undone";
 
@@ -66,7 +70,7 @@ const Mission = ({ promotionInfo, config }) => {
 										{t("lbl_Deposit").toUpperCase()}
 									</span>
 									<span>
-										{t(`Currency_${currencyId}`)}{" "}
+										{currencyName}{" "}
 										{lib_number_foramt({
 											number: requiredAmount,
 											isConvertRequired: false,
@@ -79,7 +83,7 @@ const Mission = ({ promotionInfo, config }) => {
 										{t("lbl_Turnover").toUpperCase()}
 									</span>
 									<span>
-										{t(`Currency_${currencyId}`)}{" "}
+										{currencyName}{" "}
 										{lib_number_foramt({
 											number: requiredTurnover,
 											isConvertRequired: false,
@@ -103,7 +107,7 @@ const Mission = ({ promotionInfo, config }) => {
 								<li>
 									<span>{t("lbl_Bonus").toUpperCase()}</span>
 									<span>
-										{t(`Currency_${currencyId}`)}{" "}
+										{currencyName}{" "}
 										{lib_number_foramt({
 											number: bonus,
 											isConvertRequired: false,
