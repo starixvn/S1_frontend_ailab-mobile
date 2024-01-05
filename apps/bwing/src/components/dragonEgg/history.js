@@ -32,7 +32,7 @@ const History = () => {
 				<div className="event-history-table">
 					<div className="top-title">
 						<div>{t("lbl_Date")}</div>
-						<div>{t("lbl_Referral_rewards")}</div>
+						<div>{t("lbl_DragonEgg_EventRewards")}</div>
 					</div>
 					<div className="content">
 						{history?.map(({ drawTime, prizeName }) => (
