@@ -271,7 +271,7 @@ BannerWithStaticImages.propTypes = {
 
 export const Autoplay = props => {
 	const params = props.params ?? {
-		spaceBetween: 30,
+		spaceBetween: 100,
 		centeredSlides: true,
 		autoplay: {
 			delay: 2500,
