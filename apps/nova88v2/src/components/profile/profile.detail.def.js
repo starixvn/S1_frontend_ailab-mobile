@@ -18,6 +18,7 @@ export const monthOptions = [
 export const initValue = {
 	accountName: "",
 	phoneNo: "",
+	email: "",
 	addressLineFirst: "",
 	addressLineSecond: "",
 	addressCity: "",
@@ -36,6 +37,10 @@ export const initWarning = {
 		msg: ""
 	},
 	phoneNo: {
+		checked: null,
+		msg: ""
+	},
+	email: {
 		checked: null,
 		msg: ""
 	},

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import IptStatus from "./inputStatus";
 
@@ -22,8 +23,10 @@ const Inputbox = ({
 	children,
 	_class,
 	showDot,
-	subtitle
+	subtitle,
+	clickSubmit
 }) => {
+	const { t } = useTranslation();
 	const isShowAreaCode = () => {
 		if (areaCode) {
 			return <i className={`icon ${icon}`}>{areaCode}</i>;
@@ -69,6 +72,12 @@ const Inputbox = ({
 				data-testid={`${testAttr}_msg`}>
 				{warningMsg}
 			</div>
+
+			{!!clickSubmit && (
+				<div className="btn-group">
+					<button onClick={clickSubmit}>{t("lbl_Submit")}</button>
+				</div>
+			)}
 		</div>
 	);
 };
@@ -115,7 +124,8 @@ Inputbox.propTypes = {
 	children: PropTypes.node,
 	_class: PropTypes.string,
 	showDot: PropTypes.bool,
-	subtitle: PropTypes.string
+	subtitle: PropTypes.string,
+	clickSubmit: PropTypes.func.isRequired
 };
 
 export default Inputbox;

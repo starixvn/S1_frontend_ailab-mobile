@@ -166,6 +166,51 @@ const Panel = () => {
 		return checked;
 	};
 
+	const checkEmail = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+		if (!val) {
+			checked = false;
+			msg = i18n.msg_EmailReq;
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = i18n.msg_MailWrongFormat;
+		} else {
+			const res = await api.site.ExistsEmail({ Email: val });
+			if (res.data?.errorCode === 0) {
+				if (res.data?.data === true) {
+					checked = false;
+					msg = i18n.msg_MailExisted;
+				} else {
+					setWarning(prevState => ({
+						...prevState,
+						email: {
+							checked,
+							msg
+						}
+					}));
+				}
+			} else {
+				setPopBox({
+					isOpen: true,
+					content: `[${res.data.errorCode}] ${res.data.message}`
+				});
+			}
+		}
+
+		setWarning(prevState => ({
+			...prevState,
+			email: {
+				checked,
+				msg
+			}
+		}));
+
+		return { checked, msg };
+	};
+
 	const checkBirth = (_day, _month, _year) => {
 		let checked = true;
 		let message = "";
@@ -224,7 +269,12 @@ const Panel = () => {
 			phoneCheck = await checkPhone(userValue.phoneNo);
 		}
 
-		const checked = accountNameCheck && birthCheck && phoneCheck;
+		const emailCheck = userInfo.email
+			? true
+			: await checkEmail(userValue.email);
+
+		const checked =
+			accountNameCheck && birthCheck && phoneCheck && emailCheck;
 
 		if (checked) {
 			setUserValue(prevState => ({
@@ -277,7 +327,8 @@ const Panel = () => {
 						userInfo.birth_y ??
 						`${yearOptions[yearSelectedIdx]?.value}`,
 					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
-					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
+					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo,
+					Email: userInfo?.email ?? userValue.email
 				};
 
 				api.accountStrict.SetProfile(profileData).then(
@@ -459,6 +510,21 @@ const Panel = () => {
 					testAttr="accountName"
 				/>
 			) : null}
+			{!userInfo?.email && (
+				<Inputbox
+					icon="con icon-email"
+					placeholder={i18n.lbl_Email}
+					onBlur={e => checkEmail(e.target.value)}
+					onChange={EditField.bind(null, "email")}
+					btnStatus={warning.email.checked}
+					warningMsg={warning.email.msg}
+					value={userValue.email}
+					clickInfo={() => showTipHandler("email")}
+					showTips={showTips.includes("email")}
+					testAttr="email"
+					clickSubmit={clickSubmit}
+				/>
+			)}
 			{!userInfo?.birth_d || !userInfo?.birth_m || !userInfo?.birth_y ? (
 				<Birthday
 					i18n={i18n}
@@ -509,12 +575,13 @@ const Panel = () => {
 				</div>
 			) : null}
 			{!userInfo?.accountName ||
-			!userInfo?.birth_d ||
-			!userInfo?.phoneNo ? (
-				<div className="btn-group" data-testid="submitBtn">
-					<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
-				</div>
-			) : null}
+				!userInfo?.birth_d ||
+				!userInfo?.phoneNo ||
+				(!userInfo?.email && (
+					<div className="btn-group" data-testid="submitBtn">
+						<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
+					</div>
+				))}
 			<div className="profile">{arr}</div>)
 		</>
 	);
