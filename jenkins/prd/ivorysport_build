@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     tools {nodejs "nodejs"}
     environment{
         node_modules_exists = fileExists 'node_modules'
@@ -10,6 +10,7 @@ pipeline {
     }
     stages {
         stage('Install dependencies') {
+            agent { node { label 'Build' } }
             when {
                 anyOf {
                     changeset "package.json"
@@ -21,12 +22,14 @@ pipeline {
             }
         }
         stage('Build') {
+            agent { node { label 'Build' } }
             steps {
                 sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/${project_name}/public/rnt.txt'
                 sh 'npx nx autobuild ${project_name} --skip-nx-cache'
             }
         }
         stage('Zip'){
+            agent { node { label 'Build' } }
             steps {
                 dir("dist/apps/${project_name}"){
                     script {
