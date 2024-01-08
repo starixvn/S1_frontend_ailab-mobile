@@ -2929,7 +2929,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: #858585;
 }
 .mission-progress-item .progress {
-  background: white;
+  background: #e7e7e7;
   height: 8px;
   width: 220px;
   border-radius: 20px;

@@ -53,7 +53,7 @@ const Mission = ({ promotionInfo }) => {
 				setTargetTask(targetObj);
 			}
 		}
-	}, []);
+	}, [promotionInfo.bonusCode]);
 
 	if (tierAmountList.length > 0) {
 		return (

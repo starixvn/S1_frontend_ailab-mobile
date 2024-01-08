@@ -17264,12 +17264,15 @@ main .swiper-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2.5vw 5vw;
+  padding: 2.5vw 2vw;
 }
 .dragonegg-event .event-history-table .top-title > div:first-child {
-  width: 25vw;
+  width: 28%;
   margin: 0 0.25vw 0.5vw 0;
   border-radius: 4.4vw 0 0 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .dragonegg-event .event-history-table .top-title > div:last-child {
   margin: 0 0 0.5vw 0.25vw;
@@ -17301,15 +17304,18 @@ main .swiper-container {
           align-items: center;
   background: #fff;
   width: 100%;
-  padding: 2.5vw 5vw;
+  padding: 2.5vw 2vw;
   color: #0A1B38;
   font-weight: 600;
   line-height: 1.2;
   height: 3.5vw;
 }
 .dragonegg-event .event-history-table .content > div > div:first-child {
-  width: 25vw;
+  width: 28%;
   margin: 0 0.25vw 0.5vw 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .dragonegg-event .event-history-table .content > div > div:last-child {
   margin: 0 0 0.5vw 0.25vw;
