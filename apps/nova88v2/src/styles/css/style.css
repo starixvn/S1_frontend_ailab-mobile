@@ -1971,7 +1971,7 @@ main .gameList .icon-new {
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
-#popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+#popup > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo):not(.bigwin) {
   background: white;
   width: 100%;
 }
@@ -3136,6 +3136,220 @@ main .gameList .icon-new {
 }
 #popup.sponsorpop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
+}
+#popup.bigwinpop {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+  z-index: 1;
+}
+#popup.bigwinpop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.bigwinpop .bigwin {
+  width: 100%;
+}
+#popup.bigwinpop .bigwin > div {
+  margin-bottom: 40vw;
+  position: relative;
+  -webkit-animation: vninfopop-inner 1.5s ease-in-out;
+          animation: vninfopop-inner 1.5s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+#popup.bigwinpop .bigwin.en .bigwin-img {
+  width: 110vw;
+  height: 110vw;
+  -webkit-animation: bigwinpopup-en 0.5s infinite;
+          animation: bigwinpopup-en 0.5s infinite;
+}
+#popup.bigwinpop .bigwin.en .bigwin-text {
+  margin-top: -5.5vw;
+}
+#popup.bigwinpop .bigwin.id .bigwin-img {
+  width: 110vw;
+  height: 110vw;
+  -webkit-animation: bigwinpopup-id 0.5s infinite;
+          animation: bigwinpopup-id 0.5s infinite;
+}
+#popup.bigwinpop .bigwin.id .bigwin-text {
+  margin-top: -2vw;
+}
+#popup.bigwinpop .bigwin-text {
+  position: absolute;
+  text-align: center;
+  font-weight: 400;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.bigwinpop .bigwin-text > div:last-child {
+  margin-top: 1.2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.bigwinpop .bigwin-text > div:last-child span {
+  width: 50vw;
+}
+#popup.bigwinpop .bigwin-text .bigwin-name {
+  position: absolute;
+  bottom: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url(https://banner.0814media.net/h5/img/4.0/username.png) no-repeat center/100%;
+  height: 14vw;
+  width: 47vw;
+  color: white;
+  font-size: 3.5vw;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px #49008d, 0 0 20px #49008d, 0 0 6px #49008d;
+}
+#popup.bigwinpop .bigwin-text .vender {
+  position: absolute;
+  top: 5vw;
+  background: white;
+  width: 55vw;
+  height: 11vw;
+  border-radius: 10px;
+  color: #4e1587;
+  font-weight: 700;
+  line-height: 4.5vw;
+}
+#popup.bigwinpop .bigwin-number {
+  position: absolute;
+  bottom: 22vw;
+  font-size: 5.5vw;
+  font-weight: 900;
+  text-shadow: 0 0 10px #cb1ff0, 0 0 10px #cb1ff0, 0 0 10px #cb1ff0, 0 0 10px #cb1ff0;
+}
+@keyframes vninfopop-inner {
+  0% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes bigwinpopup-en {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-en-2.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-en-1.png) no-repeat center/cover;
+  }
+}
+@keyframes bigwinpopup-en {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-en-2.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-en-1.png) no-repeat center/cover;
+  }
+}
+@-webkit-keyframes bigwinpopup-id {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-id-2.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-id-1.png) no-repeat center/cover;
+  }
+}
+@keyframes bigwinpopup-id {
+  0% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-id-2.png) no-repeat center/cover;
+  }
+  100% {
+    background: url(https://banner.0814media.net/h5/img/4.0/popup-id-1.png) no-repeat center/cover;
+  }
+}
+#popup.bigwinpop .money {
+  position: absolute;
+  top: 33vw;
+}
+#popup.bigwinpop .money-two {
+  position: absolute;
+  top: 5vw;
+  left: 5vw;
+}
+#popup.bigwinpop .closepop {
+  cursor: pointer;
+  display: block;
+  width: 7vw;
+  position: absolute;
+  right: 45vw;
+  bottom: 60vw;
+  opacity: 0.7;
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
+  z-index: 4;
+}
+#popup.bigwinpop .closepop:hover {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 #popup.livesportspop {
   background: rgba(0, 0, 0, 0.7);
