@@ -1321,6 +1321,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.HaoLong,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/4d/haolong.png`,
 					allowCurrency: allowedCurrencyList.haoLong,
+					spanText: "Grand Dragon",
 					useGotoGame: true,
 					eventIcon: [
 						{

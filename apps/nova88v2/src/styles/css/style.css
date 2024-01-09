@@ -14911,6 +14911,13 @@ main .banner {
 main .swiper-container {
   position: relative;
 }
+main.casino .banner {
+  position: relative;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
 
 #Marquee {
   background: white;
