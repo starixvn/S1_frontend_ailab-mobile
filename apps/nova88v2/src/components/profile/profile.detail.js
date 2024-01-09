@@ -574,14 +574,14 @@ const Panel = () => {
 					/>
 				</div>
 			) : null}
-			{!userInfo?.accountName ||
+			{(!userInfo?.accountName ||
 				!userInfo?.birth_d ||
 				!userInfo?.phoneNo ||
-				(!userInfo?.email && (
-					<div className="btn-group" data-testid="submitBtn">
-						<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
-					</div>
-				))}
+				!userInfo?.email) && (
+				<div className="btn-group" data-testid="submitBtn">
+					<button onClick={clickSubmit}>{i18n.lbl_Submit}</button>
+				</div>
+			)}
 			<div className="profile">{arr}</div>)
 		</>
 	);
