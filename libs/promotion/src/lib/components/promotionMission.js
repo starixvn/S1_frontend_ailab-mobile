@@ -57,6 +57,12 @@ const Mission = ({ promotionInfo, config }) => {
 	}, [promotionInfo.bonusCode]);
 
 	if (tierAmountList.length > 0) {
+		const isShowDeposit = tierAmountList.some(
+			({ requiredAmount }) => requiredAmount !== 0
+		);
+		const isShowTurnover = tierAmountList.some(
+			({ requiredTurnover }) => requiredTurnover !== 0
+		);
 		return (
 			<>
 				{tierAmountList.map(
@@ -65,32 +71,36 @@ const Mission = ({ promotionInfo, config }) => {
 							className="info promotionInfo"
 							key={`${requiredAmount}${requiredTurnover}${rollOver}${bonus}`}>
 							<ul>
-								<li>
-									<span>
-										{t("lbl_Deposit").toUpperCase()}
-									</span>
-									<span>
-										{currencyName}{" "}
-										{lib_number_foramt({
-											number: requiredAmount,
-											isConvertRequired: false,
-											digits: 0
-										})}
-									</span>
-								</li>
-								<li>
-									<span>
-										{t("lbl_Turnover").toUpperCase()}
-									</span>
-									<span>
-										{currencyName}{" "}
-										{lib_number_foramt({
-											number: requiredTurnover,
-											isConvertRequired: false,
-											digits: 0
-										})}
-									</span>
-								</li>
+								{isShowDeposit && (
+									<li>
+										<span>
+											{t("lbl_Deposit").toUpperCase()}
+										</span>
+										<span>
+											{currencyName}{" "}
+											{lib_number_foramt({
+												number: requiredAmount,
+												isConvertRequired: false,
+												digits: 0
+											})}
+										</span>
+									</li>
+								)}
+								{isShowTurnover && (
+									<li>
+										<span>
+											{t("lbl_Turnover").toUpperCase()}
+										</span>
+										<span>
+											{currencyName}{" "}
+											{lib_number_foramt({
+												number: requiredTurnover,
+												isConvertRequired: false,
+												digits: 0
+											})}
+										</span>
+									</li>
+								)}
 								<li>
 									<span>
 										{fullFillType === 2
@@ -124,79 +134,84 @@ const Mission = ({ promotionInfo, config }) => {
 						{currentDate} {t("lbl_DailyTasks").toUpperCase()}
 					</div>
 					<div className="mission-progress">
-						<div>
-							<div className="mission-progress-item">
-								<div className="mission-progress-text">
+						{isShowDeposit && (
+							<div>
+								<div className="mission-progress-item">
+									<div className="mission-progress-text">
+										<div>
+											{t(
+												"lbl_RequiredDepositAmount"
+											).toUpperCase()}
+										</div>
+									</div>
 									<div>
-										{t(
-											"lbl_RequiredDepositAmount"
-										).toUpperCase()}
+										<div className="progress">
+											<div
+												className="progress-bar"
+												style={{
+													width: `${getTaskStatusProgress(
+														targetTask?.requiredAmount,
+														depositAmountSum
+													)}`
+												}}
+											/>
+										</div>
+										<div className="mission-number">
+											{depositAmountSum}/
+											{targetTask?.requiredAmount}
+										</div>
 									</div>
 								</div>
-								<div>
+								<div
+									className={`state ${getTaskStatusClassName(
+										targetTask?.requiredAmount,
+										depositAmountSum
+									)}`}>
+									{getTaskStatusDisplayKey(
+										targetTask?.requiredAmount,
+										depositAmountSum
+									)}
+								</div>
+							</div>
+						)}
+						{isShowTurnover && (
+							<div>
+								<div className="mission-progress-item turnover">
+									<div className="mission-progress-text">
+										<div>
+											{t(
+												"lbl_RequiredTurnover"
+											).toUpperCase()}
+										</div>
+									</div>
 									<div className="progress">
 										<div
 											className="progress-bar"
 											style={{
 												width: `${getTaskStatusProgress(
-													targetTask?.requiredAmount,
-													depositAmountSum
+													targetTask?.requiredTurnover,
+													turnoverSum
 												)}`
 											}}
 										/>
 									</div>
 									<div className="mission-number">
-										{depositAmountSum}/
-										{targetTask?.requiredAmount}
+										{turnoverSum}/
+										{targetTask?.requiredTurnover}
 									</div>
 								</div>
-							</div>
-							<div
-								className={`state ${getTaskStatusClassName(
-									targetTask?.requiredAmount,
-									depositAmountSum
-								)}`}>
-								{getTaskStatusDisplayKey(
-									targetTask?.requiredAmount,
-									depositAmountSum
-								)}
-							</div>
-						</div>
-						<div>
-							<div className="mission-progress-item turnover">
-								<div className="mission-progress-text">
-									<div>
-										{t(
-											"lbl_RequiredTurnover"
-										).toUpperCase()}
-									</div>
-								</div>
-								<div className="progress">
-									<div
-										className="progress-bar"
-										style={{
-											width: `${getTaskStatusProgress(
-												targetTask?.requiredTurnover,
-												turnoverSum
-											)}`
-										}}
-									/>
-								</div>
-								<div className="mission-number">
-									{turnoverSum}/{targetTask?.requiredTurnover}
+								<div
+									className={`state ${getTaskStatusClassName(
+										targetTask?.requiredTurnover,
+										turnoverSum
+									)}`}>
+									{getTaskStatusDisplayKey(
+										targetTask?.requiredTurnover,
+										turnoverSum
+									)}
 								</div>
 							</div>
-							<div
-								className={`state ${getTaskStatusClassName(
-									targetTask?.requiredTurnover,
-									turnoverSum
-								)}`}>
-								{getTaskStatusDisplayKey(
-									targetTask?.requiredTurnover,
-									turnoverSum
-								)}
-							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			</>
