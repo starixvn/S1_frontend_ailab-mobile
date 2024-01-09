@@ -7529,19 +7529,22 @@ main .sideBar button.icon:before {
 }
 
 .mission-content {
-  margin: 20px 4px 0 3px;
+  margin: 6vw 8vw 0 8vw;
+  border-radius: 3vw;
 }
 .mission-title {
   background: -webkit-gradient(linear, left top, right top, from(rgb(243, 100, 0)), color-stop(70%, #ffa82e));
   background: linear-gradient(90deg, rgb(243, 100, 0) 0%, #ffa82e 70%);
-  padding: 7px 0 7px 5px;
+  padding: 2vw 0 2vw 3vw;
   font-size: 12px;
   color: white;
+  border-radius: 3vw 3vw 0 0;
 }
 .mission-progress {
   background: #efefef;
-  padding: 20px 0 20px 10px;
+  padding: 5vw 0 5vw 2vw;
   color: #2a4fa4;
+  border-radius: 0 0 3vw 3vw;
 }
 .mission-progress > div {
   display: -webkit-box;
@@ -7550,15 +7553,15 @@ main .sideBar button.icon:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50px;
+  height: 13vw;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 .mission-progress > div .state {
   background: #000;
-  height: 20px;
-  width: 80px;
+  height: 5vw;
+  width: 18vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7582,18 +7585,18 @@ main .sideBar button.icon:before {
 }
 .mission-progress-item .progress {
   background: white;
-  height: 8px;
-  width: 220px;
+  height: 2vw;
+  width: 53vw;
   border-radius: 20px;
 }
 .mission-progress-item .progress .progress-bar {
   background: -webkit-gradient(linear, left top, right top, from(#254dbf), color-stop(70%, rgb(255, 69, 93)));
   background: linear-gradient(90deg, #254dbf 0%, rgb(255, 69, 93) 70%);
-  height: 8px;
+  height: 2vw;
   border-radius: 20px;
 }
 .mission-progress-item .mission-number {
-  margin-left: 3px;
+  margin-left: 1.5vw;
   color: #8d8d8d;
   text-align: end;
   font-size: 12px;

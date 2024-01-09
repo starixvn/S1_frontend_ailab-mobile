@@ -56,6 +56,12 @@ const Mission = ({ promotionInfo }) => {
 	}, [promotionInfo.bonusCode]);
 
 	if (tierAmountList.length > 0) {
+		const isShowDeposit = tierAmountList.some(
+			({ requiredAmount }) => requiredAmount !== 0
+		);
+		const isShowTurnover = tierAmountList.some(
+			({ requiredTurnover }) => requiredTurnover !== 0
+		);
 		return (
 			<>
 				{tierAmountList.map(
@@ -63,20 +69,32 @@ const Mission = ({ promotionInfo }) => {
 						<div
 							className="rolloverList"
 							key={`${requiredAmount}${requiredTurnover}${rollOver}${bonus}`}>
-							<div>
-								<div>{t("lbl_Deposit").toUpperCase()}</div>
+							{isShowDeposit && (
 								<div>
-									{t(`Currency_${currencyId}`)}{" "}
-									{number_format(requiredAmount, false, 0)}
+									<div>{t("lbl_Deposit").toUpperCase()}</div>
+									<div>
+										{t(`Currency_${currencyId}`)}{" "}
+										{number_format(
+											requiredAmount,
+											false,
+											0
+										)}
+									</div>
 								</div>
-							</div>
-							<div>
-								<div>{t("lbl_Turnover").toUpperCase()}</div>
+							)}
+							{isShowTurnover && (
 								<div>
-									{t(`Currency_${currencyId}`)}{" "}
-									{number_format(requiredTurnover, false, 0)}
+									<div>{t("lbl_Turnover").toUpperCase()}</div>
+									<div>
+										{t(`Currency_${currencyId}`)}{" "}
+										{number_format(
+											requiredTurnover,
+											false,
+											0
+										)}
+									</div>
 								</div>
-							</div>
+							)}
 							<div>
 								<div>
 									{fullFillType === 2
@@ -102,77 +120,82 @@ const Mission = ({ promotionInfo }) => {
 						{currentDate} {t("lbl_DailyTasks").toUpperCase()}
 					</div>
 					<div className="mission-progress">
-						<div>
-							<div className="mission-progress-item">
-								<div className="mission-progress-text">
-									<div>
-										{t(
-											"lbl_RequiredDepositAmount"
-										).toUpperCase()}
+						{isShowDeposit && (
+							<div>
+								<div className="mission-progress-item">
+									<div className="mission-progress-text">
+										<div>
+											{t(
+												"lbl_RequiredDepositAmount"
+											).toUpperCase()}
+										</div>
+									</div>
+									<div className="progress">
+										<div
+											className="progress-bar"
+											style={{
+												width: `${getTaskStatusProgress(
+													targetTask?.requiredAmount,
+													depositAmountSum
+												)}`
+											}}
+										/>
+									</div>
+									<div className="mission-number">
+										{depositAmountSum}/
+										{targetTask?.requiredAmount}
 									</div>
 								</div>
-								<div className="progress">
-									<div
-										className="progress-bar"
-										style={{
-											width: `${getTaskStatusProgress(
-												targetTask?.requiredAmount,
-												depositAmountSum
-											)}`
-										}}
-									/>
-								</div>
-								<div className="mission-number">
-									{depositAmountSum}/
-									{targetTask?.requiredAmount}
+								<div
+									className={`state ${getTaskStatusClassName(
+										targetTask?.requiredAmount,
+										depositAmountSum
+									)}`}>
+									{getTaskStatusDisplayKey(
+										targetTask?.requiredAmount,
+										depositAmountSum
+									)}
 								</div>
 							</div>
-							<div
-								className={`state ${getTaskStatusClassName(
-									targetTask?.requiredAmount,
-									depositAmountSum
-								)}`}>
-								{getTaskStatusDisplayKey(
-									targetTask?.requiredAmount,
-									depositAmountSum
-								)}
-							</div>
-						</div>
-						<div>
-							<div className="mission-progress-item turnover">
-								<div className="mission-progress-text">
-									<div>
-										{t(
-											"lbl_RequiredTurnover"
-										).toUpperCase()}
+						)}
+						{isShowTurnover && (
+							<div>
+								<div className="mission-progress-item turnover">
+									<div className="mission-progress-text">
+										<div>
+											{t(
+												"lbl_RequiredTurnover"
+											).toUpperCase()}
+										</div>
+									</div>
+									<div className="progress">
+										<div
+											className="progress-bar"
+											style={{
+												width: `${getTaskStatusProgress(
+													targetTask?.requiredTurnover,
+													turnoverSum
+												)}`
+											}}
+										/>
+									</div>
+									<div className="mission-number">
+										{turnoverSum}/
+										{targetTask?.requiredTurnover}
 									</div>
 								</div>
-								<div className="progress">
-									<div
-										className="progress-bar"
-										style={{
-											width: `${getTaskStatusProgress(
-												targetTask?.requiredTurnover,
-												turnoverSum
-											)}`
-										}}
-									/>
-								</div>
-								<div className="mission-number">
-									{turnoverSum}/{targetTask?.requiredTurnover}
+								<div
+									className={`state ${getTaskStatusClassName(
+										targetTask?.requiredTurnover,
+										turnoverSum
+									)}`}>
+									{getTaskStatusDisplayKey(
+										targetTask?.requiredTurnover,
+										turnoverSum
+									)}
 								</div>
 							</div>
-							<div
-								className={`state ${getTaskStatusClassName(
-									targetTask?.requiredTurnover,
-									turnoverSum
-								)}`}>
-								{getTaskStatusDisplayKey(
-									targetTask?.requiredTurnover,
-									turnoverSum
-								)}
-							</div>
-						</div>
+						)}
 					</div>
 				</div>
 			</>

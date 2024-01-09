@@ -6,11 +6,11 @@ import {
 	JoinBtn,
 	DepositRecord,
 	ProcessBar,
-	CashBackInfo,
-	Mission
+	CashBackInfo
 } from "@ailab-mobile/promotion";
 import { popBoxContext } from "../../common/context";
 import PromoRule from "../components/promoRule";
+import Mission from "./promotionMission";
 
 const PromotionInInfoContent = ({
 	promotionInfo,
@@ -95,6 +95,7 @@ const PromotionInInfoContent = ({
 					{promotionInfo.promotionType ===
 						defPromotionType.missionBonus &&
 						!promotionInfo.isJoin && (
+							// 這邊不用lib內共用Mission組件是因為html結構有異
 							<Mission
 								promotionInfo={promotionInfo}
 								config={config}
