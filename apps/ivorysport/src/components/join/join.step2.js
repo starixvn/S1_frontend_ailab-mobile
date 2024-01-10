@@ -480,7 +480,7 @@ const JoinStep2 = ({
 			regData.blackbox = await Iov_GetBlackBox();
 			regData.LineUserId = lineUserId;
 
-			api.site.Signup(regData, signupLangId).then(
+			api.site.IvorySportSignup(regData, signupLangId).then(
 				response => {
 					if (isMountedRef.current) {
 						const { errorCode, message } = response.data;

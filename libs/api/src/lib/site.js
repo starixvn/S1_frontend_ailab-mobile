@@ -26,8 +26,10 @@ export class SiteAPI extends BaseAPI {
 	 * 專門開給 Ivorysport 的註冊 api，跟 'Signup' 比起來多了以下參數
 	 * Occupation、SourceOfIncome、Nationality、Country、City、PostCode、LineFirst、Birth_d、Birth_m、Birth_y
 	 */
-	Signup = (data, langId) =>
+	IvorySportSignup = (data, langId) =>
 		this.siteRequest.post(`/IvorysportSignup/${langId}`, data);
+
+	Signup = (data, langId) => this.siteRequest.post(`/Signup/${langId}`, data);
 
 	GetSiteCurrencyList = () => this.siteRequest.post(`/GetSiteCurrencyList/`);
 
