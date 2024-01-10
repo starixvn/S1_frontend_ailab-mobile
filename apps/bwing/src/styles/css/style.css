@@ -15948,6 +15948,63 @@ body main.main.referral {
   font-size: 3.5vw;
 }
 
+.inputModule .inputBox-blue {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #7789bd;
+  height: 9.8vw;
+  border-radius: 3px;
+  margin-top: 1vw;
+}
+.inputModule .inputBox-blue input {
+  background: transparent;
+  border: 0;
+  color: #1C317B;
+  outline: none;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding-left: 2vw;
+}
+.inputModule .inputBox-blue .iconModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.inputModule .inputBox-blue .iconModule .icon {
+  margin-left: -1vw;
+}
+.inputModule .inputBox-blue .iconModule .icon.icon-information-solid::before {
+  font-size: 3.8vw;
+  background: unset;
+  width: unset;
+  height: unset;
+  margin: 0;
+}
+.inputModule .inputBox-blue .iconModule .icon.icon-checkmark::before {
+  font-size: 3.5vw;
+  color: #09D854;
+}
+.inputModule .inputBox-blue .iconModule .icon.icon-cross::before {
+  color: #FF0000;
+}
+.inputModule.email {
+  margin-bottom: 1vw;
+}
+.inputModule.email .inputBox-blue.error {
+  border: 1px solid #f94d4d;
+}
+.inputModule.email .tip.active {
+  display: block;
+  color: #FF0000;
+}
+
 .g-recaptcha {
   display: -webkit-box;
   display: -ms-flexbox;

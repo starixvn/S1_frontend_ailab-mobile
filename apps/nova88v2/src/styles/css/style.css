@@ -12473,6 +12473,15 @@ span.important {
 .profile + .btn-group a, .profile + .btn-group button {
   width: 100%;
 }
+.profile-email.unfilled {
+  color: gray;
+}
+.profile-email.unfilled > div:first-child {
+  color: #5574A7;
+}
+.profile-email.unfilled button {
+  background: gray;
+}
 
 .nav {
   background: white;

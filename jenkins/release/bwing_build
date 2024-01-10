@@ -1,0 +1,78 @@
+pipeline {
+    agent none
+    tools {nodejs "nodejs"}
+    environment{
+        node_modules_exists = fileExists 'node_modules'
+        site = 'bwing'
+        project_name = 'bwing'
+        env = 'release'
+        ansible_path = '/var/jenkins_home/ansible/frontend/release/'
+    }
+    stages {
+        stage('Install dependencies') {
+            agent { node { label 'Build' } }
+            when {
+                anyOf {
+                    changeset "package.json"
+                    expression { node_modules_exists == 'false' }
+                }
+            }
+            steps {
+                sh 'npm i --force'
+            }
+        }
+        stage('Build') {
+            agent { node { label 'Build' } }
+            steps {
+                sh '(git rev-parse --short=7 HEAD & git rev-parse --abbrev-ref HEAD) > apps/${project_name}/public/rnt.txt'
+                sh 'npx nx autobuild ${project_name} --skip-nx-cache'
+            }
+        }
+        stage('Zip'){
+            agent { node { label 'Build' } }
+            steps {
+                dir("dist/apps/${project_name}"){
+                    script {
+                        env.commitHash = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
+                    }
+                    sh 'zip -r mobile-${site}-${commitHash} *'
+                    //sh 'curl -x http://10.4.194.104:3128 -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://13.213.82.69:8081/repository/artifacts/Frontend/mobile/${site}/${env}/mobile-${site}-${commitHash}.zip'
+                    sh 'curl -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile/${site}/${env}/mobile-${site}-${commitHash}.zip'
+                    sh 'echo mobile-${site}-${commitHash}'
+                    sh 'echo deploy version=${commitHash}'
+                }
+            }
+        }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'ansible-playbook -i ${ansible_path}host.yml ${ansible_path}deploy.yml --extra-vars "commitId=${commitHash} site=${site} platform=mobile host=mobile-${site} env=${env}"'
+        //     }
+        // }
+    }
+    // post {
+    //     success{
+    //           withCredentials([string(credentialsId: 'telegram-bot-token', variable: 'TOKEN')]){
+    //           withCredentials([string(credentialsId: 'telegram-groupid', variable: 'GROUP_ID')]){
+    //           wrap([$class: 'BuildUser']) {
+    //         sh  '''
+    //             curl -X GET "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+    //               -d "chat_id=${GROUP_ID}&text=Success - Build # ${BUILD_NUMBER} of ${JOB_NAME}%0a%0aGo to build <${BUILD_URL}>%0a%0aRelease Note：%0a${ReleaseNote}%0a%0aBuild User：${BUILD_USER}"
+    //         '''}
+    //         }
+    //        }
+    //     }
+    //     failure {
+    //           withCredentials([string(credentialsId: 'telegram-bot-token', variable: 'TOKEN')]){
+    //           withCredentials([string(credentialsId: 'telegram-groupid', variable: 'GROUP_ID')]){
+    //           wrap([$class: 'BuildUser']) {
+    //         sh  '''
+    //             curl -X GET "https://api.telegram.org/bot${TOKEN}/sendMessage" \
+    //               -d "chat_id=${GROUP_ID}&text=Failure - Build # ${BUILD_NUMBER} of ${JOB_NAME}%0a%0aGo to build <${BUILD_URL}>%0a%0aRelease Note：%0a${ReleaseNote}%0a%0aBuild User：${BUILD_USER}"
+    //             '''}
+
+    //           }
+    //        }
+    //     }
+
+    // }
+}
