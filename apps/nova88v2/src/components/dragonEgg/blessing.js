@@ -28,7 +28,29 @@ const Collection = () => {
 			eventId: eventIds.dragonEgg
 		});
 
-		if (errorCode !== 0) {
+		if (errorCode === 0) {
+			setPopBox({
+				isOpen: true,
+				content: t("lbl_Success"),
+				handlePopBox: () => {
+					getStickers();
+					setPopBox({ isOpen: false });
+				},
+				hasBtn: true,
+				btnBar: (
+					<div className="btn-group">
+						<button
+							className="orange"
+							onClick={() => {
+								getStickers();
+								setPopBox({ isOpen: false });
+							}}>
+							{t("lbl_OK")}
+						</button>
+					</div>
+				)
+			});
+		} else {
 			setPopBox({
 				isOpen: true,
 				content: `[${errorCode}] ${message}`
