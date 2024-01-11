@@ -88,7 +88,8 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			infoTitle: "email",
 			colTitle: i18n.lbl_Email,
 			content: userInfo.email,
-			isVerified: userInfo.emailVerified
+			isVerified: userInfo.emailVerified,
+			infoHint: i18n.lbl_EmailToolTip
 		},
 		{
 			infoTitle: "accountName",
