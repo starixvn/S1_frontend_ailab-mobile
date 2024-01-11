@@ -493,6 +493,7 @@ const Panel = () => {
 				/>
 			);
 		});
+
 	return (
 		<>
 			{!userInfo?.accountName ? (
@@ -519,6 +520,7 @@ const Panel = () => {
 					btnStatus={warning.email.checked}
 					warningMsg={warning.email.msg}
 					value={userValue.email}
+					infoText={i18n.lbl_EmailToolTip}
 					clickInfo={() => showTipHandler("email")}
 					showTips={showTips.includes("email")}
 					testAttr="email"
