@@ -1,13 +1,17 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react";
 import { menuIconTypeEnum } from "@ailab-mobile/common";
+import React, { useState, useEffect, useContext } from "react";
+import { userInfoContext } from "../common/context";
 import { getUrlParameter } from "../common/common";
 import { cloudBannerImgURL } from "../../config";
 import { useMenu } from "../hook/useMenu";
 import { isShowEventIcon, defCol } from "../../datas/defMenu";
 
 const Menu = () => {
+	const {
+		userInfo: { langId }
+	} = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const [selectedCategory, setSelectedCategory] = useState(defCol.sports);
 	const { menuData, onClickProductItem } = useMenu();
@@ -74,6 +78,12 @@ const Menu = () => {
 							isInMaintain,
 							mobileHeaderPicUrl
 						} = subMenuItem || {};
+
+						const displayName =
+							subMenuItem?.currencyGameName &&
+							subMenuItem?.currencyGameName[langId] &&
+							subMenuItem?.currencyGameName[langId];
+
 						// * 後端這裡是字串格式 需做處理
 						const suBMenuImage =
 							mobileHeaderPicUrl &&
@@ -90,8 +100,16 @@ const Menu = () => {
 									under: isInMaintain
 								})}
 								onClick={() => onClickProductItem(subMenuItem)}>
-								{isNew && <div className="new-icon">New</div>}
-								<img src={suBMenuImage} alt={productName} />
+								<div className="gamelist-img">
+									{isNew && (
+										<div className="new-icon">New</div>
+									)}
+									<img src={suBMenuImage} alt={productName} />
+									<div className="gamelist-title">
+										{displayName ||
+											subMenuItem?.productName}
+									</div>
+								</div>
 							</button>
 						);
 					})}
