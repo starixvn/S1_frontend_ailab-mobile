@@ -1,20 +1,14 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
+import { lobbyCategoryEnum } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
+import classNames from "classnames";
 import Logo from "../common/logo";
-import {
-	userInfoContext,
-	i18nContext,
-	popBoxContext,
-	navContext,
-	defNavPanel
-} from "../common/context";
 import path from "../../path";
+import { userInfoContext, i18nContext, popBoxContext } from "../common/context";
 import { api_SetLanguage } from "../../service/api/account";
 import { number_format, setCookie } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
-import { defGameInfo } from "../../datas/productList";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
 import ShortcutBar from "./shortcutBar";
 import { siteInfo, bannerImgUrl } from "../../config";
 import DefLangs from "../../datas/defLangs";
@@ -22,258 +16,19 @@ import { tpWalletsListType } from "../transfer/transfer.def";
 import useGetBalance from "../hook/useGetMainBalance";
 import useGetTpBalance from "../hook/useGetTpBalance";
 import useGetBonusBalance from "../hook/useGetBonusBalance";
-import {
-	useGetTpMaintainList,
-	defTpGameType
-} from "../hook/useGetTpMaintainList";
 import useGetSocialChannel, {
 	defDisplayPage,
 	channelIconName
 } from "../hook/useGetSocialChannel";
 
-const defSubMenus = [
-	{
-		displayKey: "lbl_Sports",
-		icon: "icon icon-sports",
-		subItems: [
-			{
-				displayKey: "lbl_SabaSport",
-				...defGameInfo.Sports
-			},
-			{
-				displayKey: "lbl_CryptoSports",
-				...defGameInfo.CryptoSports
-			},
-			{
-				displayText: "SBOBET",
-				...defGameInfo.SBOSport
-			},
-			{
-				displayKey: "lbl_BTISport",
-				...defGameInfo.BTISport
-			},
-			{
-				displayKey: "lbl_SabaSoccer",
-				...defGameInfo.SabaSoccer
-			},
-			{
-				displayKey: "lbl_eSports",
-				...defGameInfo.eSports
-			},
-			{
-				displayKey: "lbl_Basketball",
-				...defGameInfo.Basketball
-			},
-			{
-				displayKey: "lbl_Volleyball",
-				...defGameInfo.Volleyball
-			},
-			{
-				displayKey: "lbl_VirtualSports",
-				...defGameInfo.VirtualSports
-			}
-		]
-	},
-	{
-		displayKey: "lbl_Games",
-		icon: "icon icon-kelo",
-		subItems: [
-			{
-				...defGameInfo.kingMaker,
-				displayKey: "lbl_KingMaker"
-			},
-			{
-				...defGameInfo.sabaClub,
-				displayKey: "lbl_Vgaming"
-			},
-			// {
-			// 	...defGameInfo.MaxGame,
-			// 	displayText: "Max Game"
-			// },
-			{
-				...defGameInfo.V8Poker,
-				displayKey: "lbl_V8Poker"
-			},
-			{
-				...defGameInfo.tableGame,
-				displayKey: "lbl_tableGame"
-			}
-			// {
-			// 	...defGameInfo.VirtualGame,
-			// 	displayKey: "lbl_VirtualGames"
-			// }
-		]
-	},
-	{
-		displayKey: "lbl_Fishing",
-		icon: "icon icon-game",
-		subItems: [
-			{
-				...defGameInfo.fish_AB3,
-				displayKey: "lbl_Paradise"
-			},
-			{
-				...defGameInfo.fish_AT01,
-				displayKey: "lbl_Oneshot_Fishing"
-			},
-			// {
-			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
-			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			// },
-			// {
-			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
-			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			// },
-			// {
-			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			// },
-
-			{
-				...defGameInfo.FishingSG,
-				displayKey: "lbl_FishingSG1"
-			},
-			{
-				...defGameInfo.FishingSGW,
-				displayKey: "lbl_FishingSG2"
-			}
-		]
-	},
-	{
-		displayKey: "lbl_Lottery",
-		icon: "icon icon-lottery",
-		subItems: [
-			{
-				...defGameInfo.GPI_VNLottery,
-				displayKey: "GPI_VNLottery"
-			},
-			{
-				...defGameInfo.tcg,
-				displayKey: "lbl_tcg"
-			},
-			{
-				...defGameInfo.Keno,
-				displayKey: "lbl_Keno"
-			},
-			{
-				...defGameInfo.lottery,
-				displayKey: "lbl_Lottery"
-			}
-		]
-	},
-	{
-		...defGameInfo.eSports,
-		displayKey: "lbl_eSports",
-		icon: "icon icon-e-sports",
-		subItems: [
-			{
-				...defGameInfo.eSports,
-				displayKey: "lbl_Saba"
-			},
-			{
-				...defGameInfo.eSports_TFGaming,
-				displayKey: "lbl_TFGaming"
-			}
-		]
-	},
-	{
-		displayKey: "lbl_Slots",
-		path: path.casino.root,
-		icon: "icon icon-casino"
-	},
-	{
-		displayKey: "lbl_LiveCasino",
-		icon: "icon icon-livecasino",
-		subItems: [
-			{
-				...defGameInfo.LIVEcasinoPP,
-				displayText: "Pragmatic Play"
-			},
-			{
-				...defGameInfo.LIVEcasinoBG,
-				displayText: "Big Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoYEEBET,
-				displayText: "YEEBET"
-			},
-			{
-				...defGameInfo.LIVEcasinoSkywind,
-				displayText: "Skywind"
-			},
-			{
-				...defGameInfo.LIVEcasinoMG,
-				displayText: "Microgaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoEVO,
-				displayText: "Evolution Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoPT,
-				displayText: "Playtech"
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				displayText: "n2-LIVE"
-			},
-			{
-				...defGameInfo.LIVEcasinoWM,
-				displayText: "WM Casino"
-			},
-			{
-				...defGameInfo.LIVEcasinoDG,
-				displayText: "Dream Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAE,
-				displayText: "AE Sexy"
-			},
-			{
-				...defGameInfo.LIVEcasinoAG,
-				displayText: "Asia Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoAB,
-				displayText: "Allbet"
-			},
-			{
-				...defGameInfo.LIVEcasinoSA,
-				displayText: "SA Gaming"
-			},
-			{
-				...defGameInfo.LIVEcasinoEB,
-				displayText: "eBET",
-				tpGameType: 28
-			}
-		]
-	},
-	{
-		displayKey: "lbl_Promotions",
-		path: path.promotion.root,
-		icon: "icon icon-gift"
-	},
-	{
-		displayKey: "lbl_APPDownload",
-		href: `${window.location.origin}/${path.appDownload.root}`,
-		icon: "icon icon-mobile"
-	},
-	{
-		displayKey: "lbl_VIP",
-		path: path.vip.root,
-		icon: "icon icon-vip"
-	}
-	// {
-	// 	displayKey: "lbl_Ranking",
-	// 	path: path.leaderBoard.root,
-	// 	icon: "icon icon-icon32px_top"
-	// }
-];
-
-const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
+const SubMenu = ({
+	handleSideMenuPanel,
+	isOpenSideMenu,
+	menuData,
+	onClickProductItem
+}) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [isOpenSubMenu, setIsOpenSubMenu] = useState([]);
 
@@ -291,7 +46,7 @@ const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	};
 
 	return (
-		<div className={`submenuNew${isOpenSideMenu ? " open" : ""}`}>
+		<div className={classNames("submenuNew", { open: isOpenSideMenu })}>
 			<div className="close open" onClick={closeNavPanel}>
 				<span />
 				<span />
@@ -301,19 +56,19 @@ const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 				<span />
 			</div>
 			<Logo />
-			{userInfo.isLogin ? (
+			{userInfo.isLogin && (
 				<>
 					<WalletInfo i18n={i18n} userInfo={userInfo} />
 					<ShortcutBar />
 				</>
-			) : null}
+			)}
 			<SubMenuList
 				i18n={i18n}
 				userInfo={userInfo}
-				setNav={setNav}
-				closeNavPanel={closeNavPanel}
-				handleSubMenu={handleSubMenu}
 				isOpenSubMenu={isOpenSubMenu}
+				menuData={menuData}
+				onClickProductItem={onClickProductItem}
+				handleSubMenu={handleSubMenu}
 			/>
 			<ContactUs i18n={i18n} langId={userInfo.langId} />
 			<LangSwitch
@@ -325,146 +80,103 @@ const SubMenu = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	);
 };
 
-SubMenu.defaultProps = {
-	handleSideMenuPanel: () => null,
-	isOpenSideMenu: null
-};
-
 SubMenu.propTypes = {
-	handleSideMenuPanel: PropTypes.func,
-	isOpenSideMenu: PropTypes.bool
+	handleSideMenuPanel: PropTypes.func.isRequired,
+	isOpenSideMenu: PropTypes.bool.isRequired,
+	menuData: PropTypes.arrayOf(PropTypes.any).isRequired,
+	onClickProductItem: PropTypes.func.isRequired
 };
 
 const SubMenuList = ({
 	i18n,
 	userInfo,
-	setNav,
-	closeNavPanel,
-	handleSubMenu,
-	isOpenSubMenu
+	isOpenSubMenu,
+	menuData,
+	onClickProductItem,
+	handleSubMenu
 }) => {
-	const { maintainList } = useGetTpMaintainList();
-	const isUnderMaintain = ({ tpId, tpGameType }) =>
-		maintainList?.some(
-			m =>
-				m.tpId === tpId &&
-				(m.tpGameType === tpGameType ||
-					m.tpGameType === defTpGameType.All)
-		);
+	const sideMenus = menuData.map(mainMenuItem => {
+		const { sideMenuIcon, defDisplayKey, data = [], lobbyCategoryId } =
+			mainMenuItem || {};
 
-	const clickGame = ({ tpId, gameId, tpGameType }) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin === true,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			},
-			tpGameType
-		});
-	};
+		const isOpen = isOpenSubMenu.includes(defDisplayKey);
 
-	const rows = defSubMenus
-		.filter(
-			s =>
-				s.subItems ||
-				!isUnderMaintain({ tpId: s.tpId, tpGameType: s.tpGameType })
-		)
-		.map(s => {
-			const key = `submenu-${s.displayKey || s.displayText}`;
-			let hasSubItem = false;
-			let _subItems = null;
-			if (s.subItems) {
-				const subItemContent = s.subItems
-					?.filter(
-						c =>
-							!isUnderMaintain({
-								tpId: c.tpId,
-								tpGameType: c.tpGameType
-							})
-					)
-					.map(c => {
-						return (
-							<li
-								key={`${key}-${c.displayKey || c.displayText}`}
-								onClick={clickGame.bind(this, c)}>
-								<button>
-									{i18n[c.displayKey]?.toUpperCase() ??
-										c.displayText?.toUpperCase()}
-									{_subItems}
-								</button>
-							</li>
-						);
-					});
-
-				hasSubItem = subItemContent.length > 0;
-				if (hasSubItem) {
-					const isOpen = isOpenSubMenu.includes(
-						s.displayKey || s.displayText
-					);
-					_subItems = (
-						<>
-							<i
-								className={`icon icon-keyboard_arrow_right1${
-									isOpen ? " open" : ""
-								}`}
-							/>
-							<ul className={isOpen ? "open" : ""}>
-								{subItemContent}
-							</ul>
-						</>
-					);
-				}
-			}
-
-			if (s.path) {
-				return (
-					<Link
-						to={`/${s.path}`}
-						onClick={closeNavPanel}
-						key={key}
-						className={s.icon}>
-						{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
-						{_subItems}
-					</Link>
-				);
-			}
-			if (s.href) {
-				return (
-					<a
-						key={key}
-						className={s.icon}
-						href={s.href}
-						target="_blank"
-						rel="noreferrer">
-						{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
-					</a>
-				);
-			}
-
-			return hasSubItem ? (
-				<div
-					key={key}
-					onClick={handleSubMenu.bind(
-						this,
-						s.displayKey || s.displayText
-					)}
-					className={s.icon}>
-					{i18n[s.displayKey]?.toUpperCase() ?? s.displayText}
-					{_subItems}
-				</div>
-			) : (
-				<button
-					key={key}
-					onClick={clickGame.bind(this, s)}
-					className={s.icon}>
-					{s.displayText ?? i18n[s.displayKey]?.toUpperCase()}
-				</button>
+		if (lobbyCategoryId === lobbyCategoryEnum.SLOTS) {
+			return (
+				<Link
+					key={lobbyCategoryId}
+					className="icon icon-casino"
+					to={path.casino.root}>
+					{i18n.lbl_Slots?.toUpperCase()}
+				</Link>
 			);
-		});
+		}
 
-	return <div className="side-nav">{rows}</div>;
+		return (
+			<div className={sideMenuIcon} key={lobbyCategoryId}>
+				{i18n[defDisplayKey]?.toUpperCase()}
+				<i
+					onClick={() => handleSubMenu(defDisplayKey)}
+					className={classNames("icon icon-keyboard_arrow_right1", {
+						open: isOpen
+					})}
+				/>
+				<ul
+					className={classNames({
+						open: isOpen
+					})}>
+					{data.length > 0 &&
+						data.map(subMenuItem => {
+							const {
+								productName,
+								currencyGameName,
+								tpGameIdNo
+							} = subMenuItem || {};
+
+							const displayName =
+								currencyGameName &&
+								currencyGameName[userInfo?.langId] &&
+								currencyGameName[userInfo?.langId];
+
+							return (
+								<li
+									key={tpGameIdNo}
+									onClick={() =>
+										onClickProductItem(subMenuItem)
+									}>
+									<button>
+										{(
+											displayName ||
+											productName ||
+											i18n[defDisplayKey]
+										)?.toUpperCase()}
+									</button>
+								</li>
+							);
+						})}
+				</ul>
+			</div>
+		);
+	});
+
+	return (
+		<div className="side-nav">
+			{sideMenus}
+			<Link className="icon icon-gift" to={path.promotion.root}>
+				{i18n.lbl_Promotions}
+			</Link>
+			<a
+				className="icon icon-mobile"
+				href={`${window.location.origin}/${path.appDownload.root}`}
+				target="_blank"
+				rel="noreferrer">
+				{i18n.lbl_APPDownload}
+			</a>
+			<Link className="icon icon-vip" to={path.vip.root}>
+				{i18n.lbl_VIP}
+			</Link>
+		</div>
+	);
 };
 
 SubMenuList.propTypes = {
@@ -474,10 +186,10 @@ SubMenuList.propTypes = {
 		currencyId: PropTypes.number,
 		langId: PropTypes.string
 	}).isRequired,
-	setNav: PropTypes.func.isRequired,
-	closeNavPanel: PropTypes.func.isRequired,
-	handleSubMenu: PropTypes.func.isRequired,
-	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired
+	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired,
+	menuData: PropTypes.arrayOf(PropTypes.any).isRequired,
+	onClickProductItem: PropTypes.func.isRequired,
+	handleSubMenu: PropTypes.func.isRequired
 };
 
 const WalletInfo = ({ i18n, userInfo }) => {
@@ -559,7 +271,11 @@ const ContactUs = ({ i18n, langId }) => {
 	});
 
 	const snsList = socialChannel?.map(el => (
-		<a href={el.link} target="_blank" rel="noreferrer noopener">
+		<a
+			key={el.link}
+			href={el.link}
+			target="_blank"
+			rel="noreferrer noopener">
 			<img
 				src={`${bannerImgUrl}/h5/img/${
 					channelIconName[el.channelName]

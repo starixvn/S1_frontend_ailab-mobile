@@ -10,7 +10,7 @@ import { useNavigate } from "@reach/router";
 import path from "../../path";
 import { bannerImgUrl } from "../../config";
 import { number_format } from "../common/common";
-import { defCol } from "../../datas/productList";
+import { defCol } from "../../datas/defMenu";
 import { popBoxContext, userInfoContext } from "../common/context";
 import { DrawPopBox, PrizePopBox } from "./popBox";
 import { eventIds } from "../../datas/eventIds";

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import React, { useContext } from "react";
 import { useNavigate } from "@reach/router";
+import { products } from "@ailab-mobile/common";
 import { popBoxContext, userInfoContext } from "Context";
 import { defDeviceType } from "@ailab-mobile/api";
 import {
@@ -17,8 +18,7 @@ import {
 	number_format
 } from "../common/common";
 import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
-import { defLoginGameType, defSpecialSetting } from "./useGotoGame";
-import { defSlotTpGameType } from "../../datas/productList";
+import { defLoginGameType } from "./useGotoGame";
 import useSetTimeout from "./useSetTimeout";
 
 const useGetHomePopup = () => {
@@ -207,7 +207,7 @@ const useGetHomePopup = () => {
 													langId: userInfo.langId,
 													execFunction:
 														bigWinData.tpId ===
-														defSpecialSetting.PG
+														products.PGSoft.tpId
 															? handleGoToGame.bind(
 																	this,
 																	{
@@ -219,21 +219,14 @@ const useGetHomePopup = () => {
 																			bigWinData.gameId,
 																		isFun: false,
 																		tpGameType:
-																			defSlotTpGameType
-																				.PG
-																				.tpGameType,
+																			bigWinData.tpGameType,
 																		loginGameType:
 																			defLoginGameType.returnHtml
 																	}
 															  )
 															: null,
-													tpGameType: Object.values(
-														defSlotTpGameType
-													).find(
-														obj =>
-															bigWinData.tpId ===
-															obj.tpId
-													)?.tpGameType
+													tpGameType:
+														bigWinData.tpGameType
 												}),
 											5000
 										);

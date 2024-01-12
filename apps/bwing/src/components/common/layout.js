@@ -1,5 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { products } from "@ailab-mobile/common";
 import { useLocation, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
@@ -22,7 +23,6 @@ import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 
 export const defPageInfo = {
@@ -355,7 +355,7 @@ const Layout = ({ children }) => {
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}

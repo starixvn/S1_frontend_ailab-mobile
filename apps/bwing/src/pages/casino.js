@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { products } from "@ailab-mobile/common";
 import {
 	popBoxContext,
 	loadingContext,
@@ -16,12 +17,10 @@ import SearchBox from "../components/casino/searchBox";
 import GameProviders from "../components/casino/gameProviders";
 import {
 	defLoginGameType,
-	defSpecialSetting,
 	useGotoGame
 } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
-import { defSlotTpGameType } from "../datas/productList";
 
 const Casino = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -66,21 +65,18 @@ const Casino = () => {
 						isFree: freePlay,
 						langId: userInfo.langId,
 						execFunction:
-							targetObj.tpId === defSpecialSetting.PG
+							targetObj.tpId === products.PGSoft.tpId
 								? handleGoToGame.bind(this, {
 										langId: userInfo.langId,
 										tpId: targetObj.tpId,
 										gameId: targetObj.gameId,
 										isFun: freePlay,
-										tpGameType:
-											defSlotTpGameType.PG.tpGameType,
+										tpGameType: products.PGSoft.tpGameType,
 										loginGameType:
 											defLoginGameType.returnHtml
 								  })
 								: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
-							obj => targetObj.tpId === obj.tpId
-						).tpGameType
+						tpGameType: activeProvider?.tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);

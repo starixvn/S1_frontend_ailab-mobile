@@ -1,5 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { products } from "@ailab-mobile/common";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
 import Footer from "./footer";
 import Header from "./header";
@@ -19,7 +20,6 @@ import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { bannerImgUrl } from "../../config";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
@@ -32,7 +32,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [luckyWheel, setLuckyWheel] = useState(false);
-	const [displayVgaming, setDisplayVgaming] = useState(true);
+	const [displayVGaming, setDisplayVGaming] = useState(true);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
@@ -83,17 +83,17 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && (
+			{displayVGaming && root && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon icon-close"
-						onClick={() => setDisplayVgaming(false)}
+						onClick={() => setDisplayVGaming(false)}
 					/>
 					<img
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}
