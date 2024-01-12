@@ -11291,7 +11291,7 @@ span.important {
 }
 .mission-progress {
   background: #efefef;
-  padding: 20px 0 20px 10px;
+  padding: 5vw 0 5vw 2vw;
   color: #2a4fa4;
 }
 .mission-progress > div {
@@ -11301,25 +11301,28 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 50px;
+  height: 13vw;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 .mission-progress > div .state {
   background: #000;
-  height: 20px;
-  width: 80px;
+  height: 5vw;
+  width: 25vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   padding: 3px;
   color: white;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 2.75vw;
   border-radius: 20px 0 0 20px;
 }
 .mission-progress > div .state.completed {
@@ -11330,14 +11333,14 @@ span.important {
 }
 .mission-progress-item .progress {
   background: white;
-  height: 8px;
-  width: 220px;
+  height: 2vw;
+  width: 53vw;
   border-radius: 20px;
 }
 .mission-progress-item .progress .progress-bar {
   background: -webkit-gradient(linear, left top, right top, from(rgb(42, 79, 164)), color-stop(70%, rgb(113, 156, 255)));
   background: linear-gradient(90deg, rgb(42, 79, 164) 0%, rgb(113, 156, 255) 70%);
-  height: 8px;
+  height: 2vw;
   border-radius: 20px;
 }
 .mission-progress-item .mission-number {
@@ -11357,7 +11360,7 @@ span.important {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 17px;
-  width: 220px;
+  width: 53vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

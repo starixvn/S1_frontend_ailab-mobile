@@ -7536,7 +7536,7 @@ main .sideBar button.icon:before {
   background: -webkit-gradient(linear, left top, right top, from(rgb(243, 100, 0)), color-stop(70%, #ffa82e));
   background: linear-gradient(90deg, rgb(243, 100, 0) 0%, #ffa82e 70%);
   padding: 2vw 0 2vw 3vw;
-  font-size: 12px;
+  font-size: 3vw;
   color: white;
   border-radius: 3vw 3vw 0 0;
 }
@@ -7561,7 +7561,7 @@ main .sideBar button.icon:before {
 .mission-progress > div .state {
   background: #000;
   height: 5vw;
-  width: 18vw;
+  width: 22vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7574,7 +7574,7 @@ main .sideBar button.icon:before {
   padding: 3px;
   color: white;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 3vw;
   border-radius: 20px 0 0 20px;
 }
 .mission-progress > div .state.completed {
@@ -7599,7 +7599,7 @@ main .sideBar button.icon:before {
   margin-left: 1.5vw;
   color: #8d8d8d;
   text-align: end;
-  font-size: 12px;
+  font-size: 3vw;
 }
 .mission-progress-item.turnover .progress-bar {
   background: -webkit-gradient(linear, left top, right top, from(#e90900), color-stop(70%, rgb(245, 151, 35)));
@@ -7613,11 +7613,11 @@ main .sideBar button.icon:before {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 17px;
-  width: 220px;
+  width: 53vw;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 12px;
+  font-size: 3vw;
   color: #1f3258;
 }
 .mission-progress-text > div {
