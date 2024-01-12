@@ -20,15 +20,15 @@
   z-index: 1;
   margin-top: -12vw;
   padding-top: 22vw;
-  height: 154vw;
-  background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_bg.png) no-repeat center/cover;
+  padding-bottom: 12vw;
+  background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_bg.png) no-repeat top/cover;
 }
 .dragonegg-event .event-task {
   padding: 0 5vw;
 }
 .dragonegg-event .event-task-title {
   position: absolute;
-  top: 7vw;
+  top: 5.5vw;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -180,11 +180,12 @@
 }
 .dragonegg-event .event-collection {
   height: 55vw;
-  margin-top: -35vw;
+  margin-top: -16vw;
   margin-bottom: 5vw;
   position: relative;
   z-index: 2;
   padding-top: 35vw;
+  pointer-events: none;
   background: url(https://banner.goal123.org/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center/cover;
 }
 .dragonegg-event .event-collection.vn {
@@ -210,6 +211,7 @@
   font-weight: 600;
   font-size: 4.5vw;
   opacity: 0.8;
+  pointer-events: all;
 }
 .dragonegg-event .event-collection-btn img {
   width: 15vw;

@@ -16335,10 +16335,10 @@ body main.main.referral {
   z-index: 3;
   margin-top: -10vw;
   padding-top: 19vw;
-  height: 130vw;
+  padding-bottom: 5vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_bg.png) no-repeat center/cover;
+  background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_bg.png) no-repeat top/cover;
 }
 .dragonegg-event .event-task {
   padding: 0 5vw;
@@ -16515,11 +16515,12 @@ body main.main.referral {
 }
 .dragonegg-event .event-collection {
   height: 115vw;
-  margin-top: -15vw;
+  margin-top: -27vw;
   margin-bottom: 5vw;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding-top: 62vw;
+  pointer-events: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: url(https://banner.bw88.io/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center/cover;
@@ -16547,6 +16548,7 @@ body main.main.referral {
   font-weight: 600;
   font-size: 4.5vw;
   opacity: 0.8;
+  pointer-events: all;
 }
 .dragonegg-event .event-collection-btn img {
   width: 15vw;

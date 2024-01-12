@@ -68,7 +68,9 @@ const Task = () => {
 		<div className="event-main">
 			<div className="event-task">
 				<div className="event-task-title">
-					{t("lbl_DragonEgg_DailyTask")}
+					{missionList.length > 0
+						? t("lbl_DragonEgg_DailyTask")
+						: t("lbl_DragonEgg_DrawNow")}
 				</div>
 				{missionList.map(
 					({
