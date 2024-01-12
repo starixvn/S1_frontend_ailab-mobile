@@ -175,6 +175,18 @@ class Modal extends Component {
 							<li>
 								<div>
 									<span className="title">
+										{t("Label_Remark")}
+									</span>
+									<span>{bankSlipPopBox.code}</span>
+								</div>
+								<button
+									className="icon icon-files-empty clickBtn copyBtn"
+									data-clipboard-text={bankSlipPopBox.code}
+								/>
+							</li>
+							<li>
+								<div>
+									<span className="title">
 										{i18n.lbl_DepositAmount}
 									</span>
 									<span>{bankSlipPopBox.amount}</span>
