@@ -175,7 +175,7 @@ class Modal extends Component {
 							<li>
 								<div>
 									<span className="title">
-										{t("Label_Reward")}
+										{t("Label_Remark")}
 									</span>
 									<span>{bankSlipPopBox.code}</span>
 								</div>
