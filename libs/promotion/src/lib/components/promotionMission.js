@@ -157,8 +157,18 @@ const Mission = ({ promotionInfo, config }) => {
 											/>
 										</div>
 										<div className="mission-number">
-											{depositAmountSum}/
-											{targetTask?.requiredAmount}
+											{lib_number_foramt({
+												number: depositAmountSum,
+												isConvertRequired: false,
+												digits: 0
+											})}
+											/
+											{lib_number_foramt({
+												number:
+													targetTask?.requiredAmount,
+												isConvertRequired: false,
+												digits: 0
+											})}
 										</div>
 									</div>
 								</div>
@@ -196,8 +206,18 @@ const Mission = ({ promotionInfo, config }) => {
 										/>
 									</div>
 									<div className="mission-number">
-										{turnoverSum}/
-										{targetTask?.requiredTurnover}
+										{lib_number_foramt({
+											number: turnoverSum,
+											isConvertRequired: false,
+											digits: 0
+										})}
+										/
+										{lib_number_foramt({
+											number:
+												targetTask?.requiredTurnover,
+											isConvertRequired: false,
+											digits: 0
+										})}
 									</div>
 								</div>
 								<div

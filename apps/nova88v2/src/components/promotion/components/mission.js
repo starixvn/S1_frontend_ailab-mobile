@@ -142,8 +142,17 @@ const Mission = ({ promotionInfo }) => {
 										/>
 									</div>
 									<div className="mission-number">
-										{depositAmountSum}/
-										{targetTask?.requiredAmount}
+										{number_format(
+											depositAmountSum,
+											false,
+											0
+										)}
+										/
+										{number_format(
+											targetTask?.requiredAmount,
+											false,
+											0
+										)}
 									</div>
 								</div>
 								<div
@@ -180,8 +189,12 @@ const Mission = ({ promotionInfo }) => {
 										/>
 									</div>
 									<div className="mission-number">
-										{turnoverSum}/
-										{targetTask?.requiredTurnover}
+										{number_format(turnoverSum, false, 0)}/
+										{number_format(
+											targetTask?.requiredTurnover,
+											false,
+											0
+										)}
 									</div>
 								</div>
 								<div
