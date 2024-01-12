@@ -621,6 +621,9 @@ const GroupList = ({
 								</li>
 								<CopyBtn value={accountInfo.accountName} />
 								<CopyBtn value={accountInfo.accountNo} />
+								{accountInfo?.code && (
+									<CopyBtn value={accountInfo.code} />
+								)}
 							</ul>
 						</div>
 						{selectedBank.qrCodeUrl && (
