@@ -157,7 +157,7 @@ const Payment = props => {
 
 	const SubmitProof = (bankInfo, accInfo) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo } = accInfo;
+		const { accountName, accountNo, code } = accInfo;
 		setbankSlipPopBox(prev => ({
 			...prev,
 			...restBankInfo,
@@ -168,6 +168,7 @@ const Payment = props => {
 				  )}`,
 			accountNo,
 			accountName,
+			code,
 			isOpen: true,
 			disableSubmit: true
 		}));
@@ -204,7 +205,8 @@ const Payment = props => {
 				api_DepositReqWireTransfer({
 					amount: real_amount,
 					sysId,
-					bankId: selBank.bankId
+					bankId: selBank.bankId,
+					code: accountInfo.code
 				}).then(
 					res => {
 						if (isMountedRef.current) {

@@ -165,6 +165,7 @@ class Modal extends Component {
 								data-clipboard-text={bankSlipPopBox.accountNo}
 							/>
 						</li>
+
 						<li>
 							<div>
 								<span className="title">
@@ -177,6 +178,20 @@ class Modal extends Component {
 								data-clipboard-text={bankSlipPopBox.amount}
 							/>
 						</li>
+						{bankSlipPopBox?.code && (
+							<li>
+								<div>
+									<span className="title">
+										{i18n.Label_Remark}
+									</span>
+									<span>{bankSlipPopBox.code}</span>
+								</div>
+								<button
+									className="icon icon-files-empty clickBtn copyBtn"
+									data-clipboard-text={bankSlipPopBox.code}
+								/>
+							</li>
+						)}
 					</ul>
 				</div>
 				<span className="text">{i18n.lbl_AttachFile}</span>
