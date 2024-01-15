@@ -310,7 +310,7 @@ const Panel = () => {
 	) => {
 		// if (pageVerify) {
 		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo } = depositRep;
+		const { accountName, accountNo, code } = depositRep;
 		setbankSlipPopBox(() => ({
 			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
 				"HH:mm"
@@ -319,6 +319,7 @@ const Panel = () => {
 			transId,
 			accountNo,
 			accountName,
+			code,
 			isOpen: true,
 			amount: number_format(amount, _isConvert, 0),
 			picFileName,

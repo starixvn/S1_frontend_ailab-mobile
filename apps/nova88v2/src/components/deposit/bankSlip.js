@@ -175,18 +175,6 @@ class Modal extends Component {
 							<li>
 								<div>
 									<span className="title">
-										{t("Label_Remark")}
-									</span>
-									<span>{bankSlipPopBox.code}</span>
-								</div>
-								<button
-									className="icon icon-files-empty clickBtn copyBtn"
-									data-clipboard-text={bankSlipPopBox.code}
-								/>
-							</li>
-							<li>
-								<div>
-									<span className="title">
 										{i18n.lbl_DepositAmount}
 									</span>
 									<span>{bankSlipPopBox.amount}</span>
@@ -196,6 +184,23 @@ class Modal extends Component {
 									data-clipboard-text={bankSlipPopBox.amount}
 								/>
 							</li>
+
+							{bankSlipPopBox?.code && (
+								<li>
+									<div>
+										<span className="title">
+											{this.props.i18n?.Label_Remark}
+										</span>
+										<span>{bankSlipPopBox.code}</span>
+									</div>
+									<button
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.code
+										}
+									/>
+								</li>
+							)}
 						</ul>
 					</div>
 					<span className="text">{i18n.lbl_AttachFile}</span>
