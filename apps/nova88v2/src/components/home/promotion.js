@@ -27,28 +27,27 @@ const Promotion = () => {
 	// * 如果沒有資料，整個元件都不渲染
 	if (promotionList.length === 0) return null;
 
-	const promoList = promotionList.map(
-		({ title, banner, displayFrom, displayTo, bonusCode }) => {
-			const onClickPromotion = () =>
-				getPromotionDetail(langId, bonusCode);
-
+	const promoList = promotionList
+		.filter(({ displayTo, displayFrom }) => {
 			const timezone = moment().format("Z");
-			const isDisplay =
-				moment.unix(displayFrom).subtract(timezone).diff(moment()) <=
-					0 &&
-				moment.unix(displayTo).subtract(timezone).diff(moment()) >= 0;
 
 			return (
-				isDisplay && (
-					<div key={bonusCode} onClick={onClickPromotion}>
-						<div>
-							<img src={banner} alt={title} />
-						</div>
-					</div>
-				)
+				moment.unix(displayFrom).subtract(timezone).diff(moment()) <=
+					0 &&
+				moment.unix(displayTo).subtract(timezone).diff(moment()) >= 0
 			);
-		}
-	);
+		})
+		.map(({ title, banner, bonusCode }) => {
+			return (
+				<div
+					key={bonusCode}
+					onClick={() => getPromotionDetail(langId, bonusCode)}>
+					<div>
+						<img src={banner} alt={title} />
+					</div>
+				</div>
+			);
+		});
 
 	return (
 		<>
