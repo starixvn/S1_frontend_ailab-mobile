@@ -12,7 +12,7 @@ export default langId => {
 		FAQ: `${bannerImgUrl}/Static/${langId}/FAQ.html`,
 		AboutUs: `${bannerImgUrl}/Static/${langId}/AboutUs.html`,
 		Terms: `${bannerImgUrl}/Static/${langId}/Terms.html`,
-		ContactUs: `${bannerImgUrl}/Static/${langId}/ContactUs.html`,
+		ContactUs: `${bannerImgUrl}/Static/${langId}/ContactUs.html?url=${window.location.origin}`,
 		HowToDeposit: `${config.t_and_cURL}/Static/${langId}/HowToDeposit.html`,
 		HowToBet: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToBet.html`,
 		HowToWithdraw: `${config.t_and_cURL}/Static/${langId}/HowToWithdraw.html`,
