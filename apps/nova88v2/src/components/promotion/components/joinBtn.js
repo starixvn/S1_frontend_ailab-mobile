@@ -215,7 +215,8 @@ export default ({
 	};
 
 	const joinNowDisplayText =
-		promotionInfo?.promotionType === defPromotionType.cashback
+		promotionInfo?.promotionType === defPromotionType.cashback ||
+		promotionInfo.promotionType === defPromotionType.retentionFreeBet
 			? i18n?.lbl_ClaimNow
 			: i18n?.lbl_PromoJoinNow;
 

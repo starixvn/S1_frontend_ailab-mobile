@@ -14,6 +14,7 @@ export const defPromotionType = {
 	rebate: 6,
 	cashback: 7,
 	static: 8,
+	retentionFreeBet: 9,
 	missionBonus: 11
 };
 
