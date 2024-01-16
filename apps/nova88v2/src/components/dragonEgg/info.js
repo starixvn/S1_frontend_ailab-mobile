@@ -9,22 +9,26 @@ export const prizeAmout = {
 	[defCurrenyId.MYR]: {
 		min: "18",
 		max: "68",
-		blessing: "888"
+		blessing: "888",
+		APPrize: "28"
 	},
 	[defCurrenyId.THB]: {
 		min: "130",
 		max: "530",
-		blessing: "5,888"
+		blessing: "5,888",
+		APPrize: "200"
 	},
 	[defCurrenyId.IDR]: {
 		min: "58K",
 		max: "200K",
-		blessing: "2,888,000"
+		blessing: "2,888,000",
+		APPrize: "100K"
 	},
 	[defCurrenyId.VND]: {
 		min: "88K",
 		max: "338K",
-		blessing: "4,588,000"
+		blessing: "4,588,000",
+		APPrize: "150K"
 	}
 };
 
@@ -52,7 +56,8 @@ const Info = () => {
 					{t("lbl_DragonEgg_Terms6", {
 						currencyName: currCustomMapping[currencyId],
 						min: prizeAmout[currencyId].min,
-						max: prizeAmout[currencyId].max
+						max: prizeAmout[currencyId].max,
+						APPrize: prizeAmout[currencyId].APPrize
 					})}
 				</div>
 				<div className="text">
