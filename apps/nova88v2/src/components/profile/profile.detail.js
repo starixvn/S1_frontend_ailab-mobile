@@ -328,7 +328,10 @@ const Panel = () => {
 						`${yearOptions[yearSelectedIdx]?.value}`,
 					AreaCode: _areaCode ?? areaCodeOptions[AreaCodeIdx]?.value,
 					PhoneNo: userInfo.phoneNo ?? userValue.phoneNo,
-					Email: userInfo?.email ?? userValue.email
+					Email:
+						userInfo?.email === "" || userInfo?.email === null
+							? userValue?.email
+							: userInfo?.email
 				};
 
 				api.accountStrict.SetProfile(profileData).then(
