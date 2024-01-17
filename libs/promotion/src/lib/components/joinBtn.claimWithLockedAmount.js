@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { InputBox } from "../common/inputbox";
 import Dropdown from "./dropdown";
-import { number_format } from "../common/common";
+import { lib_number_foramt, number_format } from "../common/common";
 import { defWrapperCol, defPromotionType } from "../common/def";
 
 export const checkClaimAmount = ({
@@ -119,8 +119,24 @@ const LockedAmountPopBox = ({
 		} = el;
 
 		const displayText = requiredAmount
-			? `${i18n.lbl_DepositAmount} ${requiredAmount} /  ${i18n.lbl_Bonus} ${bonusAmount}`
-			: `${i18n.lbl_Turnover} ${requiredTurnover} / ${i18n.lbl_Bonus} ${bonusAmount}`;
+			? `${i18n.lbl_DepositAmount} ${lib_number_foramt({
+					number: requiredAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })} /  ${i18n.lbl_Bonus} ${lib_number_foramt({
+					number: bonusAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })}`
+			: `${i18n.lbl_Turnover} ${lib_number_foramt({
+					number: requiredTurnover,
+					isConvertRequired: false,
+					digits: 0
+			  })} / ${i18n.lbl_Bonus} ${lib_number_foramt({
+					number: bonusAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })}`;
 
 		return {
 			id: i,
