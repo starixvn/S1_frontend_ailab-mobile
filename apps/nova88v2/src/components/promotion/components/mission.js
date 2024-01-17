@@ -4,6 +4,7 @@ import moment from "moment";
 import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../../common/context";
 import { number_format } from "../../common/common";
+import { promotionPeriodType } from "../common/def";
 
 const Mission = ({ promotionInfo }) => {
 	const [targetTask, setTargetTask] = useState({});
@@ -16,7 +17,7 @@ const Mission = ({ promotionInfo }) => {
 		tierAmountList,
 		missionBonusProgress,
 		fullFillType,
-		winOver
+		periodType
 	} = promotionInfo;
 	const depositAmountSum =
 		(missionBonusProgress && missionBonusProgress.depositAmountSum) || 0;
@@ -33,6 +34,16 @@ const Mission = ({ promotionInfo }) => {
 
 	const getTaskStatusProgress = (target = 0, current = 0) =>
 		current >= target ? "100%" : `${(current / target) * 100}%`;
+
+	const getTaskCycle = () => {
+		const periodTypeLabels = {
+			[promotionPeriodType.Daily]: t("lbl_DailyTasks").toUpperCase(),
+			[promotionPeriodType.Weekly]: t("lbl_WeeklyTasks").toUpperCase(),
+			[promotionPeriodType.Monthly]: t("lbl_MonthlyTasks").toUpperCase()
+		};
+
+		return periodTypeLabels[periodType] || "";
+	};
 
 	useEffect(() => {
 		if (tierAmountList.length > 0) {
@@ -65,7 +76,13 @@ const Mission = ({ promotionInfo }) => {
 		return (
 			<>
 				{tierAmountList.map(
-					({ requiredAmount, requiredTurnover, rollOver, bonus }) => (
+					({
+						requiredAmount,
+						requiredTurnover,
+						rollOver,
+						winOver,
+						bonus
+					}) => (
 						<div
 							className="rolloverList"
 							key={`${requiredAmount}${requiredTurnover}${rollOver}${bonus}`}>
@@ -117,7 +134,7 @@ const Mission = ({ promotionInfo }) => {
 				)}
 				<div className="mission-content">
 					<div className="mission-title">
-						{currentDate} {t("lbl_DailyTasks").toUpperCase()}
+						{currentDate} {getTaskCycle()}
 					</div>
 					<div className="mission-progress">
 						{isShowDeposit && (

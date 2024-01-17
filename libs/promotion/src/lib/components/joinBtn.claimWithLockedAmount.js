@@ -110,12 +110,25 @@ const LockedAmountPopBox = ({
 	const { canJoinTierAmountList, bonusCode, promotionType } = promotionInfo;
 	const isFirstDeposit = promotionType === defPromotionType.firstDeposit;
 
-	const options = canJoinTierAmountList?.map((el, i) => ({
-		id: i,
-		displayText: `${i18n.lbl_DepositAmount} ${el.requiredAmount} / ${i18n.lbl_Bonus} ${el.bonusAmount}`,
-		lockedAmount: el.lockedAmount,
-		bonusAmount: el.bonusAmount
-	}));
+	const options = canJoinTierAmountList?.map((el, i) => {
+		const {
+			requiredAmount,
+			requiredTurnover,
+			bonusAmount,
+			lockedAmount
+		} = el;
+
+		const displayText = requiredAmount
+			? `${i18n.lbl_DepositAmount} ${requiredAmount} /  ${i18n.lbl_Bonus} ${bonusAmount}`
+			: `${i18n.lbl_Turnover} ${requiredTurnover} / ${i18n.lbl_Bonus} ${bonusAmount}`;
+
+		return {
+			id: i,
+			displayText,
+			lockedAmount,
+			bonusAmount
+		};
+	});
 
 	const onSelectItem = i => {
 		if (i !== selectedIdx) {
