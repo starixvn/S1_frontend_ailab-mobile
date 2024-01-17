@@ -11282,12 +11282,12 @@ span.important {
 }
 
 .mission-content {
-  margin: 20px 0;
+  margin: 7vw 0;
 }
 .mission-title {
   background: -webkit-gradient(linear, left top, right top, from(rgb(17, 34, 64)), color-stop(70%, rgb(42, 79, 164)));
   background: linear-gradient(90deg, rgb(17, 34, 64) 0%, rgb(42, 79, 164) 70%);
-  padding: 2px 0 0 5px;
+  padding: 1vw 0 1vw 2vw;
 }
 .mission-progress {
   background: #efefef;
@@ -11319,7 +11319,7 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 3px;
+  padding: 1vw;
   color: white;
   font-weight: 500;
   font-size: 2.75vw;
@@ -11344,7 +11344,7 @@ span.important {
   border-radius: 20px;
 }
 .mission-progress-item .mission-number {
-  margin-left: 3px;
+  margin-left: 1vw;
   color: #8d8d8d;
   text-align: end;
 }
@@ -11366,7 +11366,7 @@ span.important {
           align-items: center;
 }
 .mission-progress-text > div {
-  margin-bottom: 5px;
+  margin-bottom: 1vw;
 }
 
 /*checkspeed*/
@@ -14972,6 +14972,13 @@ main .banner {
 }
 main .swiper-container {
   position: relative;
+}
+main.casino .banner {
+  position: relative;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 #Marquee {
