@@ -244,7 +244,8 @@ export const JoinBtn = ({
 			(_canJoin && userInfo.isLogin && !promotionInfo.isJoin))
 	) {
 		const joinNowDisplayText =
-			promotionInfo.promotionType === defPromotionType.cashback
+			promotionInfo.promotionType === defPromotionType.cashback ||
+			promotionInfo.promotionType === defPromotionType.retentionFreeBet
 				? i18n?.lbl_ClaimNow?.toUpperCase()
 				: i18n?.lbl_PromoJoinNow?.toUpperCase();
 
