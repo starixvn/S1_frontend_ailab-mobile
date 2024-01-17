@@ -127,3 +127,9 @@ export const defCategoryId = {
 	// 沒有 Mega888SlotRNGFishing
 	ESports: 11
 };
+
+export const promotionPeriodType = {
+	Daily: 1,
+	Weekly: 2,
+	Monthly: 3
+};
