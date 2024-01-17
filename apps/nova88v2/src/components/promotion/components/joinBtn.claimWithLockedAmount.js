@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Dropdown from "../../common/dropdown";
 import Inputbox from "../../common/inputbox.hint";
 import { number_format } from "../common/common";
+import { number_format as numberFormat } from "../../common/common";
 import { defWrapperCol, defPromotionType } from "../common/def";
 
 export const checkClaimAmount = ({
@@ -117,8 +118,16 @@ const LockedAmountPopBox = ({
 		} = el;
 
 		const displayText = requiredAmount
-			? `${i18n.lbl_DepositAmount} ${requiredAmount} /  ${i18n.lbl_Bonus} ${bonusAmount}`
-			: `${i18n.lbl_Turnover} ${requiredTurnover} / ${i18n.lbl_Bonus} ${bonusAmount}`;
+			? `${i18n.lbl_DepositAmount} ${numberFormat(
+					requiredAmount,
+					false,
+					0
+			  )} /  ${i18n.lbl_Bonus} ${numberFormat(bonusAmount, false, 0)}`
+			: `${i18n.lbl_Turnover} ${numberFormat(
+					requiredTurnover,
+					false,
+					0
+			  )} / ${i18n.lbl_Bonus} ${numberFormat(bonusAmount, false, 0)}`;
 
 		return {
 			id: i,
