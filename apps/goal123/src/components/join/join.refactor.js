@@ -365,7 +365,7 @@ const Join = () => {
 		const ConfirmPwdCheck = confirmPwdCheck({ val: userValue.ConfirmPwd });
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
-		const EmailCheck = await emailCheck({ val: userValue.Email });
+		// const EmailCheck = await emailCheck({ val: userValue.Email });
 		const reCaptchaCheck =
 			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		const _affiliateCheck = await checkAffiliate({
@@ -378,7 +378,7 @@ const Join = () => {
 			ConfirmPwdCheck.checked &&
 			RealNameCheck.checked &&
 			PhoneCheck.checked &&
-			EmailCheck.checked &&
+			// EmailCheck.checked &&
 			userValue.Checkbox &&
 			reCaptchaCheck &&
 			// affiliate is optional
@@ -392,7 +392,7 @@ const Join = () => {
 				RealName: userValue.RealName,
 				CurrencyId: siteCurrencyList[userValue.Currency]?.id,
 				PhoneNo: userValue.Phone,
-				Email: userValue.Email,
+				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
 				ReferralUrl: document.referrer,
@@ -467,7 +467,7 @@ const Join = () => {
 				ConfirmPwd: ConfirmPwdCheck,
 				RealName: RealNameCheck,
 				Phone: PhoneCheck,
-				Email: EmailCheck,
+				// Email: EmailCheck,
 				Checkbox: {
 					checked: userValue.Checkbox,
 					msg:
@@ -593,20 +593,20 @@ const Join = () => {
 						areaCode={VN_AREACODE}
 						testAttr="Phone"
 					/>
-					<Inputbox
-						icon="icon icon-email"
-						placeholder={i18n.lbl_Email}
-						onBlur={checkValue.bind(this, { col: "Email" })}
-						onChange={EditField.bind(this, { col: "Email" })}
-						btnStatus={inputStatus.Email.checked}
-						tip={inputStatus.Email.msg}
-						value={userValue.Email}
-						clickInfo={clickInfo.bind(this, {
-							col: "Email",
-							info: "lbl_EmailToolTip"
-						})}
-						testAttr="Email"
-					/>
+					{/* <Inputbox */}
+					{/* 	icon="icon icon-email" */}
+					{/* 	placeholder={i18n.lbl_Email} */}
+					{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
+					{/* 	onChange={EditField.bind(this, { col: "Email" })} */}
+					{/* 	btnStatus={inputStatus.Email.checked} */}
+					{/* 	tip={inputStatus.Email.msg} */}
+					{/* 	value={userValue.Email} */}
+					{/* 	clickInfo={clickInfo.bind(this, { */}
+					{/* 		col: "Email", */}
+					{/* 		info: "lbl_EmailToolTip" */}
+					{/* 	})} */}
+					{/* 	testAttr="Email" */}
+					{/* /> */}
 					<Inputbox
 						icon="icon icon-affiliate"
 						placeholder={i18n.lbl_Affiliate_ID}

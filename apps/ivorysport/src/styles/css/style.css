@@ -1240,6 +1240,9 @@ div[tabindex="-1"] {
   text-align: center;
 }
 
+.Join input {
+  font-size: 3vw;
+}
 .Join > .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9475,4 +9478,8 @@ input:-webkit-autofill:active {
 }
 .home-license img {
   width: 20vw;
+}
+
+.address .inputBox {
+  width: 13vw;
 }/*# sourceMappingURL=style.css.map */

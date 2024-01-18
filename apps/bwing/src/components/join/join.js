@@ -295,7 +295,7 @@ const Join = () => {
 		let checked = null;
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
-		const EmailCheck = await emailCheck({ val: userValue.Email });
+		// const EmailCheck = await emailCheck({ val: userValue.Email });
 		const CheckboxCheck = userValue.agreeCheck;
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
@@ -304,7 +304,7 @@ const Join = () => {
 		checked =
 			RealNameCheck.checked &&
 			PhoneCheck.checked &&
-			EmailCheck.checked &&
+			// EmailCheck.checked &&
 			CheckboxCheck &&
 			// affiliate is optional
 			(_affiliateCheck.checked === true ||
@@ -317,7 +317,7 @@ const Join = () => {
 				CurrencyId: siteCurrencyList[userValue.Currency]?.id,
 				UserLang: userInfo.langId,
 				PhoneNo: userValue.Phone,
-				Email: userValue.Email,
+				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				ReferralUrl: document.referrer,
 				ReCaptchaToken: reCaptchaToken
@@ -388,10 +388,10 @@ const Join = () => {
 					checked: PhoneCheck.checked,
 					msg: PhoneCheck.msg
 				},
-				Email: {
-					checked: EmailCheck.checked,
-					msg: EmailCheck.msg
-				},
+				// Email: {
+				// 	checked: EmailCheck.checked,
+				// 	msg: EmailCheck.msg
+				// },
 				Checkbox: {
 					checked: userValue.agreeCheck,
 					msg: t("lbl_Check18TCTooltip")
@@ -640,24 +640,24 @@ const Join = () => {
 								setActiveInfoMsg={setActiveInfoMsg}
 							/>
 
-							<Inputbox
-								icon="icon-email"
-								placeholder={t("lbl_Email")}
-								onBlur={checkValue.bind(this, { col: "Email" })}
-								onChange={EditField.bind(this, {
-									col: "Email"
-								})}
-								value={userValue.Email}
-								tip={inputStatus.Email.msg}
-								btnStatus={inputStatus.Email.checked}
-								clickInfo={() => clickInfo("Email")}
-								testAttr="Email"
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								hint={inputStatus.Email.hint}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
+							{/* <Inputbox */}
+							{/* 	icon="icon-email" */}
+							{/* 	placeholder={t("lbl_Email")} */}
+							{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
+							{/* 	onChange={EditField.bind(this, { */}
+							{/* 		col: "Email" */}
+							{/* 	})} */}
+							{/* 	value={userValue.Email} */}
+							{/* 	tip={inputStatus.Email.msg} */}
+							{/* 	btnStatus={inputStatus.Email.checked} */}
+							{/* 	clickInfo={() => clickInfo("Email")} */}
+							{/* 	testAttr="Email" */}
+							{/* 	inputBoxNewClass="inputbox-item primary" */}
+							{/* 	border={false} */}
+							{/* 	hint={inputStatus.Email.hint} */}
+							{/* 	activeInfoMsg={activeInfoMsg} */}
+							{/* 	setActiveInfoMsg={setActiveInfoMsg} */}
+							{/* /> */}
 							<Inputbox
 								icon="icon-affiliate"
 								placeholder={t("lbl_Affiliate_ID")}
