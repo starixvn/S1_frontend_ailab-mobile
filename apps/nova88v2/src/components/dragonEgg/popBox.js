@@ -126,7 +126,16 @@ export const PrizePopBox = ({ isMulti }) => {
 					text: shareText,
 					url: refLink
 				});
-			} catch (error) {}
+				setPopBox({
+					isOpen: true,
+					content: navigator.share
+				});
+			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: error.message
+				});
+			}
 		} else {
 			setPopBox({
 				isOpen: true,
