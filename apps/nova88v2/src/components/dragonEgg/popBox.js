@@ -124,7 +124,7 @@ export const PrizePopBox = ({ isMulti }) => {
 				await navigator.share({
 					title: t("lbl_DragonEgg_Title"),
 					text: shareText,
-					url: refLink
+					url: shareLink
 				});
 				setPopBox({
 					isOpen: true,
