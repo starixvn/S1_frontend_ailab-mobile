@@ -18,6 +18,7 @@ export const monthOptions = [
 export const initValue = {
 	accountName: "",
 	phoneNo: "",
+	email: "",
 	addressLineFirst: "",
 	addressLineSecond: "",
 	addressCity: "",
@@ -36,6 +37,10 @@ export const initWarning = {
 		msg: ""
 	},
 	phoneNo: {
+		checked: null,
+		msg: ""
+	},
+	email: {
 		checked: null,
 		msg: ""
 	},
@@ -83,7 +88,8 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 			infoTitle: "email",
 			colTitle: i18n.lbl_Email,
 			content: userInfo.email,
-			isVerified: userInfo.emailVerified
+			isVerified: userInfo.emailVerified,
+			infoHint: i18n.lbl_EmailToolTip
 		},
 		{
 			infoTitle: "accountName",

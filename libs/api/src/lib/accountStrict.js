@@ -12,7 +12,8 @@ export class AccountStrictAPI extends BaseAPI {
 		AreaCode,
 		PhoneNo,
 		Occupation,
-		SourceOfIncome
+		SourceOfIncome,
+		Email
 	}) =>
 		this.accountStrictRequest.post("/SetProfile", {
 			AccountName,
@@ -23,7 +24,8 @@ export class AccountStrictAPI extends BaseAPI {
 			AreaCode,
 			PhoneNo,
 			Occupation,
-			SourceOfIncome
+			SourceOfIncome,
+			Email
 		});
 
 	SetProfileAddress = ({

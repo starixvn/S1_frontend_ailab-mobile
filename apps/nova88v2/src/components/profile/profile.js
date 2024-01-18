@@ -47,9 +47,11 @@ const Panel = () => {
 					phoneReward={userInfo.phoneReward}
 					emailReward={userInfo.emailReward}
 				/>
+
 				{isNotFilledAddrField && <ProfileAddr />}
 
 				<ProfileDetail />
+
 				{!isNotFilledAddrField ? (
 					<div className="addressModule">
 						<div className="title">
