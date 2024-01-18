@@ -1,3 +1,16 @@
+export const OCCUPATION_OPTIONS = [
+	{ id: 0, displayKey: "lbl_SelfEmployed", value: 1 },
+	{ id: 1, displayKey: "lbl_Employed", value: 2 },
+	{ id: 2, displayKey: "lbl_Retired", value: 3 },
+	{ id: 3, displayKey: "lbl_Others", value: 4 }
+];
+
+export const SOURCE_OF_INCOME_OPTIONS = [
+	{ id: 0, displayKey: "lbl_OwnSaving", value: 1 },
+	{ id: 1, displayKey: "lbl_Loan", value: 2 },
+	{ id: 2, displayKey: "lbl_Others", value: 3 }
+];
+
 export const initValue = {
 	UserName: "",
 	Password: "",
@@ -10,7 +23,20 @@ export const initValue = {
 	RealName: "",
 	Birth_d: 0,
 	Birth_m: 0,
-	Birth_y: 0
+	Birth_y: 0,
+	occupation: {
+		index: 0, // * 初始 0
+		value: OCCUPATION_OPTIONS[0].value
+	},
+	sourceOfIncome: {
+		index: 0, // * 初始 0
+		value: SOURCE_OF_INCOME_OPTIONS[0].value
+	},
+	nationality: "",
+	country: "",
+	city: "",
+	postCode: "",
+	lineFirst: ""
 };
 
 export const initStatus = {
@@ -53,6 +79,18 @@ export const initStatus = {
 	Birth: {
 		checked: null,
 		msg: ""
+	},
+	nationality: {
+		checked: null,
+		msg: "" // * 僅提供紅匡input警示
+	},
+	country: {
+		checked: null,
+		msg: "" // * 僅提供紅匡input警示
+	},
+	city: {
+		checked: null,
+		msg: "" // * 僅提供紅匡input警示
 	}
 };
 
