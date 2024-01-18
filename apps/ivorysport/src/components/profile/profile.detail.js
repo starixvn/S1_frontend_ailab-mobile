@@ -534,7 +534,7 @@ const Panel = () => {
 						mainKey="profile-occupation"
 						options={occupationOptions}
 						onSelectItem={onSelectOccupation}
-						selectedIdx={userValue.occupation - 1}
+						selectedIdx={0}
 						hideInfo={true}
 					/>
 				</div>

@@ -1,4 +1,5 @@
 import moment from "moment";
+import { OCCUPATION_OPTIONS, SOURCE_OF_INCOME_OPTIONS } from "../join/join.def";
 
 export const monthOptions = [
 	{ value: 1, id: 0, displayKey: "lbl_Month1" },
@@ -159,26 +160,35 @@ export const infoList = ({ i18n = {}, userInfo = {} }) => {
 		{
 			infoTitle: "currentAddress",
 			colTitle: i18n.lbl_CurrentAddress,
-			content: userInfo.currentAddress || "-"
+			// * addressCity 為必填，因此只判斷 addressCity 是否有值
+			content: userInfo.addressCity
+				? `${userInfo.addressLineFirst}, ${userInfo.addressCity} ${i18n.lbl_City} ${userInfo.addressPostCode}, ${userInfo.addressCountry}`
+				: userInfo.currentAddress || "-"
 		},
 		{
 			infoTitle: "nationality",
 			colTitle: i18n.lbl_Nationality,
-			content: userInfo.nationality
+			content: userInfo.addressCountry || userInfo.nationality
 		},
 		{
 			infoTitle: "occupation",
 			colTitle: i18n.lbl_Occupation,
-			content: occupationEnum[userInfo.occupation]
-				? i18n[occupationEnum[userInfo.occupation]]
-				: "-"
+			content:
+				i18n[
+					OCCUPATION_OPTIONS.find(
+						item => item.value === userInfo?.occupation
+					)?.displayKey
+				] || "-"
 		},
 		{
 			infoTitle: "sourceOfIncome",
 			colTitle: i18n.lbl_SourceOfIncome,
-			content: incomeSourceEnum[userInfo.sourceOfIncome]
-				? i18n[incomeSourceEnum[userInfo.sourceOfIncome]]
-				: "-"
+			content:
+				i18n[
+					SOURCE_OF_INCOME_OPTIONS.find(
+						item => item.value === userInfo?.sourceOfIncome
+					)?.displayKey
+				] || "-"
 		},
 		{
 			infoTitle: "addressLineFirst",

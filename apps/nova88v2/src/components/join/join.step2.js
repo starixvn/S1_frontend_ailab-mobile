@@ -12,7 +12,6 @@ import {
 	defCurrencyToLang
 } from "../common/common";
 import { Link } from "../../route/link";
-import Inputbox from "../common/inputbox.hint";
 import Dropdown from "../common/dropdown";
 // import Birthday from "./join.birth";
 import useTip from "../hook/useTip";
@@ -319,20 +318,20 @@ const JoinStep2 = ({
 			// * 機器人驗證沒過直接 return 出去
 			if (!_reCaptchaCheck) return false;
 
-			const res = await Promise.all([
-				null,
-				// * 世界杯期間不驗證手機，驗證會在 SignUp Api 驗證
-				// phoneCheck(userValue.Phone),
-				emailCheck(userValue.Email)
-			]);
+			// const res = await Promise.all([
+			// 	null
+			// 	// * 世界杯期間不驗證手機，驗證會在 SignUp Api 驗證
+			// 	// phoneCheck(userValue.Phone),
+			// 	// emailCheck(userValue.Email)
+			// ]);
 
 			const _phoneCheck = phoneCheck(userValue.Phone);
-			const _emailCheck = res[1];
+			// const _emailCheck = res[1];
 			const _currencyCheck = currencyCheck();
 
 			const checked =
 				_phoneCheck.checked &&
-				_emailCheck.checked &&
+				// _emailCheck.checked &&
 				_currencyCheck.checked;
 
 			if (!checked) {
@@ -342,10 +341,10 @@ const JoinStep2 = ({
 						checked: _phoneCheck.checked,
 						msg: _phoneCheck.msg
 					},
-					Email: {
-						checked: _emailCheck.checked,
-						msg: _emailCheck.msg
-					},
+					// Email: {
+					// 	checked: _emailCheck.checked,
+					// 	msg: _emailCheck.msg
+					// },
 					Currency: {
 						checked: _currencyCheck.checked,
 						msg: _currencyCheck.msg
@@ -379,7 +378,7 @@ const JoinStep2 = ({
 				UserName: userValue.UserName,
 				RealName: userValue.RealName,
 				Userpwd: userValue.Password,
-				Email: userValue.Email,
+				// Email: userValue.Email,
 				PhoneNo: userValue.Phone,
 				CurrencyId: siteCurrency[userValue.CurrencyIdx]?.id,
 				UserLang: signupLangId,
@@ -466,19 +465,19 @@ const JoinStep2 = ({
 
 	return (
 		<div className="Join">
-			<Inputbox
-				icon="icon-email"
-				placeholder={i18n.lbl_Email}
-				value={userValue.Email}
-				onChange={EditField.bind(null, "Email")}
-				onBlur={checkValue.bind(null, "Email")}
-				btnStatus={hintStatus.Email.checked}
-				warningMsg={hintStatus.Email.msg}
-				infoText={i18n.lbl_EmailToolTip}
-				clickInfo={() => showTipHandler("Email")}
-				showTips={showTips.includes("Email")}
-				testAttr="Email"
-			/>
+			{/* <Inputbox */}
+			{/* 	icon="icon-email" */}
+			{/* 	placeholder={i18n.lbl_Email} */}
+			{/* 	value={userValue.Email} */}
+			{/* 	onChange={EditField.bind(null, "Email")} */}
+			{/* 	onBlur={checkValue.bind(null, "Email")} */}
+			{/* 	btnStatus={hintStatus.Email.checked} */}
+			{/* 	warningMsg={hintStatus.Email.msg} */}
+			{/* 	infoText={i18n.lbl_EmailToolTip} */}
+			{/* 	clickInfo={() => showTipHandler("Email")} */}
+			{/* 	showTips={showTips.includes("Email")} */}
+			{/* 	testAttr="Email" */}
+			{/* /> */}
 			<Dropdown
 				mainKey="join-curr"
 				colName="Currency"

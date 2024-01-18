@@ -9355,6 +9355,18 @@ span.important {
 .profileInfo ~ .info ul li span img {
   margin-left: 1vw;
 }
+.profileInfo ~ .info .profile-email.unfilled .title {
+  color: #052561;
+}
+.profileInfo ~ .info .profile-email.unfilled span {
+  color: gray;
+}
+.profileInfo ~ .info .profile-email.unfilled .otpBtn {
+  background: gray;
+}
+.profileInfo ~ .info .profile-email.unfilled .otpBtn span {
+  color: white;
+}
 
 #goTop {
   position: fixed;
