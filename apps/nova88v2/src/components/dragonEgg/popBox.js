@@ -128,12 +128,20 @@ export const PrizePopBox = ({ isMulti }) => {
 				});
 				setPopBox({
 					isOpen: true,
-					content: navigator.share
+					content: (
+						<div>
+							<p>share</p>
+						</div>
+					)
 				});
 			} catch (error) {
 				setPopBox({
 					isOpen: true,
-					content: error.message
+					content: (
+						<div>
+							<p>{error.message}</p>
+						</div>
+					)
 				});
 			}
 		} else {
