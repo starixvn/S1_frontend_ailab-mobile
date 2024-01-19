@@ -6,8 +6,11 @@ import { number_format } from "./common";
 const PopBoxTurnover = ({ currencyId, turnover, rollover }) => {
 	const { i18n } = useContext(i18nContext);
 	const currency = i18n[`Currency_${currencyId}`];
-	const percentage =
+	let percentage =
 		turnover > rollover ? 100 : ((turnover / rollover) * 100).toFixed(2);
+
+	// When turnover & rollover be 0, percentage will be NaN
+	if (isNaN(percentage)) percentage = 0;
 
 	return (
 		<div className="popTxt">
