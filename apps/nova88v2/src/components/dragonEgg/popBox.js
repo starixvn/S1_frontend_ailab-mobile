@@ -6,11 +6,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { sleep } from "@ailab-mobile/common";
 import { DrawPrizeTypeEnum, useGragonEgg } from "@ailab-mobile/hooks";
 import { cloudBannerImgURL } from "../../config";
-import { popBoxContext, userInfoContext } from "../common/context";
+import { popBoxContext } from "../common/context";
 import { eventIds } from "../../datas/eventId";
-import path from "../../path";
-
-const currentLocation = window.location.origin;
 
 // 選擇蛋的彈窗
 export const DrawPopBox = () => {
@@ -86,18 +83,12 @@ export const DrawPopBox = () => {
 export const PrizePopBox = ({ isMulti }) => {
 	const { t } = useTranslation();
 
-	const {
-		userInfo: { langId }
-	} = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 
 	const [prizeList, setPrizeList] = useState([]);
 	const [isMultiDraw, setIsMultiDraw] = useState(isMulti);
 
 	const { eggTicket, drawPrize } = useGragonEgg();
-
-	const shareLink = `${currentLocation}/${langId}/${path.dragonEgg.root}`;
-	const shareText = `I Won ${prizeList[0]?.prizeName}!`;
 
 	const getPrize = async ({ multiDraw }) => {
 		const drawResult = await drawPrize({
@@ -114,76 +105,6 @@ export const PrizePopBox = ({ isMulti }) => {
 			setPopBox({
 				isOpen: true,
 				content: `[${errorCode}] ${message}`
-			});
-		}
-	};
-
-	const onShare = async () => {
-		if (navigator.share) {
-			try {
-				await navigator.share({
-					title: t("lbl_DragonEgg_Title"),
-					text: shareText,
-					url: shareLink
-				});
-				setPopBox({
-					isOpen: true,
-					content: (
-						<div>
-							<p>share</p>
-						</div>
-					)
-				});
-			} catch (error) {
-				setPopBox({
-					isOpen: true,
-					content: (
-						<div>
-							<p>{error.message}</p>
-						</div>
-					)
-				});
-			}
-		} else {
-			setPopBox({
-				isOpen: true,
-				title: t("lbl_DragonEgg_Title"),
-				content: (
-					<div>
-						<a
-							className="icon icon-facebook2"
-							target="_blank"
-							rel="noreferrer"
-							style={{ color: "black" }}
-							href={`https://www.facebook.com/sharer/sharer.php?u=${shareLink}&quote=${shareText}`}>
-							{/* Facebook */}
-						</a>
-						<a
-							className="icon icon-whatsapp"
-							target="_blank"
-							rel="noreferrer"
-							style={{ color: "black" }}
-							href={`https://wa.me/?text=${shareText} ${shareLink}`}>
-							{/* Whatsapp */}
-						</a>
-						<a
-							className="icon icon-line"
-							target="_blank"
-							rel="noreferrer"
-							style={{ color: "black" }}
-							href={`http://line.naver.jp/R/msg/text/?${shareText}%0D%0A${shareLink}`}>
-							{/* Line */}
-						</a>
-						<a
-							className="icon icon-telegram"
-							target="_blank"
-							rel="noreferrer"
-							style={{ color: "black" }}
-							href={`https://t.me/share/url?url=${shareLink}&text=${shareText}`}>
-							{/* Telegram */}
-						</a>
-					</div>
-				)
 			});
 		}
 	};
@@ -311,13 +232,6 @@ export const PrizePopBox = ({ isMulti }) => {
 			<div className="dragonegg-result-egg">
 				{t("lbl_DragonEgg_Eggs")}: <span>{eggTicket}</span>
 			</div>
-			<button className="dragonegg-result-share" onClick={onShare}>
-				{t("Label_Share")}
-				<img
-					src={`${cloudBannerImgURL}/h5/img/event/dragonegg/icon-share.svg`}
-					alt="icon-share"
-				/>
-			</button>
 		</div>
 	);
 };
