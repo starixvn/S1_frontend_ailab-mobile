@@ -2809,6 +2809,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
 }
+.info ul li .title {
+  color: #1f3258;
+}
 .info.infoBlack {
   background: #d1d6e0;
   border-radius: 5px;
@@ -7396,7 +7399,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: auto;
+  margin: 1vw auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -7410,6 +7413,43 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.depositModule_mobile .selectModule > div.info.remark,
+.depositModule_online .selectModule > div.info.remark,
+.depositModule_local .selectModule > div.info.remark,
+.depositModule_topupMobile .selectModule > div.info.remark,
+.depositModule_Crpyto .selectModule > div.info.remark {
+  background: transparent;
+  width: calc(100% - 2vw);
+  padding: 0;
+}
+.depositModule_mobile .selectModule > div.info.remark ul,
+.depositModule_online .selectModule > div.info.remark ul,
+.depositModule_local .selectModule > div.info.remark ul,
+.depositModule_topupMobile .selectModule > div.info.remark ul,
+.depositModule_Crpyto .selectModule > div.info.remark ul {
+  width: 100%;
+}
+.depositModule_mobile .selectModule > div.info.remark ul .tip,
+.depositModule_online .selectModule > div.info.remark ul .tip,
+.depositModule_local .selectModule > div.info.remark ul .tip,
+.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
+.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
+  text-align: left;
+  padding: 0 1vw;
+  margin-bottom: 2vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li,
+.depositModule_online .selectModule > div.info.remark li,
+.depositModule_local .selectModule > div.info.remark li,
+.depositModule_topupMobile .selectModule > div.info.remark li,
+.depositModule_Crpyto .selectModule > div.info.remark li {
+  background: #adccff;
+  border-radius: 5px;
+  padding: 2vw 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,

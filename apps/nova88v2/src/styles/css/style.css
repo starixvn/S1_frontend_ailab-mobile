@@ -8706,6 +8706,14 @@ span.important {
 .depositModule .selectModule .infoAccount li button {
   margin: 0 0 0 1.5vw;
 }
+.depositModule .selectModule .infoAccount .title {
+  border: 0;
+  margin-top: 0;
+  padding: 0;
+}
+.depositModule .selectModule .infoAccount .tip {
+  color: #666;
+}
 .depositModule .selectModule.inner {
   width: 100%;
   padding: 0 2vw;

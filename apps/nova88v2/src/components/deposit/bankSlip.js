@@ -122,6 +122,7 @@ class Modal extends Component {
 	render() {
 		const { bankSlipPopBox } = this.props;
 		const { i18n } = this.props;
+
 		return (
 			<div
 				id="popup"
