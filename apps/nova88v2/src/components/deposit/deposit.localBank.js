@@ -514,11 +514,24 @@ const GroupList = ({
 						</li>
 						<CopyBtn value={accountInfo.accountName} />
 						<CopyBtn value={accountInfo.accountNo} />
-						{accountInfo?.code && (
-							<CopyBtn value={accountInfo.code} />
-						)}
 					</ul>
 				</div>
+
+				{accountInfo?.code && (
+					<div className="info infoAccount remark">
+						<ul>
+							<li className="title">{i18n?.Label_Remark}</li>
+							<li>
+								<CopyBtn value={accountInfo.code} />
+							</li>
+
+							<div className="tip active">
+								{i18n?.Label_Deposit_RemarkHint}
+							</div>
+						</ul>
+					</div>
+				)}
+
 				{selectedBank.qrCodeUrl && (
 					<>
 						<div className="title">
