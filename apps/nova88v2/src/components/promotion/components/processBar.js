@@ -23,10 +23,14 @@ const ProcessBar = ({
 		promotionType !== defPromotionType.rebate &&
 		promotionType !== defPromotionType.cashback
 	) {
-		const percentage =
+		let percentage =
 			custTurnOver >= custRollOver
 				? 100
 				: ((custTurnOver / custRollOver) * 100).toFixed(2);
+
+		// When turnover & rollover be 0, percentage will be NaN
+		if (isNaN(percentage)) percentage = 0;
+
 		return (
 			<div className="account">
 				<div className="info">
