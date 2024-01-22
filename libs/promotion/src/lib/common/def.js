@@ -13,7 +13,8 @@ export const defPromotionType = {
 	rebate: 6,
 	cashback: 7,
 	static: 8,
-	retentionFreeBet: 9
+	retentionFreeBet: 9,
+	missionBonus: 11
 };
 
 export const defFilterType = {
@@ -125,4 +126,10 @@ export const defCategoryId = {
 	SBSW: 9,
 	// 沒有 Mega888SlotRNGFishing
 	ESports: 11
+};
+
+export const promotionPeriodType = {
+	Daily: 1,
+	Weekly: 2,
+	Monthly: 3
 };

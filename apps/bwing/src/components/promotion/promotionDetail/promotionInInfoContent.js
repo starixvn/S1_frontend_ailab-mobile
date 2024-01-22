@@ -10,6 +10,7 @@ import {
 } from "@ailab-mobile/promotion";
 import { popBoxContext } from "../../common/context";
 import PromoRule from "../components/promoRule";
+import Mission from "./promotionMission";
 
 const PromotionInInfoContent = ({
 	promotionInfo,
@@ -91,11 +92,23 @@ const PromotionInInfoContent = ({
 						)}
 						config={config}
 					/>
-					<PromoRule
-						promotionInfo={promotionInfo}
-						ruleCols={config?.ruleCols}
-						config={config}
-					/>
+					{promotionInfo.promotionType ===
+						defPromotionType.missionBonus &&
+						!promotionInfo.isJoin && (
+							// 這邊不用lib內共用Mission組件是因為html結構有異
+							<Mission
+								promotionInfo={promotionInfo}
+								config={config}
+							/>
+						)}
+					{promotionInfo.promotionType !==
+						defPromotionType.missionBonus && (
+						<PromoRule
+							promotionInfo={promotionInfo}
+							ruleCols={config?.ruleCols}
+							config={config}
+						/>
+					)}
 
 					<CashBackInfo
 						cashBackDetails={promotionInfo.cashBackDetails}

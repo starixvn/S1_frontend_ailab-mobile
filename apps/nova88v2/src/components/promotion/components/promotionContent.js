@@ -7,6 +7,7 @@ import { defPromotionType } from "../common/def";
 import CashBackInfo from "./cashBackInfo";
 import JoinBtn from "./joinBtn";
 import ProcessBar from "./processBar";
+import PromoMission from "./mission";
 import path from "../../../path";
 
 const PromoContent = ({
@@ -18,7 +19,8 @@ const PromoContent = ({
 	langId,
 	showAllPromosBtn,
 	filterType,
-	processBarInfo
+	processBarInfo,
+	GetPromotionDetail
 }) => (
 	<div className="proInfomodule">
 		<div className="btn-group">
@@ -34,6 +36,7 @@ const PromoContent = ({
 				<JoinBtn
 					promotionInfo={promotionInfo}
 					filterType={filterType}
+					func_GetPromotionDetail={GetPromotionDetail}
 				/>
 			)}
 			{showAllPromosBtn && (
@@ -54,7 +57,13 @@ const PromoContent = ({
 			}
 			RefreshProcessBar={refreshProcessBar.bind(this, promotionInfo)}
 		/>
-		<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		{promotionInfo.promotionType === defPromotionType.missionBonus &&
+			!promotionInfo.isJoin && (
+				<PromoMission promotionInfo={promotionInfo} />
+			)}
+		{promotionInfo.promotionType !== defPromotionType.missionBonus && (
+			<PromoRule promotionInfo={promotionInfo} ruleCols={ruleCols} />
+		)}
 		<CashBackInfo
 			bonusCode={promotionInfo.bonusCode}
 			cashBackDetails={promotionInfo.cashBackDetails}
@@ -84,7 +93,8 @@ PromoContent.defaultProps = {
 	langId: null,
 	showAllPromosBtn: null,
 	filterType: null,
-	processBarInfo: null
+	processBarInfo: null,
+	GetPromotionDetail: () => null
 };
 
 PromoContent.propTypes = {
@@ -96,7 +106,8 @@ PromoContent.propTypes = {
 	langId: PropTypes.string,
 	showAllPromosBtn: PropTypes.bool,
 	filterType: PropTypes.string,
-	processBarInfo: PropTypes.objectOf(PropTypes.any)
+	processBarInfo: PropTypes.objectOf(PropTypes.any),
+	GetPromotionDetail: PropTypes.func
 };
 
 export default PromoContent;
