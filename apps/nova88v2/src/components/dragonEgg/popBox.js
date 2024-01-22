@@ -198,16 +198,17 @@ export const PrizePopBox = ({ isMulti }) => {
 						</button>
 					</div>
 				)}
-				{/* 單抽有獎或10抽 */}
+				{/* 單抽有獎或10抽且剩下龍蛋不為 0 時 */}
 				{(isMultiDraw ||
 					prizeList[0]?.drawPrizeType !==
-						DrawPrizeTypeEnum.noPrize) && (
-					<button
-						className="btn-receive"
-						onClick={() => setPopBox({ isOpen: false })}>
-						{t("lbl_DragonEgg_Received")}
-					</button>
-				)}
+						DrawPrizeTypeEnum.noPrize) &&
+					eggTicket !== 0 && (
+						<button
+							className="btn-receive"
+							onClick={() => setPopBox({ isOpen: false })}>
+							{t("lbl_DragonEgg_Received")}
+						</button>
+					)}
 				<div className="btn-playdraw">
 					{/* 單抽且可再單抽 */}
 					{!isMultiDraw && eggTicket > 0 && (
