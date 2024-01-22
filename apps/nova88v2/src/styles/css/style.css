@@ -11281,6 +11281,94 @@ span.important {
   border: 0;
 }
 
+.mission-content {
+  margin: 7vw 0;
+}
+.mission-title {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(17, 34, 64)), color-stop(70%, rgb(42, 79, 164)));
+  background: linear-gradient(90deg, rgb(17, 34, 64) 0%, rgb(42, 79, 164) 70%);
+  padding: 1vw 0 1vw 2vw;
+}
+.mission-progress {
+  background: #efefef;
+  padding: 5vw 0 5vw 2vw;
+  color: #2a4fa4;
+}
+.mission-progress > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 13vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.mission-progress > div .state {
+  background: #000;
+  height: 5vw;
+  width: 25vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1vw;
+  color: white;
+  font-weight: 500;
+  font-size: 2.75vw;
+  border-radius: 20px 0 0 20px;
+}
+.mission-progress > div .state.completed {
+  background: #2A4FA4;
+}
+.mission-progress > div .state.undone {
+  background: #858585;
+}
+.mission-progress-item .progress {
+  background: white;
+  height: 2vw;
+  width: 53vw;
+  border-radius: 20px;
+}
+.mission-progress-item .progress .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(42, 79, 164)), color-stop(70%, rgb(113, 156, 255)));
+  background: linear-gradient(90deg, rgb(42, 79, 164) 0%, rgb(113, 156, 255) 70%);
+  height: 2vw;
+  border-radius: 20px;
+}
+.mission-progress-item .mission-number {
+  margin-left: 1vw;
+  color: #8d8d8d;
+  text-align: end;
+}
+.mission-progress-item.turnover .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(53, 105, 227)), color-stop(70%, rgb(248, 69, 255)));
+  background: linear-gradient(90deg, rgb(53, 105, 227) 0%, rgb(248, 69, 255) 70%);
+}
+.mission-progress-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 17px;
+  width: 53vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.mission-progress-text > div {
+  margin-bottom: 1vw;
+}
+
 /*checkspeed*/
 .checkspeed {
   background: #0339a2 url(https://banner.0814media.net/h5/img/check_speed/bg.jpg) no-repeat center 24vw/100% auto;
