@@ -1,7 +1,5 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { isDateRange } from "@ailab-mobile/common";
-import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useLocation, useNavigate } from "@reach/router";
 import Footer from "./footer";
 import Header from "../header/header";
@@ -22,10 +20,10 @@ import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
-import { angPaoEventPeriod } from "../../pages/angpao";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
+import DragonEggPop from "../dragonEgg/homeLink";
 
 export const defPageInfo = {
 	default: {
@@ -363,12 +361,12 @@ const Layout = ({ children }) => {
 			)}
 
 			{isEventPeriod(eventTime.luckyWheel) &&
-				!isDateRange(angPaoEventPeriod) &&
+				!isEventPeriod(eventTime.dragonEgg) &&
 				luckyWheel &&
 				root && <LuckyWheel setLuckyWheel={setLuckyWheel} />}
 
 			{/* 僅限過年期間顯示 */}
-			{isDateRange(angPaoEventPeriod) && root && <AngpaoFloatLink />}
+			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
 
 			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
