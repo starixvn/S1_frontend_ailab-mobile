@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Dropdown from "../../common/dropdown";
 import Inputbox from "../../common/inputbox.hint";
 import { number_format } from "../common/common";
+import { number_format as numberFormat } from "../../common/common";
 import { defWrapperCol, defPromotionType } from "../common/def";
 
 export const checkClaimAmount = ({
@@ -108,11 +109,33 @@ const LockedAmountPopBox = ({
 		onJoinPromotion
 	} = useJoinPromotion({ i18n, SetClaimPromotion, formatSetting });
 
-	const options = canJoinTierAmountList?.map((el, i) => ({
-		id: i,
-		displayText: `${i18n.lbl_DepositAmount} ${el.requiredAmount} / ${i18n.lbl_Bonus} ${el.bonusAmount}`,
-		lockedAmount: el.lockedAmount
-	}));
+	const options = canJoinTierAmountList?.map((el, i) => {
+		const {
+			requiredAmount,
+			requiredTurnover,
+			bonusAmount,
+			lockedAmount
+		} = el;
+
+		const displayText = requiredAmount
+			? `${i18n.lbl_DepositAmount} ${numberFormat(
+					requiredAmount,
+					false,
+					0
+			  )} /  ${i18n.lbl_Bonus} ${numberFormat(bonusAmount, false, 0)}`
+			: `${i18n.lbl_Turnover} ${numberFormat(
+					requiredTurnover,
+					false,
+					0
+			  )} / ${i18n.lbl_Bonus} ${numberFormat(bonusAmount, false, 0)}`;
+
+		return {
+			id: i,
+			displayText,
+			lockedAmount,
+			bonusAmount
+		};
+	});
 
 	const onSelectItem = i => {
 		if (i !== selectedIdx) {
@@ -123,7 +146,11 @@ const LockedAmountPopBox = ({
 	const onSetClaimPromotion = () => {
 		SetClaimPromotion({
 			bonusCode,
-			LockedAmount: options[selectedIdx].lockedAmount
+			// 後端期望promotionType為missionBonus的話帶bonusAmount
+			LockedAmount:
+				promotionType === defPromotionType.missionBonus
+					? options[selectedIdx].bonusAmount
+					: options[selectedIdx].lockedAmount
 		});
 	};
 
