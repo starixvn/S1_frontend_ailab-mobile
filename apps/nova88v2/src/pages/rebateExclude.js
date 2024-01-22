@@ -42,7 +42,7 @@ const RebateExclude = () => {
 			setRebateExcludeList(formatRebateExcludeList);
 		};
 		getExcludeList();
-	}, []);
+	}, [userInfo?.currencyId]);
 
 	return (
 		<>
