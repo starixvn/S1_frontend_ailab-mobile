@@ -68,6 +68,7 @@ import Join from "./components/join/join.refactor";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
+import DragonEgg from "./pages/dragonEgg";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -152,6 +153,7 @@ const Index = () => {
 						<RebateExclude
 							path={`/:langId/${path.rebateExclude.root}`}
 						/>
+						<DragonEgg path={path.dragonEgg.root} />
 					</Router>
 					<Join />
 					<Login />

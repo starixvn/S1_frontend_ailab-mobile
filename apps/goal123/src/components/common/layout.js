@@ -1,8 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { isDateRange } from "@ailab-mobile/common";
-import { AngpaoFloatLink } from "@ailab-mobile/components";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -19,18 +18,10 @@ import { isEventPeriod } from "./common";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
-import { angPaoEventPeriod } from "../../pages/angpao";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
-
-// const defPageInfo = {
-// 	leaderBoard: {
-// 		titleKey: "lbl_Ranking",
-// 		className: "main ranking",
-// 		hideLogo: true
-// 	},
-// };
+import DragonEggPop from "../dragonEgg/homeLink";
 
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
@@ -109,14 +100,13 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			)}
 
 			{/* 僅限過年期間不顯示 */}
-			{isEventPeriod(eventTime.luckyWheel) &&
-			!isDateRange(angPaoEventPeriod) &&
-			root &&
-			luckyWheel ? (
+			{!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
+
 			{/* 僅限過年期間顯示 */}
-			{isDateRange(angPaoEventPeriod) && root && <AngpaoFloatLink />}
+			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
+
 			<Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>
