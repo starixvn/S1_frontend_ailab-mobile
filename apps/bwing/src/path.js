@@ -204,6 +204,9 @@ export default {
 	news: {
 		root: "news"
 	},
+	dragonEgg: {
+		root: "dragonEgg"
+	}
 };
 
 export const defSpecialPath = {
