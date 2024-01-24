@@ -264,6 +264,8 @@ const useGetHomePopup = () => {
 							</div>
 						)
 					});
+				} else {
+					openHomePopup();
 				}
 			} catch (error) {
 				setPopBox({
@@ -271,6 +273,8 @@ const useGetHomePopup = () => {
 					content: error
 				});
 			}
+		} else {
+			openHomePopup();
 		}
 	};
 
