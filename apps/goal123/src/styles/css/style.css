@@ -1955,18 +1955,26 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: linear-gradient(90deg, rgb(255, 54, 14) 0%, rgb(28, 49, 123) 100%);
   border-radius: 10px 10px 0 0;
 }
+#popup.livesportspop .livesports > div .livesports-item .top > div {
+  width: 55vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  width: 13vw;
+  width: 17vw;
   text-align: center;
   border-radius: 20px 0 0 20px;
-  padding: 0 1vw 0 3vw;
+  padding: 0.5vw 1vw 0.5vw 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 3vw;
+  line-height: 1.2;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child::before {
   display: block;
@@ -1975,7 +1983,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: 1.5vw;
   height: 1.5vw;
   border-radius: 20px;
-  margin-right: 1.5vw;
+  margin-right: 1vw;
   -webkit-animation: blinking 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
           animation: blinking 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
 }
@@ -1989,7 +1997,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 3.5vw;
+  margin-top: 2vw;
   font-size: 3vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team {
