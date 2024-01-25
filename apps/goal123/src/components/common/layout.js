@@ -1,7 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { products } from "@ailab-mobile/common";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
+import { products, isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -14,7 +14,6 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod } from "./common";
 import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
@@ -32,7 +31,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [luckyWheel, setLuckyWheel] = useState(false);
-	const [displayVGaming, setDisplayVGaming] = useState(true);
+	const [displayVgaming, setDisplayVgaming] = useState(true);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
@@ -83,11 +82,11 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVGaming && root && (
+			{displayVgaming && root && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon icon-close"
-						onClick={() => setDisplayVGaming(false)}
+						onClick={() => setDisplayVgaming(false)}
 					/>
 					<img
 						className="vgimg"
@@ -99,14 +98,13 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			)}
 
 			{/* 僅限過年期間不顯示 */}
-			{isEventPeriod(eventTime.luckyWheel) &&
-			!isEventPeriod(eventTime.dragonEgg) &&
-			root &&
-			luckyWheel ? (
+			{!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
+
 			{/* 僅限過年期間顯示 */}
-			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
+			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
+
 			<Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>

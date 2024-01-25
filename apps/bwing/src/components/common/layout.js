@@ -1,7 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { products } from "@ailab-mobile/common";
 import { useLocation, useNavigate } from "@reach/router";
+import { products, isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -14,7 +14,6 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod } from "./common";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
@@ -343,7 +342,6 @@ const Layout = ({ children }) => {
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
-
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming && root && (
 				<div className="eventLink vgaming">
@@ -360,15 +358,14 @@ const Layout = ({ children }) => {
 				</div>
 			)}
 
-			{isEventPeriod(eventTime.luckyWheel) &&
-				!isEventPeriod(eventTime.dragonEgg) &&
-				luckyWheel &&
-				root && <LuckyWheel setLuckyWheel={setLuckyWheel} />}
-
 			{/* 僅限過年期間顯示 */}
-			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
+			{!isDateRange(eventTime.dragonEgg) && luckyWheel && root && (
+				<LuckyWheel setLuckyWheel={setLuckyWheel} />
+			)}
 
-			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
+			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
+
+			{isDateRange(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>
 	);
