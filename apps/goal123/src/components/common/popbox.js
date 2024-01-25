@@ -72,7 +72,6 @@ const PopUp = () => {
 			);
 			break;
 	}
-
 	return popBox.isOpen ? (
 		<div
 			id="popup"
