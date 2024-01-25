@@ -6432,8 +6432,8 @@ span.important {
   height: 5vw;
   color: #f80b3b;
   position: absolute;
-  right: 0;
-  top: -6vw;
+  right: -3vw;
+  top: -4vw;
   z-index: 4;
   background: #e3ce9b;
   border-radius: 100%;
@@ -6455,13 +6455,14 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 28vw;
+  width: 23vw;
 }
 .eventLink.active {
   display: none;
 }
 .eventLink.wheel {
-  bottom: 65vw;
+  right: 4vw;
+  bottom: 56vw;
 }
 .eventLink.wheel img {
   position: absolute;
@@ -6601,13 +6602,14 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 41vw;
+  bottom: 60vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
 }
 .eventLink.vgaming .icon-close {
   top: 0;
+  right: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
 }
@@ -6682,7 +6684,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 37vw;
+  bottom: 57vw;
   left: 69vw;
 }
 .eventLink.livesports img {
