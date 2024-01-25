@@ -89,4 +89,13 @@ export const api_site_GetVipBanner = () =>
 	});
 
 export const api_site_GetRecaptchaInfo = () =>
-	siteRequest.post("/GetRecaptchaInfo");
+	siteRequest.post("/GetRecaptchaInfo", null, {
+		headers: {
+			common: {
+				"origin-host":
+					typeof window !== "undefined"
+						? window?.location?.origin
+						: undefined
+			}
+		}
+	});
