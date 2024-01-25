@@ -1896,6 +1896,253 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
     opacity: 1;
   }
 }
+#popup.livesportspop {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  display: none;
+}
+#popup.livesportspop.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#popup.livesportspop .livesports {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
+  width: 90vw !important;
+  height: 170vw;
+  margin-bottom: 15vw;
+  position: relative;
+  -webkit-animation: sponsor 0.3s linear 0.2s backwards;
+          animation: sponsor 0.3s linear 0.2s backwards;
+}
+#popup.livesportspop .livesports img {
+  display: block;
+  margin: 0 auto;
+  max-width: 85vw;
+}
+#popup.livesportspop .livesports > div {
+  padding: 0 4vw;
+  margin-top: 45vw;
+}
+#popup.livesportspop .livesports > div .livesports-item {
+  background: url(https://banner.goal123.org/h5/img/team-bg.png) no-repeat center/100%;
+  height: 39vw;
+  margin-bottom: 2vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .top {
+  font-weight: 600;
+  font-size: 3.5vw;
+  padding: 2vw 0 2vw 3.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(255, 54, 14)), to(rgb(28, 49, 123)));
+  background: linear-gradient(90deg, rgb(255, 54, 14) 0%, rgb(28, 49, 123) 100%);
+  border-radius: 10px 10px 0 0;
+}
+#popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
+  background: #ff7600;
+  width: 13vw;
+  text-align: center;
+  border-radius: 20px 0 0 20px;
+  padding: 0 1vw 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.livesportspop .livesports > div .livesports-item .top > div:last-child::before {
+  display: block;
+  content: "";
+  background: white;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-radius: 20px;
+  margin-right: 1.5vw;
+  -webkit-animation: blinking 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+          animation: blinking 0.5s cubic-bezier(0.5, 0, 1, 1) infinite alternate;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3.5vw;
+  font-size: 3vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #909090;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child {
+  background: #d5d5d5;
+  border-radius: 50px;
+  width: 14vw;
+  height: 14vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child img {
+  width: 12vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-team > div:last-child {
+  text-align: center;
+  margin-top: 2vw;
+  line-height: 3.5vw;
+  width: 20vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time {
+  margin: 0 2vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time img {
+  width: 28vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0f214e;
+  font-weight: 600;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div {
+  margin-top: 2vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div:first-child {
+  margin-left: 1.5vw;
+}
+#popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div:last-child {
+  margin-left: 2vw;
+}
+#popup.livesportspop .livesports > div .livesports-item.next .top {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(141, 142, 152)), to(rgb(24, 24, 24)));
+  background: linear-gradient(90deg, rgb(141, 142, 152) 0%, rgb(24, 24, 24) 100%);
+}
+#popup.livesportspop .livesports > div .livesports-item.next .top > div:last-child {
+  background: white;
+  color: #272829;
+}
+#popup.livesportspop .livesports > div .livesports-item.next .top > div:last-child::before {
+  background: #272829;
+  -webkit-animation: none;
+          animation: none;
+}
+#popup.livesportspop .livesports > div .livesports-item.next .bottom-team img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+#popup.livesportspop .livesports > div .livesports-item.next .bottom-time img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+#popup.livesportspop .livesports > div .livesports-item.next .bottom-time > div {
+  color: #272829;
+}
+#popup.livesportspop .livesports.vn {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-vn.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.en {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
+}
+@-webkit-keyframes blinking {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes blinking {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes sponsor {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.95) translateY(1em);
+            transform: scale(0.95) translateY(1em);
+  }
+}
+@keyframes sponsor {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.95) translateY(1em);
+            transform: scale(0.95) translateY(1em);
+  }
+}
+#popup.livesportspop .closepop {
+  cursor: pointer;
+  display: block;
+  width: 7vw;
+  position: absolute;
+  left: 50%;
+  bottom: -12vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
+}
+@keyframes closepop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#popup.livesportspop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
+  background-color: unset;
+}
 
 .txt-red {
   color: #d83b35;
@@ -2834,6 +3081,104 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: border-box;
   border: 1px solid #a3a3a3;
   color: #1f3258 !important;
+}
+
+.mission-content {
+  margin: 5vw 1.5vw 0 1vw;
+}
+.mission-title {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(245, 142, 35)), color-stop(70%, rgb(245, 172, 35)));
+  background: linear-gradient(90deg, rgb(245, 142, 35) 0%, rgb(245, 172, 35) 70%);
+  padding: 1vw 0 1vw 2vw;
+  font-size: 12px;
+}
+.mission-progress {
+  background: white;
+  padding: 5vw 0 5vw 2vw;
+  color: #2a4fa4;
+}
+.mission-progress > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 13vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media (max-width: 320px) {
+  .mission-progress > div {
+    height: 18vw;
+  }
+}
+.mission-progress > div .state {
+  background: #000;
+  height: 5vw;
+  width: 22vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1vw;
+  color: white;
+  font-weight: 500;
+  font-size: 2.75vw;
+  white-space: nowrap;
+  border-radius: 20px 0 0 20px;
+}
+.mission-progress > div .state.completed {
+  background: #007aff;
+}
+.mission-progress > div .state.undone {
+  background: #858585;
+}
+.mission-progress-item .progress {
+  background: #e7e7e7;
+  height: 2vw;
+  width: 53vw;
+  border-radius: 20px;
+}
+.mission-progress-item .progress .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(31, 50, 88)), color-stop(70%, rgb(98, 173, 255)));
+  background: linear-gradient(90deg, rgb(31, 50, 88) 0%, rgb(98, 173, 255) 70%);
+  height: 2vw;
+  border-radius: 20px;
+}
+.mission-progress-item .mission-number {
+  margin-left: 1vw;
+  color: #8d8d8d;
+  text-align: end;
+  font-size: 3vw;
+}
+.mission-progress-item.turnover .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(#e90900), color-stop(70%, rgb(245, 151, 35)));
+  background: linear-gradient(90deg, #e90900 0%, rgb(245, 151, 35) 70%);
+}
+.mission-progress-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 17px;
+  width: 53vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  color: #1f3258;
+}
+.mission-progress-text > div {
+  margin-bottom: 1vw;
 }
 
 .pending, .reject, .cancelled, .approved {
@@ -6075,8 +6420,8 @@ span.important {
   bottom: 15vw;
 }
 .eventLink .icon-close {
-  width: 6vw;
-  height: 6vw;
+  width: 5vw;
+  height: 5vw;
   color: #f80b3b;
   position: absolute;
   right: 0;
@@ -6089,6 +6434,7 @@ span.important {
   font-size: 100%;
   font-weight: bold;
   vertical-align: middle;
+  font-size: 2.5vw;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
   .eventLink .icon-close {
@@ -6247,21 +6593,29 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 70vw;
+  bottom: 41vw;
 }
 .eventLink.vgaming .vgimg {
-  width: 34vw;
+  width: 27vw;
 }
 .eventLink.vgaming .icon-close {
   top: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
 }
+.eventLink.dragonegg {
+  right: 4vw;
+  bottom: 16vw;
+}
 .eventLink.dragonegg img {
-  width: 24vw;
-  height: 26vw;
+  width: 21vw;
+  height: 23vw;
   -webkit-animation: dragonegg 1.5s ease-in-out 0s infinite normal none;
           animation: dragonegg 1.5s ease-in-out 0s infinite normal none;
+}
+.eventLink.dragonegg .icon-close {
+  top: -3vw;
+  right: -3vw;
 }
 @-webkit-keyframes dragonegg {
   0%, 100% {
@@ -6317,6 +6671,59 @@ span.important {
   75% {
     -webkit-transform: translateX(-2px) rotate(-1.2deg);
             transform: translateX(-2px) rotate(-1.2deg);
+  }
+}
+.eventLink.livesports {
+  bottom: 37vw;
+  left: 69vw;
+}
+.eventLink.livesports img {
+  -webkit-animation: livesports 4s ease-in-out infinite;
+          animation: livesports 4s ease-in-out infinite;
+  width: 32vw;
+  z-index: 1;
+}
+.eventLink.livesports .icon-close {
+  right: 0;
+  top: 1vw;
+  z-index: 4;
+  background: #cecece;
+  color: rgb(92, 92, 92);
+}
+@-webkit-keyframes livesports {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes livesports {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  75% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
 }
 
