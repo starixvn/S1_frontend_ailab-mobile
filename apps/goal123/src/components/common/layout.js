@@ -1,5 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
 import { isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
@@ -10,7 +11,8 @@ import {
 	defNavPanel,
 	loadingContext,
 	rootContext,
-	userInfoContext
+	userInfoContext,
+	popBoxContext
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
@@ -18,9 +20,11 @@ import { eventTime } from "./eventTime";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import GoTopBtn from "./goTopBtn";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
+import { api_liveStreaming_GetDataList } from "../../service/api/liveStreaming";
 import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
+import LiveStreamingPop from "../liveStreamingPop";
 
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
@@ -28,11 +32,15 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { setNav } = useContext(navContext);
 	const { loading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const { root } = useContext(rootContext);
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
+	const [displayLiveStreaming, setDisplayLiveStreaming] = useState(false);
+	const [liveStreamingList, setLiveStreamingList] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
@@ -69,6 +77,40 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 		window.scroll(0, 0);
 	}, [location]);
 
+	useEffect(() => {
+		const getLiveStreamingList = async () => {
+			setIsLoading(true);
+			try {
+				const {
+					data: { data: resultList }
+				} = await api_liveStreaming_GetDataList({
+					langId: userInfo.langId,
+					currencyId: 51
+				});
+				if (resultList.length > 0) {
+					setDisplayLiveStreaming(true);
+					// 根據開始時間+2hr判斷是否過期,並取前3項
+					const filterList = resultList
+						.filter(({ battleTime }) =>
+							moment(battleTime).add(2, "hours").isAfter(moment())
+						)
+						.slice(0, 3);
+
+					setLiveStreamingList(filterList);
+				}
+				setIsLoading(false);
+			} catch (error) {
+				setPopBox({
+					isOpen: true,
+					content: error
+				});
+				setIsLoading(false);
+			}
+		};
+
+		getLiveStreamingList();
+	}, [userInfo.langId, userInfo.isLogin]);
+
 	return (
 		<>
 			<RotationHint i18n={i18n} />
@@ -83,7 +125,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && (
+			{displayVgaming && root && !displayLiveStreaming && !isLoading && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon icon-close"
@@ -96,6 +138,14 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 						onClick={() => clickGame(defGameInfo.sabaClub)}
 					/>
 				</div>
+			)}
+
+			{root && (
+				<LiveStreamingPop
+					liveStreamingList={liveStreamingList}
+					displayLiveStreaming={displayLiveStreaming}
+					setDisplayLiveStreaming={setDisplayLiveStreaming}
+				/>
 			)}
 
 			{/* 僅限過年期間不顯示 */}
