@@ -24,6 +24,7 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
+import { isEventPeriod } from "./common";
 
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
