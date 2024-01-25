@@ -207,28 +207,46 @@ const IndexPage = () => {
 									content: (
 										<>
 											<p>
-												{`${t("msg_BalanceHint")} : `}
-												<span className="important">
-													{`${t(
-														`Currency_${userInfo.currencyId}`
-													)} 0`}
-												</span>
+												{t(
+													"Label_DepositNowPopBalance"
+												)}
 											</p>
-											<p>{t("msg_DepositHint")}</p>
+											<p>
+												{t(
+													"Label_DepositNowPopContent1"
+												)}
+											</p>
+											<p>
+												{t(
+													"Label_DepositNowPopContent2"
+												)}
+											</p>
 										</>
 									),
 									hasBtn: true,
 									btnBar: (
 										<div className="btn-group">
 											<button
-												className="cancel"
-												onClick={openNextPopUp}>
-												{t("lbl_Later")}
+												className="submit"
+												onClick={() => {
+													setRedirectPath(
+														`/${path.promotion.root}`
+													);
+													setPopBox({
+														isOpen: false
+													});
+												}}>
+												{String(
+													t("Label_CheckOutPromos") ||
+														""
+												).toUpperCase()}
 											</button>
 											<button
 												onClick={RedirectToDeposit}
-												className="submit">
-												{t("lbl_DepositNow")}
+												className="orange">
+												{String(
+													t("lbl_DepositNow") || ""
+												).toUpperCase()}
 											</button>
 										</div>
 									),
