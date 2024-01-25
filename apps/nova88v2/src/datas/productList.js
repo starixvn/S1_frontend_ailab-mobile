@@ -1230,12 +1230,12 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/fishing/paradise.png`,
 					sortKey: "fishing_CQ9_PARADISE"
 				},
-				{
-					...defGameInfo.FishingGG,
-					spanTextKey: "lbl_FishingGG",
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/fishing/fishGG.png`,
-					sortKey: "fishing_GGYL_WORLD"
-				},
+				// {
+				// 	...defGameInfo.FishingGG,
+				// 	spanTextKey: "lbl_FishingGG",
+				// 	img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/fishing/fishGG.png`,
+				// 	sortKey: "fishing_GGYL_WORLD"
+				// },
 				{
 					...defGameInfo.FishingHaiba,
 					spanTextKey: "lbl_Fishing_Haiba",
