@@ -1,6 +1,7 @@
 import React, { useContext, Component, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useMatch, useNavigate } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
 import { Footer } from "./footer";
 import Header from "../header/header";
 import {
@@ -13,7 +14,7 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod, readCookie } from "./common";
+import { readCookie } from "./common";
 import { LuckyWheelPop } from "../../pages/luckyWheel";
 import { MysteryBoxPop } from "../../pages/mysteryBox";
 
@@ -92,7 +93,7 @@ const Layout = ({
 				allowedCurrencyList.dragonEgg.includes(userInfo.currencyId) &&
 				root && <DragonEggPop />}
 
-			{isEventPeriod(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
+			{isDateRange(eventTime.mysteryBox) ? <MysteryBoxPop /> : null}
 			<Footer />
 			{(isJoinPage || isLoginPage) && (
 				<Modal isJoin={isJoinPage} isLogin={isLoginPage} />

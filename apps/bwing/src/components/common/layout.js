@@ -1,6 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useLocation, useNavigate } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -13,7 +14,6 @@ import {
 } from "./context";
 import path from "../../path";
 import Loading from "./loading";
-import { isEventPeriod } from "./common";
 import LuckyWheel from "../luckyWheel/homePopBox";
 import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
@@ -343,7 +343,6 @@ const Layout = ({ children }) => {
 			)}
 			{loading ? <Loading /> : null}
 			<Footer />
-
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming && root && (
 				<div className="eventLink vgaming">
@@ -368,7 +367,7 @@ const Layout = ({ children }) => {
 			{/* 僅限過年期間顯示 */}
 			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
 
-			{isEventPeriod(eventTime.mysteryBox) && root && <MysteryBox />}
+			{isDateRange(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>
 	);

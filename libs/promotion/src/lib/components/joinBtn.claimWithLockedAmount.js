@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { InputBox } from "../common/inputbox";
 import Dropdown from "./dropdown";
-import { number_format } from "../common/common";
+import { lib_number_foramt, number_format } from "../common/common";
 import { defWrapperCol, defPromotionType } from "../common/def";
 
 export const checkClaimAmount = ({
@@ -110,11 +110,41 @@ const LockedAmountPopBox = ({
 	const { canJoinTierAmountList, bonusCode, promotionType } = promotionInfo;
 	const isFirstDeposit = promotionType === defPromotionType.firstDeposit;
 
-	const options = canJoinTierAmountList?.map((el, i) => ({
-		id: i,
-		displayText: `${i18n.lbl_DepositAmount} ${el.requiredAmount} / ${i18n.lbl_Bonus} ${el.bonusAmount}`,
-		lockedAmount: el.lockedAmount
-	}));
+	const options = canJoinTierAmountList?.map((el, i) => {
+		const {
+			requiredAmount,
+			requiredTurnover,
+			bonusAmount,
+			lockedAmount
+		} = el;
+
+		const displayText = requiredAmount
+			? `${i18n.lbl_DepositAmount} ${lib_number_foramt({
+					number: requiredAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })} /  ${i18n.lbl_Bonus} ${lib_number_foramt({
+					number: bonusAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })}`
+			: `${i18n.lbl_Turnover} ${lib_number_foramt({
+					number: requiredTurnover,
+					isConvertRequired: false,
+					digits: 0
+			  })} / ${i18n.lbl_Bonus} ${lib_number_foramt({
+					number: bonusAmount,
+					isConvertRequired: false,
+					digits: 0
+			  })}`;
+
+		return {
+			id: i,
+			displayText,
+			lockedAmount,
+			bonusAmount
+		};
+	});
 
 	const onSelectItem = i => {
 		if (i !== selectedIdx) {
@@ -125,7 +155,11 @@ const LockedAmountPopBox = ({
 	const onSetClaimPromotion = () => {
 		SetClaimPromotion({
 			bonusCode,
-			LockedAmount: options[selectedIdx].lockedAmount
+			// 後端期望promotionType為missionBonus的話帶bonusAmount
+			LockedAmount:
+				promotionType === defPromotionType.missionBonus
+					? options[selectedIdx].bonusAmount
+					: options[selectedIdx].lockedAmount
 		});
 	};
 
