@@ -101,7 +101,17 @@ export class SiteAPI extends BaseAPI {
 			DisplayPage: displayPage
 		});
 
-	GetRecaptchaInfo = () => this.siteRequest.post("/GetRecaptchaInfo");
+	GetRecaptchaInfo = () =>
+		this.siteRequest.post("/GetRecaptchaInfo", null, {
+			headers: {
+				common: {
+					"origin-host":
+						typeof window !== "undefined"
+							? window?.location?.origin
+							: undefined
+				}
+			}
+		});
 
 	GetVipBanner = ({ CurrencyId }) =>
 		this.siteRequest.post("GetVipBanner", {
