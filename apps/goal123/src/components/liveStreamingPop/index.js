@@ -100,7 +100,7 @@ const LiveStreamingLink = ({
 										</div>
 										<div className="bottom-time">
 											<img
-												src={`${bannerImgUrl}/h5/img/4.0/vs.png`}
+												src={`${bannerImgUrl}/h5/img/vs.png`}
 												alt=""
 											/>
 											<div>
