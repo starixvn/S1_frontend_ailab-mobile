@@ -176,12 +176,13 @@ export const defCurrencyToLang = {
 
 export const currCustomMapping = {
 	2: "MYR",
+	3: "USD",
 	4: "THB",
 	13: "MYR",
 	15: "IDR",
 	51: "VND",
 	61: "INR",
-	72: "KHM",
+	72: "USD",
 	74: "BDT"
 };
 
