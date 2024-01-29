@@ -201,6 +201,10 @@ const defPlatfrom = [
 		...defGameInfo.HaoLong,
 		imgName: "haolong",
 		allowCurrencies: allowedCurrencyList.haoLong
+	},
+	{
+		...defGameInfo.Game_MaxGame,
+		imgName: "maxgame"
 	}
 ];
 
