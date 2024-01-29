@@ -160,5 +160,9 @@ export const defPlatFrom = [
 	{
 		...products.GrandDragon,
 		imgName: "haolong"
+	},
+	{
+		...products.MaxGame,
+		imgName: "maxgame"
 	}
 ];

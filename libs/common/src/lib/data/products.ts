@@ -234,6 +234,12 @@ export const products = {
 		tpGameType: 52,
 		gameId: ""
 	},
+	MaxGame: {
+		tpGameIdNo: 128,
+		tpId: 61,
+		tpGameType: 113,
+		gameId: 0
+	},
 	Allbet: {
 		tpGameIdNo: 48,
 		tpId: 12,

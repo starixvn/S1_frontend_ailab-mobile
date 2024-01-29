@@ -418,6 +418,10 @@ export const defMenuList = Object.freeze([
 			{
 				menuType: defMenuType.entPage,
 				...products.OneshotFishing
+			},
+			{
+				menuType: defMenuType.entPage,
+				...products.MaxGame
 			}
 		]
 	},
