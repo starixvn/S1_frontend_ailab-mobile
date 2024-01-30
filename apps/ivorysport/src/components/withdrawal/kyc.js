@@ -10,6 +10,7 @@ import path from "Path";
 import api from "../../service/api";
 import Layout from "../common/layout";
 import Header from "../header/header";
+import { getUrlParameter } from "../common/common";
 
 export default () => {
 	const navigate = useNavigate();
@@ -20,6 +21,9 @@ export default () => {
 	const [processing, setProcessing] = useState(false);
 	const [file, setFile] = useState(null);
 	const isMountedRef = useRef(null);
+
+	// 因為 deposit 只需要上傳就可以導回去繼續存款，所以加入 parameter 做判斷
+	const deposit = Boolean(getUrlParameter("deposit"));
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -35,7 +39,8 @@ export default () => {
 	}, [userInfo.isLogin, navigate, userInfo.langId]);
 
 	useEffect(() => {
-		if (userInfo.isLogin) {
+		// withdrawal 才走下面流程
+		if (userInfo.isLogin && deposit === false) {
 			const CheckBankInfo = async () => {
 				const result = await api.account.GetCustBankInfo().then(
 					res => {
@@ -119,9 +124,16 @@ export default () => {
 					if (isMountedRef.current) {
 						const res = response.data;
 						if (res.errorCode === 0) {
-							navigate(
-								`/${userInfo.langId}/${path.kycWaiting.root}`
-							);
+							// 如果是 deposit 的話，上傳完圖片直接回 deposit 做存款
+							if (deposit === true) {
+								navigate(
+									`/${userInfo.langId}/${path.deposit.root}`
+								);
+							} else {
+								navigate(
+									`/${userInfo.langId}/${path.kycWaiting.root}`
+								);
+							}
 						} else {
 							setPopBox({
 								isOpen: true,
