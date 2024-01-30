@@ -490,7 +490,7 @@
 	"lbl_UpdateBankDetail": "更新银行资讯",
 	"lbl_WaitKYCHint": "感谢您上传所需文件，审查流程正进行中，恳请稍后",
 	"lbl_SubmitPhotoId": "提交附有照片的身份证",
-	"lbl_SubmitPhotoIdHint": "请上传国家政府发行证件以完成提款验证流程：",
+	"lbl_SubmitPhotoIdHint": "请上传国家政府发行证件以完成存提款验证流程：",
 	"lbl_UploadPhotoId": "上传",
 	"lbl_Balance": "余额",
 	"lbl_KYCSubmitHint": "下列中，请上传其一证件：",
