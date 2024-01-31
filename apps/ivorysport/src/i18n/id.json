@@ -486,7 +486,7 @@
 	"lbl_UpdateBankDetail": "Perbarui Keterangan Bank",
 	"lbl_WaitKYCHint": "Terima kasih telah mengirimkan dokumen yang diperlukan, mohon tunggu sebentar saat verifikasi sedang berlangsung.",
 	"lbl_SubmitPhotoId": "Unggah foto ID anda",
-	"lbl_SubmitPhotoIdHint": "Untuk memenuhi penarikan, diperlukan verifikasi untuk memenuhi syarat dengan dokumen yang dikeluarkan pemerintah:",
+	"lbl_SubmitPhotoIdHint": "Silakan kirimkan foto identitas Anda sebelum melakukan penyetoran/penarikan:",
 	"lbl_UploadPhotoId": "Unggah",
 	"lbl_Balance": "Saldo",
 	"lbl_KYCSubmitHint": "Silakan kirim salah satu ID yang tercantum di bawah ini:",
