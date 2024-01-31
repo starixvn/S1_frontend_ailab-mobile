@@ -494,7 +494,7 @@
 	"lbl_UpdateBankDetail": "Update Bank Details",
 	"lbl_WaitKYCHint": "Thank you for submitting the required document, kindly bear with us for a moment while the verification is in progress.",
 	"lbl_SubmitPhotoId": "Submit Photo ID",
-	"lbl_SubmitPhotoIdHint": "Please submit your photo id before making withdrawal!",
+	"lbl_SubmitPhotoIdHint": "Please submit your photo id before making deposit/withdrawal!",
 	"lbl_UploadPhotoId": "Upload",
 	"lbl_Balance": "Balance",
 	"lbl_KYCSubmitHint": "Kindly submit either one of the ID listed as below",
