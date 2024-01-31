@@ -1133,7 +1133,7 @@ div[tabindex="-1"] {
   transition: -webkit-transition;
   transition: transition;
   transition: transition, -webkit-transition;
-  z-index: 11;
+  z-index: 10;
   background: white;
   overflow: scroll;
   visibility: hidden;
@@ -1941,7 +1941,7 @@ main .gameList .icon-new {
   width: calc(100% - 16vw);
   height: calc(100% - 16vw);
   position: fixed;
-  z-index: 10;
+  z-index: 11;
   top: 0;
   left: 0;
   -webkit-box-align: center;
@@ -3533,16 +3533,25 @@ main .gameList .icon-new {
   color: #272829;
 }
 #popup.livesportspop .livesports.th {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.th-en {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn-en {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my-en {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-en.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-my.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my-cs {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-cs.png) no-repeat center/100% !important;
 }
 @-webkit-keyframes blinking {
   from {
@@ -10362,7 +10371,6 @@ span.important {
   border-right: 1px solid #D2E2F9;
   padding: 1vw;
   line-height: 18px;
-  white-space: nowrap;
 }
 .cashBack table tr td:last-child {
   border: 0;
@@ -16787,6 +16795,35 @@ main.casino .banner {
   text-align: center;
 }
 .after .btn-logout {
+  background: white;
+  border-radius: 30px;
+  width: 80vw;
+  padding: 3vw 0;
+  color: #D1D1D1;
+  margin: 5vw 0 0;
+}
+
+.react-datepicker-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.react-datepicker-wrapper input {
+  width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=number] .btn-logout {
   background: white;
   border-radius: 30px;
   width: 80vw;
