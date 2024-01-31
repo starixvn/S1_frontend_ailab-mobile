@@ -29,6 +29,7 @@ import Balance from "./deposit.balance";
 import { defPayType } from "./deposit.def";
 import Options from "./deposit.options";
 import { defPopBoxType } from "../common/popbox";
+import path from "../../path";
 
 const useHandleSelect = defaultSelect => {
 	const [selected, setSelected] = useState(defaultSelect ?? "");
@@ -65,6 +66,7 @@ const Panel = () => {
 		: i18n.lbl_Nova_DepositPromoMsg1;
 
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -369,6 +371,28 @@ const Panel = () => {
 					HandleSelect(userPaymentData?.payType ?? defaultSelect);
 				}
 			};
+
+			const KycCheck = async () => {
+				await api.payment.KycCheck().then(res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 1) {
+							// 只有未上傳階段需要擋，上傳後即可 Deposit
+							navigate(
+								`/${userInfo.langId}/${path.kyc.root}?deposit="true"`
+							);
+						} else if (res.data.errorCode === 2) {
+							setPageVerify(true);
+						} else if (res.data.errorCode !== 0) {
+							setPopBox({
+								isOpen: true,
+								content: `[${res.data.errorCode}] ${res.data.message}`
+							});
+						}
+					}
+				});
+			};
+
+			KycCheck();
 
 			GetAllPayment();
 
