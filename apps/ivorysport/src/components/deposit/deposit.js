@@ -372,16 +372,14 @@ const Panel = () => {
 				}
 			};
 
-			const KycCheck = async () => {
-				await api.payment.KycCheck().then(res => {
+			const checkKyc = async () => {
+				await api.payment.DepositKycCheck().then(res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 1) {
 							// 只有未上傳階段需要擋，上傳後即可 Deposit
 							navigate(
 								`/${userInfo.langId}/${path.kyc.root}?deposit="true"`
 							);
-						} else if (res.data.errorCode === 2) {
-							setPageVerify(true);
 						} else if (res.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
@@ -392,7 +390,7 @@ const Panel = () => {
 				});
 			};
 
-			KycCheck();
+			checkKyc();
 
 			GetAllPayment();
 
