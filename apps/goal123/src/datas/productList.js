@@ -32,6 +32,7 @@ export const defGameInfo = {
 	Basketball: { tpId: 1, gameId: 2, tpGameType: 1 },
 	Volleyball: { tpId: 1, gameId: 6, tpGameType: 1 },
 	// CockFighting: { tpId: 17, tpGameType: 27 },
+	GACockFighting: { tpId: 63, tpGameType: 115 },
 	sabaClub: { tpId: 41, gameId: 171, tpGameType: 95 },
 	Keno: { gameId: 202, tpId: 41, tpGameType: 73 },
 	lottery: { gameId: 220, tpId: 41, tpGameType: 74 },
@@ -381,19 +382,6 @@ const gameList = [
 			}
 		]
 	},
-	// {
-	// 	category: "cockFighting",
-	// 	categoryIcon: "e-sports",
-	// 	translateKey: "lbl_CockFighting",
-	// 	items: [
-	// 		{
-	// 			...defGameInfo.CockFighting,
-	// 			icon: "e-sports",
-	// 			img: Cockfighting,
-	// 			spanTextKey: "lbl_CockFighting"
-	// 		}
-	// 	]
-	// },
 	{
 		category: "e-sport",
 		translateKey: "lbl_eSports",
@@ -641,6 +629,24 @@ const gameList = [
 				...defGameInfo.lottery,
 				img: `${bannerImgUrl}/h5/img/hotgame/games/lottery.png`,
 				spanTextKey: "lbl_Lottery"
+			}
+		]
+	},
+	{
+		category: "cockFighting",
+		translateKey: "lbl_CockFighting",
+		img: `${bannerImgUrl}/h5/img/hotgameicon/cockfighting.png`,
+		items: [
+			{
+				...defGameInfo.GACockFighting,
+				img: `${bannerImgUrl}/h5/img/hotgame/cockfighting/cockfighting.png`,
+				spanText: "GA Cock Fighting",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.GA_CockFighting)
+					}
+				]
 			}
 		]
 	},
