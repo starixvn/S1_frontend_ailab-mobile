@@ -22,7 +22,7 @@ const IndexPage = () => {
 	return isEventPeriod(eventTime.dragonEgg) &&
 		allowedCurrencyList.dragonEgg.includes(currencyId) ? (
 		<>
-			<main className="dragonegg-event">
+			<main className={`dragonegg-event ${langId}`}>
 				<div className="event-back">
 					<i className="icon-back" />
 					<button className="back" onClick={() => navigateTo(-1)}>
