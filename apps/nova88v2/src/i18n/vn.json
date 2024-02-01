@@ -256,7 +256,7 @@
   "lbl_DownloadAppStep4": "Mở 'Mini Puzzle Game' để khởi chạy ứng dụng 'Nova88'",
   "lbl_Downloads": "Tải về",
   "lbl_DragonEgg_10Again": "10 lần nữa",
-  "lbl_DragonEgg_BlessingHints": "Thu thập 5 nhãn dán Phước Lành để nhận ${{amount}}",
+  "lbl_DragonEgg_BlessingHints": "Thu thập 5 nhãn dán Phước Lành để nhận {{currencyName}} {{amount}}",
   "lbl_DragonEgg_CONGRATULATIONS": "Chúc mừng",
   "lbl_DragonEgg_ClickFor10": "chọn 1 trong 10",
   "lbl_DragonEgg_Confirm": "Xác nhận",
