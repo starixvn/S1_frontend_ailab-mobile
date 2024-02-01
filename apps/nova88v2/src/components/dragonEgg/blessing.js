@@ -107,7 +107,8 @@ const Collection = () => {
 			</div>
 			<div className="event-collection-text">
 				{t("lbl_DragonEgg_BlessingHints", {
-					amount: prizeAmout[currencyId].blessing
+					amount: prizeAmout[currencyId].blessing,
+					currencyName: currencyIdToCurrency[currencyId]
 				})}
 			</div>
 			<div className="event-fu-inner">
@@ -130,7 +131,7 @@ const Collection = () => {
 				}}>
 				{stickerResult.isClaimedBigPrize
 					? t("lbl_DragonEgg_Received")
-					: `${currencyIdToCurrency[currencyId]} $${prizeAmout[currencyId].blessing}`}
+					: `${currencyIdToCurrency[currencyId]} ${prizeAmout[currencyId].blessing}`}
 			</button>
 		</div>
 	);

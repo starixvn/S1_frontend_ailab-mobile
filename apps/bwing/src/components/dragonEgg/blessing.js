@@ -122,7 +122,7 @@ const Collection = () => {
 				/>
 				{stickerResult.isClaimedBigPrize
 					? t("lbl_DragonEgg_Received")
-					: "VND $4,588,000"}
+					: "VND 4,588,000"}
 			</button>
 			<div className="event-collection-text">
 				{t("lbl_DragonEgg_BlessingHints")}
