@@ -6,7 +6,7 @@ import { cloudBannerImgURL } from "../config";
 import { popBoxContext, userInfoContext } from "../components/common/context";
 import {
 	currencyIdToCurrency,
-	defCurrencyToClass,
+	defCurrencyToLang,
 	defCurrenyId,
 	langMappingCurr as langAndCurrMapping
 } from "../components/common/common";
@@ -78,7 +78,17 @@ const LiveStreamingLink = () => {
 			[langAndCurrMapping.vn]: _langId =>
 				_langId === "en" ? "vn-en" : "vn",
 			[langAndCurrMapping.th]: _langId =>
-				_langId === "en" ? "th-en" : "th"
+				_langId === "en" ? "th-en" : "th",
+			[langAndCurrMapping.my]: _langId => {
+				switch (_langId) {
+					case "en":
+						return "my-en";
+					case "cs":
+						return "my-cs";
+					default:
+						return "my";
+				}
+			}
 		};
 		const getClassName =
 			currencyClassNames[currencyIdToCurrency[currencyId]];
@@ -187,7 +197,8 @@ const LiveStreamingLink = () => {
 		// 當currencyId為vn或th時顯示直播icon
 		if (
 			currencyId === defCurrenyId.VND ||
-			currencyId === defCurrenyId.THB
+			currencyId === defCurrenyId.THB ||
+			currencyId === defCurrenyId.MYR
 		) {
 			getLiveStreamingList();
 		}
@@ -201,7 +212,7 @@ const LiveStreamingLink = () => {
 			/>
 			<a className="" onClick={handleLiveSteamingModalOpen}>
 				<img
-					src={`${cloudBannerImgURL}/h5/img/4.0/livesports-${defCurrencyToClass[currencyId]}.png`}
+					src={`${cloudBannerImgURL}/h5/img/4.0/livesports-${defCurrencyToLang[currencyId]}.png`}
 					alt="livesports"
 				/>
 			</a>
