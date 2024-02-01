@@ -83,13 +83,13 @@ const Layout = ({
 			</main>
 
 			{/* 僅限過年期間不顯示 */}
-			{isEventPeriod(eventTime.luckyWheel) &&
-			!isEventPeriod(eventTime.dragonEgg) ? (
+			{isDateRange(eventTime.luckyWheel) &&
+			!isDateRange(eventTime.dragonEgg) ? (
 				<LuckyWheelPop />
 			) : null}
 
 			{/* 僅限過年期間顯示且只支援部分幣別 */}
-			{isEventPeriod(eventTime.dragonEgg) &&
+			{isDateRange(eventTime.dragonEgg) &&
 				allowedCurrencyList.dragonEgg.includes(userInfo.currencyId) &&
 				root && <DragonEggPop />}
 
