@@ -20,8 +20,9 @@ import useGetTpBalance from "../hook/useGetTpBalance";
 import useGetBonusBalance from "../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../transfer/transfer.def";
 
-export const christmasPeriod = {
-	endDate: "2023-12-26 23:59:59"
+export const eventPeriod = {
+	startDate: "2024-02-01 00:00:00",
+	endDate: "2024-02-25 23:59:59"
 };
 
 const Header = ({ showAppHint, setShowAppHint }) => {
@@ -99,9 +100,7 @@ const Header = ({ showAppHint, setShowAppHint }) => {
 				<a className="header-logo" href={`/${langId}`}>
 					<img
 						src={`${cloudBannerImgURL}/h5/img/4.0/${
-							isDateRange(christmasPeriod)
-								? "christmas-logo"
-								: "logo_w"
+							isDateRange(eventPeriod) ? "newyear-logo" : "logo_w"
 						}.png`}
 						alt="logo"
 					/>
