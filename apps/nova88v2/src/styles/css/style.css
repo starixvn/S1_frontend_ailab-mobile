@@ -3410,9 +3410,15 @@ main .gameList .icon-new {
   background: linear-gradient(90deg, rgb(5, 29, 160) 0%, rgb(17, 34, 64) 100%);
   border-radius: 10px 10px 0 0;
 }
+#popup.livesportspop .livesports > div .livesports-item .top > div:first-child {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 50vw;
+}
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  width: 12vw;
+  width: 14vw;
   text-align: center;
   border-radius: 20px 0 0 20px;
   padding: 0 1vw 0 3vw;
