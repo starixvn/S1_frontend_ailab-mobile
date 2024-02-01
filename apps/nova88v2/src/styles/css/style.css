@@ -3410,9 +3410,15 @@ main .gameList .icon-new {
   background: linear-gradient(90deg, rgb(5, 29, 160) 0%, rgb(17, 34, 64) 100%);
   border-radius: 10px 10px 0 0;
 }
+#popup.livesportspop .livesports > div .livesports-item .top > div:first-child {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 50vw;
+}
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  width: 12vw;
+  width: 14vw;
   text-align: center;
   border-radius: 20px 0 0 20px;
   padding: 0 1vw 0 3vw;
@@ -3533,16 +3539,25 @@ main .gameList .icon-new {
   color: #272829;
 }
 #popup.livesportspop .livesports.th {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.th-en {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn-en {
-  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my-en {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-en.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-my.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.my-cs {
+  background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-cs.png) no-repeat center/100% !important;
 }
 @-webkit-keyframes blinking {
   from {
