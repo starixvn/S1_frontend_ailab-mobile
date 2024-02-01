@@ -126,6 +126,8 @@ export class PaymentAPI extends BaseAPI {
 
 	KycCheck = () => this.paymentRequest.post("/KycCheck");
 
+	DepositKycCheck = () => this.paymentRequest.post("/DepositKycCheck");
+
 	GetCryptoPayInfoList = () =>
 		this.paymentRequest.post("/GetCryptoPayInfoList");
 
