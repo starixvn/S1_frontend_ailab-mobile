@@ -689,6 +689,11 @@ export const products = {
 		gameId: -1,
 		Name: "Amigo Gaming"
 	},
+	GACockFighting: {
+		tpGameIdNo: 130,
+		tpId: 63,
+		tpGameType: 115
+	},
 	// ? goal Footer 有 先補上
 	BaseBall: {
 		gameId: 8,

@@ -160,6 +160,10 @@ const defPlatfrom = [
 	{
 		...products.AmigoGaming,
 		imgName: "amigoa"
+	},
+	{
+		...products.GACockFighting,
+		imgName: "cockfightinga"
 	}
 ];
 

@@ -25,7 +25,8 @@ export const defCol = {
 	slots: "slots",
 	games: "games",
 	fishing: "fishing",
-	lottery: "lottery"
+	lottery: "lottery",
+	cockfighting: "cockfighting"
 };
 
 // * defMenuObj 禁止做任何 mutability 的行為以免改到原定義檔
@@ -426,6 +427,19 @@ export const defMenuList = Object.freeze([
 			},
 			{
 				...products.Lottery,
+				menuType: defMenuType.entPage
+			}
+		]
+	},
+	{
+		defDisplayKey: "lbl_CockFighting",
+		lobbyCategoryId: lobbyCategoryEnum.CockFighting,
+		category: "cockFighting",
+		mainMenuImage: `${bannerImgUrl}/h5/img/hotgameicon/cockfighting.png`,
+		sideMenuIcon: "icon icon-cock",
+		subMenus: [
+			{
+				...products.GACockFighting,
 				menuType: defMenuType.entPage
 			}
 		]

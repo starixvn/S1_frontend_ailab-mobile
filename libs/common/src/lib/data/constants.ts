@@ -14,7 +14,8 @@ export enum lobbyCategoryEnum {
 	FISHING,
 	LOTTERY,
 	EXCHANGE,
-	FourD
+	FourD,
+	CockFighting
 }
 
 export enum defTpGameType {
