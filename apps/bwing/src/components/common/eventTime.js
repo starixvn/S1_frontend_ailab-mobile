@@ -3,7 +3,7 @@ export const eventTime = {
 		startDate: "2021/02/27 00:00:00",
 		endDate: "2021/12/10 23:59:59"
 	},
-	luckyWheel: { startDate: "2021/12/13 00:00:00" },
+	luckyWheel: { startDate: "2024/03/01 00:00:00" },
 	new_BTI: { endDate: "2022/07/01 11:00:00" },
 	liveCasino_pt: { endDate: "2021/07/08 11:00:00" },
 	new_Km: { endDate: "2021/07/08 11:00:00" },
