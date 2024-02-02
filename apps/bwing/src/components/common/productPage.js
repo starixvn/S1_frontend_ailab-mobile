@@ -9,10 +9,10 @@ import { isShowEventIcon } from "../../datas/defMenu";
 const ProductPage = ({ category, bannerUrl }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList = [], onClickProductItem } = useMenu();
 
 	const subMenuItem =
-		menuData?.find(
+		menuList?.find(
 			({ category: menuCategory }) => menuCategory === category
 		)?.data || [];
 

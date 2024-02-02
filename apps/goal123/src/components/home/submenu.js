@@ -24,7 +24,7 @@ import useGetSocialChannel, {
 const SubMenu = ({
 	handleSideMenuPanel,
 	isOpenSideMenu,
-	menuData,
+	menuList,
 	onClickProductItem
 }) => {
 	const { i18n } = useContext(i18nContext);
@@ -66,7 +66,7 @@ const SubMenu = ({
 				i18n={i18n}
 				userInfo={userInfo}
 				isOpenSubMenu={isOpenSubMenu}
-				menuData={menuData}
+				menuList={menuList}
 				onClickProductItem={onClickProductItem}
 				handleSubMenu={handleSubMenu}
 			/>
@@ -83,7 +83,7 @@ const SubMenu = ({
 SubMenu.propTypes = {
 	handleSideMenuPanel: PropTypes.func.isRequired,
 	isOpenSideMenu: PropTypes.bool.isRequired,
-	menuData: PropTypes.arrayOf(PropTypes.any).isRequired,
+	menuList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	onClickProductItem: PropTypes.func.isRequired
 };
 
@@ -91,11 +91,11 @@ const SubMenuList = ({
 	i18n,
 	userInfo,
 	isOpenSubMenu,
-	menuData,
+	menuList,
 	onClickProductItem,
 	handleSubMenu
 }) => {
-	const sideMenus = menuData.map(mainMenuItem => {
+	const sideMenus = menuList.map(mainMenuItem => {
 		const { sideMenuIcon, defDisplayKey, data = [], lobbyCategoryId } =
 			mainMenuItem || {};
 
@@ -187,7 +187,7 @@ SubMenuList.propTypes = {
 		langId: PropTypes.string
 	}).isRequired,
 	isOpenSubMenu: PropTypes.arrayOf(PropTypes.string).isRequired,
-	menuData: PropTypes.arrayOf(PropTypes.any).isRequired,
+	menuList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	onClickProductItem: PropTypes.func.isRequired,
 	handleSubMenu: PropTypes.func.isRequired
 };

@@ -6,10 +6,10 @@ import classNames from "classnames";
 import useMenu from "../hook/useMenu";
 
 const SportList = () => {
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList = [], onClickProductItem } = useMenu();
 
 	const sportLobbyList =
-		menuData?.find(
+		menuList?.find(
 			({ lobbyCategoryId }) =>
 				lobbyCategoryId === lobbyCategoryEnum.SPORTS
 		)?.data || [];

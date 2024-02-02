@@ -6,9 +6,9 @@ import defPlatform from "../setting/defPlatform";
 import { useMenu } from "../hook/useMenu";
 
 const Bottom = ({ i18n, langId }) => {
-	const { menuData } = useMenu();
+	const { menuList } = useMenu();
 
-	const platFormProducts = menuData.flatMap(mainMenuItem => {
+	const platFormProducts = menuList.flatMap(mainMenuItem => {
 		const { data } = mainMenuItem || {};
 
 		const productLists = data?.flatMap(subMenuItem => {

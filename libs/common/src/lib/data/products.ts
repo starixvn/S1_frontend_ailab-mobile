@@ -234,12 +234,6 @@ export const products = {
 		tpGameType: 52,
 		gameId: ""
 	},
-	MaxGame: {
-		tpGameIdNo: 128,
-		tpId: 61,
-		tpGameType: 113,
-		gameId: 0
-	},
 	Allbet: {
 		tpGameIdNo: 48,
 		tpId: 12,
@@ -688,6 +682,12 @@ export const products = {
 		tpGameType: 112,
 		gameId: -1,
 		Name: "Amigo Gaming"
+	},
+	MaxGame: {
+		tpGameIdNo: 128,
+		tpId: 61,
+		tpGameType: 113,
+		gameId: 0
 	},
 	GACockFighting: {
 		tpGameIdNo: 130,

@@ -27,7 +27,7 @@ const Header = ({
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList = [], onClickProductItem } = useMenu();
 
 	const handleSideMenuPanel = isOpen => {
 		setIsOpenSideMenu(isOpen);
@@ -61,7 +61,7 @@ const Header = ({
 					<Submenu
 						handleSideMenuPanel={handleSideMenuPanel}
 						isOpenSideMenu={isOpenSideMenu}
-						menuData={menuData}
+						menuList={menuList}
 						onClickProductItem={onClickProductItem}
 					/>
 				)}

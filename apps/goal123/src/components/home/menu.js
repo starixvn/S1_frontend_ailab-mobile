@@ -24,11 +24,11 @@ const Menu = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const [selectedCategory, setSelectedCategory] = useState(defCol.hotGame);
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList = [], onClickProductItem } = useMenu();
 
 	// * 非靜態遊戲 須從 useMenu 裡面拿遊戲資料
 	const hotGameList = useMemo(() => {
-		const allProducts = menuData.flatMap(
+		const allProducts = menuList.flatMap(
 			mainMenuItem => mainMenuItem?.data
 		);
 
@@ -71,7 +71,7 @@ const Menu = () => {
 			V8PokerItem,
 			ESportALLItem
 		].filter(item => item);
-	}, [menuData]);
+	}, [menuList]);
 
 	// * 為了未來 mainMenu 需要左右增加靜態的 menu 的需求
 	// * api 來的資料都走 default
@@ -79,7 +79,7 @@ const Menu = () => {
 		const switchSubMenu = {
 			[defCol.hotGame]: () => hotGameList,
 			default: () =>
-				menuData?.find(({ category }) => category === selectedCategory)
+				menuList?.find(({ category }) => category === selectedCategory)
 					?.data || []
 		};
 
@@ -90,7 +90,7 @@ const Menu = () => {
 		if (category !== selectedCategory) setSelectedCategory(category);
 	};
 
-	const mainMenus = menuData.map(mainMenuItem => {
+	const mainMenus = menuList.map(mainMenuItem => {
 		const { category, defDisplayKey, data, mainMenuImage } =
 			mainMenuItem || {};
 

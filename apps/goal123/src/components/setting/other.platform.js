@@ -5,11 +5,11 @@ import { useMenu } from "../hook/useMenu";
 import defPlatform from "./defPlatform";
 
 const Platform = () => {
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList = [], onClickProductItem } = useMenu();
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
 
-	const platFormProducts = menuData.flatMap(mainMenuItem => {
+	const platFormProducts = menuList.flatMap(mainMenuItem => {
 		const { data } = mainMenuItem || {};
 
 		return data?.flatMap(subMenuItem => {

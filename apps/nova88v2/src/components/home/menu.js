@@ -14,10 +14,10 @@ const Menu = () => {
 	} = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const [selectedCategory, setSelectedCategory] = useState(defCol.sports);
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList, onClickProductItem } = useMenu();
 
 	const selectedGames =
-		menuData?.find(({ category }) => category === selectedCategory)?.data ||
+		menuList?.find(({ category }) => category === selectedCategory)?.data ||
 		[];
 
 	const onClickCategory = category => {
@@ -32,7 +32,7 @@ const Menu = () => {
 	return (
 		<>
 			<div className="home-sidebar">
-				{menuData.map(mainMenuItem => {
+				{menuList.map(mainMenuItem => {
 					const { category, categoryIcon, displayKey, data } =
 						mainMenuItem || {};
 					// * 查看 subMenu 是否有在顯示範圍的 New Icon( 手機貌似只有 New Tag )

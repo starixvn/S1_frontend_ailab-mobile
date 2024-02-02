@@ -10,7 +10,7 @@ import { useMenu } from "../../hook/useMenu";
 const GameProvider = () => {
 	const { i18n } = useContext(i18nContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { menuData, onClickProductItem } = useMenu();
+	const { menuList, onClickProductItem } = useMenu();
 
 	const handleClickProduct = product => {
 		if (product?.isInMaintain) {
@@ -24,7 +24,7 @@ const GameProvider = () => {
 		}
 	};
 
-	const gameProviderList = menuData.flatMap(mainMenuItem => {
+	const gameProviderList = menuList.flatMap(mainMenuItem => {
 		const { data } = mainMenuItem || {};
 
 		const productLists = data?.flatMap(subMenuItem => {
@@ -75,7 +75,7 @@ const IndexPage = () => {
 		<>
 			<Header title={i18n.ibi_GameProvider} hideLogo={true} link={link} />
 			<main className="main provider">
-				<GameProvider userInfo={userInfo} />
+				<GameProvider i18n={i18n} userInfo={userInfo} />
 			</main>
 		</>
 	);

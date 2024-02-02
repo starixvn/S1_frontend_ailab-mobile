@@ -8,13 +8,11 @@ import {
 	popBoxContext,
 	userInfoContext
 } from "../common/context";
-import {
-	useGotoGame
-} from "../hook/useGotoGame";
 import { api_SetFavoriteGame } from "../../service/api/account";
 import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 import useSetTimeout from "../hook/useSetTimeout";
 import Games from "./games";
+import { useGotoGame } from "../hook/useGotoGame";
 
 const Panel = ({
 	imageUrl,
@@ -46,7 +44,6 @@ const Panel = ({
 		langId: userInfo.langId,
 		autoGetData: false
 	});
-
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
 		if (userInfo.isLogin) {
 			try {

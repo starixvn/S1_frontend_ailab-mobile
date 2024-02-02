@@ -11,16 +11,13 @@ import { api_GetSlotGamePage } from "../service/api/game";
 import { getUrlParameter } from "../components/common/common";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import Nav from "../components/casino/nav";
-import Lobby from "../components/casino/lobby";
 import Slider from "../components/casino/slider";
 import SearchBox from "../components/casino/searchBox";
 import GameProviders from "../components/casino/gameProviders";
-import {
-	defLoginGameType,
-	useGotoGame
-} from "../components/hook/useGotoGame";
+import { useGotoGame, defLoginGameType } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
+import Lobby from "../components/casino/lobby";
 
 const Casino = () => {
 	const { userInfo } = useContext(userInfoContext);

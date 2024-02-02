@@ -86,7 +86,7 @@ const useMenu = () => {
 		return { ...rest, data: subMenuList };
 	});
 
-	return { menuData: mergedMenus, onClickProductItem };
+	return { menuList: mergedMenus, onClickProductItem };
 };
 
 export default useMenu;
