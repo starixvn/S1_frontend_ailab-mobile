@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState, useMemo } from "react";
 import { Redirect, useNavigate } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	rootContext,
 	userInfoContext
 } from "../components/common/context";
 import LuckyWheel from "../components/luckyWheel/luckyWheel";
-import {
-	isEventPeriod,
-	GetCurrencyName,
-	defCurrenyId
-} from "../components/common/common";
+import { GetCurrencyName, defCurrenyId } from "../components/common/common";
 import Header from "../components/header/header";
 import { Footer } from "../components/common/footer";
 import { Link } from "../route/link";
@@ -25,7 +22,7 @@ const CURRENCY_PERMISSION = [
 	defCurrenyId.IDR
 ];
 
-const isInPeriod = isEventPeriod(eventTime.luckyWheel);
+const isInPeriod = isDateRange(eventTime.luckyWheel);
 
 export const LuckyWheelPop = () => {
 	const { root } = useContext(rootContext);
