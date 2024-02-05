@@ -1092,6 +1092,18 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "games_kingMaker"
 				},
 				{
+					...defGameInfo["93Connect"],
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/93connect.png`,
+					spanText: "93Connect",
+					sortKey: "games_93Connect",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_93Connect)
+						}
+					]
+				},
+				{
 					...defGameInfo.V8Poker,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/v8.png`,
 					spanTextKey: "lbl_V8Poker",
@@ -1706,7 +1718,8 @@ export const defGameInfo = {
 	GPI_Fast3: { tpId: 6, gameId: "fast3", tpGameType: 91 },
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
-	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 },
+	"93Connect": { tpId: 62, tpGameType: 114, gameId: "LOBBY" }
 };
 
 export const defCol = {

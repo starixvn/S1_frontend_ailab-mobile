@@ -201,6 +201,10 @@ const defPlatfrom = [
 		...defGameInfo.HaoLong,
 		imgName: "haolong",
 		allowCurrencies: allowedCurrencyList.haoLong
+	},
+	{
+		...defGameInfo["93Connect"],
+		imgName: "93connect"
 	}
 ];
 
