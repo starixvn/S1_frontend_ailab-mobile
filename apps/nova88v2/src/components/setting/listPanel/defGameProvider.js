@@ -164,5 +164,9 @@ export const defPlatFrom = [
 	{
 		...products.MaxGame,
 		imgName: "maxgame"
+	},
+	{
+		...products["93Connect"],
+		imgName: "93connect"
 	}
 ];

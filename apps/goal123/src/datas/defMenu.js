@@ -370,6 +370,10 @@ export const defMenuList = Object.freeze([
 			{
 				menuType: defMenuType.entPage,
 				...products.Crash
+			},
+			{
+				menuType: defMenuType.entPage,
+				...products["93Connect"]
 			}
 		]
 	},

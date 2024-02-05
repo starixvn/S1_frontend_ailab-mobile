@@ -164,6 +164,10 @@ const defPlatfrom = [
 	{
 		...products.GACockFighting,
 		imgName: "cockfightinga"
+	},
+	{
+		...products["93Connect"],
+		imgName: "93connecta"
 	}
 ];
 

@@ -374,6 +374,10 @@ export const defMenuList = Object.freeze([
 			{
 				menuType: defMenuType.entPage,
 				...products.MaxGame
+			},
+			{
+				menuType: defMenuType.entPage,
+				...products["93Connect"]
 			}
 		]
 	},
