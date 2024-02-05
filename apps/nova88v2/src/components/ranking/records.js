@@ -30,7 +30,8 @@ const Records = ({
 
 	const generateMonthItems = () => {
 		const today = moment().format("YYYY-MM");
-		const dataStart = moment("2023-04");
+		// * 過去的資料已經不可獲取,故以2024年為查詢起點
+		const dataStart = moment("2024-01");
 		const dataEnd = moment(today);
 		const monthsList = [];
 
