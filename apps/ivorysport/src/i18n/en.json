@@ -939,6 +939,5 @@
 	"lbl_Streaming_SPORTSBOOK": "SPORTSBOOK",
 	"lbl_IceHockey": "Ice Hockey",
 	"lbl_Baseball": "Baseball",
-	"Label_Header_WinLossAmountHint": "Note: The win loss amount of the bets may have some difference due to the rounding issue.",
-
+	"Label_Header_WinLossAmountHint": "Note: The win loss amount of the bets may have some difference due to the rounding issue."
 }
