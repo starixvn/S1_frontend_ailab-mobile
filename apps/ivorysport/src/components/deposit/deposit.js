@@ -380,6 +380,11 @@ const Panel = () => {
 							navigate(
 								`/${userInfo.langId}/${path.kyc.root}?deposit="true"`
 							);
+							setPopBox({
+								isOpen: true,
+								title: i18n.lbl_ImportantNote,
+								content: i18n.Label_Kyc_Hint
+							});
 						} else if (res.data.errorCode !== 0) {
 							setPopBox({
 								isOpen: true,
