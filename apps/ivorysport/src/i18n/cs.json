@@ -5,6 +5,7 @@
 	"Label_General_Verify21Years": "请验证您是否年满21岁或更年长以进入此网站",
 	"Label_General_Already21Years": "我已年滿21歲",
 	"Label_General_AgreeTermsCondition": "我同意 ivorysport 的 <Link>條款和條件</Link>",
+  "Label_Kyc_Hint" : "请先上传您的身分证件，开始游戏!",
 	"lbl_Max": "最高",
 	"lbl_Min": "最低",
 	"lbl_AboutUs": "关于我们",
