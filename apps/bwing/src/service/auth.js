@@ -21,12 +21,22 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 	let userAgent;
 	let screen;
 	let di = "";
+	let bi = "";
+	let detecasAnalysis = "";
+	let sessionKey = "";
+	let token = "";
 	if (typeof window !== undefined) {
 		url = window.location.origin;
 		platform = navigator.platform;
 		userAgent = navigator.userAgent;
 		screen = `${window.screen.width}:${window.screen.height}:${window.screen.colorDepth}`;
+
+		// * di, bi, detecasAnalysis, sessionKey, token 引用第三方 js: //*/activator.ashx
 		di = document.getElementById("__di")?.value;
+		bi = document.getElementById("__bi")?.value;
+		detecasAnalysis = document.getElementById("detecas-analysis")?.value;
+		sessionKey = document.getElementById("__fdi")?.value; // * fdi = sessionKey
+		token = document.getElementById("__tk")?.value; // * 默認為 empty
 	}
 
 	await api_UserLogin(langId, {
@@ -37,7 +47,13 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 		platform,
 		userAgent,
 		screen,
-		di
+		FPSRequest: {
+			di,
+			bi,
+			detecasAnalysis,
+			sessionKey,
+			token
+		}
 	}).then(
 		res => {
 			if (res.data.errorCode === 0) {
