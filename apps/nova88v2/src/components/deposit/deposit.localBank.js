@@ -450,6 +450,16 @@ const GroupList = ({
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const { bankCode, bankName, canSubmit, maxAmount, minAmount } = data;
 
+		const min =
+			minAmount === 0
+				? i18n.lbl_Unlimited
+				: number_format(minAmount, _isConvert, 0, false);
+
+		const max =
+			minAmount === 0
+				? i18n.lbl_Unlimited
+				: number_format(maxAmount, _isConvert, 0, false);
+
 		return (
 			<div key={_mainKey}>
 				<div
@@ -476,20 +486,7 @@ const GroupList = ({
 				<div className="subtitle">{bankName}</div>
 				{minAmount === null || maxAmount === null ? null : (
 					<div className="subinfo">
-						<span>
-							{`${i18n?.lbl_Min}: ${
-								minAmount === 0
-									? i18n.lbl_Unlimited
-									: number_format(minAmount, _isConvert, 0)
-							}`}
-						</span>
-						<span>
-							{`${i18n?.lbl_Max}: ${
-								maxAmount === 0
-									? i18n.lbl_Unlimited
-									: number_format(maxAmount, _isConvert, 0)
-							}`}
-						</span>
+						<span>{`${min} ~ ${max}`}</span>
 					</div>
 				)}
 			</div>
@@ -599,6 +596,11 @@ const GroupList = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
+				{_isConvert && (
+					<div className="info">
+						{i18n.Label_Deposit_AdditionalInfo}
+					</div>
+				)}
 			</div>
 			<div className="selectModule selectNew">{renderPage()}</div>
 		</>
