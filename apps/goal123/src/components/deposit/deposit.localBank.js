@@ -561,6 +561,7 @@ const GroupList = ({
 		const _mainKey = `${mainKey}-${data[idKey]}`;
 		const isSelect = selected === data[idKey];
 		const { minAmount, maxAmount } = data;
+
 		const RadioBtn = (
 			<Radio
 				key={`${_mainKey}-outerRadio`}
@@ -593,6 +594,11 @@ const GroupList = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
+				{_isConvert && (
+					<div className="info">
+						{i18n.Label_Deposit_AdditionalInfo}
+					</div>
+				)}
 			</div>
 			<div className="selectModule">
 				{rows}
