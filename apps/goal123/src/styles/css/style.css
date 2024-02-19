@@ -7590,6 +7590,15 @@ span.important {
   font-weight: bold;
   color: white;
 }
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupMobile > .title .info,
+.depositModule_Crpyto > .title .info {
+  color: rgba(250, 182, 23, 0.8);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
+}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,

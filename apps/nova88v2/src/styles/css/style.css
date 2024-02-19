@@ -8648,6 +8648,11 @@ span.important {
   height: 4vw;
   margin-left: 1vw;
 }
+.depositModule > .title .info {
+  color: #f77a00;
+  margin-left: 0.75vw;
+  font-size: 2.75vw;
+}
 .depositModule .selectModule {
   background: #f5f5f5;
   display: -webkit-box;
