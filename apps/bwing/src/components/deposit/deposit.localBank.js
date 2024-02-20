@@ -588,6 +588,11 @@ const GroupList = ({
 			<div className="title">
 				<span className="text-org">*</span>
 				{title}
+				{_isConvert && (
+					<div className="info">
+						{i18n.Label_Deposit_AdditionalInfo}
+					</div>
+				)}
 			</div>
 			<div className="selectModule">
 				{rows}
