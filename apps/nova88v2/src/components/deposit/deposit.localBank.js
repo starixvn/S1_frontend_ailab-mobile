@@ -118,7 +118,7 @@ const Payment = props => {
 
 	const SubmitProof = (bankInfo, accInfo) => {
 		const { ...restBankInfo } = bankInfo;
-		const { accountName, accountNo } = accInfo;
+		const { accountName, accountNo, code } = accInfo;
 		setbankSlipPopBox(prev => ({
 			...prev,
 			...restBankInfo,
@@ -129,6 +129,7 @@ const Payment = props => {
 				  )}`,
 			accountNo,
 			accountName,
+			code,
 			isOpen: true,
 			hideSubmit: true
 		}));
@@ -201,7 +202,8 @@ const Payment = props => {
 					.DepositReqWireTransfer({
 						amount: real_amount,
 						sysId,
-						bankId: selBank.bankId
+						bankId: selBank.bankId,
+						code: accountInfo?.code
 					})
 					.then(
 						async res => {
@@ -514,6 +516,22 @@ const GroupList = ({
 						<CopyBtn value={accountInfo.accountNo} />
 					</ul>
 				</div>
+
+				{accountInfo?.code && (
+					<div className="info infoAccount remark">
+						<ul>
+							<li className="title">{i18n?.Label_Remark}</li>
+							<li>
+								<CopyBtn value={accountInfo.code} />
+							</li>
+
+							<div className="tip active">
+								{i18n?.Label_Deposit_RemarkHint}
+							</div>
+						</ul>
+					</div>
+				)}
+
 				{selectedBank.qrCodeUrl && (
 					<>
 						<div className="title">

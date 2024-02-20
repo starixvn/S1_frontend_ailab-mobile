@@ -120,7 +120,7 @@ const Payment = props => {
 	};
 	const SubmitProof = (bankInfo, accInfo) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo } = accInfo;
+		const { accountName, accountNo, code } = accInfo;
 		setbankSlipPopBox(prev => ({
 			...prev,
 			...restBankInfo,
@@ -131,6 +131,7 @@ const Payment = props => {
 				  )}`,
 			accountNo,
 			accountName,
+			code,
 			isOpen: true,
 			disableSubmit: true
 		}));
@@ -167,7 +168,8 @@ const Payment = props => {
 				api_DepositReqWireTransfer({
 					amount: real_amount,
 					sysId,
-					bankId: selBank.bankId
+					bankId: selBank.bankId,
+					code: accountInfo.code
 				}).then(
 					res => {
 						if (isMountedRef.current) {
@@ -620,9 +622,37 @@ const GroupList = ({
 									/>
 								</li>
 								<CopyBtn value={accountInfo.accountName} />
+
 								<CopyBtn value={accountInfo.accountNo} />
 							</ul>
 						</div>
+
+						{accountInfo?.code && (
+							<div className="info infoAccount remark">
+								<ul>
+									<li>
+										<div className="title">
+											{i18n?.Label_Remark}
+										</div>
+										{/* 這裡的 Copy Button 功能 是之後設計再補上的元件，不能使用 CopyBtn 元件裡沒有 li */}
+										<span>{accountInfo?.code}</span>
+										<button
+											data-clipboard-target=".copyBtn"
+											className="icon icon-files-empty clickBtn copyBtn"
+											data-clipboard-text={
+												accountInfo?.code
+											}
+										/>
+									</li>
+
+									<div
+										className="tip"
+										style={{ display: "block" }}>
+										{i18n?.Label_Deposit_RemarkHint}
+									</div>
+								</ul>
+							</div>
+						)}
 						{selectedBank.qrCodeUrl && (
 							<>
 								<div className="subtitle">
