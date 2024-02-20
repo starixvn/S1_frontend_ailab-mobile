@@ -416,20 +416,20 @@ const gameList = ({ langId, currencyId }) => {
 			translateKey: "lbl_Sports",
 			customSort: defSortSports,
 			items: [
-				{
-					...defGameInfo.CryptoSports,
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/sports/cryptosportNPC.png`,
-					spanTextKey: "lbl_cryptoSports",
-					sortKey: "cryptoSports",
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(
-								eventTime.sports_cryptoSports
-							)
-						}
-					]
-				},
+				// {
+				// 	...defGameInfo.CryptoSports,
+				// 	img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/sports/cryptosportNPC.png`,
+				// 	spanTextKey: "lbl_cryptoSports",
+				// 	sortKey: "cryptoSports",
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(
+				// 				eventTime.sports_cryptoSports
+				// 			)
+				// 		}
+				// 	]
+				// },
 				{
 					...defGameInfo.Soccer,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/sports/soccerNPC.png`,
