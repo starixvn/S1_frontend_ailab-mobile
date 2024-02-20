@@ -44,11 +44,12 @@ export class PaymentAPI extends BaseAPI {
 	GetMobilePayGroupList = () =>
 		this.paymentRequest.post("/GetMobilePayGroupList");
 
-	DepositReqWireTransfer = ({ amount, sysId, bankId }) =>
+	DepositReqWireTransfer = ({ amount, sysId, bankId, code }) =>
 		this.paymentRequest.post("/DepositReqWireTransfer", {
 			amount,
 			sysId,
-			bankId
+			bankId,
+			code
 		});
 
 	GetDepositInfoRecent = () =>

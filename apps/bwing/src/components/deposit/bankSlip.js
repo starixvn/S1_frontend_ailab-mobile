@@ -209,6 +209,21 @@ class Content extends Component {
 										</p>
 									</>
 								)}
+								{this.props.bankSlipPopBox?.code && (
+									<>
+										<h1>{i18n.Label_Remark}</h1>
+										<p>
+											{bankSlipPopBox.code}
+											<span
+												className="icon icon-files-empty clickBtn copyBtn"
+												data-clipboard-text={
+													this.props.bankSlipPopBox
+														?.code
+												}
+											/>
+										</p>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
