@@ -286,19 +286,19 @@ const gameList = [
 		type: openGameType.Link,
 		isEventPeriod: !isDateRange(angPaoEventPeriod)
 	},
-	{
-		category: "cryptoSports",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/cryptosports.png`,
-		link: true,
-		type: openGameType.entPage,
-		...defGameInfo.CryptoSports,
-		eventIcon: [
-			{
-				icon: defIconType.new,
-				inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
-			}
-		]
-	},
+	// {
+	// 	category: "cryptoSports",
+	// 	img: `${bannerImgUrl}/h5/img/hotgameicon/cryptosports.png`,
+	// 	link: true,
+	// 	type: openGameType.entPage,
+	// 	...defGameInfo.CryptoSports,
+	// 	eventIcon: [
+	// 		{
+	// 			icon: defIconType.new,
+	// 			inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+	// 		}
+	// 	]
+	// },
 	{
 		category: "sports",
 		translateKey: "lbl_Sports",
@@ -310,17 +310,17 @@ const gameList = [
 				spanTextKey: "lbl_Soccer",
 				hasDesktopLink: true
 			},
-			{
-				...defGameInfo.CryptoSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/cryptosports.png`,
-				spanTextKey: "lbl_CryptoSports",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.CryptoSports,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sports/cryptosports.png`,
+			// 	spanTextKey: "lbl_CryptoSports",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.SBOSport,
 				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,

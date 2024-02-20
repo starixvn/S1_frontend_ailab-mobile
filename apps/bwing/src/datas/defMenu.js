@@ -48,19 +48,19 @@ export const defSlotTpGameType = {
 
 export const productList = langId => {
 	return {
-		cryptoSports: {
-			category: "cryptoSports",
-			link: true,
-			type: openGameType.entPage,
-			...defGameInfo.CryptoSports,
-			icon_img: `${bannerImgUrl}/h5/img/gameicon/cryptosports.png`,
-			eventIcon: [
-				{
-					icon: defIconType.new,
-					inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
-				}
-			]
-		},
+		// cryptoSports: {
+		// 	category: "cryptoSports",
+		// 	link: true,
+		// 	type: openGameType.entPage,
+		// 	...defGameInfo.CryptoSports,
+		// 	icon_img: `${bannerImgUrl}/h5/img/gameicon/cryptosports.png`,
+		// 	eventIcon: [
+		// 		{
+		// 			icon: defIconType.new,
+		// 			inPeriod: isEventPeriod(eventTime.sports_cryptoSports)
+		// 		}
+		// 	]
+		// },
 		wheel: {
 			category: "wheel",
 			icon_img: `${bannerImgUrl}/h5/img/event/wheel/eventlink-top.png`,
@@ -81,19 +81,19 @@ export const productList = langId => {
 					...defGameInfo.Sports,
 					hasDesktopLink: true
 				},
-				{
-					displayKey: "lbl_CryptoSports",
-					img: `${bannerImgUrl}/h5/img/sport/cryptosports.png`,
-					...defGameInfo.CryptoSports,
-					eventIcon: [
-						{
-							icon: defIconType.new,
-							inPeriod: isEventPeriod(
-								eventTime.sports_cryptoSports
-							)
-						}
-					]
-				},
+				// {
+				// 	displayKey: "lbl_CryptoSports",
+				// 	img: `${bannerImgUrl}/h5/img/sport/cryptosports.png`,
+				// 	...defGameInfo.CryptoSports,
+				// 	eventIcon: [
+				// 		{
+				// 			icon: defIconType.new,
+				// 			inPeriod: isEventPeriod(
+				// 				eventTime.sports_cryptoSports
+				// 			)
+				// 		}
+				// 	]
+				// },
 				{
 					displayText: "SBOBET",
 					img: `${bannerImgUrl}/h5/img/sport/sbobet.png`,
