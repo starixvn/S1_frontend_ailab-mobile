@@ -14069,6 +14069,59 @@ body main.main.referral {
 .depositModule_crptopay .selectModule > div.info ul {
   width: 100%;
 }
+.depositModule_mobile .selectModule > div.info.remark,
+.depositModule_online .selectModule > div.info.remark,
+.depositModule_local .selectModule > div.info.remark,
+.depositModule_topupmobile .selectModule > div.info.remark,
+.depositModule_crptopay .selectModule > div.info.remark {
+  background: transparent;
+  width: calc(100% - 4vw);
+  padding: 0;
+}
+.depositModule_mobile .selectModule > div.info.remark ul,
+.depositModule_online .selectModule > div.info.remark ul,
+.depositModule_local .selectModule > div.info.remark ul,
+.depositModule_topupmobile .selectModule > div.info.remark ul,
+.depositModule_crptopay .selectModule > div.info.remark ul {
+  width: 100%;
+}
+.depositModule_mobile .selectModule > div.info.remark ul .tip,
+.depositModule_online .selectModule > div.info.remark ul .tip,
+.depositModule_local .selectModule > div.info.remark ul .tip,
+.depositModule_topupmobile .selectModule > div.info.remark ul .tip,
+.depositModule_crptopay .selectModule > div.info.remark ul .tip {
+  text-align: left;
+  padding: 0 1vw;
+  margin-bottom: 2vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li,
+.depositModule_online .selectModule > div.info.remark li,
+.depositModule_local .selectModule > div.info.remark li,
+.depositModule_topupmobile .selectModule > div.info.remark li,
+.depositModule_crptopay .selectModule > div.info.remark li {
+  width: 100%;
+  background: rgba(187, 209, 235, 0.95);
+  border-radius: 5px;
+  padding: 2vw 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1.5vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li button,
+.depositModule_online .selectModule > div.info.remark li button,
+.depositModule_local .selectModule > div.info.remark li button,
+.depositModule_topupmobile .selectModule > div.info.remark li button,
+.depositModule_crptopay .selectModule > div.info.remark li button {
+  margin: unset;
+}
+.depositModule_mobile .selectModule > div.info.remark li .title,
+.depositModule_online .selectModule > div.info.remark li .title,
+.depositModule_local .selectModule > div.info.remark li .title,
+.depositModule_topupmobile .selectModule > div.info.remark li .title,
+.depositModule_crptopay .selectModule > div.info.remark li .title {
+  color: #1C317B;
+  margin-right: 5vw;
+}
 .depositModule_mobile .selectModule > div .bankName,
 .depositModule_online .selectModule > div .bankName,
 .depositModule_local .selectModule > div .bankName,
