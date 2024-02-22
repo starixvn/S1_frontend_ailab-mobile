@@ -726,7 +726,7 @@ a {
           justify-content: center;
 }
 .icon-error::before {
-  content: "";
+  content: "" !important;
   display: block;
   width: 4.5vw;
   height: 4.5vw;
@@ -6737,6 +6737,21 @@ header {
 }
 .join-module .checkbox-group div {
   font-size: 3vw;
+}
+.join-module input::-webkit-input-placeholder {
+  font-size: 2.5vw;
+}
+.join-module input::-moz-placeholder {
+  font-size: 2.5vw;
+}
+.join-module input:-ms-input-placeholder {
+  font-size: 2.5vw;
+}
+.join-module input::-ms-input-placeholder {
+  font-size: 2.5vw;
+}
+.join-module input::placeholder {
+  font-size: 2.5vw;
 }
 .join-title {
   margin-bottom: 1vw;
