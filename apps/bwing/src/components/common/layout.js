@@ -24,6 +24,7 @@ import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
+import { isEventPeriod } from "./common";
 
 export const defPageInfo = {
 	default: {
