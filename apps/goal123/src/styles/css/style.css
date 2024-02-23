@@ -3023,6 +3023,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
 }
+.info ul li .title {
+  color: #1f3258;
+}
 .info.infoBlack {
   background: #d1d6e0;
   border-radius: 5px;
@@ -6432,8 +6435,8 @@ span.important {
   height: 5vw;
   color: #f80b3b;
   position: absolute;
-  right: 0;
-  top: -6vw;
+  right: -3vw;
+  top: -4vw;
   z-index: 4;
   background: #e3ce9b;
   border-radius: 100%;
@@ -6455,13 +6458,14 @@ span.important {
 .eventLink img {
   -webkit-animation: routate linear infinite alternate 0.8s;
           animation: routate linear infinite alternate 0.8s;
-  width: 28vw;
+  width: 23vw;
 }
 .eventLink.active {
   display: none;
 }
 .eventLink.wheel {
-  bottom: 65vw;
+  right: 4vw;
+  bottom: 56vw;
 }
 .eventLink.wheel img {
   position: absolute;
@@ -6601,13 +6605,14 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 41vw;
+  bottom: 60vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
 }
 .eventLink.vgaming .icon-close {
   top: 0;
+  right: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
 }
@@ -6682,7 +6687,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 37vw;
+  bottom: 57vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -7672,7 +7677,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: auto;
+  margin: 1vw auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -7686,6 +7691,43 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.depositModule_mobile .selectModule > div.info.remark,
+.depositModule_online .selectModule > div.info.remark,
+.depositModule_local .selectModule > div.info.remark,
+.depositModule_topupMobile .selectModule > div.info.remark,
+.depositModule_Crpyto .selectModule > div.info.remark {
+  background: transparent;
+  width: calc(100% - 2vw);
+  padding: 0;
+}
+.depositModule_mobile .selectModule > div.info.remark ul,
+.depositModule_online .selectModule > div.info.remark ul,
+.depositModule_local .selectModule > div.info.remark ul,
+.depositModule_topupMobile .selectModule > div.info.remark ul,
+.depositModule_Crpyto .selectModule > div.info.remark ul {
+  width: 100%;
+}
+.depositModule_mobile .selectModule > div.info.remark ul .tip,
+.depositModule_online .selectModule > div.info.remark ul .tip,
+.depositModule_local .selectModule > div.info.remark ul .tip,
+.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
+.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
+  text-align: left;
+  padding: 0 1vw;
+  margin-bottom: 2vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li,
+.depositModule_online .selectModule > div.info.remark li,
+.depositModule_local .selectModule > div.info.remark li,
+.depositModule_topupMobile .selectModule > div.info.remark li,
+.depositModule_Crpyto .selectModule > div.info.remark li {
+  background: #adccff;
+  border-radius: 5px;
+  padding: 2vw 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,

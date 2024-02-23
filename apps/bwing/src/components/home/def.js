@@ -90,11 +90,11 @@ export const SPORT_LIST = {
 			],
 			hasDesktopLink: true
 		},
-		{
-			displayKey: "lbl_CryptoSports",
-			img: `${bannerImgUrl}/h5/img/4.0/cryptosports.png`,
-			...defGameInfo.CryptoSports
-		},
+		// {
+		// 	displayKey: "lbl_CryptoSports",
+		// 	img: `${bannerImgUrl}/h5/img/4.0/cryptosports.png`,
+		// 	...defGameInfo.CryptoSports
+		// },
 		{
 			displayKey: "lbl_SabaSport",
 			img: `${bannerImgUrl}/h5/img/4.0/sabasport.png`,
@@ -144,11 +144,11 @@ export const SPORT_LIST = {
 			],
 			hasDesktopLink: true
 		},
-		{
-			displayKey: "lbl_CryptoSports",
-			img: `${bannerImgUrl}/h5/img/4.0/cryptosports-vn.png`,
-			...defGameInfo.CryptoSports
-		},
+		// {
+		// 	displayKey: "lbl_CryptoSports",
+		// 	img: `${bannerImgUrl}/h5/img/4.0/cryptosports-vn.png`,
+		// 	...defGameInfo.CryptoSports
+		// },
 		{
 			displayKey: "lbl_SabaSport",
 			img: `${bannerImgUrl}/h5/img/4.0/sabasport-vn.png`,

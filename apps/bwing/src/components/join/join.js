@@ -599,7 +599,7 @@ const Join = () => {
 						<>
 							<Inputbox
 								icon="icon-profile"
-								placeholder={t("lbl_RealName")}
+								placeholder={t("Label_Join_RealName")}
 								onBlur={checkValue.bind(this, {
 									col: "RealName"
 								})}

@@ -186,7 +186,7 @@ const Panel = () => {
 		refId
 	}) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo } = depositRep;
+		const { accountName, accountNo, code } = depositRep;
 		setbankSlipPopBox(() => ({
 			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
 				"HH:mm"
@@ -195,6 +195,7 @@ const Panel = () => {
 			transId,
 			accountNo,
 			accountName,
+			code,
 			isOpen: true,
 			amount: number_format(amount, _isConvert),
 			picFileName,
@@ -323,6 +324,7 @@ export const TransactionHistory = props => {
 					<span className="title">{i18n.lbl_Amount}</span>
 					<span>{number_format(props.amount, false)}</span>
 				</li>
+
 				<li>
 					<span className="title">{i18n.lbl_Status}</span>
 					<span className={statusClassName[props.status]}>

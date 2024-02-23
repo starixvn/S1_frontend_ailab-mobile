@@ -122,6 +122,7 @@ class Modal extends Component {
 	render() {
 		const { bankSlipPopBox } = this.props;
 		const { i18n } = this.props;
+
 		return (
 			<div
 				id="popup"
@@ -184,6 +185,23 @@ class Modal extends Component {
 									data-clipboard-text={bankSlipPopBox.amount}
 								/>
 							</li>
+
+							{bankSlipPopBox?.code && (
+								<li>
+									<div>
+										<span className="title">
+											{this.props.i18n?.Label_Remark}
+										</span>
+										<span>{bankSlipPopBox.code}</span>
+									</div>
+									<button
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.code
+										}
+									/>
+								</li>
+							)}
 						</ul>
 					</div>
 					<span className="text">{i18n.lbl_AttachFile}</span>

@@ -40,10 +40,10 @@ const defSubMenus = [
 				displayKey: "lbl_SabaSport",
 				...defGameInfo.Sports
 			},
-			{
-				displayKey: "lbl_CryptoSports",
-				...defGameInfo.CryptoSports
-			},
+			// {
+			// 	displayKey: "lbl_CryptoSports",
+			// 	...defGameInfo.CryptoSports
+			// },
 			{
 				displayText: "SBOBET",
 				...defGameInfo.SBOSport
