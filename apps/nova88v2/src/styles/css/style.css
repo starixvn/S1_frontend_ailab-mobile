@@ -2916,6 +2916,41 @@ main .gameList .icon-new {
 #popup.promosback > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
 }
+#popup.detailpop {
+  width: 100%;
+  background: white;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  z-index: 3;
+}
+#popup.detailpop.active {
+  top: 0;
+}
+#popup.detailpop .pop .popTit {
+  position: fixed;
+  background: #ecf3fd;
+  padding: 2vw 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .pop .icon-close {
+  z-index: 2;
+  color: #233d67;
+  position: absolute;
+}
+#popup.detailpop .pop .infoList {
+  padding: 13vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .pop .infoList .info {
+  margin: 2vw auto;
+}
 #popup.vninfopop {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3414,7 +3449,7 @@ main .gameList .icon-new {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 50vw;
+  width: 200px;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
@@ -3539,16 +3574,16 @@ main .gameList .icon-new {
   color: #272829;
 }
 #popup.livesportspop .livesports.th {
-  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-th.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn {
-  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-vn.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.th-en {
-  background: url(https://banner.0814media.net/h5/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-thbg-en.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.vn-en {
-  background: url(https://banner.0814media.net/h5/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
+  background: url(https://banner.0814media.net/desktop/img/4.0/livesports-vnbg-en.png) no-repeat center/100% !important;
 }
 #popup.livesportspop .livesports.my-en {
   background: url(https://banner.0814media.net/h5/img/4.0/livesports-mybg-en.png) no-repeat center/100% !important;
@@ -12608,6 +12643,9 @@ span.important {
 .flag.in:before {
   background: url(https://banner.0814media.net/desktop/img/flag/in.jpg) no-repeat top left/cover;
 }
+.flag.kh:before {
+  background: url(https://banner.0814media.net/desktop/img/flag/kh.jpg) no-repeat top left/cover;
+}
 .flag.bd:before {
   background: url(https://banner.0814media.net/desktop/img/flag/bd.jpg) no-repeat top left/cover;
 }
@@ -14537,6 +14575,27 @@ input:-webkit-autofill:active {
   margin: 5px auto;
   padding-top: 10px;
   border-top: 1px dotted #1E85EC;
+}
+
+.react-datepicker-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.react-datepicker-wrapper input {
+  width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .btn-group {
