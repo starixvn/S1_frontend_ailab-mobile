@@ -41,6 +41,16 @@ const GroupList = ({
 
 			const { maxAmount, minAmount } = data;
 
+			const min =
+				minAmount === 0
+					? i18n.lbl_Unlimited
+					: number_format(minAmount, _isConvert, 0, false);
+
+			const max =
+				minAmount === 0
+					? i18n.lbl_Unlimited
+					: number_format(maxAmount, _isConvert, 0, false);
+
 			const itemLabel = () => {
 				let result;
 				if (isCrypto && title === i18n.lbl_PaymentModes) {
@@ -82,28 +92,7 @@ const GroupList = ({
 					<div className="subtitle">{itemLabel()}</div>
 					{minAmount === null || maxAmount === null ? null : (
 						<div className="subinfo">
-							<span>
-								{`${i18n?.lbl_Min}: ${
-									minAmount === 0
-										? i18n.lbl_Unlimited
-										: number_format(
-												minAmount,
-												_isConvert,
-												0
-										  )
-								}`}
-							</span>
-							<span>
-								{`${i18n?.lbl_Max}: ${
-									maxAmount === 0
-										? i18n.lbl_Unlimited
-										: number_format(
-												maxAmount,
-												_isConvert,
-												0
-										  )
-								}`}
-							</span>
+							<span>{`${min} ~ ${max}`}</span>
 						</div>
 					)}
 				</div>
@@ -118,6 +107,11 @@ const GroupList = ({
 					}`}>
 					<span className="text-org">*</span>
 					{title}
+					{_isConvert && (
+						<div className="info">
+							{i18n.Label_Deposit_AdditionalInfo}
+						</div>
+					)}
 				</div>
 				<div className="selectModule selectNew">{rows}</div>
 			</>

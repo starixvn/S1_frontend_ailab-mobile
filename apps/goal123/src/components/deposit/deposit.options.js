@@ -21,9 +21,6 @@ const Options = ({ i18n, selectedOption, handleSelect, paymentList }) => {
 						<i className="icon icon-icon32px_check" />
 					</div>
 					<div className="subtitle">{i18n[pay.displayKey]}</div>
-					<div className="subinfo">
-						{`${i18n.lbl_CreditTime}: ${i18n[pay.creditTimeKey]}`}
-					</div>
 				</div>
 			);
 		});
