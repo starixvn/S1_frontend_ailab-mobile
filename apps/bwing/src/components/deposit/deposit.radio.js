@@ -75,25 +75,22 @@ Radio.propTypes = {
 };
 
 const BankInfo = ({ displayName, i18n, minAmount, maxAmount, _isConvert }) => {
+	const min =
+		minAmount === 0
+			? i18n.lbl_Unlimited
+			: number_format(minAmount, _isConvert, 0, false);
+
+	const max =
+		minAmount === 0
+			? i18n.lbl_Unlimited
+			: number_format(maxAmount, _isConvert, 0, false);
+
 	return displayName ? (
 		<>
 			<div className="subtitle">{displayName}</div>
 			{minAmount === null || maxAmount === null ? null : (
 				<div className="subinfo">
-					<span>
-						{`${i18n.lbl_Min}: ${
-							minAmount === 0
-								? i18n.lbl_Unlimited
-								: number_format(minAmount, _isConvert, 0)
-						}`}
-					</span>
-					<span>
-						{`${i18n.lbl_Max}: ${
-							maxAmount === 0
-								? i18n.lbl_Unlimited
-								: number_format(maxAmount, _isConvert, 0)
-						}`}
-					</span>
+					<span>{`${min} ~ ${max}`}</span>
 				</div>
 			)}
 		</>
