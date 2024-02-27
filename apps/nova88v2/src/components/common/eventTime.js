@@ -57,5 +57,6 @@ export const eventTime = {
 	dragonEgg: {
 		startDate: "2023/12/12 00:00:00",
 		endDate: "2024/02/29 23:59:59"
-	}
+	},
+	game_maxGame: { endDate: "2024/03/01 23:59:59" }
 };

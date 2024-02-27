@@ -1092,6 +1092,18 @@ const gameList = ({ langId, currencyId }) => {
 					sortKey: "games_kingMaker"
 				},
 				{
+					...defGameInfo.Game_MaxGame,
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/maxgame.png`,
+					spanText: "Max Game",
+					sortKey: "games_maxGame",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_maxGame)
+						}
+					]
+				},
+				{
 					...defGameInfo.V8Poker,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/v8.png`,
 					spanTextKey: "lbl_V8Poker",
@@ -1659,10 +1671,10 @@ export const defGameInfo = {
 		tpGameType: 75
 	},
 	MPoker: { tpId: 35, tpGameType: 60 },
-	MaxGame: {
-		tpId: 41,
-		gameId: 237,
-		tpGameType: 83
+	Game_MaxGame: {
+		tpId: 61,
+		gameId: 0,
+		tpGameType: 113
 	},
 	IM_Avaitor: {
 		tpId: 53,
