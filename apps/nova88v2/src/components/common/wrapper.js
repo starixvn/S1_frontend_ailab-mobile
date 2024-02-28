@@ -291,7 +291,7 @@ export const Wrapper = ({ children }) => {
 					}
 				});
 		}
-	}, [di]);
+	}, [di, userInfo?.langId]);
 
 	useEffect(() => {
 		const AffId = getUrlParameter("AffId");
