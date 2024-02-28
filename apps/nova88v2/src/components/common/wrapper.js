@@ -180,8 +180,9 @@ export const Wrapper = ({ children }) => {
 
 	// * 補語系 url
 	useEffect(() => {
+		const originPath = window.location.pathname + window.location.search;
 		if (userInfo.langId && userInfo.langId !== pathLang) {
-			navigate(String(pathname).replace(pathLang, userInfo.langId));
+			navigate(`/${userInfo.langId}${originPath}`);
 		}
 	}, [pathLang, userInfo.langId, userInfo.isLogin]);
 
