@@ -291,8 +291,8 @@ export const Wrapper = ({ children }) => {
 							content: `[${errorCode}] ${message}`
 						});
 					}
+					setIsLineLoading(true);
 				});
-			setIsLineLoading(true);
 		}
 	}, [di, userInfo?.langId]);
 
