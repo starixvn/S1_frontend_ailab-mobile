@@ -210,12 +210,8 @@ const defSubMenus = [
 				displayText: "Evolution Gaming"
 			},
 			{
-				...defGameInfo.LIVEcasinoPT,
+				...defGameInfo.LIVEcasino_PlayTech,
 				displayText: "Playtech"
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				displayText: "n2-LIVE"
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
