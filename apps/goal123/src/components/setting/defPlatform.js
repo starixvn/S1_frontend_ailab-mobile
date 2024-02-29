@@ -32,11 +32,6 @@ const defPlatfrom = [
 		imgName: "aea"
 	},
 	{
-		...defGameInfo.LIVEcasinoN2,
-		imgName: "n2livea",
-		otherPlatformImg: "n2liveb"
-	},
-	{
 		...defGameInfo.Casino_PP,
 		path: path.casino.root,
 		parameter: { ...defGameInfo.Casino_PP },

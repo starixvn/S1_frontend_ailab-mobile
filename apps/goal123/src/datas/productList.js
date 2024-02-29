@@ -100,7 +100,6 @@ export const defGameInfo = {
 	Casino_FaChai: { tpId: 55, tpGameType: 106 },
 	Casino_BNG: { tpId: 57, tpGameType: 108 },
 	Casino_NoLimitCity: { tpId: 59, tpGameType: 111 },
-	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { gameId: 20, tpId: 20, tpGameType: 32 },
 	LIVEcasinoDG: { tpId: 4, gameId: 4, tpGameType: 10 },
 	LIVEcasinoPP: { gameId: 101, tpId: 5, tpGameType: 16 },
@@ -963,11 +962,6 @@ const gameList = [
 				...defGameInfo.LIVEcasino_PlayTech,
 				spanText: "PlayTech",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				spanText: "n2-LIVE",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-n2live.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,

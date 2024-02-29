@@ -226,7 +226,6 @@ export const defPlatform = [
 	{ name: "one789", img: `${bannerImgUrl}/h5/img/partner/one789.png` },
 	// { name: "icg", img: `${bannerImgUrl}/h5/img/partner/icg.png` },
 	{ name: "v8", img: `${bannerImgUrl}/h5/img/partner/v8.png` },
-	{ name: "n2live", img: `${bannerImgUrl}/h5/img/partner/n2live.png` },
 	{ name: "playtech", img: `${bannerImgUrl}/h5/img/partner/pt.png` },
 	{ name: "kingmaker", img: `${bannerImgUrl}/h5/img/partner/kingmaker.png` },
 	{ name: "bti", img: `${bannerImgUrl}/h5/img/partner/bti.png` },

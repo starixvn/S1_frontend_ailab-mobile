@@ -119,8 +119,7 @@ const defSortCasino = {
 		"casino_ALBET",
 		"casino_AG",
 		"casino_WM",
-		"casino_EBET",
-		"casino_N2LIVE"
+		"casino_EBET"
 	],
 	[defCurrenyId.MYR]: [
 		"casino_PP",
@@ -137,8 +136,7 @@ const defSortCasino = {
 		"casino_ALBET",
 		"casino_AG",
 		"casino_WM",
-		"casino_EBET",
-		"casino_N2LIVE"
+		"casino_EBET"
 	],
 	[defCurrenyId.IDR]: [
 		"casino_PP",
@@ -155,8 +153,7 @@ const defSortCasino = {
 		"casino_ALBET",
 		"casino_AG",
 		"casino_WM",
-		"casino_EBET",
-		"casino_N2LIVE"
+		"casino_EBET"
 	],
 	[defCurrenyId.INR]: [
 		"casino_PP",
@@ -173,8 +170,7 @@ const defSortCasino = {
 		"casino_ALBET",
 		"casino_AG",
 		"casino_WM",
-		"casino_EBET",
-		"casino_N2LIVE"
+		"casino_EBET"
 	],
 	[defCurrenyId.BDT]: [
 		"casino_BG",
@@ -188,8 +184,7 @@ const defSortCasino = {
 		"casino_AE",
 		"casino_SA",
 		"casino_AG",
-		"casino_EBET",
-		"casino_N2LIVE"
+		"casino_EBET"
 	]
 };
 
@@ -629,12 +624,6 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "PlayTech",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-pt.png`,
 					sortKey: "casino_Playtech"
-				},
-				{
-					...defGameInfo.LIVEcasinoN2Live,
-					spanText: "n2-LIVE",
-					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-n2.png`,
-					sortKey: "casino_N2LIVE"
 				},
 				{
 					...defGameInfo.LIVEcasinoWM,
@@ -1520,7 +1509,6 @@ export const defGameInfo = {
 		gameId: 0,
 		tpGameType: 97
 	},
-	LIVEcasinoN2Live: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoWM: { tpId: 20, gameId: 20, tpGameType: 32 },
 	LIVEcasinoAB: { tpId: 12, gameId: 12, tpGameType: 6 },
 	LIVEcasinoEB: { tpId: 18, gameId: 18, tpGameType: 28 },
