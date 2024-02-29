@@ -213,7 +213,7 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		// * 以 di 為基準，等 di 有值之後才進入這個 effect
 		if (!di || !userInfo?.langId) return;
-		setIsLineLoading(true);
+		if (!isLineLoading) return;
 		const code = getUrlParameter("code");
 		const state = getUrlParameter("state");
 		const error = getUrlParameter("error");
@@ -243,7 +243,7 @@ export const Wrapper = ({ children }) => {
 			token = document.getElementById("__tk")?.value; // * 默認為 empty
 		}
 
-		if ((code || state || error) && isLineLoading) {
+		if (code || state || error) {
 			api.lineLogin
 				.LineCallback({
 					langId: userInfo.langId,
@@ -271,7 +271,6 @@ export const Wrapper = ({ children }) => {
 				})
 				.then(res => {
 					const { errorCode, message, data } = res.data;
-					setIsLineLoading(false);
 					if (errorCode === 0) {
 						window.location.reload();
 						const _langId = userInfo.langId === "th" ? "th" : "en";
@@ -293,6 +292,7 @@ export const Wrapper = ({ children }) => {
 						});
 					}
 				});
+			setIsLineLoading(true);
 		}
 	}, [di, userInfo?.langId]);
 
