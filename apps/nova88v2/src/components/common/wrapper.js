@@ -78,6 +78,7 @@ export const Wrapper = ({ children }) => {
 	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
 		[]
 	);
+	const [isLineLoading, setIsLineLoading] = useState(false);
 
 	const pathLang =
 		typeof window !== `undefined` &&
@@ -212,7 +213,7 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		// * 以 di 為基準，等 di 有值之後才進入這個 effect
 		if (!di || !userInfo?.langId) return;
-
+		if (isLineLoading) return;
 		const code = getUrlParameter("code");
 		const state = getUrlParameter("state");
 		const error = getUrlParameter("error");
@@ -270,7 +271,6 @@ export const Wrapper = ({ children }) => {
 				})
 				.then(res => {
 					const { errorCode, message, data } = res.data;
-
 					if (errorCode === 0) {
 						window.location.reload();
 						const _langId = userInfo.langId === "th" ? "th" : "en";
@@ -292,6 +292,7 @@ export const Wrapper = ({ children }) => {
 						});
 					}
 				});
+			setIsLineLoading(true);
 		}
 	}, [di, userInfo?.langId]);
 
