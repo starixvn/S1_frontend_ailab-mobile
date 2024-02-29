@@ -212,7 +212,7 @@ export const Wrapper = ({ children }) => {
 
 	useEffect(() => {
 		// * 以 di 為基準，等 di 有值之後才進入這個 effect
-		if (!di || !userInfo?.langId) return;
+		if (!userInfo?.langId) return;
 		if (isLineLoading) return;
 		const code = getUrlParameter("code");
 		const state = getUrlParameter("state");
@@ -259,14 +259,14 @@ export const Wrapper = ({ children }) => {
 						url,
 						platform,
 						userAgent,
-						screen,
-						FPSRequest: {
-							di,
-							bi,
-							detecasAnalysis,
-							sessionKey,
-							token
-						}
+						screen
+						// FPSRequest: {
+						// 	di,
+						// 	bi,
+						// 	detecasAnalysis,
+						// 	sessionKey,
+						// 	token
+						// }
 					}
 				})
 				.then(res => {
