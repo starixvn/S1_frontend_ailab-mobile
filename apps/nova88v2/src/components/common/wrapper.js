@@ -243,7 +243,7 @@ export const Wrapper = ({ children }) => {
 			token = document.getElementById("__tk")?.value; // * 默認為 empty
 		}
 
-		if (code || state || error || isLineLoading) {
+		if ((code || state || error) && isLineLoading) {
 			api.lineLogin
 				.LineCallback({
 					langId: userInfo.langId,
