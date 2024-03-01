@@ -45,14 +45,14 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 			url,
 			platform,
 			userAgent,
-			screen
-			// FPSRequest: {
-			// 	di,
-			// 	bi,
-			// 	detecasAnalysis,
-			// 	sessionKey,
-			// 	token
-			// }
+			screen,
+			FPSRequest: {
+				di,
+				bi,
+				detecasAnalysis,
+				sessionKey,
+				token
+			}
 		})
 		.then(
 			res => {
