@@ -46,14 +46,14 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 		url,
 		platform,
 		userAgent,
-		screen
-		// FPSRequest: {
-		// 	di,
-		// 	bi,
-		// 	detecasAnalysis,
-		// 	sessionKey,
-		// 	token
-		// }
+		screen,
+		FPSRequest: {
+			di,
+			bi,
+			detecasAnalysis,
+			sessionKey,
+			token
+		}
 	}).then(
 		res => {
 			if (res.data.errorCode === 0) {
