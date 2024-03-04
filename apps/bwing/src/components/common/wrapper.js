@@ -62,6 +62,42 @@ export const Wrapper = ({ children }) => {
 		[]
 	);
 
+	const GetBalance = () => {
+		api_GetBalnace().then(
+			res => {
+				if (isMountedRef.current) {
+					if (res.data.errorCode === 0) {
+						setWalletInfo(prevState => ({
+							...prevState,
+							main: res.data.data
+						}));
+					} else {
+						setPopBox({
+							isOpen: true,
+							content: `[${res.data.errorCode}] ${res.data.message}`
+						});
+					}
+				}
+			},
+			() => {
+				setPopBox({
+					isOpen: true,
+					content: i18n.msg_ApiServerError
+				});
+			}
+		);
+	};
+
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			if (userInfo?.isLogin) {
+				GetBalance();
+			}
+		}, 30000);
+
+		return () => clearInterval(intervalId);
+	}, [userInfo?.isLogin]);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -225,29 +261,7 @@ export const Wrapper = ({ children }) => {
 			);
 
 			if (userInfo.userName) {
-				api_GetBalnace().then(
-					res => {
-						if (isMountedRef.current) {
-							if (res.data.errorCode === 0) {
-								setWalletInfo(prevState => ({
-									...prevState,
-									main: res.data.data
-								}));
-							} else {
-								setPopBox({
-									isOpen: true,
-									content: `[${res.data.errorCode}] ${res.data.message}`
-								});
-							}
-						}
-					},
-					() => {
-						setPopBox({
-							isOpen: true,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				);
+				GetBalance();
 			}
 
 			api_payment_GetWithdrawalLimit().then(
