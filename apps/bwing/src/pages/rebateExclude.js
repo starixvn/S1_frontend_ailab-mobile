@@ -41,7 +41,11 @@ const RebateExclude = () => {
 					const newGameName = getNewGameName();
 
 					if (targetObj !== undefined) {
-						targetObj.gameName.push(newGameName);
+						if (tpCategoryName === "Live Casino") {
+							targetObj.gameName = ["All Blackjack"];
+						} else {
+							targetObj.gameName.push(newGameName);
+						}
 					} else {
 						acc.push({
 							tpGameType,
