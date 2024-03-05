@@ -80,9 +80,9 @@ const Join = () => {
 		};
 	});
 
-	useEffect(() => {
-		setReCaptchaKey(reCaptchaKey + 1);
-	}, [userInfo.langId]);
+	// useEffect(() => {
+	// 	setReCaptchaKey(reCaptchaKey + 1);
+	// }, [userInfo.langId]);
 
 	useEffect(() => {
 		const refId = getCookie("RefId");
@@ -119,7 +119,7 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		getRecaptchaSiteKey();
+		// getRecaptchaSiteKey();
 		if (urlAffiliate) {
 			checkAffiliate({});
 		} else {
@@ -366,8 +366,8 @@ const Join = () => {
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		// const EmailCheck = await emailCheck({ val: userValue.Email });
-		const reCaptchaCheck =
-			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+		// const reCaptchaCheck =
+		// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
 		});
@@ -380,7 +380,7 @@ const Join = () => {
 			PhoneCheck.checked &&
 			// EmailCheck.checked &&
 			userValue.Checkbox &&
-			reCaptchaCheck &&
+			// reCaptchaCheck &&
 			// affiliate is optional
 			(_affiliateCheck.checked === true ||
 				_affiliateCheck.checked === null);
@@ -395,8 +395,8 @@ const Join = () => {
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
-				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReferralUrl: document.referrer
+				// ReCaptchaToken: reCaptchaToken
 			};
 
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
@@ -621,7 +621,7 @@ const Join = () => {
 							info: "lbl_Please_enter_Affiliate_ID"
 						})}
 					/>
-
+					{/*
 					{Object.keys(recaptchaInfo).length > 0 &&
 						recaptchaInfo.country !== "CN" && (
 							<ReCAPTCHA
@@ -632,7 +632,7 @@ const Join = () => {
 								hl={reCaptchaEnum[userInfo.langId]}
 							/>
 						)}
-
+   */}
 					<Checkbox
 						Checked={userValue.Checkbox}
 						className={`Terms${
