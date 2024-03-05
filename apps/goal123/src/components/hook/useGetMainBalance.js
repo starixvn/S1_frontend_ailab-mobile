@@ -49,5 +49,13 @@ export default ({ isLogin }) => {
 		}
 	}, [GetBalance, isLogin]);
 
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			GetBalance();
+		}, 30000);
+
+		return () => clearInterval(intervalId);
+	}, []);
+
 	return { mainWalletInfo, GetBalance };
 };
