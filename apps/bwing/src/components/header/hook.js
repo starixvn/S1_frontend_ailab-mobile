@@ -25,10 +25,14 @@ export const useGetBalance = ({ isLogin, i18n, setPopBox }) => {
 	});
 
 	useEffect(() => {
-		if (isLogin) {
-			GetBalance();
-			GetBonusBalance();
-		}
+		const intervalId = setInterval(() => {
+			if (isLogin) {
+				GetBalance();
+				GetBonusBalance();
+			}
+		}, 30000);
+
+		return () => clearInterval(intervalId);
 	}, [isLogin]);
 
 	const GetBalance = () => {
