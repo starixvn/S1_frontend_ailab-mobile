@@ -9,7 +9,9 @@ const Condition = ({ i18n }) => {
 				<span>{i18n.lbl_MysteryBox_Conditions?.toUpperCase()}</span>
 				<div className="title">NOVA88 {i18n.lbl_LuckyBox}</div>
 				<div>{`${i18n.lbl_Start}： ${eventTime.luckyWheel.startDate} GMT+08:00`}</div>
-				<div>{i18n.lbl_MysteryBox_MemberEligibility}</div>
+				<div style={{ minWidth: "75%" }}>
+					{i18n.lbl_MysteryBox_MemberEligibility}
+				</div>
 			</div>
 
 			<div className="other title">
