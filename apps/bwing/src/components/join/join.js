@@ -287,10 +287,10 @@ const Join = () => {
 	};
 
 	const clickSubmit = async () => {
-		const _reCaptchaCheck =
-			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
-		// * 機器人驗證沒過直接 return 出去
-		if (!_reCaptchaCheck) return;
+		// const _reCaptchaCheck =
+		// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+		// // * 機器人驗證沒過直接 return 出去
+		// if (!_reCaptchaCheck) return;
 
 		let checked = null;
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
@@ -319,8 +319,8 @@ const Join = () => {
 				PhoneNo: userValue.Phone,
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
-				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReferralUrl: document.referrer
+				// ReCaptchaToken: reCaptchaToken
 			};
 
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
@@ -459,9 +459,9 @@ const Join = () => {
 		}
 	};
 
-	useEffect(() => {
-		setReCaptchaKey(reCaptchaKey + 1);
-	}, [userInfo.langId]);
+	// useEffect(() => {
+	// 	setReCaptchaKey(reCaptchaKey + 1);
+	// }, [userInfo.langId]);
 
 	useEffect(() => {
 		const refId = readCookie("RefId");
@@ -496,7 +496,7 @@ const Join = () => {
 	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
-		getRecaptchaSiteKey();
+		// getRecaptchaSiteKey();
 		if (urlAffiliate) {
 			checkAffiliate({});
 		} else {
@@ -678,8 +678,8 @@ const Join = () => {
 								activeInfoMsg={activeInfoMsg}
 								setActiveInfoMsg={setActiveInfoMsg}
 							/>
-
-							{Object.keys(recaptchaInfo).length > 0 &&
+							{/*
+              	{Object.keys(recaptchaInfo).length > 0 &&
 								recaptchaInfo.country !== "CN" && (
 									<ReCAPTCHA
 										key={reCaptchaKey}
@@ -689,6 +689,7 @@ const Join = () => {
 										hl={reCaptchaEnum[userInfo.langId]}
 									/>
 								)}
+              */}
 
 							<div className="join-message">
 								<Checkbox
