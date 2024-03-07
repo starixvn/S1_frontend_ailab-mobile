@@ -89,16 +89,6 @@ export const Wrapper = ({ children }) => {
 	};
 
 	useEffect(() => {
-		const intervalId = setInterval(() => {
-			if (userInfo?.isLogin) {
-				GetBalance();
-			}
-		}, 30000);
-
-		return () => clearInterval(intervalId);
-	}, [userInfo?.isLogin]);
-
-	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
 			isMountedRef.current = false;
