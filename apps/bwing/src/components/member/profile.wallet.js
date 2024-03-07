@@ -13,9 +13,10 @@ export default () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { isLogin } = userInfo;
 	const [bonusWallet, setBonusWallet] = useState({});
 
-	const { mainWalletInfo, GetBalance } = useGetBalance();
+	const { mainWalletInfo, GetBalance } = useGetBalance({ isLogin });
 	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
 		listType: tpWalletsListType.afterTransWallets
 	});
