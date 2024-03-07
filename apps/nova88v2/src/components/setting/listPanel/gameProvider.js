@@ -143,7 +143,8 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Casino_Skywind,
 		imgName: "sk",
-		path: path.casino.root
+		path: path.casino.root,
+		allowCurrencies: allowedCurrencyList.slot_SkyWind
 	},
 	{
 		...defGameInfo.Casino_Nextspin,
@@ -152,7 +153,8 @@ const defPlatfrom = [
 	},
 	{
 		...defGameInfo.ESport_IM,
-		imgName: "im-esports"
+		imgName: "im-esports",
+		allowCurrencies: allowedCurrencyList.esports_IM
 	},
 	{
 		...defGameInfo.Casino_SPRIBE,

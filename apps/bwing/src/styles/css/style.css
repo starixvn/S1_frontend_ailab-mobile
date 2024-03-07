@@ -13979,15 +13979,6 @@ body main.main.referral {
 .depositModule_crptopay > .title span {
   margin-right: 1vw;
 }
-.depositModule_mobile > .title .info,
-.depositModule_online > .title .info,
-.depositModule_local > .title .info,
-.depositModule_topupmobile > .title .info,
-.depositModule_crptopay > .title .info {
-  color: rgba(243, 140, 0, 0.9);
-  margin-left: 0.75vw;
-  font-size: 3.25vw;
-}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,

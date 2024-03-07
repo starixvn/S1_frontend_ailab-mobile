@@ -17,11 +17,11 @@ export const eventTime = {
 	casino_MGP: { endDate: "2021/08/22 11:00:00" },
 	MPoker: { endDate: "2022/01/28 11:00:00" },
 	casino_RedTiger: { endDate: "2021/12/15 11:00:00" },
-	casino_Pegasus: { endDate: "2023/11/15 23:59:59" },
 	liveCasino_pp: {
 		startDate: "2021/11/10 11:00:00",
 		endDate: "2021/12/31 23:59:59"
 	},
+	casino_Pegasus: { endDate: "2023/12/02 23:59:59" },
 	casino_NetEnt: { endDate: "2021/12/15 11:00:00" },
 	casino_AdvantPlay: { endDate: "2022/02/25 11:00:00" },
 	liveCasino_EVO: { endDate: "2021/12/15 11:00:00" },
@@ -55,8 +55,8 @@ export const eventTime = {
 	casino_Amigo: { endDate: "2023/12/31 23:59:59" },
 	HaoLong: { endDate: "2024/01/28 23:59:59" },
 	dragonEgg: {
-		startDate: "2023/12/12 00:00:00",
+		startDate: "2024/02/01 00:00:00",
 		endDate: "2024/02/29 23:59:59"
 	},
-	game_maxGame: { endDate: "2024/03/01 23:59:59" }
+	game_maxGame: { endDate: "2024/04/07 23:59:59" }
 };

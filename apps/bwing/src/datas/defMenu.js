@@ -593,11 +593,6 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPlaytech
 				},
 				{
-					// displayText: "n2-LIVE",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-n2live.png`,
-					...defGameInfo.LIVEcasinoN2
-				},
-				{
 					// displayKey: "lbl_liveCasino_789SeDie",
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-one789.png`,
 					...defGameInfo.LIVEcasinoOne789

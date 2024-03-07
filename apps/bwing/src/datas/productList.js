@@ -43,7 +43,6 @@ export const defGameInfo = {
 	LIVEcasinoSA: { gameId: 2, tpId: 2, tpGameType: 9 },
 	LIVEcasinoEB: { gameId: 18, tpId: 18, tpGameType: 28 },
 	LIVEcasinoOne789: { tpId: 23, gameId: 2, tpGameType: 37 },
-	LIVEcasinoN2: { tpId: 28, tpGameType: 45 },
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	// 新的 PlayTech (Seamless Wallet)
 	LIVEcasinoPlaytech: { tpId: 51, gameId: "0", tpGameType: 101 },
