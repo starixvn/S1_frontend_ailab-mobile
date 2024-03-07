@@ -537,6 +537,7 @@ const gameList = ({ langId, currencyId }) => {
 					...defGameInfo.ESport_IM,
 					spanText: "IM E-Sports",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/esports/esportInplayMatrix.png`,
+					allowCurrency: allowedCurrencyList.esports_IM,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -599,6 +600,7 @@ const gameList = ({ langId, currencyId }) => {
 					spanText: "Skywind",
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/casino/casino-SK.png`,
 					sortKey: "casino_Skywind",
+					allowCurrency: allowedCurrencyList.liveCasino_SkyWind,
 					eventIcon: [
 						{
 							icon: defIconType.new,
@@ -969,6 +971,7 @@ const gameList = ({ langId, currencyId }) => {
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/slots/slotsk.png`,
 					path: path.casino.root,
 					sortKey: "slot_Skywind",
+					allowCurrency: allowedCurrencyList.slot_SkyWind,
 					eventIcon: [
 						{
 							icon: defIconType.new,
