@@ -1,4 +1,4 @@
-
+#!/bin/sh
 # 目前既有品牌
 SITE_LIST=(nova88v2 goal123 bwing)
 
