@@ -17,10 +17,11 @@ export const tpWalletsListType = {
 const Panel = () => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { isLogin } = userInfo;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 
-	const { mainWalletInfo, GetBalance } = useGetBalance();
+	const { mainWalletInfo, GetBalance } = useGetBalance({ isLogin });
 	const { tpWalletsList, GetTpWalletBalance } = useGetTpBalance({
 		listType: tpWalletsListType.allWallets
 	});

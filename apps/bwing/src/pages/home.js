@@ -46,6 +46,7 @@ import { api_GetNews } from "../service/api/news";
 import News from "../components/home/news";
 import { HomeBanner } from "../components/home/homeBanner";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
+import useGetBalance from "../components/hook/useGetMainBalance";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -72,6 +73,9 @@ const IndexPage = () => {
 	const { selCategory } = useSelCategory();
 	const { videoList } = useHandleStreamList({ selCategory });
 	const timeRef = useRef(null);
+	const { GetBalance } = useGetBalance({
+		isLogin: userInfo.isLogin
+	});
 	const getPromotionList = async () => {
 		try {
 			const {
@@ -445,6 +449,7 @@ const IndexPage = () => {
 		getLeaderBoardList();
 		getHotGameList();
 		getRecentlyViewedGames();
+		GetBalance();
 	}, []);
 
 	useEffect(() => {
