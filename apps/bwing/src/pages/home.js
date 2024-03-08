@@ -449,7 +449,6 @@ const IndexPage = () => {
 		getLeaderBoardList();
 		getHotGameList();
 		getRecentlyViewedGames();
-		GetBalance();
 	}, []);
 
 	useEffect(() => {
@@ -467,6 +466,12 @@ const IndexPage = () => {
 			clearInterval(timeRef.current);
 		};
 	}, []);
+
+	useEffect(() => {
+		if (userInfo?.isLogin === true) {
+			GetBalance();
+		}
+	}, [userInfo?.isLogin]);
 
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
