@@ -33,6 +33,7 @@ import {
 import defLang from "../../datas/defLangs";
 import { Iov_GetBlackBox } from "../common/iovation";
 import { cloudBannerImgURL } from "../../config";
+import FileUpload from "./join.fileUpload";
 
 const areaCodeList = Object.values(areaCode).map(el => ({
 	value: el.AreaCode,
@@ -341,7 +342,7 @@ const JoinStep2 = ({
 				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			// * 機器人驗證沒過直接 return 出去
-			if (!_reCaptchaCheck) return false;
+			// if (!_reCaptchaCheck) return false;
 
 			const res = await Promise.all([
 				null,
@@ -361,7 +362,7 @@ const JoinStep2 = ({
 			const _nationalityCheck = requireCheck(userValue.nationality);
 			const _countryCheck = requireCheck(userValue.country);
 			const _cityCheck = requireCheck(userValue.city);
-
+			const _IDImageCheck = requireCheck(userValue.IDImage);
 			const checked =
 				_phoneCheck.checked &&
 				_emailCheck.checked &&
@@ -369,7 +370,8 @@ const JoinStep2 = ({
 				_realNameCheck.checked &&
 				_nationalityCheck.checked &&
 				_countryCheck.checked &&
-				_cityCheck.checked;
+				_cityCheck.checked &&
+				_IDImageCheck.checked;
 
 			if (!checked) {
 				setHintStatus(prev => ({
@@ -402,6 +404,10 @@ const JoinStep2 = ({
 					city: {
 						checked: _cityCheck.checked,
 						msg: "" // * 僅提供紅匡input警示
+					},
+					IDImage: {
+						checked: _IDImageCheck.checked,
+						msg: ""
 					}
 				}));
 			}
@@ -410,7 +416,6 @@ const JoinStep2 = ({
 			return false;
 		}
 	};
-
 	const clickSubmit = async () => {
 		const checked = await checkAll();
 
@@ -429,37 +434,43 @@ const JoinStep2 = ({
 			};
 			const signupLangId = getSignupLangId();
 
-			const regData = {
-				UserName: userValue.UserName,
-				Userpwd: userValue.Password,
-				Email: userValue.Email,
-				PhoneNo: userValue.Phone,
-				CurrencyId: siteCurrency[userValue.CurrencyIdx]?.id,
-				UserLang: signupLangId,
-				AreaCode: areaCodeList[userValue?.AreaCodeIdx]?.value,
-				PromoCode: userValue.SpecialBonusCode,
-				Birth_d: userValue.Birth_d + 1,
-				Birth_m: monthOptions[userValue.Birth_m]?.value,
-				Birth_y: yearOptions[userValue.Birth_y]?.value,
-				RealName: userValue.RealName,
-				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken,
+			const formData = new FormData();
 
-				// * Ivorysport 額外的欄位
-				Occupation: userValue.occupation.value,
-				SourceOfIncome: userValue.sourceOfIncome.value,
-				Nationality: userValue.nationality,
-				Country: userValue.country,
-				City: userValue.city,
-				PostCode: userValue.postCode,
-				LineFirst: userValue.lineFirst
-			};
-
+			formData.append("UserName", userValue.UserName);
+			formData.append("Userpwd", userValue.Password);
+			formData.append("Email", userValue.Email);
+			formData.append("PhoneNo", userValue.Phone);
+			formData.append(
+				"CurrencyId",
+				siteCurrency[userValue.CurrencyIdx]?.id
+			);
+			formData.append("UserLang", signupLangId);
+			formData.append(
+				"AreaCode",
+				areaCodeList[userValue?.AreaCodeIdx]?.value
+			);
+			formData.append("PromoCode", userValue.SpecialBonusCode);
+			formData.append("Birth_d", userValue.Birth_d + 1);
+			formData.append("Birth_m", monthOptions[userValue.Birth_m]?.value);
+			formData.append("Birth_y", yearOptions[userValue.Birth_y]?.value);
+			formData.append("RealName", userValue.RealName);
+			formData.append("ReferralUrl", document.referrer);
+			// formData.append('ReCaptchaToken', reCaptchaToken);
+			formData.append("Occupation", userValue.occupation.value);
+			formData.append("SourceOfIncome", userValue.sourceOfIncome.value);
+			formData.append("Nationality", userValue.nationality);
+			formData.append("Country", userValue.country);
+			formData.append("City", userValue.city);
+			formData.append("PostCode", userValue.postCode);
+			formData.append("LineFirst", userValue.lineFirst);
+			formData.append("PhotoId", userValue.IDImage);
 			if (AffId) {
 				const res = await api.site.GetAffiliateAgent({ AffId });
 				if (res.data?.errorCode === 0) {
-					regData.AffId =
-						getUrlParameter("AffId") || getCookie("AffId");
+					formData.append(
+						"AffId",
+						getUrlParameter("AffId") || getCookie("AffId")
+					);
 				} else {
 					setHintStatus(prev => ({
 						...prev,
@@ -470,17 +481,21 @@ const JoinStep2 = ({
 					}));
 				}
 			}
-
-			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
-			regData.Aff = getUrlParameter("Aff") || getCookie("Aff");
-			regData.AffCode =
+			formData.append(
+				"RefId",
+				getUrlParameter("RefId") || getCookie("RefId")
+			);
+			formData.append("Aff", getUrlParameter("Aff") || getCookie("Aff"));
+			formData.append(
+				"AffCode",
 				getUrlParameter("AffCode") ||
-				getCookie("AffCode") ||
-				userValue.AffiliateId;
-			regData.blackbox = await Iov_GetBlackBox();
-			regData.LineUserId = lineUserId;
+					getCookie("AffCode") ||
+					userValue.AffiliateId
+			);
+			formData.append("blackbox", await Iov_GetBlackBox());
+			formData.append("LineUserId", lineUserId);
 
-			api.site.IvorySportSignup(regData, signupLangId).then(
+			api.site.IvorySportSignup(formData, signupLangId).then(
 				response => {
 					if (isMountedRef.current) {
 						const { errorCode, message } = response.data;
@@ -756,7 +771,8 @@ const JoinStep2 = ({
 				</div>
 			</div>
 
-			{Object.keys(recaptchaInfo).length > 0 &&
+			{/*
+      	{Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (
 					<ReCAPTCHA
 						class="g-recaptcha"
@@ -765,7 +781,22 @@ const JoinStep2 = ({
 						hl={reCaptchaEnum[userInfo.langId]}
 					/>
 				)}
-
+      */}
+			<div className="uploadModule id-verification">
+				<FileUpload
+					EditField={EditField}
+					checked={hintStatus.IDImage.checked}
+					checkValue={checkValue}
+				/>
+				<ul className="info">
+					<li className="title">{t("lbl_UploadYourIdImportant")}:</li>
+					<li>1. {t("lbl_UploadYourIdHint1")}</li>
+					<li>2. {t("lbl_UploadYourIdHint2")}</li>
+					<li>3. {t("lbl_UploadYourIdHint3")}</li>
+					<li>4. {t("lbl_UploadYourIdHint4")}</li>
+					<li>5. {t("lbl_UploadYourIdHint5")}</li>
+				</ul>
+			</div>
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
 				<a
@@ -792,7 +823,7 @@ const JoinStep2 = ({
 };
 
 JoinStep2.defaultProps = {
-	lineUserId: null
+	lineUserId: ""
 };
 
 JoinStep2.propTypes = {
