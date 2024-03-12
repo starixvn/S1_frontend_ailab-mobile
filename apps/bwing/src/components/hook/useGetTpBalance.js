@@ -100,8 +100,10 @@ export default ({ listType }) => {
 	};
 
 	useEffect(() => {
-		GetTpWalletList();
-	}, [GetTpWalletList]);
+		if (userInfo?.isLogin === true) {
+			GetTpWalletList();
+		}
+	}, [GetTpWalletList, userInfo?.isLogin]);
 
 	return { tpWalletsList, GetTpWalletList, GetTpWalletBalance };
 };

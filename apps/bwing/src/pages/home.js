@@ -468,6 +468,12 @@ const IndexPage = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		if (userInfo?.isLogin === true) {
+			GetBalance();
+		}
+	}, [userInfo?.isLogin]);
+
 	return redirectPath !== null ? (
 		<Redirect to={redirectPath} noThrow />
 	) : (
