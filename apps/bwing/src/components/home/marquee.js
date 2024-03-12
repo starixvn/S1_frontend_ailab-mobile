@@ -114,7 +114,7 @@ class Marquee extends Component {
 					const resData = res.data.data;
 					const stateData = this.state.datas;
 					let upd = false;
-					if (resData.length !== 0 && stateData.length !== 0) {
+					if (resData?.length !== 0 && stateData.length !== 0) {
 						for (const d in resData) {
 							if (
 								!stateData.find(
@@ -137,7 +137,7 @@ class Marquee extends Component {
 							this.intervalId_Pos = setInterval(this.SetPos, 25);
 						}
 
-						if (this.isMountedRef) {
+						if (this.isMountedRef && res.data.data) {
 							this.setState({
 								datas: res.data.data.map(item => {
 									return {
