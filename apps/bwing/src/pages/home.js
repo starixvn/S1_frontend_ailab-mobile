@@ -449,7 +449,6 @@ const IndexPage = () => {
 		getLeaderBoardList();
 		getHotGameList();
 		getRecentlyViewedGames();
-		GetBalance();
 	}, []);
 
 	useEffect(() => {
