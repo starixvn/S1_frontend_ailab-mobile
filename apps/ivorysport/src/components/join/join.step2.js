@@ -786,7 +786,6 @@ const JoinStep2 = ({
 				<FileUpload
 					EditField={EditField}
 					checked={hintStatus.IDImage.checked}
-					checkValue={checkValue}
 				/>
 				<ul className="info">
 					<li className="title">{t("lbl_UploadYourIdImportant")}:</li>

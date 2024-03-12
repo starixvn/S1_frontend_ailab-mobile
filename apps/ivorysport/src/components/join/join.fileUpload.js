@@ -7,7 +7,7 @@ const FileUpload = ({ EditField, checked }) => {
 	const [isError, setIsError] = useState(false);
 	const ref = useRef(null);
 	useEffect(() => {
-		if (ref.current.value) {
+		if (ref.current?.value) {
 			setIsError(false);
 		} else {
 			setIsError(true);
