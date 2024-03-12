@@ -3,17 +3,19 @@ import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import {
 	i18nContext,
-	popBoxContext,
 	userInfoContext,
 	msgCountContext
 } from "../common/context";
 import path from "../../path";
 import SubMenu from "./submenu";
 import Logo from "../img/logo";
-import { useGetBalance } from "./hook";
-// import AppDownloadHint from "./appDownloadHint";
+import useGetBalance from "../hook/useGetMainBalance";
+import useGetTpBalance from "../hook/useGetTpBalance";
+import useGetBonusBalance from "../hook/useGetBonusBalance";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
+import { tpWalletsListType } from "../transfer/transfer.def";
+import { number_format } from "../common/common";
 
 const vipImg = [
 	`${bannerImgUrl}/h5/img/4.0/vip/vip1.png`,
@@ -28,6 +30,7 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 
 	const { userInfo } = useContext(userInfoContext);
+	const { isLogin } = userInfo;
 
 	const handleSideMenuPanel = isOpen => {
 		setIsOpenSideMenu(isOpen);
@@ -35,12 +38,6 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 
 	return (
 		<header>
-			{/* <AppDownloadHint
-				i18n={i18n}
-				root={root}
-				appHint={appHint}
-				setAppHint={setAppHint}
-			/> */}
 			<div className="header">
 				<div className="header-content">
 					<button
@@ -59,10 +56,7 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 						</a>
 					)}
 				</div>
-				<AfterLogin
-					hideLogo={hideLogo}
-					isShow={userInfo.isLogin === true}
-				/>
+				<AfterLogin hideLogo={hideLogo} isShow={isLogin === true} />
 			</div>
 			<SubMenu
 				handleSideMenuPanel={handleSideMenuPanel}
@@ -92,17 +86,40 @@ const AfterLogin = ({ isShow, hideLogo }) => {
 	const { i18n } = useContext(i18nContext);
 	const { msgCount } = useContext(msgCountContext);
 	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
 
 	const [showBalance, setShowBalance] = useState(true);
 
-	const { userName, userLevel, currencyId } = userInfo;
+	const { userName, userLevel, currencyId, isLogin } = userInfo;
 
-	const { allBalance } = useGetBalance({
-		i18n,
-		isLogin: userInfo.isLogin,
-		setPopBox
+	const { mainWalletInfo } = useGetBalance({
+		isLogin
 	});
+
+	const { tpWalletsList } = useGetTpBalance({
+		isLogin,
+		listType: tpWalletsListType.allWallets
+	});
+	const { bonusWallets } = useGetBonusBalance({
+		isLogin
+	});
+
+	const tpWalletBalance = tpWalletsList?.reduce((prev, curr) => {
+		return prev + curr.balance;
+	}, 0);
+
+	const bonusWalletsBalance = Object.values(bonusWallets).reduce(
+		(prev, curr) => {
+			return prev + curr.bonus;
+		},
+		0
+	);
+
+	const allWalletBalance =
+		mainWalletInfo.balance + tpWalletBalance + bonusWalletsBalance;
+
+	const balance = !allWalletBalance
+		? 0
+		: number_format(allWalletBalance, false);
 
 	const isOnHomePage = window.location.pathname === "/";
 
@@ -127,7 +144,7 @@ const AfterLogin = ({ isShow, hideLogo }) => {
 				</div>
 				<a className="walletbtn icon-wallet">
 					<span>{i18n[`Currency_${currencyId}`]}</span>
-					<span>{showBalance ? allBalance : "*****"}</span>
+					<span>{showBalance ? balance : "*****"}</span>
 					{showBalance ? (
 						<button
 							type="button"

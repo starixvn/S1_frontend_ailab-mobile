@@ -94,6 +94,17 @@ const allowedCurrencyList = {
 	],
 	wap: [defCurrenyId.IDR],
 
+	// esports
+	esports_IM: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.VND,
+		defCurrenyId.KHM,
+		defCurrenyId.INR,
+		defCurrenyId.BDT
+	],
+
 	// live casino
 	liveCasinoWM: [
 		defCurrenyId.MYR,
@@ -168,6 +179,13 @@ const allowedCurrencyList = {
 		defCurrenyId.VND
 	],
 	allbet: [defCurrenyId.MYR, defCurrenyId.IDR, defCurrenyId.THB],
+	liveCasino_SkyWind: [
+		defCurrenyId.MYR,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.INR,
+		defCurrenyId.VND
+	],
 
 	// slot
 	slotAMB: [
@@ -245,6 +263,14 @@ const allowedCurrencyList = {
 		defCurrenyId.INR,
 		defCurrenyId.BDT,
 		defCurrenyId.USD,
+		defCurrenyId.VND
+	],
+	slot_SkyWind: [
+		defCurrenyId.MYR,
+		defCurrenyId.THB,
+		defCurrenyId.IDR,
+		defCurrenyId.CNY,
+		defCurrenyId.INR,
 		defCurrenyId.VND
 	],
 	slotAmigo: [

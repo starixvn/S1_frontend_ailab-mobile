@@ -63,6 +63,8 @@ export const Wrapper = ({ children }) => {
 	);
 
 	const GetBalance = () => {
+		if (!userInfo.isLogin) return;
+
 		api_GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
@@ -87,16 +89,6 @@ export const Wrapper = ({ children }) => {
 			}
 		);
 	};
-
-	useEffect(() => {
-		const intervalId = setInterval(() => {
-			if (userInfo?.isLogin) {
-				GetBalance();
-			}
-		}, 30000);
-
-		return () => clearInterval(intervalId);
-	}, [userInfo?.isLogin]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
