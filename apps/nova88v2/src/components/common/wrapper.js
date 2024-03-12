@@ -461,7 +461,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 
-			if (userInfo.userName) {
+			if (userInfo.isLogin === true) {
 				api.account.GetBalnace().then(
 					res => {
 						if (isMountedRef.current) {

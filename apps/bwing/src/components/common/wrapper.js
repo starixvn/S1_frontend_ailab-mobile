@@ -63,6 +63,8 @@ export const Wrapper = ({ children }) => {
 	);
 
 	const GetBalance = () => {
+		if (!userInfo.isLogin) return;
+
 		api_GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
