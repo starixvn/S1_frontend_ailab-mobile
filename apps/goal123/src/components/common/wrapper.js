@@ -210,7 +210,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 
-			if (userInfo.userName) {
+			if (userInfo.isLogin === true) {
 				api_GetBalnace().then(
 					res => {
 						if (res.data.errorCode === 0 && isMountedRef.current) {

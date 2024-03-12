@@ -18,16 +18,33 @@ const RebateExclude = () => {
 
 			const formatRebateExcludeList = originRebateExcludeList.reduce(
 				(acc, cur) => {
-					const { tpGameType, tpGameTypeName, gameName } = cur;
+					const {
+						tpGameType,
+						tpGameTypeName,
+						gameName,
+						tpCategoryName
+					} = cur;
 					const targetObj = acc.find(
 						({ tpGameType: accTpGameType }) =>
 							accTpGameType === cur.tpGameType
 					);
-					const newGameName =
-						gameName === null ? "All Game" : gameName;
+					const getNewGameName = () => {
+						if (gameName === null) {
+							return "All Game";
+						}
+						if (tpCategoryName === "Live Casino") {
+							return "All Blackjack";
+						}
+						return gameName;
+					};
+					const newGameName = getNewGameName();
 
 					if (targetObj !== undefined) {
-						targetObj.gameName.push(newGameName);
+						if (tpCategoryName === "Live Casino") {
+							targetObj.gameName = ["All Blackjack"];
+						} else {
+							targetObj.gameName.push(newGameName);
+						}
 					} else {
 						acc.push({
 							tpGameType,
