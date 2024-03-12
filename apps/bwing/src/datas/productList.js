@@ -147,7 +147,8 @@ export const defGameInfo = {
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
-	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 },
+	"93Connect": { tpId: 62, tpGameType: 114, gameId: "LOBBY" }
 };
 
 export const slotPlatform = [

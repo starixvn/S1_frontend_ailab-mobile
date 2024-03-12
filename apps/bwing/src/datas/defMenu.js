@@ -150,6 +150,17 @@ export const productList = langId => {
 					displayKey: "lbl_KingMaker"
 				},
 				{
+					...defGameInfo["93Connect"],
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/93connect.png`,
+					displayText: "93Connect",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_93Connect)
+						}
+					]
+				},
+				{
 					displayKey: "lbl_Vgaming",
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/games/vgaming.png`,
 					...defGameInfo.sabaClub
