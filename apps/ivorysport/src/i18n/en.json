@@ -681,6 +681,13 @@
 	"lbl_Affiliate_ID": "Affiliate ID/Referral",
 	"lbl_AfterJoinHint": "Congratulation! You have successfully register as a member.",
 	"lbl_BecomingDistinguishedPlayer": "Becoming A Distinguished Player",
+  "lbl_UploadYourId": "upload your ID",
+  "lbl_UploadYourIdImportant": "upload your ID Important",
+  "lbl_UploadYourIdHint1": "Kindly submit your ID",
+  "lbl_UploadYourIdHint2": "Type of ID includes: National ID, Passport or Driving license",
+  "lbl_UploadYourIdHint3": "File type: JPG or PNG only",
+  "lbl_UploadYourIdHint4": "Screenshot are not allowed",
+  "lbl_UploadYourIdHint5": "File size: not more than 4 MB ",
 
 	"==============================================Login====================================": "",
 

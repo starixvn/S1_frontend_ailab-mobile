@@ -38,11 +38,12 @@ const JoinStepAll = () => {
 	const EditField = (col, e) => {
 		let val = null;
 		if (
+			col === "IDImage" ||
 			// * 儲存下拉選單資訊
 			col === "occupation" ||
 			col === "sourceOfIncome"
 		) {
-			val = e; // * e = {index, value}
+			val = e; // * e = File || {index, value}
 		} else {
 			val = e.target.value;
 

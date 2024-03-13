@@ -36,7 +36,8 @@ export const initValue = {
 	country: "",
 	city: "",
 	postCode: "",
-	lineFirst: ""
+	lineFirst: "",
+	IDImage: ""
 };
 
 export const initStatus = {
@@ -91,6 +92,10 @@ export const initStatus = {
 	city: {
 		checked: null,
 		msg: "" // * 僅提供紅匡input警示
+	},
+	IDImage: {
+		checked: null,
+		msg: ""
 	}
 };
 
