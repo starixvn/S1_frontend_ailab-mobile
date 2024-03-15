@@ -4739,6 +4739,114 @@ footer > a.active .circleAnimation::after {
   height: 100%;
 }
 
+.uploadModule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 2vw auto;
+}
+.uploadModule.id-verification {
+  background: rgba(26, 55, 50, 0.1);
+  padding: 2.5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  margin: 3vw 0;
+}
+.uploadModule.id-verification .upload_img {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2vw;
+}
+.uploadModule.id-verification .upload_img:hover {
+  color: #fff;
+}
+.uploadModule.id-verification .upload_img img {
+  width: 50vw;
+  height: auto;
+}
+.uploadModule.id-verification .upload_img .icon-close {
+  font-size: 9px !important;
+}
+.uploadModule.id-verification .info {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 20px;
+  background: rgba(26, 55, 50, 0.1);
+  color: #596e6a;
+}
+.uploadModule.id-verification .info .title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #1a3732;
+}
+
+.upload_img {
+  width: 25.3vw;
+  height: 18vw;
+  border-radius: 10px;
+  border: 1px solid #596e6a;
+  margin: 0 1vw 1vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.upload_img:nth-child(3n) {
+  margin-right: 0;
+}
+.upload_img .icon-folder-upload {
+  display: none;
+}
+.upload_img .icon-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 8px !important;
+  background: #868686;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 3;
+}
+.upload_img .icon-close::before {
+  font-size: 8px;
+  margin: 0 2px;
+  color: #fff;
+}
+.upload_img.error {
+  border-color: #e92529;
+}
+.upload_img .icon {
+  font-size: 5vw;
+  color: #596e6a;
+}
+.upload_img img {
+  height: 100%;
+}
+
 .rule {
   color: #b2b2b2;
   margin: 2vw 0;

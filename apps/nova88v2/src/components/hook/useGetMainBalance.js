@@ -16,6 +16,7 @@ export default ({ isLogin }) => {
 	});
 
 	const GetBalance = useCallback(() => {
+		if (!isLogin) return;
 		api.account.GetBalnace().then(
 			res => {
 				if (isMountedRef.current) {
@@ -41,7 +42,7 @@ export default ({ isLogin }) => {
 				});
 			}
 		);
-	}, [setPopBox, i18n]);
+	}, [isLogin, setPopBox, i18n]);
 
 	useEffect(() => {
 		if (isLogin === true) {
