@@ -117,7 +117,8 @@ const allowedCurrencyList = {
 		defCurrenyId.IDR,
 		defCurrenyId.CNY,
 		defCurrenyId.INR,
-		defCurrenyId.VND
+		defCurrenyId.VND,
+		defCurrenyId.THB
 	],
 
 	// slot
