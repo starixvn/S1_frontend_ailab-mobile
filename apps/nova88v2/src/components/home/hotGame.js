@@ -17,6 +17,12 @@ import { cloudBannerImgURL } from "../../config";
 import { defProductType } from "../../datas/hotGameList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import allowedCurrencyList from "../../datas/allowedCurrencyList";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../hook/useGotoGame";
+import { defSlotTpGameType } from "../../datas/productList";
 
 const defSwipperConfig = {
 	containerClass: "hotgame-container",
@@ -37,6 +43,7 @@ const HotGame = () => {
 
 	const { maintainList } = useGetTpMaintainList();
 	const { handleLogin } = useHandleLogin();
+	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 
 	const {
 		data: { data: { HotGame: apiHotGameList = [] } = {} } = {}
@@ -90,7 +97,19 @@ const HotGame = () => {
 						langId,
 						gameId,
 						tpGameType,
-						isFree: false
+						isFree: false,
+						execFunction:
+							tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId,
+										tpId,
+										gameId,
+										tpGameType:
+											defSlotTpGameType.PG.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null
 					});
 				} else {
 					GET_ENTER_PAGE({
