@@ -11,12 +11,22 @@ import {
 	userInfoContext
 } from "../common/context";
 import { defProductType } from "./def";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../hook/useGotoGame";
 
 const FavoriteSlots = ({ hotGameList, maintainList }) => {
 	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setNav } = useContext(navContext);
+	const { handleGoToGame } = useGotoGame({
+		isLogin: userInfo.isLogin,
+		langId: userInfo.langId,
+		autoGetData: false
+	});
 
 	const handleGameClick = ({ tpId, gameId, tpCategory, tpGameType }) => {
 		if (
@@ -45,13 +55,24 @@ const FavoriteSlots = ({ hotGameList, maintainList }) => {
 			});
 		} else if (userInfo.isLogin === false) {
 			setNav(defNavPanel.login);
-		} else if (tpCategory === defProductType.slots) {
+		} else if (tpCategory === defProductType.Slots) {
 			GET_CASINO_ENTER_PAGE({
 				langId: userInfo.langId,
 				tpId,
 				gameId,
 				isFree: false,
-				tpGameType
+				tpGameType,
+				execFunction:
+					tpId === defSpecialSetting.PG
+						? handleGoToGame.bind(this, {
+								langId: userInfo.langId,
+								tpId,
+								gameId,
+								isFun: false,
+								tpGameType,
+								loginGameType: defLoginGameType.returnHtml
+						  })
+						: null
 			});
 		} else {
 			GET_ENTER_PAGE({
