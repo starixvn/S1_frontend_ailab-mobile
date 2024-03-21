@@ -207,6 +207,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.Game_MaxGame,
 		imgName: "maxgame"
+	},
+	{
+		...defGameInfo["93Connect"],
+		imgName: "93connect"
 	}
 ];
 
