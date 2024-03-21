@@ -206,6 +206,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo.GACockFighting,
 		imgName: "cockfightinga"
+	},
+	{
+		...defGameInfo["93Connect"],
+		imgName: "93connecta"
 	}
 ];
 

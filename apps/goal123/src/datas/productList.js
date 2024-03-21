@@ -173,7 +173,8 @@ export const defGameInfo = {
 	GPI_VNLottery: { tpId: 6, gameId: "sode", tpGameType: 89 },
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
-	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 }
+	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 },
+	"93Connect": { tpId: 62, tpGameType: 114, gameId: "LOBBY" }
 };
 
 const defIconType = {
@@ -418,6 +419,17 @@ const gameList = [
 				...defGameInfo.kingMaker,
 				img: `${bannerImgUrl}/h5/img/hotgame/new-games/king.png`,
 				spanTextKey: "lbl_KingMaker"
+			},
+			{
+				...defGameInfo["93Connect"],
+				img: `${bannerImgUrl}/h5/img/hotgame/new-games/93connect.png`,
+				spanText: "93Connect",
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.game_93Connect)
+					}
+				]
 			},
 			{
 				...defGameInfo.sabaClub,
