@@ -254,6 +254,11 @@ const defSubMenus = [
 		icon: "icon icon-gift"
 	},
 	{
+		displayKey: "lbl_Promotions",
+		path: path.ambassador.root,
+		icon: "icon icon-gift"
+	},
+	{
 		displayKey: "lbl_APPDownload",
 		href: `${window.location.origin}/${path.appDownload.root}`,
 		icon: "icon icon-mobile"

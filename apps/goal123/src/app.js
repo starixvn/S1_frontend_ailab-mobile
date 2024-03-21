@@ -69,6 +69,7 @@ import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
 import DragonEgg from "./pages/dragonEgg";
+import Ambassador from "./pages/ambassador";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -154,6 +155,7 @@ const Index = () => {
 							path={`/:langId/${path.rebateExclude.root}`}
 						/>
 						<DragonEgg path={path.dragonEgg.root} />
+						<Ambassador path={path.ambassador.root} />
 					</Router>
 					<Join />
 					<Login />
