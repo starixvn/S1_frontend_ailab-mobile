@@ -12,6 +12,11 @@ import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 import { defSlotTpGameType } from "../../datas/productList";
 import useSetTimeout from "../hook/useSetTimeout";
 import Games from "./games";
+import {
+	defLoginGameType,
+	defSpecialSetting,
+	useGotoGame
+} from "../hook/useGotoGame";
 
 const Panel = ({
 	imageUrl,
@@ -38,6 +43,11 @@ const Panel = ({
 	const { setNav } = useContext(navContext);
 	const [selGameInfo, setSelGameInfo] = useState(null);
 	const gameListRef = useRef(null);
+	const { handleGoToGame } = useGotoGame({
+		isLogin: userInfo.isLogin,
+		langId: userInfo.langId,
+		autoGetData: false
+	});
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
 		if (userInfo.isLogin) {
 			try {
@@ -126,9 +136,21 @@ const Panel = ({
 						gameId: targetObj.gameId,
 						isFree: freePlay,
 						langId: userInfo.langId,
-						tpGameType: Object.values(defSlotTpGameType).find(
+						tpGameType: Object?.values(defSlotTpGameType)?.find(
 							obj => targetObj.tpId === obj.tpId
-						).tpGameType
+						)?.tpGameType,
+						execFunction:
+							targetObj.tpId === defSpecialSetting.PG
+								? handleGoToGame.bind(this, {
+										langId: userInfo.langId,
+										tpId: targetObj.tpId,
+										gameId: targetObj.gameId,
+										isFun: freePlay,
+										tpGameType: targetObj.tpGameType,
+										loginGameType:
+											defLoginGameType.returnHtml
+								  })
+								: null
 					}),
 				freePlay ? 0 : 5000
 			);
