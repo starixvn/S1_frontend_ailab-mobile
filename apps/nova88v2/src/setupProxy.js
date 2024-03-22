@@ -11,7 +11,7 @@ module.exports = app => {
 			"*/liveStreamingEntPage"
 		],
 		createProxyMiddleware({
-			target: "http://www.n88dev.com",
+			target: "https://stage.nova88dev.com",
 			changeOrigin: true
 		})
 	);
