@@ -1,20 +1,20 @@
 import React from "react";
-import Banner from "./Banner";
-import { AmbassadorIntro } from "./AmbassorIntro";
-import Career from "./Career";
-import Rewards from "./Rewards";
-import AppSection from "./AppSection";
+import AmbassadorIntro from "./AmbassadorIntro";
+import CareerSection from "./CareerSection";
+import RewardSection from "./RewardSection";
+import AppDownloadSection from "./AppDownloadSection";
+import AmbassadorBanner from "./AmbassadorBanner";
 
-const SponsorContent = () => {
+const AmbassadorContent = () => {
 	return (
 		<>
-			<Banner />
+			<AmbassadorBanner />
 			<AmbassadorIntro />
-			<Career />
-			<Rewards />
-			<AppSection />
+			<CareerSection />
+			<RewardSection />
+			<AppDownloadSection />
 		</>
 	);
 };
 
-export default SponsorContent;
+export default AmbassadorContent;

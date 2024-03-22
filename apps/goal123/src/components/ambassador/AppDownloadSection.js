@@ -1,21 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { bannerImgUrl } from "../../config";
-// lbl_Ambassador_Download_App: "Download App",
-// lbl_Ambassador_Great_Games_On_All_Devices: "Great Games On ALL Devices",
-// lbl_Ambassador_Exclusives_VIP: "exclusives VIP",
-// lbl_Ambassador_VIP_Lounge_With_Exclusives: "VIP Lounge with exclusives",
-// lbl_Ambassador_Speedy_Transactions: "Speedy transactions",
-// lbl_Ambassador_Enjoy_Faster_And_More_Convenient_Transaction_Payments: "Enjoy faster and more convenient transaction payments",
-// lbl_Ambassador_Attractive_Bonus: "Attractive bonus",
-// lbl_Ambassador_Welcome_Bonus_Daily_Reload_Unlimited_Rebate: "welcome bonus, daily reload, unlimited rebate",
-// lbl_Ambassador_Referral_Made_Easy: "referral made easy",
-// lbl_Ambassador_Share_Your_Referral_Link_And_Earn_Money: "share your referral link and earn money",
-// lbl_Ambassador_Android: "Android",
-// lbl_Ambassador_IOS: "iOS",
-// lbl_Ambassador_Instructions: "Instructions"
 
-const AppSection = () => {
+const AppDownloadSection = () => {
 	const { t } = useTranslation();
 	return (
 		<div className="ambassador-app">
@@ -23,7 +10,7 @@ const AppSection = () => {
 				<div className="subtitle">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/appicon.png`}
-						alt=""
+						alt="ambassador-appicon"
 					/>
 					<div>
 						{t("lbl_DownloadApp")}
@@ -39,8 +26,8 @@ const AppSection = () => {
 				<div className="ambassador-app-qrcode-item">
 					<div className="qr-button">
 						<img
-							src="https://banner.goal123.org/h5/img/ambassador/android.png"
-							alt=""
+							src={`${bannerImgUrl}/h5/img/ambassador/android.png`}
+							alt="ambassador-android"
 						/>
 						{t("lbl_Ambassador_Android")}
 					</div>
@@ -51,8 +38,8 @@ const AppSection = () => {
 				<div className="ambassador-app-qrcode-item">
 					<div className="qr-button">
 						<img
-							src="https://banner.goal123.org/h5/img/ambassador/apple.png"
-							alt=""
+							src={`${bannerImgUrl}/h5/img/ambassador/ios.png`}
+							alt="ambassador-ios"
 						/>
 						{t("lbl_Ambassador_IOS")}
 					</div>
@@ -66,7 +53,7 @@ const AppSection = () => {
 				<div className="ambassador-app-info-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/icon-vip.png`}
-						alt=""
+						alt="ambassador-vip"
 					/>
 					<div>
 						{t("lbl_Ambassador_Exclusives_VIP")}
@@ -78,7 +65,7 @@ const AppSection = () => {
 				<div className="ambassador-app-info-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/icon-speedy.png`}
-						alt=""
+						alt="ambassador-speedy"
 					/>
 					<div>
 						{t("lbl_Ambassador_Speedy_Transactions")}
@@ -92,7 +79,7 @@ const AppSection = () => {
 				<div className="ambassador-app-info-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/icon-bouns.png`}
-						alt=""
+						alt="ambassador-bouns"
 					/>
 					<div>
 						{t("lbl_Ambassador_Attractive_Bonus")}
@@ -106,7 +93,7 @@ const AppSection = () => {
 				<div className="ambassador-app-info-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/icon-referral.png`}
-						alt=""
+						alt="ambassador-referral"
 					/>
 					<div>
 						{t("lbl_Ambassador_Referral_Made_Easy")}
@@ -122,4 +109,4 @@ const AppSection = () => {
 	);
 };
 
-export default AppSection;
+export default AppDownloadSection;

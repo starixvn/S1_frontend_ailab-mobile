@@ -2,17 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { bannerImgUrl } from "../../config"; // 導入配置文件中的變數
 
-// Ambassador Career Section
-// lbl_Ambassador_Professional_Career: "Professional Career",
-// lbl_Ambassador_Chemnitzer_FC: "Chemnitzer FC",
-// lbl_Ambassador_FC_Kaiserslautern: "FC Kaiserslautern",
-// lbl_Ambassador_Bayer_Leverkusen: "Bayer Leverkusen",
-// lbl_Ambassador_Bayern_Munich: "Bayern Munich",
-// lbl_Ambassador_Chelsea: "Chelsea",
-// lbl_Ambassador_Total_Appearances: "Total Appearances",
-// lbl_Ambassador_Total_Goals: "Total Goals"
-
-const Career = () => {
+const CareerSection = () => {
 	const { t } = useTranslation();
 	return (
 		<div className="ambassador-career">
@@ -23,7 +13,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-1.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-1"
 					/>
 					<div>
 						1995-1997
@@ -33,7 +23,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-2.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-2"
 					/>
 					<div>
 						1997-1999
@@ -43,7 +33,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-3.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-3"
 					/>
 					<div>
 						1999-2002
@@ -53,7 +43,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-4.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-4"
 					/>
 					<div>
 						2002-2006
@@ -63,7 +53,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-5.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-5"
 					/>
 					<div>
 						2006-2010
@@ -73,7 +63,7 @@ const Career = () => {
 				<div className="ambassador-career-item">
 					<img
 						src={`${bannerImgUrl}/h5/img/ambassador/career-logo-6.png`} // 使用 bannerImgUrl 變數
-						alt=""
+						alt="ambassador-career-logo-6"
 					/>
 					<div>
 						2010-2012
@@ -99,4 +89,4 @@ const Career = () => {
 	);
 };
 
-export default Career;
+export default CareerSection;

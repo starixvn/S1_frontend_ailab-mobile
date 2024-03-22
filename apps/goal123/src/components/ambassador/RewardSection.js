@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { bannerImgUrl } from "../../config"; // 導入配置文件中的變數
 
-const Rewards = () => {
+const RewardSection = () => {
 	const { t } = useTranslation();
 	return (
 		<div className="ambassador-reward">
@@ -87,4 +87,4 @@ const Rewards = () => {
 	);
 };
 
-export default Rewards;
+export default RewardSection;
