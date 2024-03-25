@@ -38,7 +38,7 @@ const AppDownloadSection = () => {
 				<div className="ambassador-app-qrcode-item">
 					<div className="qr-button">
 						<img
-							src={`${bannerImgUrl}/h5/img/ambassador/ios.png`}
+							src={`${bannerImgUrl}/h5/img/ambassador/apple.png`}
 							alt="ambassador-ios"
 						/>
 						{t("lbl_Ambassador_IOS")}
