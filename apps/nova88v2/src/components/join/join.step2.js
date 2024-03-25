@@ -316,7 +316,7 @@ const JoinStep2 = ({
 				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			// * 機器人驗證沒過直接 return 出去
-			if (!_reCaptchaCheck) return false;
+			// if (!_reCaptchaCheck) return false;
 
 			// const res = await Promise.all([
 			// 	null
@@ -552,6 +552,7 @@ const JoinStep2 = ({
 				testAttr="BirthDay"
 			/> */}
 
+			{/*
 			{Object.keys(recaptchaInfo).length > 0 &&
 				recaptchaInfo.country !== "CN" && (
 					<ReCAPTCHA
@@ -561,6 +562,7 @@ const JoinStep2 = ({
 						hl={reCaptchaEnum[userInfo.langId]}
 					/>
 				)}
+			*/}
 
 			<div className="Terms">
 				{i18n.lbl_Check18TC1}
