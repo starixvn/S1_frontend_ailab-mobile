@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Swiper from "react-id-swiper";
 import PropTypes from "prop-types";
+import { products } from "@ailab-mobile/common";
 import { defTpGameType } from "../hook/useGetTpMaintainList";
 import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 import {
@@ -11,11 +12,7 @@ import {
 	userInfoContext
 } from "../common/context";
 import { defProductType } from "./def";
-import {
-	defLoginGameType,
-	defSpecialSetting,
-	useGotoGame
-} from "../hook/useGotoGame";
+import { defLoginGameType, useGotoGame } from "../hook/useGotoGame";
 
 const FavoriteSlots = ({ hotGameList, maintainList }) => {
 	const { t } = useTranslation();
@@ -63,7 +60,7 @@ const FavoriteSlots = ({ hotGameList, maintainList }) => {
 				isFree: false,
 				tpGameType,
 				execFunction:
-					tpId === defSpecialSetting.PG
+					tpId === products.PGSoft
 						? handleGoToGame.bind(this, {
 								langId: userInfo.langId,
 								tpId,
