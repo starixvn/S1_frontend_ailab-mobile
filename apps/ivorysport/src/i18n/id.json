@@ -671,6 +671,13 @@
 	"lbl_Affiliate_ID": "ID Afiliasi / Referral",
 	"lbl_AfterJoinHint": "Selamat! Anda berhasil mendaftar sebagai member.",
 	"lbl_BecomingDistinguishedPlayer": "Menjadi Pemain Terkemuka",
+  "lbl_UploadYourId": "Unggah ID anda",
+  "lbl_UploadYourIdImportant": "Penting",
+  "lbl_UploadYourIdHint1": "Silakan ajukan ID Anda",
+  "lbl_UploadYourIdHint2": "Jenis tanda pengenal termasuk: KTP, Paspor atau Surat Izin Mengemudi",
+  "lbl_UploadYourIdHint3": "Jenis file: JPG atau PNG saja",
+  "lbl_UploadYourIdHint4": "Screenshot tidak diperbolehkan",
+  "lbl_UploadYourIdHint5": "Ukuran file: tidak lebih dari 4 MB",
 
 	"==========================Login===================================": "",
 

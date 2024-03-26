@@ -1108,6 +1108,18 @@ const gameList = ({ langId, currencyId }) => {
 					]
 				},
 				{
+					...defGameInfo["93Connect"],
+					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/93connect.png`,
+					spanText: "93Connect",
+					sortKey: "games_93Connect",
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.game_93Connect)
+						}
+					]
+				},
+				{
 					...defGameInfo.V8Poker,
 					img: `${cloudBannerImgURL}/h5/img/4.0/dropdown/games/v8.png`,
 					spanTextKey: "lbl_V8Poker",

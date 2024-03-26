@@ -55,5 +55,5 @@ export const eventTime = {
 		endDate: "2024/02/29 23:59:59"
 	},
 	GA_CockFighting: { endDate: "2024/05/01 23:59:59" },
-	game_93Connect: { endDate: "2024/12/05 23:59:59" }
+	game_93Connect: { endDate: "2024/04/21 23:59:59" }
 };
