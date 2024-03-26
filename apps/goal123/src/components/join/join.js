@@ -10,7 +10,6 @@ import {
 	api_ExistsUserName,
 	// api_ExistsEmail,
 	api_GetSiteCurrencyList,
-	api_GetBanner,
 	api_site_GetAffiliateAgent,
 	api_site_Signup
 } from "../../service/api/site";
@@ -28,7 +27,6 @@ import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import config from "../../config";
-import PromoPopup from "./join.promotion";
 import Logo from "../common/logo";
 
 const colName = [
@@ -99,7 +97,6 @@ const Join = ({ hideBtn }) => {
 	const [pswState, setPswState] = useState(false);
 	const [checkboxState, setCheckboxState] = useState(false);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [banner, setBanner] = useState([]);
 	const [affiliateidExist, setAffiliateidExist] = useState("");
 	const [currencyState, setcurrencyState] = useState(
 		currencyDefaultSelectIdx
@@ -113,7 +110,6 @@ const Join = ({ hideBtn }) => {
 	});
 
 	const [checklistState, setChecklistState] = useState(initChecklistState);
-	const [promoPopup, setPromoPopup] = useState(false);
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -122,35 +118,6 @@ const Join = ({ hideBtn }) => {
 			isMountedRef.current = false;
 		};
 	});
-
-	useEffect(() => {
-		const refId = getCookie("RefId");
-		const showBylink = window.location.pathname === `/${path.join.root}`;
-		const openPanel = showBylink || nav === defNavPanel.join;
-		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(
-				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						if (res.data.data.length > 0) {
-							setBanner(res.data.data);
-							setPromoPopup(true);
-						}
-					} else if (res.data.errorCode !== 0) {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-		}
-	}, [nav, userInfo.langId]);
 
 	const AffId = getUrlParameter("AffId") || getCookie("AffId");
 	useEffect(() => {
@@ -689,10 +656,6 @@ const Join = ({ hideBtn }) => {
 	const showBylink = useMatch(path.join.root);
 	const openPanel = showBylink || nav === defNavPanel.join;
 
-	const ClosePromoPopup = () => {
-		setPromoPopup(false);
-	};
-
 	return redirectPath === null ? (
 		<>
 			{hideBtn ? null : (
@@ -854,13 +817,6 @@ const Join = ({ hideBtn }) => {
 					</button>
 				</div>
 			</div>
-			<PromoPopup
-				banner={banner}
-				ImgFolder="Promotion"
-				ClickClose={ClosePromoPopup}
-				title={i18n.lbl_Welcome}
-				isOpen={promoPopup}
-			/>
 		</>
 	) : (
 		<Redirect to="/" noThrow={true} />

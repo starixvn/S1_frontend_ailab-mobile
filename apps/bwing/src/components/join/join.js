@@ -18,7 +18,6 @@ import { getUrlParameter, passwordCheck, readCookie } from "../common/common";
 import {
 	api_ExistsEmail,
 	api_ExistsUserName,
-	api_GetBanner,
 	api_GetSiteCurrencyList,
 	api_site_AffiliateCheck,
 	api_site_GetAffiliateAgent,
@@ -29,7 +28,6 @@ import { initStatus, initValue, reCaptchaEnum, VN_AREACODE } from "./def";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import useShieldCheck from "../hook/useShieldCheck";
 import Checkbox from "../common/checkbox";
-import PromoPopup from "./join.promotion";
 
 const Join = () => {
 	const { t } = useTranslation();
@@ -42,14 +40,12 @@ const Join = () => {
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
-	const [promoPopup, setPromoPopup] = useState(false);
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
-	const [banner, setBanner] = useState([]);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const [activeInfoMsg, setActiveInfoMsg] = useState("");
-	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const { saveShieldData } = useShieldCheck();
 	const urlAffId = getUrlParameter("AffId") || readCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 	const urlAffiliate = urlAffId || urlAffCode;
@@ -464,38 +460,6 @@ const Join = () => {
 	// }, [userInfo.langId]);
 
 	useEffect(() => {
-		const refId = readCookie("RefId");
-		const openPanel =
-			pathname === `/${path.join.root}` || nav === defNavPanel.join;
-		if (refId && openPanel) {
-			api_GetBanner("Promotion", refId, userInfo.langId).then(
-				res => {
-					if (res.data.errorCode === 0) {
-						if (res.data.data.length > 0) {
-							setBanner(res.data.data);
-							setPromoPopup(true);
-						}
-					} else {
-						setPopBox({
-							isOpen: true,
-							content: `[${res.data.errorCode}] ${res.data.message}`
-						});
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: t("msg_ApiServerError")
-					});
-				}
-			);
-			if (isShieldLoaded) {
-				getShieldData();
-			}
-		}
-	}, [nav, userInfo.langId]);
-
-	useEffect(() => {
 		// getRecaptchaSiteKey();
 		if (urlAffiliate) {
 			checkAffiliate({});
@@ -505,180 +469,176 @@ const Join = () => {
 	}, [step]);
 
 	return (
-		<>
-			<div
-				className={`join-module popup ${classNames({
-					active: isShow
-				})}`}>
-				<div>
-					<button
-						className="icon-close-white-bg"
-						onClick={handleClose}
-					/>
-					<img
-						className="join-logo"
-						src={`${bannerImgUrl}/h5/img/4.0/logo.png`}
-						alt=""
-					/>
-					<div className="join-title">{t("lbl_SignUp")}</div>
-					{step === 1 && (
-						<>
-							<div className="join-message">
-								{t("lbl_LoginMsg")}
-								<a onClick={() => setNav(defNavPanel.login)}>
-									{t("lbl_LoginHere")}
-								</a>
-							</div>
-							<Inputbox
-								icon="icon-profile"
-								placeholder={t("lbl_Username")}
-								onBlur={checkValue.bind(this, {
-									col: "UserName"
-								})}
-								onChange={EditField.bind(this, {
-									col: "UserName"
-								})}
-								value={userValue.UserName}
-								tip={inputStatus.UserName.msg}
-								btnStatus={inputStatus.UserName.checked}
-								clickInfo={() => clickInfo("UserName")}
-								testAttr="Username"
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								hint={inputStatus.UserName.hint}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
-							<InputboxPWD
-								placeholder={t("lbl_Password")}
-								onBlur={checkValue.bind(this, {
-									col: "Password"
-								})}
-								onChange={EditField.bind(this, {
-									col: "Password"
-								})}
-								value={userValue.Password}
-								tip={inputStatus.Password.msg}
-								btnStatus={inputStatus.Password.checked}
-								testAttr="Password"
-								icon="icon-password"
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
-							<InputboxPWD
-								placeholder={t("lbl_ConfirmPassword")}
-								onBlur={checkValue.bind(this, {
-									col: "ConfirmPwd"
-								})}
-								onChange={EditField.bind(this, {
-									col: "ConfirmPwd"
-								})}
-								value={userValue.ConfirmPwd}
-								tip={inputStatus.ConfirmPwd.msg}
-								btnStatus={inputStatus.ConfirmPwd.checked}
-								testAttr="ConfirmPwd"
-								icon="icon-password"
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
+		<div
+			className={`join-module popup ${classNames({
+				active: isShow
+			})}`}>
+			<div>
+				<button className="icon-close-white-bg" onClick={handleClose} />
+				<img
+					className="join-logo"
+					src={`${bannerImgUrl}/h5/img/4.0/logo.png`}
+					alt=""
+				/>
+				<div className="join-title">{t("lbl_SignUp")}</div>
+				{step === 1 && (
+					<>
+						<div className="join-message">
+							{t("lbl_LoginMsg")}
+							<a onClick={() => setNav(defNavPanel.login)}>
+								{t("lbl_LoginHere")}
+							</a>
+						</div>
+						<Inputbox
+							icon="icon-profile"
+							placeholder={t("lbl_Username")}
+							onBlur={checkValue.bind(this, {
+								col: "UserName"
+							})}
+							onChange={EditField.bind(this, {
+								col: "UserName"
+							})}
+							value={userValue.UserName}
+							tip={inputStatus.UserName.msg}
+							btnStatus={inputStatus.UserName.checked}
+							clickInfo={() => clickInfo("UserName")}
+							testAttr="Username"
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							hint={inputStatus.UserName.hint}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
+						<InputboxPWD
+							placeholder={t("lbl_Password")}
+							onBlur={checkValue.bind(this, {
+								col: "Password"
+							})}
+							onChange={EditField.bind(this, {
+								col: "Password"
+							})}
+							value={userValue.Password}
+							tip={inputStatus.Password.msg}
+							btnStatus={inputStatus.Password.checked}
+							testAttr="Password"
+							icon="icon-password"
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
+						<InputboxPWD
+							placeholder={t("lbl_ConfirmPassword")}
+							onBlur={checkValue.bind(this, {
+								col: "ConfirmPwd"
+							})}
+							onChange={EditField.bind(this, {
+								col: "ConfirmPwd"
+							})}
+							value={userValue.ConfirmPwd}
+							tip={inputStatus.ConfirmPwd.msg}
+							btnStatus={inputStatus.ConfirmPwd.checked}
+							testAttr="ConfirmPwd"
+							icon="icon-password"
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
 
-							<div className="btn-group">
-								<button
-									className="btn-primary"
-									onClick={handleNextStep}>
-									{t("lbl_Next")}
-								</button>
-							</div>
-						</>
-					)}
-					{step === 2 && (
-						<>
-							<Inputbox
-								icon="icon-profile"
-								placeholder={t("Label_Join_RealName")}
-								onBlur={checkValue.bind(this, {
-									col: "RealName"
-								})}
-								onChange={EditField.bind(this, {
-									col: "RealName"
-								})}
-								value={userValue.RealName}
-								tip={inputStatus.RealName.msg}
-								btnStatus={inputStatus.RealName.checked}
-								clickInfo={() => clickInfo("RealName")}
-								testAttr="RealName"
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								hint={inputStatus.RealName.hint}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
+						<div className="btn-group">
+							<button
+								className="btn-primary"
+								onClick={handleNextStep}>
+								{t("lbl_Next")}
+							</button>
+						</div>
+					</>
+				)}
+				{step === 2 && (
+					<>
+						<Inputbox
+							icon="icon-profile"
+							placeholder={t("Label_Join_RealName")}
+							onBlur={checkValue.bind(this, {
+								col: "RealName"
+							})}
+							onChange={EditField.bind(this, {
+								col: "RealName"
+							})}
+							value={userValue.RealName}
+							tip={inputStatus.RealName.msg}
+							btnStatus={inputStatus.RealName.checked}
+							clickInfo={() => clickInfo("RealName")}
+							testAttr="RealName"
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							hint={inputStatus.RealName.hint}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
 
-							<Inputbox
-								_class="input-Area"
-								icon="icon-phone"
-								inputType="tel"
-								placeholder={t("lbl_Phone")}
-								value={userValue.Phone}
-								onBlur={checkValue.bind(this, { col: "Phone" })}
-								onChange={EditField.bind(this, {
-									col: "Phone"
-								})}
-								tip={inputStatus.Phone.msg}
-								btnStatus={inputStatus.Phone.checked}
-								clickInfo={() => clickInfo("Phone")}
-								testAttr="Phone"
-								areaCode={VN_AREACODE}
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								hint={inputStatus.Phone.hint}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
+						<Inputbox
+							_class="input-Area"
+							icon="icon-phone"
+							inputType="tel"
+							placeholder={t("lbl_Phone")}
+							value={userValue.Phone}
+							onBlur={checkValue.bind(this, { col: "Phone" })}
+							onChange={EditField.bind(this, {
+								col: "Phone"
+							})}
+							tip={inputStatus.Phone.msg}
+							btnStatus={inputStatus.Phone.checked}
+							clickInfo={() => clickInfo("Phone")}
+							testAttr="Phone"
+							areaCode={VN_AREACODE}
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							hint={inputStatus.Phone.hint}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
 
-							{/* <Inputbox */}
-							{/* 	icon="icon-email" */}
-							{/* 	placeholder={t("lbl_Email")} */}
-							{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
-							{/* 	onChange={EditField.bind(this, { */}
-							{/* 		col: "Email" */}
-							{/* 	})} */}
-							{/* 	value={userValue.Email} */}
-							{/* 	tip={inputStatus.Email.msg} */}
-							{/* 	btnStatus={inputStatus.Email.checked} */}
-							{/* 	clickInfo={() => clickInfo("Email")} */}
-							{/* 	testAttr="Email" */}
-							{/* 	inputBoxNewClass="inputbox-item primary" */}
-							{/* 	border={false} */}
-							{/* 	hint={inputStatus.Email.hint} */}
-							{/* 	activeInfoMsg={activeInfoMsg} */}
-							{/* 	setActiveInfoMsg={setActiveInfoMsg} */}
-							{/* /> */}
-							<Inputbox
-								icon="icon-affiliate"
-								placeholder={t("lbl_Affiliate_ID")}
-								value={userValue.Affiliate}
-								onChange={EditField.bind(this, {
-									col: "Affiliate"
-								})}
-								onBlur={checkValue.bind(this, {
-									col: "Affiliate"
-								})}
-								btnStatus={inputStatus.Affiliate.checked}
-								tip={inputStatus.Affiliate.msg}
-								clickInfo={() => clickInfo("Affiliate")}
-								disabled={urlAffiliate && userValue.Affiliate}
-								inputBoxNewClass="inputbox-item primary"
-								border={false}
-								hint={inputStatus.Affiliate.hint}
-								activeInfoMsg={activeInfoMsg}
-								setActiveInfoMsg={setActiveInfoMsg}
-							/>
-							{/*
+						{/* <Inputbox */}
+						{/* 	icon="icon-email" */}
+						{/* 	placeholder={t("lbl_Email")} */}
+						{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
+						{/* 	onChange={EditField.bind(this, { */}
+						{/* 		col: "Email" */}
+						{/* 	})} */}
+						{/* 	value={userValue.Email} */}
+						{/* 	tip={inputStatus.Email.msg} */}
+						{/* 	btnStatus={inputStatus.Email.checked} */}
+						{/* 	clickInfo={() => clickInfo("Email")} */}
+						{/* 	testAttr="Email" */}
+						{/* 	inputBoxNewClass="inputbox-item primary" */}
+						{/* 	border={false} */}
+						{/* 	hint={inputStatus.Email.hint} */}
+						{/* 	activeInfoMsg={activeInfoMsg} */}
+						{/* 	setActiveInfoMsg={setActiveInfoMsg} */}
+						{/* /> */}
+						<Inputbox
+							icon="icon-affiliate"
+							placeholder={t("lbl_Affiliate_ID")}
+							value={userValue.Affiliate}
+							onChange={EditField.bind(this, {
+								col: "Affiliate"
+							})}
+							onBlur={checkValue.bind(this, {
+								col: "Affiliate"
+							})}
+							btnStatus={inputStatus.Affiliate.checked}
+							tip={inputStatus.Affiliate.msg}
+							clickInfo={() => clickInfo("Affiliate")}
+							disabled={urlAffiliate && userValue.Affiliate}
+							inputBoxNewClass="inputbox-item primary"
+							border={false}
+							hint={inputStatus.Affiliate.hint}
+							activeInfoMsg={activeInfoMsg}
+							setActiveInfoMsg={setActiveInfoMsg}
+						/>
+						{/*
               	{Object.keys(recaptchaInfo).length > 0 &&
 								recaptchaInfo.country !== "CN" && (
 									<ReCAPTCHA
@@ -691,42 +651,32 @@ const Join = () => {
 								)}
               */}
 
-							<div className="join-message">
-								<Checkbox
-									testAttr="agreeCheck"
-									checked={userValue.agreeCheck}
-									onChange={EditField.bind(this, {
-										col: "agreeCheck"
-									})}
-									id="joinAgreeCheck"
-									className="checkbox-group">
-									<div>{t("lbl_SignUpTerms")}</div>
-								</Checkbox>
-							</div>
+						<div className="join-message">
+							<Checkbox
+								testAttr="agreeCheck"
+								checked={userValue.agreeCheck}
+								onChange={EditField.bind(this, {
+									col: "agreeCheck"
+								})}
+								id="joinAgreeCheck"
+								className="checkbox-group">
+								<div>{t("lbl_SignUpTerms")}</div>
+							</Checkbox>
+						</div>
 
-							<div className="btn-group">
-								<button
-									className="btn-primary"
-									data-testid="signUpBtn"
-									onClick={clickSubmit}>
-									{t("lbl_JoinNow")}
-								</button>
-							</div>
-						</>
-					)}
-				</div>
-				<div className="join-bottominfo">
-					{t("lbl_PoweredBy")} Bong88
-				</div>
+						<div className="btn-group">
+							<button
+								className="btn-primary"
+								data-testid="signUpBtn"
+								onClick={clickSubmit}>
+								{t("lbl_JoinNow")}
+							</button>
+						</div>
+					</>
+				)}
 			</div>
-			<PromoPopup
-				banner={banner}
-				ImgFolder="Promotion"
-				ClickClose={() => setPromoPopup(false)}
-				title={t("lbl_Welcome")}
-				isOpen={promoPopup}
-			/>
-		</>
+			<div className="join-bottominfo">{t("lbl_PoweredBy")} Bong88</div>
+		</div>
 	);
 };
 
