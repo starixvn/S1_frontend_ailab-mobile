@@ -7,7 +7,6 @@ import Checkbox from "../common/checkbox";
 import {
 	api_ExistsUserName,
 	api_GetSiteCurrencyList,
-	api_GetBanner,
 	api_site_GetAffiliateAgent,
 	api_site_Signup,
 	api_ExistsEmail,
@@ -27,7 +26,6 @@ import { GET_LANG_ID } from "../../service/language";
 import TandC from "../../service/t_and_c";
 import path from "../../path";
 import config from "../../config";
-import PromoPopup from "./join.promotion";
 import Logo from "../common/logo";
 import { initValue, initStatus, reCaptchaEnum, VN_AREACODE } from "./join.def";
 import useShieldCheck from "../hook/useShieldCheck";
@@ -44,11 +42,9 @@ const Join = () => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [banner, setBanner] = useState([]);
-	const [promoPopup, setPromoPopup] = useState(false);
 	const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
-	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const { saveShieldData } = useShieldCheck();
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
@@ -83,40 +79,6 @@ const Join = () => {
 	// useEffect(() => {
 	// 	setReCaptchaKey(reCaptchaKey + 1);
 	// }, [userInfo.langId]);
-
-	useEffect(() => {
-		const refId = getCookie("RefId");
-		const showBylink = window.location.pathname === `/${path.join.root}`;
-		const openPanel = showBylink || nav === defNavPanel.join;
-		if (openPanel) {
-			if (refId) {
-				api_GetBanner("Promotion", refId, userInfo.langId).then(
-					res => {
-						if (res.data.errorCode === 0 && isMountedRef.current) {
-							if (res.data.data.length > 0) {
-								setBanner(res.data.data);
-								setPromoPopup(true);
-							}
-						} else if (res.data.errorCode !== 0) {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-					},
-					() => {
-						setPopBox({
-							isOpen: true,
-							content: i18n.msg_ApiServerError
-						});
-					}
-				);
-			}
-			if (isShieldLoaded) {
-				getShieldData();
-			}
-		}
-	}, [nav, userInfo.langId]);
 
 	useEffect(() => {
 		// getRecaptchaSiteKey();
@@ -498,10 +460,6 @@ const Join = () => {
 	const showBylink = useMatch(path.join.root);
 	const openPanel = showBylink || nav === defNavPanel.join;
 
-	const ClosePromoPopup = () => {
-		setPromoPopup(false);
-	};
-
 	const handleReCaptchaChange = token => {
 		setReCaptchaToken(token);
 	};
@@ -512,116 +470,115 @@ const Join = () => {
 
 	return (
 		userInfo.isLogin === false && (
-			<>
-				<div className={`Join${openPanel ? " open" : ""}`}>
-					<div
-						className={`close${openPanel ? " open" : ""}`}
-						onClick={handleJoinPanel.bind(
-							this,
-							openPanel,
-							true,
-							showBylink
-						)}>
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-						<span />
-					</div>
-					<Logo />
-					<div className="title">{i18n.lbl_JoinNow}</div>
-					<Inputbox
-						icon="icon icon-member"
-						placeholder={i18n.lbl_Username}
-						onBlur={checkValue.bind(this, { col: "UserName" })}
-						onChange={EditField.bind(this, { col: "UserName" })}
-						btnStatus={inputStatus.UserName.checked}
-						tip={inputStatus.UserName.msg}
-						value={userValue.UserName}
-						clickInfo={clickInfo.bind(this, {
-							col: "UserName",
-							info: "lbl_UsernameTooltip"
-						})}
-						testAttr="Username"
-					/>
-					<InputboxPWD
-						placeholder={i18n.lbl_Password}
-						onBlur={checkValue.bind(this, { col: "Password" })}
-						onChange={EditField.bind(this, { col: "Password" })}
-						btnStatus={inputStatus.Password.checked}
-						tip={inputStatus.Password.msg}
-						value={userValue.Password}
-						testAttr="Password"
-					/>
-					<InputboxPWD
-						placeholder={i18n.lbl_ConfirmPassword}
-						onBlur={checkValue.bind(this, { col: "ConfirmPwd" })}
-						onChange={EditField.bind(this, { col: "ConfirmPwd" })}
-						btnStatus={inputStatus.ConfirmPwd.checked}
-						tip={inputStatus.ConfirmPwd.msg}
-						value={userValue.ConfirmPwd}
-						testAttr="ConfirmPwd"
-					/>
-					<Inputbox
-						icon="icon icon-member"
-						placeholder={i18n.lbl_RealName}
-						onBlur={checkValue.bind(this, { col: "RealName" })}
-						onChange={EditField.bind(this, { col: "RealName" })}
-						btnStatus={inputStatus.RealName.checked}
-						tip={inputStatus.RealName.msg}
-						value={userValue.RealName}
-						clickInfo={clickInfo.bind(this, {
-							col: "RealName",
-							info: "lbl_RemindForName"
-						})}
-						testAttr="RealName"
-					/>
-					<Inputbox
-						icon="icon icon-phone"
-						inputType="tel"
-						placeholder={i18n.lbl_Phone}
-						onBlur={checkValue.bind(this, { col: "Phone" })}
-						onChange={EditField.bind(this, { col: "Phone" })}
-						btnStatus={inputStatus.Phone.checked}
-						tip={inputStatus.Phone.msg}
-						value={userValue.Phone}
-						clickInfo={clickInfo.bind(this, {
-							col: "Phone",
-							info: "lbl_PhoneTooltip"
-						})}
-						areaCode={VN_AREACODE}
-						testAttr="Phone"
-					/>
-					{/* <Inputbox */}
-					{/* 	icon="icon icon-email" */}
-					{/* 	placeholder={i18n.lbl_Email} */}
-					{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
-					{/* 	onChange={EditField.bind(this, { col: "Email" })} */}
-					{/* 	btnStatus={inputStatus.Email.checked} */}
-					{/* 	tip={inputStatus.Email.msg} */}
-					{/* 	value={userValue.Email} */}
-					{/* 	clickInfo={clickInfo.bind(this, { */}
-					{/* 		col: "Email", */}
-					{/* 		info: "lbl_EmailToolTip" */}
-					{/* 	})} */}
-					{/* 	testAttr="Email" */}
-					{/* /> */}
-					<Inputbox
-						icon="icon icon-affiliate"
-						placeholder={i18n.lbl_Affiliate_ID}
-						value={userValue.Affiliate}
-						onChange={EditField.bind(this, { col: "Affiliate" })}
-						onBlur={checkValue.bind(this, { col: "Affiliate" })}
-						btnStatus={inputStatus.Affiliate.checked}
-						tip={inputStatus.Affiliate.msg}
-						disabled={urlAffiliate && userValue.Affiliate}
-						clickInfo={clickInfo.bind(this, {
-							col: "Affiliate",
-							info: "lbl_Please_enter_Affiliate_ID"
-						})}
-					/>
-					{/*
+			<div className={`Join${openPanel ? " open" : ""}`}>
+				<div
+					className={`close${openPanel ? " open" : ""}`}
+					onClick={handleJoinPanel.bind(
+						this,
+						openPanel,
+						true,
+						showBylink
+					)}>
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+					<span />
+				</div>
+				<Logo />
+				<div className="title">{i18n.lbl_JoinNow}</div>
+				<Inputbox
+					icon="icon icon-member"
+					placeholder={i18n.lbl_Username}
+					onBlur={checkValue.bind(this, { col: "UserName" })}
+					onChange={EditField.bind(this, { col: "UserName" })}
+					btnStatus={inputStatus.UserName.checked}
+					tip={inputStatus.UserName.msg}
+					value={userValue.UserName}
+					clickInfo={clickInfo.bind(this, {
+						col: "UserName",
+						info: "lbl_UsernameTooltip"
+					})}
+					testAttr="Username"
+				/>
+				<InputboxPWD
+					placeholder={i18n.lbl_Password}
+					onBlur={checkValue.bind(this, { col: "Password" })}
+					onChange={EditField.bind(this, { col: "Password" })}
+					btnStatus={inputStatus.Password.checked}
+					tip={inputStatus.Password.msg}
+					value={userValue.Password}
+					testAttr="Password"
+				/>
+				<InputboxPWD
+					placeholder={i18n.lbl_ConfirmPassword}
+					onBlur={checkValue.bind(this, { col: "ConfirmPwd" })}
+					onChange={EditField.bind(this, { col: "ConfirmPwd" })}
+					btnStatus={inputStatus.ConfirmPwd.checked}
+					tip={inputStatus.ConfirmPwd.msg}
+					value={userValue.ConfirmPwd}
+					testAttr="ConfirmPwd"
+				/>
+				<Inputbox
+					icon="icon icon-member"
+					placeholder={i18n.lbl_RealName}
+					onBlur={checkValue.bind(this, { col: "RealName" })}
+					onChange={EditField.bind(this, { col: "RealName" })}
+					btnStatus={inputStatus.RealName.checked}
+					tip={inputStatus.RealName.msg}
+					value={userValue.RealName}
+					clickInfo={clickInfo.bind(this, {
+						col: "RealName",
+						info: "lbl_RemindForName"
+					})}
+					testAttr="RealName"
+				/>
+				<Inputbox
+					icon="icon icon-phone"
+					inputType="tel"
+					placeholder={i18n.lbl_Phone}
+					onBlur={checkValue.bind(this, { col: "Phone" })}
+					onChange={EditField.bind(this, { col: "Phone" })}
+					btnStatus={inputStatus.Phone.checked}
+					tip={inputStatus.Phone.msg}
+					value={userValue.Phone}
+					clickInfo={clickInfo.bind(this, {
+						col: "Phone",
+						info: "lbl_PhoneTooltip"
+					})}
+					areaCode={VN_AREACODE}
+					testAttr="Phone"
+				/>
+				{/* <Inputbox */}
+				{/* 	icon="icon icon-email" */}
+				{/* 	placeholder={i18n.lbl_Email} */}
+				{/* 	onBlur={checkValue.bind(this, { col: "Email" })} */}
+				{/* 	onChange={EditField.bind(this, { col: "Email" })} */}
+				{/* 	btnStatus={inputStatus.Email.checked} */}
+				{/* 	tip={inputStatus.Email.msg} */}
+				{/* 	value={userValue.Email} */}
+				{/* 	clickInfo={clickInfo.bind(this, { */}
+				{/* 		col: "Email", */}
+				{/* 		info: "lbl_EmailToolTip" */}
+				{/* 	})} */}
+				{/* 	testAttr="Email" */}
+				{/* /> */}
+				<Inputbox
+					icon="icon icon-affiliate"
+					placeholder={i18n.lbl_Affiliate_ID}
+					value={userValue.Affiliate}
+					onChange={EditField.bind(this, { col: "Affiliate" })}
+					onBlur={checkValue.bind(this, { col: "Affiliate" })}
+					btnStatus={inputStatus.Affiliate.checked}
+					tip={inputStatus.Affiliate.msg}
+					disabled={urlAffiliate && userValue.Affiliate}
+					clickInfo={clickInfo.bind(this, {
+						col: "Affiliate",
+						info: "lbl_Please_enter_Affiliate_ID"
+					})}
+				/>
+				{/*
 					{Object.keys(recaptchaInfo).length > 0 &&
 						recaptchaInfo.country !== "CN" && (
 							<ReCAPTCHA
@@ -633,50 +590,36 @@ const Join = () => {
 							/>
 						)}
    */}
-					<Checkbox
-						Checked={userValue.Checkbox}
-						className={`Terms${
-							inputStatus.Checkbox.checked === false
-								? " error"
-								: ""
-						}`}
-						onChange={EditField.bind(this, { col: "Checkbox" })}
-						id="c1">
-						{i18n.lbl_Check18TC1} &nbsp;
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href={TandC(userInfo.langId).terms}>
-							{i18n.lbl_TermsConditions}
-						</a>
-						&nbsp; {i18n.lbl_Check18TC2}&nbsp;
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href={TandC(userInfo.langId).rule}>
-							{i18n.lbl_RuleRegulations}
-						</a>
-						&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
-						.&nbsp;
-						{i18n.lbl_Check18TC4}
-					</Checkbox>
-					<div className="JoinRule open">
-						{inputStatus.Checkbox.msg}
-					</div>
-					<div className="btn-group">
-						<button onClick={clickSubmit}>
-							{i18n.lbl_JoinNow}
-						</button>
-					</div>
+				<Checkbox
+					Checked={userValue.Checkbox}
+					className={`Terms${
+						inputStatus.Checkbox.checked === false ? " error" : ""
+					}`}
+					onChange={EditField.bind(this, { col: "Checkbox" })}
+					id="c1">
+					{i18n.lbl_Check18TC1} &nbsp;
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={TandC(userInfo.langId).terms}>
+						{i18n.lbl_TermsConditions}
+					</a>
+					&nbsp; {i18n.lbl_Check18TC2}&nbsp;
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={TandC(userInfo.langId).rule}>
+						{i18n.lbl_RuleRegulations}
+					</a>
+					&nbsp; {i18n.lbl_Check18TC3}&nbsp;{config.siteName}
+					.&nbsp;
+					{i18n.lbl_Check18TC4}
+				</Checkbox>
+				<div className="JoinRule open">{inputStatus.Checkbox.msg}</div>
+				<div className="btn-group">
+					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
 				</div>
-				<PromoPopup
-					banner={banner}
-					ImgFolder="Promotion"
-					ClickClose={ClosePromoPopup}
-					title={i18n.lbl_Welcome}
-					isOpen={promoPopup}
-				/>
-			</>
+			</div>
 		)
 	);
 };

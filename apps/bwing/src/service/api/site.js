@@ -40,17 +40,6 @@ export const api_ForgetPwd = ({ Email, langId }) =>
 
 export const api_GetTpIds = () => siteRequest.post(`/GetTpIds`);
 
-export const api_GetBanner = (
-	FolderName,
-	refId,
-	lang,
-	filterHideInHome = false
-) =>
-	siteRequest.post(
-		`/GetBanner/${lang}`,
-		`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
-	);
-
 export const api_site_GetBannerV3 = ({ lang, BannerType }) =>
 	siteRequest.post(`/GetBannerV3/${lang}`, { BannerType, CurrencyId: 51 });
 
