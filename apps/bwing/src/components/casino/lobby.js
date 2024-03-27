@@ -124,7 +124,7 @@ const Panel = ({
 
 	const clickPlay = (freePlay, randomGame = null) => {
 		const targetObj = !randomGame ? selGameInfo : randomGame;
-		if (freePlay || userInfo.isLogin) {
+		if (userInfo.isLogin) {
 			throttle(
 				() =>
 					GET_CASINO_ENTER_PAGE({
