@@ -6632,6 +6632,7 @@ header {
           justify-content: space-between;
   padding: 10vw 6vw 4vw;
   overflow-x: hidden;
+  z-index: 12;
 }
 .login-module > div, .login-module form, .join-module > div, .join-module form {
   text-align: center;
@@ -13978,6 +13979,15 @@ body main.main.referral {
 .depositModule_crptopay > .title:before,
 .depositModule_crptopay > .title span {
   margin-right: 1vw;
+}
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupmobile > .title .info,
+.depositModule_crptopay > .title .info {
+  color: rgba(243, 140, 0, 0.9);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
 }
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
