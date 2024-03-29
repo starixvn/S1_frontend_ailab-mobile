@@ -128,7 +128,7 @@ const EuroCup = () => {
 
 	const combineGroups = data => [].concat(...Object.values(data ?? {}));
 
-	const options = combineGroups(tickets?.selectOptions);
+	const options = combineGroups(predictionSetting?.selectOptions);
 
 	const usedTickets = tickets.userTicketResult?.groupCountryTicket
 		.filter(({ countryId }) => countryId !== null)
@@ -327,12 +327,23 @@ const EuroCup = () => {
 		});
 	};
 
+	const handlePredictionExpire = () => {
+		// 目標時間為6月14日的23點59分59秒（GMT+8）,故utc時間減8小時做判斷
+		const targetTimeUtc = moment.utc("2024-06-14 15:59:59");
+		const nowUtc = moment.utc();
+		return nowUtc.isAfter(targetTimeUtc);
+	};
+
+	const isPredictionExpire = handlePredictionExpire();
+
 	useEffect(() => {
+		if (userInfo.isLogin) {
+			getCupEventTicket();
+			getMemberDeposit();
+		}
 		getCupEventPredictionSetting({ langId: userInfo.langId });
-		getCupEventTicket();
-		getMemberDeposit();
 		getTicketsSummary();
-	}, []);
+	}, [userInfo.isLogin]);
 
 	return (
 		<>
@@ -347,7 +358,15 @@ const EuroCup = () => {
 					<div>{t("lbl_CupEvent_PredictionOfParticipant_desc")}</div>
 					<a className="deposit-btn-a">
 						<span
-							onClick={() => navigate(`/${paths.deposit.root}`)}>
+							onClick={() =>
+								navigate(
+									`${
+										userInfo.isLogin
+											? `/${paths.deposit.root}`
+											: `/${paths.login.root}`
+									}`
+								)
+							}>
 							{t("lbl_DepositNow")}
 						</span>
 						<img
@@ -364,21 +383,24 @@ const EuroCup = () => {
 					onOpen={handleDepositListModalOpen}
 				/>
 				<TeamSelector
-					options={tickets?.selectOptions}
+					options={predictionSetting?.selectOptions}
 					selectedTeamId={selectedTeamId}
 					ticketsNumber={ticketsNumber}
 					selectedGroup={selectedGroup}
+					isPredictionExpire={isPredictionExpire}
 					setSelectedTeamId={setSelectedTeamId}
 					setTicketsNumber={setTicketsNumber}
 					setSelectedGroup={setSelectedGroup}
 					onSubmit={handleSubmitConfirmModalOpen}
 				/>
-				{usedTickets?.length > 0 && (
-					<PredictionRecord
-						usedTickets={usedTickets}
-						onOpen={handlePredictionRecordModalOpen}
-					/>
-				)}
+				<div className="record">
+					{userInfo.isLogin && usedTickets?.length > 0 && (
+						<PredictionRecord
+							usedTickets={usedTickets}
+							onOpen={handlePredictionRecordModalOpen}
+						/>
+					)}
+				</div>
 			</div>
 			<img
 				className="bottom-bg"
