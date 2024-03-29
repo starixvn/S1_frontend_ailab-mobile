@@ -6,6 +6,7 @@ import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
 import Home from "./pages/home";
+import NewHome from "./pages/NewHome";
 import Promotion from "./pages/promotion";
 import Profile from "./components/member/profile";
 import BankInfo from "./components/member/bankInfo";
@@ -77,7 +78,8 @@ const Index = () => {
 			<Wrapper>
 				<LocationProvider history={history}>
 					<Router primary={false}>
-						<Home path={path.home.root} default={true} />
+						<NewHome path={path.home.root} default={true} />
+						{/* <Home path={path.home.root} default={true} /> */}
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
 						<ChangePwd path={path.changePassword.root} />
