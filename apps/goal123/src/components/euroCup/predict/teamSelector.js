@@ -9,6 +9,7 @@ const TeamSelector = ({
 	selectedTeamId,
 	ticketsNumber,
 	selectedGroup,
+	isPredictionExpire,
 	setSelectedTeamId,
 	setTicketsNumber,
 	setSelectedGroup,
@@ -17,7 +18,10 @@ const TeamSelector = ({
 	const { t } = useTranslation();
 
 	return (
-		<div className="ticket-filter">
+		<div
+			className={`ticket-filter ${
+				isPredictionExpire ? "closedown" : ""
+			}`}>
 			<div>
 				<div className="group-input">
 					<Dropdown
@@ -37,7 +41,7 @@ const TeamSelector = ({
 				<div className="number-input">
 					<input
 						type="number"
-						className={`input ${ticketsNumber ? "check" : ""}`}
+						className="input check"
 						placeholder={t("lbl_CupEvent_PleaseFillOut")}
 						value={ticketsNumber}
 						onChange={e => setTicketsNumber(e.target.value)}
@@ -73,6 +77,7 @@ TeamSelector.propTypes = {
 	options: PropTypes.objectOf(PropTypes.any).isRequired,
 	selectedTeamId: PropTypes.objectOf(PropTypes.any).isRequired,
 	selectedGroup: PropTypes.string.isRequired,
+	isPredictionExpire: PropTypes.bool.isRequired,
 	ticketsNumber: PropTypes.string.isRequired,
 	setSelectedTeamId: PropTypes.func.isRequired,
 	setTicketsNumber: PropTypes.func.isRequired,

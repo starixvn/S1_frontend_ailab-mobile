@@ -16,7 +16,7 @@ const RewardItem = () => {
 				<span>{t("lbl_CupEvent_RewardItem")}</span>
 			</div>
 			{/* className添加active為開獎樣式 */}
-			<div className="reward">
+			<div className="reward ">
 				{REWARD_ITEMS.map(({ key, displayKey, img, amount, count }) => (
 					<div className="reward-item" key={key}>
 						<div className="title">

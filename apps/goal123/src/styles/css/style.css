@@ -13100,6 +13100,34 @@ span.important {
   color: white;
   margin-top: 7vw;
 }
+.euro .ticket-filter.closedown {
+  position: relative;
+}
+.euro .ticket-filter.closedown::before {
+  display: block;
+  content: "The prediction has endedand the winner will be drawn after EURO 2024 end";
+  background: rgba(0, 0, 0, 0.7411764706);
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3.5vw;
+  width: 86vw;
+  height: 75.3vw;
+  position: absolute;
+  z-index: 2;
+  border-radius: 7vw;
+  left: 7vw;
+  text-shadow: 0 0 10px #000;
+  line-height: 5.5vw;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
 .euro .record {
   background: #F9BF4B;
   padding: 6vw 0 30vw;
