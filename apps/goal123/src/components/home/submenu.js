@@ -210,12 +210,8 @@ const defSubMenus = [
 				displayText: "Evolution Gaming"
 			},
 			{
-				...defGameInfo.LIVEcasinoPT,
+				...defGameInfo.LIVEcasino_PlayTech,
 				displayText: "Playtech"
-			},
-			{
-				...defGameInfo.LIVEcasinoN2,
-				displayText: "n2-LIVE"
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
@@ -253,6 +249,7 @@ const defSubMenus = [
 		path: path.promotion.root,
 		icon: "icon icon-gift"
 	},
+
 	{
 		displayKey: "lbl_APPDownload",
 		href: `${window.location.origin}/${path.appDownload.root}`,

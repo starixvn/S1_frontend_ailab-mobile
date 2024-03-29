@@ -5,17 +5,17 @@ import { defBannerType } from "../../service/api/site";
 const swipperParam = {
 	spaceBetween: 30,
 	centeredSlides: true,
+	loop: true,
 	effect: "fade",
 	autoplay: {
-		delay: 5000,
+		delay: 10500,
 		disableOnInteraction: false
 	},
 	pagination: {
 		el: ".swiper-pagination",
 		clickable: true
 	},
-	rebuildOnUpdate: true,
-	containerClass: "bannerNew"
+	containerClass: "home-banner"
 };
 
 export default () => {

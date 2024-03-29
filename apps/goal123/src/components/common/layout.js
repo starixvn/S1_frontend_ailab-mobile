@@ -25,6 +25,7 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
+import H5Footer from "../newHome/components/HomeFooter";
 
 const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
@@ -125,7 +126,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && !displayLiveStreaming && !isLoading && (
+			{/* {displayVgaming && root && !displayLiveStreaming && !isLoading && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon icon-close"
@@ -138,25 +139,26 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 						onClick={() => clickGame(defGameInfo.sabaClub)}
 					/>
 				</div>
-			)}
+			)} */}
 
-			{root && (
+			{/* {root && (
 				<LiveStreamingPop
 					liveStreamingList={liveStreamingList}
 					displayLiveStreaming={displayLiveStreaming}
 					setDisplayLiveStreaming={setDisplayLiveStreaming}
 				/>
-			)}
+			)} */}
 
 			{/* 僅限過年期間不顯示 */}
-			{!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
+			{/* {!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
-			) : null}
+			) : null} */}
 
 			{/* 僅限過年期間顯示 */}
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
 
-			<Footer />
+			{/* <Footer /> */}
+			<H5Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>
 	);
