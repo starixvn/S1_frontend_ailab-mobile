@@ -142,6 +142,9 @@ export default {
 	},
 	appDownload2: {
 		root: "appDownload2"
+	},
+	euroCup: {
+		root: "euro-cup"
 	}
 };
 
