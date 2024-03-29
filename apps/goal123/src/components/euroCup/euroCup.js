@@ -148,6 +148,7 @@ const EuroCup = () => {
 			({ countryId }) => countryId === selectedTeamId
 		);
 		const onSubmit = async () => {
+			if (!userInfo.isLogin) return;
 			try {
 				const res = await api_cupEvent_MultiUserPollTickets({
 					userPollTicket,
