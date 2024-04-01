@@ -39,7 +39,16 @@ const EuroCup = () => {
 
 	const {
 		data: { data: ticketSummary = [] } = {}
-	} = useGetCupEventTicketSummaryQuery();
+	} = useGetCupEventTicketSummaryQuery(null, {
+		selectFromResult: ({ data: { data = [] } = {} }) => {
+			const sortedData = [...data].sort(
+				(a, b) => b.percentage - a.percentage
+			);
+			return {
+				data: { data: sortedData }
+			};
+		}
+	});
 
 	const { data: { data: tickets = {} } = {} } = useGetCupEventTicketQuery(
 		null,
@@ -55,10 +64,6 @@ const EuroCup = () => {
 	});
 
 	const [pollTicketsMutation] = useMultiUserPollTicketsMutation();
-
-	const sortedTicketSummary = [...ticketSummary].sort(
-		(a, b) => b.percentage - a.percentage
-	);
 
 	const combineGroups = data => [].concat(...Object.values(data ?? {}));
 
@@ -304,7 +309,7 @@ const EuroCup = () => {
 						/>
 					</a>
 				</div>
-				<PredictList ticketSummary={sortedTicketSummary} />
+				<PredictList ticketSummary={ticketSummary} />
 			</div>
 			<div className="ticket-wrapper">
 				<TicketOverview
