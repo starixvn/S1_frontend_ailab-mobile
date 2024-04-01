@@ -62,7 +62,7 @@ const TeamSelector = ({
 							userPollTicket: {
 								// goal不分type,type固定帶0
 								TicketType: 0,
-								CountryId: selectedTeamId
+								CountryId: Number(selectedTeamId)
 							},
 							count: Number(ticketsNumber)
 						});
