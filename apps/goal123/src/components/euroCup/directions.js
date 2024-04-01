@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { DIRECTIONS_TYPE } from "./def";
 import { bannerImgUrl } from "../../config";
 
@@ -10,38 +11,36 @@ const Directions = ({ directionsType, setDirectionsType }) => {
 		<>
 			<div className="bottom-tap">
 				<a
-					className={`${
-						directionsType === DIRECTIONS_TYPE.TERMS_AND_CONDITIONS
-							? "active"
-							: ""
-					}`}
+					className={classNames({
+						active:
+							directionsType ===
+							DIRECTIONS_TYPE.TERMS_AND_CONDITIONS
+					})}
 					onClick={() =>
 						setDirectionsType(DIRECTIONS_TYPE.TERMS_AND_CONDITIONS)
 					}>
 					{t("lbl_CupEvent_T&C")}
 				</a>
 				<a
-					className={`${
-						directionsType === DIRECTIONS_TYPE.MATCHES
-							? "active"
-							: ""
-					}`}
+					className={classNames({
+						active: directionsType === DIRECTIONS_TYPE.MATCHES
+					})}
 					onClick={() => setDirectionsType(DIRECTIONS_TYPE.MATCHES)}>
 					{t("lbl_CupEvent_Matches")}
 				</a>
 			</div>
 			<div
-				className={
-					directionsType === DIRECTIONS_TYPE.TERMS_AND_CONDITIONS
-						? "terms"
-						: "matches"
-				}>
+				className={classNames({
+					terms:
+						directionsType === DIRECTIONS_TYPE.TERMS_AND_CONDITIONS,
+					matches: directionsType === DIRECTIONS_TYPE.MATCHES
+				})}>
 				{directionsType === DIRECTIONS_TYPE.TERMS_AND_CONDITIONS && (
 					<>
 						<div className="terms-title">
 							<img
 								src={`${bannerImgUrl}/h5/img/event/eurocup/title-item.png`}
-								alt=""
+								alt="title-item"
 							/>
 							<span>{t("lbl_TermsConditions")}</span>
 						</div>
@@ -66,7 +65,7 @@ const Directions = ({ directionsType, setDirectionsType }) => {
 						<div className="matches-title">
 							<img
 								src={`${bannerImgUrl}/h5/img/event/eurocup/title-item.png`}
-								alt=""
+								alt="title-item"
 							/>
 							<span>{t("lbl_CupEvent_Matches_Title")}</span>
 						</div>

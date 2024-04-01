@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import Dropdown from "./dropdown";
 import { bannerImgUrl } from "../../../config";
@@ -19,9 +20,9 @@ const TeamSelector = ({
 
 	return (
 		<div
-			className={`ticket-filter ${
-				isPredictionExpire ? "closedown" : ""
-			}`}>
+			className={classNames("ticket-filter", {
+				closedown: isPredictionExpire
+			})}>
 			<div>
 				<div className="group-input">
 					<Dropdown
@@ -49,7 +50,7 @@ const TeamSelector = ({
 					<button>
 						<img
 							src={`${bannerImgUrl}/h5/img/event/eurocup/close.png`}
-							alt=""
+							alt="close"
 							onClick={() => setTicketsNumber("")}
 						/>
 					</button>
@@ -75,7 +76,7 @@ const TeamSelector = ({
 
 TeamSelector.propTypes = {
 	options: PropTypes.objectOf(PropTypes.any).isRequired,
-	selectedTeamId: PropTypes.objectOf(PropTypes.any).isRequired,
+	selectedTeamId: PropTypes.string.isRequired,
 	selectedGroup: PropTypes.string.isRequired,
 	isPredictionExpire: PropTypes.bool.isRequired,
 	ticketsNumber: PropTypes.string.isRequired,

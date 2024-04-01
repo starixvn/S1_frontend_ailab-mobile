@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { bannerImgUrl, sportsImgUrl } from "../../../config";
 
 const PredictionRecord = ({ usedTickets, onOpen }) => {
@@ -19,12 +20,12 @@ const PredictionRecord = ({ usedTickets, onOpen }) => {
 								<img
 									className="euro-logo"
 									src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo.png`}
-									alt=""
+									alt="euro-logo"
 								/>
 								<div className="flag">
 									<img
 										src={`${sportsImgUrl}/Country%20Team/${imageName}`}
-										alt=""
+										alt={imageName}
 									/>
 									<span>{countryName}</span>
 								</div>
@@ -39,7 +40,9 @@ const PredictionRecord = ({ usedTickets, onOpen }) => {
 					))}
 			</div>
 			<div
-				className={`more-btn ${usedTickets.length > 3 ? "active" : ""}`}
+				className={classNames("more-btn", {
+					active: usedTickets.length > 3
+				})}
 				onClick={onOpen}>
 				{t("lbl_More")}
 			</div>

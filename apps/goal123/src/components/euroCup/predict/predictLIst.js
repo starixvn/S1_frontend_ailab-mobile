@@ -19,7 +19,7 @@ const PredictList = ({ ticketSummary }) => {
 				modules={[Navigation]}
 				className="prediction-swiper-container">
 				{[0, 4].map(start => (
-					<SwiperSlide>
+					<SwiperSlide key={start}>
 						<div className="prediction-swiper-item" key={start}>
 							{ticketSummary
 								.slice(start, start + 4)
@@ -39,7 +39,7 @@ const PredictList = ({ ticketSummary }) => {
 };
 
 PredictList.propTypes = {
-	ticketSummary: PropTypes.objectOf(PropTypes.any).isRequired
+	ticketSummary: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
 export default PredictList;
