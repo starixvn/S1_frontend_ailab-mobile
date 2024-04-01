@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { sportsImgUrl } from "../../../config";
 
 const Dropdown = ({ placeholder, options, onSelect, disable }) => {
@@ -26,7 +27,9 @@ const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 	}, []);
 
 	return (
-		<div className={`dropdown ${selectedItem ? "check" : ""}`} ref={ref}>
+		<div
+			className={classNames("dropdown", { check: selectedItem })}
+			ref={ref}>
 			<button
 				type="button"
 				className="btn"
@@ -39,9 +42,9 @@ const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 			</button>
 			{!disable && (
 				<div
-					className={`dropdown-container ${
-						isActive ? "active" : ""
-					}`}>
+					className={classNames("dropdown-container", {
+						active: isActive
+					})}>
 					{options.map(item => {
 						if (typeof item === "string") {
 							return (
@@ -62,7 +65,7 @@ const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 								onClick={() => handleItemClick(item)}>
 								<img
 									src={`${sportsImgUrl}/Country%20Team/${item.imageName}`}
-									alt=""
+									alt={item.imageName}
 								/>
 								{item.countryName}
 							</div>

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { sportsImgUrl } from "../../../config";
 
 const PredictItem = ({
@@ -10,13 +11,15 @@ const PredictItem = ({
 	percentage
 }) => {
 	return (
-		<div className={`country ${rank === 1 ? "one" : ""}`} key={countryId}>
+		<div
+			className={classNames("country", { one: rank === 1 })}
+			key={countryId}>
 			<div>{rank}</div>
 			<div className="country-flag">
 				<div>
 					<img
 						src={`${sportsImgUrl}/Country%20Team/${imageName}`}
-						alt=""
+						alt={imageName}
 					/>
 					<div>{countryName}</div>
 				</div>

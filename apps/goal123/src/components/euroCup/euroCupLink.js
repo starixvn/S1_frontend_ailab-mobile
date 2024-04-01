@@ -19,7 +19,7 @@ const EuroCupLink = () => {
 			<Link to={`/${userInfo.langId}/${path.euroCup.root}`}>
 				<img
 					src={`${bannerImgUrl}/desktop/img/event/eurocup/eurocup-icon.webp`}
-					alt=""
+					alt="eurocup-icon"
 				/>
 			</Link>
 		</div>

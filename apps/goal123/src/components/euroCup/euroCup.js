@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
-import paths from "../../path";
 import {
-	api_cupEvent_GetCupEventPredictionSetting,
-	api_cupEvent_GetCupEventTicket,
-	api_cupEvent_GetCupEventTicketSummary,
-	api_cupEvent_GetMemberDeposit,
-	api_cupEvent_MultiUserPollTickets
-} from "../../service/api/euroCup";
+	useGetCupEventPredictionSettingQuery,
+	useGetCupEventTicketQuery,
+	useGetCupEventTicketSummaryQuery,
+	useGetMemberDepositQuery,
+	useMultiUserPollTicketsMutation
+} from "@ailab-mobile/service";
+import paths from "../../path";
 import { popBoxContext, userInfoContext } from "../common/context";
 import PredictList from "./predict/predictLIst";
 import TicketOverview from "./ticketOverview";
@@ -26,10 +26,6 @@ const EuroCup = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const navigate = useNavigate();
-	const [predictionSetting, setPredictionSetting] = useState(null);
-	const [tickets, setTickets] = useState({});
-	const [memberDepositList, setMemberDepositList] = useState([]);
-	const [ticketSummary, setTicketSummary] = useState([]);
 	const [selectedGroup, setSelectedGroup] = useState("");
 	const [selectedTeamId, setSelectedTeamId] = useState("");
 	const [ticketsNumber, setTicketsNumber] = useState("");
@@ -37,98 +33,36 @@ const EuroCup = () => {
 		DIRECTIONS_TYPE.TERMS_AND_CONDITIONS
 	);
 
-	const getCupEventPredictionSetting = async ({ langId }) => {
-		try {
-			const res = await api_cupEvent_GetCupEventPredictionSetting({
-				langId
-			});
-			const { errorCode, message, data } = res.data;
-			if (errorCode === 0) {
-				setPredictionSetting(data);
-			} else {
-				setPopBox({
-					isOpen: true,
-					content: message || "error",
-					errorCode
-				});
-			}
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
-		}
-	};
+	const {
+		data: { data: predictionSettingData = {} } = {}
+	} = useGetCupEventPredictionSettingQuery({ langId: userInfo.langId });
 
-	const getCupEventTicket = async () => {
-		try {
-			const res = await api_cupEvent_GetCupEventTicket();
-			const { errorCode, message, data } = res.data;
-			if (errorCode === 0) {
-				setTickets(data);
-			} else {
-				setPopBox({
-					isOpen: true,
-					content: message || "error",
-					errorCode
-				});
-			}
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
-		}
-	};
+	const {
+		data: { data: ticketSummary = [] } = {}
+	} = useGetCupEventTicketSummaryQuery();
 
-	const getMemberDeposit = async () => {
-		try {
-			const res = await api_cupEvent_GetMemberDeposit();
-			const { errorCode, message, data } = res.data;
-			if (errorCode === 0) {
-				setMemberDepositList(data);
-			} else {
-				setPopBox({
-					isOpen: true,
-					content: message || "error",
-					errorCode
-				});
-			}
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
+	const { data: { data: tickets = {} } = {} } = useGetCupEventTicketQuery(
+		null,
+		{
+			skip: !userInfo.isLogin
 		}
-	};
+	);
 
-	const getTicketsSummary = async () => {
-		try {
-			const res = await api_cupEvent_GetCupEventTicketSummary();
-			const { errorCode, message, data } = res.data;
-			if (errorCode === 0) {
-				const sortedData = data.sort(
-					(a, b) => b.percentage - a.percentage
-				);
-				setTicketSummary(sortedData);
-			} else {
-				setPopBox({
-					isOpen: true,
-					content: message || "error",
-					errorCode
-				});
-			}
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
-		}
-	};
+	const {
+		data: { data: memberDepositList = [] } = {}
+	} = useGetMemberDepositQuery(null, {
+		skip: !userInfo.isLogin
+	});
+
+	const [pollTicketsMutation] = useMultiUserPollTicketsMutation();
+
+	const sortedTicketSummary = [...ticketSummary].sort(
+		(a, b) => b.percentage - a.percentage
+	);
 
 	const combineGroups = data => [].concat(...Object.values(data ?? {}));
 
-	const options = combineGroups(predictionSetting?.selectOptions);
+	const options = combineGroups(predictionSettingData?.selectOptions);
 
 	const usedTickets = tickets.userTicketResult?.groupCountryTicket
 		.filter(({ countryId }) => countryId !== null)
@@ -143,24 +77,27 @@ const EuroCup = () => {
 		});
 
 	const handleSubmitConfirmModalOpen = async ({ userPollTicket, count }) => {
-		if (!selectedTeamId || !ticketsNumber) return;
+		if (
+			!selectedTeamId ||
+			!ticketsNumber ||
+			tickets.unUsedTickets < ticketsNumber
+		)
+			return;
 		const selectedTeam = options.find(
 			({ countryId }) => countryId === selectedTeamId
 		);
 		const onSubmit = async () => {
 			if (!userInfo.isLogin) return;
 			try {
-				const res = await api_cupEvent_MultiUserPollTickets({
+				const res = await pollTicketsMutation({
 					userPollTicket,
 					count
-				});
+				}).unwrap();
 				const { errorCode, message } = res.data;
 				if (errorCode === 0) {
 					setTicketsNumber("");
 					setSelectedTeamId("");
 					setSelectedGroup("");
-					await getCupEventTicket();
-					await getTicketsSummary();
 					setPopBox({ isOpen: false });
 				} else {
 					setPopBox({
@@ -189,12 +126,12 @@ const EuroCup = () => {
 							<img
 								className="euro-logo"
 								src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo.png`}
-								alt=""
+								alt="euro-logo"
 							/>
 							<div className="flag">
 								<img
 									src={`${sportsImgUrl}/Country%20Team/${selectedTeam.imageName}`}
-									alt=""
+									alt={selectedTeam.imageName}
 								/>
 								<span>{selectedTeam.countryName}</span>
 							</div>
@@ -266,7 +203,7 @@ const EuroCup = () => {
 						onClick={() => setPopBox({ isOpen: false })}>
 						<img
 							src={`${bannerImgUrl}/desktop/img/event/eurocup/close-circle.png`}
-							alt=""
+							alt="close-circle"
 						/>
 					</div>
 				</div>
@@ -292,12 +229,12 @@ const EuroCup = () => {
 										<img
 											className="euro-logo"
 											src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo.png`}
-											alt=""
+											alt="euro-logo"
 										/>
 										<div className="flag">
 											<img
 												src={`${sportsImgUrl}/Country%20Team/${imageName}`}
-												alt=""
+												alt={imageName}
 											/>
 											<span>{countryName}</span>
 										</div>
@@ -320,7 +257,7 @@ const EuroCup = () => {
 						onClick={() => setPopBox({ isOpen: false })}>
 						<img
 							src={`${bannerImgUrl}/desktop/img/event/eurocup/close-circle.png`}
-							alt=""
+							alt="close-circle"
 						/>
 					</div>
 				</div>
@@ -337,21 +274,12 @@ const EuroCup = () => {
 
 	const isPredictionExpire = handlePredictionExpire();
 
-	useEffect(() => {
-		if (userInfo.isLogin) {
-			getCupEventTicket();
-			getMemberDeposit();
-		}
-		getCupEventPredictionSetting({ langId: userInfo.langId });
-		getTicketsSummary();
-	}, [userInfo.isLogin]);
-
 	return (
 		<>
 			<img
 				className="top-bn"
 				src={`${bannerImgUrl}/desktop/img/event/eurocup/top-bn-${userInfo.langId}.jpg`}
-				alt=""
+				alt={userInfo.langId}
 			/>
 			<div className="prediction-wrapper">
 				<div className="prediction-title">
@@ -372,11 +300,11 @@ const EuroCup = () => {
 						</span>
 						<img
 							src={`${bannerImgUrl}/h5/img/event/eurocup/arrow-right.png`}
-							alt=""
+							alt="arrow-right"
 						/>
 					</a>
 				</div>
-				<PredictList ticketSummary={ticketSummary} />
+				<PredictList ticketSummary={sortedTicketSummary} />
 			</div>
 			<div className="ticket-wrapper">
 				<TicketOverview
@@ -384,7 +312,7 @@ const EuroCup = () => {
 					onOpen={handleDepositListModalOpen}
 				/>
 				<TeamSelector
-					options={predictionSetting?.selectOptions}
+					options={predictionSettingData?.selectOptions}
 					selectedTeamId={selectedTeamId}
 					ticketsNumber={ticketsNumber}
 					selectedGroup={selectedGroup}
@@ -406,7 +334,7 @@ const EuroCup = () => {
 			<img
 				className="bottom-bg"
 				src={`${bannerImgUrl}/h5/img/event/eurocup/bottom-bg.png`}
-				alt=""
+				alt="bottom-bg"
 			/>
 			<div className="reward-content">
 				<RewardItem />
@@ -419,7 +347,7 @@ const EuroCup = () => {
 			<div className="footer-bg">
 				<img
 					src={`${bannerImgUrl}/h5/img/event/eurocup/footer-bg.png`}
-					alt=""
+					alt="footer-bg"
 				/>
 			</div>
 		</>
