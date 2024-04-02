@@ -270,15 +270,6 @@ const EuroCup = () => {
 		});
 	};
 
-	const handlePredictionExpire = () => {
-		// 目標時間為6月14日的23點59分59秒（GMT+8）,故utc時間減8小時做判斷
-		const targetTimeUtc = moment.utc("2024-06-14 15:59:59");
-		const nowUtc = moment.utc();
-		return nowUtc.isAfter(targetTimeUtc);
-	};
-
-	const isPredictionExpire = handlePredictionExpire();
-
 	return (
 		<>
 			<img
@@ -321,7 +312,6 @@ const EuroCup = () => {
 					selectedTeamId={selectedTeamId}
 					ticketsNumber={ticketsNumber}
 					selectedGroup={selectedGroup}
-					isPredictionExpire={isPredictionExpire}
 					setSelectedTeamId={setSelectedTeamId}
 					setTicketsNumber={setTicketsNumber}
 					setSelectedGroup={setSelectedGroup}
