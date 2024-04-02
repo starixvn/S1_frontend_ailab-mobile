@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
+import { isDateRange } from "@ailab-mobile/common";
 import Dropdown from "./dropdown";
 import { bannerImgUrl } from "../../../config";
+import { eventTime } from "../../common/eventTime";
 
 const TeamSelector = ({
 	options,
 	selectedTeamId,
 	ticketsNumber,
 	selectedGroup,
-	isPredictionExpire,
 	setSelectedTeamId,
 	setTicketsNumber,
 	setSelectedGroup,
@@ -21,7 +22,7 @@ const TeamSelector = ({
 	return (
 		<div
 			className={classNames("ticket-filter", {
-				closedown: isPredictionExpire
+				closedown: !isDateRange(eventTime.prediction)
 			})}>
 			<div>
 				<div className="group-input">
@@ -78,7 +79,6 @@ TeamSelector.propTypes = {
 	options: PropTypes.objectOf(PropTypes.any).isRequired,
 	selectedTeamId: PropTypes.string.isRequired,
 	selectedGroup: PropTypes.string.isRequired,
-	isPredictionExpire: PropTypes.bool.isRequired,
 	ticketsNumber: PropTypes.string.isRequired,
 	setSelectedTeamId: PropTypes.func.isRequired,
 	setTicketsNumber: PropTypes.func.isRequired,
