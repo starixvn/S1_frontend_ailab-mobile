@@ -13,8 +13,8 @@ const PredictionRecord = ({ usedTickets, onOpen }) => {
 			</div>
 			<div className="record-content">
 				{usedTickets
-					.slice(0, 3)
-					.map(({ count, countryId, countryName, imageName }) => (
+					?.slice(0, 3)
+					?.map(({ count, countryId, countryName, imageName }) => (
 						<div className="record-item" key={countryId}>
 							<div className="record-item-ticket">
 								<img
@@ -41,7 +41,7 @@ const PredictionRecord = ({ usedTickets, onOpen }) => {
 			</div>
 			<div
 				className={classNames("more-btn", {
-					active: usedTickets.length > 3
+					active: usedTickets?.length > 3
 				})}
 				onClick={onOpen}>
 				{t("lbl_More")}

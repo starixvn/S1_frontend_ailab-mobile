@@ -70,9 +70,9 @@ const EuroCup = () => {
 	const options = combineGroups(predictionSettingData?.selectOptions);
 
 	const usedTickets = tickets.userTicketResult?.groupCountryTicket
-		.filter(({ countryId }) => countryId !== null)
-		.map(ticketObj => {
-			const matchOption = options.find(
+		?.filter(({ countryId }) => countryId !== null)
+		?.map(ticketObj => {
+			const matchOption = options?.find(
 				option => option.countryId === ticketObj.countryId
 			);
 			return {
@@ -88,7 +88,7 @@ const EuroCup = () => {
 			tickets.unUsedTickets < ticketsNumber
 		)
 			return;
-		const selectedTeam = options.find(
+		const selectedTeam = options?.find(
 			({ countryId }) => countryId === Number(selectedTeamId)
 		);
 		const onSubmit = async () => {
@@ -227,7 +227,7 @@ const EuroCup = () => {
 						{t("lbl_CupEvent_PredictionRecord")}
 					</div>
 					<div className="record-content">
-						{usedTickets.map(
+						{usedTickets?.map(
 							({ count, countryId, countryName, imageName }) => (
 								<div className="record-item" key={countryId}>
 									<div className="ticket">
