@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
@@ -269,6 +269,16 @@ const EuroCup = () => {
 			)
 		});
 	};
+
+	useEffect(() => {
+		// 身份驗證未完成狀態
+		if (userInfo.isLogin && tickets?.errorCode === 104) {
+			setPopBox({
+				isOpen: true,
+				content: t("Label_CupEvent_Verify_Email_Phone")
+			});
+		}
+	}, [tickets.errorCode]);
 
 	return (
 		<>
