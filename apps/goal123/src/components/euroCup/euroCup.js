@@ -53,14 +53,16 @@ const EuroCup = () => {
 	const { data: { data: tickets = {} } = {} } = useGetCupEventTicketQuery(
 		null,
 		{
-			skip: !userInfo.isLogin
+			skip: !userInfo.isLogin,
+			refetchOnMountOrArgChange: true
 		}
 	);
 
 	const {
 		data: { data: memberDepositList = [] } = {}
 	} = useGetMemberDepositQuery(null, {
-		skip: !userInfo.isLogin
+		skip: !userInfo.isLogin,
+		refetchOnMountOrArgChange: true
 	});
 
 	const [pollTicketsMutation] = useMultiUserPollTicketsMutation();
