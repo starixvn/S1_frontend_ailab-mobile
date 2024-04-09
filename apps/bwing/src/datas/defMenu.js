@@ -562,6 +562,18 @@ export const productList = langId => {
 					...defGameInfo.LIVEcasinoPP
 				},
 				{
+					// displayText: "Won Casino",
+					icon: "icon icon-woncasino",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/woncasino.png`,
+					...defGameInfo.LIVECasinoWon,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.liveCasino_Won)
+						}
+					]
+				},
+				{
 					// displayText: "Big Gaming",
 					icon: "icon icon-bg",
 					img: `${bannerImgUrl}/h5/img/4.0/lobby/livecasino/live-bg.png`,
