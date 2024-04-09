@@ -36,10 +36,6 @@ const AmbassadorIntro = () => {
 		{
 			type: "image",
 			src: `${bannerImgUrl}/h5/img/ambassador/06.jpg`
-		},
-		{
-			type: "image",
-			src: `${bannerImgUrl}/h5/img/ambassador/07.jpg`
 		}
 	];
 
@@ -50,8 +46,7 @@ const AmbassadorIntro = () => {
 		`${bannerImgUrl}/h5/img/ambassador/03.jpg`,
 		`${bannerImgUrl}/h5/img/ambassador/04.jpg`,
 		`${bannerImgUrl}/h5/img/ambassador/05.jpg`,
-		`${bannerImgUrl}/h5/img/ambassador/06.jpg`,
-		`${bannerImgUrl}/h5/img/ambassador/07.jpg`
+		`${bannerImgUrl}/h5/img/ambassador/06.jpg`
 	];
 
 	const swiperConfigTop = {
