@@ -39,16 +39,19 @@ const EuroCup = () => {
 
 	const {
 		data: { data: ticketSummary = [] } = {}
-	} = useGetCupEventTicketSummaryQuery(null, {
-		selectFromResult: ({ data: { data = [] } = {} }) => {
-			const sortedData = [...data].sort(
-				(a, b) => b.percentage - a.percentage
-			);
-			return {
-				data: { data: sortedData }
-			};
+	} = useGetCupEventTicketSummaryQuery(
+		{ langId: userInfo.langId },
+		{
+			selectFromResult: ({ data: { data = [] } = {} }) => {
+				const sortedData = [...data].sort(
+					(a, b) => b.percentage - a.percentage
+				);
+				return {
+					data: { data: sortedData }
+				};
+			}
 		}
-	});
+	);
 
 	const { data: { data: tickets = {} } = {} } = useGetCupEventTicketQuery(
 		null,
