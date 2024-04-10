@@ -249,6 +249,7 @@ const defSubMenus = [
 		path: path.promotion.root,
 		icon: "icon icon-gift"
 	},
+
 	{
 		displayKey: "lbl_APPDownload",
 		href: `${window.location.origin}/${path.appDownload.root}`,
