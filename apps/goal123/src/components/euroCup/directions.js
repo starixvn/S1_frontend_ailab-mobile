@@ -69,9 +69,6 @@ const Directions = ({ directionsType, setDirectionsType }) => {
 							/>
 							<span>{t("lbl_CupEvent_Matches_Title")}</span>
 						</div>
-						<div className="subtitle">
-							{t("lbl_CupEvent_Matches_Subtitle")}
-						</div>
 						<div className="matches-sheet">
 							<div className="matches-sheet-item">
 								<div>{t("lbl_Bonus")}</div>
@@ -91,10 +88,14 @@ const Directions = ({ directionsType, setDirectionsType }) => {
 							</div>
 						</div>
 						<div className="matches-info">
+							<div className="subtitle">
+								<div>{t("lbl_CupEvent_Matches_Subtitle1")}</div>
+								<div>{t("lbl_CupEvent_Matches_Subtitle2")}</div>
+							</div>
 							<div>{t("lbl_CupEvent_Matches_desc1")}</div>
-							<div>{t("lbl_CupEvent_Matches_desc2")}</div>
-							<div>{t("lbl_CupEvent_Matches_desc3")}</div>
-							<div>{t("lbl_CupEvent_Matches_desc4")}</div>
+							<div>{t("lbl_CupEvent_Matches_desc2")} 3%</div>
+							<div>{t("lbl_CupEvent_Matches_desc3")} 5%</div>
+							<div>{t("lbl_CupEvent_Matches_desc4")} 8%</div>
 						</div>
 					</>
 				)}

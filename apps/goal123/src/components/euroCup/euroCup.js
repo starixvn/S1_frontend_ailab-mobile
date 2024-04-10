@@ -9,6 +9,7 @@ import {
 	useGetMemberDepositQuery,
 	useMultiUserPollTicketsMutation
 } from "@ailab-mobile/service";
+import { isDateRange } from "@ailab-mobile/common";
 import paths from "../../path";
 import { popBoxContext, userInfoContext } from "../common/context";
 import PredictList from "./predict/predictLIst";
@@ -20,6 +21,7 @@ import Directions from "./directions";
 import RewardItem from "./reward/RewardItem";
 import { bannerImgUrl, sportsImgUrl } from "../../config";
 import { numFormatToDigits } from "../common/common";
+import { eventTime } from "../common/eventTime";
 
 const EuroCup = () => {
 	const { t } = useTranslation();
@@ -179,7 +181,7 @@ const EuroCup = () => {
 								{t("lbl_Date")} (
 								{memberDepositList[0].statementTime.slice(-6)})
 							</div>
-							<div>Deposit ID</div>
+							<div>{t("lbl_CupEvent_DepositID")}</div>
 							<div>{t("lbl_DepositAmount")}</div>
 						</div>
 						<div>
@@ -284,6 +286,12 @@ const EuroCup = () => {
 			});
 		}
 	}, [tickets.errorCode]);
+
+	useEffect(() => {
+		if (!isDateRange(eventTime.eventCup)) {
+			navigate("/");
+		}
+	}, []);
 
 	return (
 		<>

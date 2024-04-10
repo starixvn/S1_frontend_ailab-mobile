@@ -3,6 +3,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Oswald:wght@600;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap");
@@ -12718,7 +12719,6 @@ span.important {
   z-index: 2;
   font-size: 3.7vw;
   font-weight: 700;
-  width: 88vw;
   left: calc(50% - 13vw);
   top: calc(50% - 2.2vw);
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.3607843137);
@@ -13100,33 +13100,38 @@ span.important {
   color: white;
   margin-top: 7vw;
 }
+.euro .ticket-filter > div .close-text {
+  display: none;
+}
 .euro .ticket-filter.closedown {
   position: relative;
 }
-.euro .ticket-filter.closedown::before {
-  display: block;
-  content: "The prediction has endedand the winner will be drawn after EURO 2024 end";
-  background: rgba(0, 0, 0, 0.7411764706);
+.euro .ticket-filter.closedown > div {
+  position: relative;
+}
+.euro .ticket-filter.closedown > div .close-text {
+  background: rgba(0, 0, 0, 0.8196078431);
+  width: 86vw;
+  height: 75.3vw;
+  position: absolute;
+  z-index: 3;
   color: white;
   font-weight: 700;
-  text-align: center;
+  font-size: 3.5vw;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 0;
+  border-radius: 7vw;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 3.5vw;
-  width: 86vw;
-  height: 75.3vw;
-  position: absolute;
-  z-index: 2;
-  border-radius: 7vw;
-  left: 7vw;
-  text-shadow: 0 0 10px #000;
-  line-height: 5.5vw;
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
 }
 .euro .record {
   background: #F9BF4B;
@@ -13412,13 +13417,6 @@ span.important {
 .euro .matches {
   padding-bottom: 20vw;
 }
-.euro .matches .subtitle {
-  color: white;
-  font-weight: 600;
-  font-size: 3vw;
-  margin: -1vw 0 0 9vw;
-  font-weight: 600;
-}
 .euro .matches-sheet {
   color: #143CDB;
   font-weight: 700;
@@ -13469,9 +13467,20 @@ span.important {
   color: white;
   font-size: 3vw;
   font-weight: 600;
-  margin: 3vw 0 0 9vw;
+  margin: 3vw 9vw 0;
 }
 .euro .matches-info > div {
+  margin-bottom: 1vw;
+}
+.euro .matches-info .subtitle {
+  color: #F9BF4B;
+  font-weight: 800;
+  font-size: 3.5vw;
+  margin-bottom: 2vw;
+  padding-bottom: 1vw;
+  border-bottom: 1px solid #fff;
+}
+.euro .matches-info .subtitle div {
   margin-bottom: 1vw;
 }
 .euro .footer-bg {
