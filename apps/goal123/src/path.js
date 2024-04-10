@@ -136,6 +136,12 @@ export default {
 	},
 	dragonEgg: {
 		root: "dragonEgg"
+	},
+	ambassador: {
+		root: "ambassador"
+	},
+	appDownload2: {
+		root: "appDownload2"
 	}
 };
 

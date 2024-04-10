@@ -12202,4 +12202,480 @@ span.important {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+.ambassador {
+  padding-top: 12vw;
+  padding-bottom: 10vw;
+}
+.ambassador .banner img {
+  width: 100%;
+  display: block;
+}
+.ambassador .title {
+  background: url(https://banner.goal123.org/h5/img/ambassador/title-bg.svg) no-repeat center/cover;
+  width: 81vw;
+  height: 15vw;
+  margin-bottom: 5vw;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 0 7vw 1vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 5vw;
+  font-weight: 800 !important;
+  position: absolute;
+  top: -5.8vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.ambassador-intro {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding: 12vw 0;
+  background: url(https://banner.goal123.org/h5/img/ambassador/bg.jpg) no-repeat top/cover;
+}
+.ambassador-intro-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ambassador-intro .content {
+  padding: 0 5vw;
+}
+.ambassador-intro .content p {
+  font-size: 3vw;
+  line-height: 1.4;
+  margin-bottom: 3vw;
+  font-weight: 500;
+  color: #141F33;
+}
+.ambassador-gallery {
+  width: 90vw;
+  height: auto;
+}
+.ambassador-gallery .swiper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ambassador-gallery .swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+.ambassador-gallery .swiper-slide iframe {
+  min-height: unset;
+  border-radius: 10px;
+}
+.ambassador-gallery .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.ambassador-gallery .gallery2 {
+  height: 80%;
+  width: 100%;
+}
+.ambassador-gallery .gallery2 .swiper-button-next {
+  background: url(https://banner.goal123.org/desktop/img/home-page/icon/swiper-next-prev.svg) no-repeat center/cover;
+  width: 8vw;
+  height: 8vw !important;
+  right: 1vw;
+}
+.ambassador-gallery .gallery2 .swiper-button-next::after {
+  font-family: unset;
+  content: "" !important;
+}
+.ambassador-gallery .gallery2 .swiper-button-prev {
+  background: url(https://banner.goal123.org/desktop/img/home-page/icon/swiper-next-prev.svg) no-repeat center/cover;
+  width: 8vw;
+  height: 8vw !important;
+  right: 1vw;
+  -webkit-transform: scale(-1);
+          transform: scale(-1);
+}
+.ambassador-gallery .gallery2 .swiper-button-prev::after {
+  font-family: unset;
+  content: "" !important;
+}
+.ambassador-gallery .gallery {
+  height: 20%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1vw 0 0;
+}
+.ambassador-gallery .gallery .swiper-slide {
+  cursor: pointer;
+  position: relative;
+}
+.ambassador-gallery .gallery .swiper-slide::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 1;
+}
+.ambassador-gallery .gallery .swiper-slide:hover::after {
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.ambassador-gallery .gallery .swiper-slide-thumb-active::after {
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.ambassador-career {
+  background: #284985;
+  padding: 12vw 3vw;
+  position: relative;
+}
+.ambassador-career-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 3vw;
+  border-bottom: 1px solid #fab617;
+}
+.ambassador-career-block.bottom {
+  padding-top: 6vw;
+  border: 0;
+}
+.ambassador-career-block.bottom .ambassador-career-item {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ambassador-career-block.bottom .ambassador-career-item div {
+  font-weight: 700;
+  color: #fab617;
+  font-size: 3.5vw;
+  margin-left: 10px;
+}
+.ambassador-career-block.bottom .ambassador-career-item div span {
+  display: block;
+  font-size: 8vw;
+  font-weight: 800;
+  margin-top: 1vw;
+}
+.ambassador-career-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 1vw 5vw;
+}
+.ambassador-career-item img {
+  width: 10.5vw;
+}
+.ambassador-career-item div {
+  font-weight: 600;
+  color: #fff;
+  font-size: 3.5vw;
+  margin-left: 10px;
+}
+.ambassador-career-item div span {
+  display: block;
+  font-size: 3vw;
+}
+.ambassador-reward {
+  padding: 12vw 3vw;
+  position: relative;
+  background: url(https://banner.goal123.org/h5/img/ambassador/bg.jpg) no-repeat bottom/cover;
+}
+.ambassador-reward-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 3vw;
+  border-bottom: 1px solid #878686;
+}
+.ambassador-reward-block.bottom {
+  padding-top: 6vw;
+  border: 0;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item {
+  text-align: center;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item div {
+  font-weight: 700;
+  color: #fab617;
+  font-size: 3.5vw;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item div span {
+  display: block;
+  font-size: 8vw;
+  font-weight: 800;
+  margin-top: 1vw;
+}
+.ambassador-reward-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 1vw 8vw;
+}
+.ambassador-reward-item img {
+  width: 16vw;
+  margin-bottom: 2vw;
+}
+.ambassador-reward-item div {
+  font-weight: 600;
+  color: #141F33;
+  font-size: 5vw;
+  margin: 0 0 10px 10px;
+  text-align: center;
+}
+.ambassador-reward-item div span {
+  display: block;
+  font-size: 3vw;
+}
+.ambassador-reward-item div + img {
+  width: 10vw;
+  margin-bottom: 0;
+}
+.ambassador-app {
+  background: #fab617;
+  padding: 10vw 3vw 10vw 3vw;
+  position: relative;
+  border-radius: 15vw 15vw 0 0;
+  margin-top: -15vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ambassador-app-cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3vw;
+}
+.ambassador-app-cover .subtitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ambassador-app-cover .subtitle img {
+  width: 11vw;
+  height: 11vw;
+  margin-right: 2vw;
+}
+.ambassador-app-cover .subtitle div {
+  color: #141F33;
+  font-weight: 800;
+  font-size: 7vw;
+  text-transform: uppercase;
+  text-align: center;
+}
+.ambassador-app-cover .subtitle div > div {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 4vw;
+}
+.ambassador-app-cover .subtitle div > div span {
+  color: #D83B35;
+}
+.ambassador-app-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.ambassador-app-info-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 2vw 2vw 0;
+  padding: 5vw 3vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 52vw;
+  background: #fff;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+.ambassador-app-info-item:nth-child(2n) {
+  margin-right: 0;
+}
+.ambassador-app-info-item img {
+  width: 16vw;
+}
+.ambassador-app-info-item div {
+  font-size: 4vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #284985;
+}
+.ambassador-app-info-item div span {
+  text-transform: capitalize;
+  font-size: 3vw;
+  font-weight: 500;
+  display: block;
+  margin-top: 3vw;
+}
+.ambassador-app-qrcode {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3vw;
+}
+.ambassador-app-qrcode-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ambassador-app-qrcode-item .qr-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: #284985;
+  border-radius: 8px;
+  min-width: 35vw;
+  padding: 2vw;
+  font-weight: 500;
+  margin-bottom: 1vw;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: #fff;
+}
+.ambassador-app-qrcode-item .qr-button img {
+  width: 4vw;
+  margin-right: 1vw;
+}
+.ambassador-app-qrcode-item .qr-button + a {
+  font-weight: 500;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }/*# sourceMappingURL=style.css.map */
