@@ -168,6 +168,10 @@ const defPlatfrom = [
 	{
 		...products["93Connect"],
 		imgName: "93connecta"
+	},
+	{
+		...products.WonCasino,
+		imgName: "woncasino"
 	}
 ];
 

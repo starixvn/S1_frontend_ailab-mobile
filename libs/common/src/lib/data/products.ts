@@ -142,6 +142,12 @@ export const products = {
 		tpGameType: 16,
 		gameId: 101
 	},
+	WonCasino: {
+		tpGameIdNo: 131,
+		tpId: 64,
+		gameId: 0,
+		tpGameType: 116
+	},
 	GamePlay: {
 		tpGameIdNo: 33,
 		tpId: 6,

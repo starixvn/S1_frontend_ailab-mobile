@@ -121,6 +121,10 @@ export const defMenuList = Object.freeze([
 			},
 			{
 				menuType: defMenuType.entPage,
+				...products.WonCasino
+			},
+			{
+				menuType: defMenuType.entPage,
 				...products.BigGaming
 			},
 			{

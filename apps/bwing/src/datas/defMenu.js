@@ -233,6 +233,10 @@ export const defMenuObj = Object.freeze({
 			},
 			{
 				menuType: defMenuType.entPage,
+				...products.WonCasino
+			},
+			{
+				menuType: defMenuType.entPage,
 				...products.BigGaming
 			},
 			{
