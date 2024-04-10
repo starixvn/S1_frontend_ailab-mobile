@@ -25,6 +25,9 @@ const TeamSelector = ({
 				closedown: !isDateRange(eventTime.prediction)
 			})}>
 			<div>
+				<div className="close-text">
+					{t("lbl_CupEvent_DateLineTip")}
+				</div>
 				<div className="group-input">
 					<Dropdown
 						options={Object.keys(options ?? {})}
