@@ -12,3 +12,4 @@ export * from "./paymentApi";
 export * from "./eventApi";
 export * from "./bigWinApi";
 export * from "./eventsApi";
+export * from "./cupEventApi";

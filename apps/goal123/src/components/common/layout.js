@@ -25,8 +25,17 @@ import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 import { isEventPeriod } from "./common";
+import EuroCupLink from "../euroCup/euroCupLink";
 
-const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
+const Layout = ({
+	children,
+	header,
+	mainClass,
+	title,
+	appHint,
+	goTopBtn,
+	noHeader
+}) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { setNav } = useContext(navContext);
@@ -114,7 +123,9 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{header ?? <Header title={title} hideLogo={true} />}
+			{noHeader
+				? null
+				: header ?? <Header title={title} hideLogo={true} />}
 			<main
 				style={position}
 				className={`${mainClass ?? ""}${
@@ -125,20 +136,24 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			</main>
 
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && !displayLiveStreaming && !isLoading && (
-				<div className="eventLink vgaming">
-					<button
-						className="icon icon-close"
-						onClick={() => setDisplayVgaming(false)}
-					/>
-					<img
-						className="vgimg"
-						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
-						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
-					/>
-				</div>
-			)}
+			{displayVgaming &&
+				root &&
+				!displayLiveStreaming &&
+				!isLoading &&
+				!isDateRange(eventTime.eventCup) && (
+					<div className="eventLink vgaming">
+						<button
+							className="icon icon-close"
+							onClick={() => setDisplayVgaming(false)}
+						/>
+						<img
+							className="vgimg"
+							src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+							alt="vgaming-link"
+							onClick={() => clickGame(defGameInfo.sabaClub)}
+						/>
+					</div>
+				)}
 
 			{root && (
 				<LiveStreamingPop
@@ -158,6 +173,10 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 
 			{/* 僅限過年期間顯示 */}
 			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
+
+			{/* 歐冠杯期間顯示 */}
+			{isEventPeriod(eventTime.eventCup) && root && <EuroCupLink />}
+
 			<Footer />
 			{goTopBtn && <GoTopBtn />}
 		</>
@@ -169,7 +188,8 @@ Layout.defaultProps = {
 	mainClass: "main",
 	title: "",
 	appHint: false,
-	header: null
+	header: null,
+	noHeader: false
 };
 
 Layout.propTypes = {
@@ -178,7 +198,8 @@ Layout.propTypes = {
 	mainClass: PropTypes.string,
 	title: PropTypes.string,
 	appHint: PropTypes.bool,
-	header: PropTypes.node
+	header: PropTypes.node,
+	noHeader: PropTypes.bool
 };
 
 class RotationHint extends Component {
