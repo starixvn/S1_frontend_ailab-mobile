@@ -140,7 +140,7 @@ const Layout = ({
 				root &&
 				!displayLiveStreaming &&
 				!isLoading &&
-				!isDateRange(eventTime.eventCup) && (
+				!isEventPeriod(eventTime.eventCup) && (
 					<div className="eventLink vgaming">
 						<button
 							className="icon icon-close"
