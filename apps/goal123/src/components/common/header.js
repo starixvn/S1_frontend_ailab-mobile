@@ -1,13 +1,15 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { Redirect, Link } from "@reach/router";
+import { Redirect, Link, useNavigate } from "@reach/router";
 import classNames from "classnames";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	i18nContext,
 	msgCountContext,
 	navContext,
-	defNavPanel
+	defNavPanel,
+	rootContext
 } from "./context";
 import path from "../../path";
 import Logo from "./logo";
@@ -15,6 +17,7 @@ import AppDownloadHint from "../home/appDownload";
 import Submenu from "../home/submenu";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
+import { eventTime } from "./eventTime";
 
 const Header = ({
 	title,
@@ -26,6 +29,8 @@ const Header = ({
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
+	const { root } = useContext(rootContext);
+	const navigate = useNavigate();
 
 	const handleSideMenuPanel = isOpen => {
 		setIsOpenSideMenu(isOpen);
@@ -49,9 +54,36 @@ const Header = ({
 								<span>≡</span>
 							</button>
 						</div>
-						<a href="/" className={classNames("logo")}>
-							<Logo />
-						</a>
+						{isDateRange(eventTime.eventCup) ? (
+							<a className="logo eurocuplogo">
+								<div
+									onClick={() => {
+										root
+											? window.location.reload()
+											: navigate(`/${userInfo.langId}`);
+									}}>
+									<img
+										src={`${bannerImgUrl}/h5/img/event/eurocup/goal123-logo.png`}
+										alt=""
+									/>
+								</div>
+								<div
+									onClick={() => {
+										navigate(
+											`/${userInfo.langId}/${path.euroCup.root}`
+										);
+									}}>
+									<img
+										src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
+										alt=""
+									/>
+								</div>
+							</a>
+						) : (
+							<a href="/" className={classNames("logo")}>
+								<Logo />
+							</a>
+						)}
 					</>
 				)}
 				{title ? <div className="title">{title}</div> : <HeaderBtn />}
