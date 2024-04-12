@@ -70,6 +70,7 @@ import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
 import DragonEgg from "./pages/dragonEgg";
 import Ambassador from "./pages/ambassador";
+import EuroCup from "./pages/euroCup";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -156,6 +157,7 @@ const Index = () => {
 						/>
 						<DragonEgg path={path.dragonEgg.root} />
 						<Ambassador path={path.ambassador.root} />
+						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 					</Router>
 					<Join />
 					<Login />
