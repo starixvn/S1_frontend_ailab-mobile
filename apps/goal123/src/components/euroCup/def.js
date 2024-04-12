@@ -12,15 +12,15 @@ export const REWARD_ITEMS = [
 		displayKey: "lbl_CupEvent_2ndPlace",
 		img: "",
 		amount: 50000000,
-		count: 2,
+		count: 3,
 		winners: []
 	},
 	{
 		key: 3,
 		displayKey: "lbl_CupEvent_semiFinals",
 		img: "",
-		amount: 30000000,
-		count: 2,
+		amount: 10000000,
+		count: 12,
 		winners: ["test01", "test02", "test03"]
 	}
 ];
