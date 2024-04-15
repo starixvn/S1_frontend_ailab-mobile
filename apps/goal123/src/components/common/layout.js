@@ -23,7 +23,7 @@ import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { api_liveStreaming_GetDataList } from "../../service/api/liveStreaming";
 import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
-import DragonEggPop from "../dragonEgg/homeLink";
+// import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 import H5Footer from "../newHome/components/HomeFooter";
 
@@ -155,7 +155,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			) : null} */}
 
 			{/* 僅限過年期間顯示 */}
-			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
+			{/* {isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />} */}
 
 			{/* <Footer /> */}
 			<H5Footer />
