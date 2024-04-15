@@ -26,7 +26,7 @@ const Directions = ({ directionsType, setDirectionsType }) => {
 						active: directionsType === DIRECTIONS_TYPE.MATCHES
 					})}
 					onClick={() => setDirectionsType(DIRECTIONS_TYPE.MATCHES)}>
-					{t("lbl_CupEvent_Matches")}
+					{t("lbl_CupEvent_ExtraWin")}
 				</a>
 			</div>
 			<div
