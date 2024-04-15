@@ -13,6 +13,9 @@ import MenuPolicyInfo from "./components/MenuPolicyInfo";
 import MenuRoofSection from "./components/MenuRoofSection";
 import MenuSwitchLang from "./components/MenuSwitchLang";
 
+// toggleMenu 從 HomeFooter控制
+// HomeFooter 已挪至Layout使用
+
 const NewMenu = ({ toggleMenu }) => {
 	const { userInfo } = useContext(userInfoContext);
 	return (

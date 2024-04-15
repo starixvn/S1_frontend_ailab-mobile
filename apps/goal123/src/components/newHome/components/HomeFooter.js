@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import path from "apps/goal123/src/path";
 import { bannerImgUrl, siteInfo } from "../../../config";
 import { userInfoContext } from "../../common/context";
-// import Menu from "../menu";
 import NewMenu from "../../newMenu";
 
 const HomeFooter = () => {

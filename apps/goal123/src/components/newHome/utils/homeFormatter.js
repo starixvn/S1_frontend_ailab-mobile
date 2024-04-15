@@ -1,3 +1,5 @@
+// 部分數字轉換會變 object Object 的問題, 沿用桌機使用的 number_format
+
 export const number_format = ({
 	number,
 	formatRequired = false,
