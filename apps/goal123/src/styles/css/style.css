@@ -7075,7 +7075,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 60vw;
+  bottom: 45vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7085,6 +7085,9 @@ span.important {
   right: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.vgaming.eurocup {
+  bottom: 45vw;
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -7157,7 +7160,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 77vw;
+  bottom: 45vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -7172,6 +7175,9 @@ span.important {
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.livesports.eurocup {
+  bottom: 45vw;
 }
 @-webkit-keyframes livesports {
   0% {
