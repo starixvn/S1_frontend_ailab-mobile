@@ -7045,6 +7045,9 @@ span.important {
   background: #cecece;
   color: rgb(92, 92, 92);
 }
+.eventLink.vgaming.eurocup {
+  bottom: 45vw;
+}
 .eventLink.dragonegg {
   right: 4vw;
   bottom: 16vw;
@@ -7131,6 +7134,9 @@ span.important {
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.livesports.eurocup {
+  bottom: 45vw;
 }
 @-webkit-keyframes livesports {
   0% {
