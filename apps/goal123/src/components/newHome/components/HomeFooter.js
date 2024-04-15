@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useMatch } from "@reach/router";
 import { useTranslation } from "react-i18next";
+import path from "apps/goal123/src/path";
 import { bannerImgUrl, siteInfo } from "../../../config";
 import { userInfoContext } from "../../common/context";
-import Menu from "../menu";
+// import Menu from "../menu";
+import NewMenu from "../../newMenu";
 
 const HomeFooter = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -18,8 +20,8 @@ const HomeFooter = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
-	const matchPromotion = useMatch("/promotion");
-	const matchHome = useMatch("/");
+	const matchPromotion = useMatch(`/${path.promotion.root}`);
+	const matchHome = useMatch(path.home.root);
 
 	const onClickDeposit = () => {
 		setClickDeposit(!clickdeposit);
@@ -50,8 +52,7 @@ const HomeFooter = () => {
 			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-promotion-active.svg`
 		},
 		iconDeposit: {
-			// beforeLoginSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit.svg`,
-			// beforeLoginbutClcikedSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after.svg`,
+			beforeLoginSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit.svg`,
 			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after.svg`,
 			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after-active.svg`
 		},
@@ -67,7 +68,7 @@ const HomeFooter = () => {
 
 	return (
 		<>
-			{isMenuOpen && <Menu toggleMenu={toggleMenu} />}
+			{isMenuOpen && <NewMenu toggleMenu={toggleMenu} />}
 			<footer id="footer" className="footer">
 				<div
 					className={
@@ -91,7 +92,7 @@ const HomeFooter = () => {
 										? FocusItemImg.iconHome.afterClickSrc
 										: FocusItemImg.iconHome.beforeClickSrc
 								}
-								alt=""
+								alt="footer-home"
 							/>
 							{!userInfo.Login && (
 								<span
@@ -104,7 +105,7 @@ const HomeFooter = () => {
 						</a>
 
 						<a
-							href="/promotion"
+							href={`/${path.promotion.root}`}
 							className={
 								clickPromotion || matchPromotion
 									? "item active"
@@ -119,7 +120,7 @@ const HomeFooter = () => {
 										: FocusItemImg.iconPromotion
 												.beforeClickSrc
 								}
-								alt=""
+								alt="footer-promotion"
 							/>
 							{!userInfo.Login && (
 								<span
@@ -133,10 +134,12 @@ const HomeFooter = () => {
 						</a>
 
 						{!userInfo.isLogin && (
-							<a href="/login" className="item">
+							<a href={`/${path.login.root}`} className="item">
 								<img
 									onClick={onClickDeposit}
-									src="https://banner.goal123.org/h5/img/home-page/footer/icon-deposit.svg"
+									src={
+										FocusItemImg.iconDeposit.beforeLoginSrc
+									}
 								/>
 								<span>{t("lbl_Deposit")}</span>
 							</a>
@@ -166,38 +169,38 @@ const HomeFooter = () => {
 							<div className="footer-transaction active">
 								<div className="transaction">
 									<a
-										href="/deposit"
+										href={`/${path.deposit.root}`}
 										className="transaction-item">
 										<img
-											src="https://banner.goal123.org/h5/img/home-page/footer/icon-sub-deposit.svg"
-											alt=""
+											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-deposit.svg`}
+											alt="footer-deposit"
 										/>
 										<span>{t("lbl_Deposit")}</span>
 									</a>
 									<a
-										href="/withdrawal"
+										href={`/${path.withdrawal.root}`}
 										className="transaction-item">
 										<img
-											src="https://banner.goal123.org/h5/img/home-page/footer/icon-sub-withdraw.svg"
-											alt=""
+											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-withdrawal.svg`}
+											alt="footer-withdraw"
 										/>
 										<span>{t("lbl_Withdrawal")}</span>
 									</a>
 									<a
-										href="/statement"
+										href={`/${path.statement.root}`}
 										className="transaction-item">
 										<img
-											src="https://banner.goal123.org/h5/img/home-page/footer/icon-sub-statement.svg"
-											alt=""
+											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-statement.svg`}
+											alt="footer-statement"
 										/>
 										<span>{t("lbl_Statement")}</span>
 									</a>
 									<a
-										href="financialLog"
+										href={`/${path.financialLog.root}`}
 										className="transaction-item">
 										<img
-											src="https://banner.goal123.org/h5/img/home-page/footer/icon-sub-financial.svg"
-											alt=""
+											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-financial.svg`}
+											alt="footer-financial"
 										/>
 										<span>{t("lbl_Financial")}</span>
 									</a>
@@ -208,7 +211,7 @@ const HomeFooter = () => {
 						<a className="item" onClick={handleLiveChatClick}>
 							<img
 								src={FocusItemImg.iconLiveChat.beforeClickSrc}
-								alt=""
+								alt="footer-livechat"
 							/>
 							<span>{t("lbl_LiveChat")}</span>
 						</a>
@@ -221,7 +224,7 @@ const HomeFooter = () => {
 										? `${bannerImgUrl}/h5/img/home-page/footer/icon-menu-active.svg`
 										: `${bannerImgUrl}/h5/img/home-page/footer/icon-menu.svg`
 								}
-								alt=""
+								alt="footer-menu"
 							/>
 							<span className={isMenuOpen && "active "}>
 								{t("Label_Footer_Menu")}

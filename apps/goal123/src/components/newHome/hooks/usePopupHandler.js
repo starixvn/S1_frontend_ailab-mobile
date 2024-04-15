@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from "react";
+import { bannerImgUrl } from "apps/goal123/src/config";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
+import { api_GetWalletInfo } from "apps/goal123/src/service/api/account";
 import {
 	setCookie,
 	readCookie,

@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
+import path from "apps/goal123/src/path";
 import { bannerImgUrl } from "../../../config";
-import { userInfoContext, popBoxContext } from "../../common/context";
 
 const HomeJoin = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const JoinListItems = [
@@ -53,7 +51,7 @@ const HomeJoin = () => {
 				<button
 					className="btn-more"
 					onClick={() => {
-						navigate("/join");
+						navigate(`/${path.join.root}`);
 					}}>
 					{t("lbl_PromoJoinNow")}
 				</button>

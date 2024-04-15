@@ -62,88 +62,87 @@ const HomeSportMatches = () => {
 		navigate(targetUrl);
 	};
 
-
-	// 目前api收不到資料 dummy data測樣式ok
-	const dummytestingData = [
-		{
-			sportLeaguesTitle: "Premier League",
-			battleTime: "2024-04-15T15:00:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team",
-			handicap: 0.5,
-			homeOdds: 1.8,
-			awayOdds: 2.0,
-			gameId: "1",
-			matchId: "123456"
-		},
-		{
-			sportLeaguesTitle: "Premier League",
-			battleTime: "2024-04-15T15:00:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team 1",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team 1",
-			handicap: 0.5,
-			homeOdds: 1.8,
-			awayOdds: 2.0,
-			gameId: "1",
-			matchId: "123456"
-		},
-		{
-			sportLeaguesTitle: "La Liga",
-			battleTime: "2024-04-16T16:30:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team 2",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team 2",
-			handicap: 0.75,
-			homeOdds: 1.9,
-			awayOdds: 2.1,
-			gameId: "1",
-			matchId: "789012"
-		},
-		{
-			sportLeaguesTitle: "NBA",
-			battleTime: "2024-04-17T19:00:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team 3",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team 3",
-			handicap: 5.5,
-			homeOdds: 1.95,
-			awayOdds: 2.05,
-			gameId: "2",
-			matchId: "345678"
-		},
-		{
-			sportLeaguesTitle: "UEFA Champions League",
-			battleTime: "2024-04-18T20:00:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team 4",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team 4",
-			handicap: 1.0,
-			homeOdds: 2.0,
-			awayOdds: 1.9,
-			gameId: "1",
-			matchId: "901234"
-		},
-		{
-			sportLeaguesTitle: "NCAA",
-			battleTime: "2024-04-19T14:00:00Z",
-			homeTeamPic: "home_team_pic_url",
-			homeTeamName: "Home Team 5",
-			awayTeamPic: "away_team_pic_url",
-			awayTeamName: "Away Team 5",
-			handicap: 7.5,
-			homeOdds: 2.1,
-			awayOdds: 1.8,
-			gameId: "2",
-			matchId: "567890"
-		}
-	];
+	// 目前api收不到資料 dummy data可測樣式ok
+	// const dummytestingData = [
+	// 	{
+	// 		sportLeaguesTitle: "Premier League",
+	// 		battleTime: "2024-04-15T15:00:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team",
+	// 		handicap: 0.5,
+	// 		homeOdds: 1.8,
+	// 		awayOdds: 2.0,
+	// 		gameId: "1",
+	// 		matchId: "123456"
+	// 	},
+	// 	{
+	// 		sportLeaguesTitle: "Premier League",
+	// 		battleTime: "2024-04-15T15:00:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team 1",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team 1",
+	// 		handicap: 0.5,
+	// 		homeOdds: 1.8,
+	// 		awayOdds: 2.0,
+	// 		gameId: "1",
+	// 		matchId: "123456"
+	// 	},
+	// 	{
+	// 		sportLeaguesTitle: "La Liga",
+	// 		battleTime: "2024-04-16T16:30:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team 2",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team 2",
+	// 		handicap: 0.75,
+	// 		homeOdds: 1.9,
+	// 		awayOdds: 2.1,
+	// 		gameId: "1",
+	// 		matchId: "789012"
+	// 	},
+	// 	{
+	// 		sportLeaguesTitle: "NBA",
+	// 		battleTime: "2024-04-17T19:00:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team 3",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team 3",
+	// 		handicap: 5.5,
+	// 		homeOdds: 1.95,
+	// 		awayOdds: 2.05,
+	// 		gameId: "2",
+	// 		matchId: "345678"
+	// 	},
+	// 	{
+	// 		sportLeaguesTitle: "UEFA Champions League",
+	// 		battleTime: "2024-04-18T20:00:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team 4",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team 4",
+	// 		handicap: 1.0,
+	// 		homeOdds: 2.0,
+	// 		awayOdds: 1.9,
+	// 		gameId: "1",
+	// 		matchId: "901234"
+	// 	},
+	// 	{
+	// 		sportLeaguesTitle: "NCAA",
+	// 		battleTime: "2024-04-19T14:00:00Z",
+	// 		homeTeamPic: "home_team_pic_url",
+	// 		homeTeamName: "Home Team 5",
+	// 		awayTeamPic: "away_team_pic_url",
+	// 		awayTeamName: "Away Team 5",
+	// 		handicap: 7.5,
+	// 		homeOdds: 2.1,
+	// 		awayOdds: 1.8,
+	// 		gameId: "2",
+	// 		matchId: "567890"
+	// 	}
+	// ];
 
 	return (
 		<div className="home-sports">

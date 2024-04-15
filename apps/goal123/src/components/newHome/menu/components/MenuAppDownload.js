@@ -2,10 +2,12 @@ import React from "react";
 import { bannerImgUrl } from "apps/goal123/src/config";
 import { useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
+import path from "apps/goal123/src/path";
 
 const MenuAppDownload = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+
 	return (
 		<div className="menu-app">
 			<div className="app-content">
@@ -21,7 +23,6 @@ const MenuAppDownload = () => {
 						<span>{t("Label_Menu_On_iOS_And_Android")}</span>
 					</div>
 				</div>
-				{/* 請連至app download頁 */}
 				<button
 					className="btn-download"
 					onClick={() => navigate(`/${path.appDownload.root}`)}>

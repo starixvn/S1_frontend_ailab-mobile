@@ -4,7 +4,7 @@ import { bannerImgUrl } from "apps/goal123/src/config";
 import { useNavigate } from "@reach/router";
 import { userInfoContext } from "../../../common/context";
 
-const LogoSection = () => {
+const MenuLogoSection = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
@@ -14,13 +14,19 @@ const LogoSection = () => {
 			{userInfo.isLogin ? (
 				<div className="menu-brand active">
 					<a className="brand-logo">
-						<img src={`${bannerImgUrl}/h5/img/logo.png`} />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="menu-logo"
+						/>
 					</a>
 				</div>
 			) : (
 				<div className="menu-brand">
 					<a className="brand-logo">
-						<img src={`${bannerImgUrl}/h5/img/logo.png`} alt="" />
+						<img
+							src={`${bannerImgUrl}/h5/img/logo.png`}
+							alt="menu-logo"
+						/>
 					</a>
 					<div className="brand-title">
 						{t("Label_Menu_Welcome_Bonus")}
@@ -47,4 +53,4 @@ const LogoSection = () => {
 	);
 };
 
-export default LogoSection;
+export default MenuLogoSection;

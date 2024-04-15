@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import Marquee from "react-fast-marquee";
+import path from "apps/goal123/src/path";
 import { api_GetAnnouncement } from "../../../service/api/message";
 import { userInfoContext } from "../../common/context";
 import { GET_LANG_ID } from "../../../service/language";
@@ -29,9 +30,9 @@ const HomeMarquee = () => {
 
 	const clickMarquee = () => {
 		if (userInfo.isLogin) {
-			navigate(`/announcement`);
+			navigate(`/${path.announcement.root}`);
 		} else {
-			navigate(`/login`);
+			navigate(`/${path.login.root}`);
 		}
 	};
 

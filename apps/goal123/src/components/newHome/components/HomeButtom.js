@@ -131,19 +131,9 @@ const HomeButtom = () => {
 		displayPage: defDisplayPage.Home
 	});
 
-	// const livechatData = socialChannel?.find(
-	// 	channel => channel.channelName === defChannelName.LiveChat
-	// );
-
 	const zaloData = socialChannel?.find(
 		channel => channel.channelName === defChannelName.Zalo
 	);
-
-	// const openLiveChat = () => {
-	// 	if (livechatData) {
-	// 		window.LiveChatWidget.call("maximize");
-	// 	}
-	// };
 
 	return (
 		<div className="home-bottom">
@@ -154,19 +144,19 @@ const HomeButtom = () => {
 						target="_blank">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-facebook.svg`}
-							alt="facebook"
+							alt="home-facebook"
 						/>
 					</a>
 					<a href="">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-youtube.svg`}
-							alt="youtube"
+							alt="home-youtube"
 						/>
 					</a>
 					<a href={zaloData ? zaloData.link : "#"} target="_blank">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-zalo.svg`}
-							alt=""
+							alt="home-zalo"
 						/>
 					</a>
 				</div>
@@ -190,7 +180,7 @@ const HomeButtom = () => {
 					<span>{t("lbl_PoweredBy")}</span>
 					<img
 						src={`${bannerImgUrl}/h5/img/bong88.png`}
-						alt="powered by"
+						alt="home-bong88"
 					/>
 				</div>
 			</div>

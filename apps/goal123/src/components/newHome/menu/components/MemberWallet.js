@@ -6,7 +6,7 @@ import useGetTpBalance from "../../../hook/useGetTpBalance";
 import useGetBonusBalance from "../../../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../../../transfer/transfer.def";
 import { number_format } from "../../../common/common";
-import BonusWalletRows from "./BonusWalletRows";
+import MemberBonusWallet from "./MemberBonusWallet";
 
 const MemberWallet = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -78,7 +78,7 @@ const MemberWallet = () => {
 						</span>
 					</div>
 				</div>
-				<BonusWalletRows />
+				<MemberBonusWallet />
 			</div>
 		</div>
 	);

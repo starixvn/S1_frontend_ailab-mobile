@@ -16,14 +16,14 @@ const HomeAppDownload = () => {
 						<img
 							className="app-title-icon"
 							src={`${bannerImgUrl}/h5/img/home-page/goal123-appicon.png`}
-							alt="app-icon"
+							alt="home-app-icon"
 						/>
 						<div className="app-title-text">
 							<div className="text">
 								<img
 									className="brand"
 									src={`${bannerImgUrl}/h5/img/home-page/goal123-brand.png`}
-									alt="brand"
+									alt="home-app-brand"
 								/>
 								<span>
 									{t("lbl_Home_New") + t("lbl_Home_App")}
@@ -41,7 +41,7 @@ const HomeAppDownload = () => {
 						<img
 							className="app-vision"
 							src={`${bannerImgUrl}/h5/img/home-page/app-download-banner.png`}
-							alt=""
+							alt="home-app-download"
 						/>
 						<div className="app-btn-content">
 							<div className="app-android">

@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "@reach/router";
+import path from "apps/goal123/src/path";
+import { bannerImgUrl } from "apps/goal123/src/config";
 import { useTranslation } from "react-i18next";
 
 const MemberTransaction = () => {
@@ -11,13 +13,13 @@ const MemberTransaction = () => {
 			<div className="transaction-behavior">
 				<button
 					className="btn-deposit"
-					onClick={() => navigate(`/deposit`)}>
+					onClick={() => navigate(`${path.deposit.root}`)}>
 					<i className="icon-sidemenu-deposit" />
 					{t("lbl_Deposit")}
 				</button>
 				<button
 					className="btn-withdraw"
-					onClick={() => navigate(`/withdrawal`)}>
+					onClick={() => navigate(`${path.withdrawal.root}`)}>
 					<i className="icon-sidemenu-withdraw" />
 					{t("lbl_Withdrawal")}
 				</button>
@@ -25,47 +27,41 @@ const MemberTransaction = () => {
 			<div className="transaction-other">
 				<button
 					className="btn-statement"
-					onClick={() => navigate(`/statement`)}>
+					onClick={() => navigate(`${path.statement.root}`)}>
 					<img
-						src="https://banner.goal123.org/h5/img/home-page/icon/sidemenu-statement.svg"
+						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-statement.svg`}
 						alt="side-menu-statement"
 					/>
-					<span>
-						{t("lbl_Statement")}
-					</span>
+					<span>{t("lbl_Statement")}</span>
 				</button>
 				<button
 					className="btn-financial"
-					onClick={() => navigate(`/financialLog`)}>
+					onClick={() => navigate(`${path.financialLog.root}`)}>
 					<img
-						src="https://banner.goal123.org/h5/img/home-page/icon/sidemenu-financial.svg"
+						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-financial.svg`}
 						alt="side-menu-financial"
 					/>
-					<span>
-						{t("lbl_Financial")}
-					</span>
+					<span>{t("lbl_Financial")}</span>
 				</button>
 				<button
 					className="btn-bankinfo"
-					onClick={() => navigate(`/bankinfo`)}>
+					onClick={() =>
+						navigate(`${path.member.sub.bankInfo.root}`)
+					}>
 					<img
-						src="https://banner.goal123.org/h5/img/home-page/icon/sidemenu-bank.svg"
+						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-bank.svg`}
 						alt="side-menu-bank"
 					/>
-					<span>
-						{t("lbl_BankInfo")}
-					</span>
+					<span>{t("lbl_BankInfo")}</span>
 				</button>
 				<button
 					className="btn-crypto"
-					onClick={() => navigate(`/cryptoWallet`)}>
+					onClick={() => navigate(`${path.cryptoWallet.root}`)}>
 					<img
-						src="https://banner.goal123.org/h5/img/home-page/icon/sidemenu-crypto.svg"
+						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-crypto.svg`}
 						alt="crypto-wallet"
 					/>
-					<span>
-						{t("lbl_CryptoWallet")}
-					</span>
+					<span>{t("lbl_CryptoWallet")}</span>
 				</button>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
+import path from "apps/goal123/src/path";
 import { bannerImgUrl } from "../../../config";
 import useGetBalance from "../../hook/useGetMainBalance";
 import useGetTpBalance from "../../hook/useGetTpBalance";
@@ -8,14 +9,12 @@ import useGetBonusBalance from "../../hook/useGetBonusBalance";
 import { api_account_GetPopupMsg } from "../../../service/api/account";
 import { tpWalletsListType } from "../../transfer/transfer.def";
 import { userInfoContext, msgCountContext } from "../../common/context";
-import { number_format } from "../../common/common";
-import path from "../../../path";
+import { number_format, readCookie, setCookie } from "../../common/common";
 
-const HomeHeader = ({ showAd, onclickCancel }) => {
+const HomeHeader = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-
 	const [showingBalance, setShowingBalance] = useState(true);
 
 	const { mainWalletInfo, GetBalance } = useGetBalance({
@@ -81,38 +80,61 @@ const HomeHeader = ({ showAd, onclickCancel }) => {
 		}
 	}, [userInfo?.isLogin]);
 
+	
+	const [appHint, setAppHint] = useState(false);
+
+	const cookieName = `appDownloadHint${userInfo.userName}`;
+
+	useEffect(() => {
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.accountName]);
+
+	const handleDownloadHint = () => {
+		setCookie(cookieName, "1", 1);
+		setAppHint(false);
+	};
+
 	const handleClosePopup = e => {
 		e.stopPropagation();
 		setPopUp("");
 	};
 
+
+
 	return (
 		<>
-			<div className={showAd ? "appdownload active" : "appdownload"}>
-				<img
-					src={`${bannerImgUrl}/h5/img/home-page/goal123-appicon.png`}
-					alt="app-download-banner"
-				/>
-				<div className="text">
-					<span>{t("Label_DownloadApp")}</span>
-					<span>{t("lbl_DownloadAppHint")}</span>
+			{appHint && (
+				<div className={appHint ? "appdownload active" : "appdownload"}>
+					<img
+						src={`${bannerImgUrl}/h5/img/home-page/goal123-appicon.png`}
+						alt="header-app-banner"
+					/>
+					<div className="text">
+						<span>{t("Label_Header_DownloadApp")}</span>
+						<span>{t("lbl_DownloadAppHint")}</span>
+					</div>
+					<button
+						className="btn-download"
+						onClick={() => {
+							navigate(`/${path.appDownload.root}`);
+						}}>
+						{t("lbl_Downloads")}
+					</button>
+					<i
+						className="icon icon-close"
+						onClick={handleDownloadHint}
+					/>
 				</div>
-				<button
-					className="btn-download"
-					onClick={() => {
-						navigate("/appDownload");
-					}}>
-					{t("lbl_Downloads")}
-				</button>
-				<i className="icon icon-close" onClick={onclickCancel} />
-			</div>
+			)}
 
 			<div className="header-content">
 				<div className="logo">
 					<a className="logo-img">
 						<img
 							src={`${bannerImgUrl}/h5/img/logo.png`}
-							alt="logo"
+							alt="header-logo"
 						/>
 					</a>
 					<span className="en">
@@ -125,14 +147,14 @@ const HomeHeader = ({ showAd, onclickCancel }) => {
 						<button
 							className="login"
 							onClick={() => {
-								navigate("/login");
+								navigate(`${path.login.root}`);
 							}}>
 							{t("lbl_Login")}
 						</button>
 						<button
 							className="join"
 							onClick={() => {
-								navigate("/join");
+								navigate(`${path.join.root}`);
 							}}>
 							{t("lbl_JoinNow")}
 						</button>

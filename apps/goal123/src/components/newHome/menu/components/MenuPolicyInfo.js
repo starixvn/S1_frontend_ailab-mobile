@@ -4,7 +4,7 @@ import { bannerImgUrl } from "apps/goal123/src/config";
 import t_and_c from "apps/goal123/src/service/t_and_c";
 import { userInfoContext } from "../../../common/context";
 
-const MenuInfo = () => {
+const MenuPolicyInfo = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
@@ -31,7 +31,7 @@ const MenuInfo = () => {
 				onClick={togglePolicies}>
 				<img
 					src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-policies.svg`}
-					alt=""
+					alt="menu-policies"
 				/>
 				<span>{t("Label_Menu_Our_Policies")}</span>
 			</div>
@@ -70,7 +70,7 @@ const MenuInfo = () => {
 				onClick={toggleHelp}>
 				<img
 					src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-help.svg`}
-					alt=""
+					alt="menu-help"
 				/>
 				<span>{t("Label_Menu_Help_&_Support")}</span>
 			</div>
@@ -116,7 +116,7 @@ const MenuInfo = () => {
 				onClick={toggleGoal123}>
 				<img
 					src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-gola123.svg`}
-					alt=""
+					alt="menu-goal123"
 				/>
 				<span>{t("Label_Menu_Goal123")}</span>
 			</div>
@@ -147,4 +147,4 @@ const MenuInfo = () => {
 	);
 };
 
-export default MenuInfo;
+export default MenuPolicyInfo;

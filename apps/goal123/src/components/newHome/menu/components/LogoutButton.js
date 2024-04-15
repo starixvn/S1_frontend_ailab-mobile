@@ -16,8 +16,8 @@ const LogoutButton = () => {
 				isLogin: false,
 				langId: prevState.langId
 			}));
-			setNav(null); // 清空导航状态
-			setRedirectPath("/"); // 设置重定向路径
+			setNav(null);
+			setRedirectPath("/");
 		});
 	};
 

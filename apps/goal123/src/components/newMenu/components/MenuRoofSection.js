@@ -1,7 +1,7 @@
 import React from "react";
 import { bannerImgUrl, siteInfo } from "apps/goal123/src/config";
 
-const MenuTop = ({ toggleMenu }) => {
+const MenuRoofSection = ({ toggleMenu }) => {
 	const liveChatUrl = `https://direct.lc.chat/${siteInfo().liveChatId}
 	}`;
 
@@ -27,4 +27,4 @@ const MenuTop = ({ toggleMenu }) => {
 	);
 };
 
-export default MenuTop;
+export default MenuRoofSection;
