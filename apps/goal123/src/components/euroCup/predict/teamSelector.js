@@ -31,14 +31,14 @@ const TeamSelector = ({
 				<div className="group-input">
 					<Dropdown
 						options={Object.keys(options ?? {})}
-						placeholder="Group"
+						placeholder={t("lbl_Group")}
 						onSelect={setSelectedGroup}
 					/>
 				</div>
 				<div className="team-input">
 					<Dropdown
 						options={options?.[selectedGroup] ?? []}
-						placeholder="Select Your Team"
+						placeholder={t("lbl_SelectYourTeam")}
 						onSelect={setSelectedTeamId}
 						disable={!selectedGroup}
 					/>
