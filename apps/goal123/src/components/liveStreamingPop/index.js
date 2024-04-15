@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import PropTypes from "prop-types";
+import classNames from "classnames";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	defNavPanel,
 	navContext,
@@ -10,6 +12,7 @@ import {
 } from "../common/context";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { bannerImgUrl } from "../../config";
+import { eventTime } from "../common/eventTime";
 
 const LiveStreamingLink = ({
 	liveStreamingList,
@@ -143,7 +146,10 @@ const LiveStreamingLink = ({
 	};
 
 	return displayLiveStreaming ? (
-		<div className="eventLink livesports">
+		<div
+			className={classNames("eventLink livesports", {
+				eurocup: isDateRange(eventTime.eventCup)
+			})}>
 			<button
 				className="icon icon-close"
 				onClick={() => setDisplayLiveStreaming(false)}

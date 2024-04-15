@@ -41,7 +41,7 @@ const RewardItem = () => {
 						</div>
 						<div>
 							<span>{t("lbl_CupEvent_Winners")}</span>
-							<span>{t("lbl_CupEvent_DrawnOutOn")} 07/15</span>
+							<span>{t("lbl_CupEvent_DrawnOutOn")}</span>
 						</div>
 					</div>
 				))}
