@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 import { sportsImgUrl } from "../../../config";
 
 const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 	const [isActive, setIsActive] = useState(false);
 	const [selectedItem, setSelectedItem] = useState(null);
 	const ref = useRef(null);
+	const { t } = useTranslation();
 
 	const handleItemClick = item => {
 		onSelect(typeof item === "string" ? item : item.countryId);
@@ -37,7 +39,12 @@ const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 					setIsActive(prev => !prev);
 				}}>
 				{(typeof selectedItem === "string"
-					? selectedItem
+					? t(
+							`lbl_${
+								selectedItem.charAt(0).toUpperCase() +
+								selectedItem.slice(1)
+							}`
+					  )
 					: selectedItem?.countryName) || placeholder}
 			</button>
 			{!disable && (
@@ -53,7 +60,12 @@ const Dropdown = ({ placeholder, options, onSelect, disable }) => {
 									style={{ pointerEvents: "auto" }}
 									key={item}
 									onClick={() => handleItemClick(item)}>
-									{item}
+									{t(
+										`lbl_${
+											item.charAt(0).toUpperCase() +
+											item.slice(1)
+										}`
+									)}
 								</div>
 							);
 						}
