@@ -239,7 +239,7 @@ header > div .logo.eurocuplogo > div:last-child {
   margin-left: 1.5vw;
 }
 header > div .logo.eurocuplogo > div:last-child img {
-  width: 23vw;
+  width: 10vw;
 }
 header > div .headerInfo {
   display: -webkit-box;
@@ -351,6 +351,10 @@ header > div .headerBtnIn.open {
 }
 header > div .headerBtnIn p {
   margin: 0 5px;
+  max-width: 23vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 header > div .headerBtnIn img {
   width: 30px;
