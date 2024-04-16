@@ -4,13 +4,11 @@ import { useTranslation } from "react-i18next";
 // import { defSlotTpGameType } from "../../../datas/productList";
 import { products } from "@ailab-mobile/common";
 
-
 import config from "../../../config";
 
 const images = [
 	{
 		link: `/casino/${products.Soccer.tpId}`,
-		//pp
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-pp.jpg`,
 		altText: "pop-pp",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-pp.png`,

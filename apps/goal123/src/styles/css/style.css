@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -2070,6 +2070,47 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
+#popup.detailpop {
+  width: 100%;
+  background: #eaf1ff;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  -webkit-box-pack: revert;
+      -ms-flex-pack: revert;
+          justify-content: revert;
+}
+#popup.detailpop .pop {
+  padding: 0 !important;
+}
+#popup.detailpop.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+#popup.detailpop .popTit {
+  border-radius: 0;
+  position: fixed;
+  padding: 2vw 4vw;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .icon-close {
+  z-index: 2;
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+}
+#popup.detailpop .infoList {
+  padding: 11vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .infoList .info {
+  color: #4e6ca8;
+}
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -2491,6 +2532,406 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 #popup.livesportspop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
+}
+#popup.depositlist {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.depositlist .pop {
+  background: white;
+  border-radius: 5vw;
+  width: 95vw;
+  color: #001942;
+  position: relative;
+}
+#popup.depositlist .pop .depositlist-title {
+  font-size: 4vw;
+  color: #143CDB;
+  margin: 5vw 0 4vw 4vw;
+  font-weight: 700;
+}
+#popup.depositlist .pop .depositlist-item {
+  max-height: 76vw;
+  overflow-y: overlay;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 7vw;
+  color: #989898;
+  font-weight: 600;
+  padding: 0 2vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text {
+  font-size: 2.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #143CDB;
+  background: white;
+  position: fixed;
+  padding-bottom: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div {
+  border-radius: 2vw;
+  background: #F9BF4B;
+  margin-left: 1vw;
+  padding: 2vw 0 2vw 2vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:first-child {
+  width: 27vw;
+  margin: 0;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:nth-child(2) {
+  width: 27vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:last-child {
+  width: 29vw;
+  margin: 0 0 0 1vw;
+}
+#popup.depositlist .pop .depositlist-item > div:last-child {
+  padding-top: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.depositlist .pop .depositlist-item .date, #popup.depositlist .pop .depositlist-item .user, #popup.depositlist .pop .depositlist-item .money {
+  font-size: 2.5vw;
+}
+#popup.depositlist .pop .depositlist-item .date > div, #popup.depositlist .pop .depositlist-item .user > div, #popup.depositlist .pop .depositlist-item .money > div {
+  border-radius: 2vw;
+  padding: 2vw 0;
+  margin-top: 2vw;
+  padding-left: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(n), #popup.depositlist .pop .depositlist-item .user > div:nth-child(n), #popup.depositlist .pop .depositlist-item .money > div:nth-child(n) {
+  background: #DEDEDE;
+}
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .user > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .money > div:nth-child(odd) {
+  background: #F2F2F2;
+}
+#popup.depositlist .pop .depositlist-item .date {
+  margin: 0;
+}
+#popup.depositlist .pop .depositlist-item .date > div {
+  width: 28vw;
+}
+#popup.depositlist .pop .depositlist-item .user {
+  margin-left: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .user > div {
+  width: 28vw;
+}
+#popup.depositlist .pop .depositlist-item .money div {
+  margin-left: 1vw;
+  width: 30vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#popup.depositlist .pop .depositlist-item .money div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-right: 1vw;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar {
+  width: 5px;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-button {
+  background: #d3d3d3;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-track-piece {
+  background: #ECECEC;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-thumb {
+  background: #989898;
+  height: 10px;
+}
+#popup.depositlist .close-btn {
+  position: absolute;
+  bottom: -14vw;
+  left: 42vw;
+}
+#popup.depositlist .close-btn img {
+  width: 8vw;
+}
+#popup.recordlist {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.recordlist .pop {
+  background: white;
+  border-radius: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw 1vw 7vw;
+  margin-top: -15vw;
+}
+#popup.recordlist .pop .record {
+  background: #F9BF4B;
+  padding: 6vw 0 30vw;
+}
+#popup.recordlist .pop .record-title {
+  color: #143CDB;
+  background: #ECECEC;
+  border-radius: 0 0 5vw 5vw;
+  padding: 3vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  width: 47vw;
+  font-size: 3.7vw;
+  margin-top: -2vw;
+}
+#popup.recordlist .pop .record-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2vw;
+  max-height: 125vw;
+  overflow-y: overlay;
+}
+#popup.recordlist .pop .record-item {
+  margin: 4vw 1.5vw 0;
+}
+#popup.recordlist .pop .record-item .ticket {
+  background: url(../img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+#popup.recordlist .pop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 13.5vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.recordlist .pop .record-item .ticket .number {
+  text-align: center;
+  margin-top: 0.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.recordlist .pop .record .more-btn {
+  background: white;
+  padding: 3vw 33vw;
+  border-radius: 50vw;
+  color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 6vw;
+}
+#popup.recordlist .pop .record .more-btn.active {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+}
+#popup.recordlist .pop .close-btn {
+  position: absolute;
+  bottom: 19vw;
+}
+#popup.recordlist .pop .close-btn img {
+  width: 8vw;
+}
+#popup.submitpop {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.submitpop .pop {
+  background: white;
+  color: #143CDB;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5vw;
+  padding: 6vw 5vw;
+  width: 70vw;
+  font-size: 4.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item {
+  margin: 5vw 1.5vw 2vw;
+}
+#popup.submitpop .record-item .ticket {
+  background: url(../img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+#popup.submitpop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+#popup.submitpop .record-item .ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 13.5vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.submitpop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+#popup.submitpop .record-item .ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.submitpop .record-item .ticket .number {
+  text-align: center;
+  margin-top: 1.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.submitpop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.submitpop .submitpop-btn > button {
+  padding: 2vw;
+  width: 30vw;
+  border-radius: 20vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-top: 4vw;
+}
+#popup.submitpop .submitpop-btn > button:first-child {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+  margin-right: 1vw;
+}
+#popup.submitpop .submitpop-btn > button:last-child {
+  color: #989898;
+  border: 1px solid #989898;
+}
+#popup.submitpop .close-btn {
+  position: absolute;
+  bottom: 45vw;
+}
+#popup.submitpop .close-btn img {
+  width: 7vw;
 }
 
 .txt-red {
@@ -3349,6 +3790,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
+}
+.info ul li .title {
+  color: #1f3258;
 }
 .info.infoBlack {
   background: #d1d6e0;
@@ -6873,7 +7317,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 74vw;
+  bottom: 76vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -6883,6 +7327,9 @@ span.important {
   right: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.vgaming.eurocup {
+  bottom: 76vw;
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -6955,7 +7402,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 70vw;
+  bottom: 76vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -6970,6 +7417,9 @@ span.important {
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.livesports.eurocup {
+  bottom: 108vw;
 }
 @-webkit-keyframes livesports {
   0% {
@@ -7006,6 +7456,23 @@ span.important {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
+}
+.eventLink.eurocup {
+  bottom: 76vw;
+  left: 69vw;
+}
+.eventLink.eurocup img {
+  -webkit-animation: livesports 3s ease-in-out infinite;
+          animation: livesports 3s ease-in-out infinite;
+  width: 33vw;
+  z-index: 1;
+}
+.eventLink.eurocup .icon-close {
+  right: 0;
+  top: -2vw;
+  z-index: 4;
+  background: #cecece;
+  color: rgb(92, 92, 92);
 }
 
 .event {
@@ -7817,6 +8284,15 @@ span.important {
   font-weight: bold;
   color: white;
 }
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupMobile > .title .info,
+.depositModule_Crpyto > .title .info {
+  color: rgba(250, 182, 23, 0.8);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
+}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -7945,7 +8421,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: auto;
+  margin: 1vw auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -7959,6 +8435,43 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.depositModule_mobile .selectModule > div.info.remark,
+.depositModule_online .selectModule > div.info.remark,
+.depositModule_local .selectModule > div.info.remark,
+.depositModule_topupMobile .selectModule > div.info.remark,
+.depositModule_Crpyto .selectModule > div.info.remark {
+  background: transparent;
+  width: calc(100% - 2vw);
+  padding: 0;
+}
+.depositModule_mobile .selectModule > div.info.remark ul,
+.depositModule_online .selectModule > div.info.remark ul,
+.depositModule_local .selectModule > div.info.remark ul,
+.depositModule_topupMobile .selectModule > div.info.remark ul,
+.depositModule_Crpyto .selectModule > div.info.remark ul {
+  width: 100%;
+}
+.depositModule_mobile .selectModule > div.info.remark ul .tip,
+.depositModule_online .selectModule > div.info.remark ul .tip,
+.depositModule_local .selectModule > div.info.remark ul .tip,
+.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
+.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
+  text-align: left;
+  padding: 0 1vw;
+  margin-bottom: 2vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li,
+.depositModule_online .selectModule > div.info.remark li,
+.depositModule_local .selectModule > div.info.remark li,
+.depositModule_topupMobile .selectModule > div.info.remark li,
+.depositModule_Crpyto .selectModule > div.info.remark li {
+  background: #adccff;
+  border-radius: 5px;
+  padding: 2vw 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
@@ -11658,13 +12171,11 @@ span.important {
 .recently .swiper-button-next::before, .recently .swiper-button-prev::before {
   content: "\ea40";
   font-size: 4vw;
-  color:#000
+  color: #141f33;
 }
-
 .recently .swiper-button-next::after, .recently .swiper-button-prev::after {
   content: "";
 }
-
 .recently .swiper-button-next {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -12448,6 +12959,1324 @@ span.important {
             transform: scale(1);
   }
 }
+.ambassador {
+  padding-top: 11vw;
+  padding-bottom: 18vw;
+}
+.ambassador .banner img {
+  width: 100%;
+  display: block;
+}
+.ambassador .title {
+  background: url(https://banner.goal123.org/h5/img/ambassador/title-bg.svg) no-repeat center/cover;
+  width: 81vw;
+  height: 15vw;
+  margin-bottom: 5vw;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  padding: 0 7vw 1vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 5vw;
+  font-weight: 800 !important;
+  position: absolute;
+  top: -5.8vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.ambassador-intro {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding: 12vw 0;
+  background: url(https://banner.goal123.org/h5/img/ambassador/bg.jpg) no-repeat top/cover;
+}
+.ambassador-intro-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ambassador-intro .content {
+  padding: 0 5vw;
+}
+.ambassador-intro .content p {
+  font-size: 3vw;
+  line-height: 1.4;
+  margin-bottom: 3vw;
+  font-weight: 500;
+  color: #141F33;
+}
+.ambassador-gallery {
+  width: 90vw;
+  height: auto;
+}
+.ambassador-gallery .swiper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ambassador-gallery .swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+.ambassador-gallery .swiper-slide iframe {
+  min-height: unset;
+  border-radius: 10px;
+}
+.ambassador-gallery .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.ambassador-gallery .gallery2 {
+  height: 80%;
+  width: 100%;
+}
+.ambassador-gallery .gallery2 .swiper-button-next {
+  background: url(https://banner.goal123.org/desktop/img/home-page/icon/swiper-next-prev.svg) no-repeat center/cover;
+  width: 8vw;
+  height: 8vw !important;
+  right: 1vw;
+}
+.ambassador-gallery .gallery2 .swiper-button-next::after {
+  font-family: unset;
+  content: "" !important;
+}
+.ambassador-gallery .gallery2 .swiper-button-prev {
+  background: url(https://banner.goal123.org/desktop/img/home-page/icon/swiper-next-prev.svg) no-repeat center/cover;
+  width: 8vw;
+  height: 8vw !important;
+  right: 1vw;
+  -webkit-transform: scale(-1);
+          transform: scale(-1);
+}
+.ambassador-gallery .gallery2 .swiper-button-prev::after {
+  font-family: unset;
+  content: "" !important;
+}
+.ambassador-gallery .gallery {
+  height: 20%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1vw 0 0;
+}
+.ambassador-gallery .gallery .swiper-slide {
+  cursor: pointer;
+  position: relative;
+}
+.ambassador-gallery .gallery .swiper-slide::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 1;
+}
+.ambassador-gallery .gallery .swiper-slide:hover::after {
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.ambassador-gallery .gallery .swiper-slide-thumb-active::after {
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.ambassador-career {
+  background: #284985;
+  padding: 12vw 3vw;
+  position: relative;
+}
+.ambassador-career-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 3vw;
+  border-bottom: 1px solid #fab617;
+}
+.ambassador-career-block.bottom {
+  padding-top: 6vw;
+  border: 0;
+}
+.ambassador-career-block.bottom .ambassador-career-item {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ambassador-career-block.bottom .ambassador-career-item div {
+  font-weight: 700;
+  color: #fab617;
+  font-size: 3.5vw;
+  margin-left: 10px;
+}
+.ambassador-career-block.bottom .ambassador-career-item div span {
+  display: block;
+  font-size: 8vw;
+  font-weight: 800;
+  margin-top: 1vw;
+}
+.ambassador-career-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 1vw 5vw;
+}
+.ambassador-career-item img {
+  width: 10.5vw;
+}
+.ambassador-career-item div {
+  font-weight: 600;
+  color: #fff;
+  font-size: 3.5vw;
+  margin-left: 10px;
+}
+.ambassador-career-item div span {
+  display: block;
+  font-size: 3vw;
+}
+.ambassador-reward {
+  padding: 12vw 3vw;
+  position: relative;
+  background: url(https://banner.goal123.org/h5/img/ambassador/bg.jpg) no-repeat bottom/cover;
+}
+.ambassador-reward-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 3vw;
+  border-bottom: 1px solid #878686;
+}
+.ambassador-reward-block.bottom {
+  padding-top: 6vw;
+  border: 0;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item {
+  text-align: center;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item div {
+  font-weight: 700;
+  color: #fab617;
+  font-size: 3.5vw;
+}
+.ambassador-reward-block.bottom .ambassador-reward-item div span {
+  display: block;
+  font-size: 8vw;
+  font-weight: 800;
+  margin-top: 1vw;
+}
+.ambassador-reward-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 1vw 8vw;
+}
+.ambassador-reward-item img {
+  width: 16vw;
+  margin-bottom: 2vw;
+}
+.ambassador-reward-item div {
+  font-weight: 600;
+  color: #141F33;
+  font-size: 5vw;
+  margin: 0 0 10px 10px;
+  text-align: center;
+}
+.ambassador-reward-item div span {
+  display: block;
+  font-size: 3vw;
+}
+.ambassador-reward-item div + img {
+  width: 10vw;
+  margin-bottom: 0;
+}
+.ambassador-app {
+  background: #fab617;
+  padding: 10vw 3vw 10vw 3vw;
+  position: relative;
+  border-radius: 15vw 15vw 0 0;
+  margin-top: -15vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ambassador-app-cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3vw;
+}
+.ambassador-app-cover .subtitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.ambassador-app-cover .subtitle img {
+  width: 11vw;
+  height: 11vw;
+  margin-right: 2vw;
+}
+.ambassador-app-cover .subtitle div {
+  color: #141F33;
+  font-weight: 800;
+  font-size: 7vw;
+  text-transform: uppercase;
+  text-align: center;
+}
+.ambassador-app-cover .subtitle div > div {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 4vw;
+}
+.ambassador-app-cover .subtitle div > div span {
+  color: #D83B35;
+}
+.ambassador-app-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.ambassador-app-info-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(50% - 2vw);
+          flex: 0 0 calc(50% - 2vw);
+  margin: 0 2vw 2vw 0;
+  padding: 5vw 3vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 52vw;
+  background: #fff;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+.ambassador-app-info-item:nth-child(2n) {
+  margin-right: 0;
+}
+.ambassador-app-info-item img {
+  width: 16vw;
+}
+.ambassador-app-info-item div {
+  font-size: 4vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #284985;
+}
+.ambassador-app-info-item div span {
+  text-transform: capitalize;
+  font-size: 3vw;
+  font-weight: 500;
+  display: block;
+  margin-top: 3vw;
+}
+.ambassador-app-qrcode {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 3vw;
+}
+.ambassador-app-qrcode-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ambassador-app-qrcode-item .qr-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background: #284985;
+  border-radius: 8px;
+  min-width: 35vw;
+  padding: 2vw;
+  font-weight: 500;
+  margin-bottom: 1vw;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: #fff;
+}
+.ambassador-app-qrcode-item .qr-button img {
+  width: 4vw;
+  margin-right: 1vw;
+}
+.ambassador-app-qrcode-item .qr-button + a {
+  font-weight: 500;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.euro {
+  padding: 0;
+  background: #143CDB !important;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+}
+.euro a, .euro button {
+  font-family: "Montserrat", sans-serif;
+}
+.euro .top-bn {
+  width: 100%;
+}
+.euro .prediction-wrapper {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/top-bg.jpg) no-repeat center/100%;
+  padding: 0 7vw;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 60vw;
+}
+.euro .prediction-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 8vw;
+}
+.euro .prediction-title > div {
+  text-align: center;
+}
+.euro .prediction-title > div:first-child {
+  color: #D6D6D6;
+  font-size: 4vw;
+  font-weight: 600;
+}
+.euro .prediction-title > div:nth-child(2) {
+  color: white;
+  font-weight: 800;
+  font-size: 8vw;
+  text-transform: uppercase;
+  margin-top: 3vw;
+}
+.euro .prediction-title .deposit-btn-a {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/deposit-btn-bg.jpg) no-repeat center/cover;
+  width: 88vw;
+  height: 11vw;
+  border-radius: 11.7vw;
+  position: relative;
+  margin-top: 6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.euro .prediction-title .deposit-btn-a span {
+  position: absolute;
+  z-index: 2;
+  font-size: 3.7vw;
+  font-weight: 700;
+  left: calc(50% - 13vw);
+  top: calc(50% - 2.2vw);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3607843137);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .prediction-title .deposit-btn-a::after {
+  display: block;
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgb(5, 143, 74)));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(5, 143, 74) 100%);
+  width: 88vw;
+  height: 11vw;
+  z-index: 1;
+  border-radius: 11.682vw;
+  border: 2px solid white;
+}
+.euro .prediction-title .deposit-btn-a img {
+  width: 8.4vw;
+  position: absolute;
+  z-index: 3;
+  right: 3.5vw;
+  bottom: 1.3vw;
+}
+.euro .prediction-swiper {
+  margin-top: 10vw;
+}
+.euro .prediction-swiper-container {
+  overflow: hidden;
+  width: 85.5vw;
+  padding-bottom: 12vw;
+  position: relative;
+}
+.euro .prediction-swiper-item .country {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #F2F3F4;
+  border-radius: 5vw;
+  margin-bottom: 3vw;
+  font-size: 4.5vw;
+  font-weight: 700;
+  color: #143CDB;
+}
+.euro .prediction-swiper-item .country > div:first-child {
+  background: #D9D9D9;
+  width: 11vw;
+  height: 16vw;
+  border-radius: 5vw 0 0 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .prediction-swiper-item .country.one {
+  background: #F9BF4B;
+}
+.euro .prediction-swiper-item .country.one > div:first-child {
+  background: #EF9F00;
+}
+.euro .prediction-swiper-item .country-flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .prediction-swiper-item .country-flag > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .prediction-swiper-item .country-flag > div:first-child {
+  width: 55vw;
+  margin-left: 2.5vw;
+}
+.euro .prediction-swiper-item .country-flag > div:first-child > div {
+  margin-left: 2vw;
+}
+.euro .prediction-swiper-item .country-flag img {
+  width: 11vw;
+}
+.euro .swiper-button-next, .euro .swiper-button-prev {
+  top: 82vw;
+  border-radius: 50vw;
+  width: 10vw;
+  height: 10vw;
+  color: white;
+  background: #F9BF4B;
+}
+.euro .swiper-button-next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 36vw;
+  right: -5vw;
+}
+.euro .swiper-button-next::after {
+  display: block;
+  content: "";
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-right-blue.png) no-repeat center/100%;
+  width: 4vw;
+  height: 4vw;
+  margin-left: 1vw;
+}
+.euro .swiper-button-prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 36vw;
+  left: -5vw;
+}
+.euro .swiper-button-prev::after {
+  display: block;
+  content: "";
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-left-blue.png) no-repeat center/100%;
+  width: 4vw;
+  height: 4vw;
+  margin-right: 1vw;
+}
+.euro .ticket-content {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/center-bg.png) no-repeat center/100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -17vw;
+  padding-top: 16vw;
+  position: relative;
+  z-index: 2;
+}
+.euro .ticket-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .ticket-number > div {
+  color: #143CDB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-right: 1px solid #143CDB;
+  width: 30vw;
+  font-size: 3.5vw;
+}
+.euro .ticket-number > div span {
+  font-weight: 700;
+}
+.euro .ticket-number > div span:last-child {
+  font-size: 11vw;
+}
+.euro .ticket-number > div:last-child {
+  border: 0;
+}
+.euro .ticket-btn {
+  margin-top: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .ticket-btn button {
+  border: 1px solid #143CDB;
+  border-radius: 50vw;
+  padding: 3vw 0;
+  width: 40.5vw;
+  color: #143CDB;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-right: 2vw;
+}
+.euro .ticket-btn a {
+  font-weight: 700;
+  background: #143CDB;
+  color: white;
+  padding: 3vw 0;
+  border-radius: 50vw;
+  font-size: 3.5vw;
+  display: block;
+  width: 41vw;
+  text-align: center;
+}
+.euro .ticket-filter {
+  background: #F9BF4B;
+  margin-top: -8vw;
+  padding-top: 17vw;
+}
+.euro .ticket-filter > div {
+  background: white;
+  border-radius: 7vw;
+  padding: 6vw;
+  margin: 0 7vw;
+}
+.euro .ticket-filter > div .group-input .dropdown, .euro .ticket-filter > div .team-input .dropdown {
+  background: #dddddd;
+  border-radius: 50vw;
+  border: 0;
+}
+.euro .ticket-filter > div .group-input .dropdown > .btn, .euro .ticket-filter > div .team-input .dropdown > .btn {
+  color: #B5B5B5;
+  font-weight: 700;
+  margin-left: 4vw;
+  padding: 2vw 0;
+}
+.euro .ticket-filter > div .group-input .dropdown::before, .euro .ticket-filter > div .team-input .dropdown::before {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-down-dark.png) no-repeat center/100%;
+  display: block;
+  content: "";
+  width: 4vw;
+  height: 4vw;
+  border: 0;
+  margin-right: 1.5vw;
+}
+.euro .ticket-filter > div .group-input .dropdown-container, .euro .ticket-filter > div .team-input .dropdown-container {
+  display: none;
+  left: calc(50% - 37vw);
+  top: 7vw;
+  font-weight: 700;
+  color: #143CDB;
+  background: #FAFAFA;
+  border: 0;
+  border-radius: 4.7vw;
+  margin: 8vw 0;
+  padding: 2vw 0;
+  font-size: 3.5vw;
+  max-height: 47vw;
+}
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
+  border-bottom: 1px solid #e3e3e3;
+}
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
+  border: 0;
+}
+.euro .ticket-filter > div .group-input .dropdown-container.active, .euro .ticket-filter > div .team-input .dropdown-container.active {
+  display: block;
+}
+.euro .ticket-filter > div .group-input .dropdown.check, .euro .ticket-filter > div .team-input .dropdown.check {
+  background: white;
+  border: 2px solid #143CDB;
+}
+.euro .ticket-filter > div .group-input .dropdown-item {
+  padding: 4vw 0 4vw 4vw;
+}
+.euro .ticket-filter > div .team-input {
+  margin-top: 3vw;
+}
+.euro .ticket-filter > div .team-input .dropdown-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2.5vw 0 2.5vw 4vw;
+}
+.euro .ticket-filter > div .team-input .dropdown-item img {
+  -webkit-box-shadow: 0 0 6px rgba(128, 128, 128, 0.8392156863);
+          box-shadow: 0 0 6px rgba(128, 128, 128, 0.8392156863);
+  border-radius: 50vw;
+  width: 8vw;
+  margin-right: 2vw;
+}
+.euro .ticket-filter > div .number-input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3.6vw;
+}
+.euro .ticket-filter > div .number-input .input {
+  border: none;
+  background: #dddddd;
+  border-radius: 50px;
+  padding: 3.5vw 0 3.5vw 6vw;
+  outline: none;
+  caret-color: #B5B5B5;
+  font-size: 4vw;
+  color: #143CDB;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input .input.check {
+  background: white;
+  border: 2px solid #143CDB;
+}
+.euro .ticket-filter > div .number-input button {
+  position: absolute;
+  right: 4.5vw;
+  top: 4.5vw;
+}
+.euro .ticket-filter > div .number-input button img {
+  width: 3.5vw;
+}
+.euro .ticket-filter > div .number-input ::-webkit-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input ::-moz-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input :-ms-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input ::-ms-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input ::placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-size: 4vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.euro .ticket-filter > div .number-input ::-webkit-outer-spin-button,
+.euro .ticket-filter > div .number-input ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.euro .ticket-filter > div .submit-btn {
+  background: #143CDB;
+  border-radius: 50px;
+  font-size: 4vw;
+  font-weight: 700;
+  width: 74vw;
+  padding: 3.5vw 0;
+  color: white;
+  margin-top: 7vw;
+}
+.euro .ticket-filter > div .close-text {
+  display: none;
+}
+.euro .ticket-filter.closedown {
+  position: relative;
+}
+.euro .ticket-filter.closedown > div {
+  position: relative;
+}
+.euro .ticket-filter.closedown > div .close-text {
+  background: rgba(0, 0, 0, 0.8196078431);
+  width: 86vw;
+  height: 75.3vw;
+  position: absolute;
+  z-index: 3;
+  color: white;
+  font-weight: 700;
+  font-size: 3.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 0;
+  border-radius: 7vw;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.euro .record {
+  background: #F9BF4B;
+  padding: 6vw 0 30vw;
+}
+.euro .record-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  margin: 0 7vw;
+  border-radius: 7vw;
+  padding: 6vw 2.7vw;
+}
+.euro .record-title {
+  color: #143CDB;
+  background: #ECECEC;
+  border-radius: 0 0 5vw 5vw;
+  padding: 3vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  width: 47vw;
+  font-size: 3.7vw;
+  margin-top: -6vw;
+}
+.euro .record-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  width: 81vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2vw;
+}
+.euro .record-item {
+  margin: 4vw 1.5vw 0;
+}
+.euro .record-item-ticket {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+.euro .record-item-ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+.euro .record-item-ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 14vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+.euro .record-item-ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+.euro .record-item-ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+.euro .record-item-ticket .number {
+  margin-top: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .record-item-ticket .number:last-child span {
+  font-size: 6vw;
+}
+.euro .record-item-ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+.euro .record .more-btn {
+  background: white;
+  padding: 3vw 33vw;
+  border-radius: 50vw;
+  color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 6vw;
+}
+.euro .record .more-btn.active {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+}
+.euro .bottom-bg {
+  position: relative;
+  z-index: 1;
+  margin-top: -20vw;
+}
+.euro .bottom-tap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 700;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.euro .bottom-tap a {
+  text-align: center;
+  border-bottom: 2px solid #3D63FB;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 3vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .bottom-tap a > span {
+  display: block;
+  width: 45vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .bottom-tap a.active {
+  border-bottom: 2px solid white;
+}
+.euro .reward-title, .euro .matches-title, .euro .terms-title {
+  color: white;
+  font-size: 4vw;
+  font-weight: 800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 7vw 0 1vw 5vw;
+}
+.euro .reward-title img, .euro .matches-title img, .euro .terms-title img {
+  width: 7vw;
+  margin-right: 2vw;
+  margin-bottom: 1vw;
+}
+.euro .reward-content {
+  position: relative;
+  z-index: 2;
+  margin-top: -168vw;
+}
+.euro .reward-title {
+  margin: 0 0 3vw 5vw;
+}
+.euro .reward-item {
+  background: #FFFFFF;
+  margin: 0 7vw 4vw;
+  border-radius: 3vw;
+}
+.euro .reward-item .title {
+  border-radius: 3vw 3vw 0 0;
+  position: relative;
+  padding: 3vw 0;
+  font-size: 4.5vw;
+  text-align: center;
+}
+.euro .reward-item .title img {
+  width: 18vw;
+  position: absolute;
+  top: -7vw;
+  right: 2vw;
+}
+.euro .reward-item:first-child .title {
+  background: #FF0100;
+}
+.euro .reward-item:nth-child(2) .title {
+  background: #00BA5D;
+}
+.euro .reward-item:last-child .title {
+  background: #5375FF;
+}
+.euro .reward-item > div:nth-child(2) {
+  margin: 4vw 0;
+}
+.euro .reward-item > div:last-child {
+  background: #C2C2C2;
+  border-radius: 3vw;
+  padding: 2.5vw 0;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.euro .reward-item-text {
+  margin-bottom: 3vw;
+  text-align: center;
+}
+.euro .reward-item-text span {
+  color: #C2C2C2;
+  font-size: 3.5vw;
+  font-weight: 600;
+}
+.euro .reward-item-text div {
+  font-size: 4.5vw;
+  color: #143CDB;
+  font-weight: 700;
+  margin-top: 0.5vw;
+}
+.euro .reward.active .reward-item > div:last-child {
+  background: #F9BF4B;
+  color: #143CDB;
+}
+.euro .reward.active .reward-item > div:last-child span:last-child {
+  font-size: 3.5vw;
+}
+.euro .info {
+  margin: 0 10vw;
+  color: white;
+  font-size: 3vw;
+  font-weight: 600;
+  line-height: 6vw;
+  padding-bottom: 22vw;
+}
+.euro .matches {
+  padding-bottom: 20vw;
+}
+.euro .matches-sheet {
+  color: #143CDB;
+  font-weight: 700;
+  font-size: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 3vw 7vw 0;
+}
+.euro .matches-sheet-item {
+  border-right: 2px solid white;
+}
+.euro .matches-sheet-item > div {
+  padding: 1.5vw 3vw 1.5vw 3vw;
+  height: 8vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .matches-sheet-item > div:nth-child(n) {
+  background: #F9BF4B;
+}
+.euro .matches-sheet-item > div:nth-child(odd) {
+  background: #F8F8F8;
+}
+.euro .matches-sheet-item:first-child > div:first-child {
+  border-radius: 4vw 0 0 0;
+}
+.euro .matches-sheet-item:first-child > div:last-child {
+  border-radius: 0 0 0 4vw;
+}
+.euro .matches-sheet-item:last-child {
+  border: 0;
+}
+.euro .matches-sheet-item:last-child > div:first-child {
+  border-radius: 0 4vw 0 0;
+}
+.euro .matches-sheet-item:last-child > div:last-child {
+  border-radius: 0 0 4vw 0;
+}
+.euro .matches-info {
+  color: white;
+  font-size: 3vw;
+  font-weight: 600;
+  margin: 3vw 9vw 0;
+}
+.euro .matches-info > div {
+  margin-bottom: 1vw;
+}
+.euro .matches-info .subtitle {
+  color: #F9BF4B;
+  font-weight: 800;
+  font-size: 3.5vw;
+  margin-bottom: 2vw;
+  padding-bottom: 1vw;
+  border-bottom: 1px solid #fff;
+}
+.euro .matches-info .subtitle div {
+  margin-bottom: 1vw;
+}
+.euro .footer-bg {
+  position: relative;
+  z-index: 3;
+  margin-top: -30vw;
+  padding-bottom: 14vw;
+}
+
 .appdownload {
   background: #fab617;
   width: 100%;
@@ -12531,20 +14360,66 @@ span.important {
 .header-content button {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.header-content .logo img {
-  width: 31vw;
+.header-content .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.header-content .logo span {
+.header-content .logo > div a img, .header-content .logo > div button img {
+  width: 30.5vw;
+}
+.header-content .logo > div span {
   display: block;
   color: #fff;
   text-transform: uppercase;
 }
-.header-content .logo span.en {
-  font-size: 2.5vw;
+.header-content .logo > div span.en {
+  font-size: 2.4vw;
 }
-.header-content .logo span.vn {
-  font-size: 3vw;
+.header-content .logo > div span.vn {
+  font-size: 2.9vw;
+}
+.header-content .logo-eurocup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header-content .logo-eurocup img {
+  width: 10.8vw;
+  margin-left: 0.65vw;
+}
+.header-content .loginjoin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .header-content .loginjoin a,
 .header-content .loginjoin button {
@@ -12553,7 +14428,7 @@ span.important {
   padding: 2vw 3.8vw;
   border-radius: 10vw;
   text-transform: uppercase;
-  margin-right: 1.2vw;
+  margin-right: 1.3vw;
   font-size: 3vw;
 }
 .header-content .loginjoin a.join,
@@ -12612,12 +14487,23 @@ span.important {
   margin: 0 2.2vw 0.6vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .header-content .member-id span.user-name {
   color: #fab617;
   font-weight: 600;
-  margin-left: 0.4vw;
+  margin-left: 0.6vw;
   font-size: 2.8vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 35.4vw;
+  display: inline-block;
 }
 .header-content .member-important {
   display: -webkit-box;
@@ -12639,7 +14525,7 @@ span.important {
           justify-content: space-between;
   background: #fff;
   border-radius: 10vw;
-  width: 46.8vw;
+  width: 43.4vw;
   padding: 1vw 2vw 1vw 1.8vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

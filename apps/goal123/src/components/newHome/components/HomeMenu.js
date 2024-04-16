@@ -1,27 +1,99 @@
+import classNames from "classnames";
+import { menuIconTypeEnum, products } from "@ailab-mobile/common";
 import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "@reach/router";
-import { defNavPanel, navContext, popBoxContext } from "../../common/context";
-import { defCol, defMenuType, defMenuList } from "apps/goal123/src/datas/defMenu";
-import { GET_ENTER_PAGE } from "../../../service/enterPage";
-// import { isShowEventIcon, defCol, defMenuType } from "../../datas/defMenu";
-import { api_GetTpIds } from "../../../service/api/site";
-import { useGotoGame } from "../../hook/useGotoGame";
+import {
+	defCol,
+	defMenuType,
+	defMenuList,
+	isShowEventIcon
+} from "apps/goal123/src/datas/defMenu";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../../hook/useGetTpMaintainList";
-import { getUrlParameter } from "../../common/common";
+import { defNavPanel, navContext, popBoxContext } from "../../common/context";
+import { defAppType, GET_ENTER_PAGE } from "../../../service/enterPage";
+import { api_GetTpIds } from "../../../service/api/site";
+import { useGotoGame } from "../../hook/useGotoGame";
+import { useMenu } from "../../hook/useMenu";
+import { bannerImgUrl } from "../../../config";
+import path from "../../../path";
 
 const HomeMenu = ({ i18n, userInfo }) => {
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const [selectedCategory, setSelectedCategory] = useState(defCol.hotGame);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
+	const { menuList = [], onClickProductItem } = useMenu();
+
+	// * 非靜態遊戲 須從 useMenu 裡面拿遊戲資料
+	const hotGameList = useMemo(() => {
+		const allProducts = menuList.flatMap(
+			mainMenuItem => mainMenuItem?.data
+		);
+
+		const SoccerItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.Soccer.tpGameIdNo
+		);
+
+		const SabaSoccerItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.SabaSoccer.tpGameIdNo
+		);
+
+		const VGamingItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.Vgaming.tpGameIdNo
+		);
+		const VirtualSportsItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.VirtualSports.tpGameIdNo
+		);
+		const KenoItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.Keno.tpGameIdNo
+		);
+		const V8PokerItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.V8Poker.tpGameIdNo
+		);
+		const ESportALLItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.ESportALL.tpGameIdNo
+		);
+
+		return [
+			SoccerItem,
+			SabaSoccerItem,
+			{
+				defSubMenuImage: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
+				menuType: defMenuType.Link,
+				defDisplayKey: "lbl_Slots",
+				path: path.casino.root
+			},
+			VGamingItem,
+			VirtualSportsItem,
+			KenoItem,
+			V8PokerItem,
+			ESportALLItem
+		].filter(item => item);
+	}, [menuList]);
 
 	const isMountedRef = useRef(null);
+
+	const selectedSubMenus = () => {
+		const switchSubMenu = {
+			[defCol.hotGame]: () => hotGameList,
+			default: () =>
+				menuList?.find(({ category }) => category === selectedCategory)
+					?.data || []
+		};
+
+		return (switchSubMenu[selectedCategory] || switchSubMenu.default)();
+	};
+
+	const onClickCategory = category => {
+		if (category !== selectedCategory) setSelectedCategory(category);
+	};
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -212,7 +284,8 @@ const HomeMenu = ({ i18n, userInfo }) => {
 	const subGameArr = useMemo(() => {
 		// 獲取當前選擇類別下的所有遊戲
 		const games =
-		defMenuList.find(item => item.category === selectedCol)?.items || [];
+			defMenuList.find(item => item.category === selectedCol)?.items ||
+			[];
 
 		// 過濾出應該顯示的遊戲項目
 		return games
@@ -243,18 +316,126 @@ const HomeMenu = ({ i18n, userInfo }) => {
 			});
 	}, [selectedCol, maintainList, showingTpIds]);
 
+	const mainMenus = menuList.map(mainMenuItem => {
+		const { category, defDisplayKey, data, mainMenuImage } =
+			mainMenuItem || {};
+
+		// * 查看 subMenu 是否有在顯示範圍的 New Icon
+		const isNew = data.some(subMenuItem => {
+			const { iconType, iconStartTime, iconEndTime } = subMenuItem || {};
+
+			return (
+				isShowEventIcon(iconStartTime, iconEndTime) &&
+				iconType === menuIconTypeEnum.New
+			);
+		});
+
+		// * 動態特例 Crypto Sport
+		const cryptoSportItem = data?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.CryptoSports.tpGameIdNo
+		);
+
+		return (
+			<>
+				{cryptoSportItem && (
+					<button onClick={() => onClickProductItem(cryptoSportItem)}>
+						<img
+							src={`${bannerImgUrl}/h5/img/hotgameicon/cryptosports.png`}
+							alt={category}
+						/>
+					</button>
+				)}
+				<button
+					key={category}
+					className={classNames({
+						active: selectedCategory === category,
+						// * 目前只用 New Tag
+						newicon: isNew
+					})}
+					onClick={() => onClickCategory(category)}>
+					<img src={mainMenuImage} alt={category} />
+					<p>{i18n[defDisplayKey]}</p>
+				</button>
+			</>
+		);
+	});
+
+	const subMenus = selectedSubMenus().map(subMenuItem => {
+		const {
+			tpGameIdNo,
+			productName,
+			currencyGameName,
+			iconType,
+			iconStartTime,
+			iconEndTime,
+			isInMaintain,
+			mobileHeaderPicUrl,
+			hasDesktopLink,
+			defSubMenuImage,
+			defDisplayKey
+		} = subMenuItem || {};
+		// * 後端這裡是字串格式 需做處理
+		const suBMenuImage =
+			(mobileHeaderPicUrl && JSON.parse(mobileHeaderPicUrl)[0]) ||
+			defSubMenuImage;
+
+		const isNew =
+			isShowEventIcon(iconStartTime, iconEndTime) &&
+			iconType === menuIconTypeEnum.New;
+
+		const displayName =
+			currencyGameName &&
+			currencyGameName[userInfo?.langId] &&
+			currencyGameName[userInfo?.langId];
+
+		return (
+			<div
+				className={classNames("game", { active: isInMaintain })}
+				key={`${tpGameIdNo}${productName}`}
+				onClick={() => onClickProductItem(subMenuItem)}>
+				{isNew && <div className="newicon" />}
+				<img src={suBMenuImage} alt={productName} />
+				<div className="title">
+					{displayName ||
+						subMenuItem?.productName ||
+						i18n[defDisplayKey]}
+				</div>
+				{hasDesktopLink && (
+					<div className="switchbtn">
+						<button
+							onClick={e => {
+								e.stopPropagation();
+								onClickProductItem({
+									...subMenuItem,
+									appType: defAppType.desktop
+								});
+							}}>
+							{i18n.lbl_Sportsbook_Desktop}
+						</button>
+						<button>{i18n.lbl_Sportsbook_PlayNow}</button>
+					</div>
+				)}
+				{isInMaintain && (
+					<div className="maintenance">
+						{i18n.lbl_underMaintenance}
+					</div>
+				)}
+			</div>
+		);
+	});
+
 	const subPanelArr = (
 		<div className="home-gamelist">
-			<div className="gamelist-box active">{subGameArr}</div>
+			<div className="gamelist-box active">{mainMenus}</div>
 		</div>
 	);
 
 	return (
 		<>
 			<div className="home-sidebar">
-				<div className="sidebar-tab">{gameArr}</div>
+				<div className="sidebar-tab">{mainMenus}</div>
 			</div>
-			{subPanelArr}
+			{subMenus}
 		</>
 	);
 };
