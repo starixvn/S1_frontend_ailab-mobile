@@ -1,15 +1,22 @@
 import React, { useState, useContext } from "react";
+
 import path from "apps/goal123/src/path";
 import { useNavigate } from "@reach/router";
 import { bannerImgUrl } from "apps/goal123/src/config";
 import { GET_ENTER_PAGE } from "apps/goal123/src/service/enterPage";
 import { defGameInfo } from "apps/goal123/src/datas/productList";
-import { userInfoContext, i18nContext } from "../../common/context";
+import { userInfoContext, i18nContext, navContext } from "../../common/context";
 
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../../hook/useGetTpMaintainList";
+
+export const defNavPanel = {
+	login: "login",
+	join: "join",
+	subMenu: "subMenu"
+};
 
 const defSubMenus = [
 	{
@@ -233,6 +240,7 @@ const MenuLobby = () => {
 	const [activeTitleKey, setActiveTitleKey] = useState(null);
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
+	const { setNav } = useContext(navContext);
 	const navigate = useNavigate();
 
 	const handleClickTitle = titleKey => {

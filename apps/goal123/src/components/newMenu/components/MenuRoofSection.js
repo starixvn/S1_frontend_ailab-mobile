@@ -5,10 +5,6 @@ const MenuRoofSection = ({ toggleMenu }) => {
 	const liveChatUrl = `https://direct.lc.chat/${siteInfo().liveChatId}
 	}`;
 
-	const handleLiveChatClick = () => {
-		window.open(liveChatUrl, "_blank", "noopener,noreferrer");
-	};
-
 	return (
 		<div className="menu-top">
 			<button className="btn-close" onClick={toggleMenu}>
@@ -17,12 +13,14 @@ const MenuRoofSection = ({ toggleMenu }) => {
 					alt="menu-close"
 				/>
 			</button>
-			<button className="btn-livechat" onClick={handleLiveChatClick}>
+			<a
+				className="btn-livechat"
+				href={`https://direct.lc.chat/${siteInfo().liveChatId}`}>
 				<img
 					src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-livechat.svg`}
 					alt="menu-livechat"
 				/>
-			</button>
+			</a>
 		</div>
 	);
 };

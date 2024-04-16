@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../../common/context";
-import useGetBalance from '../../hook/useGetMainBalance'
+import useGetBalance from "../../hook/useGetMainBalance";
 import useGetTpBalance from "../../hook/useGetTpBalance";
 import useGetBonusBalance from "../../hook/useGetBonusBalance";
 import { tpWalletsListType } from "../../transfer/transfer.def";
-import { number_format } from "../../newHome/utils/homeFormatter";
+import { number_format } from "../../common/common";
 import MemberBonusWallet from "./MemberBonusWallet";
 
 const MemberWallet = () => {

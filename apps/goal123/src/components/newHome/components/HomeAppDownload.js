@@ -3,10 +3,22 @@ import { useTranslation } from "react-i18next";
 import path from "../../../path";
 import { userInfoContext } from "../../common/context";
 import { bannerImgUrl } from "../../../config";
+import { useAppDownLoad } from "../../appDownload/useAppDownLoad";
 
 const HomeAppDownload = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
+	const { appLinkDatas } = useAppDownLoad();
+	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
+
+	const handleAndriod = () => {
+		window.open(andriodDownLoadUrl, "_blank", "noopener,noreferrer");
+	};
+
+	const handleIOS = () => {
+		window.open(IOSDownloadUrl, "_blank", "noopener,noreferrer");
+	};
 
 	return (
 		<div>
@@ -45,24 +57,33 @@ const HomeAppDownload = () => {
 						/>
 						<div className="app-btn-content">
 							<div className="app-android">
-								<button className="btn-app">
+								<button
+									className="btn-app"
+									onClick={handleAndriod}>
 									<i className="icon-android" />
 									{t("lbl_Home_Android")}
 								</button>
 								<a
 									className="instructions"
-									href={`/${userInfo.langId}/${path.appDownload.root}`}>
+									href={`/${userInfo.langId}/${path.appDownload.root}`}
+									target="_blank"
+									rel="noreferrer">
 									{t("lbl_Home_Instructions")}
 								</a>
 							</div>
+
 							<div className="app-ios">
-								<button className="btn-app">
+								<button
+									className="btn-app"
+									onClick={handleIOS}>
 									<i className="icon-apple" />
 									{t("lbl_Home_Apple")}
 								</button>
 								<a
 									className="instructions"
-									href={`/${userInfo.langId}/${path.appDownload.root}`}>
+									href={`/${userInfo.langId}/${path.appDownload.root}`}
+									target="_blank"
+									rel="noreferrer">
 									{t("lbl_Home_Instructions")}
 								</a>
 							</div>
