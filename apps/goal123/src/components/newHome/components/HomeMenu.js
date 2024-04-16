@@ -20,7 +20,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
-	const target = getUrlParameter("target");
+
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -52,10 +52,6 @@ const HomeMenu = ({ i18n, userInfo }) => {
 			);
 		}
 	}, [setShowningTpIds, userInfo.isLogin]);
-
-	useEffect(() => {
-		if (target) setSelectedCol(target);
-	}, [selectedCol]);
 
 	const showSubPanel = ({ panel }) => {
 		if (selectedCol !== panel) {
@@ -105,51 +101,27 @@ const HomeMenu = ({ i18n, userInfo }) => {
 	const SubGame = ({ game, underMaintain }) => {
 		const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
-		// if (game.path) {
-		// 	return (
-		// 		<Link
-		// 			className={`game${underMaintain ? " active" : ""}`}
-		// 			key={game.spanText || game.spanTextKey}
-		// 			to={`/${game.path}${game.tpId ? `/${game.tpId}` : ""}`}
-		// 			style={underMaintain ? { pointerEvents: "none" } : null}
-		// 			state={game.parameter}>
-		// 			{showingEventIcon !== "" ? (
-		// 				<div className={` ${showingEventIcon}`} />
-		// 			) : null}
-		// 			<img
-		// 				src={game.img}
-		// 				alt={game.spanText || game.spanTextKey}
-		// 			/>
-		// 			<div className="title">
-		// 				{game.spanText || i18n[game.spanTextKey]}
-		// 			</div>
-		// 			{underMaintain ? (
-		// 				<div className="maintenance">
-		// 					{i18n.lbl_underMaintenance}
-		// 				</div>
-		// 			) : null}
-		// 		</Link>
-		// 	);
-		// }
-
-		// const imgSrc = selectedCol === game.category
-		// ? game.img.replace('.svg', '-active.svg')
-		// : game.img;
+		const onMenuClick = () => {
+			if (!underMaintain) {
+				if (game.category) {
+					// 如果有 category 參數則跳轉首頁 menu 路由
+					setSelectedCol(game.category);
+				} else {
+					clickGame({
+						tpId: game.tpId,
+						gameId: game.gameId,
+						useGotoGame: game.useGotoGame,
+						tpGameType: game.tpGameType
+					});
+				}
+			}
+		};
 
 		return (
 			<div
 				className="gamelist-item"
 				key={game.spanText || game.spanTextKey}
-				onClick={
-					underMaintain
-						? () => null
-						: clickGame.bind(this, {
-								tpId: game.tpId,
-								gameId: game.gameId,
-								useGotoGame: game.useGotoGame,
-								tpGameType: game.tpGameType
-						  })
-				}>
+				onClick={() => onMenuClick(game)}>
 				{showingEventIcon !== "" ? (
 					<div className={` ${showingEventIcon}`} />
 				) : null}

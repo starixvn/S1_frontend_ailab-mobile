@@ -258,7 +258,8 @@ const gameList = [
 				// img: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/slots.png`,
 				spanTextKey: "lbl_Slots",
-				path: path.casino.root
+				path: path.casino.root,
+				category: defCol.slots
 			},
 			{
 				...defGameInfo.sabaClub,
