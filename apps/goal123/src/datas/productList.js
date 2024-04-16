@@ -186,10 +186,13 @@ const defIconType = {
 export const defCol = {
 	hotGame: "hotGame",
 	sports: "sports",
+	esports: "e-sport",
 	games: "games",
 	fishing: "fishing",
 	slots: "slots",
-	livecasino: "livecasino"
+	livecasino: "livecasino",
+	lottery: "lottery",
+	cockfighting: "cockFighting"
 };
 
 export const openGameType = {
@@ -270,7 +273,8 @@ const gameList = [
 				// 需要確認 先放圖
 				...defGameInfo.Casino_AdvantPlay,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/casino.png`,
-				spanTextKey: "lbl_Casino"
+				spanTextKey: "lbl_Casino",
+				category: defCol.livecasino
 			},
 			// {
 			// 	...defGameInfo.VirtualSports,
@@ -281,29 +285,32 @@ const gameList = [
 				...defGameInfo.Keno,
 				// img: `${bannerImgUrl}/h5/img/hotgame/keno.jpg`,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/lottery.png`,
-				spanTextKey: "lbl_Keno"
+				spanTextKey: "lbl_Lottery",
+				category: defCol.lottery
 			},
 			{
 				...defGameInfo.V8Poker,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/games-v8power.png`,
 				spanTextKey: "lbl_V8Poker"
 			},
-			// {
-			// 	// 需要確認 先放圖
-			// 	...defGameInfo.FishingSG,
-			// 	img: `${bannerImgUrl}/h5/img/home-page/hotgame/fishing.png`,
-			// 	spanTextKey: "lbl_Fishing"
-			// },
+			{
+				// ...defGameInfo.FishingSG,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/fishing.png`,
+				spanTextKey: "lbl_Fishing",
+				category: defCol.fishing
+			},
 
 			{
 				...defGameInfo.eSports,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/esports.png`,
-				spanTextKey: "lbl_eSports"
+				spanTextKey: "lbl_eSports",
+				category: defCol.esports
 			},
 			{
 				...defGameInfo.GACockFighting,
 				img: `${bannerImgUrl}/h5/img/home-page/hotgame/cockfighting.png`,
-				spanTextKey: "lbl_CockFighting"
+				spanTextKey: "lbl_CockFighting",
+				category: defCol.cockfighting
 			}
 		]
 	},
