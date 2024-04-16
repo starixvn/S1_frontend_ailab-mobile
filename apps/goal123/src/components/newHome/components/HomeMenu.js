@@ -390,31 +390,22 @@ const HomeMenu = ({ i18n, userInfo }) => {
 
 		return (
 			<div
-				className={classNames("game", { active: isInMaintain })}
+				className={classNames("gamelist-item", {
+					active: isInMaintain
+				})}
 				key={`${tpGameIdNo}${productName}`}
 				onClick={() => onClickProductItem(subMenuItem)}>
-				{isNew && <div className="newicon" />}
-				<img src={suBMenuImage} alt={productName} />
-				<div className="title">
+				{isNew && <div className="new-icon" />}
+
+				<div className="gamelist-img">
+					<img src={suBMenuImage} alt={productName} />
+				</div>
+				<div className="gamelist-title">
 					{displayName ||
 						subMenuItem?.productName ||
 						i18n[defDisplayKey]}
 				</div>
-				{hasDesktopLink && (
-					<div className="switchbtn">
-						<button
-							onClick={e => {
-								e.stopPropagation();
-								onClickProductItem({
-									...subMenuItem,
-									appType: defAppType.desktop
-								});
-							}}>
-							{i18n.lbl_Sportsbook_Desktop}
-						</button>
-						<button>{i18n.lbl_Sportsbook_PlayNow}</button>
-					</div>
-				)}
+
 				{isInMaintain && (
 					<div className="maintenance">
 						{i18n.lbl_underMaintenance}
@@ -426,7 +417,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 
 	const subPanelArr = (
 		<div className="home-gamelist">
-			<div className="gamelist-box active">{mainMenus}</div>
+			<div className="gamelist-box active">{subMenus}</div>
 		</div>
 	);
 
@@ -435,7 +426,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 			<div className="home-sidebar">
 				<div className="sidebar-tab">{mainMenus}</div>
 			</div>
-			{subMenus}
+			{subPanelArr}
 		</>
 	);
 };
