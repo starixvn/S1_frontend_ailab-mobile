@@ -74,7 +74,7 @@ const Header = ({
 										);
 									}}>
 									<img
-										src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
+										src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
 										alt=""
 									/>
 								</div>
