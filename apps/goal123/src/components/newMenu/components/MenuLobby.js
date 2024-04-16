@@ -25,41 +25,28 @@ const defSubMenus = [
 		subItems: [
 			{
 				displayKey: "lbl_SabaSport",
-				// ...defGameInfo.Sports
 				...products.Soccer
+			},
+			{
+				displayText: "SBOBET",
+				...products.SBOBET
+			},
+			{
+				displayKey: "lbl_BTISport",
+				...products.BtiSport
+			},
+			{
+				displayKey: "lbl_SabaSoccer",
+				...products.SabaSoccer
+			},
+			{
+				displayKey: "lbl_eSports",
+				...products.ESportALL
+			},
+			{
+				displayKey: "lbl_VirtualSports",
+				...products.VirtualSports
 			}
-			// {
-			// 	displayKey: "lbl_CryptoSports",
-			// 	...defGameInfo.CryptoSports
-			// },
-			// {
-			// 	displayText: "SBOBET",
-			// 	...defGameInfo.SBOSport
-			// },
-			// {
-			// 	displayKey: "lbl_BTISport",
-			// 	...defGameInfo.BTISport
-			// },
-			// {
-			// 	displayKey: "lbl_SabaSoccer",
-			// 	...defGameInfo.SabaSoccer
-			// },
-			// {
-			// 	displayKey: "lbl_eSports",
-			// 	...defGameInfo.eSports
-			// },
-			// {
-			// 	displayKey: "lbl_Basketball",
-			// 	...defGameInfo.Basketball
-			// },
-			// {
-			// 	displayKey: "lbl_Volleyball",
-			// 	...defGameInfo.Volleyball
-			// },
-			// {
-			// 	displayKey: "lbl_VirtualSports",
-			// 	...defGameInfo.VirtualSports
-			// }
 		]
 	},
 	{
@@ -67,68 +54,45 @@ const defSubMenus = [
 		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-games.svg`,
 		subItems: [
 			{
-				...products.Soccer,
-				// ...defGameInfo.kingMaker,
+				...products.KingMaker,
 				displayKey: "lbl_KingMaker"
+			},
+			{
+				...products.SabaSoccer,
+				displayKey: "lbl_Vgaming"
+			},
+			{
+				...products.V8Poker,
+				displayKey: "lbl_V8Poker"
+			},
+			{
+				...products.TableGame,
+				displayKey: "lbl_tableGame"
+			},
+			{
+				...products.VirtualSports,
+				displayKey: "lbl_VirtualGames"
 			}
-			// {
-			// 	...defGameInfo.sabaClub,
-			// 	displayKey: "lbl_Vgaming"
-			// },
-			// {
-			// 	...defGameInfo.MaxGame,
-			// 	displayText: "Max Game"
-			// },
-			// {
-			// 	...defGameInfo.V8Poker,
-			// 	displayKey: "lbl_V8Poker"
-			// },
-			// {
-			// 	...defGameInfo.tableGame,
-			// 	displayKey: "lbl_tableGame"
-			// }
-			// {
-			// 	...defGameInfo.VirtualGame,
-			// 	displayKey: "lbl_VirtualGames"
-			// }
 		]
 	},
 	{
 		displayKey: "lbl_Fishing",
 		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-fishing.svg`,
 		subItems: [
-			// {
-			// 	...defGameInfo.fish_AB3,
-			// 	displayKey: "lbl_Paradise"
-			// },
-			// {
-			// 	...defGameInfo.fish_AT01,
-			// 	displayKey: "lbl_Oneshot_Fishing"
-			// },
-			// {
-			// 	...defGameInfo.ICG_DRAGONBALL_FISHING,
-			// 	displayKey: "lbl_Game_ICG_DRAGONBALL_FISHING"
-			// },
-			// {
-			// 	...defGameInfo.ICG_FISHING_OF_SAVIORS,
-			// 	displayKey: "lbl_Game_ICG_FISHING_OF_SAVIORS"
-			// },
-			// {
-			// 	...defGameInfo.ICG_THE_TYRANT_AND_THE_PRINCESS,
-			// 	displayKey: "lbl_Game_ICG_THE_TYRANT_AND_THE_PRINCESS"
-			// },
-
-			// {
-			// 	...defGameInfo.FishingSG,
-			// 	displayKey: "lbl_FishingSG1"
-			// },
-			// {
-			// 	...defGameInfo.FishingSGW,
-			// 	displayKey: "lbl_FishingSG2"
-			// },
-
 			{
-				...products.Soccer,
+				...products.Paradise,
+				displayKey: "lbl_Paradise"
+			},
+			{
+				...products.OneshotFishing,
+				displayKey: "lbl_Oneshot_Fishing"
+			},
+			{
+				...products.FishingGod,
+				displayKey: "lbl_FishingSG1"
+			},
+			{
+				...products.FishingWar,
 				displayKey: "lbl_FishingSG2"
 			}
 		]
@@ -138,47 +102,36 @@ const defSubMenus = [
 		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-lottery.svg`,
 		subItems: [
 			{
-				...products.Soccer,
-				displayKey: "lbl_FishingSG2"
+				...products.VNLottery,
+				displayKey: "GPI_VNLottery"
+			},
+			{
+				...products.TCG,
+				displayKey: "lbl_tcg"
+			},
+			{
+				...products.Keno,
+				displayKey: "lbl_Keno"
+			},
+			{
+				...products.Lottery,
+				displayKey: "lbl_Lottery"
 			}
-			// ,
-			// 			{
-			// 				...defGameInfo.GPI_VNLottery,
-			// 				displayKey: "GPI_VNLottery"
-			// 			},
-			// 			{
-			// 				...defGameInfo.tcg,
-			// 				displayKey: "lbl_tcg"
-			// 			},
-			// 			{
-			// 				...defGameInfo.Keno,
-			// 				displayKey: "lbl_Keno"
-			// 			},
-			// 			{
-			// 				...defGameInfo.lottery,
-			// 				displayKey: "lbl_Lottery"
-			// 			}
 		]
 	},
 	{
-		...products.Soccer,
-		// ...defGameInfo.eSports,
+		...products.ESportALL,
 		displayKey: "lbl_eSports",
 		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-esports.svg`,
 		subItems: [
 			{
-				...products.Soccer,
-				displayKey: "lbl_FishingSG2"
+				...products.ESportALL,
+				displayKey: "lbl_Saba"
+			},
+			{
+				...products.TFGaming,
+				displayKey: "lbl_TFGaming"
 			}
-
-			// {
-			// 	...defGameInfo.eSports,
-			// 	displayKey: "lbl_Saba"
-			// },
-			// {
-			// 	...defGameInfo.eSports_TFGaming,
-			// 	displayKey: "lbl_TFGaming"
-			// }
 		]
 	},
 	{
@@ -191,66 +144,62 @@ const defSubMenus = [
 		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-casino.svg`,
 		subItems: [
 			{
-				...products.Soccer,
-				displayKey: "lbl_FishingSG2"
+				...products.PragmaticPlayCasino,
+				displayText: "Pragmatic Play"
+			},
+			{
+				...products.BigGaming,
+				displayText: "Big Gaming"
+			},
+			{
+				...products.YeebetCasino,
+				displayText: "YEEBET"
+			},
+			{
+				...products.SkywindCasino,
+				displayText: "Skywind"
+			},
+			{
+				...products.MicrogamingCasino,
+				displayText: "Microgaming"
+			},
+			{
+				...products.EvolutionGaming,
+				displayText: "Evolution Gaming"
+			},
+			{
+				...products.PlaytechCasino,
+				displayText: "Playtech"
+			},
+			{
+				...products.WMCasino,
+				displayText: "WM Casino"
+			},
+			{
+				...products.DreamGaming,
+				displayText: "Dream Gaming"
+			},
+			{
+				...products.AESexy,
+				displayText: "AE Sexy"
+			},
+			{
+				...products.AsiaGaming,
+				displayText: "Asia Gaming"
+			},
+			{
+				...products.Allbet,
+				displayText: "Allbet"
+			},
+			{
+				...products.SAGaming,
+				displayText: "SA Gaming"
+			},
+			{
+				...products.WE,
+				displayText: "WE",
+				tpGameType: 28
 			}
-			// {
-			// 	...defGameInfo.LIVEcasinoPP,
-			// 	displayText: "Pragmatic Play"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoBG,
-			// 	displayText: "Big Gaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoYEEBET,
-			// 	displayText: "YEEBET"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoSkywind,
-			// 	displayText: "Skywind"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoMG,
-			// 	displayText: "Microgaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoEVO,
-			// 	displayText: "Evolution Gaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasino_PlayTech,
-			// 	displayText: "Playtech"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoWM,
-			// 	displayText: "WM Casino"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoDG,
-			// 	displayText: "Dream Gaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoAE,
-			// 	displayText: "AE Sexy"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoAG,
-			// 	displayText: "Asia Gaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoAB,
-			// 	displayText: "Allbet"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoSA,
-			// 	displayText: "SA Gaming"
-			// },
-			// {
-			// 	...defGameInfo.LIVEcasinoEB,
-			// 	displayText: "eBET",
-			// 	tpGameType: 28
-			// }
 		]
 	}
 ];
