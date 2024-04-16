@@ -29,6 +29,68 @@ export const defCol = {
 	cockfighting: "cockfighting"
 };
 
+export const defHotGames = [
+	{
+		...products.SabaSoccer,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/sports-saba.png`,
+		spanTextKey: "lbl_SabaSoccer",
+		hasDesktopLink: true
+	},
+	{
+		...products.BtiSport,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/sports-bti.png`,
+		spanTextKey: "lbl_BTISport",
+		hasDesktopLink: true
+	},
+	{
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/slots.png`,
+		spanTextKey: "lbl_Slots",
+		path: path.casino.root,
+		category: defCol.slots
+	},
+	{
+		...products.Soccer,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/games-vgaming.png`,
+		spanTextKey: "lbl_Vgaming"
+	},
+	{
+		// 需要確認 先放圖
+		...products.AdvantPlay,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/casino.png`,
+		spanTextKey: "lbl_Casino",
+		category: defCol.livecasino
+	},
+	{
+		...products.Keno,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/lottery.png`,
+		spanTextKey: "lbl_Lottery",
+		category: defCol.lottery
+	},
+	{
+		...products.V8Poker,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/games-v8power.png`,
+		spanTextKey: "lbl_V8Poker"
+	},
+	{
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/fishing.png`,
+		spanTextKey: "lbl_Fishing",
+		category: defCol.fishing
+	},
+
+	{
+		...products.ESportALL,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/esports.png`,
+		spanTextKey: "lbl_eSports",
+		category: defCol.esports
+	},
+	{
+		...products.GACockFighting,
+		img: `${bannerImgUrl}/h5/img/home-page/hotgame/cockfighting.png`,
+		spanTextKey: "lbl_CockFighting",
+		category: defCol.cockfighting
+	}
+];
+
 // * defMenuObj 禁止做任何 mutability 的行為以免改到原定義檔
 export const defMenuList = Object.freeze([
 	{

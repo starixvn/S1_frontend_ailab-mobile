@@ -6,14 +6,15 @@ import {
 	defCol,
 	defMenuType,
 	defMenuList,
-	isShowEventIcon
+	isShowEventIcon,
+	defHotGames
 } from "apps/goal123/src/datas/defMenu";
 import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../../hook/useGetTpMaintainList";
 import { defNavPanel, navContext, popBoxContext } from "../../common/context";
-import { defAppType, GET_ENTER_PAGE } from "../../../service/enterPage";
+import { GET_ENTER_PAGE } from "../../../service/enterPage";
 import { api_GetTpIds } from "../../../service/api/site";
 import { useGotoGame } from "../../hook/useGotoGame";
 import { useMenu } from "../../hook/useMenu";
@@ -45,6 +46,14 @@ const HomeMenu = ({ i18n, userInfo }) => {
 			({ tpGameIdNo }) => tpGameIdNo === products.SabaSoccer.tpGameIdNo
 		);
 
+		const BtiSportItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.BtiSport.tpGameIdNo
+		);
+
+		const AdvantPlayItem = allProducts?.find(
+			({ tpGameIdNo }) => tpGameIdNo === products.AdvantPlay.tpGameIdNo
+		);
+
 		const VGamingItem = allProducts?.find(
 			({ tpGameIdNo }) => tpGameIdNo === products.Vgaming.tpGameIdNo
 		);
@@ -62,18 +71,19 @@ const HomeMenu = ({ i18n, userInfo }) => {
 		);
 
 		return [
-			SoccerItem,
 			SabaSoccerItem,
+			BtiSportItem,
 			{
 				defSubMenuImage: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
 				menuType: defMenuType.Link,
 				defDisplayKey: "lbl_Slots",
 				path: path.casino.root
 			},
-			VGamingItem,
-			VirtualSportsItem,
+			SoccerItem,
+			AdvantPlayItem,
 			KenoItem,
 			V8PokerItem,
+			KenoItem,
 			ESportALLItem
 		].filter(item => item);
 	}, [menuList]);
@@ -424,7 +434,18 @@ const HomeMenu = ({ i18n, userInfo }) => {
 	return (
 		<>
 			<div className="home-sidebar">
-				<div className="sidebar-tab">{mainMenus}</div>
+				<div className="sidebar-tab">
+					<button className="btn-hotgame active">
+						<div className="category-icon">
+							<img
+								src="https://banner.goal123.org/h5/img/home-page/icon/btn-hotgame-active.svg"
+								alt="hotGames"
+							/>
+						</div>
+						<span>hot</span>
+					</button>
+					{mainMenus}
+				</div>
 			</div>
 			{subPanelArr}
 		</>
