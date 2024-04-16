@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { Navigation } from "swiper";
-import { userInfoContext } from "../common/context";
 import useRecentlyViewed from "../hook/useRecentlyViewed";
+import { userInfoContext } from "../common/context";
 
 const RecentlyViewedGameList = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -18,21 +18,22 @@ const RecentlyViewedGameList = () => {
 	if (recentlyViewedList.length === 0) return null;
 
 	const params = {
+		slidesPerView: 1.3,
 		spaceBetween: 22,
-		slidesPerView: 1.3
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		},
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true // Make pagination bullets clickable
+		}
 	};
 
 	return (
-		<div className="recentlyList">
-			<div className="title">
-				<i className="icon icon-history " />
-				{t("lbl_Recently_Viewed")}
-			</div>
-			<Swiper
-				className="recently"
-				modules={[Navigation]}
-				navigation
-				{...params}>
+		<div className="home-recently">
+			<div className="home-title">{t("Label_Recently")}</div>
+			<Swiper className="recently" modules={[Navigation]} {...params}>
 				<div className="swiper-wrapper">
 					{recentlyViewedList.map(recentlyViewedGameItem => {
 						const {
@@ -91,6 +92,8 @@ const RecentlyViewedGameList = () => {
 						);
 					})}
 				</div>
+				<div className="swiper-button-prev" />
+				<div className="swiper-button-next" />
 			</Swiper>
 		</div>
 	);
