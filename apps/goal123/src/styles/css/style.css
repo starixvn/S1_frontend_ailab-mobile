@@ -63,10 +63,17 @@ a {
 body,
 html {
   width: 100%;
-  background: #f0eff5;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 100%;
-  font-size: 4vw;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 3.5vw;
+  font-family: "Montserrat", sans-serif;
+}
+
+a,
+button {
+  font-family: "Montserrat", sans-serif;
 }
 
 #root {
@@ -183,35 +190,187 @@ header {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-header > div {
-  width: calc(100% - 4vw);
-  background: #0e0d2f;
-  height: 12vw;
+header > div .Join,
+header > div .Login {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: calc(100% - 16vw);
+  padding: 4vw 8vw;
+  height: calc(100% - 8vw);
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  background: #fff;
+  visibility: hidden;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  pointer-events: none;
+  overflow-y: scroll;
+  white-space: initial;
+}
+header > div .Join.open,
+header > div .Login.open {
+  visibility: visible;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  opacity: 1;
+  pointer-events: auto;
+}
+header > div .Join .dropdown,
+header > div .Login .dropdown {
+  padding: 2vw 0 2vw 5vw;
+  margin-left: 0;
+}
+header > div .Join .dropdown .btn,
+header > div .Login .dropdown .btn {
+  padding: 0 3vw;
+  background: transparent;
+}
+header > div .Join .dropdown .dropdown-item,
+header > div .Login .dropdown .dropdown-item {
+  padding: 3vw;
+  color: #1f3258;
+}
+header > div .Join > .close,
+header > div .Login > .close {
+  top: 4vw;
+}
+header > div .Join > .close span,
+header > div .Login > .close span {
+  background-color: #052561;
+}
+header > div .Join > img,
+header > div .Login > img {
+  width: 40vw;
+  margin: 0 calc(50% - 20vw) 2vw;
+}
+header > div .Join .title,
+header > div .Login .title {
+  text-align: center;
+  font-size: 6vw;
+  margin: 1vw auto;
+  font-weight: bold;
+}
+header > div .Join button,
+header > div .Login button {
+  background: #1f3258;
+  border-radius: 3px;
+  color: white;
+  padding: 3vw;
+  width: 100%;
+}
+header > div .Join button.switchBar,
+header > div .Login button.switchBar {
+  width: 100%;
+  border: 1px solid #1f3258;
+  background: #bfc9da;
+  border-radius: 30px;
+  color: #1f3258;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 4vw;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  white-space: nowrap;
+  position: relative;
+  height: 10vw;
+  margin: 3vw 0;
 }
-header > div > a > img {
-  width: 37vw;
+header > div .Join button.switchBar > div,
+header > div .Login button.switchBar > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  z-index: 1;
+  padding: 3vw 0;
+}
+header > div .Join button.switchBar > div.active,
+header > div .Login button.switchBar > div.active {
+  color: white;
+}
+header > div .Join button.switchBar > div.switchBg,
+header > div .Login button.switchBar > div.switchBg {
+  position: absolute;
+  background: #141f33;
+  width: 50%;
+  height: 100%;
+  border-radius: 30px;
+  left: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  padding: 0;
+}
+header > div .Join button.switchBar > div.switchBg.right,
+header > div .Login button.switchBar > div.switchBg.right {
+  left: 50%;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+header > div .Join button.switchBar + .Join,
+header > div .Login button.switchBar + .Join {
+  display: none;
+}
+header > div .Join button.switchBar + .Join.active,
+header > div .Login button.switchBar + .Join.active {
+  display: block;
+}
+header > div .Join .Terms,
+header > div .Login .Terms {
+  margin: 1vw auto 2vw;
+  line-height: 22px;
+  color: #052561;
+}
+header > div .Join .Terms.error,
+header > div .Login .Terms.error {
+  border: 1px solid #fab617;
+  -webkit-box-shadow: 0 0 0 1px white;
+          box-shadow: 0 0 0 1px white;
+  border-radius: 0;
+  padding: 0 2vw;
+  color: #052561;
+}
+header > div .Join .Terms a,
+header > div .Login .Terms a {
+  color: #1e85ec;
+  text-decoration: underline;
+}
+header > div .Join .Terms input[type=checkbox],
+header > div .Login .Terms input[type=checkbox] {
+  display: none;
+}
+header > div .Join .Terms input[type=checkbox] + label,
+header > div .Login .Terms input[type=checkbox] + label {
+  margin: 0vw 1vw 0 0;
+  border: 1px solid #1e85ec;
+  border-radius: 100%;
+  width: 4vw;
+  height: 4vw;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  header > div .logo img {
-    width: 70%;
-  }
+header > div .Join .Terms input[type=checkbox] + label > div,
+header > div .Login .Terms input[type=checkbox] + label > div {
+  width: 3vw;
+  height: 3vw;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
 }
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  header > div .logo {
-    padding: 0 5vw 0 0;
-  }
+header > div .Join .Terms input[type=checkbox]:checked + label > div,
+header > div .Login .Terms input[type=checkbox]:checked + label > div {
+  background: #1e85ec;
 }
 header > div .logo.eurocuplogo {
   display: -webkit-box;
@@ -257,13 +416,15 @@ header > div .headerInfo {
       -ms-flex-align: end;
           align-items: flex-end;
 }
-header > div .headerInfo .MemberID {
+header > div .Join .headerInfo .MemberID,
+header > div .Login .headerInfo .MemberID {
   color: #fab617;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-header > div .headerInfo .Balance {
+header > div .Join .headerInfo .Balance,
+header > div .Login .headerInfo .Balance {
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -272,7 +433,8 @@ header > div .headerInfo .Balance {
       -ms-flex-align: center;
           align-items: center;
 }
-header > div button.clickBtn {
+header > div .Join button.clickBtn,
+header > div .Login button.clickBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -281,35 +443,43 @@ header > div button.clickBtn {
   padding: 0;
   margin-left: 2.5vw;
 }
-header > div button.clickBtn::before {
+header > div .Join button.clickBtn::before,
+header > div .Login button.clickBtn::before {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
 }
-header > div .headerBtnOut {
+header > div .Join .headerBtnOut,
+header > div .Login .headerBtnOut {
   display: none;
   margin-left: 2vw;
 }
-header > div .headerBtnOut.open {
+header > div .Join .headerBtnOut.open,
+header > div .Login .headerBtnOut.open {
   display: block;
 }
-header > div .headerBtnOut > button {
+header > div .Join .headerBtnOut > button,
+header > div .Login .headerBtnOut > button {
   border-radius: 3px;
   color: white;
   padding: 1vw 1vw;
   margin-left: 5px;
 }
-header > div .headerBtnOut > button.registerBtn {
+header > div .Join .headerBtnOut > button.registerBtn,
+header > div .Login .headerBtnOut > button.registerBtn {
   background: #d83b35;
 }
-header > div .headerBtnOut > button.loginBtn {
+header > div .Join .headerBtnOut > button.loginBtn,
+header > div .Login .headerBtnOut > button.loginBtn {
   background: #fab617;
 }
-header > div .headerBtnOut .icon-chat {
+header > div .Join .headerBtnOut .icon-chat,
+header > div .Login .headerBtnOut .icon-chat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-header > div .headerBtnOut .icon-chat .amount {
+header > div .Join .headerBtnOut .icon-chat .amount,
+header > div .Login .headerBtnOut .icon-chat .amount {
   width: 6vw;
   height: 6vw;
   background: #fab617;
@@ -332,11 +502,13 @@ header > div .headerBtnOut .icon-chat .amount {
   padding: 0.5vw;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  header > div .headerBtnOut button {
+  header > div .Join .headerBtnOut button,
+  header > div .Login .headerBtnOut button {
     font-size: 16px;
   }
 }
-header > div .headerBtnIn {
+header > div .Join .headerBtnIn,
+header > div .Login .headerBtnIn {
   color: #eaa378;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -344,24 +516,30 @@ header > div .headerBtnIn {
   font-size: 12px;
   display: none;
 }
-header > div .headerBtnIn.open {
+header > div .Join .headerBtnIn.open,
+header > div .Login .headerBtnIn.open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-header > div .headerBtnIn p {
+header > div .Join .headerBtnIn p,
+header > div .Login .headerBtnIn p {
   margin: 0 5px;
 }
-header > div .headerBtnIn img {
+header > div .Join .headerBtnIn img,
+header > div .Login .headerBtnIn img {
   width: 30px;
 }
-header > div .headerBtnIn .icon {
+header > div .Join .headerBtnIn .icon,
+header > div .Login .headerBtnIn .icon {
   position: relative;
 }
-header > div .headerBtnIn .icon::before {
+header > div .Join .headerBtnIn .icon::before,
+header > div .Login .headerBtnIn .icon::before {
   font-size: 30px;
 }
-header > div .headerBtnIn .icon .amount {
+header > div .Join .headerBtnIn .icon .amount,
+header > div .Login .headerBtnIn .icon .amount {
   width: 6vw;
   height: 6vw;
   background: #fab617;
@@ -384,7 +562,8 @@ header > div .headerBtnIn .icon .amount {
   padding: 0.5vw;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  header > div .headerBtnIn .icon .amount {
+  header > div .Join .headerBtnIn .icon .amount,
+  header > div .Login .headerBtnIn .icon .amount {
     width: 4vw;
     height: 4vw;
     margin-top: -7vw;
@@ -393,14 +572,17 @@ header > div .headerBtnIn .icon .amount {
   }
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  header > div .headerBtnIn {
+  header > div .Join .headerBtnIn,
+  header > div .Login .headerBtnIn {
     font-size: 16px;
   }
-  header > div .headerBtnIn img {
+  header > div .Join .headerBtnIn img,
+  header > div .Login .headerBtnIn img {
     width: 45px;
   }
 }
-header > div .headerBtnIn .itemInfo {
+header > div .Join .headerBtnIn .itemInfo,
+header > div .Login .headerBtnIn .itemInfo {
   background: rgba(250, 182, 23, 0.95);
   -webkit-box-shadow: rgba(250, 182, 23, 0.6) 0.75vw 0.75vw;
           box-shadow: rgba(250, 182, 23, 0.6) 0.75vw 0.75vw;
@@ -416,12 +598,14 @@ header > div .headerBtnIn .itemInfo {
   width: 45vw;
   height: auto;
 }
-header > div .headerBtnIn .itemInfo > div {
+header > div .Join .headerBtnIn .itemInfo > div,
+header > div .Login .headerBtnIn .itemInfo > div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-header > div .headerBtnIn .itemInfo::before {
+header > div .Join .headerBtnIn .itemInfo::before,
+header > div .Login .headerBtnIn .itemInfo::before {
   content: "";
   position: absolute;
   top: -3vw;
@@ -430,7 +614,8 @@ header > div .headerBtnIn .itemInfo::before {
   border-right: 3vw solid transparent;
   border-bottom: 3vw solid rgba(250, 182, 23, 0.95);
 }
-header > div .headerBtnIn .itemInfo::after {
+header > div .Join .headerBtnIn .itemInfo::after,
+header > div .Login .headerBtnIn .itemInfo::after {
   content: "";
   position: absolute;
   top: -3vw;
@@ -441,7 +626,8 @@ header > div .headerBtnIn .itemInfo::after {
   -webkit-animation: routate2 linear infinite alternate 0.8s;
           animation: routate2 linear infinite alternate 0.8s;
 }
-header > div .headerBtnIn .itemInfo .icon-close {
+header > div .Join .headerBtnIn .itemInfo .icon-close,
+header > div .Login .headerBtnIn .itemInfo .icon-close {
   position: absolute;
   top: 3vw;
   right: 3vw;
@@ -460,7 +646,8 @@ header > div .headerBtnIn .itemInfo .icon-close {
           justify-content: center;
   color: #fab617;
 }
-header > div .headerBtnIn .itemInfo .icon-close::before {
+header > div .Join .headerBtnIn .itemInfo .icon-close::before,
+header > div .Login .headerBtnIn .itemInfo .icon-close::before {
   font-size: 2.5vw;
 }
 
@@ -468,9 +655,6 @@ main {
   padding-top: 12vw;
   background: #f3f3f3;
   position: relative;
-}
-main.active {
-  padding-top: 24vw;
 }
 main.stopScroll {
   position: fixed;
@@ -493,70 +677,6 @@ main .banner {
   height: auto;
   display: block;
   z-index: 3;
-}
-main #Marquee {
-  height: 7vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.1);
-  z-index: 4;
-  width: 95%;
-  margin: 10px auto;
-  margin-top: 0;
-  border-radius: 20px;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6eaf2));
-  background: linear-gradient(to bottom, white 0%, #e6eaf2 100%);
-  border: 1px solid #4264a6;
-  overflow: hidden;
-}
-main #Marquee .icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 5vw;
-  background: #152849;
-}
-main #Marquee .marquee-box {
-  white-space: nowrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-main #Marquee .marquee-box .img {
-  position: absolute;
-  top: -9px;
-  left: 0;
-  z-index: 1;
-}
-main #Marquee .marquee-box .text {
-  position: absolute;
-}
-main #Marquee > div.open {
-  width: calc(100% - 5vw);
-  -webkit-animation-name: marquee;
-          animation-name: marquee;
-  -webkit-animation-duration: 4600ms;
-          animation-duration: 4600ms;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  main #Marquee {
-    border-radius: 30px;
-    font-size: 16px;
-  }
 }
 main .sideBarNew {
   width: 100%;
@@ -684,10 +804,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 
 .main {
   width: calc(100% - 8vw);
-  height: auto;
-  min-height: 100%;
   background-color: #f2f4f7;
-  padding: 26vw 4vw 40vw;
+  padding: 24vw 4vw 40vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -706,7 +824,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   width: calc(100% - 8vw);
   height: auto;
   background-color: #f2f4f7;
-  padding: 26vw 4vw 24vw;
+  padding: 26vw 4vw 40vw;
   -webkit-box-pack: unset;
       -ms-flex-pack: unset;
           justify-content: unset;
@@ -716,17 +834,17 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           box-sizing: revert;
 }
 .main.casino {
-  width: calc(100% - 8vw);
+  width: 100%;
   height: auto;
-  padding: 35vw 4vw 24vw;
+  padding: 35vw 4vw 40vw;
   position: relative;
   -webkit-box-pack: unset;
       -ms-flex-pack: unset;
           justify-content: unset;
   overflow: scroll;
   min-height: 100%;
-  -webkit-box-sizing: revert;
-          box-sizing: revert;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @-webkit-keyframes flash {
@@ -796,87 +914,306 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           transform: scale(0.9);
 }
 
-.footerNew {
+.footer {
   width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 4;
+  z-index: 5;
   background: #141f33;
-  border-top: 1px solid rgba(255, 255, 255, 0.168627451);
+  min-height: 18.8vw;
+  -webkit-box-shadow: 0 -0.9vw 1.4vw 0 rgba(185, 185, 185, 0.3);
+          box-shadow: 0 -0.9vw 1.4vw 0 rgba(185, 185, 185, 0.3);
+  border-radius: 3.5vw 3.5vw 0 0;
+}
+.footer-menu {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 3vw 3.5vw 2.8vw;
+  border-radius: 3.5vw 3.5vw 0 0;
+  background: #141f33;
+}
+.footer-menu.after {
+  padding: 3vw 0 1.5vw;
+}
+.footer-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 13vw;
-  padding-top: 2vw;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
-.footerNew > a {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
-  text-align: center;
+.footer-list a,
+.footer-list button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-bottom: 2px solid #64789b;
-  border: 0;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-  position: relative;
-}
-.footerNew > a .circleAnimation {
-  position: absolute;
-  width: calc(20vw - 1px);
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #64789b;
-}
-.footerNew > a .circleAnimation > div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative;
-  bottom: 6vw;
 }
-.footerNew > a .circleAnimation > div:before {
-  font-size: 7vw;
+.footer-list a.item span,
+.footer-list button.item span {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 2.8vw;
+  font-weight: 600;
+  text-align: center;
+  color: #b9b9b9;
+  width: 16vw;
+  white-space: pre-wrap;
 }
-.footerNew > a:last-child {
-  border-right: 0;
+.footer-list a.item span.active,
+.footer-list button.item span.active {
+  color: #d83b35;
 }
-.footerNew > a span {
-  color: #64789b;
-  white-space: nowrap;
-  margin-bottom: 1vw;
-  font-size: 3.2vw;
+.footer-list a.item img,
+.footer-list button.item img {
+  width: 11.85vw;
 }
-.footerNew > a.open .circleAnimation .icon {
-  color: #fbb514;
+.footer-list a.item .hot-icon,
+.footer-list button.item .hot-icon {
+  position: relative;
+  z-index: 3;
 }
-.footerNew > a.open span {
-  color: #fbb514;
-}
-.footerNew > a .newicon, .footerNew > a .hoticon {
+.footer-list a.item .hot-icon::after,
+.footer-list button.item .hot-icon::after {
+  content: "";
+  display: inline-block;
+  width: 11.5vw;
+  height: 3.7vw;
+  background: url(https://banner.goal123.org/h5/img/home-page/icon/tag-hot.svg) no-repeat center/contain;
   position: absolute;
-  top: -25px;
-  right: 10px;
+  left: -3.3vw;
+  top: 6vw;
+  -webkit-animation: flash linear infinite alternate 0.3s;
+          animation: flash linear infinite alternate 0.3s;
+}
+@keyframes flash {
+  0% {
+    -webkit-filter: brightness(0.9);
+            filter: brightness(0.9);
+  }
+  100% {
+    -webkit-filter: brightness(1.8);
+            filter: brightness(1.8);
+  }
+}
+.footer-list-after {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 1.5vw;
+  z-index: 2;
+}
+.footer-list-after::after {
+  content: "";
   display: block;
-  width: 38px;
-  height: 35px;
-  -webkit-animation: flash3 linear infinite alternate 0.3s;
-          animation: flash3 linear infinite alternate 0.3s;
+  background: url(https://banner.goal123.org/h5/img/home-page/footer/after-bg.svg) no-repeat center/cover;
+  width: 100%;
+  height: 24vw;
+  position: absolute;
+  top: -8.8vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 2;
 }
-.footerNew > a .newicon {
-  background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
+.footer-list-after a,
+.footer-list-after button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
 }
-.footerNew > a .hoticon {
-  background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
+.footer-list-after a.item,
+.footer-list-after button.item {
+  width: 16.3vw;
+  z-index: 3;
+}
+.footer-list-after a.item.deposit,
+.footer-list-after button.item.deposit {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 18.6vw;
+  height: 18.6vw;
+  margin: 0 4vw;
+  border-radius: 100%;
+  background: linear-gradient(185deg, rgb(251, 181, 19) 14%, rgb(207, 0, 0) 95%);
+  position: relative;
+  top: -4vw;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer-list-after a.item.deposit img,
+.footer-list-after button.item.deposit img {
+  width: 14vw;
+}
+.footer-list-after a.item.deposit:active,
+.footer-list-after button.item.deposit:active {
+  border: 0.5vw solid #fff;
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+.footer-list-after a.item.deposit.active,
+.footer-list-after button.item.deposit.active {
+  background: #fff;
+  border: 0.5vw solid rgb(207, 0, 0);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer-list-after a.item span,
+.footer-list-after button.item span {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 2.8vw;
+  font-weight: 600;
+  text-align: center;
+  color: #b9b9b9;
+  width: 16vw;
+  white-space: pre-wrap;
+}
+.footer-list-after a.item span.active,
+.footer-list-after button.item span.active {
+  color: #d83b35;
+}
+.footer-list-after a.item img,
+.footer-list-after button.item img {
+  width: 11.85vw;
+}
+.footer-list-after a.item .hot-icon,
+.footer-list-after button.item .hot-icon {
+  z-index: 3;
+  position: relative;
+}
+.footer-list-after a.item .hot-icon::after,
+.footer-list-after button.item .hot-icon::after {
+  content: "";
+  display: inline-block;
+  width: 11.5vw;
+  height: 3.7vw;
+  background: url(https://banner.goal123.org/h5/img/home-page/icon/tag-hot.svg) no-repeat center/contain;
+  position: absolute;
+  left: -3.3vw;
+  top: 6vw;
+  -webkit-animation: flash linear infinite alternate 0.3s;
+          animation: flash linear infinite alternate 0.3s;
+}
+@keyframes flash {
+  0% {
+    -webkit-filter: brightness(0.9);
+            filter: brightness(0.9);
+  }
+  100% {
+    -webkit-filter: brightness(1.8);
+            filter: brightness(1.8);
+  }
+}
+.footer-transaction {
+  background: url(https://banner.goal123.org/h5/img/home-page/footer/transaction-bg.svg) no-repeat center/cover;
+  width: 100%;
+  border-radius: 6.5vw 6.5vw 0 0;
+  -webkit-box-shadow: 0 -0.7vw 4.7vw 0 rgba(0, 0, 0, 0.66);
+          box-shadow: 0 -0.7vw 4.7vw 0 rgba(0, 0, 0, 0.66);
+  position: fixed;
+  bottom: 20vw;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  z-index: 1;
+  display: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer-transaction.active {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.footer-transaction .transaction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 5vw 3.8vw 4.6vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.footer-transaction .transaction a.transaction-item,
+.footer-transaction .transaction button.transaction-item {
+  width: 19.6vw;
+  min-height: 18.6vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.footer-transaction .transaction a.transaction-item img,
+.footer-transaction .transaction button.transaction-item img {
+  width: 9.3vw;
+  height: 7.4vw;
+}
+.footer-transaction .transaction a.transaction-item span,
+.footer-transaction .transaction button.transaction-item span {
+  color: #141f33;
+  text-transform: uppercase;
+  font-size: 2.8vw;
+  font-weight: 700;
+  margin-top: 0.9vw;
+  text-align: center;
+  display: block;
+  width: 21.6vw;
+  white-space: pre-wrap;
 }
 
 @-webkit-keyframes marquee {
@@ -2586,7 +2923,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 
 .header {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-bottom: 0;
+  height: 11vw;
 }
 .header .title {
   font-size: 5vw;
@@ -2603,7 +2944,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 
 .tag {
   position: fixed;
-  top: 12vw;
+  top: 11vw;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2976,24 +3317,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   .mainNew .hotevent .hotDiv .teamR p {
     width: 42px;
   }
-}
-.mainNew .MarqueeNew {
-  font-size: 12px;
-  position: relative;
-}
-.mainNew .MarqueeNew div {
-  padding: 0 5px;
-}
-.mainNew .MarqueeNew div img {
-  position: absolute;
-  left: 0;
-  top: -5px;
-  padding: 0px 10px;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6eaf2));
-  background: linear-gradient(to bottom, white 0%, #e6eaf2 100%);
-}
-.mainNew .MarqueeNew .marquee-box {
-  color: #052561;
 }
 .mainNew .gameBox {
   position: relative;
@@ -3451,9 +3774,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
-}
-.info ul li .title {
-  color: #1f3258;
 }
 .info.infoBlack {
   background: #d1d6e0;
@@ -6311,13 +6631,17 @@ span.important {
           justify-content: flex-start;
   height: auto;
   min-height: calc(100% - 39vw);
-  padding: 15vw 4vw 24vw;
+  padding: 15vw 4vw 40vw;
 }
 .promotions img {
   width: 100%;
   margin-top: 1vw;
   margin-bottom: 1vw;
   border-radius: 5px;
+}
+.promotions .btn-group a,
+.promotions .btn-group button {
+  font-weight: 600;
 }
 .promotions .filterBtn {
   width: 100%;
@@ -6730,7 +7054,7 @@ span.important {
   font-size: 14px;
 }
 .breadcrumb ul .breadcrumb-item a {
-  color: #1e85ec;
+  color: #fff;
   text-transform: capitalize;
 }
 .breadcrumb ul .breadcrumb-item + .breadcrumb-item::before {
@@ -6740,7 +7064,8 @@ span.important {
   font-size: 13px;
 }
 .breadcrumb ul .breadcrumb-item.active a {
-  color: white;
+  color: #fab617;
+  font-weight: 500;
 }
 
 .downloadNew {
@@ -6786,71 +7111,10 @@ span.important {
   }
 }
 
-.appDownload {
-  background: rgb(245, 172, 35);
-  width: 100%;
-  padding: 5px 10px;
-  color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 14px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  display: none;
-}
-.appDownload.open {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.appDownload span {
-  font-weight: bold;
-  display: block;
-}
-.appDownload img {
-  max-width: 40px;
-  display: block;
-  margin: 0 5px 0 20px;
-}
-.appDownload .download-btn {
-  border: 1px solid #fff;
-  display: block;
-  padding: 2%;
-  color: #fff;
-  font-size: 13px;
-}
-.appDownload .left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.appDownload .left button,
-.appDownload .left a {
-  color: #000;
-}
-@media screen and (min-width: 550px) and (max-width: 1024px) {
-  .appDownload {
-    font-size: 16px;
-  }
-  .appDownload img {
-    max-width: 70px;
-  }
-  .appDownload .download-btn {
-    font-size: 16px;
-  }
-}
-
 .eventLink {
   position: fixed;
   right: 1vw;
-  bottom: 34vw;
+  bottom: 60vw;
   z-index: 4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6913,7 +7177,7 @@ span.important {
 .eventLink.angpaoLink {
   width: 120px;
   height: 120px;
-  bottom: 38vw;
+  bottom: 50vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7034,7 +7298,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 60vw;
+  bottom: 74vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7047,7 +7311,7 @@ span.important {
 }
 .eventLink.dragonegg {
   right: 4vw;
-  bottom: 16vw;
+  bottom: 55vw;
 }
 .eventLink.dragonegg img {
   width: 21vw;
@@ -7665,7 +7929,7 @@ span.important {
 }
 
 .main.referral {
-  padding: 25vw 0vw 18vw;
+  padding: 25vw 0vw 40vw;
   width: 100%;
 }
 .main.referral .tag {
@@ -7995,15 +8259,6 @@ span.important {
   font-weight: bold;
   color: white;
 }
-.depositModule_mobile > .title .info,
-.depositModule_online > .title .info,
-.depositModule_local > .title .info,
-.depositModule_topupMobile > .title .info,
-.depositModule_Crpyto > .title .info {
-  color: rgba(250, 182, 23, 0.8);
-  margin-left: 0.75vw;
-  font-size: 3.25vw;
-}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -8132,7 +8387,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: 1vw auto;
+  margin: auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -8146,43 +8401,6 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.depositModule_mobile .selectModule > div.info.remark,
-.depositModule_online .selectModule > div.info.remark,
-.depositModule_local .selectModule > div.info.remark,
-.depositModule_topupMobile .selectModule > div.info.remark,
-.depositModule_Crpyto .selectModule > div.info.remark {
-  background: transparent;
-  width: calc(100% - 2vw);
-  padding: 0;
-}
-.depositModule_mobile .selectModule > div.info.remark ul,
-.depositModule_online .selectModule > div.info.remark ul,
-.depositModule_local .selectModule > div.info.remark ul,
-.depositModule_topupMobile .selectModule > div.info.remark ul,
-.depositModule_Crpyto .selectModule > div.info.remark ul {
-  width: 100%;
-}
-.depositModule_mobile .selectModule > div.info.remark ul .tip,
-.depositModule_online .selectModule > div.info.remark ul .tip,
-.depositModule_local .selectModule > div.info.remark ul .tip,
-.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
-.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
-  text-align: left;
-  padding: 0 1vw;
-  margin-bottom: 2vw;
-}
-.depositModule_mobile .selectModule > div.info.remark li,
-.depositModule_online .selectModule > div.info.remark li,
-.depositModule_local .selectModule > div.info.remark li,
-.depositModule_topupMobile .selectModule > div.info.remark li,
-.depositModule_Crpyto .selectModule > div.info.remark li {
-  background: #adccff;
-  border-radius: 5px;
-  padding: 2vw 5vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
@@ -9577,7 +9795,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 12vw 0 0;
+  margin: 11vw 0 0;
   overflow: hidden;
 }
 .wheelEvent .eventPage {
@@ -9595,7 +9813,7 @@ span.important {
           flex-flow: column;
   background: url(https://banner.goal123.org/h5/img/event/wheel/bg.jpg) no-repeat top center/212vw, -webkit-gradient(linear, left top, right top, from(#301c3f), to(#361e42));
   background: url(https://banner.goal123.org/h5/img/event/wheel/bg.jpg) no-repeat top center/212vw, linear-gradient(to right, #301c3f, #361e42);
-  padding: 0 0 24vw;
+  padding: 0 0 40vw;
 }
 .wheelEvent .eventTitleBg {
   width: 39vw;
@@ -10035,6 +10253,23 @@ span.important {
   opacity: 1;
   pointer-events: auto;
 }
+.Join.open .logo.newlogo,
+.Login.open .logo.newlogo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 4vw;
+}
+.Join.open .logo.newlogo img,
+.Login.open .logo.newlogo img {
+  width: 56vw;
+}
 .Join .dropdown,
 .Login .dropdown {
   padding: 2vw 0 2vw 5vw;
@@ -10345,7 +10580,7 @@ span.important {
 
 #goTop {
   position: fixed;
-  bottom: 20vw;
+  bottom: 32vw;
   right: 2vw;
   width: 10vw;
   height: 10vw;
@@ -11865,6 +12100,10 @@ span.important {
 .recently .swiper-button-next::before, .recently .swiper-button-prev::before {
   content: "\ea40";
   font-size: 4vw;
+  color: #141f33;
+}
+.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
+  content: "";
 }
 .recently .swiper-button-next {
   -webkit-transform: rotate(180deg);

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
 import { isDateRange } from "@ailab-mobile/common";
-import Footer from "./footer";
 import Header from "./header";
 import {
 	navContext,
@@ -25,6 +24,9 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
+import HomeHeader from "../newHome/components/HomeHeader";
+import { readCookie } from "./common";
+import HomeFooter from "../newHome/components/HomeFooter";
 import EuroCupLink from "../euroCup/euroCupLink";
 
 const Layout = ({
@@ -56,6 +58,8 @@ const Layout = ({
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
+
+	const cookieName = `appDownloadHint${userInfo.userName}`;
 
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
@@ -123,17 +127,34 @@ const Layout = ({
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{noHeader
+			{!root && (noHeader
 				? null
-				: header ?? <Header title={title} hideLogo={true} />}
-			<main
-				style={position}
-				className={`${mainClass ?? ""}${
-					appHint ? " openAppDownload" : ""
-				} ${appHint && root ? "active" : ""}`}>
-				{children}
-				{loading ? <Loading /> : null}
-			</main>
+				: header ?? <Header title={title} hideLogo={true} />)}
+
+			{root && (
+				<header id="header" className="header-index">
+					<HomeHeader />
+				</header>
+			)}
+
+			{!root ? (
+				<main
+					style={position}
+					className={`${mainClass ?? ""}${
+						appHint ? " openAppDownload" : ""
+					} ${appHint && root ? "active" : ""}`}>
+					{children}
+					{loading ? <Loading /> : null}
+				</main>
+			) : (
+				<main
+					className={
+						readCookie(cookieName) === "1" ? "home" : "home active"
+					}>
+					{children}
+					{loading ? <Loading /> : null}
+				</main>
+			)}
 
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming &&
@@ -173,8 +194,8 @@ const Layout = ({
 
 			{/* 歐冠杯期間顯示 */}
 			{isDateRange(eventTime.eventCup) && root && <EuroCupLink />}
-
-			<Footer />
+			{/* <Footer /> */}
+			<HomeFooter />
 			{goTopBtn && <GoTopBtn />}
 		</>
 	);

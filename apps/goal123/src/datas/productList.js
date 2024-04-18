@@ -191,10 +191,13 @@ const defIconType = {
 export const defCol = {
 	hotGame: "hotGame",
 	sports: "sports",
+	esports: "e-sport",
 	games: "games",
 	fishing: "fishing",
 	slots: "slots",
-	livecasino: "livecasino"
+	livecasino: "livecasino",
+	lottery: "lottery",
+	cockfighting: "cockFighting"
 };
 
 export const openGameType = {
@@ -237,49 +240,83 @@ const gameList = [
 	{
 		category: "hotGame",
 		translateKey: "lbl_Hot",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/hot.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-hotgame.svg`,
 		items: [
-			{
-				...defGameInfo.Sports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sport.jpg`,
-				spanTextKey: "lbl_Sports",
-				hasDesktopLink: true
-			},
+			// {
+			// 	...defGameInfo.Sports,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sport.jpg`,
+			// 	spanTextKey: "lbl_Sports",
+			// 	hasDesktopLink: true
+			// },
 			{
 				...defGameInfo.SabaSoccer,
-				img: `${bannerImgUrl}/h5/img/hotgame/sabasoccer.jpg`,
+				// img: `${bannerImgUrl}/h5/img/hotgame/sabasoccer.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/sports-saba.png`,
 				spanTextKey: "lbl_SabaSoccer",
 				hasDesktopLink: true
 			},
 			{
-				img: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
+				...defGameInfo.BTISport,
+				// img: `${bannerImgUrl}/h5/img/hotgame/sport.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/sports-bti.png`,
+				spanTextKey: "lbl_BTISport",
+				hasDesktopLink: true
+			},
+			{
+				// img: `${bannerImgUrl}/h5/img/hotgame/slots.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/slots.png`,
 				spanTextKey: "lbl_Slots",
-				path: path.casino.root
+				// 首頁的hotgame只需要跳轉到slots的tab
+				// path: path.casino.root,
+				category: defCol.slots
 			},
 			{
 				...defGameInfo.sabaClub,
-				img: `${bannerImgUrl}/h5/img/hotgame/vg.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/games-vgaming.png`,
 				spanTextKey: "lbl_Vgaming"
 			},
 			{
-				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
-				spanTextKey: "lbl_VirtualSports"
+				// 需要確認 先放圖
+				...defGameInfo.Casino_AdvantPlay,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/casino.png`,
+				spanTextKey: "lbl_Casino",
+				category: defCol.livecasino
 			},
+			// {
+			// 	...defGameInfo.VirtualSports,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/virtual.jpg`,
+			// 	spanTextKey: "lbl_VirtualSports"
+			// },
 			{
 				...defGameInfo.Keno,
-				img: `${bannerImgUrl}/h5/img/hotgame/keno.jpg`,
-				spanTextKey: "lbl_Keno"
+				// img: `${bannerImgUrl}/h5/img/hotgame/keno.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/lottery.png`,
+				spanTextKey: "lbl_Lottery",
+				category: defCol.lottery
 			},
 			{
 				...defGameInfo.V8Poker,
-				img: `${bannerImgUrl}/h5/img/hotgame/v8poker.jpg`,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/games-v8power.png`,
 				spanTextKey: "lbl_V8Poker"
 			},
 			{
+				// ...defGameInfo.FishingSG,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/fishing.png`,
+				spanTextKey: "lbl_Fishing",
+				category: defCol.fishing
+			},
+
+			{
 				...defGameInfo.eSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/esport.jpg`,
-				spanTextKey: "lbl_eSports"
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/esports.png`,
+				spanTextKey: "lbl_eSports",
+				category: defCol.esports
+			},
+			{
+				...defGameInfo.GACockFighting,
+				img: `${bannerImgUrl}/h5/img/home-page/hotgame/cockfighting.png`,
+				spanTextKey: "lbl_CockFighting",
+				category: defCol.cockfighting
 			}
 		]
 	},
@@ -308,11 +345,11 @@ const gameList = [
 	{
 		category: "sports",
 		translateKey: "lbl_Sports",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/sport.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-sports.svg`,
 		items: [
 			{
 				...defGameInfo.Sports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/soccer.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/sports/soccer.png`,
 				spanTextKey: "lbl_Soccer",
 				hasDesktopLink: true
 			},
@@ -329,19 +366,19 @@ const gameList = [
 			// },
 			{
 				...defGameInfo.SBOSport,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/sbo.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBO/sports/sbobet.png`,
 				spanText: "SBOBET",
 				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.BTISport,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/bti.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/BTI/sports/bti-sport.png`,
 				spanTextKey: "lbl_BTISport",
 				hasDesktopLink: true
 			},
 			{
 				...defGameInfo.sports_IM,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/inplaymatrix.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/IM/sports/im-sports.png`,
 				spanText: "IM Sports",
 				hasDesktopLink: true,
 				eventIcon: [
@@ -351,32 +388,32 @@ const gameList = [
 					}
 				]
 			},
-			{
-				...defGameInfo.SabaSoccer,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
-				spanTextKey: "lbl_SabaSoccer",
-				hasDesktopLink: true
-			},
-			{
-				...defGameInfo.eSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/e-sports.png`,
-				spanTextKey: "lbl_eSports"
-			},
-			{
-				...defGameInfo.Basketball,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/baseketball.png`,
-				spanTextKey: "lbl_Basketball",
-				hasDesktopLink: true
-			},
-			{
-				...defGameInfo.Volleyball,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/volleyball.png`,
-				spanTextKey: "lbl_Volleyball",
-				hasDesktopLink: true
-			},
+			// {
+			// 	...defGameInfo.SabaSoccer,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sports/sabasoccer.png`,
+			// 	spanTextKey: "lbl_SabaSoccer",
+			// 	hasDesktopLink: true
+			// },
+			// {
+			// 	...defGameInfo.eSports,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sports/e-sports.png`,
+			// 	spanTextKey: "lbl_eSports"
+			// },
+			// {
+			// 	...defGameInfo.Basketball,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sports/baseketball.png`,
+			// 	spanTextKey: "lbl_Basketball",
+			// 	hasDesktopLink: true
+			// },
+			// {
+			// 	...defGameInfo.Volleyball,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/sports/volleyball.png`,
+			// 	spanTextKey: "lbl_Volleyball",
+			// 	hasDesktopLink: true
+			// },
 			{
 				...defGameInfo.VirtualSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/sports/betradar.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/sports/virtual-sports.png`,
 				spanTextKey: "lbl_VirtualSports",
 				eventIcon: [
 					{
@@ -390,16 +427,16 @@ const gameList = [
 	{
 		category: "e-sport",
 		translateKey: "lbl_eSports",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/esport.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-esports.svg`,
 		items: [
 			{
 				...defGameInfo.eSports,
-				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-saba.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/esports/saba.png`,
 				spanTextKey: "lbl_Saba"
 			},
 			{
 				...defGameInfo.eSports_IM,
-				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-inplaymatrix.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/IM/esports/im-e-sports.png`,
 				spanText: "IM E-Sports",
 				eventIcon: [
 					{
@@ -410,7 +447,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.eSports_TFGaming,
-				img: `${bannerImgUrl}/h5/img/hotgame/esport/esport-tfg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/TFG/esports/tfgaming.png`,
 				spanTextKey: "lbl_TFGaming"
 			}
 		]
@@ -418,16 +455,16 @@ const gameList = [
 	{
 		category: "games",
 		translateKey: "lbl_Games",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/games.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-games.svg`,
 		items: [
 			{
 				...defGameInfo.kingMaker,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/king.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/KM/games/king-maker.png`,
 				spanTextKey: "lbl_KingMaker"
 			},
 			{
 				...defGameInfo["93Connect"],
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/93connect.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/NTConnect/games/93connect.png`,
 				spanText: "93Connect",
 				eventIcon: [
 					{
@@ -438,7 +475,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.sabaClub,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vga.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/games/vgaming.png`,
 				spanTextKey: "lbl_Vgaming"
 			},
 			// {
@@ -454,12 +491,12 @@ const gameList = [
 			// },
 			{
 				...defGameInfo.V8Poker,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/v8.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/V8/games/v8-poker.png`,
 				spanTextKey: "lbl_V8Poker"
 			},
 			{
 				...defGameInfo.tableGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/table.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/games/table-game.png`,
 				spanTextKey: "lbl_tableGame"
 			},
 			{
@@ -469,7 +506,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.IM_Avaitor,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-aviator.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/games/aviator.png`,
 				spanText: "Avaitor",
 				eventIcon: [
 					{
@@ -480,7 +517,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.IM_Mines,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-mines.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/games/mines.png`,
 				spanText: "Mines",
 				eventIcon: [
 					{
@@ -491,7 +528,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.IM_Goal,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-goal.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/games/goal.png`,
 				spanText: "Goal",
 				eventIcon: [
 					{
@@ -502,7 +539,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.IM_Dice,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/spribe-dice.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/games/dice.png`,
 				spanText: "Dice",
 				eventIcon: [
 					{
@@ -513,17 +550,17 @@ const gameList = [
 			},
 			{
 				...defGameInfo.Spaceman,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/pp.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PP/games/spaceman.png`,
 				spanText: "Spaceman"
 			},
 			{
 				...defGameInfo.Crash,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/ap.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/AP/games/crash.png`,
 				spanText: "Crash"
 			},
 			{
 				...defGameInfo.GoRush,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/jili.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/JILI/games/go-rush.png`,
 				spanText: "Go Rush"
 			}
 		]
@@ -531,21 +568,21 @@ const gameList = [
 	{
 		category: "fishing",
 		translateKey: "lbl_Fishing",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/fishing.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-fishing.svg`,
 		items: [
 			{
 				...defGameInfo.FishingSG,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-god.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SG/fishing/fishing-god.png`,
 				spanTextKey: "lbl_FishingSG1"
 			},
 			{
 				...defGameInfo.FishingSGW,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-war.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SG/fishing/fishing-war.png`,
 				spanTextKey: "lbl_FishingSG2"
 			},
 			{
 				...defGameInfo.Fishing_Zombie_Party,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-zp.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SG/fishing/zombie-party.png`,
 				spanTextKey: "lbl_Fishing_Zombie_Party",
 				eventIcon: [
 					{
@@ -556,7 +593,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.Fishing_Alien_Hunter,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-ah.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SG/fishing/alien-hunter.png`,
 				spanTextKey: "lbl_Fishing_Alien_Hunter",
 				eventIcon: [
 					{
@@ -567,12 +604,12 @@ const gameList = [
 			},
 			{
 				...defGameInfo.fish_AB3,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-paradise.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/CQ9/fishing/paradise.png`,
 				spanTextKey: "lbl_Paradise"
 			},
 			{
 				...defGameInfo.fish_AT01,
-				img: `${bannerImgUrl}/h5/img/hotgame/fishing/fishing-oneshot.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/CQ9/fishing/oneshot-fishing.png`,
 				spanTextKey: "lbl_Oneshot_Fishing"
 			}
 
@@ -618,11 +655,11 @@ const gameList = [
 	{
 		category: "lottery",
 		translateKey: "lbl_Lottery",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/lottery.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-lottery.svg`,
 		items: [
 			{
 				...defGameInfo.GPI_VNLottery,
-				img: `${bannerImgUrl}/h5/img/hotgame/lottery/vn.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/GPI/lottery/vn-lottery.png`,
 				spanTextKey: "GPI_VNLottery",
 				eventIcon: [
 					{
@@ -633,17 +670,17 @@ const gameList = [
 			},
 			{
 				...defGameInfo.tcg,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/tcg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/TCG/lottery/tc-gaming.png`,
 				spanTextKey: "lbl_tcg"
 			},
 			{
 				...defGameInfo.Keno,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/keno.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/lottery/keno.png`,
 				spanTextKey: "lbl_Keno"
 			},
 			{
 				...defGameInfo.lottery,
-				img: `${bannerImgUrl}/h5/img/hotgame/games/lottery.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/lottery/lottery.png`,
 				spanTextKey: "lbl_Lottery"
 			}
 		]
@@ -651,11 +688,11 @@ const gameList = [
 	{
 		category: "cockFighting",
 		translateKey: "lbl_CockFighting",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/cockfighting.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-cockfigting.svg`,
 		items: [
 			{
 				...defGameInfo.GACockFighting,
-				img: `${bannerImgUrl}/h5/img/hotgame/cockfighting/cockfighting.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/GA/cockfighting/cockfighting.png`,
 				spanText: "GA Cock Fighting",
 				eventIcon: [
 					{
@@ -669,13 +706,13 @@ const gameList = [
 	{
 		category: "slots",
 		translateKey: "lbl_Slots",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/slots.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-slots.svg`,
 		items: [
 			{
 				...defGameInfo.Casino_PP,
 				parameter: defGameInfo.Casino_PP,
 				spanText: "Pragmatic Play",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pp.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PP/slots/pragmatic-play.png`,
 				path: path.casino.root,
 				providerImgName: "pp"
 			},
@@ -684,7 +721,7 @@ const gameList = [
 				...defGameInfo.Casino_SG,
 				parameter: defGameInfo.Casino_SG,
 				spanText: "Spadegaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SG/slots/spadegaming.png`,
 				path: path.casino.root,
 				providerImgName: "sg"
 			},
@@ -692,7 +729,7 @@ const gameList = [
 				...defGameInfo.Casino_AdvantPlay,
 				parameter: defGameInfo.Casino_AdvantPlay,
 				spanText: "AdvantPlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-apnew.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/AP/slots/advantplay.png`,
 				path: path.casino.root,
 				providerImgName: "ap"
 			},
@@ -700,7 +737,7 @@ const gameList = [
 				...defGameInfo.Casino_Amigo,
 				parameter: defGameInfo.Casino_Amigo,
 				spanText: "Amigo Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-amigo.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Amigo/slots/amigo-gaming.png`,
 				path: path.casino.root,
 				providerImgName: "amigo",
 				eventIcon: [
@@ -714,7 +751,7 @@ const gameList = [
 				...defGameInfo.Casino_Endorphina,
 				parameter: defGameInfo.Casino_Endorphina,
 				spanText: "ES",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-es.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/ES/slots/es.png`,
 				path: path.casino.root,
 				providerImgName: "es",
 				eventIcon: [
@@ -728,7 +765,7 @@ const gameList = [
 				...defGameInfo.Casino_Nextspin,
 				parameter: defGameInfo.Casino_Nextspin,
 				spanText: "Nextspin",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nextspin.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Nextspin/slots/nextspin.png`,
 				path: path.casino.root,
 				providerImgName: "nextspin",
 				eventIcon: [
@@ -742,7 +779,7 @@ const gameList = [
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
 				spanText: "PG Soft",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PG/slots/pg-soft.png`,
 				path: path.casino.root,
 				providerImgName: "pg"
 			},
@@ -750,7 +787,7 @@ const gameList = [
 				...defGameInfo.Casino_BNG,
 				parameter: defGameInfo.Casino_BNG,
 				spanText: "BNG",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-bng.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/BNG/slots/bng.png`,
 				path: path.casino.root,
 				providerImgName: "",
 				eventIcon: [
@@ -764,7 +801,7 @@ const gameList = [
 				...defGameInfo.Casino_FaChai,
 				parameter: defGameInfo.Casino_FaChai,
 				spanText: "Fa Chai",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-fachai.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/FaChai/slots/fachai.png`,
 				path: path.casino.root,
 				providerImgName: "",
 				eventIcon: [
@@ -778,7 +815,7 @@ const gameList = [
 				...defGameInfo.Casino_MGP,
 				parameter: defGameInfo.Casino_MGP,
 				spanText: "Microgaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-mg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/MG/slots/microgaming.png`,
 				path: path.casino.root,
 				providerImgName: "mg"
 			},
@@ -786,7 +823,7 @@ const gameList = [
 				...defGameInfo.Casino_Jili,
 				parameter: defGameInfo.Casino_Jili,
 				spanText: "Jili",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-jili.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/JILI/slots/jili.png`,
 				path: path.casino.root,
 				providerImgName: "jili"
 			},
@@ -794,7 +831,7 @@ const gameList = [
 				...defGameInfo.Casino_SPRIBE,
 				parameter: defGameInfo.Casino_SPRIBE,
 				spanText: "SPRIBE",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-spribe.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/slots/spribe.png`,
 				path: path.casino.root,
 				providerImgName: "spribe"
 			},
@@ -802,7 +839,7 @@ const gameList = [
 				...defGameInfo.Casino_NoLimitCity,
 				parameter: defGameInfo.Casino_NoLimitCity,
 				spanText: "NoLimit City",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-nlc.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/NLC/slots/nolimit-city.png`,
 				path: path.casino.root,
 				eventIcon: [
 					{
@@ -815,7 +852,7 @@ const gameList = [
 				...defGameInfo.Casino_RedTiger,
 				parameter: defGameInfo.Casino_RedTiger,
 				spanText: "Red Tiger",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-rt.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/RedTiger/slots/red-tiger.png`,
 				path: path.casino.root,
 				providerImgName: "rt"
 			},
@@ -823,7 +860,7 @@ const gameList = [
 				...defGameInfo.Casino_NetEnt,
 				parameter: defGameInfo.Casino_NetEnt,
 				spanText: "NetEnt",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ne.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Netent/slots/netent.png`,
 				path: path.casino.root,
 				providerImgName: "ne"
 			},
@@ -831,7 +868,7 @@ const gameList = [
 				...defGameInfo.Casino_CQ9,
 				parameter: defGameInfo.Casino_CQ9,
 				spanText: "CQ9",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-cq9.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/CQ9/slots/cq9.png`,
 				path: path.casino.root,
 				providerImgName: "cq9"
 			},
@@ -839,7 +876,7 @@ const gameList = [
 				...defGameInfo.Casino_PNG,
 				parameter: defGameInfo.Casino_PNG,
 				spanText: "Play' n GO",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-playngo.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PNG/slots/playn-go.png`,
 				path: path.casino.root,
 				providerImgName: "png",
 				eventIcon: [
@@ -853,7 +890,7 @@ const gameList = [
 				...defGameInfo.Casino_GPI,
 				parameter: defGameInfo.Casino_GPI,
 				spanText: "Game Play",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-gpi.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/GPI/slots/game-play.png`,
 				path: path.casino.root,
 				providerImgName: "gpi"
 			},
@@ -861,7 +898,7 @@ const gameList = [
 				...defGameInfo.Casino_YGG,
 				parameter: defGameInfo.Casino_YGG,
 				spanText: "YGGDrassil",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-ygg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/YGG/slots/yggdrassil.png`,
 				path: path.casino.root,
 				providerImgName: "yg"
 			},
@@ -869,7 +906,7 @@ const gameList = [
 				...defGameInfo.Casino_Habanero,
 				parameter: defGameInfo.Casino_Habanero,
 				spanText: "Habanero",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-habanero.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/HB/slots/habanero.png`,
 				path: path.casino.root,
 				providerImgName: "habanero"
 			},
@@ -877,7 +914,7 @@ const gameList = [
 				...defGameInfo.Casino_SimplePlay,
 				parameter: defGameInfo.Casino_SimplePlay,
 				spanText: "SimplePlay",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-simpleplay.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SimplePlay/slots/simpleplay.png`,
 				path: path.casino.root,
 				providerImgName: "simpleplay",
 				eventIcon: [
@@ -891,7 +928,7 @@ const gameList = [
 				...defGameInfo.Casino_Skywind,
 				parameter: defGameInfo.Casino_Skywind,
 				spanText: "Skywind",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Skywind/slots/skywind.png`,
 				path: path.casino.root,
 				providerImgName: "sk",
 				eventIcon: [
@@ -906,7 +943,7 @@ const gameList = [
 				...defGameInfo.Casino_PlayTech,
 				parameter: defGameInfo.Casino_PlayTech,
 				spanText: "PlayTech",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PlayTech/slots/playtech.png`,
 				path: path.casino.root,
 				providerImgName: "pt"
 			}
@@ -929,12 +966,12 @@ const gameList = [
 	{
 		category: "livecasino",
 		translateKey: "lbl_Live",
-		img: `${bannerImgUrl}/h5/img/hotgameicon/live.png`,
+		img: `${bannerImgUrl}/h5/img/home-page/icon/btn-casino.svg`,
 		items: [
 			{
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PP/casino/pragmatic-play.png`
 			},
 			{
 				...defGameInfo.LIVECasinoWon,
@@ -950,7 +987,7 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoBG,
 				spanText: "Big Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-bg.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/BG/casino/big-gaming.png`,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -961,7 +998,7 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoYEEBET,
 				spanText: "YEEBET",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-yb.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Yeebet/casino/yeebet-casino.png`,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -972,7 +1009,7 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoSkywind,
 				spanText: "Skywind",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-sk.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Skywind/casino/skywind.png`,
 				eventIcon: [
 					{
 						icon: defIconType.new,
@@ -983,54 +1020,54 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoMG,
 				spanText: "Microgaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-mg.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/MG/casino/microgaming.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoEVO,
 				spanText: "Evolution Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-evolution.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/EVO/casino/evolution-gaming.png`,
 				tpGameType: 63
 			},
 			// 新的 PlayTech (Seamless Wallet)
 			{
 				...defGameInfo.LIVEcasino_PlayTech,
 				spanText: "PlayTech",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-playtech.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/PlayTech/casino/playtech.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoWM,
 				spanText: "WM Casino",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-wm.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/WonCasino/casino/woncasino.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoDG,
 				spanText: "Dream Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-dg.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/DG/casino/dream-gaming.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoAE,
 				spanText: "AE Sexy",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ae.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Sexy/casino/ae-sexy.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoAG,
 				spanText: "Asia Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-ag.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/AG/casino/asia-gaming.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoAB,
 				spanText: "Allbet",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-allbet.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/Allbet/casino/allbet.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoSA,
 				spanText: "SA Gaming",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-sa.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/SA/casino/sa-gaming.png`
 			},
 			{
 				...defGameInfo.LIVEcasinoEB,
 				spanText: "WE",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-we.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/WE/casino/we.png`
 			}
 		]
 	}
