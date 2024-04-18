@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import path from "apps/goal123/src/path";
+import { isDateRange } from "@ailab-mobile/common";
+import { eventTime } from "../../common/eventTime";
 import { bannerImgUrl } from "../../../config";
 import useGetBalance from "../../hook/useGetMainBalance";
 import useGetTpBalance from "../../hook/useGetTpBalance";
@@ -139,12 +141,17 @@ const HomeHeader = () => {
 							{t("Label_Header_HarvestWealth")}
 						</span>
 					</div>
-					<a className="logo-eurocup" href="">
-						<img
-							src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
-							alt="header-eurocup-logo"
-						/>
-					</a>
+
+					{isDateRange(eventTime.eventCup) && (
+						<a
+							className="logo-eurocup"
+							href={`/${userInfo.langId}/${path.euroCup.root}`}>
+							<img
+								src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
+								alt="header-eurocup-logo"
+							/>
+						</a>
+					)}
 				</div>
 
 				{!userInfo.isLogin && (
