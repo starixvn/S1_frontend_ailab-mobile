@@ -9,10 +9,13 @@ import useTopWinnerList from "../hooks/useWinnerList";
 import "swiper/swiper.min.css";
 
 const HomeLeaderBoard = () => {
-	const winnerList = useTopWinnerList();
+	const {
+		winnerList,
+		sportTopWinner,
+		slotTopWinner,
+		liveCasinoTopWinner
+	} = useTopWinnerList();
 	const { t } = useTranslation();
-
-	// winproduct等api中 先寫死swiper
 
 	const swiperParams = {
 		spaceBetween: 20,
@@ -29,59 +32,60 @@ const HomeLeaderBoard = () => {
 		modules: [Pagination, Autoplay]
 	};
 
-
+	const renderLeaderboardSlide = (
+		itemClass,
+		bannerUrl,
+		alt,
+		topWinner,
+		title
+	) => (
+		<SwiperSlide className="swiper-slide">
+			<div className={itemClass}>
+				<div className="swiper-slide">
+					<img src={bannerUrl} alt={alt} />
+					<div className="title">{t(title)}</div>
+					<div className="user-data">
+						<span>
+							{topWinner.length > 0 && topWinner[0].userName}
+						</span>
+						<span>
+							{topWinner.length > 0 &&
+								`$${number_format({
+									number: topWinner[0].wTurnover
+								})}`}
+						</span>
+					</div>
+				</div>
+			</div>
+		</SwiperSlide>
+	);
 
 	return (
 		<div className="home-leaderboard">
 			<div className="home-title">Top Winner</div>
 			<div className="win-products">
-				<Swiper {...swiperParams} className="win-product">
-					<SwiperSlide className="swiper-slide">
-						<div className="item sports">
-							<div className="swiper-slide">
-								<img
-									src={`${bannerImgUrl}/h5/img/home-page/leaderboard/sports-top1.png`}
-									alt="sports-top1"
-								/>
-								<div className="title">{t("lbl_Sports")}</div>
-								<div className="user-data">
-									<span>Lo*****98</span>
-									<span>$999,999,999.99</span>
-								</div>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide className="swiper-slide">
-						<div className="item sports">
-							<div className="swiper-slide">
-								<img
-									src={`${bannerImgUrl}/h5/img/home-page/leaderboard/casino-top1.png`}
-									alt="sports-top1"
-								/>
-								<div className="title">{t("lbl_Sports")}</div>
-								<div className="user-data">
-									<span>Lo*****98</span>
-									<span>$999,999,999.99</span>
-								</div>
-							</div>
-						</div>
-					</SwiperSlide>
-
-					<SwiperSlide className="swiper-slide">
-						<div className="item sports">
-							<div className="swiper-slide">
-								<img
-									src={`${bannerImgUrl}/h5/img/home-page/leaderboard/slots-top1.png`}
-									alt="sports-top1"
-								/>
-								<div className="title">{t("lbl_Sports")}</div>
-								<div className="user-data">
-									<span>Lo*****98</span>
-									<span>$999,999,999.99</span>
-								</div>
-							</div>
-						</div>
-					</SwiperSlide>
+				<Swiper {...swiperParams}>
+					{renderLeaderboardSlide(
+						"item sports",
+						`${bannerImgUrl}/h5/img/home-page/leaderboard/sports-top1.png`,
+						"sports-top1",
+						sportTopWinner,
+						"lbl_Sports"
+					)}
+					{renderLeaderboardSlide(
+						"item casino",
+						`${bannerImgUrl}/h5/img/home-page/leaderboard/casino-top1.png`,
+						"casino-top1",
+						liveCasinoTopWinner,
+						"lbl_Casino"
+					)}
+					{renderLeaderboardSlide(
+						"item slots",
+						`${bannerImgUrl}/h5/img/home-page/leaderboard/slots-top1.png`,
+						"slots-top1",
+						slotTopWinner,
+						"lbl_Slots"
+					)}
 				</Swiper>
 				<div className="swiper-pagination" />
 			</div>
