@@ -10,14 +10,15 @@ const MenuPlatform = () => {
 	return (
 		<div className="menu-platform">
 			<div className="platform">
-				<a href="/referral">
-					<img
-						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-referral.svg`}
-						alt="sidemenu-referral"
-					/>
-					<span>{t("lbl_Referral")}</span>
-				</a>
-
+				{userInfo.isLogin && (
+					<a href="/referral">
+						<img
+							src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-referral.svg`}
+							alt="sidemenu-referral"
+						/>
+						<span>{t("lbl_Referral")}</span>
+					</a>
+				)}
 				<a href="/ambassador">
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-sponsor.svg`}
@@ -32,13 +33,6 @@ const MenuPlatform = () => {
 					/>
 					<span>{t("Label_Menu_Vip")}</span>
 				</a>
-				{/* <a href="/leaderboard">
-            <img
-                src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-leaderboard.svg`}
-                alt=""
-            />
-            <span>{t("Label_Menu_Leader_Board")}</span>
-        </a> */}
 				<a href={siteInfo({ langId: userInfo.langId }).affiliateLink}>
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-affiliate.svg`}
