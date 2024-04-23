@@ -181,6 +181,7 @@
   "lbl_CupEvent_CurrentlyAccumulated": "Hiện đang tích lũy",
   "lbl_CupEvent_DrawnOutOn": "Bốc thăm vào ngày 15/7",
   "lbl_CupEvent_EnterTheNumberOfTickets": "Nhập số lượng vé",
+  "lbl_CupEvent_Euro2024": "EURO2024",
   "lbl_CupEvent_GetTickets": "Nhận {{count}} vé",
   "lbl_CupEvent_MakeAtLeast": "Tích lũy ít nhất",
   "lbl_CupEvent_Mission": "Nhiệm vụ",

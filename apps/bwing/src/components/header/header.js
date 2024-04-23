@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -16,6 +17,7 @@ import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import { number_format } from "../common/common";
+import { eventTime } from "../common/eventTime";
 
 const vipImg = [
 	`${bannerImgUrl}/h5/img/4.0/vip/vip1.png`,
@@ -28,7 +30,7 @@ const vipImg = [
 
 const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
-
+	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
 
@@ -51,8 +53,17 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 						</div>
 					)}
 					{!hideLogo && !title && (
-						<a href="/" className="logo">
+						<a className="logo">
 							<Logo />
+							{isDateRange(eventTime.euroCup) && (
+								<img
+									src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
+									alt="euro-logo-gif"
+									onClick={() =>
+										navigate(`/${path.euroCup.root}`)
+									}
+								/>
+							)}
 						</a>
 					)}
 				</div>

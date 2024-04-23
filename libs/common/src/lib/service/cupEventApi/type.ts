@@ -93,3 +93,23 @@ export interface IPollTicketsArgs {
 	};
 	count: number;
 }
+
+export interface IPredictScoreTeamData {
+	team: string;
+	teamDetail: {
+		countryName: string;
+		imageName: string;
+		sort: number;
+	};
+	score: number;
+}
+
+export interface ICupEventPredictScoreData {
+	data: IPredictScoreTeamData[];
+	isPredict: boolean;
+}
+
+export interface IPredictCupEventScoreArgs {
+	HomeTeamScore: number;
+	AwayTeamScore: number;
+}

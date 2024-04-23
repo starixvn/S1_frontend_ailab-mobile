@@ -2,10 +2,12 @@ import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
 import {
 	ICupEventPredictionSettingData,
+	ICupEventPredictScoreData,
 	ICupEventTicketData,
 	ICupEventTicketSummaryData,
 	IMemberDepositData,
-	IPollTicketsArgs
+	IPollTicketsArgs,
+	IPredictCupEventScoreArgs
 } from "./type";
 
 export const cupEventApi = rootApi.injectEndpoints({
@@ -52,6 +54,17 @@ export const cupEventApi = rootApi.injectEndpoints({
 			}),
 			providesTags: ["CUP_EVENT_POST"]
 		}),
+		GetCupEventPredictScore: builder.query<
+			IAxiosResponse<ICupEventPredictScoreData>,
+			null
+		>({
+			query: data => ({
+				url: "CupEvent/GetCupEventPredictScore",
+				method: "POST",
+				data
+			}),
+			providesTags: ["CUP_EVENT_PREDICTSCORE"]
+		}),
 		MultiUserPollTickets: builder.mutation<
 			IAxiosResponse<null>,
 			IPollTicketsArgs
@@ -62,6 +75,17 @@ export const cupEventApi = rootApi.injectEndpoints({
 				data
 			}),
 			invalidatesTags: ["CUP_EVENT_POST"]
+		}),
+		PredictCupEventScore: builder.mutation<
+			IAxiosResponse<null>,
+			IPredictCupEventScoreArgs
+		>({
+			query: data => ({
+				url: "CupEvent/PredictCupEventScore",
+				method: "POST",
+				data
+			}),
+			invalidatesTags: ["CUP_EVENT_PREDICTSCORE"]
 		})
 	})
 });
@@ -71,5 +95,7 @@ export const {
 	useGetCupEventTicketQuery,
 	useGetMemberDepositQuery,
 	useGetCupEventTicketSummaryQuery,
-	useMultiUserPollTicketsMutation
+	useGetCupEventPredictScoreQuery,
+	useMultiUserPollTicketsMutation,
+	usePredictCupEventScoreMutation
 } = cupEventApi;
