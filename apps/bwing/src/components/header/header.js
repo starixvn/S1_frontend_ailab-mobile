@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
+import classNames from "classnames";
+import { isDateRange } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -16,6 +18,7 @@ import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 import { tpWalletsListType } from "../transfer/transfer.def";
 import { number_format } from "../common/common";
+import { eventTime } from "../common/eventTime";
 
 const vipImg = [
 	`${bannerImgUrl}/h5/img/4.0/vip/vip1.png`,
@@ -28,7 +31,7 @@ const vipImg = [
 
 const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
-
+	const navigate = useNavigate();
 	const { userInfo } = useContext(userInfoContext);
 	const { isLogin } = userInfo;
 
@@ -38,7 +41,10 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 
 	return (
 		<header>
-			<div className="header">
+			<div
+				className={`${classNames("header", {
+					"euro-header": isDateRange(eventTime.euroCup)
+				})}`}>
 				<div className="header-content">
 					<button
 						className="menubtn icon-menu"
@@ -51,8 +57,18 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 						</div>
 					)}
 					{!hideLogo && !title && (
-						<a href="/" className="logo">
+						<a className="logo">
 							<Logo />
+							{isDateRange(eventTime.euroCup) && (
+								<img
+									className="euro-index-logo"
+									src={`${bannerImgUrl}/h5/img/event/eurocup/bwing-euro.webp`}
+									alt="euro-logo-gif"
+									onClick={() =>
+										navigate(`/${path.euroCup.root}`)
+									}
+								/>
+							)}
 						</a>
 					)}
 				</div>

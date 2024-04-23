@@ -13,6 +13,9 @@ const Logo = ({ className }) => {
 			className={className || "logoImg"}
 			src={getLogo(userInfo.langId)}
 			alt="logo"
+			onClick={() => {
+				window.location.href = "/";
+			}}
 		/>
 	);
 };
