@@ -222,6 +222,10 @@ const defPlatfrom = [
 	{
 		...defGameInfo["93Connect"],
 		imgName: "93connecta"
+	},
+	{
+		...defGameInfo.LIVECasinoWon,
+		imgName: "woncasinoa"
 	}
 ];
 

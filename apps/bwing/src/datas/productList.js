@@ -49,6 +49,11 @@ export const defGameInfo = {
 	LIVEcasinoEVO: { tpId: 36, gameId: 0, tpGameType: 63 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
+	LIVECasinoWon: {
+		tpId: 64,
+		gameId: 0,
+		tpGameType: 116
+	},
 	One789_lottery: { tpId: 23, gameId: 0, tpGameType: 35 },
 	One789_lottery_789: { tpId: 23, gameId: 1, tpGameType: 36 },
 	Casino_ow: { gameId: 208, tpId: 41, tpGameType: 4 },
