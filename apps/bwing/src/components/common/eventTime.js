@@ -58,6 +58,18 @@ export const eventTime = {
 		startDate: "2024/02/01 00:00:00",
 		endDate: "2024/02/29 23:59:59"
 	},
+	euroCup: {
+		// startDate: "2024/05/15 00:00:00",
+		startDate: "2024/04/15 00:00:00",
+		endDate: "2024/07/15 23:59:59"
+	},
+	prediction: {
+		endDate: "2024/07/05 23:59:59"
+	},
+	predictScore: {
+		startDate: "2024/07/11 00:00:00",
+		endDate: "2024/07/14 23:59:59"
+	},
 	game_93Connect: { endDate: "2024/04/21 23:59:59" },
 	liveCasino_Won: {
 		endDate: "2024/07/09 23:59:59"

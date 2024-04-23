@@ -24,6 +24,7 @@ import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
+import EuroCupLink from "../euroCup/euroCupLink";
 
 export const defPageInfo = {
 	default: {
@@ -238,6 +239,11 @@ export const defPageInfo = {
 		titleKey: "lbl_SiteNews",
 		className: "lobby news",
 		hideLogo: true
+	},
+	"/euro-cup": {
+		titleKey: "lbl_CupEvent_Euro2024",
+		className: "euro",
+		hideLogo: true
 	}
 };
 
@@ -344,7 +350,7 @@ const Layout = ({ children }) => {
 			{loading ? <Loading /> : null}
 			<Footer />
 			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming && root && (
+			{displayVgaming && root && !isDateRange(eventTime.euroCup) && (
 				<div className="eventLink vgaming">
 					<button
 						className="icon-close-white-bg"
@@ -363,6 +369,8 @@ const Layout = ({ children }) => {
 			{!isDateRange(eventTime.dragonEgg) && luckyWheel && root && (
 				<LuckyWheel setLuckyWheel={setLuckyWheel} />
 			)}
+
+			{isDateRange(eventTime.euroCup) && root && <EuroCupLink />}
 
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
 
