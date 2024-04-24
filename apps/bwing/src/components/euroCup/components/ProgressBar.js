@@ -2,6 +2,7 @@ import React from "react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const ProgressBar = ({ cur, target }) => {
 	const { t } = useTranslation();
