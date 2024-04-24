@@ -168,8 +168,11 @@ const HomeSportMatches = () => {
 					src={`${bannerImgUrl}/h5/img/home-page/hotmatches-bg.png`}
 					alt="ambassador"
 				/>
-				<span>{t("lbl_Home_Ambassador")}2023-2024 </span>
-				<span>Michael Ballack</span>
+				<div className="text">
+					<span>{t("lbl_Home_Ambassador")}</span>
+					<span>2023-2024</span>
+					<span>Michael Ballack</span>
+				</div>
 			</div>
 
 			<Swiper

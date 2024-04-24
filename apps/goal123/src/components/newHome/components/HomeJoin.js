@@ -11,7 +11,7 @@ const HomeJoin = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const clickGame = useClickGame();
+	const { clickGame } = useClickGame();
 
 	const JoinListItems = [
 		{

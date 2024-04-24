@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
@@ -11,9 +12,9 @@ import useGetBonusBalance from "../../hook/useGetBonusBalance";
 import { api_account_GetPopupMsg } from "../../../service/api/account";
 import { tpWalletsListType } from "../../transfer/transfer.def";
 import { userInfoContext, msgCountContext } from "../../common/context";
-import { number_format, readCookie, setCookie } from "../../common/common";
+import { number_format } from "../../common/common";
 
-const HomeHeader = () => {
+const HomeHeader = ({ appHint, handleDownloadHint }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const navigate = useNavigate();
 	const { t } = useTranslation();
@@ -53,7 +54,6 @@ const HomeHeader = () => {
 		GetBalance();
 		GetTpWalletList({ langId: userInfo.langId });
 		GetBonusBalance();
-		e.currentTarget.classList.toggle("active");
 	};
 
 	const clickEye = () => {
@@ -64,13 +64,13 @@ const HomeHeader = () => {
 
 	// get popup message
 
-	const [popUp, setPopUp] = useState("");
+	const [popUp, setPopUp] = useState({});
 
 	const GetPopupMsg = () => {
 		try {
 			api_account_GetPopupMsg().then(res => {
 				if (res.data.data) {
-					setPopUp(res.data.data.popupMessage);
+					setPopUp(res.data.data);
 				}
 			});
 		} catch (error) {}
@@ -81,21 +81,6 @@ const HomeHeader = () => {
 			GetPopupMsg();
 		}
 	}, [userInfo?.isLogin]);
-
-	const [appHint, setAppHint] = useState(false);
-
-	const cookieName = `appDownloadHint${userInfo.userName}`;
-
-	useEffect(() => {
-		if (userInfo.userName && readCookie(cookieName) !== "1") {
-			setAppHint(true);
-		}
-	}, [userInfo.currencyId, userInfo.accountName]);
-
-	const handleDownloadHint = () => {
-		setCookie(cookieName, "1", 1);
-		setAppHint(false);
-	};
 
 	const handleClosePopup = e => {
 		e.stopPropagation();
@@ -209,11 +194,17 @@ const HomeHeader = () => {
 								<a
 									className="icon-message"
 									onClick={() => {
-										navigate(`${path.message.root}`);
+										navigate(`${path.message.root}`, {
+											state: {
+												id: popUp.id,
+												pageNumber: popUp.pageNumber,
+												popupShowed: false
+											}
+										});
 									}}>
-									{popUp && (
+									{popUp?.popupMessage && (
 										<div className="info">
-											<div>{popUp}</div>
+											<div>{popUp?.popupMessage}</div>
 											<button
 												className="icon-close"
 												onClick={handleClosePopup}
@@ -228,6 +219,16 @@ const HomeHeader = () => {
 			</div>
 		</>
 	);
+};
+
+HomeHeader.defaultProps = {
+	appHint: false,
+	handleDownloadHint: () => null
+};
+
+HomeHeader.propTypes = {
+	appHint: PropTypes.bool,
+	handleDownloadHint: PropTypes.func
 };
 
 export default HomeHeader;

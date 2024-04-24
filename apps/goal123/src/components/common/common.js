@@ -211,3 +211,9 @@ export const numFormatToDigits = (
 	});
 	return formatter.format(Number(value.toFixed(digits)));
 };
+
+export const defWithdrawalSettingType = {
+	bankInfo: 1,
+	eWallet: 3,
+	cryptoWallet: 4
+};
