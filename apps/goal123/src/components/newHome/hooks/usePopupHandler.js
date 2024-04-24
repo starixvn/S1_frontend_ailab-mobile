@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { useNavigate } from "@reach/router";
 import { bannerImgUrl } from "apps/goal123/src/config";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { api_GetWalletInfo } from "apps/goal123/src/service/api/account";
@@ -13,6 +14,7 @@ import {
 	popBoxContext,
 	i18nContext
 } from "../../common/context";
+import path from "../../../path";
 import { defPopBoxType } from "../../common/popbox";
 import { defDeviceType } from "../../../service/api/base";
 import NewYear, {
@@ -20,6 +22,8 @@ import NewYear, {
 } from "../../common/popbox.newYear";
 
 const usePopupHandler = () => {
+	const navigate = useNavigate();
+
 	const [getPopUpPromotion] = useLazyGetPopUpPromotionQuery();
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);

@@ -6,21 +6,46 @@ import { bannerImgUrl, siteInfo } from "../../../config";
 import { userInfoContext } from "../../common/context";
 import NewMenu from "../../newMenu";
 
+const FocusItemImg = {
+	iconHome: {
+		beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-home.svg`,
+		afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-home-active.svg`
+	},
+	iconPromotion: {
+		beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-promotion.svg`,
+		afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-promotion-active.svg`
+	},
+	iconDeposit: {
+		beforeLoginSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit.svg`,
+		beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after.svg`,
+		afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after-active.svg`
+	},
+	iconLiveChat: {
+		beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-livechat.svg`,
+		afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-livechat.svg`
+	},
+	iconMenu: {
+		beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-menu.svg`,
+		afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-menu-active.svg`
+	}
+};
+
 const HomeFooter = () => {
-	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
+
+	const { userInfo } = useContext(userInfoContext);
+
 	const [clickHome, setClickHome] = useState(false);
 	const [clickdeposit, setClickDeposit] = useState(false);
 	const [clickPromotion, setClickPromotion] = useState(false);
-
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const matchPromotion = useMatch(`/${path.promotion.root}`);
+	const matchHome = useMatch(path.home.root);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
-
-	const matchPromotion = useMatch(`/${path.promotion.root}`);
-	const matchHome = useMatch(path.home.root);
 
 	const onClickDeposit = () => {
 		setClickDeposit(!clickdeposit);
@@ -39,30 +64,6 @@ const HomeFooter = () => {
 
 	const handleLiveChatClick = () => {
 		window.open(liveChatUrl, "_blank", "noopener,noreferrer");
-	};
-
-	const FocusItemImg = {
-		iconHome: {
-			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-home.svg`,
-			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-home-active.svg`
-		},
-		iconPromotion: {
-			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-promotion.svg`,
-			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-promotion-active.svg`
-		},
-		iconDeposit: {
-			beforeLoginSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit.svg`,
-			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after.svg`,
-			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-deposit-after-active.svg`
-		},
-		iconLiveChat: {
-			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-livechat.svg`,
-			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-livechat.svg`
-		},
-		iconMenu: {
-			beforeClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-menu.svg`,
-			afterClickSrc: `${bannerImgUrl}/h5/img/home-page/footer/icon-menu-active.svg`
-		}
 	};
 
 	return (
@@ -132,19 +133,7 @@ const HomeFooter = () => {
 							)}
 						</a>
 
-						{!userInfo.isLogin && (
-							<a href={`/${path.login.root}`} className="item">
-								<img
-									onClick={onClickDeposit}
-									src={
-										FocusItemImg.iconDeposit.beforeLoginSrc
-									}
-								/>
-								<span>{t("lbl_Deposit")}</span>
-							</a>
-						)}
-
-						{userInfo.isLogin && (
+						{userInfo.isLogin ? (
 							<a
 								className={
 									clickdeposit
@@ -160,7 +149,19 @@ const HomeFooter = () => {
 											: FocusItemImg.iconDeposit
 													.beforeClickSrc
 									}
+									alt="after login"
 								/>
+							</a>
+						) : (
+							<a href={`/${path.login.root}`} className="item">
+								<img
+									onClick={onClickDeposit}
+									src={
+										FocusItemImg.iconDeposit.beforeLoginSrc
+									}
+									alt="before login"
+								/>
+								<span>{t("lbl_Deposit")}</span>
 							</a>
 						)}
 
@@ -177,11 +178,11 @@ const HomeFooter = () => {
 										<span>{t("lbl_Deposit")}</span>
 									</a>
 									<a
-										href={`/${path.withdrawal.root}`}
+										href={`/${withdrawalPath}`}
 										className="transaction-item">
 										<img
 											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-withdrawal.svg`}
-											alt="footer-withdraw"
+											alt="footer-withdrawl"
 										/>
 										<span>{t("lbl_Withdrawal")}</span>
 									</a>
