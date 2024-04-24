@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
@@ -8,13 +8,14 @@ import {
 	eWalletContext,
 	withdrawalBlockSettingContext
 } from "../components/common/context";
+import { defWithdrawalSettingType } from "../components/common/common";
 
 const defTabs = {
 	default: {
-		to: `/${path.withdrawal.root}`,
+		to: `${path.withdrawal.root}`,
 		displayKey: "lbl_Withdrawal",
 		excludeMath: path.withdrawal.sub.history.root,
-		type: 1
+		type: defWithdrawalSettingType.bankInfo
 	},
 	History: {
 		to: path.withdrawal.sub.history.root,
@@ -23,18 +24,17 @@ const defTabs = {
 	eWallet: {
 		to: path.withdrawal.sub.eWalletWithdrawal.root,
 		displayKey: "lbl_EWalletWithdrawal",
-		type: 3
+		type: defWithdrawalSettingType.eWallet
 	},
 	Crypto: {
 		to: path.withdrawal.sub.cryptoWithdrawal.root,
 		displayKey: "lbl_CryptoWithdrawal",
-		type: 4
+		type: defWithdrawalSettingType.cryptoWallet
 	}
 };
 
 const IndexPage = props => {
 	const navigate = useNavigate();
-	const location = useLocation();
 	const { i18n } = useContext(i18nContext);
 	const { isShowEWallet } = useContext(eWalletContext);
 	const { withdrawalSettingTypeList } = useContext(
@@ -66,18 +66,29 @@ const IndexPage = props => {
 		}, {});
 
 	useEffect(() => {
-		// * 因有現在會從後台關閉頁面 但有固定預設進入點 withdrawal(bank card) 頁面會顯示空白頁面
-		// * 故在頁面在 withdrawal(bank card) 時且後台關閉 withdrawal(bank card) 做導轉
-		if (
-			location.pathname.split("/")[1] === path.withdrawal.root &&
-			Object.keys(filteredSettingTabs)?.length !== 0 &&
-			filteredSettingTabs?.default === undefined
-		) {
-			navigate(
-				`/${path.withdrawal.root}/${path.withdrawal.sub.history.root}`
-			);
+		const validWithdrawlType = withdrawalSettingTypeList.find(
+			({ status }) => status
+		)?.type;
+
+		let withdrawalPath = "";
+
+		switch (validWithdrawlType) {
+			case defWithdrawalSettingType.bankInfo:
+				withdrawalPath = path.withdrawal.root;
+				break;
+			case defWithdrawalSettingType.cryptoWallet:
+				withdrawalPath = path.withdrawal.sub.cryptoWithdrawal.root;
+				break;
+			case defWithdrawalSettingType.eWallet:
+				withdrawalPath = path.withdrawal.sub.eWalletWithdrawal.root;
+				break;
+			default:
+				withdrawalPath = `${path.withdrawal.root}/${path.withdrawal.sub.history.root}`;
+				break;
 		}
-	}, []);
+
+		navigate(`/${withdrawalPath}`);
+	}, [withdrawalSettingTypeList.length]);
 
 	return (
 		<Layout title={i18n.lbl_Withdrawal}>
