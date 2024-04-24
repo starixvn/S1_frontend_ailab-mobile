@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
@@ -25,10 +26,10 @@ import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 import HomeHeader from "../newHome/components/HomeHeader";
-import { readCookie } from "./common";
+import { setCookie, readCookie } from "./common";
 import HomeFooter from "../newHome/components/HomeFooter";
 
-const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
+const Layout = ({ children, header, mainClass, title, goTopBtn }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { setNav } = useContext(navContext);
@@ -43,6 +44,7 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	const [displayLiveStreaming, setDisplayLiveStreaming] = useState(false);
 	const [liveStreamingList, setLiveStreamingList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [appHint, setAppHint] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
@@ -50,7 +52,12 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 			? { position: "fixed" }
 			: {};
 
-	const cookieName = `appDownloadHint${userInfo.userName}`;
+	const handleDownloadHint = () => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		setCookie(cookieName, "1", 1);
+		setAppHint(false);
+	};
 
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
@@ -80,6 +87,14 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, [location]);
+
+	useEffect(() => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.accountName]);
 
 	useEffect(() => {
 		const getLiveStreamingList = async () => {
@@ -122,24 +137,24 @@ const Layout = ({ children, header, mainClass, title, appHint, goTopBtn }) => {
 
 			{root && (
 				<header id="header" className="header-index">
-					<HomeHeader />
+					<HomeHeader
+						appHint={appHint}
+						handleDownloadHint={handleDownloadHint}
+					/>
 				</header>
 			)}
 
-			{!root ? (
-				<main
-					style={position}
-					className={`${mainClass ?? ""}${
-						appHint ? " openAppDownload" : ""
-					} ${appHint && root ? "active" : ""}`}>
+			{root ? (
+				<main className={classNames("home", { active: appHint })}>
 					{children}
 					{loading ? <Loading /> : null}
 				</main>
 			) : (
 				<main
-					className={
-						readCookie(cookieName) === "1" ? "home" : "home active"
-					}>
+					style={position}
+					className={`${mainClass ?? ""}${
+						appHint ? " openAppDownload" : ""
+					} ${appHint && root ? "active" : ""}`}>
 					{children}
 					{loading ? <Loading /> : null}
 				</main>
@@ -187,7 +202,6 @@ Layout.defaultProps = {
 	goTopBtn: true,
 	mainClass: "main",
 	title: "",
-	appHint: false,
 	header: null
 };
 
@@ -196,7 +210,6 @@ Layout.propTypes = {
 	goTopBtn: PropTypes.bool,
 	mainClass: PropTypes.string,
 	title: PropTypes.string,
-	appHint: PropTypes.bool,
 	header: PropTypes.node
 };
 

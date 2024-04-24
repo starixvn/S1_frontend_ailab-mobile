@@ -46,7 +46,9 @@ const MemberPersonal = () => {
 				<div className="user-profile">
 					{t("Label_Hey")}
 					<span className="user-name">{userInfo.userName}</span>
-					<button className="profile-edit" href="/member">
+					<button
+						className="profile-edit"
+						onClick={() => navigate(`/${path.member.root}`)}>
 						{t("Label_Menu_Edit")}
 					</button>
 				</div>

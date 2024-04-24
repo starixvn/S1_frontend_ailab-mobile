@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "@reach/router";
 import path from "apps/goal123/src/path";
 import { bannerImgUrl } from "apps/goal123/src/config";
 import { useTranslation } from "react-i18next";
+import { withdrawalBlockSettingContext } from "../../common/context";
+import { defWithdrawalSettingType } from "../../common/common";
 
 const MemberTransaction = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
+
+	const { withdrawalSettingTypeList } = useContext(
+		withdrawalBlockSettingContext
+	);
+
+	const validWithdrawlType = withdrawalSettingTypeList.find(
+		({ status }) => status
+	)?.type;
+
+	let bankInfoPath = "";
+
+	switch (validWithdrawlType) {
+		case defWithdrawalSettingType.bankInfo:
+			bankInfoPath = `${path.member.root}/${path.member.sub.bankInfo.root}`;
+			break;
+		case defWithdrawalSettingType.cryptoWallet:
+			bankInfoPath = path.cryptoWallet.root;
+			break;
+		case defWithdrawalSettingType.eWallet:
+			bankInfoPath = path.eWallet.root;
+			break;
+		default:
+			bankInfoPath = path.member.root;
+			break;
+	}
+
+	const isShowCryptoWalletBtn = withdrawalSettingTypeList.find(
+		({ type }) => type === defWithdrawalSettingType.cryptoWallet
+	)?.status;
 
 	return (
 		<div className="member-transaction">
@@ -45,26 +76,26 @@ const MemberTransaction = () => {
 				</button>
 				<button
 					className="btn-bankinfo"
-					onClick={() =>
-						navigate(
-							`/${path.member.root}/${path.member.sub.bankInfo.root}`
-						)
-					}>
+					onClick={() => navigate(`/${bankInfoPath}`)}>
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-bank.svg`}
 						alt="side-menu-bank"
 					/>
 					<span>{t("lbl_BankInfo")}</span>
 				</button>
-				<button
-					className="btn-crypto"
-					onClick={() => navigate(`/${path.cryptoWallet.root}`)}>
-					<img
-						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-crypto.svg`}
-						alt="crypto-wallet"
-					/>
-					<span>{t("lbl_CryptoWallet")}</span>
-				</button>
+				{isShowCryptoWalletBtn && (
+					<button
+						className="btn-crypto"
+						onClick={() =>
+							navigate(`/${path.cryptoWallet.root}`, {})
+						}>
+						<img
+							src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-crypto.svg`}
+							alt="crypto-wallet"
+						/>
+						<span>{t("lbl_CryptoWallet")}</span>
+					</button>
+				)}
 			</div>
 		</div>
 	);

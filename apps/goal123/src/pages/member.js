@@ -6,6 +6,7 @@ import {
 	i18nContext,
 	withdrawalBlockSettingContext
 } from "../components/common/context";
+import { defWithdrawalSettingType } from "../components/common/common";
 
 const defTabs = {
 	default: {
@@ -20,17 +21,17 @@ const defTabs = {
 	bankInfo: {
 		to: `/${path.member.root}/${path.member.sub.bankInfo.root}`,
 		displayKey: "lbl_BankInfo",
-		type: 1
+		type: defWithdrawalSettingType.bankInfo
 	},
 	eWallet: {
 		to: `/${path.eWallet.root}`,
 		displayKey: "lbl_EWallet",
-		type: 3
+		type: defWithdrawalSettingType.eWallet
 	},
 	cryptoWallet: {
 		to: `/${path.cryptoWallet.root}`,
 		displayKey: "lbl_CryptoWallet",
-		type: 4
+		type: defWithdrawalSettingType.cryptoWallet
 	}
 };
 
