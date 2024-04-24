@@ -14,49 +14,25 @@ const RebateExclude = () => {
 				langId: userInfo.langId,
 				currencyId: 51
 			});
-			const originRebateExcludeList = res.data.data;
 
-			const formatRebateExcludeList = originRebateExcludeList.reduce(
-				(acc, cur) => {
-					const {
-						tpGameType,
-						tpGameTypeName,
-						gameName,
-						tpCategoryName
-					} = cur;
-					const targetObj = acc.find(
-						({ tpGameType: accTpGameType }) =>
-							accTpGameType === cur.tpGameType
-					);
-					const getNewGameName = () => {
-						if (gameName === null) {
-							return "All Game";
-						}
-						if (tpCategoryName === "Live Casino") {
-							return "All Blackjack";
-						}
-						return gameName;
-					};
-					const newGameName = getNewGameName();
+			const originalList = res.data.data;
 
-					if (targetObj !== undefined) {
-						if (tpCategoryName === "Live Casino") {
-							targetObj.gameName = ["All Blackjack"];
-						} else {
-							targetObj.gameName.push(newGameName);
-						}
-					} else {
-						acc.push({
-							tpGameType,
-							tpGameTypeName,
-							gameName: [newGameName]
-						});
-					}
-					return acc;
-				},
-				[]
-			);
-			setRebateExcludeList(formatRebateExcludeList);
+			const groupedList = originalList.reduce((acc, curr) => {
+				const { tpGameTypeName, gameName } = curr;
+				acc[tpGameTypeName] = {
+					tpGameTypeName,
+					gameName: [
+						...(acc[tpGameTypeName]?.gameName ?? []),
+						gameName
+					]
+				};
+
+				return acc;
+			}, {});
+
+			const arrayList = Object.values(groupedList);
+
+			setRebateExcludeList(arrayList);
 		};
 		getExcludeList();
 	}, []);
@@ -82,11 +58,13 @@ const RebateExclude = () => {
 						</div>
 						{rebateExcludeList.map(
 							({ tpGameTypeName, gameName }) => (
-								<div className="exclude__table__item">
+								<div
+									key={tpGameTypeName}
+									className="exclude__table__item">
 									<div>{tpGameTypeName}</div>
 									<div>
 										{gameName.map(value => (
-											<span>{value}</span>
+											<span key={value}>{value}</span>
 										))}
 									</div>
 								</div>
