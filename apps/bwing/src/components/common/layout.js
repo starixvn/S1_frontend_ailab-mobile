@@ -242,7 +242,7 @@ export const defPageInfo = {
 	},
 	"/euro-cup": {
 		titleKey: "lbl_CupEvent_Euro2024",
-		className: "",
+		className: "euro",
 		hideLogo: true
 	}
 };

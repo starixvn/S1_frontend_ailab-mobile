@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 import PropTypes from "prop-types";
@@ -9,13 +9,16 @@ import { numFormatToDigits } from "../common/common";
 import { userInfoContext } from "../common/context";
 import ProgressBar from "./components/ProgressBar";
 
-const Mission = ({ tickets }) => {
+const Mission = ({
+	activeTab,
+	setActiveTab,
+	promotionMission,
+	cupEventPromotionMissionProgress
+}) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const [activeTab, setActiveTab] = useState(1);
 	const numbers = Array.from({ length: 5 }, (_, index) => index + 1);
-	const { promotionMission, cupEventPromotionMissionProgress } = tickets;
 	const getDepositProgressWidth = (cur, target) => {
 		if (!cur && !target) {
 			return "0%";
@@ -339,7 +342,11 @@ const Mission = ({ tickets }) => {
 	);
 };
 Mission.propTypes = {
-	tickets: PropTypes.objectOf(PropTypes.any).isRequired
+	activeTab: PropTypes.number.isRequired,
+	setActiveTab: PropTypes.func.isRequired,
+	promotionMission: PropTypes.arrayOf(PropTypes.any).isRequired,
+	cupEventPromotionMissionProgress: PropTypes.objectOf(PropTypes.any)
+		.isRequired
 };
 
 export default Mission;
