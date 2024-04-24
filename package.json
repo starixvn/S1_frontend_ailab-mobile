@@ -43,6 +43,7 @@
 		"prop-types": "^15.7.2",
 		"qrcode.react": "^1.0.0",
 		"react": "16.13.1",
+		"react-circular-progressbar": "^2.1.0",
 		"react-dom": "16.13.1",
 		"react-fast-marquee": "^1.2.1",
 		"react-google-recaptcha": "^2.1.0",
