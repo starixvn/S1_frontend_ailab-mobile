@@ -30,7 +30,13 @@ const TopTwoPredictions = ({
 
 	return (
 		<div className="center-wrapper">
-			<div className="center-content">
+			<div className="center-btn">
+				<button className="active">
+					{t("lbl_CupEvent_Prediction")}
+				</button>
+				<button className="">{t("lbl_CupEvent_Schedule")}</button>
+			</div>
+			<div className="center-content active">
 				<div className="center-text">
 					<span>{t("lbl_CupEvent_Prediction_Banner_Desc1")}</span>
 					<span>{t("lbl_CupEvent_Prediction_Banner_Desc2")}</span>

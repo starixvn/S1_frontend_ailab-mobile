@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "@reach/router";
+import classNames from "classnames";
 import { isDateRange } from "@ailab-mobile/common";
 import {
 	i18nContext,
@@ -40,7 +41,10 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 
 	return (
 		<header>
-			<div className="header">
+			<div
+				className={`${classNames("header", {
+					"euro-header": isDateRange(eventTime.euroCup)
+				})}`}>
 				<div className="header-content">
 					<button
 						className="menubtn icon-menu"
@@ -57,7 +61,8 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 							<Logo />
 							{isDateRange(eventTime.euroCup) && (
 								<img
-									src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
+									className="euro-index-logo"
+									src={`${bannerImgUrl}/h5/img/event/eurocup/bwing-euro.webp`}
 									alt="euro-logo-gif"
 									onClick={() =>
 										navigate(`/${path.euroCup.root}`)

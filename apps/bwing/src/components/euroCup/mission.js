@@ -44,7 +44,8 @@ const Mission = ({ tickets }) => {
 							active: activeTab === number && number !== 5,
 							five: activeTab === number && number === 5
 						})}
-						onClick={() => setActiveTab(number)}>
+						onClick={() => setActiveTab(number)}
+						style={{ fontSize: "unset" }}>
 						{t("lbl_CupEvent_Mission")} {number}
 						{number < 5 && (
 							<img
