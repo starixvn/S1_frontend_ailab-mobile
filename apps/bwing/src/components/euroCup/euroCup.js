@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
+import { useNavigate } from "@reach/router";
 import {
 	useGetCupEventPredictionSettingQuery,
 	useGetCupEventPredictScoreQuery,
@@ -8,23 +9,23 @@ import {
 	useMultiUserPollTicketsMutation,
 	usePredictCupEventScoreMutation
 } from "@ailab-mobile/service";
-import { useNavigate } from "@reach/router";
-import { bannerImgUrl, sportsImgUrl } from "../../config";
-import TopContent from "./topContent";
-import TopTwoPredictions from "./predict/TopTwoPredictions";
-import Mission from "./mission";
-import PredictionRecord from "./predict/predictionRecord";
 import { popBoxContext, userInfoContext } from "../common/context";
-import TeamSelector from "./predict/teamSelector";
-import Directions from "./directions";
 import { eventTime } from "../common/eventTime";
 import { isEventPeriod } from "../common/common";
+import { bannerImgUrl, sportsImgUrl } from "../../config";
+import TopTwoPredictions from "./predict/TopTwoPredictions";
+import PredictionRecord from "./predict/predictionRecord";
+import TeamSelector from "./predict/teamSelector";
+import TopContent from "./topContent";
+import Mission from "./mission";
+import Directions from "./directions";
 
 const EuroCup = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
+	const [activeTab, setActiveTab] = useState(1);
 	const [selectedGroup, setSelectedGroup] = useState("");
 	const [selectedTeamId, setSelectedTeamId] = useState(null);
 	const [ticketsNumber, setTicketsNumber] = useState("");
@@ -35,17 +36,23 @@ const EuroCup = () => {
 		data: { data: predictionSettingData = {} } = {}
 	} = useGetCupEventPredictionSettingQuery({ langId: userInfo.langId });
 
-	const { data: { data: tickets = {} } = {} } = useGetCupEventTicketQuery(
-		null,
-		{
-			skip: !userInfo.isLogin,
-			refetchOnMountOrArgChange: true
-		}
-	);
+	const {
+		data: {
+			data: {
+				cupEventPromotionMissionProgress = {},
+				promotionMission = [],
+				unUsedTickets = 0,
+				userTicketResult = {}
+			} = {}
+		} = {}
+	} = useGetCupEventTicketQuery(null, {
+		skip: !userInfo.isLogin,
+		refetchOnMountOrArgChange: true
+	});
 
 	const {
 		data: { data: { data: predictScoreList = [], isPredict } = {} } = {}
-	} = useGetCupEventPredictScoreQuery(null);
+	} = useGetCupEventPredictScoreQuery(null, { skip: !userInfo.isLogin });
 
 	const [pollTicketsMutation] = useMultiUserPollTicketsMutation();
 
@@ -55,7 +62,7 @@ const EuroCup = () => {
 
 	const options = combineGroups(predictionSettingData?.selectOptions);
 
-	const usedTickets = tickets.userTicketResult?.groupCountryTicket
+	const usedTickets = userTicketResult?.groupCountryTicket
 		?.filter(({ countryId }) => countryId !== null)
 		?.map(ticketObj => {
 			const matchOption = options?.find(
@@ -68,7 +75,7 @@ const EuroCup = () => {
 		});
 
 	const handlePredictScore = async () => {
-		const target = tickets?.promotionMission?.find(
+		const target = promotionMission?.find(
 			({ isCompleted }) => isCompleted === false
 		);
 
@@ -150,11 +157,7 @@ const EuroCup = () => {
 		}
 	};
 	const handleSubmitConfirmModalOpen = async ({ userPollTicket, count }) => {
-		if (
-			!selectedTeamId ||
-			!ticketsNumber ||
-			tickets.unUsedTickets < ticketsNumber
-		)
+		if (!selectedTeamId || !ticketsNumber || unUsedTickets < ticketsNumber)
 			return;
 
 		const selectedTeam = options?.find(
@@ -309,6 +312,16 @@ const EuroCup = () => {
 		}
 	}, []);
 
+	useEffect(() => {
+		if (userInfo.isLogin) {
+			const targetIndex =
+				promotionMission.findIndex(
+					({ isCompleted }) => isCompleted === false
+				) + 1;
+			setActiveTab(targetIndex ?? 1);
+		}
+	}, [promotionMission.length]);
+
 	return (
 		<>
 			<TopContent />
@@ -332,7 +345,14 @@ const EuroCup = () => {
 					<div className="mission-date">
 						{t("lbl_CupEvent_Mission_Date")}
 					</div>
-					<Mission tickets={tickets} />
+					<Mission
+						activeTab={activeTab}
+						setActiveTab={setActiveTab}
+						promotionMission={promotionMission}
+						cupEventPromotionMissionProgress={
+							cupEventPromotionMissionProgress
+						}
+					/>
 
 					<TeamSelector
 						options={predictionSettingData?.selectOptions}
