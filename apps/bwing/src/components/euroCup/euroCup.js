@@ -318,7 +318,7 @@ const EuroCup = () => {
 				promotionMission.findIndex(
 					({ isCompleted }) => isCompleted === false
 				) + 1;
-			setActiveTab(targetIndex ?? 1);
+			setActiveTab(targetIndex <= 0 ? 1 : targetIndex);
 		}
 	}, [promotionMission.length]);
 
