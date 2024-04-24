@@ -178,7 +178,7 @@ const HomeFooter = () => {
 										<span>{t("lbl_Deposit")}</span>
 									</a>
 									<a
-										href={`/${withdrawalPath}`}
+										href={`/${path.withdrawal.root}`}
 										className="transaction-item">
 										<img
 											src={`${bannerImgUrl}/h5/img/home-page/footer/icon-sub-withdrawal.svg`}
