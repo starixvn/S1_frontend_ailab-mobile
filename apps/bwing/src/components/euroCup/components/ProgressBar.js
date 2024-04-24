@@ -4,6 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import PropTypes from "prop-types";
 
 const ProgressBar = ({ cur, target }) => {
+	const { t } = useTranslation();
 	return (
 		<div style={{ width: "47vw" }}>
 			<div style={{ padding: "20px" }}>
@@ -33,7 +34,7 @@ const ProgressBar = ({ cur, target }) => {
 							fontWeight: 600,
 							color: "#fff"
 						}}>
-						Currently accumulated
+						{t("lbl_CupEvent_CurrentlyAccumulated")}
 					</div>
 					<div
 						style={{
