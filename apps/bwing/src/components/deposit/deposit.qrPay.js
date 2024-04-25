@@ -20,7 +20,8 @@ const Payment = props => {
 		paymentList,
 		promoList,
 		checkDepositSpecialCode,
-		GetAllPayment
+		GetAllPayment,
+		onSubmit
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -119,6 +120,11 @@ const Payment = props => {
 				if (!bonusCode) {
 					return;
 				}
+			}
+
+			// 原想放在 RedirectToNext 裡，但 RedirectToNext 的 reload 會導致追蹤碼的請求中斷
+			if (onSubmit) {
+				onSubmit();
 			}
 
 			// 導至外部
@@ -310,14 +316,16 @@ const Payment = props => {
 };
 
 Payment.defaultProps = {
-	promoList: []
+	promoList: [],
+	onSubmit: undefined
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
 	checkDepositSpecialCode: PropTypes.func.isRequired,
-	GetAllPayment: PropTypes.func.isRequired
+	GetAllPayment: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func
 };
 
 export default Payment;

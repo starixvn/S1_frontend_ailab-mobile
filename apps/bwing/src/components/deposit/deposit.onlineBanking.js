@@ -11,7 +11,7 @@ import PromoList from "./promoList";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, promoList, checkDepositSpecialCode } = props;
+	const { paymentList, promoList, checkDepositSpecialCode, onSubmit } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -81,6 +81,11 @@ const Payment = props => {
 				if (!bonusCode) {
 					return;
 				}
+			}
+
+			// 原想放在 RedirectToNext 裡，但 RedirectToNext 的 reload 會導致追蹤碼的請求中斷
+			if (onSubmit) {
+				onSubmit();
 			}
 
 			const RedirectToNext = real_amount => {
@@ -203,13 +208,15 @@ const Payment = props => {
 };
 
 Payment.defaultProps = {
-	promoList: []
+	promoList: [],
+	onSubmit: undefined
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func
 };
 
 export default Payment;

@@ -32,7 +32,8 @@ const Main = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		checkDepositSpecialCode
+		checkDepositSpecialCode,
+		onSubmit
 	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -113,6 +114,11 @@ const Main = props => {
 					if (!bonusCode) {
 						return;
 					}
+				}
+
+				// 原想放在 RedirectToNext 裡，但 RedirectToNext 的 reload 會導致追蹤碼的請求中斷
+				if (onSubmit) {
+					onSubmit();
 				}
 
 				const RedirectToNext = debounce(real_amount => {
@@ -493,7 +499,8 @@ Main.defaultProps = {
 	location: {},
 	userPaymentData: {},
 	handleUserPaymentData: () => null,
-	promoList: []
+	promoList: [],
+	onSubmit: undefined
 };
 
 Main.propTypes = {
@@ -502,7 +509,8 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func
 };
 
 export default Main;
