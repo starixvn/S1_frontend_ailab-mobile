@@ -95,8 +95,8 @@ export const MemberVipInfo = () => {
 					<div className="vip-extra">
 						<img
 							className="goal123"
-							src={defPageClubImg[defPageClubImg.length - 1].img}
-							alt="vip06"
+							src={currentVipImg}
+							alt={currentVipAlt}
 						/>
 						<p>{t("lbl_WaitForInvitation")}</p>
 					</div>
