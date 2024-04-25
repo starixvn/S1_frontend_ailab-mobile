@@ -1,4 +1,4 @@
-import { useContext, useCallback } from "react";
+import { useContext } from "react";
 import { GET_ENTER_PAGE } from "apps/goal123/src/service/enterPage";
 import { userInfoContext, navContext, defNavPanel } from "../../common/context";
 

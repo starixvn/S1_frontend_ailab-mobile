@@ -77,10 +77,10 @@ const IndexPage = props => {
 				withdrawalPath = path.withdrawal.root;
 				break;
 			case defWithdrawalSettingType.cryptoWallet:
-				withdrawalPath = path.withdrawal.sub.cryptoWithdrawal.root;
+				withdrawalPath = `${path.withdrawal.root}/${path.withdrawal.sub.cryptoWithdrawal.root}`;
 				break;
 			case defWithdrawalSettingType.eWallet:
-				withdrawalPath = path.withdrawal.sub.eWalletWithdrawal.root;
+				withdrawalPath = `${path.withdrawal.root}/${path.withdrawal.sub.eWalletWithdrawal.root}`;
 				break;
 			default:
 				withdrawalPath = `${path.withdrawal.root}/${path.withdrawal.sub.history.root}`;

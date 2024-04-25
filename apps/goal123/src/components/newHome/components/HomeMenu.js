@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { Link, useNavigate } from "@reach/router";
 import { defNavPanel, navContext, popBoxContext } from "../../common/context";
@@ -110,6 +111,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 			if (!underMaintain) {
 				if (game.category) {
 					setSelectedCol(game.category);
+					window.scrollTo({ top: 0, behavior: "smooth" });
 				} else {
 					clickGame({
 						tpId: game.tpId,
@@ -123,7 +125,9 @@ const HomeMenu = ({ i18n, userInfo }) => {
 
 		return (
 			<div
-				className="gamelist-item"
+				className={classNames("gamelist-item", {
+					under: underMaintain
+				})}
 				key={game.spanText || game.spanTextKey}
 				onClick={() => onMenuClick(game)}>
 				{showingEventIcon !== "" ? (

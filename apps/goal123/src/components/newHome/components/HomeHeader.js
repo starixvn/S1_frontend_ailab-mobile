@@ -153,7 +153,11 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 
 				{userInfo.isLogin && (
 					<div className="member-info">
-						<div className="member-id">
+						<div
+							className="member-id"
+							onClick={() => {
+								navigate(`${path.member.root}`);
+							}}>
 							{t("Label_Hey")}
 							<span className="user-name">
 								{userInfo.userName}
