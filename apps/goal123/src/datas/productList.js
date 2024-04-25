@@ -976,7 +976,8 @@ const gameList = [
 			{
 				...defGameInfo.LIVECasinoWon,
 				spanText: "Won Casino",
-				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-woncasino.png`,
+				// img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-woncasino.png`,
+				img: `${bannerImgUrl}/h5/img/home-page/Header/WonCasino/casino/woncasino.png`,
 				eventIcon: [
 					{
 						icon: defIconType.new,
