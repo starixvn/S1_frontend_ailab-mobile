@@ -157,9 +157,7 @@ const Payment = props => {
 			}
 
 			// 原想放在 RedirectToNext 裡，但 RedirectToNext 的 reload 會導致追蹤碼的請求中斷
-			if (onSubmit) {
-				onSubmit();
-			}
+			onSubmit();
 
 			const RedirectToNext = debounce(real_amount => {
 				setPopBox(prevState => ({
@@ -395,15 +393,14 @@ const Payment = props => {
 };
 
 Payment.defaultProps = {
-	promoList: [],
-	onSubmit: undefined
+	promoList: []
 };
 
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired,
-	onSubmit: PropTypes.func
+	onSubmit: PropTypes.func.isRequired
 };
 
 const Note = () => {

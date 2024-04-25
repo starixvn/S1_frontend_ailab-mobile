@@ -123,9 +123,7 @@ const Payment = props => {
 			}
 
 			// 原想放在 RedirectToNext 裡，但 RedirectToNext 的 reload 會導致追蹤碼的請求中斷
-			if (onSubmit) {
-				onSubmit();
-			}
+			onSubmit();
 
 			// 導至外部
 			const RedirectToNext = () => {
@@ -316,8 +314,7 @@ const Payment = props => {
 };
 
 Payment.defaultProps = {
-	promoList: [],
-	onSubmit: undefined
+	promoList: []
 };
 
 Payment.propTypes = {
@@ -325,7 +322,7 @@ Payment.propTypes = {
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
 	checkDepositSpecialCode: PropTypes.func.isRequired,
 	GetAllPayment: PropTypes.func.isRequired,
-	onSubmit: PropTypes.func
+	onSubmit: PropTypes.func.isRequired
 };
 
 export default Payment;
