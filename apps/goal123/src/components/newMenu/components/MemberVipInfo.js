@@ -40,7 +40,7 @@ export const MemberVipInfo = () => {
 		},
 		{
 			img: `${bannerImgUrl}/desktop/img/vip/vip6.png`,
-			displayKey: "lbl_Goal123_Club",
+			displayKey: "lbl_GOAL123_Club",
 			alt: "vip06",
 			className: "goal123"
 		}
@@ -75,86 +75,73 @@ export const MemberVipInfo = () => {
 		(custVIPProgress?.actualDeposit / custVIPProgress?.upDeposit) * 100
 	);
 
-	return (
-		<>
-			{custVIPProgress && (
-				<div className="member-vip">
-					<div className="vip-top">
-						<div className={`vip-current ${currentVipClassName}`}>
-							{t("Label_Menu_Current")}:{" "}
-							<span>{t(currentVipDisplayKey)}</span>
-						</div>
-
-						{!isVipLevelHighest && (
-							<div className="vip-next">
-								{t("lbl_Next")}:{" "}
-								<span>{t(nextVipDisplayKey)}</span>
-							</div>
-						)}
-					</div>
-
-					<div className="vip-bottom">
-						{isVipLevelHighest ? (
-							<div className="vip-extra">
-								<img
-									className="goal123"
-									src={
-										defPageClubImg[
-											defPageClubImg.length - 1
-										].img
-									}
-									alt="vip06"
-								/>
-								<p>Please wait for our invitation!</p>
-							</div>
-						) : (
-							<>
-								<div className="vip-badge">
-									<img
-										className={currentVipClassName}
-										src={currentVipImg}
-										alt={currentVipAlt}
-									/>
-									<div className="progress">
-										<div
-											className="progress-bar"
-											style={{
-												width: `${Math.min(
-													vipProgress,
-													100
-												)}%`
-											}}
-										/>
-									</div>
-									<img
-										className={nextVipClassName}
-										src={nextVipImg}
-										alt={nextVipAlt}
-									/>
-								</div>
-								<div className="progress-number">
-									<span>
-										{number_format({
-											number:
-												custVIPProgress?.actualDeposit,
-											formatRequired: true,
-											digits: 0
-										})}
-									</span>
-									/
-									{number_format({
-										number: custVIPProgress?.upDeposit,
-										formatRequired: true,
-										digits: 0
-									})}
-								</div>
-							</>
-						)}
-					</div>
+	return custVIPProgress ? (
+		<div className="member-vip">
+			<div className="vip-top">
+				<div className={`vip-current ${currentVipClassName}`}>
+					{t("Label_Menu_Current")}:{" "}
+					<span>{t(currentVipDisplayKey)}</span>
 				</div>
-			)}
-		</>
-	);
+
+				{!isVipLevelHighest && (
+					<div className="vip-next">
+						{t("lbl_Next")}: <span>{t(nextVipDisplayKey)}</span>
+					</div>
+				)}
+			</div>
+
+			<div className="vip-bottom">
+				{isVipLevelHighest ? (
+					<div className="vip-extra">
+						<img
+							className="goal123"
+							src={defPageClubImg[defPageClubImg.length - 1].img}
+							alt="vip06"
+						/>
+						<p>{t("lbl_WaitForInvitation")}</p>
+					</div>
+				) : (
+					<>
+						<div className="vip-badge">
+							<img
+								className={currentVipClassName}
+								src={currentVipImg}
+								alt={currentVipAlt}
+							/>
+							<div className="progress">
+								<div
+									className="progress-bar"
+									style={{
+										width: `${Math.min(vipProgress, 100)}%`
+									}}
+								/>
+							</div>
+							<img
+								className={nextVipClassName}
+								src={nextVipImg}
+								alt={nextVipAlt}
+							/>
+						</div>
+						<div className="progress-number">
+							<span>
+								{number_format({
+									number: custVIPProgress?.actualDeposit,
+									formatRequired: true,
+									digits: 0
+								})}
+							</span>
+							/
+							{number_format({
+								number: custVIPProgress?.upDeposit,
+								formatRequired: true,
+								digits: 0
+							})}
+						</div>
+					</>
+				)}
+			</div>
+		</div>
+	) : null;
 };
 
 export default MemberVipInfo;

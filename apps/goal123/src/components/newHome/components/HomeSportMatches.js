@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
-import { useNavigate } from "@reach/router";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { Navigation } from "swiper";
 import { useTranslation } from "react-i18next";
 import { api_hotEvent_GetDataList } from "../../../service/api/hotEvent";
-import { userInfoContext } from "../../common/context";
+import { defNavPanel, userInfoContext, navContext } from "../../common/context";
 import { bannerImgUrl } from "../../../config";
+import { _ACTION_TYPE, GET_ENTER_PAGE } from "../../../service/enterPage";
 
 const HomeSportMatches = () => {
-	const navigate = useNavigate();
+	const { setNav } = useContext(navContext);
 	const [activeTab, setActiveTab] = useState("1"); // 1: football, 2: basketball
 	const [apiData, setApiData] = useState([]);
 	const [filteredData, setFilteredData] = useState([]);
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
+
 	const langId = userInfo?.langId;
 
 	useEffect(() => {
@@ -50,16 +51,19 @@ const HomeSportMatches = () => {
 		spaceBetween: 25
 	};
 
-	const onClickEvent = (gameId, matchId) => {
-		const gameType = gameId === "1" ? "Soccer" : "basketball";
-		const queryParams = new URLSearchParams({
-			game: gameType,
-			matchId
-		}).toString();
-
-		const targetUrl = `/${userInfo.langId}/sports?${queryParams}`;
-
-		navigate(targetUrl);
+	const onClickEvent = ({ tpId, gameId, matchId, tpGameType }) => {
+		GET_ENTER_PAGE({
+			langId,
+			tpId,
+			gameId,
+			matchid: matchId,
+			isLogin: userInfo.isLogin,
+			loginCallback: () => {
+				setNav(defNavPanel.login);
+			},
+			tpGameType,
+			actionType: _ACTION_TYPE.blank
+		});
 	};
 
 	// 目前api收不到資料 dummy data可測樣式ok
@@ -230,10 +234,12 @@ const HomeSportMatches = () => {
 										<button
 											className="btn-bet"
 											onClick={() =>
-												onClickEvent(
-													item.gameId,
-													item.matchId
-												)
+												onClickEvent({
+													tpId: item.tpId,
+													gameId: item.gameId,
+													matchId: item.matchId,
+													tpGameType: item.tpGameType
+												})
 											}>
 											{t("lbl_BetNow")}
 										</button>
