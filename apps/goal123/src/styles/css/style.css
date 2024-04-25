@@ -4724,7 +4724,7 @@ button.clickBtn:before {
 .casino .swiper-container {
   position: absolute;
   left: 0;
-  top: 12vw;
+  top: 11vw;
   padding: 0;
   width: 100%;
   overflow: hidden;
@@ -9094,7 +9094,7 @@ span.important {
   display: -ms-flexbox;
   display: flex;
   border-radius: 0;
-  margin: 6vw 0 -3vw;
+  margin: 5vw 0 -3vw;
 }
 .partnerSelect button, .partnerSelect a {
   min-width: 30.5vw;
@@ -14585,7 +14585,11 @@ main.home .home-gamelist .gamelist-item .new-icon::before {
             filter: brightness(1.05);
   }
 }
-main.home .home-gamelist .gamelist-item .under-maintenance {
+main.home .home-gamelist .gamelist-item.under {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+main.home .home-gamelist .gamelist-item.under .under-maintenance {
   color: #fff;
   text-align: center;
   width: 100%;
@@ -14601,6 +14605,10 @@ main.home .home-gamelist .gamelist-item .under-maintenance {
           box-sizing: border-box;
   font-size: 2.8vw;
   white-space: pre-wrap;
+}
+main.home .home-gamelist .gamelist-item.under .new-icon::before {
+  -webkit-animation: unset;
+          animation: unset;
 }
 main.home .home-gamelist .gamelist-img {
   margin-bottom: 0.5vw;
@@ -14623,10 +14631,6 @@ main.home .home-gamelist .gamelist-img::after {
 main.home .home-gamelist .gamelist-img img {
   border-radius: 2vw;
   width: 30.5vw;
-}
-main.home .home-gamelist .gamelist-img.under {
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
 }
 main.home .home-gamelist .gamelist-title {
   color: #1f3258;
