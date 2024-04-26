@@ -2492,6 +2492,406 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
 }
+#popup.depositlist {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.depositlist .pop {
+  background: white;
+  border-radius: 5vw;
+  width: 95vw;
+  color: #001942;
+  position: relative;
+}
+#popup.depositlist .pop .depositlist-title {
+  font-size: 4vw;
+  color: #143CDB;
+  margin: 5vw 0 4vw 4vw;
+  font-weight: 700;
+}
+#popup.depositlist .pop .depositlist-item {
+  max-height: 76vw;
+  overflow-y: overlay;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 7vw;
+  color: #989898;
+  font-weight: 600;
+  padding: 0 2vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text {
+  font-size: 2.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #143CDB;
+  background: white;
+  position: fixed;
+  padding-bottom: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div {
+  border-radius: 2vw;
+  background: #F9BF4B;
+  margin-left: 1vw;
+  padding: 2vw 0 2vw 2vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:first-child {
+  width: 27vw;
+  margin: 0;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:nth-child(2) {
+  width: 27vw;
+}
+#popup.depositlist .pop .depositlist-item .first-text > div:last-child {
+  width: 29vw;
+  margin: 0 0 0 1vw;
+}
+#popup.depositlist .pop .depositlist-item > div:last-child {
+  padding-top: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#popup.depositlist .pop .depositlist-item .date, #popup.depositlist .pop .depositlist-item .user, #popup.depositlist .pop .depositlist-item .money {
+  font-size: 2.5vw;
+}
+#popup.depositlist .pop .depositlist-item .date > div, #popup.depositlist .pop .depositlist-item .user > div, #popup.depositlist .pop .depositlist-item .money > div {
+  border-radius: 2vw;
+  padding: 2vw 0;
+  margin-top: 2vw;
+  padding-left: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(n), #popup.depositlist .pop .depositlist-item .user > div:nth-child(n), #popup.depositlist .pop .depositlist-item .money > div:nth-child(n) {
+  background: #DEDEDE;
+}
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .user > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .money > div:nth-child(odd) {
+  background: #F2F2F2;
+}
+#popup.depositlist .pop .depositlist-item .date {
+  margin: 0;
+}
+#popup.depositlist .pop .depositlist-item .date > div {
+  width: 28vw;
+}
+#popup.depositlist .pop .depositlist-item .user {
+  margin-left: 1vw;
+}
+#popup.depositlist .pop .depositlist-item .user > div {
+  width: 28vw;
+}
+#popup.depositlist .pop .depositlist-item .money div {
+  margin-left: 1vw;
+  width: 30vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#popup.depositlist .pop .depositlist-item .money div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-right: 1vw;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar {
+  width: 5px;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-button {
+  background: #d3d3d3;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-track-piece {
+  background: #ECECEC;
+}
+#popup.depositlist .pop .depositlist-item::-webkit-scrollbar-thumb {
+  background: #989898;
+  height: 10px;
+}
+#popup.depositlist .close-btn {
+  position: absolute;
+  bottom: -14vw;
+  left: 42vw;
+}
+#popup.depositlist .close-btn img {
+  width: 8vw;
+}
+#popup.recordlist {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.recordlist .pop {
+  background: white;
+  border-radius: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw 1vw 7vw;
+  margin-top: -15vw;
+}
+#popup.recordlist .pop .record {
+  background: #F9BF4B;
+  padding: 6vw 0 30vw;
+}
+#popup.recordlist .pop .record-title {
+  color: #143CDB;
+  background: #ECECEC;
+  border-radius: 0 0 5vw 5vw;
+  padding: 3vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  width: 47vw;
+  font-size: 3.7vw;
+  margin-top: -2vw;
+}
+#popup.recordlist .pop .record-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2vw;
+  max-height: 125vw;
+  overflow-y: overlay;
+}
+#popup.recordlist .pop .record-item {
+  margin: 4vw 1.5vw 0;
+}
+#popup.recordlist .pop .record-item .ticket {
+  background: url(../img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+#popup.recordlist .pop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 13.5vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.recordlist .pop .record-item .ticket .number {
+  text-align: center;
+  margin-top: 0.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.recordlist .pop .record .more-btn {
+  background: white;
+  padding: 3vw 33vw;
+  border-radius: 50vw;
+  color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 6vw;
+}
+#popup.recordlist .pop .record .more-btn.active {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+}
+#popup.recordlist .pop .close-btn {
+  position: absolute;
+  bottom: 19vw;
+}
+#popup.recordlist .pop .close-btn img {
+  width: 8vw;
+}
+#popup.submitpop {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+#popup.submitpop .pop {
+  background: white;
+  color: #143CDB;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5vw;
+  padding: 6vw 5vw;
+  width: 70vw;
+  font-size: 4.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item {
+  margin: 5vw 1.5vw 2vw;
+}
+#popup.submitpop .record-item .ticket {
+  background: url(../img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+#popup.submitpop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+#popup.submitpop .record-item .ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 13.5vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.submitpop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+#popup.submitpop .record-item .ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.submitpop .record-item .ticket .number {
+  text-align: center;
+  margin-top: 1.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.submitpop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.submitpop .submitpop-btn > button {
+  padding: 2vw;
+  width: 30vw;
+  border-radius: 20vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-top: 4vw;
+}
+#popup.submitpop .submitpop-btn > button:first-child {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+  margin-right: 1vw;
+}
+#popup.submitpop .submitpop-btn > button:last-child {
+  color: #989898;
+  border: 1px solid #989898;
+}
+#popup.submitpop .close-btn {
+  position: absolute;
+  bottom: 45vw;
+}
+#popup.submitpop .close-btn img {
+  width: 7vw;
+}
 
 .txt-red {
   color: #d83b35;
@@ -6873,7 +7273,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 74vw;
+  bottom: 45vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -6883,6 +7283,9 @@ span.important {
   right: 0;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.vgaming.eurocup {
+  bottom: 80vw;
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -6955,7 +7358,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 70vw;
+  bottom: 45vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -6970,6 +7373,9 @@ span.important {
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.livesports.eurocup {
+  bottom: 110vw;
 }
 @-webkit-keyframes livesports {
   0% {
@@ -7006,6 +7412,23 @@ span.important {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
+}
+.eventLink.eurocup {
+  bottom: 76vw;
+  left: 69vw;
+}
+.eventLink.eurocup img {
+  -webkit-animation: livesports 3s ease-in-out infinite;
+          animation: livesports 3s ease-in-out infinite;
+  width: 33vw;
+  z-index: 1;
+}
+.eventLink.eurocup .icon-close {
+  right: 0;
+  top: -2vw;
+  z-index: 4;
+  background: #cecece;
+  color: rgb(92, 92, 92);
 }
 
 .event {
@@ -14892,11 +15315,11 @@ main.home .home-sports .ambassador::before {
   font-weight: 900;
   position: relative;
   left: 12vw;
-  bottom: -95vw;
+  bottom: -90vw;
 }
 main.home .home-sports .ambassador img {
   width: 86vw;
-  margin: 6vw 0 0;
+  margin-top: -2vw;
 }
 main.home .home-sports .ambassador span {
   display: block;
@@ -16754,9 +17177,11 @@ main .menu-member .member-transaction .transaction-other {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 main .menu-member .member-transaction .transaction-other a,
 main .menu-member .member-transaction .transaction-other button {
@@ -16890,8 +17315,10 @@ main .menu-member .member-vip .vip-extra img {
 }
 main .menu-member .member-vip .vip-extra p {
   margin: 1.4vw 0 2vw;
-  text-transform: capitalize;
   font-weight: 600;
   color: #878686;
   font-size: 3vw;
+  text-align: center;
+  line-height: 1.2;
+  word-spacing: 0.1vw;
 }/*# sourceMappingURL=style.css.map */
