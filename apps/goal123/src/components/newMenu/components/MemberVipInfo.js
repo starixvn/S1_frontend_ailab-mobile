@@ -50,12 +50,25 @@ export const MemberVipInfo = () => {
 		data: { data: custVIPProgress } = {}
 	} = useGetCustVIPProgressQuery(null, { refetchOnMountOrArgChange: true });
 
+	// 這邊指的是upDeposit是否＝＝null 因為鑽石還有goal123級別都是null 所以這邊要注意*
+
 	const isVipLevelHighest = custVIPProgress?.upDeposit === null;
+
+	// 鑽石等級 另外寫出來*
+
+	const isVipDiamondLevel = custVIPProgress?.currentVipLevel === 5;
+
+	// goal123等級*
+
+	const isVipGoal123Level = custVIPProgress?.currentVipLevel === 6;
 
 	const {
 		displayKey: currentVipDisplayKey,
+
 		className: currentVipClassName,
+
 		img: currentVipImg,
+
 		alt: currentVipAlt
 	} = custVIPProgress
 		? defPageClubImg[custVIPProgress?.currentVipLevel - 1]
@@ -63,8 +76,11 @@ export const MemberVipInfo = () => {
 
 	const {
 		displayKey: nextVipDisplayKey,
+
 		className: nextVipClassName,
+
 		img: nextVipImg,
+
 		alt: nextVipAlt
 	} =
 		custVIPProgress && !isVipLevelHighest
@@ -93,12 +109,27 @@ export const MemberVipInfo = () => {
 			<div className="vip-bottom">
 				{isVipLevelHighest ? (
 					<div className="vip-extra">
-						<img
-							className="goal123"
-							src={currentVipImg}
-							alt={currentVipAlt}
-						/>
-						<p>{t("lbl_WaitForInvitation")}</p>
+						{isVipDiamondLevel && (
+							<img
+								src={`${bannerImgUrl}/desktop/img/vip/vip5.png`}
+								alt="vip05"
+							/>
+						)}
+
+						{isVipGoal123Level && (
+							<img
+								src={`${bannerImgUrl}/desktop/img/vip/vip6.png`}
+								alt="vip06"
+							/>
+						)}
+
+						{isVipDiamondLevel && (
+							<p>{t("lbl_WaitForInvitation")}</p>
+						)}
+
+						{isVipGoal123Level && (
+							<p>{t("Label_Vip_HighestMsg")}</p>
+						)}
 					</div>
 				) : (
 					<>
@@ -126,14 +157,18 @@ export const MemberVipInfo = () => {
 							<span>
 								{number_format({
 									number: custVIPProgress?.actualDeposit,
+
 									formatRequired: true,
+
 									digits: 0
 								})}
 							</span>
 							/
 							{number_format({
 								number: custVIPProgress?.upDeposit,
+
 								formatRequired: true,
+
 								digits: 0
 							})}
 						</div>

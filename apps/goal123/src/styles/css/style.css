@@ -15405,11 +15405,11 @@ main.home .home-sports .ambassador::before {
   font-weight: 900;
   position: relative;
   left: 12vw;
-  bottom: -95vw;
+  bottom: -90vw;
 }
 main.home .home-sports .ambassador img {
   width: 86vw;
-  margin: 6vw 0 0;
+  margin-top: -2vw;
 }
 main.home .home-sports .ambassador span {
   display: block;
@@ -17267,9 +17267,11 @@ main .menu-member .member-transaction .transaction-other {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 main .menu-member .member-transaction .transaction-other a,
 main .menu-member .member-transaction .transaction-other button {
@@ -17403,8 +17405,10 @@ main .menu-member .member-vip .vip-extra img {
 }
 main .menu-member .member-vip .vip-extra p {
   margin: 1.4vw 0 2vw;
-  text-transform: capitalize;
   font-weight: 600;
   color: #878686;
   font-size: 3vw;
+  text-align: center;
+  line-height: 1.2;
+  word-spacing: 0.1vw;
 }/*# sourceMappingURL=style.css.map */
