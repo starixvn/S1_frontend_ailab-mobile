@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { useState, useContext } from "react";
 import { Link, Match } from "@reach/router";
+import { yuriTrack } from "@ailab-mobile/common";
 import { userInfoContext, i18nContext } from "./context";
 import path from "../../path";
 import { siteInfo, bannerImgUrl } from "../../config";
@@ -19,6 +20,11 @@ const Footer = () => {
 	const [showContact, setShowContact] = useState(false);
 
 	const { langId, isLogin } = userInfo;
+
+	const handleDepositClick = () => {
+		setShowContact(false);
+		yuriTrack("AddToCart");
+	};
 
 	return (
 		<footer className="footer">
@@ -62,7 +68,7 @@ const Footer = () => {
 						const isMatch = match !== null;
 						return (
 							<Link
-								onClick={() => setShowContact(false)}
+								onClick={handleDepositClick}
 								to={`/${path.deposit.root}`}
 								className={classNames("footer-item", {
 									active: isMatch
