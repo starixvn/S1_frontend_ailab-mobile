@@ -115,20 +115,14 @@ export const MemberVipInfo = () => {
 								alt="vip05"
 							/>
 						)}
-
 						{isVipGoal123Level && (
 							<img
 								src={`${bannerImgUrl}/desktop/img/vip/vip6.png`}
 								alt="vip06"
 							/>
 						)}
-
 						{isVipDiamondLevel && (
 							<p>{t("lbl_WaitForInvitation")}</p>
-						)}
-
-						{isVipGoal123Level && (
-							<p>{t("Label_Vip_HighestMsg")}</p>
 						)}
 					</div>
 				) : (
