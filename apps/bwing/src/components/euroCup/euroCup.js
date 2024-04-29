@@ -19,18 +19,22 @@ import TeamSelector from "./predict/teamSelector";
 import TopContent from "./topContent";
 import Mission from "./mission";
 import Directions from "./directions";
+import { predictTabs } from "./def";
 
 const EuroCup = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
-	const [activeTab, setActiveTab] = useState(1);
+	const [activeMissionTab, setActiveMissionTab] = useState(1);
 	const [selectedGroup, setSelectedGroup] = useState("");
 	const [selectedTeamId, setSelectedTeamId] = useState(null);
 	const [ticketsNumber, setTicketsNumber] = useState("");
 	const [homeTeamScore, setHomeTeamScore] = useState("");
 	const [awayTeamScore, setAwayTeamScore] = useState("");
+	const [activePredictTab, setActivePredictTab] = useState(
+		predictTabs.prediction
+	);
 
 	const {
 		data: { data: predictionSettingData = {} } = {}
@@ -318,7 +322,7 @@ const EuroCup = () => {
 				promotionMission.findIndex(
 					({ isCompleted }) => isCompleted === false
 				) + 1;
-			setActiveTab(targetIndex <= 0 ? 1 : targetIndex);
+			setActiveMissionTab(targetIndex <= 0 ? 1 : targetIndex);
 		}
 	}, [promotionMission.length]);
 
@@ -327,11 +331,14 @@ const EuroCup = () => {
 			<TopContent />
 			<TopTwoPredictions
 				predictScoreList={predictScoreList}
+				predictionSettingData={predictionSettingData}
 				isPredict={isPredict}
 				homeTeamScore={homeTeamScore}
 				awayTeamScore={awayTeamScore}
+				activePredictTab={activePredictTab}
 				setHomeTeamScore={setHomeTeamScore}
 				setAwayTeamScore={setAwayTeamScore}
+				setActivePredictTab={setActivePredictTab}
 				onSubmit={handlePredictScore}
 			/>
 			<div
@@ -346,8 +353,8 @@ const EuroCup = () => {
 						{t("lbl_CupEvent_Mission_Date")}
 					</div>
 					<Mission
-						activeTab={activeTab}
-						setActiveTab={setActiveTab}
+						activeMissionTab={activeMissionTab}
+						setActiveMissionTab={setActiveMissionTab}
 						promotionMission={promotionMission}
 						cupEventPromotionMissionProgress={
 							cupEventPromotionMissionProgress
