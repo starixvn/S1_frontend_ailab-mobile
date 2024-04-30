@@ -93,7 +93,11 @@ const HomeLeaderBoard = () => {
 			<div className="win-total">
 				<div className="user-ranking">
 					{winnerList.map((winner, index) => (
-						<div className="user-list top" key={winner.custId}>
+						<div
+							className={
+								index < 3 ? "user-list top" : "user-list"
+							}
+							key={winner.custId}>
 							<div className="left">
 								<div className="order">
 									{index < 3 ? (
