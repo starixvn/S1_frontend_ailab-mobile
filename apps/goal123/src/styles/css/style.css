@@ -2070,47 +2070,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
-#popup.detailpop {
-  width: 100%;
-  background: #eaf1ff;
-  padding: 0;
-  height: 100%;
-  overflow-y: auto;
-  top: 100%;
-  -webkit-box-pack: revert;
-      -ms-flex-pack: revert;
-          justify-content: revert;
-}
-#popup.detailpop .pop {
-  padding: 0 !important;
-}
-#popup.detailpop.active {
-  top: 0;
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-#popup.detailpop .popTit {
-  border-radius: 0;
-  position: fixed;
-  padding: 2vw 4vw;
-  z-index: 1;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-  border: 0;
-}
-#popup.detailpop .icon-close {
-  z-index: 2;
-  position: absolute;
-  top: 2vw;
-  right: 2vw;
-}
-#popup.detailpop .infoList {
-  padding: 11vw 4vw 4vw;
-  width: calc(100% - 8vw) !important;
-}
-#popup.detailpop .infoList .info {
-  color: #4e6ca8;
-}
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3790,9 +3749,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
-}
-.info ul li .title {
-  color: #1f3258;
 }
 .info.infoBlack {
   background: #d1d6e0;
@@ -7402,7 +7358,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 76vw;
+  bottom: 45vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -8284,15 +8240,6 @@ span.important {
   font-weight: bold;
   color: white;
 }
-.depositModule_mobile > .title .info,
-.depositModule_online > .title .info,
-.depositModule_local > .title .info,
-.depositModule_topupMobile > .title .info,
-.depositModule_Crpyto > .title .info {
-  color: rgba(250, 182, 23, 0.8);
-  margin-left: 0.75vw;
-  font-size: 3.25vw;
-}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -8421,7 +8368,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: 1vw auto;
+  margin: auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -8435,43 +8382,6 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.depositModule_mobile .selectModule > div.info.remark,
-.depositModule_online .selectModule > div.info.remark,
-.depositModule_local .selectModule > div.info.remark,
-.depositModule_topupMobile .selectModule > div.info.remark,
-.depositModule_Crpyto .selectModule > div.info.remark {
-  background: transparent;
-  width: calc(100% - 2vw);
-  padding: 0;
-}
-.depositModule_mobile .selectModule > div.info.remark ul,
-.depositModule_online .selectModule > div.info.remark ul,
-.depositModule_local .selectModule > div.info.remark ul,
-.depositModule_topupMobile .selectModule > div.info.remark ul,
-.depositModule_Crpyto .selectModule > div.info.remark ul {
-  width: 100%;
-}
-.depositModule_mobile .selectModule > div.info.remark ul .tip,
-.depositModule_online .selectModule > div.info.remark ul .tip,
-.depositModule_local .selectModule > div.info.remark ul .tip,
-.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
-.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
-  text-align: left;
-  padding: 0 1vw;
-  margin-bottom: 2vw;
-}
-.depositModule_mobile .selectModule > div.info.remark li,
-.depositModule_online .selectModule > div.info.remark li,
-.depositModule_local .selectModule > div.info.remark li,
-.depositModule_topupMobile .selectModule > div.info.remark li,
-.depositModule_Crpyto .selectModule > div.info.remark li {
-  background: #adccff;
-  border-radius: 5px;
-  padding: 2vw 5vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
@@ -12960,8 +12870,8 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 11vw;
-  padding-bottom: 18vw;
+  padding-top: 12vw;
+  padding-bottom: 10vw;
 }
 .ambassador .banner img {
   width: 100%;
@@ -13448,41 +13358,12 @@ span.important {
 .euro .top-bn {
   width: 100%;
 }
-.euro .prediction-tab {
-  color: #fff;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 4vw auto;
-  position: relative;
-  z-index: 1;
-}
-.euro .prediction-tab button {
-  font-size: 4vw;
-  font-weight: bold;
-  padding-bottom: 1vw;
-  border-bottom: 3px solid #fff;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-  text-align: center;
-  opacity: 0.5;
-  color: #fff;
-}
-.euro .prediction-tab button.active {
-  opacity: 1;
-}
 .euro .prediction-wrapper {
   background: url(https://banner.goal123.org/h5/img/event/eurocup/top-bg.jpg) no-repeat center/100%;
   padding: 0 7vw;
   position: relative;
   z-index: 1;
   padding-bottom: 60vw;
-  display: none;
-}
-.euro .prediction-wrapper.active {
-  display: block;
 }
 .euro .prediction-title {
   display: -webkit-box;
@@ -14304,123 +14185,6 @@ span.important {
   z-index: 3;
   margin-top: -30vw;
   padding-bottom: 14vw;
-}
-.euro-fixture {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  padding-bottom: 20vw;
-}
-.euro-fixture.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.euro-match-bar {
-  width: 100%;
-  overflow-x: scroll;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5vw auto;
-}
-.euro-match-date {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-transform: uppercase;
-  line-height: 1.2;
-  padding: 2vw 5vw;
-  margin-right: 2vw;
-  font-size: 3vw;
-  font-weight: bold;
-  background: #0024B2;
-  border-radius: 3vw;
-  color: #143CDB;
-}
-.euro-match-date.active {
-  background: #fff;
-}
-.euro-match-date .date {
-  font-size: 7vw;
-  font-weight: bold;
-}
-.euro-match-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.euro-match-order {
-  font-weight: bold;
-  font-size: 4vw;
-  margin-bottom: 2vw;
-}
-.euro-match-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 5vw;
-  border-bottom: 1px solid #1D49FB;
-}
-.euro-match-item > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-.euro-match-item .team {
-  text-align: center;
-}
-.euro-match-item .team img {
-  width: 10vw;
-}
-.euro-match-item .team > div {
-  width: 35vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 3.5vw;
-  font-weight: bold;
-}
-.euro-match-item .time {
-  text-align: center;
-  line-height: 1;
-  width: 20vw;
-}
-.euro-match-item .time span {
-  display: block;
-  width: 100%;
-  font-size: 7vw;
-  font-weight: bold;
-  margin-bottom: 0.75vw;
 }
 
 .appdownload {
