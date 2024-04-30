@@ -7045,6 +7045,9 @@ span.important {
   background: #cecece;
   color: rgb(92, 92, 92);
 }
+.eventLink.vgaming.eurocup {
+  bottom: 45vw;
+}
 .eventLink.dragonegg {
   right: 4vw;
   bottom: 16vw;
@@ -7116,7 +7119,7 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 77vw;
+  bottom: 45vw;
   left: 69vw;
 }
 .eventLink.livesports img {
@@ -7131,6 +7134,9 @@ span.important {
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
+}
+.eventLink.livesports.eurocup {
+  bottom: 77vw;
 }
 @-webkit-keyframes livesports {
   0% {
@@ -12661,12 +12667,41 @@ span.important {
 .euro .top-bn {
   width: 100%;
 }
+.euro .prediction-tab {
+  color: #fff;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 4vw auto;
+  position: relative;
+  z-index: 1;
+}
+.euro .prediction-tab button {
+  font-size: 4vw;
+  font-weight: bold;
+  padding-bottom: 1vw;
+  border-bottom: 3px solid #fff;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  text-align: center;
+  opacity: 0.5;
+  color: #fff;
+}
+.euro .prediction-tab button.active {
+  opacity: 1;
+}
 .euro .prediction-wrapper {
   background: url(https://banner.goal123.org/h5/img/event/eurocup/top-bg.jpg) no-repeat center/100%;
   padding: 0 7vw;
   position: relative;
   z-index: 1;
   padding-bottom: 60vw;
+  display: none;
+}
+.euro .prediction-wrapper.active {
+  display: block;
 }
 .euro .prediction-title {
   display: -webkit-box;
@@ -13310,9 +13345,13 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #3D63FB;
 }
 .euro .bottom-tap a.active {
   border-bottom: 2px solid white;
+}
+.euro .bottom-tap a.active span {
+  color: white;
 }
 .euro .reward-title, .euro .matches-title, .euro .terms-title {
   color: white;
@@ -13488,4 +13527,121 @@ span.important {
   z-index: 3;
   margin-top: -30vw;
   padding-bottom: 14vw;
+}
+.euro-fixture {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding-bottom: 20vw;
+}
+.euro-fixture.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro-match-bar {
+  width: 100%;
+  overflow-x: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5vw auto;
+}
+.euro-match-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
+  line-height: 1.2;
+  padding: 2vw 5vw;
+  margin-right: 2vw;
+  font-size: 3vw;
+  font-weight: bold;
+  background: #0024B2;
+  border-radius: 3vw;
+  color: #143CDB;
+}
+.euro-match-date.active {
+  background: #fff;
+}
+.euro-match-date .date {
+  font-size: 7vw;
+  font-weight: bold;
+}
+.euro-match-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.euro-match-order {
+  font-weight: bold;
+  font-size: 4vw;
+  margin-bottom: 2vw;
+}
+.euro-match-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5vw;
+  border-bottom: 1px solid #1D49FB;
+}
+.euro-match-item > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.euro-match-item .team {
+  text-align: center;
+}
+.euro-match-item .team img {
+  width: 10vw;
+}
+.euro-match-item .team > div {
+  width: 35vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 3.5vw;
+  font-weight: bold;
+}
+.euro-match-item .time {
+  text-align: center;
+  line-height: 1;
+  width: 20vw;
+}
+.euro-match-item .time span {
+  display: block;
+  width: 100%;
+  font-size: 7vw;
+  font-weight: bold;
+  margin-bottom: 0.75vw;
 }/*# sourceMappingURL=style.css.map */
