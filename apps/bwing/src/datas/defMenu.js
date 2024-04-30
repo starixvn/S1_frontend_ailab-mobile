@@ -818,11 +818,11 @@ export const productList = langId => {
 			category: "cockFighting",
 			displayText: "CockFighting",
 			path: path.cockFighting.root,
-			icon_img: `${bannerImgUrl}/h5/img/gameicon/wcc.png`,
+			icon_img: `${bannerImgUrl}/h5/img/gameicon/wcc-cockfighting.png`,
 			items: [
 				{
 					// displayKey: "lbl_CockFighting",
-					img: `${bannerImgUrl}/h5/img/4.0/lobby/cockfighting/wcc.png`,
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/cockfighting/wcc-cockfighting.png`,
 					...defGameInfo.WCC_CockFighting,
 					eventIcon: [
 						{
