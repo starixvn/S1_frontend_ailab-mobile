@@ -203,7 +203,7 @@ const Index = () => {
 							/>
 							<News path={path.news.root} />
 							<DragonEgg path={path.dragonEgg.root} />
-							<EuroCup path={`${path.euroCup.root}`} />
+							<EuroCup path={path.euroCup.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>
