@@ -330,7 +330,7 @@ const EuroCup = () => {
 		<>
 			<TopContent />
 			<TopTwoPredictions
-				predictScoreList={predictScoreList}
+				predictScoreList={predictScoreList ?? []}
 				predictionSettingData={predictionSettingData}
 				isPredict={isPredict}
 				homeTeamScore={homeTeamScore}
