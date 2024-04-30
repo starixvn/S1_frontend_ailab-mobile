@@ -19167,6 +19167,7 @@ body main.main.referral {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  min-height: 95vw;
 }
 .euro-match-order {
   font-weight: bold;
