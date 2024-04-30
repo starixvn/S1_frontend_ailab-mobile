@@ -1,11 +1,10 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
 	api_events_GetLeaderboardList,
 	api_events_GetLeaderboardListLiveCasino,
 	api_events_GetLeaderboardListSports,
 	api_events_GetLeaderboardListSlots
 } from "apps/goal123/src/service/api/events";
-import { userInfoContext } from "../../common/context";
 
 // api used in this file : api/Events/GetLeaderboardList
 
@@ -14,8 +13,6 @@ const useTopWinnerList = () => {
 	const [sportTopWinner, setSportTopWinner] = useState([]);
 	const [slotTopWinner, setSlotTopWinner] = useState([]);
 	const [liveCasinoTopWinner, setLiveCasinoTopWinner] = useState([]);
-
-	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(false);
 
 	useEffect(() => {
@@ -83,7 +80,7 @@ const useTopWinnerList = () => {
 		return () => {
 			isMountedRef.current = false;
 		};
-	}, [userInfo]);
+	}, []);
 
 	return { winnerList, sportTopWinner, slotTopWinner, liveCasinoTopWinner };
 };
