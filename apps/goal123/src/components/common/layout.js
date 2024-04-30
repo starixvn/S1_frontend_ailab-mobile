@@ -25,13 +25,12 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
-import { isEventPeriod } from "./common";
-import EuroCupLink from "../euroCup/euroCupLink";
 import HomeHeader from "../newHome/components/HomeHeader";
 import { setCookie, readCookie } from "./common";
 import HomeFooter from "../newHome/components/HomeFooter";
+import EuroCupLink from "../euroCup/euroCupLink";
 
-const Layout = ({ children, header, mainClass, title, goTopBtn }) => {
+const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { setNav } = useContext(navContext);
@@ -135,18 +134,10 @@ const Layout = ({ children, header, mainClass, title, goTopBtn }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{noHeader
-				? null
-				: header ?? <Header title={title} hideLogo={true} />}
-			<main
-				style={position}
-				className={`${mainClass ?? ""}${
-					appHint ? " openAppDownload" : ""
-				} ${appHint && root ? "active" : ""}`}>
-				{children}
-				{loading ? <Loading /> : null}
-			</main>
-			{!root && (header ?? <Header title={title} hideLogo={true} />)}
+			{!root &&
+				(noHeader
+					? null
+					: header ?? <Header title={title} hideLogo={true} />)}
 
 			{root && (
 				<header id="header" className="header-index">
@@ -178,7 +169,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn }) => {
 				root &&
 				!displayLiveStreaming &&
 				!isLoading &&
-				!isEventPeriod(eventTime.eventCup) && (
+				!isDateRange(eventTime.eventCup) && (
 					<div className="eventLink vgaming">
 						<button
 							className="icon icon-close"
@@ -202,18 +193,15 @@ const Layout = ({ children, header, mainClass, title, goTopBtn }) => {
 			)}
 
 			{/* 僅限過年期間不顯示 */}
-			{isEventPeriod(eventTime.luckyWheel) &&
-			!isEventPeriod(eventTime.dragonEgg) &&
-			root &&
-			luckyWheel ? (
+			{!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
 
 			{/* 僅限過年期間顯示 */}
-			{isEventPeriod(eventTime.dragonEgg) && root && <DragonEggPop />}
-			{/* 歐冠杯期間顯示 */}
-			{isEventPeriod(eventTime.eventCup) && root && <EuroCupLink />}
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
+
+			{/* 歐冠杯期間顯示 */}
+			{isDateRange(eventTime.eventCup) && root && <EuroCupLink />}
 			{/* <Footer /> */}
 			<HomeFooter />
 			{goTopBtn && <GoTopBtn />}
@@ -225,7 +213,6 @@ Layout.defaultProps = {
 	goTopBtn: true,
 	mainClass: "main",
 	title: "",
-	appHint: false,
 	header: null,
 	noHeader: false
 };
@@ -235,7 +222,6 @@ Layout.propTypes = {
 	goTopBtn: PropTypes.bool,
 	mainClass: PropTypes.string,
 	title: PropTypes.string,
-	appHint: PropTypes.bool,
 	header: PropTypes.node,
 	noHeader: PropTypes.bool
 };
