@@ -206,6 +206,9 @@ export default {
 	},
 	dragonEgg: {
 		root: "dragonEgg"
+	},
+	cockFighting: {
+		root: "cockfighting"
 	}
 };
 

@@ -55,6 +55,7 @@ import PromotionInfo from "./pages/promotionInfo";
 
 import Games from "./pages/games";
 import Fishing from "./pages/fishing";
+import CockFighting from "./pages/cockFighting";
 import LiveCasino from "./pages/liveCasino";
 import Sports from "./pages/sports";
 
@@ -174,6 +175,7 @@ const Index = () => {
 							<Whoami path={path.whoami.root} />
 							<Games path={path.games.root} />
 							<Fishing path={path.fishing.root} />
+							<CockFighting path={path.cockFighting.root} />
 							<Sports path={path.sports.root} />
 							<LiveCasino path={path.liveCasino.root} />
 							<Lottery path={path.lottery.root} />

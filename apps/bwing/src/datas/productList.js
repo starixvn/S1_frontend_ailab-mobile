@@ -148,7 +148,12 @@ export const defGameInfo = {
 	Spaceman: { tpId: 5, tpGameType: 7, gameId: 1302 },
 	Crash: { tpId: 39, tpGameType: 67, gameId: "Crash" },
 	GoRush: { tpId: 32, tpGameType: 53, gameId: 224 },
-	"93Connect": { tpId: 62, tpGameType: 114, gameId: "LOBBY" }
+	"93Connect": { tpId: 62, tpGameType: 114, gameId: "LOBBY" },
+	WCC_CockFighting: {
+		tpId: 16,
+		tpGameType: 117,
+		gameId: "CMCOCKFIGHT01"
+	}
 };
 
 export const slotPlatform = [

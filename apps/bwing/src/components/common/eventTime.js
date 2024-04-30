@@ -58,5 +58,6 @@ export const eventTime = {
 		startDate: "2024/02/01 00:00:00",
 		endDate: "2024/02/29 23:59:59"
 	},
-	game_93Connect: { endDate: "2024/04/21 23:59:59" }
+	game_93Connect: { endDate: "2024/04/21 23:59:59" },
+	WCC_CockFighting: { endDate: "2025/04/21 23:59:59" }
 };

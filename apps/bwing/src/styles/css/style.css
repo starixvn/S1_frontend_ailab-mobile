@@ -442,6 +442,15 @@ a {
   margin: 0 1vw;
   cursor: pointer;
 }
+.icon-cockfighting-blue::before {
+  content: "";
+  display: block;
+  width: 12.75vw;
+  height: 11vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-cockfighting-blue.svg) no-repeat center/cover;
+  margin: 0 1vw;
+  cursor: pointer;
+}
 .icon-lottery-blue::before {
   content: "";
   display: block;
@@ -1798,13 +1807,10 @@ header {
           justify-content: center;
 }
 .menu-list-item span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: calc(100% - 2vw);
   margin: 0 auto -1vw;
   text-align: center;
-  line-height: 2;
+  word-wrap: break-word;
 }
 .menu-list-item i {
   margin-bottom: 1.5vw;
@@ -5285,10 +5291,10 @@ header {
 .lobby-banner img {
   height: 40vw;
 }
-.lobby.esports .lobby-products-item, .lobby.slots .lobby-products-item, .lobby.livecasino .lobby-products-item, .lobby.lottery .lobby-products-item {
+.lobby.esports .lobby-products-item, .lobby.slots .lobby-products-item, .lobby.livecasino .lobby-products-item, .lobby.lottery .lobby-products-item, .lobby.cockfighting .lobby-products-item {
   padding: 0;
 }
-.lobby.esports .lobby-products-item img, .lobby.slots .lobby-products-item img, .lobby.livecasino .lobby-products-item img, .lobby.lottery .lobby-products-item img {
+.lobby.esports .lobby-products-item img, .lobby.slots .lobby-products-item img, .lobby.livecasino .lobby-products-item img, .lobby.lottery .lobby-products-item img, .lobby.cockfighting .lobby-products-item img {
   width: 100%;
 }
 .lobby.games .tag-new-pop::before, .lobby.games .tag-hot-pop::before {
@@ -6632,6 +6638,7 @@ header {
           justify-content: space-between;
   padding: 10vw 6vw 4vw;
   overflow-x: hidden;
+  z-index: 12;
 }
 .login-module > div, .login-module form, .join-module > div, .join-module form {
   text-align: center;
@@ -13978,6 +13985,15 @@ body main.main.referral {
 .depositModule_crptopay > .title:before,
 .depositModule_crptopay > .title span {
   margin-right: 1vw;
+}
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupmobile > .title .info,
+.depositModule_crptopay > .title .info {
+  color: rgba(243, 140, 0, 0.9);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
 }
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
