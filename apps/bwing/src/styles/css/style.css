@@ -19212,6 +19212,7 @@ body main.main.referral {
 .euro-match-item .time {
   text-align: center;
   line-height: 1;
+  width: 20vw;
 }
 .euro-match-item .time span {
   display: block;
