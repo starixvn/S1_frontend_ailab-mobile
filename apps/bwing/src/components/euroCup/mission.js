@@ -10,8 +10,8 @@ import { userInfoContext } from "../common/context";
 import ProgressBar from "./components/ProgressBar";
 
 const Mission = ({
-	activeTab,
-	setActiveTab,
+	activeMissionTab,
+	setActiveMissionTab,
 	promotionMission,
 	cupEventPromotionMissionProgress
 }) => {
@@ -44,10 +44,10 @@ const Mission = ({
 				{numbers.map(number => (
 					<div
 						className={classNames({
-							active: activeTab === number && number !== 5,
-							five: activeTab === number && number === 5
+							active: activeMissionTab === number && number !== 5,
+							five: activeMissionTab === number && number === 5
 						})}
-						onClick={() => setActiveTab(number)}
+						onClick={() => setActiveMissionTab(number)}
 						style={{ fontSize: "unset" }}>
 						{t("lbl_CupEvent_Mission")} {number}
 						{number < 5 && (
@@ -62,7 +62,7 @@ const Mission = ({
 			<div className="mission-item">
 				<div
 					className={classNames("mission-one", {
-						close: activeTab !== 1
+						close: activeMissionTab !== 1
 					})}>
 					<div className="ticket-title">
 						{t("lbl_CupEvent_GetTickets", { count: 1 })}
@@ -131,7 +131,7 @@ const Mission = ({
 				</div>
 				<div
 					className={classNames("mission-two", {
-						close: activeTab !== 2
+						close: activeMissionTab !== 2
 					})}>
 					<div className="ticket-title">
 						{" "}
@@ -201,7 +201,7 @@ const Mission = ({
 				</div>
 				<div
 					className={classNames("mission-three", {
-						close: activeTab !== 3
+						close: activeMissionTab !== 3
 					})}>
 					<div className="ticket-title">
 						{t("lbl_CupEvent_GetTickets", { count: 1 })}
@@ -271,7 +271,7 @@ const Mission = ({
 				</div>
 				<div
 					className={classNames("mission-four", {
-						close: activeTab !== 4
+						close: activeMissionTab !== 4
 					})}>
 					<div className="ticket-title">
 						{t("lbl_CupEvent_GetTickets", { count: 2 })}
@@ -318,7 +318,7 @@ const Mission = ({
 				</div>
 				<div
 					className={classNames("mission-five", {
-						close: activeTab !== 5
+						close: activeMissionTab !== 5
 					})}>
 					<div className="ticket-title">
 						{t("lbl_CupEvent_GetTickets", { count: 5 })}
@@ -342,8 +342,8 @@ const Mission = ({
 	);
 };
 Mission.propTypes = {
-	activeTab: PropTypes.number.isRequired,
-	setActiveTab: PropTypes.func.isRequired,
+	activeMissionTab: PropTypes.number.isRequired,
+	setActiveMissionTab: PropTypes.func.isRequired,
 	promotionMission: PropTypes.arrayOf(PropTypes.any).isRequired,
 	cupEventPromotionMissionProgress: PropTypes.objectOf(PropTypes.any)
 		.isRequired
