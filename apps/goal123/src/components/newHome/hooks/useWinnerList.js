@@ -1,10 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import {
-	api_events_GetLeaderboardList,
-	api_events_GetLeaderboardListLiveCasino,
-	api_events_GetLeaderboardListSports,
-	api_events_GetLeaderboardListSlots
-} from "apps/goal123/src/service/api/events";
+import { api_events_GetLeaderboardList } from "apps/goal123/src/service/api/events";
+import { defProductType } from "../../../datas/productList";
 
 // api used in this file : api/Events/GetLeaderboardList
 
@@ -33,20 +29,19 @@ const useTopWinnerList = () => {
 						...payload,
 						lBCategoryId: 0
 					}),
-					api_events_GetLeaderboardListSports({
+					api_events_GetLeaderboardList({
 						...payload,
-						lBCategoryId: 1
+						lBCategoryId: defProductType.Sports
 					}),
-					api_events_GetLeaderboardListSlots({
+					api_events_GetLeaderboardList({
 						...payload,
-						lBCategoryId: 2
+						lBCategoryId: defProductType.Slots
 					}),
-					api_events_GetLeaderboardListLiveCasino({
+					api_events_GetLeaderboardList({
 						...payload,
-						lBCategoryId: 3
+						lBCategoryId: defProductType.LiveCasino
 					})
 				]);
-
 				if (isMountedRef.current) {
 					responses.forEach((res, index) => {
 						if (res.data.errorCode === 0) {

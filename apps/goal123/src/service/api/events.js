@@ -1,6 +1,6 @@
 import { eventRequest } from "./base";
 
-export const api_events_GetLeaderboardList = ({
+export const api_events_GetLeaderboardList = async ({
 	lBCategoryId = 0,
 	TopNum = 10,
 	BeforeDays = 0,
