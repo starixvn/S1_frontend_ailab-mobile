@@ -5,13 +5,18 @@ export const api_events_GetLeaderboardList = ({
 	TopNum = 10,
 	BeforeDays = 0,
 	EventCode
-}) =>
-	eventRequest.post(`/GetLeaderboardList/`, {
-		lBCategoryId,
-		TopNum,
-		BeforeDays,
-		EventCode
-	});
+}) => {
+	try {
+		return eventRequest.post(`/GetLeaderboardList/`, {
+			lBCategoryId,
+			TopNum,
+			BeforeDays,
+			EventCode
+		});
+	} catch (e) {
+		return {};
+	}
+};
 
 export const api_events_GetLeaderboardListSports = payloads =>
 	api_events_GetLeaderboardList({ ...payloads });
