@@ -18,15 +18,6 @@ export const api_events_GetLeaderboardList = async ({
 	}
 };
 
-export const api_events_GetLeaderboardListSports = payloads =>
-	api_events_GetLeaderboardList({ ...payloads });
-
-export const api_events_GetLeaderboardListSlots = payloads =>
-	api_events_GetLeaderboardList({ ...payloads });
-
-export const api_events_GetLeaderboardListLiveCasino = payloads =>
-	api_events_GetLeaderboardList({ ...payloads });
-
 export const api_events_GetCustRank = ({
 	LBCategoryId = 0,
 	BeforeDays = 0,
