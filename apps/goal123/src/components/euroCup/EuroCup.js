@@ -13,17 +13,17 @@ import {
 import { isDateRange } from "@ailab-mobile/common";
 import paths from "../../path";
 import { popBoxContext, userInfoContext } from "../common/context";
-import PredictList from "./predict/predictLIst";
-import TicketOverview from "./ticketOverview";
-import TeamSelector from "./predict/teamSelector";
-import PredictionRecord from "./predict/predictionRecord";
+import PredictLIst from "./predict/PredictLIst";
+import TicketOverview from "./TicketOverview";
+import TeamSelector from "./predict/TeamSelector";
+import PredictionRecord from "./predict/PredictionRecord";
 import { DIRECTIONS_TYPE, PREDICT_TABS } from "./def";
-import Directions from "./directions";
+import Directions from "./Directions";
 import RewardItem from "./reward/RewardItem";
 import { bannerImgUrl, sportsImgUrl } from "../../config";
 import { numFormatToDigits } from "../common/common";
 import { eventTime } from "../common/eventTime";
-import Schedule from "./schedule/schedule";
+import Schedule from "./schedule/Schedule";
 
 const EuroCup = () => {
 	const { t } = useTranslation();
@@ -348,7 +348,7 @@ const EuroCup = () => {
 							/>
 						</a>
 					</div>
-					<PredictList ticketSummary={ticketSummary} />
+					<PredictLIst ticketSummary={ticketSummary} />
 				</div>
 			)}
 			{activePredictTab === PREDICT_TABS.SCHEDULE && (
