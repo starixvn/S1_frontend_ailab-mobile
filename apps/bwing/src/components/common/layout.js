@@ -24,7 +24,7 @@ import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
-import EuroCupLink from "../euroCup/euroCupLink";
+import EuroCupLink from "../euroCup/EuroCupLink";
 
 export const defPageInfo = {
 	default: {

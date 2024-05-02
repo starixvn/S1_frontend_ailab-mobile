@@ -14,11 +14,11 @@ import { eventTime } from "../common/eventTime";
 import { isEventPeriod } from "../common/common";
 import { bannerImgUrl, sportsImgUrl } from "../../config";
 import TopTwoPredictions from "./predict/TopTwoPredictions";
-import PredictionRecord from "./predict/predictionRecord";
-import TeamSelector from "./predict/teamSelector";
-import TopContent from "./topContent";
-import Mission from "./mission";
-import Directions from "./directions";
+import PredictionRecord from "./predict/PredictionRecord";
+import TeamSelector from "./predict/TeamSelector";
+import TopContent from "./TopContent";
+import Mission from "./Mission";
+import Directions from "./Directions";
 import { predictTabs } from "./def";
 
 const EuroCup = () => {

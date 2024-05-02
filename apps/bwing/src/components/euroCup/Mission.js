@@ -173,10 +173,13 @@ const Mission = ({
 							<div
 								className="progress-bar"
 								style={{
-									width: getDepositProgressWidth(
-										cupEventPromotionMissionProgress?.depositAmount,
-										promotionMission?.[1]?.depositAmount
-									)
+									width: promotionMission?.[1]?.isCompleted
+										? "100%"
+										: getDepositProgressWidth(
+												cupEventPromotionMissionProgress?.depositAmount,
+												promotionMission?.[1]
+													?.depositAmount
+										  )
 								}}
 							/>
 						</div>
@@ -184,10 +187,16 @@ const Mission = ({
 							<div>{t("lbl_CupEvent_CurrentlyAccumulated")}</div>
 							<div>
 								<span>
-									{numFormatToDigits(
-										cupEventPromotionMissionProgress?.depositAmount,
-										0
-									)}
+									{promotionMission?.[1]?.isCompleted
+										? numFormatToDigits(
+												promotionMission?.[1]
+													?.depositAmount,
+												0
+										  )
+										: numFormatToDigits(
+												cupEventPromotionMissionProgress?.depositAmount,
+												0
+										  )}
 								</span>{" "}
 								/{" "}
 								{numFormatToDigits(
@@ -243,10 +252,13 @@ const Mission = ({
 							<div
 								className="progress-bar"
 								style={{
-									width: getDepositProgressWidth(
-										cupEventPromotionMissionProgress?.depositAmount,
-										promotionMission?.[2]?.depositAmount
-									)
+									width: promotionMission?.[2]?.isCompleted
+										? "100%"
+										: getDepositProgressWidth(
+												cupEventPromotionMissionProgress?.depositAmount,
+												promotionMission?.[2]
+													?.depositAmount
+										  )
 								}}
 							/>
 						</div>
@@ -254,10 +266,16 @@ const Mission = ({
 							<div>{t("lbl_CupEvent_CurrentlyAccumulated")}</div>
 							<div>
 								<span>
-									{numFormatToDigits(
-										cupEventPromotionMissionProgress?.depositAmount,
-										0
-									)}
+									{promotionMission?.[2]?.isCompleted
+										? numFormatToDigits(
+												promotionMission?.[2]
+													?.depositAmount,
+												0
+										  )
+										: numFormatToDigits(
+												cupEventPromotionMissionProgress?.depositAmount,
+												0
+										  )}
 								</span>{" "}
 								/{" "}
 								{numFormatToDigits(
