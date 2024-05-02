@@ -671,7 +671,7 @@ const gameList = [
 				eventIcon: [
 					{
 						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.GA_CockFighting)
+						inPeriod: isEventPeriod(eventTime.WCC_CockFighting)
 					}
 				]
 			}
