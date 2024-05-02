@@ -114,11 +114,6 @@ const providers = [
 		name: "fachai",
 		image: `${bannerImgUrl}/h5/img/home-page/provider/fachai.png`,
 		alt: "fa chai"
-	},
-	{
-		name: "wcc-cockfighting",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/wcc-cockfighting.png`,
-		alt: "wcc-cockfighting"
 	}
 ];
 
