@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
-import MatchesByDate from "./matchesByDate";
+import MatchesByDate from "./MatchesByDate";
 import { bannerImgUrl, sportsImgUrl } from "../../../config";
 import {
 	defFinalSort,

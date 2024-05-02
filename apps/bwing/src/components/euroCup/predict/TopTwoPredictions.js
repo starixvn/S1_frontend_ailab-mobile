@@ -6,7 +6,7 @@ import { sportsImgUrl } from "../../../config";
 import { eventTime } from "../../common/eventTime";
 import { isEventPeriod } from "../../common/common";
 import { predictTabs } from "../def";
-import Schedule from "../schedule/schedule";
+import Schedule from "../schedule/Schedule";
 
 const TopTwoPredictions = ({
 	predictScoreList,
