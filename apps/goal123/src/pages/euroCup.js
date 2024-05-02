@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/common/layout";
-import EuroCup from "../components/euroCup/euroCup";
+import EuroCup from "../components/euroCup/EuroCup";
 
 const IndexPage = () => {
 	return (
