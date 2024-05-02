@@ -114,6 +114,11 @@ const providers = [
 		name: "fachai",
 		image: `${bannerImgUrl}/h5/img/home-page/provider/fachai.png`,
 		alt: "fa chai"
+	},
+	{
+		name: "wcc-cockfighting",
+		image: `${bannerImgUrl}/h5/img/home-page/provider/wcc-cockfighting.png`,
+		alt: "wcc-cockfighting"
 	}
 ];
 
@@ -141,7 +146,8 @@ const HomeButtom = () => {
 				<div className="socialmedia">
 					<a
 						href="https://www.facebook.com/dangcapnhacai.goal123/"
-						target="_blank">
+						target="_blank"
+						rel="noreferrer">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-facebook.svg`}
 							alt="home-facebook"
@@ -153,7 +159,10 @@ const HomeButtom = () => {
 							alt="home-youtube"
 						/>
 					</a>
-					<a href={zaloData ? zaloData.link : "#"} target="_blank">
+					<a
+						href={zaloData ? zaloData.link : "#"}
+						target="_blank"
+						rel="noreferrer">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-zalo.svg`}
 							alt="home-zalo"
