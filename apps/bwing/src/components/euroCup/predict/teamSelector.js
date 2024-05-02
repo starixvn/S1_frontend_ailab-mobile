@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { bannerImgUrl } from "../../../config";
 import { eventTime } from "../../common/eventTime";
 import { isEventPeriod } from "../../common/common";
-import Dropdown from "./dropdown";
+import Dropdown from "./Dropdown";
 
 const TeamSelector = ({
 	options,
