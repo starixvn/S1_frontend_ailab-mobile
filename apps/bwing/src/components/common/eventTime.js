@@ -73,5 +73,6 @@ export const eventTime = {
 	predictScore: {
 		startDate: "2024/07/11 00:00:00",
 		endDate: "2024/07/14 23:59:59"
-	}
+	},
+	WCC_CockFighting: { endDate: "2025/04/21 23:59:59" }
 };
