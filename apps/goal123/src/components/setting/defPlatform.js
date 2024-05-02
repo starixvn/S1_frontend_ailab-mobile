@@ -208,10 +208,6 @@ const defPlatfrom = [
 		imgName: "cockfightinga"
 	},
 	{
-		...defGameInfo.WCC_CockFighting,
-		imgName: "wcc-cockfighting"
-	},
-	{
 		...defGameInfo["93Connect"],
 		imgName: "93connecta"
 	},
