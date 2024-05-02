@@ -666,7 +666,7 @@ const gameList = [
 			},
 			{
 				...defGameInfo.WCC_CockFighting,
-				img: `${bannerImgUrl}/h5/img/hotgame/cockfighting/wcc.png`,
+				img: `${bannerImgUrl}/h5/img/hotgame/cockfighting/wcc-cockfighting.png`,
 				spanText: "WCC Cockfighting",
 				eventIcon: [
 					{
