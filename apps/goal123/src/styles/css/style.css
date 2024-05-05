@@ -2070,47 +2070,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
-#popup.detailpop {
-  width: 100%;
-  background: #eaf1ff;
-  padding: 0;
-  height: 100%;
-  overflow-y: auto;
-  top: 100%;
-  -webkit-box-pack: revert;
-      -ms-flex-pack: revert;
-          justify-content: revert;
-}
-#popup.detailpop .pop {
-  padding: 0 !important;
-}
-#popup.detailpop.active {
-  top: 0;
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-#popup.detailpop .popTit {
-  border-radius: 0;
-  position: fixed;
-  padding: 2vw 4vw;
-  z-index: 1;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
-  border: 0;
-}
-#popup.detailpop .icon-close {
-  z-index: 2;
-  position: absolute;
-  top: 2vw;
-  right: 2vw;
-}
-#popup.detailpop .infoList {
-  padding: 11vw 4vw 4vw;
-  width: calc(100% - 8vw) !important;
-}
-#popup.detailpop .infoList .info {
-  color: #4e6ca8;
-}
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3790,9 +3749,6 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
-}
-.info ul li .title {
-  color: #1f3258;
 }
 .info.infoBlack {
   background: #d1d6e0;
@@ -7177,7 +7133,7 @@ span.important {
 }
 .eventLink.wheel {
   right: 4vw;
-  bottom: 70vw;
+  bottom: 61vw;
 }
 .eventLink.wheel img {
   position: absolute;
@@ -7317,7 +7273,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 45vw;
+  bottom: 66vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7329,7 +7285,7 @@ span.important {
   color: rgb(92, 92, 92);
 }
 .eventLink.vgaming.eurocup {
-  bottom: 80vw;
+  bottom: 66vw;
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -7402,13 +7358,13 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 76vw;
+  bottom: 66vw;
   left: 69vw;
 }
 .eventLink.livesports img {
   -webkit-animation: livesports 4s ease-in-out infinite;
           animation: livesports 4s ease-in-out infinite;
-  width: 32vw;
+  width: 31vw;
   z-index: 1;
 }
 .eventLink.livesports .icon-close {
@@ -7419,7 +7375,10 @@ span.important {
   color: rgb(92, 92, 92);
 }
 .eventLink.livesports.eurocup {
-  bottom: 110vw;
+  bottom: 97vw;
+}
+.eventLink.livesports.eurocup .icon-close {
+  top: 2vw;
 }
 @-webkit-keyframes livesports {
   0% {
@@ -7458,18 +7417,18 @@ span.important {
   }
 }
 .eventLink.eurocup {
-  bottom: 76vw;
+  bottom: 64vw;
   left: 69vw;
 }
 .eventLink.eurocup img {
   -webkit-animation: livesports 3s ease-in-out infinite;
           animation: livesports 3s ease-in-out infinite;
-  width: 33vw;
+  width: 31vw;
   z-index: 1;
 }
 .eventLink.eurocup .icon-close {
   right: 0;
-  top: -2vw;
+  top: -1vw;
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
@@ -8284,15 +8243,6 @@ span.important {
   font-weight: bold;
   color: white;
 }
-.depositModule_mobile > .title .info,
-.depositModule_online > .title .info,
-.depositModule_local > .title .info,
-.depositModule_topupMobile > .title .info,
-.depositModule_Crpyto > .title .info {
-  color: rgba(250, 182, 23, 0.8);
-  margin-left: 0.75vw;
-  font-size: 3.25vw;
-}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -8421,7 +8371,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: 1vw auto;
+  margin: auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -8435,43 +8385,6 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.depositModule_mobile .selectModule > div.info.remark,
-.depositModule_online .selectModule > div.info.remark,
-.depositModule_local .selectModule > div.info.remark,
-.depositModule_topupMobile .selectModule > div.info.remark,
-.depositModule_Crpyto .selectModule > div.info.remark {
-  background: transparent;
-  width: calc(100% - 2vw);
-  padding: 0;
-}
-.depositModule_mobile .selectModule > div.info.remark ul,
-.depositModule_online .selectModule > div.info.remark ul,
-.depositModule_local .selectModule > div.info.remark ul,
-.depositModule_topupMobile .selectModule > div.info.remark ul,
-.depositModule_Crpyto .selectModule > div.info.remark ul {
-  width: 100%;
-}
-.depositModule_mobile .selectModule > div.info.remark ul .tip,
-.depositModule_online .selectModule > div.info.remark ul .tip,
-.depositModule_local .selectModule > div.info.remark ul .tip,
-.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
-.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
-  text-align: left;
-  padding: 0 1vw;
-  margin-bottom: 2vw;
-}
-.depositModule_mobile .selectModule > div.info.remark li,
-.depositModule_online .selectModule > div.info.remark li,
-.depositModule_local .selectModule > div.info.remark li,
-.depositModule_topupMobile .selectModule > div.info.remark li,
-.depositModule_Crpyto .selectModule > div.info.remark li {
-  background: #adccff;
-  border-radius: 5px;
-  padding: 2vw 5vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
@@ -10651,7 +10564,7 @@ span.important {
 
 #goTop {
   position: fixed;
-  bottom: 32vw;
+  bottom: 24.5vw;
   right: 2vw;
   width: 10vw;
   height: 10vw;
@@ -12960,8 +12873,8 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 11vw;
-  padding-bottom: 18vw;
+  padding-top: 12vw;
+  padding-bottom: 10vw;
 }
 .ambassador .banner img {
   width: 100%;
@@ -13448,41 +13361,12 @@ span.important {
 .euro .top-bn {
   width: 100%;
 }
-.euro .prediction-tab {
-  color: #fff;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 4vw auto;
-  position: relative;
-  z-index: 1;
-}
-.euro .prediction-tab button {
-  font-size: 4vw;
-  font-weight: bold;
-  padding-bottom: 1vw;
-  border-bottom: 3px solid #fff;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 50%;
-          flex: 0 0 50%;
-  text-align: center;
-  opacity: 0.5;
-  color: #fff;
-}
-.euro .prediction-tab button.active {
-  opacity: 1;
-}
 .euro .prediction-wrapper {
   background: url(https://banner.goal123.org/h5/img/event/eurocup/top-bg.jpg) no-repeat center/100%;
   padding: 0 7vw;
   position: relative;
   z-index: 1;
   padding-bottom: 60vw;
-  display: none;
-}
-.euro .prediction-wrapper.active {
-  display: block;
 }
 .euro .prediction-title {
   display: -webkit-box;
@@ -14305,123 +14189,6 @@ span.important {
   margin-top: -30vw;
   padding-bottom: 14vw;
 }
-.euro-fixture {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  padding-bottom: 20vw;
-}
-.euro-fixture.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.euro-match-bar {
-  width: 100%;
-  overflow-x: scroll;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5vw auto;
-}
-.euro-match-date {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-transform: uppercase;
-  line-height: 1.2;
-  padding: 2vw 5vw;
-  margin-right: 2vw;
-  font-size: 3vw;
-  font-weight: bold;
-  background: #0024B2;
-  border-radius: 3vw;
-  color: #143CDB;
-}
-.euro-match-date.active {
-  background: #fff;
-}
-.euro-match-date .date {
-  font-size: 7vw;
-  font-weight: bold;
-}
-.euro-match-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.euro-match-order {
-  font-weight: bold;
-  font-size: 4vw;
-  margin-bottom: 2vw;
-}
-.euro-match-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 5vw;
-  border-bottom: 1px solid #1D49FB;
-}
-.euro-match-item > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-.euro-match-item .team {
-  text-align: center;
-}
-.euro-match-item .team img {
-  width: 10vw;
-}
-.euro-match-item .team > div {
-  width: 35vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 3.5vw;
-  font-weight: bold;
-}
-.euro-match-item .time {
-  text-align: center;
-  line-height: 1;
-  width: 20vw;
-}
-.euro-match-item .time span {
-  display: block;
-  width: 100%;
-  font-size: 7vw;
-  font-weight: bold;
-  margin-bottom: 0.75vw;
-}
 
 .appdownload {
   background: #fab617;
@@ -14648,7 +14415,7 @@ span.important {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 35.4vw;
+  width: 34.4vw;
   display: inline-block;
 }
 .header-content .member-important {
@@ -14979,6 +14746,9 @@ main.home .home-marquee {
   width: 100%;
   margin-top: 3vw;
 }
+main.home .home-marquee .marquee > div {
+  font-size: 3.2vw;
+}
 main.home .home-marquee .marquee-box {
   overflow: hidden;
   -webkit-box-sizing: border-box;
@@ -15091,25 +14861,6 @@ main.home .home-marquee .marquee-run button {
 main.home .home-categorymenu {
   margin: 4vw 0 10.5vw;
 }
-main.home .home-categorymenu .new-icon {
-  position: relative;
-}
-main.home .home-categorymenu .new-icon::before {
-  content: "new";
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 2vw;
-  color: #fff;
-  padding: 0.85vw 1.2vw;
-  border-radius: 20vw;
-  background: #fab617;
-  border: 0.5vw solid #F9F9F9;
-  position: absolute;
-  top: -0.85vw;
-  left: 1vw;
-  z-index: 1;
-}
 main.home .home-sidebar {
   background: #F9F9F9;
   border-radius: 0 0 8vw 8vw;
@@ -15158,6 +14909,7 @@ main.home .home-sidebar .sidebar-tab button {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 1.5vw;
+  position: relative;
 }
 main.home .home-sidebar .sidebar-tab a.active span,
 main.home .home-sidebar .sidebar-tab button.active span {
@@ -15185,6 +14937,40 @@ main.home .home-sidebar .sidebar-tab button span {
   font-size: 2.9vw;
   text-align: center;
   color: #878686;
+}
+main.home .home-sidebar .sidebar-tab .new-icon {
+  position: absolute;
+  top: -0.4vw;
+  right: 2vw;
+}
+main.home .home-sidebar .sidebar-tab .new-icon::before {
+  content: "new";
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2vw;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  border-radius: 20vw;
+  background: #fab617;
+  border: 0.5vw solid #F9F9F9;
+  z-index: 1;
+}
+main.home .home-sidebar .sidebar-tab .newicon {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2vw;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  border-radius: 20vw;
+  background: #fab617;
+  border: 0.5vw solid #F9F9F9;
+  position: absolute;
+  top: -0.4vw;
+  right: 2vw;
+  z-index: 1;
 }
 main.home .home-gamelist {
   background: #F9F9F9;
@@ -15223,14 +15009,55 @@ main.home .home-gamelist .gamelist-item {
 main.home .home-gamelist .gamelist-item:nth-child(3n) {
   margin-right: unset;
 }
+main.home .home-gamelist .gamelist-item .new-icon {
+  position: absolute;
+  top: -1.2vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 1;
+}
 main.home .home-gamelist .gamelist-item .new-icon::before {
+  content: "new";
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.4vw;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  background: #fab617;
+  border-radius: 0.8vw 0.8vw 2vw 2vw;
+  border: 0.38vw solid #F9F9F9;
+  -webkit-animation: flash linear infinite alternate 0.4s;
+          animation: flash linear infinite alternate 0.4s;
+}
+@keyframes flash {
+  0% {
+    -webkit-filter: brightness(0.9);
+            filter: brightness(0.9);
+  }
+  100% {
+    -webkit-filter: brightness(1.05);
+            filter: brightness(1.05);
+  }
+}
+main.home .home-gamelist .gamelist-item .newicon {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  background: #fab617;
+  border-radius: 0.8vw 0.8vw 2vw 2vw;
+  border: 0.38vw solid #F9F9F9;
+  position: absolute;
+  font-weight: 700;
   font-size: 2.4vw;
   z-index: 1;
   top: -1.2vw;
-  left: -5vw;
-  border-radius: 0.8vw 0.8vw 2vw 2vw;
-  border-color: #F9F9F9;
-  border-width: 0.38vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   -webkit-animation: flash linear infinite alternate 0.4s;
           animation: flash linear infinite alternate 0.4s;
 }
@@ -15266,6 +15093,10 @@ main.home .home-gamelist .gamelist-item.under .under-maintenance {
   white-space: pre-wrap;
 }
 main.home .home-gamelist .gamelist-item.under .new-icon::before {
+  -webkit-animation: unset;
+          animation: unset;
+}
+main.home .home-gamelist .gamelist-item.under .newicon {
   -webkit-animation: unset;
           animation: unset;
 }
@@ -16572,6 +16403,8 @@ main .menu-lobby .lobby-list .list::after {
 main .menu-lobby .lobby-list.active .list::after {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 main .menu-lobby .lobby-list:last-child .list::before {
   display: none;
@@ -16992,8 +16825,20 @@ main .menu-member .member-profile .user-level img {
 main .menu-member .member-profile .user-level.bronze {
   background: #F3A05F;
 }
-main .menu-member .member-profile .user-level-silver {
+main .menu-member .member-profile .user-level.silver {
   background: #D7D7D7;
+}
+main .menu-member .member-profile .user-level.gold {
+  background: #EDA536;
+}
+main .menu-member .member-profile .user-level.titanium {
+  background: #746776;
+}
+main .menu-member .member-profile .user-level.diamond {
+  background: #71BFF4;
+}
+main .menu-member .member-profile .user-level.goal123 {
+  background: #FF4A52;
 }
 main .menu-member .member-profile .user-profile {
   font-weight: 600;
