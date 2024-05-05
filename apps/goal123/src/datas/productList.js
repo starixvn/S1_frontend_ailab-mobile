@@ -774,20 +774,20 @@ const gameList = [
 					}
 				]
 			},
-			{
-				...defGameInfo.Casino_Skywind,
-				parameter: defGameInfo.Casino_Skywind,
-				spanText: "Skywind",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
-				path: path.casino.root,
-				providerImgName: "nextspin",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.casino_Nextspin)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.Casino_Skywind,
+			// 	parameter: defGameInfo.Casino_Skywind,
+			// 	spanText: "Skywind",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-sk.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "nextspin",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.casino_Nextspin)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.Casino_PG,
 				parameter: defGameInfo.Casino_PG,
@@ -797,28 +797,28 @@ const gameList = [
 				providerImgName: "pg"
 			},
 			// 新的 PlayTech (Seamless Wallet)
-			{
-				...defGameInfo.Casino_PlayTech,
-				parameter: defGameInfo.Casino_PlayTech,
-				spanText: "PlayTech",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
-				path: path.casino.root,
-				providerImgName: "mg"
-			},
-			{
-				...defGameInfo.Casino_BNG,
-				parameter: defGameInfo.Casino_BNG,
-				spanText: "BNG",
-				img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-bng.png`,
-				path: path.casino.root,
-				providerImgName: "",
-				eventIcon: [
-					{
-						icon: defIconType.new,
-						inPeriod: isEventPeriod(eventTime.slot_bng)
-					}
-				]
-			},
+			// {
+			// 	...defGameInfo.Casino_PlayTech,
+			// 	parameter: defGameInfo.Casino_PlayTech,
+			// 	spanText: "PlayTech",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-pt.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "mg"
+			// },
+			// {
+			// 	...defGameInfo.Casino_BNG,
+			// 	parameter: defGameInfo.Casino_BNG,
+			// 	spanText: "BNG",
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/slots/slot-bng.png`,
+			// 	path: path.casino.root,
+			// 	providerImgName: "",
+			// 	eventIcon: [
+			// 		{
+			// 			icon: defIconType.new,
+			// 			inPeriod: isEventPeriod(eventTime.slot_bng)
+			// 		}
+			// 	]
+			// },
 			{
 				...defGameInfo.Casino_BNG,
 				parameter: defGameInfo.Casino_BNG,
