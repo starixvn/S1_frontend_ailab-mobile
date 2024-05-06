@@ -7,14 +7,19 @@ export const api_events_GetLeaderboardList = async ({
 	EventCode
 }) => {
 	try {
-		return eventRequest.post(`/GetLeaderboardList/`, {
+		return await eventRequest.post(`/GetLeaderboardList/`, {
 			lBCategoryId,
 			TopNum,
 			BeforeDays,
 			EventCode
 		});
 	} catch (e) {
-		return {};
+		return {
+			data: {
+				data: [],
+				errorCode: 0
+			}
+		};
 	}
 };
 

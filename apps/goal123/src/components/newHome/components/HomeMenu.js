@@ -131,7 +131,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 				key={game.spanText || game.spanTextKey}
 				onClick={() => onMenuClick(game)}>
 				{showingEventIcon !== "" ? (
-					<div className={` ${showingEventIcon}`} />
+					<div className={`${showingEventIcon}`} />
 				) : null}
 				<div className="gamelist-img">
 					<img
@@ -193,21 +193,18 @@ const HomeMenu = ({ i18n, userInfo }) => {
 				? item.img.replace(".svg", "-active.svg") // 如果是當前選中的類別使用active圖片
 				: item.img;
 
-		if (item?.isEventPeriod) {
-			return null;
-		}
-
 		return (
 			<button
 				key={`menu-${item.category}`}
-				className={`${item?.className ?? ""} ${
-					selectedCol === item.category ? "active" : ""
-				}${showingEventIcon !== "" ? ` ${showingEventIcon}` : ""}`}
+				className={`${item?.className ?? ""}`}
 				onClick={
 					item.link
 						? clickLink.bind(this, { type: item?.type, item })
 						: showSubPanel.bind(this, { panel: item.category })
 				}>
+				{showingEventIcon !== "" ? (
+					<div className={`${showingEventIcon}`} />
+				) : null}
 				<div className="category-icon">
 					<img src={imgSrc} alt={item.category} />
 				</div>
@@ -220,7 +217,6 @@ const HomeMenu = ({ i18n, userInfo }) => {
 		// 獲取當前選擇類別下的所有遊戲
 		const games =
 			gameList.find(item => item.category === selectedCol)?.items || [];
-
 		// 過濾出應該顯示的遊戲項目
 		return games
 			.filter(subItem => {
@@ -236,7 +232,6 @@ const HomeMenu = ({ i18n, userInfo }) => {
 						(m.tpGameType === subItem.tpGameType ||
 							m.tpGameType === defTpGameType.All)
 				);
-
 				// 渲染每個遊戲項目
 				return (
 					<SubGame

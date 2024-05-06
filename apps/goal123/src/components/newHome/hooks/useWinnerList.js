@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { api_events_GetLeaderboardList } from "apps/goal123/src/service/api/events";
-import { defProductType } from "../../../datas/productList";
+import { leaderboardId } from "../../../datas/leaderboardId";
 
 // api used in this file : api/Events/GetLeaderboardList
 
@@ -9,10 +9,8 @@ const useTopWinnerList = () => {
 	const [sportTopWinner, setSportTopWinner] = useState([]);
 	const [slotTopWinner, setSlotTopWinner] = useState([]);
 	const [liveCasinoTopWinner, setLiveCasinoTopWinner] = useState([]);
-	const isMountedRef = useRef(false);
 
 	useEffect(() => {
-		isMountedRef.current = true;
 		const payload = {
 			TopNum: 10,
 			BeforeDays: 0,
@@ -23,58 +21,48 @@ const useTopWinnerList = () => {
 		// 其中參數1,2,3只會拿resData內的第一筆資料取第一名做渲染
 
 		const getTopWinners = async () => {
-			try {
-				const responses = await Promise.all([
-					api_events_GetLeaderboardList({
-						...payload,
-						lBCategoryId: 0
-					}),
-					api_events_GetLeaderboardList({
-						...payload,
-						lBCategoryId: defProductType.Sports
-					}),
-					api_events_GetLeaderboardList({
-						...payload,
-						lBCategoryId: defProductType.Slots
-					}),
-					api_events_GetLeaderboardList({
-						...payload,
-						lBCategoryId: defProductType.LiveCasino
-					})
-				]);
-				if (isMountedRef.current) {
-					responses.forEach((res, index) => {
-						if (res.data.errorCode === 0) {
-							switch (index) {
-								case 0:
-									setWinnerList(res.data.data);
-									break;
-								case 1:
-									setSportTopWinner(res.data.data);
-									break;
-								case 2:
-									setSlotTopWinner(res.data.data);
-									break;
-								case 3:
-									setLiveCasinoTopWinner(res.data.data);
-									break;
-								default:
-									break;
-							}
-						}
-					});
+			const responses = await Promise.all([
+				api_events_GetLeaderboardList({
+					...payload,
+					lBCategoryId: leaderboardId.Top10
+				}),
+				api_events_GetLeaderboardList({
+					...payload,
+					lBCategoryId: leaderboardId.Sports
+				}),
+				api_events_GetLeaderboardList({
+					...payload,
+					lBCategoryId: leaderboardId.Slots
+				}),
+				api_events_GetLeaderboardList({
+					...payload,
+					lBCategoryId: leaderboardId.LiveCasino
+				})
+			]);
+
+			responses.forEach((res, index) => {
+				if (res.data.errorCode === 0) {
+					switch (index) {
+						case 0:
+							setWinnerList(res.data.data);
+							break;
+						case 1:
+							setSportTopWinner(res.data.data);
+							break;
+						case 2:
+							setSlotTopWinner(res.data.data);
+							break;
+						case 3:
+							setLiveCasinoTopWinner(res.data.data);
+							break;
+						default:
+							break;
+					}
 				}
-				return responses;
-			} catch (error) {
-				return [];
-			}
+			});
 		};
 
 		getTopWinners();
-
-		return () => {
-			isMountedRef.current = false;
-		};
 	}, []);
 
 	return { winnerList, sportTopWinner, slotTopWinner, liveCasinoTopWinner };

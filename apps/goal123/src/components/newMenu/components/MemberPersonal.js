@@ -34,10 +34,21 @@ const MemberPersonal = () => {
 		setPopUp("");
 	};
 
+	const vipLevelEnum = {
+		1: "bronze",
+		2: "silver",
+		3: "gold",
+		4: "platinum",
+		5: "diamond",
+		6: "goal123"
+	};
+
+	const userLevel = vipLevelEnum[userInfo.userLevel] || "";
+
 	return (
 		<div className="member-personal">
 			<div className="member-profile">
-				<div className="user-level">
+				<div className={`user-level ${userLevel}`}>
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-user.svg`}
 						alt="side-menu-user"

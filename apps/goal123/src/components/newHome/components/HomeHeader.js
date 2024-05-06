@@ -52,6 +52,7 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 		GetBalance();
 		GetTpWalletList({ langId: userInfo.langId });
 		GetBonusBalance();
+		e.currentTarget.classList.toggle("active");
 	};
 
 	const clickEye = () => {

@@ -183,7 +183,7 @@ export const defGameInfo = {
 
 const defIconType = {
 	live: " liveicon",
-	new: " newicon",
+	new: "new-icon",
 	hot: " hoticon"
 };
 
@@ -319,15 +319,15 @@ const gameList = [
 			}
 		]
 	},
-	{
-		category: "event",
-		img: `${bannerImgUrl}/h5/img/event/wheel/eventlink-top.png`,
-		className: "event",
-		path: `luckyWheel`,
-		link: true,
-		type: openGameType.Link,
-		isEventPeriod: !isDateRange(angPaoEventPeriod)
-	},
+	// {
+	// 	category: "event",
+	// 	img: `${bannerImgUrl}/h5/img/event/wheel/eventlink-top.png`,
+	// 	className: "event",
+	// 	path: `luckyWheel`,
+	// 	link: true,
+	// 	type: openGameType.Link,
+	// 	isEventPeriod: !isDateRange(angPaoEventPeriod)
+	// },
 	// {
 	// 	category: "cryptoSports",
 	// 	img: `${bannerImgUrl}/h5/img/hotgameicon/cryptosports.png`,
