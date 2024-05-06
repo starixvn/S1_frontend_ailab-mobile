@@ -196,7 +196,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 		return (
 			<button
 				key={`menu-${item.category}`}
-				className={`${item?.className ?? ""}`}
+				className={`${selectedCol === item.category ? "active" : ""}`}
 				onClick={
 					item.link
 						? clickLink.bind(this, { type: item?.type, item })
