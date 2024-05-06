@@ -7133,7 +7133,7 @@ span.important {
 }
 .eventLink.wheel {
   right: 4vw;
-  bottom: 70vw;
+  bottom: 61vw;
 }
 .eventLink.wheel img {
   position: absolute;
@@ -7273,7 +7273,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 45vw;
+  bottom: 66vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7285,7 +7285,7 @@ span.important {
   color: rgb(92, 92, 92);
 }
 .eventLink.vgaming.eurocup {
-  bottom: 80vw;
+  bottom: 66vw;
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -7358,13 +7358,13 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 45vw;
+  bottom: 66vw;
   left: 69vw;
 }
 .eventLink.livesports img {
   -webkit-animation: livesports 4s ease-in-out infinite;
           animation: livesports 4s ease-in-out infinite;
-  width: 32vw;
+  width: 31vw;
   z-index: 1;
 }
 .eventLink.livesports .icon-close {
@@ -7375,7 +7375,10 @@ span.important {
   color: rgb(92, 92, 92);
 }
 .eventLink.livesports.eurocup {
-  bottom: 110vw;
+  bottom: 97vw;
+}
+.eventLink.livesports.eurocup .icon-close {
+  top: 2vw;
 }
 @-webkit-keyframes livesports {
   0% {
@@ -7414,18 +7417,18 @@ span.important {
   }
 }
 .eventLink.eurocup {
-  bottom: 76vw;
+  bottom: 64vw;
   left: 69vw;
 }
 .eventLink.eurocup img {
   -webkit-animation: livesports 3s ease-in-out infinite;
           animation: livesports 3s ease-in-out infinite;
-  width: 33vw;
+  width: 31vw;
   z-index: 1;
 }
 .eventLink.eurocup .icon-close {
   right: 0;
-  top: -2vw;
+  top: -1vw;
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
@@ -10561,7 +10564,7 @@ span.important {
 
 #goTop {
   position: fixed;
-  bottom: 32vw;
+  bottom: 24.5vw;
   right: 2vw;
   width: 10vw;
   height: 10vw;
@@ -14412,7 +14415,7 @@ span.important {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  width: 35.4vw;
+  width: 34.4vw;
   display: inline-block;
 }
 .header-content .member-important {
@@ -14743,6 +14746,9 @@ main.home .home-marquee {
   width: 100%;
   margin-top: 3vw;
 }
+main.home .home-marquee .marquee > div {
+  font-size: 3.2vw;
+}
 main.home .home-marquee .marquee-box {
   overflow: hidden;
   -webkit-box-sizing: border-box;
@@ -14855,25 +14861,6 @@ main.home .home-marquee .marquee-run button {
 main.home .home-categorymenu {
   margin: 4vw 0 10.5vw;
 }
-main.home .home-categorymenu .new-icon {
-  position: relative;
-}
-main.home .home-categorymenu .new-icon::before {
-  content: "new";
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 2vw;
-  color: #fff;
-  padding: 0.85vw 1.2vw;
-  border-radius: 20vw;
-  background: #fab617;
-  border: 0.5vw solid #F9F9F9;
-  position: absolute;
-  top: -0.85vw;
-  left: 1vw;
-  z-index: 1;
-}
 main.home .home-sidebar {
   background: #F9F9F9;
   border-radius: 0 0 8vw 8vw;
@@ -14922,6 +14909,7 @@ main.home .home-sidebar .sidebar-tab button {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 1.5vw;
+  position: relative;
 }
 main.home .home-sidebar .sidebar-tab a.active span,
 main.home .home-sidebar .sidebar-tab button.active span {
@@ -14949,6 +14937,40 @@ main.home .home-sidebar .sidebar-tab button span {
   font-size: 2.9vw;
   text-align: center;
   color: #878686;
+}
+main.home .home-sidebar .sidebar-tab .new-icon {
+  position: absolute;
+  top: -0.4vw;
+  right: 2vw;
+}
+main.home .home-sidebar .sidebar-tab .new-icon::before {
+  content: "new";
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2vw;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  border-radius: 20vw;
+  background: #fab617;
+  border: 0.5vw solid #F9F9F9;
+  z-index: 1;
+}
+main.home .home-sidebar .sidebar-tab .newicon {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2vw;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  border-radius: 20vw;
+  background: #fab617;
+  border: 0.5vw solid #F9F9F9;
+  position: absolute;
+  top: -0.4vw;
+  right: 2vw;
+  z-index: 1;
 }
 main.home .home-gamelist {
   background: #F9F9F9;
@@ -14987,14 +15009,55 @@ main.home .home-gamelist .gamelist-item {
 main.home .home-gamelist .gamelist-item:nth-child(3n) {
   margin-right: unset;
 }
+main.home .home-gamelist .gamelist-item .new-icon {
+  position: absolute;
+  top: -1.2vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 1;
+}
 main.home .home-gamelist .gamelist-item .new-icon::before {
+  content: "new";
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.4vw;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  background: #fab617;
+  border-radius: 0.8vw 0.8vw 2vw 2vw;
+  border: 0.38vw solid #F9F9F9;
+  -webkit-animation: flash linear infinite alternate 0.4s;
+          animation: flash linear infinite alternate 0.4s;
+}
+@keyframes flash {
+  0% {
+    -webkit-filter: brightness(0.9);
+            filter: brightness(0.9);
+  }
+  100% {
+    -webkit-filter: brightness(1.05);
+            filter: brightness(1.05);
+  }
+}
+main.home .home-gamelist .gamelist-item .newicon {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0.85vw 1.2vw;
+  background: #fab617;
+  border-radius: 0.8vw 0.8vw 2vw 2vw;
+  border: 0.38vw solid #F9F9F9;
+  position: absolute;
+  font-weight: 700;
   font-size: 2.4vw;
   z-index: 1;
   top: -1.2vw;
-  left: -5vw;
-  border-radius: 0.8vw 0.8vw 2vw 2vw;
-  border-color: #F9F9F9;
-  border-width: 0.38vw;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   -webkit-animation: flash linear infinite alternate 0.4s;
           animation: flash linear infinite alternate 0.4s;
 }
@@ -15030,6 +15093,10 @@ main.home .home-gamelist .gamelist-item.under .under-maintenance {
   white-space: pre-wrap;
 }
 main.home .home-gamelist .gamelist-item.under .new-icon::before {
+  -webkit-animation: unset;
+          animation: unset;
+}
+main.home .home-gamelist .gamelist-item.under .newicon {
   -webkit-animation: unset;
           animation: unset;
 }
@@ -16336,6 +16403,8 @@ main .menu-lobby .lobby-list .list::after {
 main .menu-lobby .lobby-list.active .list::after {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 main .menu-lobby .lobby-list:last-child .list::before {
   display: none;
@@ -16756,8 +16825,20 @@ main .menu-member .member-profile .user-level img {
 main .menu-member .member-profile .user-level.bronze {
   background: #F3A05F;
 }
-main .menu-member .member-profile .user-level-silver {
+main .menu-member .member-profile .user-level.silver {
   background: #D7D7D7;
+}
+main .menu-member .member-profile .user-level.gold {
+  background: #EDA536;
+}
+main .menu-member .member-profile .user-level.titanium {
+  background: #746776;
+}
+main .menu-member .member-profile .user-level.diamond {
+  background: #71BFF4;
+}
+main .menu-member .member-profile .user-level.goal123 {
+  background: #FF4A52;
 }
 main .menu-member .member-profile .user-profile {
   font-weight: 600;
