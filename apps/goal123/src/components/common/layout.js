@@ -28,7 +28,7 @@ import LiveStreamingPop from "../liveStreamingPop";
 import HomeHeader from "../newHome/components/HomeHeader";
 import { setCookie, readCookie } from "./common";
 import HomeFooter from "../newHome/components/HomeFooter";
-import EuroCupLink from "../euroCup/euroCupLink";
+import EuroCupLink from "../euroCup/EuroCupLink";
 
 const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	const { i18n } = useContext(i18nContext);

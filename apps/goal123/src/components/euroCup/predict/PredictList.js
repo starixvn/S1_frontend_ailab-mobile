@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
-import PredictItem from "./predictItem";
+import PredictItem from "./PredictItem";
 
 const PredictList = ({ ticketSummary }) => {
 	const params = {
