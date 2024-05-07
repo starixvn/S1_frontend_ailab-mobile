@@ -7,12 +7,13 @@ import HomeLeaderBoard from "./components/HomeLeaderBoard";
 import HomeInfo from "./components/HomeInfo";
 import HomeAppDownload from "./components/HomeAppDownload";
 import HomeButtom from "./components/HomeButtom";
-import Slider from "../home/slider";
+// import Slider from "../home/slider";
 import HomeMenu from "./components/HomeMenu";
 import HomePopularSlotGames from "./components/HomePopularSlotGames";
 import RecentlyViewedGameList from "../home/recentlyViewedGameList";
 import usePopupHandler from "./hooks/usePopupHandler";
 import Layout from "../common/layout";
+import HomeBanner from "./components/HomeBanner";
 
 const HomeContent = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -34,7 +35,8 @@ const HomeContent = () => {
 		<>
 			<Layout>
 				<div className="home-wrapper">
-					<Slider />
+					{/* <Slider /> */}
+					<HomeBanner />
 					<HomeMarquee />
 					<div className="homecategorymenu">
 						<HomeMenu i18n={i18n} userInfo={userInfo} />
