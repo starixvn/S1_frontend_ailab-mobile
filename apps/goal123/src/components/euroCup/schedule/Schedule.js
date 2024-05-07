@@ -23,7 +23,7 @@ const Schedule = ({ predictionSettingData }) => {
 	const groupByDate = useMemo(() => {
 		const group = {};
 		matchTimes.forEach(match => {
-			const date = new Date(match.matchTime).toISOString().slice(0, 10);
+			const date = new Date(match.matchTime).toDateString();
 			if (!group[date]) {
 				group[date] = [];
 			}
