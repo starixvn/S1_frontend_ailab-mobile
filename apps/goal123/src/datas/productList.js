@@ -1,5 +1,3 @@
-import { isDateRange } from "@ailab-mobile/common";
-import { angPaoEventPeriod } from "../pages/angpao";
 import { isEventPeriod } from "../components/common/common";
 import path from "../path";
 import { eventTime } from "../components/common/eventTime";
@@ -498,11 +496,11 @@ const gameList = [
 				img: `${bannerImgUrl}/h5/img/home-page/Header/SBSW/games/table-game.png`,
 				spanTextKey: "lbl_tableGame"
 			},
-			{
-				...defGameInfo.VirtualGame,
-				img: `${bannerImgUrl}/h5/img/hotgame/new-games/vir.png`,
-				spanTextKey: "lbl_VirtualGames"
-			},
+			// {
+			// 	...defGameInfo.VirtualGame,
+			// 	img: `${bannerImgUrl}/h5/img/hotgame/new-games/vir.png`,
+			// 	spanTextKey: "lbl_VirtualGames"
+			// },
 			{
 				...defGameInfo.IM_Avaitor,
 				img: `${bannerImgUrl}/h5/img/home-page/Header/SPRIBE/games/aviator.png`,

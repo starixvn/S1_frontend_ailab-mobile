@@ -58,7 +58,11 @@ const HomeJoin = () => {
 
 	return (
 		<div className="home-join">
-			<div className="home-title">{t("lbl_Home_Join")} GOAL123</div>
+			<div className="home-title">
+				{userInfo.langId === "en"
+					? `${t("lbl_Home_Join")} GOAL123`
+					: t("lbl_Home_Join")}
+			</div>
 			<div className="join-list">
 				{JoinListItems.map((item, index) => (
 					<div
