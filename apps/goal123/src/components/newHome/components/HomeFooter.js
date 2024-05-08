@@ -112,6 +112,7 @@ const HomeFooter = () => {
 									: "item"
 							}
 							onClick={onClickPromotion}>
+							<div className="hot-icon" />
 							<img
 								src={
 									clickPromotion || matchPromotion
