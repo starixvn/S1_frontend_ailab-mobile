@@ -19,6 +19,16 @@ const Mission = ({
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const numbers = Array.from({ length: 5 }, (_, index) => index + 1);
+
+	const missionData1 =
+		promotionMission.find(mission => mission.missionNo === 1) || {};
+	const missionData2 =
+		promotionMission.find(mission => mission.missionNo === 2) || {};
+	const missionData3 =
+		promotionMission.find(mission => mission.missionNo === 3) || {};
+
+	const missionData5 =
+		promotionMission.find(mission => mission.missionNo === 5) || {};
 	const getDepositProgressWidth = (cur, target) => {
 		if (!cur && !target) {
 			return "0%";
@@ -28,7 +38,7 @@ const Mission = ({
 	};
 
 	const getVerifyProgressWidth = () => {
-		if (promotionMission?.[0]?.isCompleted) {
+		if (missionData1?.isCompleted) {
 			return "100%";
 		}
 		if (userInfo.isLogin) {
@@ -93,12 +103,12 @@ const Mission = ({
 						</div>
 						<img
 							src={`${bannerImgUrl}/h5/img/event/eurocup/${
-								promotionMission?.[0]?.isCompleted
+								missionData1?.isCompleted
 									? "done-yellow"
 									: "done-grey"
 							}.png`}
 							alt={
-								promotionMission?.[0]?.isCompleted
+								missionData1?.isCompleted
 									? "done-yellow"
 									: "done-grey"
 							}
@@ -124,7 +134,7 @@ const Mission = ({
 							/>
 							<div>
 								<span>{t("lbl_Completed")}</span>
-								<span>{t("lbl_CupEvent_Mission_Verify")}</span>
+								<span>{t("lbl_CupEvebnt_Verify")}</span>
 							</div>
 						</div>
 					</div>
@@ -147,7 +157,7 @@ const Mission = ({
 								<span>{t("lbl_CupEvent_MakeAtLeast")}</span>
 								<span>
 									{numFormatToDigits(
-										promotionMission?.[1]?.depositAmount,
+										missionData2?.depositAmount,
 										0
 									)}{" "}
 									VND
@@ -173,12 +183,11 @@ const Mission = ({
 							<div
 								className="progress-bar"
 								style={{
-									width: promotionMission?.[1]?.isCompleted
+									width: missionData2?.isCompleted
 										? "100%"
 										: getDepositProgressWidth(
 												cupEventPromotionMissionProgress?.depositAmount,
-												promotionMission?.[1]
-													?.depositAmount
+												missionData2?.depositAmount
 										  )
 								}}
 							/>
@@ -187,10 +196,9 @@ const Mission = ({
 							<div>{t("lbl_CupEvent_CurrentlyAccumulated")}</div>
 							<div>
 								<span>
-									{promotionMission?.[1]?.isCompleted
+									{missionData2?.isCompleted
 										? numFormatToDigits(
-												promotionMission?.[1]
-													?.depositAmount,
+												missionData2?.depositAmount,
 												0
 										  )
 										: numFormatToDigits(
@@ -200,7 +208,7 @@ const Mission = ({
 								</span>{" "}
 								/{" "}
 								{numFormatToDigits(
-									promotionMission?.[1]?.depositAmount,
+									missionData2?.depositAmount,
 									0
 								)}{" "}
 								VND
@@ -225,7 +233,7 @@ const Mission = ({
 								<span>{t("lbl_CupEvent_MakeAtLeast")}</span>
 								<span>
 									{numFormatToDigits(
-										promotionMission?.[2]?.depositAmount,
+										missionData3?.depositAmount,
 										0
 									)}{" "}
 									VND
@@ -252,12 +260,11 @@ const Mission = ({
 							<div
 								className="progress-bar"
 								style={{
-									width: promotionMission?.[2]?.isCompleted
+									width: missionData3?.isCompleted
 										? "100%"
 										: getDepositProgressWidth(
 												cupEventPromotionMissionProgress?.depositAmount,
-												promotionMission?.[2]
-													?.depositAmount
+												missionData3?.depositAmount
 										  )
 								}}
 							/>
@@ -266,10 +273,9 @@ const Mission = ({
 							<div>{t("lbl_CupEvent_CurrentlyAccumulated")}</div>
 							<div>
 								<span>
-									{promotionMission?.[2]?.isCompleted
+									{missionData3?.isCompleted
 										? numFormatToDigits(
-												promotionMission?.[2]
-													?.depositAmount,
+												missionData3?.depositAmount,
 												0
 										  )
 										: numFormatToDigits(
@@ -279,7 +285,7 @@ const Mission = ({
 								</span>{" "}
 								/{" "}
 								{numFormatToDigits(
-									promotionMission?.[2]?.depositAmount,
+									missionData3?.depositAmount,
 									0
 								)}{" "}
 								VND
@@ -348,8 +354,10 @@ const Mission = ({
 						</div>
 						<ProgressBar
 							cur={
-								cupEventPromotionMissionProgress?.completedBetCount ??
-								0
+								missionData5?.isCompleted
+									? 20
+									: cupEventPromotionMissionProgress?.completedBetCount ??
+									  0
 							}
 							target={20}
 						/>
