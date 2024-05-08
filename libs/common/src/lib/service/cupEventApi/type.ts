@@ -29,6 +29,7 @@ export interface ICupEventPredictionSettingData {
 }
 
 export interface ICupEventTicketData {
+	availablePredict: boolean;
 	userName: string;
 	promotionMission: {
 		missionName: string;

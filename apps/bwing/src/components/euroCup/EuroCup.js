@@ -43,6 +43,7 @@ const EuroCup = () => {
 	const {
 		data: {
 			data: {
+				availablePredict,
 				cupEventPromotionMissionProgress = {},
 				promotionMission = [],
 				unUsedTickets = 0,
@@ -333,6 +334,7 @@ const EuroCup = () => {
 				predictScoreList={predictScoreList ?? []}
 				predictionSettingData={predictionSettingData}
 				isPredict={isPredict}
+				availablePredict={availablePredict}
 				homeTeamScore={homeTeamScore}
 				awayTeamScore={awayTeamScore}
 				activePredictTab={activePredictTab}
