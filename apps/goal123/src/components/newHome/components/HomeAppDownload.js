@@ -43,7 +43,9 @@ const HomeAppDownload = () => {
 									alt="home-app-brand"
 								/>
 								<span>
-									{t("lbl_Home_New") + t("lbl_Home_App")}
+									{`${t("lbl_Home_New")} ${t(
+										"lbl_Home_App"
+									)}`}
 								</span>
 							</div>
 
