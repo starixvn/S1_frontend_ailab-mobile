@@ -15285,7 +15285,7 @@ main.home .home-sports {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 5vw 3.3vw 28.5vw;
+  margin: 6vw 3.3vw 28.5vw;
 }
 main.home .home-sports > div:first-child {
   display: -webkit-box;
