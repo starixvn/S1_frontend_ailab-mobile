@@ -25,7 +25,7 @@ const TeamSelector = ({
 			})}>
 			<div>
 				<div className="close-text">
-					{t("lbl_CupEvent_DateLineTip")}
+					{t("lbl_CupEvent_Prediction_DateLineTip")}
 				</div>
 				<div className="group-input">
 					<Dropdown

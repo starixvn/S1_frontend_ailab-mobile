@@ -12,6 +12,7 @@ const TopTwoPredictions = ({
 	predictScoreList,
 	predictionSettingData,
 	isPredict,
+	availablePredict,
 	homeTeamScore,
 	awayTeamScore,
 	activePredictTab,
@@ -146,9 +147,15 @@ const TopTwoPredictions = ({
 					</div>
 					{isEventPeriod(eventTime.predictScore) && (
 						<button
-							onClick={() => onSubmit()}
+							onClick={() => {
+								// 有預測資格且沒有預測過
+								if (availablePredict && !isPredict) {
+									onSubmit();
+								}
+							}}
 							className={classNames("submit-btn", {
-								check: isPredict
+								// 沒有預測資格或已預測過 --> disabled
+								check: !availablePredict || isPredict
 							})}>
 							{t("lbl_Submit")}
 						</button>
@@ -171,6 +178,7 @@ TopTwoPredictions.propTypes = {
 	predictScoreList: PropTypes.arrayOf(PropTypes.any).isRequired,
 	predictionSettingData: PropTypes.objectOf(PropTypes.any).isRequired,
 	isPredict: PropTypes.bool.isRequired,
+	availablePredict: PropTypes.bool.isRequired,
 	homeTeamScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 		.isRequired,
 	awayTeamScore: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
