@@ -13,7 +13,7 @@ import {
 import { isDateRange } from "@ailab-mobile/common";
 import paths from "../../path";
 import { popBoxContext, userInfoContext } from "../common/context";
-import PredictLIst from "./predict/PredictLIst";
+import PredictList from "./predict/PredictList";
 import TicketOverview from "./TicketOverview";
 import TeamSelector from "./predict/TeamSelector";
 import PredictionRecord from "./predict/PredictionRecord";
@@ -348,7 +348,7 @@ const EuroCup = () => {
 							/>
 						</a>
 					</div>
-					<PredictLIst ticketSummary={ticketSummary} />
+					<PredictList ticketSummary={ticketSummary} />
 				</div>
 			)}
 			{activePredictTab === PREDICT_TABS.SCHEDULE && (

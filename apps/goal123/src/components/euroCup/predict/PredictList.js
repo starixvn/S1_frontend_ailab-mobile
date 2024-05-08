@@ -5,7 +5,7 @@ import { Navigation } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import PredictItem from "./PredictItem";
 
-const PredictLIst = ({ ticketSummary }) => {
+const PredictList = ({ ticketSummary }) => {
 	const params = {
 		spaceBetween: 10,
 		slidersPerView: 1
@@ -38,8 +38,8 @@ const PredictLIst = ({ ticketSummary }) => {
 	);
 };
 
-PredictLIst.propTypes = {
+PredictList.propTypes = {
 	ticketSummary: PropTypes.arrayOf(PropTypes.any).isRequired
 };
 
-export default PredictLIst;
+export default PredictList;
