@@ -14348,13 +14348,14 @@ span.important {
           justify-content: center;
   text-transform: uppercase;
   line-height: 1.2;
-  padding: 2vw 5vw;
+  padding: 2vw 0;
   margin-right: 2vw;
   font-size: 3vw;
   font-weight: bold;
   background: #0024B2;
   border-radius: 3vw;
   color: #143CDB;
+  min-width: 17.5vw;
 }
 .euro-match-date.active {
   background: #fff;
