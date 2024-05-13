@@ -156,11 +156,12 @@ const Mission = ({
 							<div>
 								<span>{t("lbl_CupEvent_MakeAtLeast")}</span>
 								<span>
-									{numFormatToDigits(
+									{/* {numFormatToDigits(
 										missionData2?.depositAmount,
 										0
-									)}{" "}
-									VND
+									)}{" "} */}
+									{/* 原本串接API，登入後才會顯示數字，2024/5/13需求改為寫死 */}
+									1,000,000 VND
 								</span>
 								<span>
 									{t("lbl_CupEvent_AccumulatedDeposit")}
@@ -232,11 +233,12 @@ const Mission = ({
 							<div>
 								<span>{t("lbl_CupEvent_MakeAtLeast")}</span>
 								<span>
-									{numFormatToDigits(
+									{/* {numFormatToDigits(
 										missionData3?.depositAmount,
 										0
-									)}{" "}
-									VND
+									)}{" "} */}
+									{/* 原本串接API，登入後才會顯示數字，2024/5/13需求改為寫死 */}
+									10,000,000 VND
 								</span>
 								<span>
 									{" "}
