@@ -17836,6 +17836,24 @@ body main.main.referral {
   margin-top: 3vw;
   position: relative;
 }
+.euro .center-wrapper .submit-btn {
+  background: #F9D64B;
+  -webkit-box-shadow: 0 0 5px white;
+          box-shadow: 0 0 5px white;
+  padding: 3vw;
+  font-weight: 700;
+  font-size: 4vw;
+  border-radius: 50vw;
+  width: 50vw;
+  color: #143CDB;
+  margin-top: 5vw;
+}
+.euro .center-wrapper .submit-btn.check {
+  background: #C9C9C9;
+  color: #8E8E8E;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 .euro .center-content {
   display: none;
   -webkit-box-orient: vertical;
@@ -17938,6 +17956,15 @@ body main.main.referral {
   border: 6px solid #F9D64B;
   border-radius: 100%;
   margin: 5vw 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .euro .center-score .score-country .score-flag img {
   width: 20vw;
@@ -19149,8 +19176,8 @@ body main.main.referral {
           justify-content: center;
   text-transform: uppercase;
   line-height: 1.2;
-  min-width: 15vw;
-  padding: 1vw 2.5vw;
+  min-width: 16.5vw;
+  padding: 2vw 0;
   margin-right: 2vw;
   font-size: 2.5vw;
   font-weight: bold;
