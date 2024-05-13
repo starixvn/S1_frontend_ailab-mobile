@@ -2,7 +2,7 @@ export const REWARD_ITEMS = [
 	{
 		key: 1,
 		displayKey: "lbl_CupEvent_Champions",
-		prize: "Iphone",
+		prize: "iphone 15 Pro 128GB",
 		count: 10,
 		imgName: "iphone",
 		winners: []
