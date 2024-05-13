@@ -62,5 +62,8 @@ export const eventTime = {
 	},
 	prediction: {
 		endDate: "2024/06/14 23:59:59"
+	},
+	liveCasino_Won: {
+		endDate: "2024/07/09 23:59:59"
 	}
 };
