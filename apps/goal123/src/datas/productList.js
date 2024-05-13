@@ -118,6 +118,11 @@ export const defGameInfo = {
 	LIVEcasinoMGP: { tpId: 34, tpGameType: 58 },
 	LIVEcasinoMG: { tpId: 34, gameId: "0", tpGameType: 58 },
 	LIVEcasinoSkywind: { tpId: 43, gameId: "0", tpGameType: 84 },
+	LIVECasinoWon: {
+		tpId: 64,
+		gameId: 0,
+		tpGameType: 116
+	},
 	Indo4d: {
 		gameId: 223,
 		tpId: 41,
@@ -930,6 +935,17 @@ const gameList = [
 				...defGameInfo.LIVEcasinoPP,
 				spanText: "Pragmatic Play",
 				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-pp.png`
+			},
+			{
+				...defGameInfo.LIVECasinoWon,
+				spanText: "Won Casino",
+				img: `${bannerImgUrl}/h5/img/hotgame/livecasino/livecasino-woncasino.png`,
+				eventIcon: [
+					{
+						icon: defIconType.new,
+						inPeriod: isEventPeriod(eventTime.liveCasino_Won)
+					}
+				]
 			},
 			{
 				...defGameInfo.LIVEcasinoBG,

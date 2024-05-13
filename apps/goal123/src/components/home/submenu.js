@@ -190,6 +190,10 @@ const defSubMenus = [
 				displayText: "Pragmatic Play"
 			},
 			{
+				...defGameInfo.LIVECasinoWon,
+				displayText: "Won Casino"
+			},
+			{
 				...defGameInfo.LIVEcasinoBG,
 				displayText: "Big Gaming"
 			},
