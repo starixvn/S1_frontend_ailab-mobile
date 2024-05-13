@@ -26,9 +26,7 @@ const Directions = () => {
 							<div className="prize">
 								<div className="prize-item">
 									<div className="prize-item-text">
-										<span>
-											{t("lbl_CupEvent_CashPrize")}
-										</span>
+										<span>{t("lbl_CupEvent_Prizes")}</span>
 										<span>{prize}</span>
 									</div>
 									{count > 1 && (
