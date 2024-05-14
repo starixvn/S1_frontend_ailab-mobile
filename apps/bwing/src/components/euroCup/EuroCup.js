@@ -9,6 +9,7 @@ import {
 	useMultiUserPollTicketsMutation,
 	usePredictCupEventScoreMutation
 } from "@ailab-mobile/service";
+import { isDateRange } from "@ailab-mobile/common";
 import { popBoxContext, userInfoContext } from "../common/context";
 import { eventTime } from "../common/eventTime";
 import { isEventPeriod } from "../common/common";
@@ -316,7 +317,7 @@ const EuroCup = () => {
 	};
 
 	useEffect(() => {
-		if (!isEventPeriod(eventTime.euroCup)) {
+		if (!isDateRange(eventTime.euroCup)) {
 			navigate("/");
 		}
 	}, []);
