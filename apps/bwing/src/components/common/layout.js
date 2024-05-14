@@ -201,6 +201,13 @@ export const defPageInfo = {
 		hideLogo: false,
 		showMenuBar: true
 	},
+	cockfighting: {
+		titleKey: "lbl_Cockfighting",
+		className: "lobby cockfighting",
+		iconClassName: "icon-cockfighting-blue",
+		hideLogo: false,
+		showMenuBar: true
+	},
 	streaming: {
 		titleKey: "lbl_LiveStreaming",
 		iconClassName: "icon-lottery-blue",
@@ -242,24 +249,28 @@ export const defPageInfo = {
 };
 
 export const GetPageInfo = locationPath => {
-	const result = defPageInfo[locationPath];
-	if (result) {
-		return result;
-	}
-	let pageInfoKey =
-		locationPath === path.home.root
-			? []
-			: Object.keys(path).filter(p => {
-					const _location = locationPath.split("/");
-					return _location?.[1] === path[p].root;
-			  });
+	const newLocationPath = locationPath.substring(1);
+	// const result = defPageInfo[locationPath];
+	// 如果網址是“／”（表示newLocationPath為empty string，就回傳home的資料，不然就回傳null
+	const result =
+		defPageInfo[newLocationPath === "" ? "home" : newLocationPath] ?? null;
+	return result !== null ? result : defPageInfo.default; // 如果是null就使用default的資料至少不要讓網站掛掉
 
-	pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
-	const pageInfo = defPageInfo[pageInfoKey] ?? null;
-	if (locationPath === path.home.root) return defPageInfo.home;
-	return pageInfoKey && pageInfo
-		? { ...pageInfo, pageInfoKey }
-		: defPageInfo.default;
+	// old logic:
+	// let pageInfoKey =
+	// 	locationPath === path.home.root
+	// 		? []
+	// 		: Object.keys(path).filter(p => {
+	// 				const _location = locationPath.split("/");
+	// 				return _location?.[1] === path[p].root;
+	// 		  });
+
+	// pageInfoKey = pageInfoKey?.length > 0 ? pageInfoKey[0] : null;
+	// const pageInfo = defPageInfo[pageInfoKey] ?? null;
+	// if (locationPath === path.home.root) return defPageInfo.home;
+	// return pageInfoKey && pageInfo
+	// 	? { ...pageInfo, pageInfoKey }
+	// 	: defPageInfo.default;
 };
 
 const Layout = ({ children }) => {
