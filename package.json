@@ -43,6 +43,7 @@
 		"prop-types": "^15.7.2",
 		"qrcode.react": "^1.0.0",
 		"react": "16.13.1",
+		"react-circular-progressbar": "^2.1.0",
 		"react-dom": "16.13.1",
 		"react-fast-marquee": "^1.2.1",
 		"react-google-recaptcha": "^2.1.0",
@@ -114,5 +115,6 @@
 			"eslint --fix --max-warnings=0",
 			"prettier --write"
 		]
-	}
+	},
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

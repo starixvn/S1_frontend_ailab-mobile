@@ -29,6 +29,7 @@ export interface ICupEventPredictionSettingData {
 }
 
 export interface ICupEventTicketData {
+	availablePredict: boolean;
 	userName: string;
 	promotionMission: {
 		missionName: string;
@@ -92,4 +93,24 @@ export interface IPollTicketsArgs {
 		CountryId: number;
 	};
 	count: number;
+}
+
+export interface IPredictScoreTeamData {
+	team: string;
+	teamDetail: {
+		countryName: string;
+		imageName: string;
+		sort: number;
+	};
+	score: number;
+}
+
+export interface ICupEventPredictScoreData {
+	data: IPredictScoreTeamData[];
+	isPredict: boolean;
+}
+
+export interface IPredictCupEventScoreArgs {
+	HomeTeamScore: number;
+	AwayTeamScore: number;
 }

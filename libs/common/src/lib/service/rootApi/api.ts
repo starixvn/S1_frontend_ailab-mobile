@@ -15,7 +15,8 @@ export const rootApi = createApi({
 		"ANGPAO_POST",
 		"DRAGONEGG_DRAW",
 		"DRAGONEGG_BLESSING",
-		"CUP_EVENT_POST"
+		"CUP_EVENT_POST",
+		"CUP_EVENT_PREDICTSCORE"
 	],
 	endpoints: () => ({})
 });

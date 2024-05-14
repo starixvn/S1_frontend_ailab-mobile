@@ -4,6 +4,7 @@
    License: none (public domain)
 */
 @import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rufina:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap");
@@ -1614,6 +1615,26 @@ header {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.header.euro-header .header-content {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+.header.euro-header .header-content a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1vw;
+}
+.header.euro-header .header-content a img {
+  width: 20vw !important;
+}
+.header.euro-header .header-content a .euro-index-logo {
+  width: 12vw !important;
+}
 
 .menu {
   display: none;
@@ -1843,6 +1864,9 @@ header {
   width: 24vw;
   height: 24vw;
 }
+.eventLink.vgaming.eurocup {
+  bottom: 80vw;
+}
 .eventLink.luckywheel {
   bottom: 30vw;
   right: 0vw;
@@ -1850,6 +1874,9 @@ header {
 .eventLink.luckywheel img {
   width: 24vw;
   height: 26vw;
+}
+.eventLink.luckywheel.eurocup {
+  bottom: 17vw;
 }
 .eventLink.dragonegg {
   bottom: 30vw;
@@ -1874,6 +1901,17 @@ header {
 .eventLink.livesports .icon-close-white-bg::before {
   top: 5vw;
   right: 4vw;
+}
+.eventLink.eurolink {
+  bottom: 50vw;
+  right: -1vw;
+}
+.eventLink.eurolink img {
+  width: 24vw;
+}
+.eventLink.eurolink .icon-close-white-bg::before {
+  top: 0;
+  right: 0;
 }
 
 @-webkit-keyframes livesports {
@@ -4001,6 +4039,300 @@ header {
 }
 #popup.livesportspop > div:not(.bankSlip):not(.eventpop):not(.joinSuccess):not(.errorInfo) {
   background-color: unset;
+}
+#popup.recordlist {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  font-family: "Montserrat", sans-serif;
+}
+#popup.recordlist .pop {
+  background: white;
+  border-radius: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw 1vw 7vw;
+  margin-top: -15vw;
+}
+#popup.recordlist .pop .record {
+  background: #F9BF4B;
+  padding: 6vw 0 30vw;
+}
+#popup.recordlist .pop .record-title {
+  color: #143CDB;
+  background: #ECECEC;
+  border-radius: 0 0 5vw 5vw;
+  padding: 3vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  width: 47vw;
+  font-size: 3.7vw;
+  margin-top: -2vw;
+}
+#popup.recordlist .pop .record-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2vw;
+  max-height: 125vw;
+  overflow-y: overlay;
+}
+#popup.recordlist .pop .record-item {
+  margin: 4vw 1.5vw 0;
+}
+#popup.recordlist .pop .record-item .ticket {
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/ticket-bg.png) no-repeat center/100%;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.recordlist .pop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 18vw;
+  left: 3.4vw;
+  top: -3vw;
+  margin-top: 0;
+}
+#popup.recordlist .pop .record-item .ticket .flag {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  bottom: 13vw;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1vw;
+}
+#popup.recordlist .pop .record-item .ticket .flag span {
+  width: 20vw;
+  line-height: 3vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.recordlist .pop .record-item .ticket .number {
+  position: absolute;
+  bottom: 1.5vw;
+  text-align: center;
+  margin-top: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.recordlist .pop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.recordlist .pop .record .more-btn {
+  background: white;
+  padding: 3vw 33vw;
+  border-radius: 50vw;
+  color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 6vw;
+}
+#popup.recordlist .pop .record .more-btn.active {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+}
+#popup.recordlist .pop .close-btn {
+  position: absolute;
+  bottom: 19vw;
+}
+#popup.recordlist .pop .close-btn img {
+  width: 8vw;
+}
+#popup.submitpop, #popup.notpop {
+  background: rgba(0, 0, 0, 0.7490196078);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  font-family: "Montserrat", sans-serif;
+}
+#popup.submitpop .pop, #popup.notpop .pop {
+  background: white;
+  color: #143CDB;
+  font-weight: 700;
+  border-radius: 4vw;
+  padding: 6vw 5vw;
+  width: 70vw;
+  font-size: 4.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item, #popup.notpop .record-item {
+  margin: 5vw 1.5vw 2vw;
+}
+#popup.submitpop .record-item .ticket, #popup.notpop .record-item .ticket {
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/ticket-bg.png) no-repeat center/cover;
+  width: 24vw;
+  height: 40vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+#popup.submitpop .record-item .ticket .euro-logo, #popup.notpop .record-item .ticket .euro-logo {
+  position: absolute;
+  width: 19vw;
+  left: 2.6vw;
+  top: -3vw;
+}
+#popup.submitpop .record-item .ticket .flag, #popup.notpop .record-item .ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 13.5vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+#popup.submitpop .record-item .ticket .flag img, #popup.notpop .record-item .ticket .flag img {
+  width: 7vw;
+  margin-bottom: 1.5vw;
+}
+#popup.submitpop .record-item .ticket .flag span, #popup.notpop .record-item .ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+#popup.submitpop .record-item .ticket .number, #popup.notpop .record-item .ticket .number {
+  text-align: center;
+  margin-top: 1.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#popup.submitpop .record-item .ticket .number:last-child span, #popup.notpop .record-item .ticket .number:last-child span {
+  font-size: 6vw;
+}
+#popup.submitpop .record-item .ticket .number:last-child span:first-child, #popup.notpop .record-item .ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+#popup.submitpop .submitpop-btn > button, #popup.submitpop .notpop-btn > button, #popup.notpop .submitpop-btn > button, #popup.notpop .notpop-btn > button {
+  padding: 2vw;
+  width: 30vw;
+  border-radius: 20vw;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-top: 4vw;
+}
+#popup.submitpop .submitpop-btn > button:first-child, #popup.submitpop .notpop-btn > button:first-child, #popup.notpop .submitpop-btn > button:first-child, #popup.notpop .notpop-btn > button:first-child {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+  margin-right: 1vw;
+}
+#popup.submitpop .submitpop-btn > button:last-child, #popup.submitpop .notpop-btn > button:last-child, #popup.notpop .submitpop-btn > button:last-child, #popup.notpop .notpop-btn > button:last-child {
+  color: #989898;
+  border: 1px solid #989898;
+}
+#popup.submitpop .notpop-btn > button, #popup.notpop .notpop-btn > button {
+  background: #143CDB;
+  color: white !important;
+  border: 0 !important;
+}
+#popup.submitpop .close-btn, #popup.notpop .close-btn {
+  position: absolute;
+  bottom: 45vw;
+}
+#popup.submitpop .close-btn img, #popup.notpop .close-btn img {
+  width: 7vw;
+}
+#popup.notpop .notpop-tip {
+  text-align: center;
+}
+#popup.notpop .close-btn {
+  bottom: 60vw;
 }
 
 .fullbanner {
@@ -6632,6 +6964,7 @@ header {
           justify-content: space-between;
   padding: 10vw 6vw 4vw;
   overflow-x: hidden;
+  z-index: 12;
 }
 .login-module > div, .login-module form, .join-module > div, .join-module form {
   text-align: center;
@@ -13979,6 +14312,15 @@ body main.main.referral {
 .depositModule_crptopay > .title span {
   margin-right: 1vw;
 }
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupmobile > .title .info,
+.depositModule_crptopay > .title .info {
+  color: rgba(243, 140, 0, 0.9);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
+}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -17402,4 +17744,1508 @@ body main.main.referral {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+.euro {
+  font-family: "Montserrat", sans-serif;
+  background: #143CDB;
+  padding: 12vw 0 25vw;
+}
+.euro a, .euro button {
+  font-family: "Montserrat", sans-serif;
+}
+.euro .top-wrapper {
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/top-bg.jpg) no-repeat center/cover;
+}
+.euro .top-wrapper .euro-logo {
+  width: 55vw;
+  margin: 5vw 0 4vw;
+}
+.euro .top-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5vw;
+}
+.euro .top-title {
+  color: #F9D64B;
+  font-weight: 600;
+  font-size: 4.5vw;
+}
+.euro .top-subtitle {
+  color: white;
+  font-weight: 900;
+  font-size: 7vw;
+  margin-top: 1vw;
+}
+.euro .top-step {
+  margin-top: 3vw;
+}
+.euro .top-step > div {
+  background: #F9D64B;
+  border-radius: 3vw;
+  margin-bottom: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90vw;
+  height: 13vw;
+}
+.euro .top-step > div > div {
+  font-size: 3.5vw;
+  font-weight: 800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #143CDB;
+}
+.euro .top-step > div > div:first-child {
+  border-radius: 3vw 0 0 3vw;
+  background: white;
+  padding: 5vw 3vw;
+  width: 15vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .top-step > div > div:last-child {
+  margin-left: 3vw;
+  width: 70vw;
+}
+.euro .center-wrapper {
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/center-bg.png) no-repeat center/cover;
+  padding: 45vw 0 10vw;
+  margin-top: 3vw;
+  position: relative;
+}
+.euro .center-wrapper .submit-btn {
+  background: #F9D64B;
+  -webkit-box-shadow: 0 0 5px white;
+          box-shadow: 0 0 5px white;
+  padding: 3vw;
+  font-weight: 700;
+  font-size: 4vw;
+  border-radius: 50vw;
+  width: 50vw;
+  color: #143CDB;
+  margin-top: 5vw;
+}
+.euro .center-wrapper .submit-btn.check {
+  background: #C9C9C9;
+  color: #8E8E8E;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.euro .center-content {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 14vw;
+  position: relative;
+}
+.euro .center-content.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .center-btn button {
+  position: absolute;
+  top: 42vw;
+  background: #00A452;
+  padding: 2vw;
+  border-radius: 5vw;
+  width: 30vw;
+  color: #08C969;
+  font-weight: 700;
+  font-size: 4vw;
+}
+.euro .center-btn button:nth-child(1) {
+  left: 8vw;
+}
+.euro .center-btn button:nth-child(2) {
+  right: 8vw;
+}
+.euro .center-btn button.active {
+  background: white;
+  color: #00BA5D;
+}
+.euro .center-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .center-text span:nth-child(1) {
+  font-weight: 600;
+  font-size: 3.5vw;
+  color: #F9D64B;
+  margin-bottom: 1.5vw;
+}
+.euro .center-text span:nth-child(2) {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+  font-size: 5vw;
+}
+.euro .center-text span:nth-child(3) {
+  font-weight: 900;
+  font-size: 8vw;
+  color: #F9D64B;
+  margin-top: 1vw;
+}
+.euro .center-text span:nth-child(4) {
+  font-weight: 700;
+  letter-spacing: 0.1vw;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 1vw;
+}
+.euro .center-score .score-country {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .center-score .score-country > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .center-score .score-country .score-flag {
+  width: 22vw;
+  height: 22vw;
+  background: white;
+  border: 6px solid #F9D64B;
+  border-radius: 100%;
+  margin: 5vw 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .center-score .score-country .score-flag img {
+  width: 20vw;
+}
+.euro .center-score .score-country .score-flag.unknown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .center-score .score-country .score-flag.unknown::before {
+  background: url(https://banner.bw88.io/desktop/img/event/eurocup/question-icon.png) no-repeat center/cover;
+  display: block;
+  content: "";
+  width: 16vw;
+  height: 16vw;
+}
+.euro .center-score .score-country .score-flag.unknown img {
+  display: none;
+}
+.euro .center-score .score-country .score-text {
+  background: #F2F3F4;
+  padding: 1.5vw 3vw;
+  border-radius: 10vw;
+  text-align: center;
+  width: 30vw;
+  color: #AEAEAE;
+  font-weight: 700;
+  font-size: 2.5vw;
+}
+.euro .center-score .score-country .vs {
+  font-weight: 800;
+  font-size: 7vw;
+  color: white;
+  position: relative;
+}
+.euro .center-score .score-country .vs span:first-child {
+  margin-bottom: 10vw;
+}
+.euro .center-score .score-country .vs span:last-child {
+  position: absolute;
+  bottom: -10.5vw;
+}
+.euro .center-tip {
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  padding: 6vw 8vw;
+  line-height: 4vw;
+}
+.euro .mission-wrapper {
+  background: #F9BF4B;
+  position: relative;
+  z-index: 1;
+  border-radius: 7vw;
+  margin-top: -14vw;
+  padding-bottom: 8vw;
+}
+.euro .mission-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .mission-content .title {
+  font-size: 7vw;
+  font-weight: 900;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 8vw;
+}
+.euro .mission-content .title span {
+  width: 40vw;
+  margin: 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .mission-content .title::before {
+  display: block;
+  content: "";
+  width: 23vw;
+  height: 0.5vw;
+  background: white;
+}
+.euro .mission-content .title::after {
+  display: block;
+  content: "";
+  width: 23vw;
+  height: 0.5vw;
+  background: white;
+}
+.euro .mission-date {
+  font-weight: 600;
+  color: #143CDB;
+  margin-top: 1vw;
+}
+.euro .mission-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .mission-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+  margin-top: 4vw;
+}
+.euro .mission-bar > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #EBEBEB;
+  padding: 2vw 2vw 2vw 2.5vw;
+  position: relative;
+  width: 15vw;
+  color: #A5A5A5;
+  text-align: center;
+}
+.euro .mission-bar > div:nth-child(1) {
+  border-radius: 4vw 0 0 0;
+}
+.euro .mission-bar > div:last-child {
+  border-radius: 0 4vw 0 0;
+}
+.euro .mission-bar > div:nth-child(odd) {
+  background: #E1E1E1;
+}
+.euro .mission-bar > div img {
+  margin-left: 0;
+  position: absolute;
+  width: 4vw;
+  right: -1.6vw;
+  z-index: 1;
+}
+.euro .mission-bar > div.active {
+  background: #143CDB;
+  color: white;
+}
+.euro .mission-bar > div.active img {
+  display: none;
+}
+.euro .mission-bar > div.active::after {
+  display: block;
+  content: "";
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/arrow-yellow.png) no-repeat center/cover;
+  width: 4vw;
+  height: 4vw;
+  position: absolute;
+  right: -1.6vw;
+  z-index: 1;
+}
+.euro .mission-bar > div.five {
+  background: #F9D64B;
+  color: #143CDB;
+}
+.euro .mission-item {
+  background: white;
+  padding: 3.5vw;
+  width: 90.5vw;
+  border-radius: 0 0 4vw 4vw;
+}
+.euro .mission-item .mission-one, .euro .mission-item .mission-two, .euro .mission-item .mission-three, .euro .mission-item .mission-four, .euro .mission-item .mission-five {
+  background: #143CDB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4vw;
+}
+.euro .mission-item .mission-one .ticket-title, .euro .mission-item .mission-two .ticket-title, .euro .mission-item .mission-three .ticket-title, .euro .mission-item .mission-four .ticket-title, .euro .mission-item .mission-five .ticket-title {
+  color: #143CDB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
+  padding: 2vw 4vw;
+  width: 30vw;
+  border-radius: 0 0 3vw 3vw;
+  font-weight: 700;
+  background: #F9D64B;
+}
+.euro .mission-item .mission-one .subtitle, .euro .mission-item .mission-two .subtitle, .euro .mission-item .mission-three .subtitle, .euro .mission-item .mission-four .subtitle, .euro .mission-item .mission-five .subtitle {
+  color: white;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin: 4vw 5vw 3vw;
+}
+.euro .mission-item .mission-one.close, .euro .mission-item .mission-two.close, .euro .mission-item .mission-three.close, .euro .mission-item .mission-four.close, .euro .mission-item .mission-five.close {
+  display: none;
+}
+.euro .mission-item .mission-two, .euro .mission-item .mission-three, .euro .mission-item .mission-five {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+.euro .mission-item .mission-two .ticket-title, .euro .mission-item .mission-three .ticket-title, .euro .mission-item .mission-five .ticket-title {
+  border-radius: 4vw 0 4vw 0;
+}
+.euro .mission-one .progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3vw;
+}
+.euro .mission-one .progress-bar {
+  width: 75vw;
+  border-radius: 5vw;
+  background: #D1D1D1;
+  position: relative;
+}
+.euro .mission-one .progress-bar .item {
+  background: #F9BF4B;
+  height: 2vw;
+}
+.euro .mission-one .progress-bar .round {
+  width: 4vw;
+  height: 4vw;
+  border-radius: 100%;
+  background: #D1D1D1;
+  position: absolute;
+  z-index: 2;
+  top: -1vw;
+  left: 35vw;
+}
+.euro .mission-one .progress-bar .round.active {
+  background: #F9BF4B;
+}
+.euro .mission-one .progress img {
+  position: absolute;
+  z-index: 2;
+  width: 7vw;
+}
+.euro .mission-one .progress img:first-child {
+  left: -1vw;
+}
+.euro .mission-one .progress img:last-child {
+  right: 0;
+}
+.euro .mission-one .state {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 5vw 0;
+  width: 82vw;
+}
+.euro .mission-one .state > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .mission-one .state > div img {
+  width: 12vw;
+}
+.euro .mission-one .state > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.euro .mission-one .state > div > div span {
+  font-weight: 700;
+}
+.euro .mission-one .state > div > div span:first-child {
+  color: #D4D4D4;
+}
+.euro .mission-one .state > div > div span:last-child {
+  text-transform: uppercase;
+  color: white;
+}
+.euro .mission-two .amount-item, .euro .mission-three .amount-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 4vw 0 5vw 5vw;
+}
+.euro .mission-two .amount-item .money, .euro .mission-three .amount-item .money {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+}
+.euro .mission-two .amount-item .money img, .euro .mission-three .amount-item .money img {
+  width: 11vw;
+}
+.euro .mission-two .amount-item .money > div, .euro .mission-three .amount-item .money > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.euro .mission-two .amount-item .money > div span, .euro .mission-three .amount-item .money > div span {
+  color: #D4D4D4;
+  font-size: 2.5vw;
+}
+.euro .mission-two .amount-item .money > div span:nth-child(2), .euro .mission-three .amount-item .money > div span:nth-child(2) {
+  color: white;
+  font-size: 4vw;
+}
+.euro .mission-two .amount-item .money button, .euro .mission-three .amount-item .money button {
+  background: url(https://banner.bw88.io/desktop/img/event/eurocup/deposit-btn-bg.png) no-repeat center/cover;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4784313725);
+  font-weight: 700;
+  color: white;
+  height: 8vw;
+  width: 24.8vw;
+  border-radius: 5vw;
+  position: relative;
+  margin-left: 10vw;
+}
+.euro .mission-two .amount-item .money button::after, .euro .mission-three .amount-item .money button::after {
+  display: block;
+  content: "";
+  border: 2px solid white;
+  border-radius: 5vw;
+  position: absolute;
+  width: 24vw;
+  height: 7.5vw;
+  top: 0;
+  left: 0;
+}
+.euro .mission-two .amount-item .progress, .euro .mission-three .amount-item .progress {
+  background: #0023AF;
+  border-radius: 5vw;
+  width: 80vw;
+  margin: 4vw 0 2vw;
+}
+.euro .mission-two .amount-item .progress-bar, .euro .mission-three .amount-item .progress-bar {
+  background: #F9BF4B;
+  height: 2.3vw;
+  border-radius: 5vw;
+}
+.euro .mission-two .amount-item .number, .euro .mission-three .amount-item .number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2.5vw;
+  font-weight: 700;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+.euro .mission-two .amount-item .number > div:first-child, .euro .mission-three .amount-item .number > div:first-child {
+  color: white;
+  margin-left: 1vw;
+}
+.euro .mission-two .amount-item .number > div:last-child, .euro .mission-three .amount-item .number > div:last-child {
+  color: #6D83D8;
+  margin-right: 1vw;
+}
+.euro .mission-two .amount-item .number > div:last-child span, .euro .mission-three .amount-item .number > div:last-child span {
+  color: #F9BF4B;
+}
+.euro .mission-four {
+  padding-bottom: 5vw;
+}
+.euro .mission-four .subtitle {
+  text-align: center;
+}
+.euro .mission-four .sheet {
+  max-height: 30vw;
+  overflow-y: overlay;
+}
+.euro .mission-four .sheet > div:last-child {
+  padding-top: 9vw;
+}
+.euro .mission-four .sheet-title > div, .euro .mission-four .sheet-item > div {
+  margin: 0 1vw 2vw 0;
+  border-radius: 5vw;
+  padding: 2vw 3vw;
+  font-size: 2.5vw;
+}
+.euro .mission-four .sheet-title {
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  background: #143CDB;
+  position: absolute;
+}
+.euro .mission-four .sheet-title > div {
+  background: #4A6EFF;
+  color: white;
+  font-weight: 700;
+}
+.euro .mission-four .sheet-title > div:first-child {
+  width: 31vw;
+}
+.euro .mission-four .sheet-title > div:nth-child(2), .euro .mission-four .sheet-title > div:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 18vw;
+}
+.euro .mission-four .sheet-title > div:nth-child(3) {
+  margin: 0 0 2vw 0;
+}
+.euro .mission-four .sheet-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .mission-four .sheet-item .user {
+  width: 31vw;
+  font-weight: 600;
+  color: #5A5A5A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .mission-four .sheet-item:nth-child(n) .user {
+  background: #D1D1D1;
+}
+.euro .mission-four .sheet-item:nth-child(odd) .user {
+  background: white;
+}
+.euro .mission-four .sheet-item .check-box {
+  background: #0023AF;
+  width: 18vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .mission-four .sheet-item .check-box::after {
+  display: block;
+  content: "";
+  background: url(https://banner.bw88.io/desktop/img/event/eurocup/check-icon.png) no-repeat center/100%;
+  width: 4vw;
+  height: 4vw;
+}
+.euro .mission-four .sheet-item .check-box.yellow {
+  background: #EFBA0C;
+}
+.euro .mission-four .sheet-item .check-box.green {
+  background: #0CC21E;
+}
+.euro .mission-five {
+  padding-bottom: 3vw;
+}
+.euro .mission-five > div:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .mission-five .subtitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 60vw;
+  margin: 1vw 0 0 4vw !important;
+  font-size: 3.5vw;
+  text-align: left !important;
+  width: 38vw;
+}
+.euro .mission-five .subtitle span {
+  margin-top: 2vw;
+  font-size: 2.5vw;
+  color: #6D83D8;
+}
+.euro .mission-five .stat-circle {
+  width: 47vw;
+}
+.euro .mission-five .stat-circle circle.bg {
+  fill: none;
+  stroke: #102FAC;
+  stroke-width: 0.7;
+}
+.euro .mission-five .stat-circle circle.progress {
+  fill: none;
+  stroke: #F9D64B;
+  stroke-width: 0.7;
+  stroke-dasharray: 51 51;
+  stroke-dashoffset: -51;
+  stroke-linecap: round;
+}
+.euro .mission-five .stat-circle text {
+  font-size: 2.5px;
+  text-anchor: end;
+  fill: #F9D64B;
+  font-weight: 800;
+}
+.euro .mission-five .stat-circle .target {
+  fill: #102FAC;
+}
+.euro .mission-five .stat-circle .target-text {
+  font-size: 1px;
+  font-weight: 600;
+  fill: #fff;
+}
+.euro .mission-five .stat-circle .target.active {
+  fill: #F9D64B;
+}
+.euro .ticket-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .ticket-number > div {
+  color: #143CDB;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-right: 1px solid #143CDB;
+  width: 30vw;
+  font-size: 3.5vw;
+}
+.euro .ticket-number > div span {
+  font-weight: 700;
+}
+.euro .ticket-number > div span:last-child {
+  font-size: 11vw;
+}
+.euro .ticket-number > div:last-child {
+  border: 0;
+}
+.euro .ticket-btn {
+  margin-top: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro .ticket-btn button {
+  border: 1px solid #143CDB;
+  border-radius: 50vw;
+  padding: 3vw 0;
+  width: 40.5vw;
+  color: #143CDB;
+  font-weight: 700;
+  font-size: 3.5vw;
+  margin-right: 2vw;
+}
+.euro .ticket-btn a {
+  font-weight: 700;
+  background: #143CDB;
+  color: white;
+  padding: 3vw 0;
+  border-radius: 50vw;
+  font-size: 3.5vw;
+  display: block;
+  width: 41vw;
+  text-align: center;
+}
+.euro .ticket-filter {
+  margin-top: 3vw;
+}
+.euro .ticket-filter > div {
+  background: white;
+  border-radius: 4vw;
+  padding: 7vw 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .ticket-filter > div .group-input, .euro .ticket-filter > div .team-input {
+  width: 87vw;
+}
+.euro .ticket-filter > div .group-input .dropdown, .euro .ticket-filter > div .team-input .dropdown {
+  background: #F2F3F4;
+  border-radius: 4vw;
+  border: 0;
+}
+.euro .ticket-filter > div .group-input .dropdown > .btn, .euro .ticket-filter > div .team-input .dropdown > .btn {
+  color: #B5B5B5;
+  font-weight: 600;
+  margin-left: 4vw;
+  padding: 1vw 0;
+}
+.euro .ticket-filter > div .group-input .dropdown::before, .euro .ticket-filter > div .team-input .dropdown::before {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-down-dark.png) no-repeat center/100%;
+  display: block;
+  content: "";
+  width: 3vw;
+  height: 3vw;
+  border: 0;
+  margin-right: 1.5vw;
+}
+.euro .ticket-filter > div .group-input .dropdown-container, .euro .ticket-filter > div .team-input .dropdown-container {
+  display: none;
+  left: calc(50% - 43.5vw);
+  top: 6vw;
+  font-weight: 700;
+  color: #143CDB;
+  background: #FAFAFA;
+  border: 0;
+  border-radius: 4vw;
+  margin: 8vw 0;
+  padding: 2vw 0;
+  font-size: 3.5vw;
+  max-height: 47vw;
+}
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
+  border-bottom: 1px solid #e3e3e3;
+}
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
+  border: 0;
+}
+.euro .ticket-filter > div .group-input .dropdown-container.active, .euro .ticket-filter > div .team-input .dropdown-container.active {
+  display: block;
+}
+.euro .ticket-filter > div .group-input .dropdown.check, .euro .ticket-filter > div .team-input .dropdown.check {
+  background: white;
+  border: 2px solid #143CDB;
+}
+.euro .ticket-filter > div .group-input .dropdown-item {
+  padding: 4vw 0 4vw 4vw;
+}
+.euro .ticket-filter > div .team-input {
+  margin-top: 2vw;
+}
+.euro .ticket-filter > div .team-input .dropdown-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: unset;
+          flex-flow: unset;
+  padding: 2.5vw 0 2.5vw 4vw;
+}
+.euro .ticket-filter > div .team-input .dropdown-item img {
+  -webkit-box-shadow: 0 0 6px rgba(128, 128, 128, 0.8392156863);
+          box-shadow: 0 0 6px rgba(128, 128, 128, 0.8392156863);
+  border-radius: 50vw;
+  width: 8vw;
+  margin-right: 2vw;
+}
+.euro .ticket-filter > div .number-input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
+  width: 87vw;
+}
+.euro .ticket-filter > div .number-input .input {
+  border: none;
+  background: #dddddd;
+  border-radius: 4vw;
+  padding: 3.5vw 0 3.5vw 6vw;
+  outline: none;
+  caret-color: #B5B5B5;
+  color: #143CDB;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input .input.check {
+  background: white;
+  border: 2px solid #143CDB;
+}
+.euro .ticket-filter > div .number-input button {
+  position: absolute;
+  right: 4.5vw;
+  top: 4vw;
+}
+.euro .ticket-filter > div .number-input button img {
+  width: 3vw;
+}
+.euro .ticket-filter > div .number-input ::-webkit-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input ::-moz-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input :-ms-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input ::-ms-input-placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input ::placeholder {
+  border: none;
+  color: #B5B5B5;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.euro .ticket-filter > div .number-input ::-webkit-outer-spin-button,
+.euro .ticket-filter > div .number-input ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.euro .ticket-filter > div .submit-btn {
+  background: #143CDB;
+  border-radius: 50px;
+  font-size: 4vw;
+  font-weight: 700;
+  width: 85vw;
+  padding: 3vw 0;
+  color: white;
+  margin-top: 7vw;
+}
+.euro .ticket-filter > div .close-text {
+  display: none;
+}
+.euro .ticket-filter.closedown {
+  position: relative;
+}
+.euro .ticket-filter.closedown > div {
+  position: relative;
+}
+.euro .ticket-filter.closedown > div .close-text {
+  background: rgba(0, 0, 0, 0.8196078431);
+  width: 97.2vw;
+  height: 72.1vw;
+  position: absolute;
+  z-index: 3;
+  color: white;
+  font-weight: 700;
+  font-size: 3.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  left: 0;
+  border-radius: 4vw;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.euro .record {
+  background: #F9BF4B;
+  padding: 3vw 0 0;
+}
+.euro .record-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  margin: 0 7vw;
+  border-radius: 4vw;
+  padding: 6vw 3vw;
+}
+.euro .record-title {
+  color: #143CDB;
+  background: #ECECEC;
+  border-radius: 0 0 3vw 3vw;
+  padding: 3vw 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  width: 47vw;
+  font-size: 3.7vw;
+  margin-top: -6vw;
+}
+.euro .record-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  width: 91.5vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2vw;
+}
+.euro .record-item {
+  margin: 4vw 1.5vw 0;
+}
+.euro .record-item-ticket {
+  background: url(https://banner.goal123.org/h5/img/event/eurocup/ticket-item.png) no-repeat center/cover;
+  width: 27.5vw;
+  height: 45vw;
+  position: relative;
+  border-radius: 4vw;
+  color: white;
+  font-weight: 700;
+  font-size: 3vw;
+}
+.euro .record-item-ticket .euro-logo {
+  position: absolute;
+  width: 22vw;
+  left: 3vw;
+  top: -4vw;
+}
+.euro .record-item-ticket .flag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid white;
+  padding: 16vw 0 0;
+  margin: 0 2vw;
+  font-size: 2.7vw;
+}
+.euro .record-item-ticket .flag img {
+  width: 9vw;
+  margin-bottom: 1.5vw;
+}
+.euro .record-item-ticket .flag span {
+  width: 20vw;
+  margin-bottom: 1.5vw;
+  text-align: center;
+}
+.euro .record-item-ticket .number {
+  margin-top: 1.5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .record-item-ticket .number:last-child span {
+  font-size: 6vw;
+}
+.euro .record-item-ticket .number:last-child span:first-child {
+  font-weight: 600;
+  color: #F9BF4B;
+  font-size: 2vw;
+}
+.euro .record .more-btn {
+  background: white;
+  padding: 3vw 35vw;
+  border-radius: 50vw;
+  color: #C2C2C2;
+  border: 1px solid #C2C2C2;
+  font-weight: 700;
+  font-size: 4vw;
+  text-align: center;
+  margin-top: 6vw;
+}
+.euro .record .more-btn.active {
+  border: 1px solid #143CDB;
+  color: #143CDB;
+}
+.euro .bottom-bg {
+  margin-top: -18vw;
+}
+.euro .bottom-bg img {
+  width: 100%;
+}
+.euro .bottom-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -4vw;
+}
+.euro .bottom-wrapper .bottom-title {
+  color: white;
+  font-size: 5.5vw;
+  font-weight: 800;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  text-align: center;
+  width: 75vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.euro .bottom-wrapper .bottom-title::before {
+  display: block;
+  content: "";
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/title-verb-left.png) no-repeat center/100%;
+  width: 9vw;
+  height: 3vw;
+  margin: 1vw 2vw 0 0;
+}
+.euro .bottom-wrapper .bottom-title::after {
+  display: block;
+  content: "";
+  background: url(https://banner.bw88.io/h5/img/event/eurocup/title-verb-right.png) no-repeat center/100%;
+  width: 9vw;
+  height: 3vw;
+  margin: 1vw 0 0 2vw;
+}
+.euro .bottom-wrapper .bottom-info {
+  color: white;
+  font-size: 3.5vw;
+  font-weight: 600;
+  margin: 2vw 0 0;
+}
+.euro .bottom-wrapper .bottom-info li {
+  margin: 2vw 8vw;
+  line-height: 5vw;
+}
+.euro .bottom-wrapper .reward {
+  margin: 5vw 1vw 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .bottom-wrapper .reward-item {
+  width: 85vw;
+}
+.euro .bottom-wrapper .reward-item:first-child .prize .prize-item-text:first-child {
+  margin-bottom: 1vw;
+}
+.euro .bottom-wrapper .reward-item:last-child {
+  margin-top: 3vw;
+}
+.euro .bottom-wrapper .reward-item:last-child .reward-title {
+  background: #00BA5D;
+}
+.euro .bottom-wrapper .reward-title {
+  background: red;
+  border-radius: 4vw 4vw 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-weight: 700;
+  padding: 3vw 0 3vw 5vw;
+  position: relative;
+  font-size: 4.5vw;
+}
+.euro .bottom-wrapper .reward-title img {
+  width: 20vw;
+  position: absolute;
+  bottom: -1vw;
+  right: 0;
+}
+.euro .bottom-wrapper .reward .prize {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  padding: 5vw 3vw;
+  height: 20vw;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.euro .bottom-wrapper .reward .prize-item-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 3vw;
+}
+.euro .bottom-wrapper .reward .prize-item-text span {
+  font-size: 3.5vw;
+  margin-bottom: 0.5vw;
+}
+.euro .bottom-wrapper .reward .prize-item-text span:first-child {
+  color: #C2C2C2;
+  font-weight: 500;
+}
+.euro .bottom-wrapper .reward .prize-item-text span:last-child {
+  color: #143CDB;
+  font-weight: 700;
+}
+.euro .bottom-wrapper .reward .prize img {
+  width: 30vw;
+}
+.euro .bottom-wrapper .reward .prize .iphone {
+  margin-right: 5vw;
+}
+.euro .bottom-wrapper .reward .winner {
+  background: #C2C2C2;
+  font-weight: 600;
+  color: white;
+  font-size: 4vw;
+  padding: 2.5vw 1vw;
+  border-radius: 0 0 4vw 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.euro .bottom-wrapper .reward .winner span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 500px;
+  text-align: center;
+}
+.euro .bottom-wrapper .reward .winner.active {
+  background: #F9BF4B;
+  color: #143CDB;
+}
+.euro-fixture {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  margin-top: 14vw;
+  z-index: 2;
+  color: #fff;
+}
+.euro-fixture.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.euro-match-bar {
+  width: 100%;
+  overflow-x: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+}
+.euro-match-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-transform: uppercase;
+  line-height: 1.2;
+  min-width: 16.5vw;
+  padding: 2vw 0;
+  margin-right: 2vw;
+  font-size: 2.5vw;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 3vw;
+  color: #143CDB;
+}
+.euro-match-date.active {
+  background: #F9BF4B;
+}
+.euro-match-date .date {
+  font-size: 6vw;
+  font-weight: bold;
+}
+.euro-match-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 95vw;
+}
+.euro-match-order {
+  font-weight: bold;
+  font-size: 3vw;
+  margin-bottom: 2vw;
+}
+.euro-match-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2vw;
+  border-bottom: 1px solid #fff;
+}
+.euro-match-item > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.euro-match-item .team {
+  text-align: center;
+}
+.euro-match-item .team img {
+  width: 9vw;
+}
+.euro-match-item .team > div {
+  width: 30vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 3vw;
+  font-weight: bold;
+}
+.euro-match-item .time {
+  text-align: center;
+  line-height: 1;
+  width: 20vw;
+}
+.euro-match-item .time span {
+  display: block;
+  width: 100%;
+  font-size: 5.5vw;
+  font-weight: bold;
+  margin-bottom: 0.75vw;
 }/*# sourceMappingURL=style.css.map */
