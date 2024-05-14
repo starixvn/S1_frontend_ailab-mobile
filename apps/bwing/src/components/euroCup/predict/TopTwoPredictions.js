@@ -67,9 +67,10 @@ const TopTwoPredictions = ({
 								{/* 冠亞軍未知狀況score-flag加上unknown */}
 								<div
 									className={classNames("score-flag", {
-										unknown: !isEventPeriod(
-											eventTime.predictScore
-										)
+										unknown:
+											!isEventPeriod(
+												eventTime.predictScore
+											) || predictScoreList.length === 0
 									})}>
 									<img
 										src={`${sportsImgUrl}/Country%20Team/${homeTeam?.teamDetail.imageName}`}
@@ -111,9 +112,10 @@ const TopTwoPredictions = ({
 									*/}
 								<div
 									className={classNames("score-flag", {
-										unknown: !isEventPeriod(
-											eventTime.predictScore
-										)
+										unknown:
+											!isEventPeriod(
+												eventTime.predictScore
+											) || predictScoreList.length === 0
 									})}>
 									<img
 										src={`${sportsImgUrl}/Country%20Team/${awayTeam?.teamDetail.imageName}`}
