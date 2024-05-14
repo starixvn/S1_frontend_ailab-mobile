@@ -16,7 +16,7 @@ const TopContent = () => {
 					{t("lbl_CupEvent_MissionToTheGoldenCup")}
 				</div>
 				<div className="top-subtitle">
-					<span>HOW TO PARTICIPATE</span>
+					<span>{t("lbl_CupEvent_Participate")}</span>
 				</div>
 				<div className="top-step">
 					<div>
