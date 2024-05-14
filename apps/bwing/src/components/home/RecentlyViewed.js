@@ -12,7 +12,11 @@ import {
 	GET_ENTER_PAGE
 } from "../../service/enterPage";
 import { defProductType } from "../../datas/productList";
-import { defSpecialSetting, useGotoGame,defLoginGameType } from "../hook/useGotoGame";
+import {
+	defSpecialSetting,
+	useGotoGame,
+	defLoginGameType
+} from "../hook/useGotoGame";
 import useSetTimeout from "../hook/useSetTimeout";
 
 const RecentlyViewed = ({ recentlyViewedGames }) => {
@@ -65,6 +69,7 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 		});
 		let _path = targetItem?.path;
 		if (gameItems?.category === "slot") {
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			_path = `${path.casino.root}/${targetItem.tpId}`;
 		}
 
@@ -148,7 +153,8 @@ const RecentlyViewed = ({ recentlyViewedGames }) => {
 	const swiperParams = {
 		spaceBetween: 10,
 		slidesPerView: 1.9,
-		initialSlide: 1.3
+		initialSlide: 0
+		// initialSlide: 1.3
 	};
 
 	return (
