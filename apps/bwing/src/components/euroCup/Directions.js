@@ -46,8 +46,7 @@ const Directions = () => {
 							{/* 宣布贏家後winner加上active  */}
 							<div className="winner ">
 								<span>
-									{t("lbl_CupEvent_Winners")}{" "}
-									{t("lbl_CupEvent_DrawnOutOn")}
+									{t("lbl_CupEvent_Winners_Drawn_Out")}
 								</span>
 							</div>
 						</div>
