@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import {
 	useGetCupEventPredictionSettingQuery,
@@ -12,16 +13,17 @@ import {
 import { isDateRange } from "@ailab-mobile/common";
 import paths from "../../path";
 import { popBoxContext, userInfoContext } from "../common/context";
-import PredictList from "./predict/predictLIst";
-import TicketOverview from "./ticketOverview";
-import TeamSelector from "./predict/teamSelector";
-import PredictionRecord from "./predict/predictionRecord";
-import { DIRECTIONS_TYPE } from "./def";
-import Directions from "./directions";
+import PredictList from "./predict/PredictList";
+import TicketOverview from "./TicketOverview";
+import TeamSelector from "./predict/TeamSelector";
+import PredictionRecord from "./predict/PredictionRecord";
+import { DIRECTIONS_TYPE, PREDICT_TABS } from "./def";
+import Directions from "./Directions";
 import RewardItem from "./reward/RewardItem";
 import { bannerImgUrl, sportsImgUrl } from "../../config";
 import { numFormatToDigits } from "../common/common";
 import { eventTime } from "../common/eventTime";
+import Schedule from "./schedule/Schedule";
 
 const EuroCup = () => {
 	const { t } = useTranslation();
@@ -34,7 +36,9 @@ const EuroCup = () => {
 	const [directionsType, setDirectionsType] = useState(
 		DIRECTIONS_TYPE.TERMS_AND_CONDITIONS
 	);
-
+	const [activePredictTab, setActivePredictTab] = useState(
+		PREDICT_TABS.PREDICTION
+	);
 	const {
 		data: { data: predictionSettingData = {} } = {}
 	} = useGetCupEventPredictionSettingQuery({ langId: userInfo.langId });
@@ -300,31 +304,57 @@ const EuroCup = () => {
 				src={`${bannerImgUrl}/desktop/img/event/eurocup/top-bn-${userInfo.langId}.jpg`}
 				alt={userInfo.langId}
 			/>
-			<div className="prediction-wrapper">
-				<div className="prediction-title">
-					<div>{t("lbl_CupEvent_PredictionOfParticipant")}</div>
-					<div>{t("lbl_CupEvent_PredictionOfParticipant_desc")}</div>
-					<a className="deposit-btn-a">
-						<span
-							onClick={() =>
-								navigate(
-									`${
-										userInfo.isLogin
-											? `/${paths.deposit.root}`
-											: `/${paths.login.root}`
-									}`
-								)
-							}>
-							{t("lbl_DepositNow")}
-						</span>
-						<img
-							src={`${bannerImgUrl}/h5/img/event/eurocup/arrow-right.png`}
-							alt="arrow-right"
-						/>
-					</a>
-				</div>
-				<PredictList ticketSummary={ticketSummary} />
+			<div className="prediction-tab">
+				<button
+					className={classNames({
+						active: activePredictTab === PREDICT_TABS.PREDICTION
+					})}
+					onClick={() =>
+						setActivePredictTab(PREDICT_TABS.PREDICTION)
+					}>
+					<span>{t("lbl_CupEvent_Prediction")}</span>
+				</button>
+				<button
+					className={classNames({
+						active: activePredictTab === PREDICT_TABS.SCHEDULE
+					})}
+					onClick={() => setActivePredictTab(PREDICT_TABS.SCHEDULE)}>
+					<span> {t("lbl_CupEvent_Schedule")}</span>
+				</button>
 			</div>
+			{activePredictTab === PREDICT_TABS.PREDICTION && (
+				<div className="prediction-wrapper active">
+					<div className="prediction-title">
+						<div>{t("lbl_CupEvent_PredictionOfParticipant")}</div>
+						<div>
+							{t("lbl_CupEvent_PredictionOfParticipant_desc")}
+						</div>
+						<a className="deposit-btn-a">
+							<span
+								onClick={() =>
+									navigate(
+										`${
+											userInfo.isLogin
+												? `/${paths.deposit.root}`
+												: `/${paths.login.root}`
+										}`
+									)
+								}>
+								{t("lbl_DepositNow")}
+							</span>
+							<img
+								src={`${bannerImgUrl}/h5/img/event/eurocup/arrow-right.png`}
+								alt="arrow-right"
+							/>
+						</a>
+					</div>
+					<PredictList ticketSummary={ticketSummary} />
+				</div>
+			)}
+			{activePredictTab === PREDICT_TABS.SCHEDULE && (
+				<Schedule predictionSettingData={predictionSettingData} />
+			)}
+
 			<div className="ticket-wrapper">
 				<TicketOverview
 					tickets={tickets}
@@ -356,7 +386,7 @@ const EuroCup = () => {
 			/>
 			<div className="reward-content">
 				<RewardItem />
-				{/* 開獎後將RewardItem切換RewardItemWinner */}
+				{/* 開獎後將R ewardItem切換RewardItemWinner */}
 				<Directions
 					directionsType={directionsType}
 					setDirectionsType={setDirectionsType}

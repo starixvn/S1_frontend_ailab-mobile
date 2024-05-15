@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { isDateRange } from "@ailab-mobile/common";
-import Dropdown from "./dropdown";
+import Dropdown from "./Dropdown";
 import { bannerImgUrl } from "../../../config";
 import { eventTime } from "../../common/eventTime";
 
