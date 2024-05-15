@@ -375,6 +375,7 @@ const EuroCup = () => {
 						setSelectedTeamId={setSelectedTeamId}
 						setTicketsNumber={setTicketsNumber}
 						setSelectedGroup={setSelectedGroup}
+						unUsedTickets={unUsedTickets}
 						onSubmit={handleSubmitConfirmModalOpen}
 					/>
 					{usedTickets?.length > 0 && (
