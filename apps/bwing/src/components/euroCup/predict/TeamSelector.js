@@ -15,6 +15,7 @@ const TeamSelector = ({
 	setSelectedTeamId,
 	setTicketsNumber,
 	setSelectedGroup,
+	unUsedTickets,
 	onSubmit
 }) => {
 	const { t } = useTranslation();
@@ -26,6 +27,10 @@ const TeamSelector = ({
 			<div>
 				<div className="close-text">
 					{t("lbl_CupEvent_Prediction_DateLineTip")}
+				</div>
+				<div className="vote">
+					{t("lblCupEvent_RemainingTicket")} :
+					<div>{unUsedTickets}</div>
 				</div>
 				<div className="group-input">
 					<Dropdown
@@ -84,6 +89,7 @@ TeamSelector.propTypes = {
 	setSelectedTeamId: PropTypes.func.isRequired,
 	setTicketsNumber: PropTypes.func.isRequired,
 	setSelectedGroup: PropTypes.func.isRequired,
+	unUsedTickets: PropTypes.number.isRequired,
 	onSubmit: PropTypes.func.isRequired
 };
 

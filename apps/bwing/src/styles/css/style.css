@@ -18626,6 +18626,23 @@ body main.main.referral {
       -ms-flex-align: center;
           align-items: center;
 }
+.euro .ticket-filter > div .vote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 5vw;
+  font-weight: 700;
+  color: #143CDB;
+  width: 100%;
+  margin: 0 0 4vw 2vw;
+}
+.euro .ticket-filter > div .vote > div {
+  margin-left: 1.5vw;
+  font-size: 6vw;
+}
 .euro .ticket-filter > div .group-input, .euro .ticket-filter > div .team-input {
   width: 87vw;
 }
