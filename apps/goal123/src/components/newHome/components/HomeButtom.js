@@ -140,15 +140,15 @@ const HomeButtom = () => {
 			<div className="bottom-info">
 				<div className="socialmedia">
 					<a
-						href="https://www.facebook.com/dangcapnhacai.goal123/"
-						target="_blank"
-						rel="noreferrer">
+						href="https://www.facebook.com/goal123.official"
+						rel="noreferrer"
+						target="_blank">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-facebook.svg`}
 							alt="home-facebook"
 						/>
 					</a>
-					<a href="">
+					<a href="https://www.youtube.com/@GOAL123VietNam">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-youtube.svg`}
 							alt="home-youtube"
