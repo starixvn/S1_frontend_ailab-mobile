@@ -14540,6 +14540,7 @@ span.important {
   text-transform: uppercase;
   text-align: center;
   margin-top: 0.8vw;
+  font-size: 2.4vw;
 }
 .header-content .logo > div span.en {
   font-size: 2.4vw;
@@ -14677,7 +14678,7 @@ span.important {
           justify-content: space-between;
   background: #fff;
   border-radius: 10vw;
-  width: 43.4vw;
+  width: 38.5vw;
   padding: 1vw 2vw 1vw 1.8vw;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -15827,7 +15828,7 @@ main.home .home-leaderboard {
           box-sizing: border-box;
   margin-bottom: 12.5vw;
 }
-main.home .home-leaderboard .win-products {
+main.home .home-leaderboard .winner-products {
   position: relative;
   padding-bottom: 3vw;
   -webkit-box-sizing: border-box;
@@ -15835,31 +15836,31 @@ main.home .home-leaderboard .win-products {
   width: 100%;
   overflow: hidden;
 }
-main.home .home-leaderboard .win-products .swiper-slide {
+main.home .home-leaderboard .winner-products .swiper-slide {
   overflow: hidden;
   width: 93vw;
 }
-main.home .home-leaderboard .win-products .swiper-pagination {
+main.home .home-leaderboard .winner-products .swiper-pagination {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   bottom: 0;
 }
-main.home .home-leaderboard .win-products .swiper-pagination-bullet {
+main.home .home-leaderboard .winner-products .swiper-pagination-bullet {
   background: #D9D9D9;
   margin-right: 1vw;
 }
-main.home .home-leaderboard .win-products .swiper-pagination-bullet-active {
+main.home .home-leaderboard .winner-products .swiper-pagination-bullet-active {
   background: #d83b35;
 }
-main.home .home-leaderboard .win-products .item {
+main.home .home-leaderboard .winner-products .item {
   position: relative;
 }
-main.home .home-leaderboard .win-products .item img {
+main.home .home-leaderboard .winner-products .item img {
   width: 93.4vw;
 }
-main.home .home-leaderboard .win-products .item .title {
+main.home .home-leaderboard .winner-products .item .title {
   text-transform: uppercase;
   font-weight: 700;
   padding: 1.4vw 3.7vw;
@@ -15871,16 +15872,16 @@ main.home .home-leaderboard .win-products .item .title {
   top: 3.2vw;
   font-size: 2.8vw;
 }
-main.home .home-leaderboard .win-products .item.sports .title {
+main.home .home-leaderboard .winner-products .item.sports .title {
   background: #175DAA;
 }
-main.home .home-leaderboard .win-products .item.casino .title {
+main.home .home-leaderboard .winner-products .item.casino .title {
   background: #8E009A;
 }
-main.home .home-leaderboard .win-products .item.slots .title {
+main.home .home-leaderboard .winner-products .item.slots .title {
   background: #850000;
 }
-main.home .home-leaderboard .win-products .item .user-data {
+main.home .home-leaderboard .winner-products .item .user-data {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15892,36 +15893,35 @@ main.home .home-leaderboard .win-products .item .user-data {
   top: 11.6vw;
   left: 5.2vw;
 }
-main.home .home-leaderboard .win-products .item .user-data span {
+main.home .home-leaderboard .winner-products .item .user-data span {
   display: inline-block;
   font-weight: 700;
   color: #fff;
 }
-main.home .home-leaderboard .win-products .item .user-data span:first-child {
+main.home .home-leaderboard .winner-products .item .user-data span:first-child {
   font-style: italic;
   font-size: 3.8vw;
 }
-main.home .home-leaderboard .win-products .item .user-data span:last-child {
+main.home .home-leaderboard .winner-products .item .user-data span:last-child {
   letter-spacing: 0.2vw;
   font-size: 5.2vw;
   text-shadow: 0.5vw 0.5vw 0.5vw rgba(0, 0, 0, 0.6);
 }
-main.home .home-leaderboard .win-total {
+main.home .home-leaderboard .winner-total {
   margin-top: 2vw;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  height: 75vw;
   padding: 2.4vw;
   overflow: hidden;
   border-radius: 4.6vw 4.6vw 0 0;
   background: #ebebeb;
 }
-main.home .home-leaderboard .win-total .user-ranking {
-  max-height: 75vw;
+main.home .home-leaderboard .winner-total .user-ranking {
+  max-height: 76vw;
   overflow-y: scroll;
 }
-main.home .home-leaderboard .win-total .user-list {
+main.home .home-leaderboard .winner-total .user-list {
   background: rgba(40, 73, 133, 0.8);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15940,11 +15940,11 @@ main.home .home-leaderboard .win-total .user-list {
   padding: 3.2vw 4.6vw;
   margin-bottom: 1.4vw;
 }
-main.home .home-leaderboard .win-total .user-list.top {
+main.home .home-leaderboard .winner-total .user-list.top {
   background: -webkit-gradient(linear, left top, right top, from(rgb(207, 0, 0)), to(rgb(251, 181, 19)));
   background: linear-gradient(90deg, rgb(207, 0, 0) 0%, rgb(251, 181, 19) 100%);
 }
-main.home .home-leaderboard .win-total .user-list .left {
+main.home .home-leaderboard .winner-total .user-list .left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15956,8 +15956,8 @@ main.home .home-leaderboard .win-total .user-list .left {
       -ms-flex-align: center;
           align-items: center;
 }
-main.home .home-leaderboard .win-total .user-list .left .order {
-  width: 15vw;
+main.home .home-leaderboard .winner-total .user-list .left .order {
+  width: 12vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15969,11 +15969,10 @@ main.home .home-leaderboard .win-total .user-list .left .order {
   color: #fff;
   text-shadow: -2px 2px 3px rgba(0, 0, 0, 0.4);
 }
-main.home .home-leaderboard .win-total .user-list .left .order > img {
-  width: 15vw;
-  height: 9.4vw;
+main.home .home-leaderboard .winner-total .user-list .left .order > img {
+  width: 17.5vw;
 }
-main.home .home-leaderboard .win-total .user-list .right {
+main.home .home-leaderboard .winner-total .user-list .right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15981,7 +15980,7 @@ main.home .home-leaderboard .win-total .user-list .right {
       -ms-flex-align: center;
           align-items: center;
 }
-main.home .home-leaderboard .win-total .user-list .right .icon-cash::after {
+main.home .home-leaderboard .winner-total .user-list .right .icon-cash::after {
   content: "";
   display: inline-block;
   width: 3.7vw;
@@ -15989,17 +15988,17 @@ main.home .home-leaderboard .win-total .user-list .right .icon-cash::after {
   background: url(https://banner.goal123.org/desktop/img/home-page/money.png) no-repeat center/cover;
   margin-right: 6px;
 }
-main.home .home-leaderboard .win-total .user-list .right span {
+main.home .home-leaderboard .winner-total .user-list .right span {
   display: inline-block;
   font-size: 2.84vw;
   font-weight: 700;
   color: #fff;
 }
-main.home .home-leaderboard .win-total .user-id {
+main.home .home-leaderboard .winner-total .user-id {
   color: #fff;
   font-weight: 400;
   font-size: 2.84vw;
-  margin-left: 6px;
+  margin-left: 3vw;
 }
 main.home .home-info {
   padding: 0 3.3vw;
@@ -16574,7 +16573,7 @@ main .menu-platform .platform button span {
   color: #141f33;
   font-size: 3vw;
   font-weight: 700;
-  width: 20.5vw;
+  width: 23.5vw;
   line-height: 1.2;
   display: -webkit-box;
   display: -ms-flexbox;
