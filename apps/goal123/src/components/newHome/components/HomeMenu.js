@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
-import { Link, useNavigate } from "@reach/router";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "@reach/router";
 import { defNavPanel, navContext, popBoxContext } from "../../common/context";
 import gameList, { defCol, openGameType } from "../../../datas/productList";
 import { getEventIcon } from "../../home/category";
@@ -12,7 +13,8 @@ import {
 	defTpGameType
 } from "../../hook/useGetTpMaintainList";
 
-const HomeMenu = ({ i18n, userInfo }) => {
+const HomeMenu = ({ userInfo }) => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -20,15 +22,6 @@ const HomeMenu = ({ i18n, userInfo }) => {
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
-
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -46,12 +39,12 @@ const HomeMenu = ({ i18n, userInfo }) => {
 				() => {
 					setPopBox({
 						isOpen: true,
-						content: i18n.msg_ApiServerError
+						content: t("msg_ApiServerError")
 					});
 				}
 			);
 		}
-	}, [setShowningTpIds, userInfo.isLogin]);
+	}, [setShowningTpIds, userInfo.isLogin, t, setPopBox]);
 
 	const showSubPanel = ({ panel }) => {
 		if (selectedCol !== panel) {
@@ -140,33 +133,33 @@ const HomeMenu = ({ i18n, userInfo }) => {
 					/>
 				</div>
 				<div className="gamelist-title">
-					{game.spanText || i18n[game.spanTextKey]}
+					{t(game.spanText) || t(game.spanTextKey)}
 				</div>
 				{/* {game?.hasDesktopLink && (
-					<div className="switchbtn">
-						<button
-							onClick={
-								underMaintain
-									? () => null
-									: e => {
-											e.stopPropagation();
-											clickGame({
-												tpId: game.tpId,
-												gameId: game.gameId,
-												useGotoGame: game.useGotoGame,
-												tpGameType: game.tpGameType,
-												appType: defAppType.desktop
-											});
-									  }
-							}>
-							{i18n.lbl_Sportsbook_Desktop}
-						</button>
-						<button>{i18n.lbl_Sportsbook_PlayNow}</button>
-					</div>
-				)} */}
+                    <div className="switchbtn">
+                        <button
+                            onClick={
+                                underMaintain
+                                    ? () => null
+                                    : e => {
+                                            e.stopPropagation();
+                                            clickGame({
+                                                tpId: game.tpId,
+                                                gameId: game.gameId,
+                                                useGotoGame: game.useGotoGame,
+                                                tpGameType: game.tpGameType,
+                                                appType: defAppType.desktop
+                                            });
+                                      }
+                            }>
+                            {t('lbl_Sportsbook_Desktop')}
+                        </button>
+                        <button>{t('lbl_Sportsbook_PlayNow')}</button>
+                    </div>
+                )} */}
 				{underMaintain ? (
 					<div className="under-maintenance">
-						{i18n.lbl_underMaintenance}
+						{t("lbl_underMaintenance")}
 					</div>
 				) : null}
 			</div>
@@ -208,7 +201,7 @@ const HomeMenu = ({ i18n, userInfo }) => {
 				<div className="category-icon">
 					<img src={imgSrc} alt={item.category} />
 				</div>
-				<span>{i18n[item.translateKey]}</span>
+				<span>{t(item.translateKey)}</span>
 			</button>
 		);
 	});
@@ -239,11 +232,10 @@ const HomeMenu = ({ i18n, userInfo }) => {
 						game={subItem}
 						underMaintain={underMaintain}
 						clickGame={clickGame}
-						i18n={i18n}
 					/>
 				);
 			});
-	}, [selectedCol, maintainList, showingTpIds]);
+	}, [selectedCol, maintainList, showingTpIds, t]);
 
 	const subPanelArr = (
 		<div className="home-gamelist">
