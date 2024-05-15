@@ -25,7 +25,7 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
-import EuroCupLink from "../euroCup/euroCupLink";
+import EuroCupLink from "../euroCup/EuroCupLink";
 
 const Layout = ({
 	children,
