@@ -34,7 +34,8 @@ const Panel = ({
 	setFavoriteStr,
 	setFavoriteList,
 	setCategoryList,
-	setActiveCategory
+	setActiveCategory,
+	newGamesArr
 }) => {
 	const { throttle } = useSetTimeout();
 	const { i18n } = useContext(i18nContext);
@@ -64,6 +65,7 @@ const Panel = ({
 	const randomArray = array => array.sort(() => Math.random() - 0.5);
 
 	const renderSlot = () => {
+		// 透過activeCategory來比對現在應該顯示slotDataList的哪個資料（new, featured, all......）
 		const targetList = slotDataList.find(
 			item => item[0] === activeCategory
 		);
@@ -182,6 +184,7 @@ const Panel = ({
 			const filterList = allList.filter(
 				allItem => activeProvider.tpId === allItem.tpId
 			);
+
 			const judgeList =
 				Object.keys(activeProvider).length > 0 ? filterList : allList;
 			judgeList.forEach(judgeItem => {
@@ -259,6 +262,7 @@ const Panel = ({
 				ref={gameListRef}
 				favoriteStr={favoriteStr}
 				setFavoriteStr={setFavoriteStr}
+				newGamesArr={newGamesArr}
 			/>
 			{selGameInfo === null ? null : (
 				<div className="slots-games popup active">
@@ -322,7 +326,8 @@ Panel.defaultProps = {
 	setFavoriteStr: () => null,
 	setCategoryList: () => null,
 	setFavoriteList: () => null,
-	setActiveCategory: () => null
+	setActiveCategory: () => null,
+	newGamesArr: []
 };
 
 Panel.propTypes = {
@@ -341,7 +346,8 @@ Panel.propTypes = {
 	setFavoriteStr: func,
 	setCategoryList: func,
 	setFavoriteList: func,
-	setActiveCategory: func
+	setActiveCategory: func,
+	newGamesArr: arrayOf(PropTypes.string)
 };
 
 export default Panel;
