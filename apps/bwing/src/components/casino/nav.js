@@ -2,12 +2,15 @@ import classNames from "classnames";
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { i18nContext } from "../common/context";
+import { moveItem } from "../../../../../libs/common/src/lib/utils/tools";
 
 const Nav = props => {
 	const { categoryList, selNav, onChange } = props;
 	const { i18n } = useContext(i18nContext);
+	// 將featured排序往前
+	const newCategoryList = categoryList && moveItem(categoryList, 4, 1);
 
-	return categoryList.map(value => {
+	return newCategoryList.map(value => {
 		return (
 			<button
 				key={`casino-nav-${value}`}
