@@ -7,28 +7,28 @@ import config from "../../../config";
 
 const images = [
 	{
-		link: `/${path.casino}/${defSlotTpGameType.PP.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.PP.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-pp.jpg`,
 		altText: "pop-pp",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-pp.png`,
 		logoAlt: "popular-slots-pp"
 	},
 	{
-		link: `/${path.casino}/${defSlotTpGameType.Skywind.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.Skywind.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-sky.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-sky.png`,
 		logoAlt: "popular-slots-sky"
 	},
 	{
-		link: `/${path.casino}/${defSlotTpGameType.SG.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.SG.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-spad.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-spade.png`,
 		logoAlt: "popular-slots-spad"
 	},
 	{
-		link: `/${path.casino}/${defSlotTpGameType.JILI.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.JILI.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-jili.jpg`,
 		altText: "pop-jili",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-jili.png`,
@@ -36,14 +36,14 @@ const images = [
 	},
 
 	{
-		link: `/${path.casino}/${defSlotTpGameType.MG.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.MG.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-micro.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-micro.png`,
 		logoAlt: "popular-slots-micro"
 	},
 	{
-		link: `/${path.casino}/${defSlotTpGameType.CQ9.tpId}`,
+		link: `/${path.casino.root}/${defSlotTpGameType.CQ9.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-cq9.jpg`,
 		altText: "pop-cq9",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-cq9.png`,
@@ -67,7 +67,7 @@ const HomePopularSlotGames = () => {
 			<div className="popularslots-top">
 				<a
 					className="top-item"
-					href={`/casino/${defSlotTpGameType.PG.tpId}`}>
+					href={`/${path.casino.root}/${defSlotTpGameType.PG.tpId}`}>
 					<img
 						src={`${config.t_and_cURL}/h5/img/home-page/popular-slots-pg.png`}
 						alt="slot-pg"
@@ -76,7 +76,7 @@ const HomePopularSlotGames = () => {
 
 				<a
 					className="top-item"
-					href={`/casino/${defSlotTpGameType.AdvantPlay.tpId}`}>
+					href={`/${path.casino.root}/${defSlotTpGameType.AdvantPlay.tpId}`}>
 					<img
 						src={`${config.t_and_cURL}/h5/img/home-page/popular-slots-ap.png`}
 						alt="slot-pg"
