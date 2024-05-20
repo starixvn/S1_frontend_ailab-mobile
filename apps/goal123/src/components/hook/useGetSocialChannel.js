@@ -9,6 +9,14 @@ export const defDisplayPage = {
 	Footer: 4
 };
 
+export const defChannelName = {
+	LiveChat: "Livechat",
+	Telegram: "Telegram",
+	Facebook: "Facebook",
+	Skype: "Skype",
+	Zalo: "Zalo"
+};
+
 export const channelIconName = {
 	Livechat: "chat_1.png",
 	Telegram: "te_1.png",
