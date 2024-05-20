@@ -12,12 +12,12 @@ const GamePanel = React.forwardRef((props, ref) => {
 		providerList,
 		maintainList,
 		activeProvider,
-		activeCategory,
 		i18n,
 		imgUrl,
 		handleSetFavorite,
 		favoriteStr,
-		setFavoriteStr
+		setFavoriteStr,
+		newGamesArr
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { langId } = userInfo;
@@ -74,7 +74,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			<div
 				className={classNames("slots-products-item", {
 					maintain: isMaintain,
-					"tag-new-pop": activeCategory === "new"
+					"tag-new-pop": newGamesArr.includes(g.gameId)
 				})}
 				key={`casino-game-${gameProviderName}-${g.gameId}`}>
 				<button>
@@ -126,7 +126,7 @@ GamePanel.defaultProps = {
 	providerList: null,
 	maintainList: [],
 	handleSetFavorite: null,
-	activeCategory: null
+	newGamesArr: []
 };
 
 GamePanel.propTypes = {
@@ -135,12 +135,12 @@ GamePanel.propTypes = {
 	providerList: PropTypes.arrayOf(PropTypes.any),
 	maintainList: PropTypes.arrayOf(PropTypes.any),
 	activeProvider: PropTypes.objectOf(PropTypes.any).isRequired,
-	activeCategory: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	imgUrl: PropTypes.string.isRequired,
 	handleSetFavorite: PropTypes.func,
 	favoriteStr: PropTypes.string.isRequired,
-	setFavoriteStr: PropTypes.func.isRequired
+	setFavoriteStr: PropTypes.func.isRequired,
+	newGamesArr: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default GamePanel;
