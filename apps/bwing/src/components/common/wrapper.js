@@ -140,7 +140,7 @@ export const Wrapper = ({ children }) => {
 	useEffect(() => {
 		if (!isSpecialPath()) {
 			IS_LOGGED_IN().then(isLogin => {
-				if (isLogin !== userInfo.isLogin && isMountedRef.current) {
+				if (isMountedRef.current) {
 					setUserInfo(prevState => ({
 						...prevState,
 						isLogin
@@ -148,7 +148,7 @@ export const Wrapper = ({ children }) => {
 				}
 			});
 		}
-	}, [userInfo.isLogin]);
+	}, []);
 
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
