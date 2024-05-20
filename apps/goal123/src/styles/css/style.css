@@ -374,16 +374,8 @@ header > div .Join .Terms input[type=checkbox]:checked + label > div,
 header > div .Login .Terms input[type=checkbox]:checked + label > div {
   background: #1e85ec;
 }
-header > div .logo.eurocuplogo > div:first-child img {
-  width: 30vw;
-}
-header > div .logo.eurocuplogo > div:last-child {
-  margin-left: 1.5vw;
-}
-header > div .logo.eurocuplogo > div:last-child img {
-  width: 10vw;
-}
-header > div .headerInfo {
+header > div .Join .headerInfo,
+header > div .Login .headerInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -508,10 +500,6 @@ header > div .Login .headerBtnIn.open {
 header > div .Join .headerBtnIn p,
 header > div .Login .headerBtnIn p {
   margin: 0 5px;
-  max-width: 23vw;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 header > div .Join .headerBtnIn img,
 header > div .Login .headerBtnIn img {
@@ -7285,7 +7273,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 45vw;
+  bottom: 66vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -15491,15 +15479,8 @@ main.home .home-join .join-item .title {
   font-size: 2.76vw;
   font-weight: 800;
   text-transform: uppercase;
-  line-height: 1.2;
-  padding: 2vw 0;
-  margin-right: 2vw;
-  font-size: 3vw;
-  font-weight: bold;
-  background: #0024B2;
-  border-radius: 3vw;
-  color: #143CDB;
-  min-width: 17.5vw;
+  margin: 2vw 0 1.5vw;
+  white-space: pre-wrap;
 }
 main.home .home-join a,
 main.home .home-join button {
