@@ -1,9 +1,9 @@
+import classNames from "classnames";
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
 import { isDateRange } from "@ailab-mobile/common";
-import Footer from "./footer";
 import Header from "./header";
 import {
 	navContext,
@@ -25,17 +25,12 @@ import { bannerImgUrl } from "../../config";
 import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
+import HomeHeader from "../newHome/components/HomeHeader";
+import { setCookie, readCookie } from "./common";
+import HomeFooter from "../newHome/components/HomeFooter";
 import EuroCupLink from "../euroCup/EuroCupLink";
 
-const Layout = ({
-	children,
-	header,
-	mainClass,
-	title,
-	appHint,
-	goTopBtn,
-	noHeader
-}) => {
+const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	const { i18n } = useContext(i18nContext);
 	const { nav } = useContext(navContext);
 	const { setNav } = useContext(navContext);
@@ -50,12 +45,20 @@ const Layout = ({
 	const [displayLiveStreaming, setDisplayLiveStreaming] = useState(false);
 	const [liveStreamingList, setLiveStreamingList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [appHint, setAppHint] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
 	const position =
 		nav === defNavPanel.login || _matchLogin || nav === defNavPanel.join
 			? { position: "fixed" }
 			: {};
+
+	const handleDownloadHint = () => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		setCookie(cookieName, "1", 1);
+		setAppHint(false);
+	};
 
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
@@ -85,6 +88,14 @@ const Layout = ({
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, [location]);
+
+	useEffect(() => {
+		const cookieName = `appDownloadHint${userInfo.userName}`;
+
+		if (userInfo.userName && readCookie(cookieName) !== "1") {
+			setAppHint(true);
+		}
+	}, [userInfo.currencyId, userInfo.accountName]);
 
 	useEffect(() => {
 		const getLiveStreamingList = async () => {
@@ -123,17 +134,35 @@ const Layout = ({
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			{noHeader
-				? null
-				: header ?? <Header title={title} hideLogo={true} />}
-			<main
-				style={position}
-				className={`${mainClass ?? ""}${
-					appHint ? " openAppDownload" : ""
-				} ${appHint && root ? "active" : ""}`}>
-				{children}
-				{loading ? <Loading /> : null}
-			</main>
+			{!root &&
+				(noHeader
+					? null
+					: header ?? <Header title={title} hideLogo={true} />)}
+
+			{root && (
+				<header id="header" className="header-index">
+					<HomeHeader
+						appHint={appHint}
+						handleDownloadHint={handleDownloadHint}
+					/>
+				</header>
+			)}
+
+			{root ? (
+				<main className={classNames("home", { active: appHint })}>
+					{children}
+					{loading ? <Loading /> : null}
+				</main>
+			) : (
+				<main
+					style={position}
+					className={`${mainClass ?? ""}${
+						appHint ? " openAppDownload" : ""
+					} ${appHint && root ? "active" : ""}`}>
+					{children}
+					{loading ? <Loading /> : null}
+				</main>
+			)}
 
 			{/* 右下角 Vgaming 進入點 */}
 			{displayVgaming &&
@@ -173,8 +202,8 @@ const Layout = ({
 
 			{/* 歐冠杯期間顯示 */}
 			{isDateRange(eventTime.eventCup) && root && <EuroCupLink />}
-
-			<Footer />
+			{/* <Footer /> */}
+			<HomeFooter />
 			{goTopBtn && <GoTopBtn />}
 		</>
 	);
@@ -184,7 +213,6 @@ Layout.defaultProps = {
 	goTopBtn: true,
 	mainClass: "main",
 	title: "",
-	appHint: false,
 	header: null,
 	noHeader: false
 };
@@ -194,7 +222,6 @@ Layout.propTypes = {
 	goTopBtn: PropTypes.bool,
 	mainClass: PropTypes.string,
 	title: PropTypes.string,
-	appHint: PropTypes.bool,
 	header: PropTypes.node,
 	noHeader: PropTypes.bool
 };

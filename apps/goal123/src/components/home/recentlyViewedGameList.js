@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { useNavigate } from "@reach/router";
 import {
 	defNavPanel,
@@ -174,23 +174,24 @@ const RecentlyViewedGameList = () => {
 	}, []);
 
 	const params = {
+		slidesPerView: 1.3,
 		spaceBetween: 22,
-		slidesPerView: 1.3
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		},
+		pagination: {
+			el: ".swiper-pagination",
+			clickable: true // Make pagination bullets clickable
+		}
 	};
 
 	if (!recentlyViewedGames || !recentlyViewedGames.length) return null;
 
 	return (
-		<div className="recentlyList">
-			<div className="title">
-				<i className="icon icon-history " />
-				{t("lbl_Recently_Viewed")}
-			</div>
-			<Swiper
-				className="recently"
-				modules={[Navigation]}
-				navigation
-				{...params}>
+		<div className="home-recently">
+			<div className="home-title">{t("Label_Recently")}</div>
+			<Swiper className="recently" modules={[Navigation]} {...params}>
 				<div className="swiper-wrapper">
 					{recentlyViewedGames &&
 						recentlyViewedGames.map(
@@ -217,7 +218,13 @@ const RecentlyViewedGameList = () => {
 												selectedGameId: gameId,
 												isMaintain
 											})
-										}>
+										}
+										style={{
+											pointerEvents: isMaintain
+												? "none"
+												: "auto",
+											cursor: "default"
+										}}>
 										<div
 											className={`recently-game ${
 												isMaintain ? "active" : ""
@@ -256,6 +263,8 @@ const RecentlyViewedGameList = () => {
 							)
 						)}
 				</div>
+				<div className="swiper-button-prev" />
+				<div className="swiper-button-next" />
 			</Swiper>
 		</div>
 	);
