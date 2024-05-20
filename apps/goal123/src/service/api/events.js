@@ -1,17 +1,27 @@
 import { eventRequest } from "./base";
 
-export const api_events_GetLeaderboardList = ({
+export const api_events_GetLeaderboardList = async ({
 	lBCategoryId = 0,
 	TopNum = 10,
 	BeforeDays = 0,
 	EventCode
-}) =>
-	eventRequest.post(`/GetLeaderboardList/`, {
-		lBCategoryId,
-		TopNum,
-		BeforeDays,
-		EventCode
-	});
+}) => {
+	try {
+		return await eventRequest.post(`/GetLeaderboardList/`, {
+			lBCategoryId,
+			TopNum,
+			BeforeDays,
+			EventCode
+		});
+	} catch (e) {
+		return {
+			data: {
+				data: [],
+				errorCode: 0
+			}
+		};
+	}
+};
 
 export const api_events_GetCustRank = ({
 	LBCategoryId = 0,
