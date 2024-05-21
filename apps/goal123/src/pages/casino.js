@@ -44,6 +44,7 @@ const Panel = () => {
 	const [imageUrl, setImageUrl] = useState("");
 	const [slotDataList, setSlotDataList] = useState([]);
 	const [selGameInfo, setSelGameInfo] = useState(null);
+	const [newGamesArr, setNewGamesArr] = useState([]);
 	const gameListRef = useRef(null);
 	const splitList = window.location.href.split("/");
 
@@ -138,7 +139,13 @@ const Panel = () => {
 			const _list = [];
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
-			setActiveCategory(_list[1]);
+
+			// 找到featured在第幾個，設定一進畫面顯示它
+			const featuredIdx = _list.findIndex(value => {
+				return value === "featured";
+			});
+			setActiveCategory(_list[featuredIdx]); // 決定一進畫面要渲染的類別遊戲
+
 			const targetList = Object.entries(res.data.data)?.find(
 				item => item[0] === _list[1]
 			)[1];
@@ -378,6 +385,16 @@ const Panel = () => {
 		}
 	}, [activeProvider]);
 
+	// 一進畫面就先把新遊戲的gameId存在陣列
+	useEffect(() => {
+		allCategoryList.forEach(items => {
+			if (items[0] === "new") {
+				const _gameIdArr = items[1].map(item => item.gameId);
+				setNewGamesArr(_gameIdArr);
+			}
+		});
+	}, [allCategoryList]);
+
 	return (
 		<>
 			<Slider />
@@ -415,6 +432,7 @@ const Panel = () => {
 				ref={gameListRef}
 				favoriteStr={favoriteStr}
 				setFavoriteStr={setFavoriteStr}
+				newGamesArr={newGamesArr}
 			/>
 			{selGameInfo === null ? null : (
 				<div className="slotFunctionNew open">
