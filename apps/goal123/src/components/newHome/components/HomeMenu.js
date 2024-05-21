@@ -2,7 +2,12 @@ import classNames from "classnames";
 import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
-import { defNavPanel, navContext, popBoxContext } from "../../common/context";
+import {
+	defNavPanel,
+	navContext,
+	popBoxContext,
+	userInfoContext
+} from "../../common/context";
 import gameList, { defCol, openGameType } from "../../../datas/productList";
 import { getEventIcon } from "../../home/category";
 import { GET_ENTER_PAGE } from "../../../service/enterPage";
@@ -13,21 +18,23 @@ import {
 	defTpGameType
 } from "../../hook/useGetTpMaintainList";
 
-const HomeMenu = ({ userInfo }) => {
+const HomeMenu = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { setNav } = useContext(navContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
 	const [showingTpIds, setShowningTpIds] = useState(null);
 	const [selectedCol, setSelectedCol] = useState(defCol.hotGame);
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
+	// const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			api_GetTpIds().then(
 				res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
+					if (res.data.errorCode === 0) {
 						setShowningTpIds(res.data.data);
 					} else if (res.data.errorCode !== 0) {
 						setPopBox({

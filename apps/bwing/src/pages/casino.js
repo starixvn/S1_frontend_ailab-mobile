@@ -220,7 +220,13 @@ const Casino = () => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 
-			setActiveCategory(page === "jackpot" ? "jackpot" : _list[4]); // 決定一進畫面要渲染的類別遊戲
+			// 找到featured在第幾個，設定一進畫面顯示它
+			const featuredIdx = _list.findIndex(value => {
+				return value === "featured";
+			});
+			setActiveCategory(
+				page === "jackpot" ? "jackpot" : _list[featuredIdx]
+			); // 決定一進畫面要渲染的類別遊戲
 
 			// 沒有效果，先暫時註解
 			// const targetList = Object.entries(res.data.data)?.find(item => {

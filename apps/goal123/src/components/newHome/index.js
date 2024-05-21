@@ -40,7 +40,7 @@ const HomeContent = () => {
 				<HomeBanner />
 				<HomeMarquee />
 				<div className="homecategorymenu">
-					<HomeMenu i18n={i18n} userInfo={userInfo} />
+					<HomeMenu />
 					<HomeSportMatches />
 					<HomeJoin />
 					<HomePopularSlotGames />

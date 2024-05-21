@@ -7,8 +7,13 @@ import { moveItem } from "../../../../../libs/common/src/lib/utils/tools";
 const Nav = props => {
 	const { categoryList, selNav, onChange } = props;
 	const { i18n } = useContext(i18nContext);
+	// 找出featured的位置
+	const featuredIdx = categoryList.findIndex(value => {
+		return value === "featured";
+	});
 	// 將featured排序往前
-	const newCategoryList = categoryList && moveItem(categoryList, 4, 1);
+	const newCategoryList =
+		categoryList && moveItem(categoryList, featuredIdx, 1);
 
 	return newCategoryList.map(value => {
 		return (
