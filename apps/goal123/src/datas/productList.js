@@ -1032,11 +1032,11 @@ const gameList = [
 				spanText: "PlayTech",
 				img: `${bannerImgUrl}/h5/img/home-page/Header/PlayTech/casino/playtech.png`
 			},
-			// {
-			// 	...defGameInfo.LIVEcasinoWM,
-			// 	spanText: "WM Casino",
-			// 	img: `${bannerImgUrl}/h5/img/home-page/Header/WonCasino/casino/woncasino.png`
-			// },
+			{
+				...defGameInfo.LIVEcasinoWM,
+				spanText: "WM Casino",
+				img: `${bannerImgUrl}/h5/img/home-page/Header/WM/casino/wm-casino.png`
+			},
 			{
 				...defGameInfo.LIVEcasinoDG,
 				spanText: "Dream Gaming",

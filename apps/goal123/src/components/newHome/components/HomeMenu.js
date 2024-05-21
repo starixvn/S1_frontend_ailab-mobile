@@ -23,6 +23,8 @@ const HomeMenu = ({ userInfo }) => {
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
 
+  const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		if (userInfo.isLogin) {
 			api_GetTpIds().then(
