@@ -5,8 +5,7 @@ import { bannerImgUrl } from "../../../config";
 import { userInfoContext } from "../../common/context";
 
 import useGetSocialChannel, {
-	defDisplayPage,
-	defChannelName
+	defDisplayPage
 } from "../../hook/useGetSocialChannel";
 
 const providers = [
@@ -122,6 +121,14 @@ const swiperParams = {
 	spaceBetween: 6
 };
 
+const channelNameToImg = {
+	Facebook: "icon-facebook",
+	Zalo: "icon-zalo",
+	Telegram: "icon-telegram",
+	Skype: "icon-skype",
+	Livechat: "icon-livechat"
+};
+
 const HomeButtom = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
@@ -131,34 +138,30 @@ const HomeButtom = () => {
 		displayPage: defDisplayPage.Home
 	});
 
-	const zaloData = socialChannel?.find(
-		channel => channel.channelName === defChannelName.Zalo
-	);
-
 	return (
 		<div className="home-bottom">
 			<div className="bottom-info">
 				<div className="socialmedia">
-					<a
-						href="https://www.facebook.com/goal123.official"
-						target="_blank">
-						<img
-							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-facebook.svg`}
-							alt="home-facebook"
-						/>
-					</a>
 					<a href="https://www.youtube.com/@GOAL123VietNam">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-youtube.svg`}
 							alt="home-youtube"
 						/>
 					</a>
-					<a href={zaloData ? zaloData.link : "#"} target="_blank">
-						<img
-							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-zalo.svg`}
-							alt="home-zalo"
-						/>
-					</a>
+					{socialChannel?.map(item => (
+						<a
+							key={`channel-${item.channelName}`}
+							href={item.link}
+							target="_blank"
+							rel="noreferrer">
+							<img
+								src={`${bannerImgUrl}/h5/img/home-page/icon/${
+									channelNameToImg[item.channelName]
+								}.svg`}
+								alt={item.channelName}
+							/>
+						</a>
+					))}
 				</div>
 				<div className="provider">
 					<Swiper {...swiperParams} className="swiper-wrapper">
