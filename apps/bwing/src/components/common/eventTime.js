@@ -73,5 +73,6 @@ export const eventTime = {
 	},
 	liveCasino_Won: {
 		endDate: "2024/07/09 23:59:59"
-	}
+	},
+	WCC_CockFighting: { endDate: "2025/04/21 23:59:59" }
 };
