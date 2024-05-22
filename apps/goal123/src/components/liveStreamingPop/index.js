@@ -163,6 +163,7 @@ const LiveStreamingLink = ({
 		</div>
 	) : null;
 };
+
 LiveStreamingLink.defaultProps = {
 	liveStreamingList: []
 };

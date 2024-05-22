@@ -50,6 +50,7 @@ const Casino = () => {
 	const [favoriteStr, setFavoriteStr] = useState(
 		localStorage.getItem("favorite")
 	);
+	const [newGamesArr, setNewGamesArr] = useState([]);
 
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
@@ -219,12 +220,20 @@ const Casino = () => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 
-			setActiveCategory(page === "jackpot" ? "jackpot" : _list[1]);
+			// 找到featured在第幾個，設定一進畫面顯示它
+			const featuredIdx = _list.findIndex(value => {
+				return value === "featured";
+			});
+			setActiveCategory(
+				page === "jackpot" ? "jackpot" : _list[featuredIdx]
+			); // 決定一進畫面要渲染的類別遊戲
 
-			const targetList = Object.entries(res.data.data)?.find(
-				item => item[0] === _list[1]
-			)[1];
-			setGameList(targetList);
+			// 沒有效果，先暫時註解
+			// const targetList = Object.entries(res.data.data)?.find(item => {
+			// 	return item[0] === _list[1];
+			// })[1];
+			// setGameList(targetList);
+
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -238,6 +247,16 @@ const Casino = () => {
 	useEffect(() => {
 		getSlotGameData();
 	}, []);
+
+	// 一進畫面就先把新遊戲的gameId存在陣列
+	useEffect(() => {
+		allCategoryList.forEach(items => {
+			if (items[0] === "new") {
+				const _gameIdArr = items[1].map(item => item.gameId);
+				setNewGamesArr(_gameIdArr);
+			}
+		});
+	}, [allCategoryList]);
 
 	return (
 		<div className="wrapper">
@@ -284,6 +303,7 @@ const Casino = () => {
 					setCategoryList={setCategoryList}
 					setFavoriteList={setFavoriteList}
 					setActiveCategory={setActiveCategory}
+					newGamesArr={newGamesArr}
 				/>
 			</div>
 		</div>
