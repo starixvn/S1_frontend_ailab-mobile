@@ -21,7 +21,6 @@ const GamePanel = React.forwardRef((props, ref) => {
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { langId } = userInfo;
-
 	if (gameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
@@ -110,6 +109,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
+
 	return games.length === 0 ? (
 		<div className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
