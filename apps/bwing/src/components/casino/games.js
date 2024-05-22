@@ -22,7 +22,6 @@ const GamePanel = React.forwardRef((props, ref) => {
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { langId } = userInfo;
-
 	if (gameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
@@ -30,88 +29,97 @@ const GamePanel = React.forwardRef((props, ref) => {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
 	const storageList = storageStr?.split("&") ?? [];
-	gameList?.forEach(g => {
-		const handleIsFavorite = () => {
-			return storageList?.includes(`${g.tpId}_${g.gameId}`);
-		};
-		const _isFavorite = handleIsFavorite();
-		const isMaintain = maintainList?.some(
-			m =>
-				m.tpId === g.tpId &&
-				(m.tpGameType ===
-					defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
-					m.tpGameType === defTpGameType.All)
-		);
+	gameList
+		?.sort(
+			(a, b) =>
+				// 照新增遊戲的時間排序
+				new Date(b.launchDate).getTime() -
+				new Date(a.launchDate).getTime()
+		)
+		.forEach(g => {
+			const handleIsFavorite = () => {
+				return storageList?.includes(`${g.tpId}_${g.gameId}`);
+			};
+			const _isFavorite = handleIsFavorite();
+			const isMaintain = maintainList?.some(
+				m =>
+					m.tpId === g.tpId &&
+					(m.tpGameType ===
+						defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
+						m.tpGameType === defTpGameType.All)
+			);
 
-		const onToggleFavorite = () => {
-			handleSetFavorite(g.gameId, _isFavorite, g.tpId);
-			let filterList;
-			if (_isFavorite) {
-				filterList = storageList.filter(
-					item => item !== `${g.tpId}_${g.gameId}`
-				);
-				localStorage.setItem("favorite", filterList.join("&"));
-				setFavoriteStr(filterList.join("&"));
-			} else {
-				localStorage.setItem(
-					"favorite",
-					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
-						g.tpId
-					}_${g.gameId}`
-				);
-				setFavoriteStr(
-					`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
-						g.tpId
-					}_${g.gameId}`
-				);
-			}
-		};
+			const onToggleFavorite = () => {
+				handleSetFavorite(g.gameId, _isFavorite, g.tpId);
+				let filterList;
+				if (_isFavorite) {
+					filterList = storageList.filter(
+						item => item !== `${g.tpId}_${g.gameId}`
+					);
+					localStorage.setItem("favorite", filterList.join("&"));
+					setFavoriteStr(filterList.join("&"));
+				} else {
+					localStorage.setItem(
+						"favorite",
+						`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+							g.tpId
+						}_${g.gameId}`
+					);
+					setFavoriteStr(
+						`${storageStr ?? ""}${storageStr === false ? "" : "&"}${
+							g.tpId
+						}_${g.gameId}`
+					);
+				}
+			};
 
-		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
-			?.gameImgDisplayText;
-		const gameImage = `${imgUrl}/${gameProviderName}/${
-			g.imgName[langId] ?? g.imgName.en
-		}`;
-		games.push(
-			<div
-				className={classNames("slots-products-item", {
-					maintain: isMaintain,
-					"tag-new-pop": newGamesArr.includes(g.gameId)
-				})}
-				key={`casino-game-${gameProviderName}-${g.gameId}`}>
-				<button>
-					<button
-						type="button"
-						onClick={onToggleFavorite}
-						className={`icon-fav-${
-							_isFavorite ? "solid" : "outline"
-						}`}
-					/>
-					<img
-						onClick={
-							isMaintain
-								? () => null
-								: () =>
-										selectGame({
-											...g,
-											providerName: gameProviderName
-										})
-						}
-						src={gameImage}
-						alt={g.gameName[langId] ?? g.gameName.en}
-					/>
-					<div className="name">
-						{g.gameName[langId] ?? g.gameName.en}
-					</div>
-				</button>
-				{isMaintain ? (
-					<div className="tag-maintain">
-						{i18n.lbl_underMaintenance}
-					</div>
-				) : null}
-			</div>
-		);
-	});
+			const gameProviderName = providerList.find(
+				obj => obj.tpId === g.tpId
+			)?.gameImgDisplayText;
+			const gameImage = `${imgUrl}/${gameProviderName}/${
+				g.imgName[langId] ?? g.imgName.en
+			}`;
+			games.push(
+				<div
+					className={classNames("slots-products-item", {
+						maintain: isMaintain,
+						"tag-new-pop": newGamesArr.includes(g.gameId)
+					})}
+					key={`casino-game-${gameProviderName}-${g.gameId}`}>
+					<button>
+						<button
+							type="button"
+							onClick={onToggleFavorite}
+							className={`icon-fav-${
+								_isFavorite ? "solid" : "outline"
+							}`}
+						/>
+						<img
+							onClick={
+								isMaintain
+									? () => null
+									: () =>
+											selectGame({
+												...g,
+												providerName: gameProviderName
+											})
+							}
+							src={gameImage}
+							alt={g.gameName[langId] ?? g.gameName.en}
+						/>
+						<div className="name">
+							{g.gameName[langId] ?? g.gameName.en}
+						</div>
+					</button>
+					{isMaintain ? (
+						<div className="tag-maintain">
+							{i18n.lbl_underMaintenance}
+						</div>
+					) : null}
+				</div>
+			);
+		});
+
 	return games.length === 0 ? (
 		<div className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
