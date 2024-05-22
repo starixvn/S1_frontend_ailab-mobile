@@ -3,7 +3,7 @@ import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
-import { isDateRange } from "@ailab-mobile/common";
+import { isDateRange, products } from "@ailab-mobile/common";
 import Header from "./header";
 import {
 	navContext,
@@ -171,7 +171,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}
