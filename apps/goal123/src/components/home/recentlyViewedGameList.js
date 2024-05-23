@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
-import { Navigation, Pagination } from "swiper";
+import { Navigation } from "swiper";
 import { useNavigate } from "@reach/router";
 import {
 	defNavPanel,
@@ -179,10 +179,6 @@ const RecentlyViewedGameList = () => {
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev"
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true // Make pagination bullets clickable
 		}
 	};
 
@@ -206,7 +202,7 @@ const RecentlyViewedGameList = () => {
 								gameId
 							}) => (
 								<SwiperSlide
-									key={`recently-game-${tpId}-${tpGameType}`}>
+									key={`recently-game-${tpId}-${tpGameType}-${gameId}`}>
 									<div
 										key={`recently-game-${tpId}-${tpGameType}`}
 										className="swiper-slide"
