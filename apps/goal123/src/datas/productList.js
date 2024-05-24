@@ -1052,13 +1052,8 @@ const gameList = [
 			{
 				...defGameInfo.LIVEcasinoWM,
 				spanText: "WM Casino",
-				img: `${bannerImgUrl}/h5/img/home-page/Header/WonCasino/casino/woncasino.png`
+				img: `${bannerImgUrl}/h5/img/home-page/Header/WM/casino/wm-casino.png`
 			},
-			// {
-			// 	...defGameInfo.LIVEcasinoWM,
-			// 	spanText: "WM Casino",
-			// 	img: `${bannerImgUrl}/h5/img/home-page/Header/WonCasino/casino/woncasino.png`
-			// },
 			{
 				...defGameInfo.LIVEcasinoDG,
 				spanText: "Dream Gaming",
