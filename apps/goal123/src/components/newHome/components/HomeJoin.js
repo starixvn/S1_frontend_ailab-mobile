@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
+import { products } from "@ailab-mobile/common";
 import { useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import path from "apps/goal123/src/path";
 import { userInfoContext } from "../../common/context";
 import { bannerImgUrl } from "../../../config";
 import useClickGame from "../hooks/useClickGame";
-import { defGameInfo } from "../../../datas/productList";
 
 const HomeJoin = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const { clickGame } = useClickGame();
+	const { onclickStaticProduct } = useClickGame();
 
 	const JoinListItems = [
 		{
@@ -52,10 +52,6 @@ const HomeJoin = () => {
 		}
 	};
 
-	const handleBetButton = () => {
-		clickGame(defGameInfo.SabaSoccer);
-	};
-
 	return (
 		<div className="home-join">
 			<div className="home-title">
@@ -76,7 +72,9 @@ const HomeJoin = () => {
 			</div>
 
 			{userInfo.isLogin ? (
-				<button className="btn-more" onClick={handleBetButton}>
+				<button
+					className="btn-more"
+					onClick={() => onclickStaticProduct(products.SabaSoccer)}>
 					{t("lbl_BetNow")}
 				</button>
 			) : (

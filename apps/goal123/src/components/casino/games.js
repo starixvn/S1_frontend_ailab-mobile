@@ -6,7 +6,6 @@ import {
 	useGetTpMaintainList,
 	defTpGameType
 } from "../hook/useGetTpMaintainList";
-import { defSlotTpGameType } from "../../datas/productList";
 
 const GamePanel = React.forwardRef((props, ref) => {
 	const {

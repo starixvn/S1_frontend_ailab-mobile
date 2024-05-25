@@ -8,7 +8,8 @@ const accountApiUrl = {
 	getReferralCode: "Account/GetReferralCode",
 	setLanguage: "Account/SetLanguage",
 	getCustBonusWallet: "Account/GetCustBonusWallet",
-	getCustVIPProgress: "Account/GetCustVIPProgress"
+	getCustVIPProgress: "Account/GetCustVIPProgress",
+	getCustTpGameTypeSetting: "Account/GetCustTpGameTypeSetting"
 };
 
 export const accountApi = rootApi.injectEndpoints({
@@ -130,6 +131,23 @@ export const accountApi = rootApi.injectEndpoints({
 				url: accountApiUrl.getCustVIPProgress,
 				method: "POST"
 			})
+		}),
+		getCustTpGameTypeSetting: builder.query<
+			IAxiosResponse<
+				{
+					categoryId: number;
+					tpId: number;
+					gameType: number;
+					noShow: boolean;
+					noPlay: boolean;
+				}[]
+			>,
+			null
+		>({
+			query: () => ({
+				url: accountApiUrl.getCustTpGameTypeSetting,
+				method: "POST"
+			})
 		})
 	})
 });
@@ -141,5 +159,6 @@ export const {
 	useGetReferralCodeQuery,
 	useSetLanguageMutation,
 	useGetCustBonusWalletQuery,
-	useGetCustVIPProgressQuery
+	useGetCustVIPProgressQuery,
+	useGetCustTpGameTypeSettingQuery
 } = accountApi;

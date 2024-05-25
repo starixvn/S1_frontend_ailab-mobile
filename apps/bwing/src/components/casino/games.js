@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
 import Loading from "../common/loading";
 import { defTpGameType } from "../hook/useGetTpMaintainList";
-import { defSlotTpGameType } from "../../datas/productList";
 
 const GamePanel = React.forwardRef((props, ref) => {
 	const {
