@@ -247,7 +247,7 @@ export const defPageInfo = {
 		className: "lobby news",
 		hideLogo: true
 	},
-	"/euro-cup": {
+	"euro-cup": {
 		titleKey: "lbl_CupEvent_Euro2024",
 		className: "euro",
 		hideLogo: true
