@@ -37,7 +37,7 @@ const GameProviders = props => {
 					window.location.pathname ===
 					`/${path.casino.root}/${k.tpId}`
 						? `${path.casino.root}`
-						: `${path.casino.root}/${k.tpId}`
+						: `${path.casino.root}?tpId=${k.tpId}`
 				}
 				key={`casino-nav-${k.tpId}`}
 				className={classNames("slots-vender-item", {
