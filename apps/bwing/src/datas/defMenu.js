@@ -814,6 +814,25 @@ export const productList = langId => {
 				}
 			]
 		},
+		cockFighting: {
+			category: "cockFighting",
+			displayText: "CockFighting",
+			path: path.cockFighting.root,
+			icon_img: `${bannerImgUrl}/h5/img/gameicon/wcc-cockfighting.png`,
+			items: [
+				{
+					// displayKey: "lbl_CockFighting",
+					img: `${bannerImgUrl}/h5/img/4.0/lobby/cockfighting/wcc-cockfighting.png`,
+					...defGameInfo.WCC_CockFighting,
+					eventIcon: [
+						{
+							icon: defIconType.new,
+							inPeriod: isEventPeriod(eventTime.WCC_CockFighting)
+						}
+					]
+				}
+			]
+		},
 		promotion: {
 			category: "promotion",
 			displayKey: "lbl_Promotions",
@@ -905,5 +924,10 @@ export const defSubMenus = langId => [
 		icon: "icon-other-blue",
 		path: path.other.root,
 		displayKey: "lbl_Other"
+	},
+	{
+		icon: "icon-cockfighting-blue",
+		path: path.cockFighting.root,
+		displayKey: "lbl_CockFighting"
 	}
 ];
