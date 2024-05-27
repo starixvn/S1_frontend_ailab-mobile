@@ -3,7 +3,7 @@ import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
-import { isDateRange, products } from "@ailab-mobile/common";
+import { isDateRange, isInApp, products } from "@ailab-mobile/common";
 import Header from "./header";
 import {
 	navContext,
@@ -91,7 +91,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	useEffect(() => {
 		const cookieName = `appDownloadHint${userInfo.userName}`;
 
-		if (userInfo.userName && readCookie(cookieName) !== "1") {
+		if (!isInApp() && userInfo.userName && readCookie(cookieName) !== "1") {
 			setAppHint(true);
 		}
 	}, [userInfo.currencyId, userInfo.accountName]);
