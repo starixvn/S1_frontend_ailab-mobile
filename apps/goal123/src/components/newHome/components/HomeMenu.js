@@ -23,7 +23,7 @@ const HomeMenu = ({ userInfo }) => {
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
 
-  const isMountedRef = useRef(null);
+	const isMountedRef = useRef(null);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -97,17 +97,21 @@ const HomeMenu = ({ userInfo }) => {
 		const showingEventIcon = getEventIcon({ eventIcon: game?.eventIcon });
 
 		const onMenuClick = () => {
+			console.log("click");
 			// 如果有 path 就到那個特定品牌slot頁面 適用於slot類別
 			if (game.path && !underMaintain) {
+				console.log(game.path);
 				navigate(`/${game.path}${game.tpId ? `/${game.tpId}` : ""}`);
 				return; // 終止函數執行
 			}
 
 			if (!underMaintain) {
 				if (game.category) {
+					console.log(game.category);
 					setSelectedCol(game.category);
 					window.scrollTo({ top: 0, behavior: "smooth" });
 				} else {
+					console.log(game.category);
 					clickGame({
 						tpId: game.tpId,
 						gameId: game.gameId,
