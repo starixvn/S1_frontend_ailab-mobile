@@ -43,8 +43,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			const isMaintain = maintainList?.some(
 				m =>
 					m.tpId === g.tpId &&
-					(m.tpGameType ===
-						defSlotTpGameType[activeProvider.tpName]?.tpGameType ||
+					(m.tpGameType === activeProvider?.tpGameType ||
 						m.tpGameType === defTpGameType.All)
 			);
 
