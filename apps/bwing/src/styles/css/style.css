@@ -6443,8 +6443,8 @@ header {
 }
 .slots-products-item {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 31vw;
-          flex: 0 0 31vw;
+      -ms-flex: 0 0 32%;
+          flex: 0 0 32%;
   margin-right: 1.5vw;
   margin-bottom: 3vw;
   -webkit-box-sizing: border-box;
