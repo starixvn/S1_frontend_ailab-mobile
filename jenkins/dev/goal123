@@ -51,19 +51,19 @@ pipeline {
                                 }
                             }
                         }
-                        stage('DockerBuild') {
-                            agent { node { label 'Build' } }
-                                steps{
-                                    script {
-                                        env.version = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
-                                    }
-                                    sh 'sudo docker build --build-arg project_name=${project_name} -t ${harbor_registry}:${version} . '
-                                    sh 'sudo docker login 13.213.82.69 -u jenkins -p 06ftJ0Ds'
-                                    sh 'sudo docker push ${harbor_registry}:${version}'
-                                    sh 'sudo docker rmi ${harbor_registry}:${version}'
-                                }
-
-                        }
+                        // 備份用，因記憶體不足先註解掉
+                        // stage('DockerBuild') {
+                        //     agent { node { label 'Build' } }
+                        //         steps{
+                        //             script {
+                        //                 env.version = sh (script: 'git rev-parse --short=7 HEAD', returnStdout: true).trim()
+                        //             }
+                        //             sh 'sudo docker build --build-arg project_name=${project_name} -t ${harbor_registry}:${version} . '
+                        //             sh 'sudo docker login 13.213.82.69 -u jenkins -p 06ftJ0Ds'
+                        //             sh 'sudo docker push ${harbor_registry}:${version}'
+                        //             sh 'sudo docker rmi ${harbor_registry}:${version}'
+                        //         }
+                        // }
                     }
                 }
     }
