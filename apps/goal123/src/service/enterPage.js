@@ -60,6 +60,7 @@ export const GET_ENTER_PAGE = ({
 	tpGameType,
 	appType
 }) => {
+	console.log("GET_ENTER_PAGE");
 	const appUrl = window.location.origin;
 	const homeUrl = `${appUrl}`;
 	const signupUrl = `${appUrl}/${path.join.root}`;

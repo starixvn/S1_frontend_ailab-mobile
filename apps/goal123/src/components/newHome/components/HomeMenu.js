@@ -61,6 +61,7 @@ const HomeMenu = ({ userInfo }) => {
 		tpGameType,
 		appType
 	}) => {
+		console.log(userInfo);
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
 			tpId,
