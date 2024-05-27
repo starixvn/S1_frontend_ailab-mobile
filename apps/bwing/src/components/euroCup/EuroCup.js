@@ -333,7 +333,7 @@ const EuroCup = () => {
 	}, [promotionMission.length]);
 
 	return (
-		<>
+		<main className="euro">
 			<TopContent />
 			<TopTwoPredictions
 				predictScoreList={predictScoreList ?? []}
@@ -394,7 +394,7 @@ const EuroCup = () => {
 				/>
 			</div>
 			<Directions />
-		</>
+		</main>
 	);
 };
 
