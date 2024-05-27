@@ -169,7 +169,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 				root &&
 				!displayLiveStreaming &&
 				!isLoading &&
-				!isDateRange(eventTime.eventCup) && (
+				isDateRange(eventTime.eventCup) && (
 					<div className="eventLink vgaming">
 						<button
 							className="icon icon-close"
@@ -192,8 +192,8 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 				/>
 			)}
 
-			{/* 僅限過年期間不顯示 */}
-			{!isDateRange(eventTime.dragonEgg) && root && luckyWheel ? (
+			{/* 歐冠杯期間不顯示 */}
+			{!isDateRange(eventTime.eventCup) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
 
