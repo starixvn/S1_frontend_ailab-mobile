@@ -12,7 +12,6 @@ const HomeMenu = ({ userInfo }) => {
 	const { t } = useTranslation();
 	const { menuList } = useMenu();
 	const { onclickStaticProduct } = useClickGame();
-
 	const [selectedCategory, setSelectedCategory] = useState(defCol.hotGame);
 
 	const hotGameList = [
@@ -114,11 +113,10 @@ const HomeMenu = ({ userInfo }) => {
 			<button
 				key={category}
 				className={classNames({
-					active: selectedCategory === category,
-					// * 目前只用 New Tag
-					newicon: isNew
+					active: selectedCategory === category
 				})}
 				onClick={() => onClickCategory(category)}>
+				{/* 目前只用 New Tag */}
 				{isNew && <div className={classNames({ "new-icon": isNew })} />}
 				<div className="category-icon">
 					<img src={mainMenuImageRender} alt={category} />
@@ -164,12 +162,13 @@ const HomeMenu = ({ userInfo }) => {
 				key={`${tpGameIdNo}${defDisplayKey}`}
 				onClick={() => {
 					if (defTabRedirect) {
+						window.scrollTo({ top: 0, behavior: "smooth" });
 						return setSelectedCategory(defTabRedirect);
 					}
 					// 這裡有靜態的 hotGame， 所以用 onclickStaticProduct
 					return onclickStaticProduct(subMenuItem);
 				}}>
-				{isNew && <div className="newicon" />}
+				{isNew && <div className="new-icon" />}
 				<div className="gamelist-img">
 					<img src={suBMenuImage} alt={productName} />
 				</div>

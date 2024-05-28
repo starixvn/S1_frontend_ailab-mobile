@@ -34,7 +34,7 @@ export const defMenuList = Object.freeze([
 	{
 		lobbyCategoryId: lobbyCategoryEnum.SPORTS,
 		defDisplayKey: "lbl_Sports",
-		category: "sports",
+		category: defCol.sports,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-sports.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-sports.svg`,
 		subMenus: [
@@ -90,7 +90,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_eSports",
 		lobbyCategoryId: lobbyCategoryEnum.ESPORTS,
-		category: "esports",
+		category: defCol.esports,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-esports.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-esports.svg`,
 		subMenus: [
@@ -111,7 +111,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_LiveCasino",
 		lobbyCategoryId: lobbyCategoryEnum.CASINO,
-		category: "livecasino",
+		category: defCol.livecasino,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-casino.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-casino.svg`,
 		subMenus: [
@@ -184,7 +184,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_Slots",
 		lobbyCategoryId: lobbyCategoryEnum.SLOTS,
-		category: "slots",
+		category: defCol.slots,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-slots.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-slots.svg`,
 		subMenus: [
@@ -331,7 +331,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_Games",
 		lobbyCategoryId: lobbyCategoryEnum.GAMES,
-		category: "games",
+		category: defCol.games,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-games.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-games.svg`,
 		subMenus: [
@@ -384,7 +384,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_Fishing",
 		lobbyCategoryId: lobbyCategoryEnum.FISHING,
-		category: "fishing",
+		category: defCol.fishing,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-fishing.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-fishing.svg`,
 		subMenus: [
@@ -417,7 +417,7 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "lbl_Lottery",
 		lobbyCategoryId: lobbyCategoryEnum.LOTTERY,
-		category: "lottery",
+		category: defCol.lottery,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-lottery.svg`,
 		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-lottery.svg`,
 		subMenus: [
@@ -442,9 +442,9 @@ export const defMenuList = Object.freeze([
 	{
 		defDisplayKey: "CockFighting",
 		lobbyCategoryId: lobbyCategoryEnum.Cockfighting,
-		category: "cockFighting",
+		category: defCol.cockFighting,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-cockfigting.svg`,
-		sideMenuIcon: "icon icon-lottery",
+		sideMenuIcon: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-cockfigting.svg`,
 		subMenus: [
 			{
 				...products.GACockFighting,
