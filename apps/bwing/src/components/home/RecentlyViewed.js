@@ -19,7 +19,8 @@ const RecentlyViewed = () => {
 	const swiperParams = {
 		spaceBetween: 10,
 		slidesPerView: 1.9,
-		initialSlide: 1.3
+		initialSlide: 0
+		// initialSlide: 1.3
 	};
 
 	return (
