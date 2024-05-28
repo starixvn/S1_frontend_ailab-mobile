@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
-import { isInApp } from "@ailab-mobile/common";
+import { isInApp, setAppLanguage } from "@ailab-mobile/common";
 import Logo from "../img/logo";
 import { i18nContext, userInfoContext } from "../common/context";
 import { defSubMenus } from "../../datas/defMenu";
@@ -34,6 +34,7 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 		}
 
 		setCookie(siteInfo(newLangId).langCookie, newLangId);
+		if (isInApp) setAppLanguage(newLangId);
 	};
 
 	return (
