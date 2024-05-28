@@ -44,7 +44,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [displayLiveStreaming, setDisplayLiveStreaming] = useState(false);
 	const [liveStreamingList, setLiveStreamingList] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
 	const [appHint, setAppHint] = useState(false);
 
 	const _matchLogin = useMatch(`/${path.login.root}`) !== null;
@@ -99,7 +98,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 
 	useEffect(() => {
 		const getLiveStreamingList = async () => {
-			setIsLoading(true);
 			try {
 				const {
 					data: { data: resultList }
@@ -118,13 +116,11 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 
 					setLiveStreamingList(filterList);
 				}
-				setIsLoading(false);
 			} catch (error) {
 				setPopBox({
 					isOpen: true,
 					content: error
 				});
-				setIsLoading(false);
 			}
 		};
 
@@ -164,25 +160,21 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 				</main>
 			)}
 
-			{/* 右下角 Vgaming 進入點 */}
-			{displayVgaming &&
-				root &&
-				!displayLiveStreaming &&
-				!isLoading &&
-				isDateRange(eventTime.eventCup) && (
-					<div className="eventLink vgaming">
-						<button
-							className="icon icon-close"
-							onClick={() => setDisplayVgaming(false)}
-						/>
-						<img
-							className="vgimg"
-							src={`${bannerImgUrl}/h5/img/vgaming.gif`}
-							alt="vgaming-link"
-							onClick={() => clickGame(defGameInfo.sabaClub)}
-						/>
-					</div>
-				)}
+			{/* 歐冠杯期間顯示 */}
+			{displayVgaming && root && isDateRange(eventTime.eventCup) && (
+				<div className="eventLink vgaming">
+					<button
+						className="icon icon-close"
+						onClick={() => setDisplayVgaming(false)}
+					/>
+					<img
+						className="vgimg"
+						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
+						alt="vgaming-link"
+						onClick={() => clickGame(defGameInfo.sabaClub)}
+					/>
+				</div>
+			)}
 
 			{root && (
 				<LiveStreamingPop
