@@ -230,6 +230,16 @@ const defSubMenus = [
 				tpGameType: 28
 			}
 		]
+	},
+	{
+		displayKey: "lbl_CockFighting",
+		iconSrc: `${bannerImgUrl}/h5/img/home-page/icon/sidemenu-cockfigting.svg`,
+		subItems: [
+			{
+				...defGameInfo.WCC_CockFighting,
+				displayKey: "lbl_CockFighting"
+			}
+		]
 	}
 ];
 
