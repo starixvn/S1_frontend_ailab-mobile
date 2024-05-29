@@ -1,183 +1,192 @@
 import React, { useContext } from "react";
+import { products } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { bannerImgUrl } from "../../../config";
 import { userInfoContext } from "../../common/context";
 
 import useGetSocialChannel, {
-	defDisplayPage,
-	defChannelName
+	defDisplayPage
 } from "../../hook/useGetSocialChannel";
-
-const providers = [
-	{
-		name: "saba",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/saba.png`,
-		alt: "Saba"
-	},
-	{
-		name: "tfg",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/tfg.png`,
-		alt: "雷火tfg"
-	},
-	{
-		name: "sbo",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/sbo.png`,
-		alt: "sbobet"
-	},
-	{
-		name: "bti",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/bti.png`,
-		alt: "BTi"
-	},
-	{
-		name: "ag",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/ag.png`,
-		alt: "AG"
-	},
-	{
-		name: "ae",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/ae.png`,
-		alt: "AE"
-	},
-	{
-		name: "n2live",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/n2live.png`,
-		alt: "N2live"
-	},
-	{
-		name: "ygg",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/ygg.png`,
-		alt: "ygg"
-	},
-	{
-		name: "cq9",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/cq9.png`,
-		alt: "cq9"
-	},
-	{
-		name: "png",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/png.png`,
-		alt: "png"
-	},
-	{
-		name: "jili",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/jili.png`,
-		alt: "jili"
-	},
-	{
-		name: "v8power",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/v8power.png`,
-		alt: "v8power"
-	},
-	{
-		name: "km",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/km.png`,
-		alt: "king maker"
-	},
-	{
-		name: "tc",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/tc.png`,
-		alt: "tc gaming"
-	},
-	{
-		name: "next",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/next.png`,
-		alt: "nextspin"
-	},
-	{
-		name: "im",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/im.png`,
-		alt: "im sports"
-	},
-	{
-		name: "im-esports",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/im-esports.png`,
-		alt: "im esports"
-	},
-	{
-		name: "spribe",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/spribe.png`,
-		alt: "spribe"
-	},
-	{
-		name: "es",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/es.png`,
-		alt: "es"
-	},
-	{
-		name: "world",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/world.png`,
-		alt: "world"
-	},
-	{
-		name: "fachai",
-		image: `${bannerImgUrl}/h5/img/home-page/provider/fachai.png`,
-		alt: "fa chai"
-	}
-];
+import useClickGame from "../hooks/useClickGame";
+import { defMenuType } from "../../../datas/defMenu";
+import path from "../../../path";
 
 const swiperParams = {
 	slidesPerView: 4.5,
 	spaceBetween: 6
 };
 
+const channelNameToImg = {
+	Facebook: "icon-facebook",
+	Zalo: "icon-zalo",
+	Telegram: "icon-telegram",
+	Skype: "icon-skype",
+	Livechat: "icon-livechat"
+};
+
 const HomeButtom = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
+	const { onclickStaticProduct } = useClickGame();
 
 	const { socialChannel } = useGetSocialChannel({
 		langId: userInfo?.langId,
 		displayPage: defDisplayPage.Home
 	});
 
-	const zaloData = socialChannel?.find(
-		channel => channel.channelName === defChannelName.Zalo
-	);
+	const defPlatFromList = [
+		{
+			...products.Soccer,
+			imgName: "saba"
+		},
+		{
+			...products.TFGaming,
+			imgName: "tfg"
+		},
+		{
+			...products.SBOBET,
+			imgName: "sbo"
+		},
+		{
+			...products.BtiSport,
+			imgName: "bti"
+		},
+		{
+			...products.AsiaGaming,
+			imgName: "ag"
+		},
+		{
+			...products.AESexy,
+			imgName: "ae"
+		},
+		{
+			...products.YeebetCasino,
+			imgName: "ygg"
+		},
+		{
+			...products.CQ9,
+			imgName: "cq9",
+			path: path.casino.root,
+			parameter: { provider: products.CQ9.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.PlaynGO,
+			imgName: "png",
+			path: path.casino.root,
+			parameter: { provider: products.PlaynGO.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.JILI,
+			imgName: "jili",
+			path: path.casino.root,
+			parameter: { provider: products.JILI.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.V8Poker,
+			imgName: "v8power"
+		},
+		{
+			...products.KingMaker,
+			imgName: "km"
+		},
+		{
+			...products.TFGaming,
+			imgName: "tc"
+		},
+		{
+			...products.Nextspin,
+			imgName: "next",
+			path: path.casino.root,
+			parameter: { provider: products.Nextspin.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.IMSports,
+			imgName: "im"
+		},
+		{
+			...products.IMESports,
+			imgName: "im-esports"
+		},
+		{
+			...products.SPRIBE,
+			imgName: "spribe",
+			path: path.casino.root,
+			parameter: { provider: products.SPRIBE.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.ES,
+			imgName: "es",
+			path: path.casino.root,
+			parameter: { provider: products.ES.tpId },
 
+			menuType: defMenuType.Link
+		},
+		{
+			...products.WE,
+			imgName: "world"
+		},
+		{
+			...products.FaChai,
+			imgName: "fachai",
+			path: path.casino.root,
+			parameter: { provider: products.FaChai.tpId },
+			menuType: defMenuType.Link
+		}
+	];
 	return (
 		<div className="home-bottom">
 			<div className="bottom-info">
 				<div className="socialmedia">
-					<a
-						href="https://www.facebook.com/goal123.official"
-						target="_blank"
-						rel="noreferrer">
-						<img
-							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-facebook.svg`}
-							alt="home-facebook"
-						/>
-					</a>
 					<a href="https://www.youtube.com/@GOAL123VietNam">
 						<img
 							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-youtube.svg`}
 							alt="home-youtube"
 						/>
 					</a>
-					<a
-						href={zaloData ? zaloData.link : "#"}
-						target="_blank"
-						rel="noreferrer">
-						<img
-							src={`${bannerImgUrl}/h5/img/home-page/icon/icon-zalo.svg`}
-							alt="home-zalo"
-						/>
-					</a>
+					{socialChannel?.map(item => (
+						<a
+							key={`channel-${item.channelName}`}
+							href={item.link}
+							target="_blank"
+							rel="noreferrer">
+							<img
+								src={`${bannerImgUrl}/h5/img/home-page/icon/${
+									channelNameToImg[item.channelName]
+								}.svg`}
+								alt={item.channelName}
+							/>
+						</a>
+					))}
 				</div>
 				<div className="provider">
 					<Swiper {...swiperParams} className="swiper-wrapper">
-						{providers.map(provider => (
-							<SwiperSlide
-								className="swiper-slide"
-								key={provider.name}>
-								<a href="" style={{ pointerEvents: "none" }}>
-									<img
-										src={provider.image}
-										alt={provider.alt}
-									/>
-								</a>
-							</SwiperSlide>
-						))}
+						{/* Goal 的遊戲跟 PM 討論後為顯示固定的遊戲，不會因為 api 變動 */}
+						{defPlatFromList.map(product => {
+							const { imgName } = product || {};
+							return (
+								imgName && (
+									<SwiperSlide
+										className="swiper-slide"
+										key={imgName}>
+										<button
+											onClick={() =>
+												onclickStaticProduct(product)
+											}>
+											<img
+												src={`${bannerImgUrl}/h5/img/home-page/provider/${imgName}.png`}
+												alt={imgName}
+											/>
+										</button>
+									</SwiperSlide>
+								)
+							);
+						})}
 					</Swiper>
 				</div>
 				<div className="powered">

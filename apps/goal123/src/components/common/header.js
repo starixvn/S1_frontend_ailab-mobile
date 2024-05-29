@@ -14,85 +14,58 @@ import {
 import path from "../../path";
 import Logo from "./logo";
 import AppDownloadHint from "../home/appDownload";
-import Submenu from "../home/submenu";
 import { bannerImgUrl } from "../../config";
 import MsgPopup from "./msgPopup";
 import { eventTime } from "./eventTime";
 
-const Header = ({
-	title,
-	hideLogo,
-	showingAppHint,
-	setAppHint,
-	hasSideMenu = false
-}) => {
-	const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
+const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
 	const { root } = useContext(rootContext);
 	const navigate = useNavigate();
 
-	const handleSideMenuPanel = isOpen => {
-		setIsOpenSideMenu(isOpen);
-	};
-
 	return (
 		<header className={title ? "header" : ""} id="header">
-			{showingAppHint ? (
+			{showingAppHint && (
 				<AppDownloadHint
 					i18n={i18n}
 					cookieName={`appDownloadHint${userInfo.userName}`}
 					langId={userInfo.langId}
 					setAppHint={setAppHint}
 				/>
-			) : null}
+			)}
 			<div>
-				{hideLogo ? null : (
-					<>
-						<div className="menuBtnNew">
-							<button onClick={() => handleSideMenuPanel(true)}>
-								<span>≡</span>
-							</button>
+				{hideLogo ? null : isDateRange(eventTime.eventCup) ? (
+					<a className="logo eurocuplogo">
+						<div
+							onClick={() => {
+								root
+									? window.location.reload()
+									: navigate(`/${userInfo.langId}`);
+							}}>
+							<img
+								src={`${bannerImgUrl}/h5/img/event/eurocup/goal123-logo.png`}
+								alt=""
+							/>
 						</div>
-						{isDateRange(eventTime.eventCup) ? (
-							<a className="logo eurocuplogo">
-								<div
-									onClick={() => {
-										root
-											? window.location.reload()
-											: navigate(`/${userInfo.langId}`);
-									}}>
-									<img
-										src={`${bannerImgUrl}/h5/img/event/eurocup/goal123-logo.png`}
-										alt=""
-									/>
-								</div>
-								<div
-									onClick={() => {
-										navigate(
-											`/${userInfo.langId}/${path.euroCup.root}`
-										);
-									}}>
-									<img
-										src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
-										alt=""
-									/>
-								</div>
-							</a>
-						) : (
-							<a href="/" className={classNames("logo")}>
-								<Logo />
-							</a>
-						)}
-					</>
+						<div
+							onClick={() => {
+								navigate(
+									`/${userInfo.langId}/${path.euroCup.root}`
+								);
+							}}>
+							<img
+								src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif.webp`}
+								alt=""
+							/>
+						</div>
+					</a>
+				) : (
+					<a href="/" className={classNames("logo")}>
+						<Logo />
+					</a>
 				)}
 				{title ? <div className="title">{title}</div> : <HeaderBtn />}
-				{hasSideMenu && (
-					<Submenu
-						handleSideMenuPanel={handleSideMenuPanel}
-						isOpenSideMenu={isOpenSideMenu}
-					/>
-				)}
 			</div>
 		</header>
 	);
@@ -102,16 +75,14 @@ Header.defaultProps = {
 	title: null,
 	hideLogo: null,
 	showingAppHint: false,
-	setAppHint: () => null,
-	hasSideMenu: false
+	setAppHint: () => null
 };
 
 Header.propTypes = {
 	title: PropTypes.string,
 	hideLogo: PropTypes.bool,
 	showingAppHint: PropTypes.bool,
-	setAppHint: PropTypes.func,
-	hasSideMenu: PropTypes.bool
+	setAppHint: PropTypes.func
 };
 
 const HeaderBtn = () => {

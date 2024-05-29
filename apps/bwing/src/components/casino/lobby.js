@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import PropTypes, { func, string, arrayOf, object } from "prop-types";
+import { defLoginGameType, products } from "@ailab-mobile/common";
 import {
 	defNavPanel,
 	navContext,
@@ -9,14 +10,9 @@ import {
 } from "../common/context";
 import { api_SetFavoriteGame } from "../../service/api/account";
 import { GET_CASINO_ENTER_PAGE } from "../../service/enterPage";
-import { defSlotTpGameType } from "../../datas/productList";
 import useSetTimeout from "../hook/useSetTimeout";
 import Games from "./games";
-import {
-	defLoginGameType,
-	defSpecialSetting,
-	useGotoGame
-} from "../hook/useGotoGame";
+import { useGotoGame } from "../hook/useGotoGame";
 
 const Panel = ({
 	imageUrl,
@@ -48,6 +44,7 @@ const Panel = ({
 		langId: userInfo.langId,
 		autoGetData: false
 	});
+
 	const handleSetFavorite = async (GameId, IsRemove, ProviderId) => {
 		if (userInfo.isLogin) {
 			try {
@@ -136,17 +133,15 @@ const Panel = ({
 						gameId: targetObj.gameId,
 						isFree: freePlay,
 						langId: userInfo.langId,
-						tpGameType: Object?.values(defSlotTpGameType)?.find(
-							obj => targetObj.tpId === obj.tpId
-						)?.tpGameType,
+						tpGameType: activeProvider?.tpGameType,
 						execFunction:
-							targetObj.tpId === defSpecialSetting.PG
+							targetObj.tpId === products.PGSoft.tpId
 								? handleGoToGame.bind(this, {
 										langId: userInfo.langId,
 										tpId: targetObj.tpId,
 										gameId: targetObj.gameId,
 										isFun: freePlay,
-										tpGameType: targetObj.tpGameType,
+										tpGameType: products.PGSoft.tpGameType,
 										loginGameType:
 											defLoginGameType.returnHtml
 								  })

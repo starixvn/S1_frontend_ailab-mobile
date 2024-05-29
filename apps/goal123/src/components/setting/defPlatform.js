@@ -1,232 +1,230 @@
-import { defGameInfo } from "../../datas/productList";
+import { products } from "@ailab-mobile/common";
+import { defMenuType } from "../../datas/defMenu";
 import path from "../../path";
 
-const defPlatfrom = [
+const defPlatForm = [
 	{
-		...defGameInfo.Sports,
-		imgName: "sabaa",
-		otherPlatformImg: "sabab"
+		...products.Soccer,
+		imgName: "sabab"
 	},
 	{
-		...defGameInfo.eSports_TFGaming,
+		...products.TFGaming,
 		imgName: "tfga"
 	},
 	{
-		...defGameInfo.SBOSport,
+		...products.SBOBET,
 		imgName: "sboa"
 	},
 	{
-		...defGameInfo.BTISport,
+		...products.BtiSport,
 		imgName: "btia"
 	},
 	{
-		...defGameInfo.LIVEcasinoAG,
+		...products.AsiaGaming,
 		imgName: "aga"
 	},
 	{
-		...defGameInfo.LIVEcasinoAB,
+		...products.Allbet,
 		imgName: "aba"
 	},
 	{
-		...defGameInfo.LIVEcasinoAE,
+		...products.AESexy,
 		imgName: "aea"
 	},
 	{
-		...defGameInfo.Casino_PP,
+		...products.NewPlayTechSlot,
+		imgName: "ppb",
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PP },
-		imgName: "ppa",
-		otherPlatformImg: "ppb"
+		parameter: { provider: products.NewPlayTechSlot.tpId },
+		menuType: defMenuType.Link
 	},
 	{
-		...defGameInfo.LIVEcasinoBG,
+		...products.BigGaming,
 		imgName: "bga"
 	},
 	{
-		...defGameInfo.LIVEcasinoYEEBET,
+		...products.YeebetCasino,
 		imgName: "yba"
 	},
 	{
-		...defGameInfo.Casino_MGP,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_MGP },
+		...products.MicrogamingCasino,
 		imgName: "mga"
 	},
 	{
-		...defGameInfo.Casino_PlayTech,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PlayTech },
+		...products.NewPlayTechCasino,
 		imgName: "pta"
 	},
 	{
-		...defGameInfo.Casino_PG,
+		...products.PGSoft,
+		imgName: "pga",
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PG },
-		imgName: "pga"
+		parameter: { provider: products.PGSoft.tpId },
+		menuType: defMenuType.Link
 	},
 	{
-		...defGameInfo.Casino_SG,
+		...products.Spadegaming,
+		imgName: "sga",
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_SG },
-		imgName: "sga"
+		parameter: { provider: products.Spadegaming.tpId },
+		menuType: defMenuType.Link
 	},
 	{
-		...defGameInfo.Casino_YGG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_YGG },
+		...products.YGGDrassil,
 		imgName: "yga",
-		otherPlatformImg: "ygb"
-	},
-	{
-		...defGameInfo.Casino_CQ9,
 		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_CQ9 },
-		imgName: "cq9a"
+		parameter: { provider: products.YGGDrassil.tpId },
+		menuType: defMenuType.Link
 	},
 	{
-		...defGameInfo.Casino_Jili,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Jili },
-		imgName: "jilia"
+		...products.CQ9,
+		imgName: "cq9a",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.CQ9.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Fishing,
+		...products.JILI,
+		imgName: "jilia",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.JILI.tpId },
+		path: path.casino.root
+	},
+	{
+		...products.FishingWorld,
 		imgName: "yla"
 	},
 	{
-		...defGameInfo.V8Poker,
+		...products.V8Poker,
 		imgName: "v8a"
 	},
 	{
-		...defGameInfo.kingMaker,
+		...products.KingMaker,
 		imgName: "kingmakera"
 	},
 	{
-		...defGameInfo.Casino_NetEnt,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_NetEnt },
-		imgName: "nea"
+		...products.NetEnt,
+		imgName: "nea",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.NetEnt.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.LIVEcasinoEVO,
+		...products.EvolutionGaming,
 		imgName: "evolutiona"
 	},
 	{
-		...defGameInfo.Casino_RedTiger,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_RedTiger },
-		imgName: "rta"
+		...products.RedTiger,
+		imgName: "rta",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.RedTiger.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_AdvantPlay,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_AdvantPlay },
-		imgName: "apa"
+		...products.AdvantPlay,
+		imgName: "apa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.AdvantPlay.tpId },
+		...products.AdvantPlay,
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_Habanero,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Habanero },
-		imgName: "habaneroa"
+		...products.Habanero,
+		imgName: "habaneroa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.Habanero.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_SimplePlay,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_SimplePlay },
-		imgName: "simpleplaya"
+		...products.SimplePlay,
+		imgName: "simpleplaya",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.SimplePlay.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_Skywind,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Skywind },
+		...products.SkywindCasino,
 		imgName: "ska"
 	},
 	{
-		...defGameInfo.Casino_Nextspin,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Nextspin },
-		imgName: "nextspina"
+		...products.Nextspin,
+		imgName: "nextspina",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.Nextspin.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_Endorphina,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Endorphina },
-		imgName: "endorphinaa"
-	},
-	{
-		...defGameInfo.sports_IM,
+		...products.IMSports,
 		imgName: "im-sportsa"
 	},
 	{
-		...defGameInfo.eSports_IM,
+		...products.IMESports,
 		imgName: "im-esportsa"
 	},
 	{
-		...defGameInfo.Casino_SPRIBE,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_SPRIBE },
-		imgName: "spribea"
+		...products.SPRIBE,
+		imgName: "spribea",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.SPRIBE.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_PNG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PNG },
-		imgName: "pnga"
-	},
-	{
-		...defGameInfo.LIVEcasinoEB,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.LIVEcasinoEB },
+		...products.WE,
 		imgName: "we"
 	},
 	{
-		...defGameInfo.Casino_Endoㄋrphina,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Endorphina },
-		imgName: "es"
+		...products.ES,
+		imgName: "es",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.ES.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_FaChai,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_FaChai },
-		imgName: "fachai"
+		...products.FaChai,
+		imgName: "fachai",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.FaChai.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_PNG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_PNG },
-		imgName: "pnga"
+		...products.PlaynGO,
+		imgName: "pnga",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.PlaynGO.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_BNG,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_BNG },
-		imgName: "bnga"
+		...products.BNG,
+		imgName: "bnga",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.BNG.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_NoLimitCity,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_NoLimitCity },
-		imgName: "nlca"
+		...products.NoLimitCity,
+		imgName: "nlca",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.NoLimitCity.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.Casino_Amigo,
-		path: path.casino.root,
-		parameter: { ...defGameInfo.Casino_Amigo },
-		imgName: "amigoa"
+		...products.AmigoGaming,
+		imgName: "amigoa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.AmigoGaming.tpId },
+		path: path.casino.root
 	},
 	{
-		...defGameInfo.GACockFighting,
+		...products.GACockFighting,
 		imgName: "cockfightinga"
 	},
 	{
-		...defGameInfo["93Connect"],
+		...products["93Connect"],
 		imgName: "93connecta"
 	},
 	{
-		...defGameInfo.LIVECasinoWon,
+		...products.WonCasino,
 		imgName: "woncasinoa"
 	}
 ];
 
-export default defPlatfrom;
+export default defPlatForm;

@@ -1,34 +1,34 @@
 import React from "react";
+import { products } from "@ailab-mobile/common";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { useTranslation } from "react-i18next";
-import { defSlotTpGameType } from "../../../datas/productList";
-
+import path from "apps/goal123/src/path";
 import config from "../../../config";
 
 const images = [
 	{
-		link: `/casino/${defSlotTpGameType.PP.tpId}`,
+		link: `/${path.casino.root}/${products.PragmaticPlaySlot.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-pp.jpg`,
 		altText: "pop-pp",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-pp.png`,
 		logoAlt: "popular-slots-pp"
 	},
 	{
-		link: `/casino/${defSlotTpGameType.Skywind.tpId}`,
+		link: `/${path.casino.root}/${products.SkywindSlot.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-sky.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-sky.png`,
 		logoAlt: "popular-slots-sky"
 	},
 	{
-		link: `/casino/${defSlotTpGameType.SG.tpId}`,
+		link: `/${path.casino.root}/${products.Spadegaming.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-spad.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-spade.png`,
 		logoAlt: "popular-slots-spad"
 	},
 	{
-		link: `/casino/${defSlotTpGameType.JILI.tpId}`,
+		link: `/${path.casino.root}/${products.JILI.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-jili.jpg`,
 		altText: "pop-jili",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-jili.png`,
@@ -36,14 +36,14 @@ const images = [
 	},
 
 	{
-		link: `/casino/${defSlotTpGameType.MG.tpId}`,
+		link: `/${path.casino.root}/${products.MicrogamingSlot.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-micro.jpg`,
 		altText: "pop-micro",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-micro.png`,
 		logoAlt: "popular-slots-micro"
 	},
 	{
-		link: `/casino/${defSlotTpGameType.CQ9.tpId}`,
+		link: `/${path.casino.root}/${products.CQ9.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-cq9.jpg`,
 		altText: "pop-cq9",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-cq9.png`,
@@ -67,7 +67,7 @@ const HomePopularSlotGames = () => {
 			<div className="popularslots-top">
 				<a
 					className="top-item"
-					href={`/casino/${defSlotTpGameType.PG.tpId}`}>
+					href={`/${path.casino.root}/${products.PGSoft.tpId}`}>
 					<img
 						src={`${config.t_and_cURL}/h5/img/home-page/popular-slots-pg.png`}
 						alt="slot-pg"
@@ -76,7 +76,7 @@ const HomePopularSlotGames = () => {
 
 				<a
 					className="top-item"
-					href={`/casino/${defSlotTpGameType.AdvantPlay.tpId}`}>
+					href={`/${path.casino.root}/${products.AdvantPlay.tpId}`}>
 					<img
 						src={`${config.t_and_cURL}/h5/img/home-page/popular-slots-ap.png`}
 						alt="slot-pg"
