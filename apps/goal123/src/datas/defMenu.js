@@ -44,28 +44,23 @@ export const defMenuList = Object.freeze([
 			},
 			{
 				...products.Soccer,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.SBOBET,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.BtiSport,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.IMSports,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.SabaSoccer,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.ESportALL,
@@ -73,13 +68,11 @@ export const defMenuList = Object.freeze([
 			},
 			{
 				...products.Basketball,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.Volleyball,
-				menuType: defMenuType.entPage,
-				hasDesktopLink: true
+				menuType: defMenuType.entPage
 			},
 			{
 				...products.VirtualSports,

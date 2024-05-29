@@ -1,36 +1,16 @@
 import React from "react";
 import { bannerImgUrl } from "../../config";
-import { useMenu } from "../hook/useMenu";
-import defPlatform from "./defPlatform";
+import defPlatForm from "./defPlatform";
 import useClickGame from "../newHome/hooks/useClickGame";
 
 const Platform = () => {
-	const { menuList = [] } = useMenu();
 	const { onclickStaticProduct } = useClickGame();
-
-	const platFormProducts = menuList.flatMap(mainMenuItem => {
-		const { data } = mainMenuItem || {};
-
-		return data?.flatMap(subMenuItem => {
-			const defProduct = defPlatform.find(
-				product => product.tpGameIdNo === subMenuItem.tpGameIdNo
-			);
-			if (defProduct) {
-				return {
-					...subMenuItem,
-					...defProduct
-				};
-			}
-
-			return [];
-		});
-	});
 
 	return (
 		<div className="partner-bar">
-			{platFormProducts.map(subMenuItem => {
-				const { tpGameIdNo, imgName, otherPlatformImg } =
-					subMenuItem || {};
+			{/* Goal 的遊戲跟 PM 討論後為顯示固定的遊戲，不會因為 api 變動 */}
+			{defPlatForm.map(subMenuItem => {
+				const { tpGameIdNo, imgName } = subMenuItem || {};
 				return (
 					imgName && (
 						<button
@@ -38,9 +18,7 @@ const Platform = () => {
 							onClick={() => onclickStaticProduct(subMenuItem)}>
 							<img
 								alt={imgName}
-								src={`${bannerImgUrl}/h5/img/footer/${
-									otherPlatformImg ?? imgName
-								}.png`}
+								src={`${bannerImgUrl}/h5/img/footer/${imgName}.png`}
 							/>
 						</button>
 					)

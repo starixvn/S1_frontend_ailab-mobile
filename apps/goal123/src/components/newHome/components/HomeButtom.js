@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { products } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import { bannerImgUrl } from "../../../config";
@@ -7,9 +8,9 @@ import { userInfoContext } from "../../common/context";
 import useGetSocialChannel, {
 	defDisplayPage
 } from "../../hook/useGetSocialChannel";
-import { useMenu } from "../../hook/useMenu";
-import defPlatform from "../../setting/defPlatform";
 import useClickGame from "../hooks/useClickGame";
+import { defMenuType } from "../../../datas/defMenu";
+import path from "../../../path";
 
 const swiperParams = {
 	slidesPerView: 4.5,
@@ -27,7 +28,6 @@ const channelNameToImg = {
 const HomeButtom = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
-	const { menuList = [] } = useMenu();
 	const { onclickStaticProduct } = useClickGame();
 
 	const { socialChannel } = useGetSocialChannel({
@@ -35,24 +35,114 @@ const HomeButtom = () => {
 		displayPage: defDisplayPage.Home
 	});
 
-	const providers = menuList.flatMap(mainMenuItem => {
-		const { data } = mainMenuItem || {};
+	const defPlatFromList = [
+		{
+			...products.Soccer,
+			imgName: "saba"
+		},
+		{
+			...products.TFGaming,
+			imgName: "tfg"
+		},
+		{
+			...products.SBOBET,
+			imgName: "sbo"
+		},
+		{
+			...products.BtiSport,
+			imgName: "bti"
+		},
+		{
+			...products.AsiaGaming,
+			imgName: "ag"
+		},
+		{
+			...products.AESexy,
+			imgName: "ae"
+		},
+		{
+			...products.n2LIVE,
+			imgName: "n2live"
+		},
+		{
+			...products.YeebetCasino,
+			imgName: "ygg"
+		},
+		{
+			...products.CQ9,
+			imgName: "cq9",
+			path: path.casino.root,
+			parameter: { provider: products.CQ9.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.PlaynGO,
+			imgName: "png",
+			path: path.casino.root,
+			parameter: { provider: products.PlaynGO.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.JILI,
+			imgName: "jili",
+			path: path.casino.root,
+			parameter: { provider: products.JILI.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.V8Poker,
+			imgName: "v8power"
+		},
+		{
+			...products.KingMaker,
+			imgName: "km"
+		},
+		{
+			...products.TFGaming,
+			imgName: "tc"
+		},
+		{
+			...products.Nextspin,
+			imgName: "next",
+			path: path.casino.root,
+			parameter: { provider: products.Nextspin.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.IMSports,
+			imgName: "im"
+		},
+		{
+			...products.IMESports,
+			imgName: "im-esports"
+		},
+		{
+			...products.SPRIBE,
+			imgName: "spribe",
+			path: path.casino.root,
+			parameter: { provider: products.SPRIBE.tpId },
+			menuType: defMenuType.Link
+		},
+		{
+			...products.ES,
+			imgName: "es",
+			path: path.casino.root,
+			parameter: { provider: products.ES.tpId },
 
-		return data?.flatMap(subMenuItem => {
-			const defProduct = defPlatform.find(
-				product => product.tpGameIdNo === subMenuItem.tpGameIdNo
-			);
-			if (defProduct) {
-				return {
-					...subMenuItem,
-					...defProduct
-				};
-			}
-
-			return [];
-		});
-	});
-
+			menuType: defMenuType.Link
+		},
+		{
+			...products.WE,
+			imgName: "world"
+		},
+		{
+			...products.FaChai,
+			imgName: "fachai",
+			path: path.casino.root,
+			parameter: { provider: products.FaChai.tpId },
+			menuType: defMenuType.Link
+		}
+	];
 	return (
 		<div className="home-bottom">
 			<div className="bottom-info">
@@ -80,19 +170,20 @@ const HomeButtom = () => {
 				</div>
 				<div className="provider">
 					<Swiper {...swiperParams} className="swiper-wrapper">
-						{providers.map(provider => {
-							const { imgName, homeImage } = provider || {};
+						{/* Goal 的遊戲跟 PM 討論後為顯示固定的遊戲，不會因為 api 變動 */}
+						{defPlatFromList.map(product => {
+							const { imgName } = product || {};
 							return (
-								homeImage && (
+								imgName && (
 									<SwiperSlide
 										className="swiper-slide"
 										key={imgName}>
 										<button
 											onClick={() =>
-												onclickStaticProduct(provider)
+												onclickStaticProduct(product)
 											}>
 											<img
-												src={`${bannerImgUrl}/h5/img/home-page/provider/${homeImage}.png`}
+												src={`${bannerImgUrl}/h5/img/home-page/provider/${imgName}.png`}
 												alt={imgName}
 											/>
 										</button>

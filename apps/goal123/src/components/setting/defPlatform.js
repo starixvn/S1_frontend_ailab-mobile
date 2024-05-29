@@ -1,30 +1,27 @@
 import { products } from "@ailab-mobile/common";
+import { defMenuType } from "../../datas/defMenu";
+import path from "../../path";
 
-const defPlatfrom = [
+const defPlatForm = [
 	{
 		...products.Soccer,
-		imgName: "sabaa",
-		homeImage: "saba"
+		imgName: "sabab"
 	},
 	{
 		...products.TFGaming,
-		imgName: "tfga",
-		homeImage: "tfg"
+		imgName: "tfga"
 	},
 	{
 		...products.SBOBET,
-		imgName: "sboa",
-		homeImage: "sbo"
+		imgName: "sboa"
 	},
 	{
 		...products.BtiSport,
-		imgName: "btia",
-		homeImage: "bti"
+		imgName: "btia"
 	},
 	{
 		...products.AsiaGaming,
-		imgName: "aga",
-		homeImage: "ag"
+		imgName: "aga"
 	},
 	{
 		...products.Allbet,
@@ -32,17 +29,14 @@ const defPlatfrom = [
 	},
 	{
 		...products.AESexy,
-		imgName: "aea",
-		homeImage: "ae"
+		imgName: "aea"
 	},
 	{
-		...products.n2LIVE,
-		imgName: "n2livea",
-		homeImage: "N2live"
-	},
-	{
-		...products.PragmaticPlaySlot,
-		imgName: "ppa"
+		...products.NewPlayTechSlot,
+		imgName: "ppb",
+		path: path.casino.root,
+		parameter: { provider: products.NewPlayTechSlot.tpId },
+		menuType: defMenuType.Link
 	},
 	{
 		...products.BigGaming,
@@ -50,57 +44,69 @@ const defPlatfrom = [
 	},
 	{
 		...products.YeebetCasino,
-		imgName: "yba",
-		homeImage: "ygg"
+		imgName: "yba"
 	},
 	{
-		...products.MicrogamingSlot,
+		...products.MicrogamingCasino,
 		imgName: "mga"
 	},
 	{
-		...products.NewPlayTechSlot,
+		...products.NewPlayTechCasino,
 		imgName: "pta"
 	},
 	{
 		...products.PGSoft,
-		imgName: "pga"
+		imgName: "pga",
+		path: path.casino.root,
+		parameter: { provider: products.PGSoft.tpId },
+		menuType: defMenuType.Link
 	},
 	{
 		...products.Spadegaming,
-		imgName: "sga"
+		imgName: "sga",
+		path: path.casino.root,
+		parameter: { provider: products.Spadegaming.tpId },
+		menuType: defMenuType.Link
 	},
 	{
 		...products.YGGDrassil,
-		imgName: "yga"
+		imgName: "yga",
+		path: path.casino.root,
+		parameter: { provider: products.YGGDrassil.tpId },
+		menuType: defMenuType.Link
 	},
 	{
 		...products.CQ9,
 		imgName: "cq9a",
-		homeImage: "cq9"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.CQ9.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.JILI,
 		imgName: "jilia",
-		homeImage: "jili"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.JILI.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.FishingWorld,
-		imgName: "yla",
-		homeImage: "world"
+		imgName: "yla"
 	},
 	{
 		...products.V8Poker,
-		imgName: "v8a",
-		homeImage: "v8power"
+		imgName: "v8a"
 	},
 	{
 		...products.KingMaker,
-		imgName: "kingmakera",
-		homeImage: "km"
+		imgName: "kingmakera"
 	},
 	{
 		...products.NetEnt,
-		imgName: "nea"
+		imgName: "nea",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.NetEnt.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.EvolutionGaming,
@@ -108,43 +114,58 @@ const defPlatfrom = [
 	},
 	{
 		...products.RedTiger,
-		imgName: "rta"
+		imgName: "rta",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.RedTiger.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.AdvantPlay,
-		imgName: "apa"
+		imgName: "apa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.AdvantPlay.tpId },
+		...products.AdvantPlay,
+		path: path.casino.root
 	},
 	{
 		...products.Habanero,
-		imgName: "habaneroa"
+		imgName: "habaneroa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.Habanero.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.SimplePlay,
-		imgName: "simpleplaya"
+		imgName: "simpleplaya",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.SimplePlay.tpId },
+		path: path.casino.root
 	},
 	{
-		...products.SkywindSlot,
+		...products.SkywindCasino,
 		imgName: "ska"
 	},
 	{
 		...products.Nextspin,
 		imgName: "nextspina",
-		homeImage: "next"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.Nextspin.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.IMSports,
-		imgName: "im-sportsa",
-		homeImage: "im"
+		imgName: "im-sportsa"
 	},
 	{
 		...products.IMESports,
-		imgName: "im-esportsa",
-		homeImage: "im-esports"
+		imgName: "im-esportsa"
 	},
 	{
 		...products.SPRIBE,
 		imgName: "spribea",
-		homeImage: "spribe"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.SPRIBE.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.WE,
@@ -153,30 +174,44 @@ const defPlatfrom = [
 	{
 		...products.ES,
 		imgName: "es",
-		homeImage: "es"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.ES.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.FaChai,
 		imgName: "fachai",
-		homeImage: "fachai"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.FaChai.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.PlaynGO,
 		imgName: "pnga",
-		homeImage: "png"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.PlaynGO.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.BNG,
-		imgName: "bnga"
+		imgName: "bnga",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.BNG.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.NoLimitCity,
 		imgName: "nlca",
-		homeImage: "tc"
+		menuType: defMenuType.Link,
+		parameter: { provider: products.NoLimitCity.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.AmigoGaming,
-		imgName: "amigoa"
+		imgName: "amigoa",
+		menuType: defMenuType.Link,
+		parameter: { provider: products.AmigoGaming.tpId },
+		path: path.casino.root
 	},
 	{
 		...products.GACockFighting,
@@ -192,4 +227,4 @@ const defPlatfrom = [
 	}
 ];
 
-export default defPlatfrom;
+export default defPlatForm;
