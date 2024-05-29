@@ -61,10 +61,6 @@ const HomeButtom = () => {
 			imgName: "ae"
 		},
 		{
-			...products.n2LIVE,
-			imgName: "n2live"
-		},
-		{
 			...products.YeebetCasino,
 			imgName: "ygg"
 		},
