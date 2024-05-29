@@ -22,7 +22,6 @@ import GoTopBtn from "./goTopBtn";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { api_liveStreaming_GetDataList } from "../../service/api/liveStreaming";
 import { bannerImgUrl } from "../../config";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 import HomeHeader from "../newHome/components/HomeHeader";
