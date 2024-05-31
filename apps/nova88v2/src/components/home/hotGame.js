@@ -6,7 +6,6 @@ import {
 	popBoxContext,
 	productTpGameTypeSettingListContext
 } from "Context";
-import { defDeviceType } from "@ailab-mobile/api";
 import { useGetHotGameDataListQuery } from "@ailab-mobile/service";
 import useHandleLogin from "../hook/useHandleLogin";
 import {
@@ -49,8 +48,7 @@ const HotGame = () => {
 		data: { data: { HotGame: apiHotGameList = [] } = {} } = {}
 	} = useGetHotGameDataListQuery({
 		langId,
-		currencyId,
-		deviceType: defDeviceType.Mobile
+		currencyId
 	});
 
 	// * 如果沒有資料，整個元件都不渲染

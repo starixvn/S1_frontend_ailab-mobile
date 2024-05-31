@@ -1,21 +1,22 @@
-import { promotionRequest, defDeviceType } from "./base";
+import { getDeviceType } from "@ailab-mobile/api";
+import { promotionRequest } from "./base";
 
 export const api_GetDepositPromotionList = ({ langId }) =>
 	promotionRequest.post(`/GetDepositPromotionList/${langId}`, {
-		DeviceType: defDeviceType.Mobile
+		DeviceType: getDeviceType()
 	});
 
 export const api_SetDepositPromotionQueue = ({ langId, TransId, BonusCode }) =>
 	promotionRequest.post(`/SetDepositPromotionQueue/${langId}`, {
 		TransId,
 		BonusCode,
-		DeviceType: defDeviceType.Mobile
+		DeviceType: getDeviceType()
 	});
 
 export const api_promotion_GetPromotionDetail = ({ langId, BonusCode }) =>
 	promotionRequest.post(`/GetPromotionDetail/${langId}`, {
 		BonusCode,
-		DeviceType: defDeviceType.Mobile
+		DeviceType: getDeviceType()
 	});
 
 export const api_promotion_GetRebateExcludeGameList = ({

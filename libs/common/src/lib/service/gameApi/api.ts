@@ -1,3 +1,4 @@
+import { getDeviceType } from "@ailab-mobile/api";
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
 import { IGetSlotGamePageDataArgs, ISlotGamePageData } from "./type";
@@ -12,10 +13,14 @@ export const gameApi = rootApi.injectEndpoints({
 			IAxiosResponse<ISlotGamePageData>,
 			IGetSlotGamePageDataArgs
 		>({
-			query: ({ currencyId, deviceType, slotGameCategoryList }) => ({
+			query: ({ currencyId, slotGameCategoryList }) => ({
 				url: gameApiUrl.getSlotGamePage,
 				method: "POST",
-				data: { currencyId, deviceType, slotGameCategoryList }
+				data: {
+					currencyId,
+					slotGameCategoryList,
+					deviceType: getDeviceType()
+				}
 			})
 		})
 	})

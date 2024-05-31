@@ -1,4 +1,4 @@
-import axios from "axios";
+import { createAxiosInstanceWithDeviceHeader } from "@ailab-mobile/api";
 
 const rootURL = "";
 
@@ -8,97 +8,76 @@ export const defDeviceType = {
 	NativeAPP: 3
 };
 
-export const loginRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Site`
-});
+export const loginRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Site`
+);
 
-export const siteRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Site`
-});
+export const siteRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Site`
+);
 
-export const accountStrictRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/AccountStrict`
-});
+export const accountStrictRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/AccountStrict`
+);
 
-export const accountRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Account`
-});
+export const accountRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Account`
+);
 
-export const messageRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Message`
-});
+export const messageRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Message`
+);
 
-export const entPageRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/entPage`
-});
+export const entPageRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/entPage`
+);
 
-export const paymentRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Payment`
-});
+export const paymentRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Payment`
+);
 
-export const tpRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Tp`
-});
+export const tpRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Tp`
+);
 
-export const promotionRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Promotion`
-});
+export const promotionRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Promotion`
+);
 
-export const eventRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/events`
-});
+export const eventRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/events`
+);
 
-export const cashierRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}`
-});
+export const cashierRequest = createAxiosInstanceWithDeviceHeader(`${rootURL}`);
 
-export const videoRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Video`
-});
+export const videoRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Video`
+);
 
-export const playerRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Player`
-});
+export const playerRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Player`
+);
 
-export const worldCupPredictionRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/WorldCupPrediction`
-});
+export const worldCupPredictionRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/WorldCupPrediction`
+);
 
-export const hotEventRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/HotEvent`
-});
+export const hotEventRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/HotEvent`
+);
 
-export const gameRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Game`
-});
+export const gameRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Game`
+);
 
-export const hotGameRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/HotGame`
-});
+export const hotGameRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/HotGame`
+);
 
-export const shieldRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/Shield`
-});
+export const shieldRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Shield`
+);
 
-export const newsRequest = axios.create({
-	withCredentials: true,
-	baseURL: `${rootURL}/api/News`
-});
+export const newsRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/News`
+);

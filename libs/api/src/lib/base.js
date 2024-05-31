@@ -1,3 +1,4 @@
+import { isInApp } from "@ailab-mobile/common";
 import axios from "axios";
 
 export const defDeviceType = {
@@ -6,109 +7,99 @@ export const defDeviceType = {
 	NativeAPP: 3
 };
 
+export const getDeviceType = () =>
+	isInApp() ? defDeviceType.NativeAPP : defDeviceType.Mobile;
+
+export const createAxiosInstanceWithDeviceHeader = baseURL => {
+	const instance = axios.create({ withCredentials: true, baseURL });
+	instance.interceptors.request.use(config => {
+		config.headers["ai-device"] = getDeviceType();
+		return config;
+	});
+	return instance;
+};
+
 export default class BaseAPI {
 	constructor(data) {
 		// const apiUrl = data.apiURL;
 		const apiUrl = "";
-		this.loginRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Site`
-		});
+		this.loginRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Site`
+		);
 
-		this.siteRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Site`
-		});
+		this.siteRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Site`
+		);
 
-		this.accountStrictRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/AccountStrict`
-		});
+		this.accountStrictRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/AccountStrict`
+		);
 
-		this.messageRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Message`
-		});
+		this.messageRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Message`
+		);
 
-		this.entPageRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/entPage`
-		});
+		this.entPageRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/entPage`
+		);
 
-		this.paymentRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Payment`
-		});
+		this.paymentRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Payment`
+		);
 
-		this.tpRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Tp`
-		});
+		this.tpRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Tp`
+		);
 
-		this.promotionRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Promotion`
-		});
+		this.promotionRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Promotion`
+		);
 
-		this.accountRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Account`
-		});
+		this.accountRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Account`
+		);
 
-		this.evnetsRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/events`
-		});
+		this.evnetsRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/events`
+		);
 
-		this.videoRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/video`
-		});
+		this.videoRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/video`
+		);
 
-		this.cashierRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}`
-		});
+		this.cashierRequest = createAxiosInstanceWithDeviceHeader(`${apiUrl}`);
 
-		this.playerRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Player`
-		});
+		this.playerRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Player`
+		);
 
-		this.lineLoginRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/LineLogin`
-		});
+		this.lineLoginRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/LineLogin`
+		);
 
-		this.worldCupPredictionRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/WorldCupPrediction`
-		});
+		this.worldCupPredictionRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/WorldCupPrediction`
+		);
 
-		this.hotEventRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/HotEvent`
-		});
+		this.hotEventRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/HotEvent`
+		);
 
-		this.gameRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/Game`
-		});
+		this.gameRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/Game`
+		);
 
-		this.hotGameRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/HotGame`
-		});
+		this.hotGameRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/HotGame`
+		);
 
 		// * 紀錄log
-		this.frontEndLogRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/FrontEndLog`
-		});
+		this.frontEndLogRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/FrontEndLog`
+		);
 
-		this.liveStreamingRequest = axios.create({
-			withCredentials: true,
-			baseURL: `${apiUrl}/api/LiveStreaming`
-		});
+		this.liveStreamingRequest = createAxiosInstanceWithDeviceHeader(
+			`${apiUrl}/api/LiveStreaming`
+		);
 	}
 }

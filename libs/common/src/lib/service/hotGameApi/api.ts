@@ -1,3 +1,4 @@
+import { getDeviceType } from "@ailab-mobile/api";
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
 
@@ -38,10 +39,10 @@ export const hotGameApi = rootApi.injectEndpoints({
 				deviceType: number;
 			}
 		>({
-			query: ({ langId, currencyId, deviceType }) => ({
+			query: ({ langId, currencyId }) => ({
 				url: `${hotGameApiUrl.getDataList}/${langId}`,
 				method: "POST",
-				data: { currencyId, deviceType }
+				data: { currencyId, deviceType: getDeviceType() }
 			})
 		})
 	})
