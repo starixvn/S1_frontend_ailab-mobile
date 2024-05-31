@@ -1,4 +1,5 @@
-import { siteRequest, defDeviceType } from "./base";
+import { getDeviceType } from "@ailab-mobile/api";
+import { siteRequest } from "./base";
 
 export const defBannerType = {
 	Promotions: 1,
@@ -30,9 +31,7 @@ export const api_CheckSignIn = () => siteRequest.post(`/CheckSignIn/`);
 
 export const api_Site_GetGameListByDevice = () =>
 	siteRequest.post(`/GetGameListByDevice`, {
-		DeviceType: window?.ReactNativeWebView
-			? defDeviceType.NativeAPP
-			: defDeviceType.Mobile
+		DeviceType: getDeviceType()
 	});
 
 export const api_ForgetPwd = ({ Email, langId }) =>

@@ -3,6 +3,7 @@ import { siteInfo } from "apps/goal123/src/config";
 import { useTranslation } from "react-i18next";
 import { api_SetLanguage } from "apps/goal123/src/service/api/account";
 import defLangs from "apps/goal123/src/datas/defLangs";
+import { isInApp, setAppLanguage } from "@ailab-mobile/common";
 import { setCookie } from "../../common/common";
 import { userInfoContext } from "../../common/context";
 
@@ -76,6 +77,7 @@ const MenuSwitchLang = () => {
 			}
 		}
 		setCookie(siteInfo(language).langCookie, language);
+		if (isInApp) setAppLanguage(language);
 	};
 
 	return (

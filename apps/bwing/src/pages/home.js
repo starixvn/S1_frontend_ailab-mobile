@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { isExpiry } from "@ailab-mobile/promotion";
+import { isInApp } from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	popBoxContext,
@@ -21,7 +22,6 @@ import { bannerImgUrl } from "../config";
 import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../components/common/popbox.newYear";
-import { defDeviceType } from "../service/api/base";
 import Marquee from "../components/home/marquee";
 import HotGames from "../components/home/hotGames";
 import HotPromotion from "../components/home/hotPromotion";
@@ -350,52 +350,51 @@ const IndexPage = () => {
 			}
 
 			// * 如果 bonusCode 不為 null ，打開並記錄 cookie，效期為一日
-			getPopUpPromotion({
-				deviceType: defDeviceType.Mobile,
-				langId: userInfo.langId
-			}).then(({ data: { data: { bonusCode } = {} } = {} }) => {
-				if (bonusCode) {
-					setPopBox({
-						isOpen: true,
-						className: "promosback active",
-						displayStyle: "", //* 默認為block, 給空字串防止跑版
-						custContent: (
-							<div className="pop promosbackpop">
-								<img
-									src={`${
-										process.env.REACT_APP_BANNER_URL
-									}/desktop/img/promosBackPopup/promosPopup-${
-										userInfo?.langId || "en"
-									}.png`}
-									alt="img-promosPopup"
-								/>
-								<button
-									className="popgo"
-									onClick={() => {
-										navigate(
-											`/${path.promotion.root}?bonusCode=${bonusCode}`
-										);
-										setPopBox({ isOpen: false });
-									}}>
-									{t("lbl_ClaimNow")}
-								</button>
-								<img
-									src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
-									alt="img-delet"
-									className="closepop"
-									onClick={() => {
-										setPopBox({ isOpen: false });
-										openNextPopUp();
-									}}
-								/>
-							</div>
-						)
-					});
-					setCookie(cookieName, "1", 1);
-				} else {
-					openNextPopUp();
+			getPopUpPromotion({ langId: userInfo.langId }).then(
+				({ data: { data: { bonusCode } = {} } = {} }) => {
+					if (bonusCode) {
+						setPopBox({
+							isOpen: true,
+							className: "promosback active",
+							displayStyle: "", //* 默認為block, 給空字串防止跑版
+							custContent: (
+								<div className="pop promosbackpop">
+									<img
+										src={`${
+											process.env.REACT_APP_BANNER_URL
+										}/desktop/img/promosBackPopup/promosPopup-${
+											userInfo?.langId || "en"
+										}.png`}
+										alt="img-promosPopup"
+									/>
+									<button
+										className="popgo"
+										onClick={() => {
+											navigate(
+												`/${path.promotion.root}?bonusCode=${bonusCode}`
+											);
+											setPopBox({ isOpen: false });
+										}}>
+										{t("lbl_ClaimNow")}
+									</button>
+									<img
+										src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
+										alt="img-delet"
+										className="closepop"
+										onClick={() => {
+											setPopBox({ isOpen: false });
+											openNextPopUp();
+										}}
+									/>
+								</div>
+							)
+						});
+						setCookie(cookieName, "1", 1);
+					} else {
+						openNextPopUp();
+					}
 				}
-			});
+			);
 		};
 
 		const popUpStack = [
@@ -483,7 +482,7 @@ const IndexPage = () => {
 					<Jactpot />
 					<FavoriteSlots hotGameList={hotGameList} />
 					{userInfo.isLogin && <RecentlyViewed />}
-					<HomeDownLoad />
+					{!isInApp() && <HomeDownLoad />}
 					<LiveSports videoList={videoList} />
 					<News news={news} />
 				</div>

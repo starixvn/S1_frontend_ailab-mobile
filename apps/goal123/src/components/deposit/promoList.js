@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "@reach/router";
 import { popBoxContext } from "Context";
 import Dropdown from "../common/dropdown";
-import { defPopBoxType } from "../common/popbox";
 import { isConvert, number_format } from "../common/common";
 import path from "../../path";
 

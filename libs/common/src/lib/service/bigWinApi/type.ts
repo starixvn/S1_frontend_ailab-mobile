@@ -7,7 +7,3 @@ export interface IPopupData {
 	userName: string;
 	amount: number;
 }
-
-export interface IGetPopUpDataListArgs {
-	deviceType: number;
-}

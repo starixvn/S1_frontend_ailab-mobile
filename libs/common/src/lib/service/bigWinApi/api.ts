@@ -1,21 +1,19 @@
+import { getDeviceType } from "@ailab-mobile/api";
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
-import { IGetPopUpDataListArgs, IPopupData } from "./type";
+import { IPopupData } from "./type";
 
 const bigWinApiUrl = {
-	gePopupDataList: "BigWin/GetPopUpDataList"
+	getPopupDataList: "BigWin/GetPopUpDataList"
 };
 
 export const bigWinApi = rootApi.injectEndpoints({
 	endpoints: builder => ({
-		getPopUpDataList: builder.query<
-			IAxiosResponse<IPopupData[]>,
-			IGetPopUpDataListArgs
-		>({
-			query: data => ({
-				url: bigWinApiUrl.gePopupDataList,
+		getPopUpDataList: builder.query<IAxiosResponse<IPopupData[]>, void>({
+			query: () => ({
+				url: bigWinApiUrl.getPopupDataList,
 				method: "POST",
-				data
+				data: { deviceType: getDeviceType() }
 			})
 		})
 	})

@@ -1,7 +1,8 @@
-import { hotGameRequest, defDeviceType } from "./base";
+import { getDeviceType } from "@ailab-mobile/api";
+import { hotGameRequest } from "./base";
 
 export const api_HotGame_GetDataList = langId =>
 	hotGameRequest.post(`/GetDataList/${langId}`, {
-		DeviceType: defDeviceType.Mobile,
+		DeviceType: getDeviceType(),
 		CurrencyId: 51
 	});

@@ -1,4 +1,5 @@
-import { paymentRequest, defDeviceType } from "./base";
+import { getDeviceType } from "@ailab-mobile/api";
+import { paymentRequest } from "./base";
 
 export const api_GetBankInfoSysList = () =>
 	paymentRequest.post("/GetBankInfoSysList");
@@ -152,7 +153,7 @@ export const api_payment_GetWithdrawalLimit = () =>
 export const api_payment_CheckDepositSpecialCode = SpecialCode =>
 	paymentRequest.post("/CheckDepositSpecialCode", {
 		SpecialCode,
-		DeviceType: defDeviceType.Mobile
+		DeviceType: getDeviceType()
 	});
 
 export const api_payment_GetSupportCryptoInfo = () =>

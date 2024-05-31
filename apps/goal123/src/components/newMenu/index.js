@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { isInApp } from "@ailab-mobile/common";
 import { userInfoContext } from "../common/context";
 import LogoutButton from "./components/LogoutButton";
 import MemberPersonal from "./components/MemberPersonal";
@@ -35,7 +36,7 @@ const NewMenu = ({ toggleMenu }) => {
 			<MenuPlatform />
 			<MenuLobby />
 			<MenuPolicyInfo />
-			<MenuAppDownload />
+			{!isInApp() && <MenuAppDownload />}
 			<MenuSwitchLang />
 			{userInfo.isLogin && <LogoutButton />}
 		</main>

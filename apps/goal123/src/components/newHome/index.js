@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { isInApp } from "@ailab-mobile/common";
 import { userInfoContext, rootContext } from "../common/context";
 import HomeMarquee from "./components/HomeMarquee";
 import HomeSportMatches from "./components/HomeSportMatches";
@@ -46,7 +47,7 @@ const HomeContent = () => {
 					<HomeLeaderBoard />
 					<HomeInfo />
 					{userInfo.isLogin && <RecentlyViewedGameList />}
-					<HomeAppDownload />
+					{!isInApp() && <HomeAppDownload />}
 					<HomeButtom />
 				</div>
 			</div>

@@ -40,7 +40,6 @@ export interface ISlotGamePageData {
 
 export interface IGetSlotGamePageDataArgs {
 	currencyId: number;
-	deviceType: number;
 	slotGameCategoryList: SlotGameCategoryEnum[];
 }
 
@@ -87,4 +86,3 @@ export interface IRecentlyViewData {
 		isMaintain: boolean;
 	}[];
 }
-
