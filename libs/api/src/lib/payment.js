@@ -1,4 +1,4 @@
-import BaseAPI, { defDeviceType } from "./base";
+import BaseAPI, { getDeviceType } from "./base";
 
 export class PaymentAPI extends BaseAPI {
 	GetBankInfoSysList = () => this.paymentRequest.post("/GetBankInfoSysList");
@@ -198,7 +198,7 @@ export class PaymentAPI extends BaseAPI {
 	CheckDepositSpecialCode = SpecialCode =>
 		this.paymentRequest.post(`/CheckDepositSpecialCode`, {
 			SpecialCode,
-			DeviceType: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	GetAutoChannelBankGroupList = () =>

@@ -32,7 +32,6 @@ import NewYear, {
 } from "../components/common/popbox.newYear";
 import useInterval from "../components/hook/useInterval";
 import RecentlyViewedGameList from "../components/home/recentlyViewedGameList";
-import { defDeviceType } from "../service/api/base";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -223,51 +222,50 @@ const IndexPage = () => {
 			}
 
 			// * 如果 bonusCode 不為 null ，打開並記錄 cookie，效期為一日
-			getPopUpPromotion({
-				deviceType: defDeviceType.Mobile,
-				langId: userInfo.langId
-			}).then(({ data: { data: { bonusCode } = {} } = {} }) => {
-				if (bonusCode) {
-					setPopBox({
-						isOpen: true,
-						className: "promosback active",
-						custContent: (
-							<div className="pop promosbackpop">
-								<img
-									src={`${
-										process.env.REACT_APP_BANNER_URL
-									}/desktop/img/promosBackPopup/promosPopup-${
-										userInfo?.langId || "en"
-									}.png`}
-									alt="img-promosPopup"
-								/>
-								<button
-									className="popgo"
-									onClick={() => {
-										navigate(
-											`/${path.promotion.root}?bonusCode=${bonusCode}`
-										);
-										setPopBox({ isOpen: false });
-									}}>
-									{i18n.lbl_ClaimNow}
-								</button>
-								<img
-									src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
-									alt="img-delet"
-									className="closepop"
-									onClick={() => {
-										setPopBox({ isOpen: false });
-										openNextPopUp();
-									}}
-								/>
-							</div>
-						)
-					});
-					setCookie(cookieName, "1", 1);
-				} else {
-					openNextPopUp();
+			getPopUpPromotion({ langId: userInfo.langId }).then(
+				({ data: { data: { bonusCode } = {} } = {} }) => {
+					if (bonusCode) {
+						setPopBox({
+							isOpen: true,
+							className: "promosback active",
+							custContent: (
+								<div className="pop promosbackpop">
+									<img
+										src={`${
+											process.env.REACT_APP_BANNER_URL
+										}/desktop/img/promosBackPopup/promosPopup-${
+											userInfo?.langId || "en"
+										}.png`}
+										alt="img-promosPopup"
+									/>
+									<button
+										className="popgo"
+										onClick={() => {
+											navigate(
+												`/${path.promotion.root}?bonusCode=${bonusCode}`
+											);
+											setPopBox({ isOpen: false });
+										}}>
+										{i18n.lbl_ClaimNow}
+									</button>
+									<img
+										src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
+										alt="img-delet"
+										className="closepop"
+										onClick={() => {
+											setPopBox({ isOpen: false });
+											openNextPopUp();
+										}}
+									/>
+								</div>
+							)
+						});
+						setCookie(cookieName, "1", 1);
+					} else {
+						openNextPopUp();
+					}
 				}
-			});
+			);
 		};
 
 		const popUpStack = [

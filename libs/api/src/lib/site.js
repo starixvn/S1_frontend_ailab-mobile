@@ -1,4 +1,4 @@
-import BaseAPI, { defDeviceType } from "./base";
+import BaseAPI, { getDeviceType } from "./base";
 
 export class SiteAPI extends BaseAPI {
 	defBannerType = {
@@ -43,7 +43,7 @@ export class SiteAPI extends BaseAPI {
 
 	GetGameListByDevice = () =>
 		this.siteRequest.post(`/GetGameListByDevice`, {
-			DeviceType: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	ForgetPwd = ({ langId, Email, flag = 2 }) =>
@@ -92,7 +92,7 @@ export class SiteAPI extends BaseAPI {
 	// using new api - api/HotGame/GetDataList
 	// GetHotGames = ({ langId, currencyId }) =>
 	// 	this.siteRequest.post(`/GetHotGames/${langId}`, {
-	// 		DeviceType: defDeviceType.Mobile,
+	// 		DeviceType: getDeviceType(),
 	// 		CurrencyId: currencyId
 	// 	});
 
