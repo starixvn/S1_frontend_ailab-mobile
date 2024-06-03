@@ -1,12 +1,10 @@
-import BaseAPI, { defDeviceType } from "./base";
+import BaseAPI, { defDeviceType, getDeviceType } from "./base";
 
 export class PromotionAPI extends BaseAPI {
 	GetPromotionDetail = ({ langId, bonusCode, currencyId }) =>
 		this.promotionRequest.post(`/GetPromotionDetail/${langId}`, {
 			BonusCode: bonusCode,
-			DeviceType: window?.ReactNativeWebView
-				? defDeviceType.NativeAPP
-				: defDeviceType.Mobile,
+			DeviceType: getDeviceType(),
 			CurrencyId: currencyId
 		});
 
@@ -14,16 +12,12 @@ export class PromotionAPI extends BaseAPI {
 		this.promotionRequest.post(`/SetClaimPromotion/${langId}`, {
 			BonusCode,
 			LockedAmount,
-			DeviceType: window?.ReactNativeWebView
-				? defDeviceType.NativeAPP
-				: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	GetPromotionList = ({ langId, currencyId }) =>
 		this.promotionRequest.post(`/GetPromotionListV3/${langId}`, {
-			DeviceType: window?.ReactNativeWebView
-				? defDeviceType.NativeAPP
-				: defDeviceType.Mobile,
+			DeviceType: getDeviceType(),
 			CurrencyId: currencyId
 		});
 
@@ -37,7 +31,7 @@ export class PromotionAPI extends BaseAPI {
 	GetSpecialPromotionList = ({ langId, SpecialCode }) =>
 		this.promotionRequest.post(`/GetSpecialPromotionListV2/${langId}`, {
 			SpecialCode,
-			DeviceType: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	SetSpecialCode = ({ langId, SpecialCode }) =>
@@ -48,14 +42,14 @@ export class PromotionAPI extends BaseAPI {
 
 	GetDepositPromotionList = ({ langId }) =>
 		this.promotionRequest.post(`/GetDepositPromotionList/${langId}`, {
-			DeviceType: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	SetDepositPromotionQueue = ({ langId, TransId, BonusCode }) =>
 		this.promotionRequest.post(`/SetDepositPromotionQueue/${langId}`, {
 			TransId,
 			BonusCode,
-			DeviceType: defDeviceType.Mobile
+			DeviceType: getDeviceType()
 		});
 
 	GetRebateExcludeGameList = ({ langId, currencyId }) =>

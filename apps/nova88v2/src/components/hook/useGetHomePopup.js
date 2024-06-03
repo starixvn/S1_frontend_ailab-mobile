@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import React, { useContext } from "react";
 import { useNavigate } from "@reach/router";
 import { popBoxContext, userInfoContext } from "Context";
-import { defDeviceType } from "@ailab-mobile/api";
 import {
 	useGetIpCountryQuery,
 	useLazyGetPopUpPromotionQuery,
@@ -81,10 +80,7 @@ const useGetHomePopup = () => {
 
 		const {
 			data: { data: { bonusCode } = {} } = {}
-		} = await getPopUpPromotion({
-			langId,
-			deviceType: defDeviceType.Mobile
-		});
+		} = await getPopUpPromotion({ langId });
 
 		if (bonusCode) {
 			setPopBox({
@@ -184,9 +180,7 @@ const useGetHomePopup = () => {
 			userInfo.currencyId === defCurrencyList.IDR
 		) {
 			try {
-				const { data: bigWinData } = await getPopUpDataList({
-					defDeviceType: defDeviceType.Mobile
-				}).unwrap();
+				const { data: bigWinData } = await getPopUpDataList().unwrap();
 
 				// 該userName回傳null表示不顯示彈窗
 				if (bigWinData.userName !== null) {

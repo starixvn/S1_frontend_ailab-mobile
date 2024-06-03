@@ -6,7 +6,6 @@ import {
 	userInfoContext,
 	productTpGameTypeSettingListContext
 } from "Context";
-import { defDeviceType } from "@ailab-mobile/api";
 import {
 	SlotGameCategoryEnum,
 	useGetSlotGamePageQuery
@@ -47,7 +46,6 @@ const Jackpot = () => {
 		} = {}
 	} = useGetSlotGamePageQuery({
 		currencyId,
-		deviceType: defDeviceType.Mobile,
 		slotGameCategoryList: [SlotGameCategoryEnum.Jackpot]
 	});
 

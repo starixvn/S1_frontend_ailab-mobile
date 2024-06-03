@@ -40,6 +40,5 @@ export interface ISlotGamePageData {
 
 export interface IGetSlotGamePageDataArgs {
 	currencyId: number;
-	deviceType: number;
 	slotGameCategoryList: SlotGameCategoryEnum[];
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
+import { isInApp, setAppLanguage } from "@ailab-mobile/common";
 import Logo from "../img/logo";
 import { i18nContext, userInfoContext } from "../common/context";
 import { defSubMenus } from "../../datas/defMenu";
@@ -33,6 +34,7 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 		}
 
 		setCookie(siteInfo(newLangId).langCookie, newLangId);
+		if (isInApp) setAppLanguage(newLangId);
 	};
 
 	return (
@@ -78,6 +80,10 @@ export default Content;
 
 const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
 	const rows = defSubMenus(langId).map(({ icon, href, path, displayKey }) => {
+		if (displayKey === "lbl_APP" && isInApp()) {
+			return null;
+		}
+
 		if (href) {
 			return (
 				<a className="menu-list-item" href={href} key={displayKey}>
