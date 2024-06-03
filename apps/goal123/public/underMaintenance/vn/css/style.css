@@ -192,7 +192,11 @@ img {
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 0.5vw; 
-  
+}
+.title span {
+  font-size: 36px;
+  display: block;
+  text-transform: none;
 }
 .subTitle {
   font-size: 28px;
@@ -213,6 +217,23 @@ img {
   font-size: 15px;
   margin-bottom: 20px;
 }
+
+.wrapper .button a{
+  padding: 10px 30px;
+  font-size: 16px;
+  background: #fbb513;
+  border-radius: 50px;
+  color: #ffffff;
+  overflow: hidden;
+  outline: none;
+  margin-top: 20px;
+  margin-right: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+  float: left;
+}
+
+
 @media (max-width: 768px) {
   .pageUM {
     background: url(../img/UM_bg.jpg) no-repeat top right / cover;
@@ -226,8 +247,11 @@ img {
     text-align: center;
   }
   .title {
-    font-size: 35px;
+    font-size: 7.5vw;
     margin-bottom: 10px;
+  }
+  .title span {
+    font-size: 5.6vw;
   }
   .subTitle {
     font-size: 23px;
@@ -247,6 +271,19 @@ img {
   a{
     font-size: 14px;
   }
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrapper .button{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+  .wrapper .button a{
+    padding: 1vw 2vw;
+  }
 }
 
 @media (max-width: 425px) {
@@ -264,5 +301,18 @@ img {
   }
   .time{
     font-size: 4.6vw;
+  }
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrapper .button{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+  .wrapper .button a{
+    padding: 1vw 2vw;
   }
 }
