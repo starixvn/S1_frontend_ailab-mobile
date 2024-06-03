@@ -1,7 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useLocation, useNavigate } from "@reach/router";
-import { isDateRange } from "@ailab-mobile/common";
+import { isDateRange, products } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -22,7 +22,6 @@ import Join from "../join/join";
 import GoTopBtn from "./goTopBtn";
 import { bannerImgUrl } from "../../config";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import EuroCupLink from "../euroCup/EuroCupLink";
 
@@ -371,7 +370,7 @@ const Layout = ({ children }) => {
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/4.0/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}

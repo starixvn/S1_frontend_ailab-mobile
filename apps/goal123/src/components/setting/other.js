@@ -89,10 +89,7 @@ export default () => {
 					</a>
 				</div>
 				<div className="partner">
-					<Platform
-						langId={userInfo.langId}
-						isLogin={userInfo.isLogin}
-					/>
+					<Platform />
 				</div>
 			</div>
 		</Layout>
