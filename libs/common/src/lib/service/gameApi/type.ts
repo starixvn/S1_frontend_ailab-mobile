@@ -42,3 +42,48 @@ export interface IGetSlotGamePageDataArgs {
 	currencyId: number;
 	slotGameCategoryList: SlotGameCategoryEnum[];
 }
+
+type ILangType = "en" | "cs" | "my" | "th" | "id" | "hi" | "bd" | "kh" | "vn";
+
+interface ISubMenuData {
+	lobbyCategory: string;
+	tpId: number;
+	tpName: string;
+	productName: string;
+	tpGameIdNo: number;
+	gameId: string;
+	tpGameType: number;
+	currencyGameName: Record<ILangType, string> | null;
+	pcHeaderPicUrl: string;
+	pcLobbyPicUrl: string;
+	mobileHeaderPicUrl: string;
+	mobileLobbyPicUrl: string;
+	sort: number;
+	iconEndTime: string;
+	iconStartTime: string;
+	iconType: number;
+}
+
+export interface ILobbyHeaderData {
+	lobbyCategoryId: number;
+	data: ISubMenuData[];
+}
+
+export interface IRecentlyViewData {
+	bannerUrl: string;
+	imgUrl: string;
+	recentlyViewedList: {
+		tpId: number;
+		tpGameType: number;
+		categoryId: number;
+		gameId: string | number;
+		betType: string;
+		tpName: string;
+		gameName: Record<ILangType, string> | null;
+		gameLogo: Record<ILangType, string> | null;
+		tpLogo: string;
+		tpGameIdNo: number;
+		isMaintain: boolean;
+	}[];
+}
+

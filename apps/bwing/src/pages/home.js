@@ -35,7 +35,6 @@ import Jactpot from "../components/home/jackpot";
 import FavoriteSlots from "../components/home/FavoriteSlots";
 import { api_HotGame_GetDataList } from "../service/api/hotGame";
 import RecentlyViewed from "../components/home/RecentlyViewed";
-import { api_GetRecentlyViewed } from "../service/api/game";
 import HomeDownLoad from "../components/home/HomeDownLoad";
 import LiveSports from "../components/home/liveSports";
 import {
@@ -130,23 +129,6 @@ const IndexPage = () => {
 		try {
 			const res = await api_HotGame_GetDataList(userInfo.langId);
 			setHotGameList(res.data.data.HotGame ?? []);
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
-		}
-	};
-
-	const getRecentlyViewedGames = async () => {
-		try {
-			const res = await api_GetRecentlyViewed({
-				currencyId: userInfo.currencyId
-			});
-			if (res.data.errorCode === 0) {
-				const { recentlyViewedList } = res.data.data;
-				setRecentlyViewedGames(recentlyViewedList ?? []);
-			}
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
@@ -447,7 +429,6 @@ const IndexPage = () => {
 		getHotEventList();
 		getLeaderBoardList();
 		getHotGameList();
-		getRecentlyViewedGames();
 	}, []);
 
 	useEffect(() => {
@@ -497,15 +478,11 @@ const IndexPage = () => {
 					<HotGames maintainList={maintainList} />
 					<HotPromotion promotionList={filterPromotionList} />
 					<HomeMatch hotEventList={hotEventList} />
-					<SportList maintainList={maintainList} />
+					<SportList />
 					<TopWinner leaderBoardList={leaderBoardList} />
 					<Jactpot />
 					<FavoriteSlots hotGameList={hotGameList} />
-					{userInfo.isLogin && (
-						<RecentlyViewed
-							recentlyViewedGames={recentlyViewedGames}
-						/>
-					)}
+					{userInfo.isLogin && <RecentlyViewed />}
 					{!isInApp() && <HomeDownLoad />}
 					<LiveSports videoList={videoList} />
 					<News news={news} />

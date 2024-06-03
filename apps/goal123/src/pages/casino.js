@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
+import { products } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -11,17 +12,12 @@ import Layout from "../components/common/layout";
 import Slider from "../components/casino/slider";
 import Nav from "../components/casino/nav";
 import GameProviders from "../components/casino/gameProviders";
-import {
-	defLoginGameType,
-	defSpecialSetting,
-	useGotoGame
-} from "../components/hook/useGotoGame";
+import { defLoginGameType, useGotoGame } from "../components/hook/useGotoGame";
 import useSetTimeout from "../components/hook/useSetTimeout";
 import Games from "../components/casino/games";
 import { api_SetFavoriteGame } from "../service/api/account";
 import { api_GetSlotGamePage } from "../service/api/game";
 import { GET_CASINO_ENTER_PAGE } from "../service/enterPage";
-import { defSlotTpGameType } from "../datas/productList";
 import SearchBox from "../components/casino/searchBox";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 
@@ -250,21 +246,18 @@ const Panel = () => {
 						isFree: freePlay,
 						langId: userInfo.langId,
 						execFunction:
-							targetObj.tpId === defSpecialSetting.PG
+							targetObj.tpId === products.PGSoft.tpId
 								? handleGoToGame.bind(this, {
 										langId: userInfo.langId,
 										tpId: targetObj.tpId,
 										gameId: targetObj.gameId,
 										isFun: freePlay,
-										tpGameType:
-											defSlotTpGameType.PG.tpGameType,
+										tpGameType: products.PGSoft.tpGameType,
 										loginGameType:
 											defLoginGameType.returnHtml
 								  })
 								: null,
-						tpGameType: Object.values(defSlotTpGameType).find(
-							obj => targetObj.tpId === obj.tpId
-						).tpGameType
+						tpGameType: activeProvider?.tpGameType
 					}),
 				freePlay ? 0 : 5000
 			);

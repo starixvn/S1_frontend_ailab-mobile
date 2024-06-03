@@ -3,7 +3,7 @@ import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
-import { isDateRange, isInApp } from "@ailab-mobile/common";
+import { isDateRange, products,isInApp } from "@ailab-mobile/common";
 import Header from "./header";
 import {
 	navContext,
@@ -22,7 +22,6 @@ import GoTopBtn from "./goTopBtn";
 import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { api_liveStreaming_GetDataList } from "../../service/api/liveStreaming";
 import { bannerImgUrl } from "../../config";
-import { defGameInfo } from "../../datas/productList";
 import DragonEggPop from "../dragonEgg/homeLink";
 import LiveStreamingPop from "../liveStreamingPop";
 import HomeHeader from "../newHome/components/HomeHeader";
@@ -171,7 +170,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 						className="vgimg"
 						src={`${bannerImgUrl}/h5/img/vgaming.gif`}
 						alt="vgaming-link"
-						onClick={() => clickGame(defGameInfo.sabaClub)}
+						onClick={() => clickGame(products.Vgaming)}
 					/>
 				</div>
 			)}

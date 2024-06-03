@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { isInApp } from "@ailab-mobile/common";
-import { i18nContext, userInfoContext, rootContext } from "../common/context";
+import { userInfoContext, rootContext } from "../common/context";
 import HomeMarquee from "./components/HomeMarquee";
 import HomeSportMatches from "./components/HomeSportMatches";
 import HomeJoin from "./components/HomeJoin";
@@ -17,7 +17,6 @@ import HomeBanner from "./components/HomeBanner";
 
 const HomeContent = () => {
 	const { userInfo } = useContext(userInfoContext);
-	const { i18n } = useContext(i18nContext);
 	const { setRoot } = useContext(rootContext);
 
 	// 整合彈窗相關的邏輯
@@ -41,7 +40,7 @@ const HomeContent = () => {
 				<HomeBanner />
 				<HomeMarquee />
 				<div className="homecategorymenu">
-					<HomeMenu i18n={i18n} userInfo={userInfo} />
+					<HomeMenu userInfo={userInfo} />
 					<HomeSportMatches />
 					<HomeJoin />
 					<HomePopularSlotGames />

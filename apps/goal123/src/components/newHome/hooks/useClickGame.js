@@ -1,25 +1,40 @@
 import { useContext } from "react";
-import { GET_ENTER_PAGE } from "apps/goal123/src/service/enterPage";
-import { userInfoContext, navContext, defNavPanel } from "../../common/context";
+import { useTranslation } from "react-i18next";
+import { defTpGameType } from "@ailab-mobile/common";
+import { useGetMaintenanceQuery } from "@ailab-mobile/service";
+import { popBoxContext } from "../../common/context";
+import { useMenu } from "../../hook/useMenu";
 
 const useClickGame = () => {
-	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
+	const { t } = useTranslation();
+	const { setPopBox } = useContext(popBoxContext);
+	const { onClickProductItem } = useMenu();
+	const { data: { data: tpMaintainList = [] } = {} } = useGetMaintenanceQuery(
+		null
+	);
 
-	const clickGame = ({ tpId, gameId, tpGameType }) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			},
-			tpGameType
-		});
+	const onclickStaticProduct = async product => {
+		if (!product) return;
+
+		const isStaticProductMaintain = tpMaintainList.some(
+			item =>
+				item.tpId === product.tpId &&
+				(item.tpGameType === product.tpGameType ||
+					item.tpGameType === defTpGameType.All) // * 0 指全部
+		);
+
+		if (isStaticProductMaintain || product?.isInMaintain) {
+			setPopBox({
+				isOpen: true,
+				title: t("lbl_ImportantNote"),
+				content: t("lbl_underMaintenance")
+			});
+			return;
+		}
+		await onClickProductItem(product);
 	};
 
-	return { clickGame };
+	return { onclickStaticProduct };
 };
 
 export default useClickGame;
