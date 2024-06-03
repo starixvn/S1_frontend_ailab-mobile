@@ -1,165 +1,69 @@
-import React, { useContext, useRef, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { api_GetTpIds } from "../../service/api/site";
-import { useGotoGame } from "../hook/useGotoGame";
-import { sportStreamDef } from "../../datas/productList";
-import { getUrlParameter } from "./common";
-import {
-	i18nContext,
-	userInfoContext,
-	navContext,
-	defNavPanel
-} from "./context";
-import { GET_ENTER_PAGE } from "../../service/enterPage";
-import { productList } from "../../datas/defMenu";
-import {
-	useGetTpMaintainList,
-	defTpGameType
-} from "../hook/useGetTpMaintainList";
+import classNames from "classnames";
+import { menuIconTypeEnum } from "@ailab-mobile/common";
+import { i18nContext, userInfoContext } from "./context";
+import useMenu from "../hook/useMenu";
+import { isShowEventIcon } from "../../datas/defMenu";
 
-const ProductPage = ({ category, titleKey, bannerUrl }) => {
+const ProductPage = ({ category, bannerUrl }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
-	const [tpIds, setTpIds] = useState(null);
-	const { handleGoToGame } = useGotoGame({ autoGetData: false });
-	const { maintainList } = useGetTpMaintainList();
-	const _productList = productList(userInfo.langId)[category].items;
-	const isMountedRef = useRef(null);
-	const sport_game = getUrlParameter("game");
-	const sport_tpId = sportStreamDef[sport_game]?.tpId;
-	const sport_gameId = sportStreamDef[sport_game]?.gameId;
-	// const matchid = getUrlParameter("matchid");
-	const sport_tpGameType = sportStreamDef[sport_game]?.tpGameType;
+	const { menuList = [], onClickProductItem } = useMenu();
 
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => {
-			isMountedRef.current = false;
-		};
-	});
+	const subMenuItem =
+		menuList?.find(
+			({ category: menuCategory }) => menuCategory === category
+		)?.data || [];
 
-	useEffect(() => {
-		if (userInfo.isLogin) {
-			api_GetTpIds().then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							setTpIds(res.data.data);
-						} else {
-							setPopBox({
-								isOpen: true,
-								content: `[${res.data.errorCode}] ${res.data.message}`
-							});
-						}
-					}
-				},
-				() => {
-					setPopBox({
-						isOpen: true,
-						content: i18n.msg_ApiServerError
-					});
-				}
-			);
-			if (sport_game) {
-				GET_ENTER_PAGE({
-					langId: userInfo.langId,
-					tpId: sport_tpId,
-					gameId: sport_gameId,
-					isLogin: userInfo.isLogin,
-					betType: null,
-					loginCallback: () => {
-						setNav(defNavPanel.login);
-					},
-					execFunction: null,
-					tpGameType: sport_tpGameType
-				});
-			}
-		}
-	}, [userInfo.isLogin, i18n]);
-	const ClickGame = ({
-		tpId,
-		gameId,
-		betType,
-		useGotoGame: _useGotoGame,
-		tpGameType
-	}) => {
-		GET_ENTER_PAGE({
-			langId: userInfo.langId,
-			tpId,
-			gameId,
-			isLogin: userInfo.isLogin,
-			betType,
-			loginCallback: () => {
-				setNav(defNavPanel.login);
-			},
-			execFunction: _useGotoGame
-				? handleGoToGame.bind(this, {
-						isLogin: userInfo.isLogin === true,
-						langId: userInfo.langId,
-						tpId,
-						gameId,
-						tpGameType
-				  })
-				: null,
-			tpGameType
-		});
-	};
+	const arr = subMenuItem.map(gameItem => {
+		const {
+			tpGameIdNo,
+			productName,
+			currencyGameName,
+			iconType,
+			iconStartTime,
+			iconEndTime,
+			isInMaintain,
+			mobileLobbyPicUrl
+		} = gameItem;
 
-	const arr = _productList
-		.filter(item => {
-			return tpIds ? tpIds.includes(item.tpId) : true;
-		})
-		.map(game => {
-			let showingIcon = "";
-			const underMaintain = maintainList?.some(
-				m =>
-					m.tpId === game.tpId &&
-					(m.tpGameType === game.tpGameType ||
-						m.tpGameType === defTpGameType.All)
-			);
-			if (game.eventIcon) {
-				const eventInPeriodObj = game.eventIcon.find(
-					obj => obj.inPeriod === true
-				);
-				showingIcon = eventInPeriodObj ? eventInPeriodObj.icon : "";
-			}
-			return (
-				<button
-					className={`lobby-products-item ${showingIcon}${
-						underMaintain ? " lobby-products-item maintain" : ""
-					}`}
-					key={`Game-Panel-${game.tpId}-${game.tpGameType}-${game.gameId}`}
-					onClick={
-						underMaintain
-							? () => null
-							: ClickGame.bind(this, {
-									tpId: game.tpId,
-									gameId: game.gameId,
-									betType: game.betType,
-									useGotoGame: game.useGotoGame,
-									tpGameType: game.tpGameType
-							  })
-					}>
-					{underMaintain ? (
-						<div className="tag-maintain">
-							{i18n.lbl_underMaintenance}
-						</div>
-					) : null}
-					<img src={game.img} alt={game.displayKey} />
-					<div className="name">
-						{i18n[game.displayKey] ||
-							game.displayKey ||
-							game.displayText}
+		// * 後端這裡是字串格式 需做處理
+		const suBMenuImage =
+			mobileLobbyPicUrl && JSON.parse(mobileLobbyPicUrl)[0];
+
+		const isNew =
+			isShowEventIcon(iconStartTime, iconEndTime) &&
+			iconType === menuIconTypeEnum.New;
+
+		const displayName =
+			currencyGameName &&
+			currencyGameName[userInfo?.langId] &&
+			currencyGameName[userInfo?.langId];
+
+		return (
+			<button
+				key={tpGameIdNo}
+				className={classNames("lobby-products-item", {
+					maintain: isInMaintain,
+					"tag-new-pop": isNew
+				})}
+				onClick={() => onClickProductItem(gameItem)}>
+				{isInMaintain && (
+					<div className="tag-maintain">
+						{i18n.lbl_underMaintenance}
 					</div>
-				</button>
-			);
-		});
+				)}
+				<img src={suBMenuImage} alt={productName} />
+				<div className="name">{displayName || productName}</div>
+			</button>
+		);
+	});
 
 	const Banner = () => {
 		return (
 			<div className="lobby-banner">
-				<img src={bannerUrl} alt="" />
+				<img src={bannerUrl} alt="lobby-banner" />
 			</div>
 		);
 	};
@@ -182,7 +86,6 @@ const ProductPage = ({ category, titleKey, bannerUrl }) => {
 
 ProductPage.propTypes = {
 	category: PropTypes.string.isRequired,
-	titleKey: PropTypes.string.isRequired,
 	bannerUrl: PropTypes.string.isRequired
 };
 
