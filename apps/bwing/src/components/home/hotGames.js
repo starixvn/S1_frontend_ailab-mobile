@@ -10,7 +10,7 @@ import {
 } from "../common/context";
 import { bannerImgUrl } from "../../config";
 import { HOT_GAME_LIST } from "./def";
-import { defAppType, GET_ENTER_PAGE } from "../../service/enterPage";
+import { GET_ENTER_PAGE } from "../../service/enterPage";
 import { defTpGameType } from "../hook/useGetTpMaintainList";
 
 const HotGames = ({ maintainList }) => {
@@ -59,8 +59,7 @@ const HotGames = ({ maintainList }) => {
 					gameId,
 					isLogin: userInfo.isLogin,
 					loginCallback: () => setNav(defNavPanel.login),
-					tpGameType,
-					appType: hasDesktopLink ? defAppType.desktop : null
+					tpGameType
 				});
 			}
 			if (href) {

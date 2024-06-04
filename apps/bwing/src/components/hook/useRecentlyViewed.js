@@ -12,11 +12,7 @@ import { useGotoGame } from "./useGotoGame";
 import { defDeviceType } from "../../service/api/base";
 import useSetTimeout from "./useSetTimeout";
 import { defMenuObj } from "../../datas/defMenu";
-import {
-	defAppType,
-	GET_CASINO_ENTER_PAGE,
-	GET_ENTER_PAGE
-} from "../../service/enterPage";
+import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 
 const useRecentlyViewed = () => {
 	const { t } = useTranslation();
@@ -125,8 +121,7 @@ const useRecentlyViewed = () => {
 					isLogin: userInfo.isLogin === true,
 					loginCallback: () => setNav(defNavPanel.login),
 					tpGameType,
-					bettype,
-					appType: defAppType.desktop
+					bettype
 				});
 				break;
 		}
