@@ -5,11 +5,7 @@ import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { useGotoGame } from "./useGotoGame";
 import useSetTimeout from "./useSetTimeout";
 import { defMenuList } from "../../datas/defMenu";
-import {
-	defAppType,
-	GET_CASINO_ENTER_PAGE,
-	GET_ENTER_PAGE
-} from "../../service/enterPage";
+import { GET_CASINO_ENTER_PAGE, GET_ENTER_PAGE } from "../../service/enterPage";
 
 const useRecentlyViewed = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -91,8 +87,7 @@ const useRecentlyViewed = () => {
 					isLogin: userInfo.isLogin === true,
 					loginCallback: () => setNav(defNavPanel.login),
 					tpGameType,
-					bettype,
-					appType: defAppType.desktop
+					bettype
 				});
 				break;
 		}
