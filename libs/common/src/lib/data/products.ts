@@ -714,7 +714,7 @@ export const products = {
 		tpGameIdNo: 132,
 		tpId: 16,
 		tpGameType: 117,
-		gameId: "CQ9"
+		gameId: "CMCOCKFIGHT01"
 	},
 
 	// * Footer 靜態遊戲入口
