@@ -30,8 +30,9 @@ const Casino = () => {
 	const { throttle } = useSetTimeout();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
-	const splitList = window.location.href.split("/");
-	const pathTpId = splitList[splitList.length - 1];
+	const splitList = window.location.href.split("=");
+	const pathTpId =
+		splitList.length > 1 ? Number(splitList[splitList.length - 1]) : 0;
 
 	const [imageUrl, setImageUrl] = useState("");
 	const [gameList, setGameList] = useState([]);
@@ -48,6 +49,10 @@ const Casino = () => {
 	);
 	const [newGamesArr, setNewGamesArr] = useState([]);
 
+	// 找到featured在第幾個
+	const featuredIdx = categoryList.findIndex(value => {
+		return value === "featured";
+	});
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
 	};
@@ -213,19 +218,13 @@ const Casino = () => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 
-			// 找到featured在第幾個，設定一進畫面顯示它
-			const featuredIdx = _list.findIndex(value => {
-				return value === "featured";
-			});
-			setActiveCategory(
-				page === "jackpot" ? "jackpot" : _list[featuredIdx]
-			); // 決定一進畫面要渲染的類別遊戲
+			// 一進畫面找到該tpId的'all'遊戲
+			const targetList = Object.entries(res.data.data)?.find(item => {
+				return item[0] === _list[1];
+			})[1];
+			setGameList(targetList);
 
-			// 沒有效果，先暫時註解
-			// const targetList = Object.entries(res.data.data)?.find(item => {
-			// 	return item[0] === _list[1];
-			// })[1];
-			// setGameList(targetList);
+			setActiveCategory(page === "jackpot" ? "jackpot" : "all");
 
 			setLoading(false);
 		} catch (error) {
@@ -250,6 +249,15 @@ const Casino = () => {
 			}
 		});
 	}, [allCategoryList]);
+
+	// 如果有featured類別就用featured，不然的話用all
+	useEffect(() => {
+		if (featuredIdx !== -1) {
+			setActiveCategory("featured");
+		} else {
+			setActiveCategory("all");
+		}
+	}, [featuredIdx]);
 
 	return (
 		<div className="wrapper">
