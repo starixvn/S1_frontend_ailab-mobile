@@ -49,6 +49,11 @@ const Panel = () => {
 	const splitList = window.location.href.split("/");
 
 	const pathTpId = splitList[splitList.length - 1];
+
+	// 找到featured在第幾個
+	const featuredIdx = categoryList.findIndex(value => {
+		return value === "featured";
+	});
 	const getSlotGameData = async () => {
 		setLoading(true);
 		try {
@@ -58,6 +63,7 @@ const Panel = () => {
 			const { providerList: pList } = res.data.data;
 			const targetProvider =
 				pList.find(obj => obj.tpId === Number(pathTpId)) ?? {};
+
 			if (Object.keys(targetProvider).length > 0) {
 				const targetIndex = pList.findIndex(
 					providerObj => providerObj.tpId === targetProvider.tpId
@@ -71,6 +77,7 @@ const Panel = () => {
 			} else {
 				setProviderList(pList);
 			}
+
 			const skipList = ["imgUrl", "providerList"];
 			let tempList = [];
 			setSlotDataList(Object.entries(res.data.data));
@@ -140,16 +147,21 @@ const Panel = () => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 
-			// 找到featured在第幾個，設定一進畫面顯示它
-			const featuredIdx = _list.findIndex(value => {
-				return value === "featured";
+			// 一進畫面找到該tpId的'all'遊戲
+			const allItemList = tempList.filter(
+				item => item[0] === "all"
+			)[0][1];
+			const singleAllList = allItemList.filter(value => {
+				return pathTpId && value.tpId === Number(pathTpId);
 			});
-			setActiveCategory(_list[featuredIdx]); // 決定一進畫面要渲染的類別遊戲
-
-			const targetList = Object.entries(res.data.data)?.find(
-				item => item[0] === _list[1]
-			)[1];
-			setGameList(targetList);
+			if (featuredIdx !== -1) {
+				const targetList = Object.entries(res.data.data)?.find(item => {
+					return item[0] === _list[featuredIdx];
+				})[1];
+				setGameList(targetList);
+			} else {
+				setGameList(singleAllList);
+			}
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -226,6 +238,7 @@ const Panel = () => {
 				const filterList = resultList.filter(item =>
 					filterHandle(item)
 				);
+
 				setGameList(filterList);
 			} else {
 				const filterList =
@@ -237,6 +250,7 @@ const Panel = () => {
 								)
 						  )
 						: targetList[1]?.filter(item => filterHandle(item));
+
 				setGameList(filterList);
 			}
 		}
@@ -394,6 +408,15 @@ const Panel = () => {
 			}
 		});
 	}, [allCategoryList]);
+
+	// 如果有featured類別就用featured，不然的話用all
+	useEffect(() => {
+		if (featuredIdx !== -1) {
+			setActiveCategory("featured");
+		} else {
+			setActiveCategory("all");
+		}
+	}, [featuredIdx]);
 
 	return (
 		<>
