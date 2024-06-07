@@ -433,7 +433,7 @@ export const defMenuList = Object.freeze([
 		]
 	},
 	{
-		defDisplayKey: "CockFighting",
+		defDisplayKey: "Label_Menu_Cockfighting",
 		lobbyCategoryId: lobbyCategoryEnum.Cockfighting,
 		category: defCol.cockFighting,
 		mainMenuImage: `${bannerImgUrl}/h5/img/home-page/icon/btn-cockfigting.svg`,
