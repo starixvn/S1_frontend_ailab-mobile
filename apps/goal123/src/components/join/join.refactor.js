@@ -443,7 +443,8 @@ const Join = () => {
 
 	const handleJoinPanel = (show, reset, showBylink) => {
 		if (reset) {
-			setUserValue(initValue);
+			// 保留推薦碼不在關閉註冊頁時被清空
+			setUserValue(({ Affiliate }) => ({ ...initValue, Affiliate }));
 			setInputStatus(initStatus);
 		}
 
