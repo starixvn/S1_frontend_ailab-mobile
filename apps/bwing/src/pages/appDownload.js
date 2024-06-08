@@ -9,7 +9,7 @@ const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { appLinkDatas } = useAppDownLoad();
 
-	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const androidDownLoadUrl = appLinkDatas?.Android?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
 
 	return (
@@ -25,7 +25,7 @@ const IndexPage = () => {
 
 					<div className="downloadFrame">
 						<p>{i18n.lbl_Scan_to_Download}</p>
-						{andriodDownLoadUrl && (
+						{androidDownLoadUrl && (
 							<div>
 								<div>
 									<img
@@ -33,7 +33,7 @@ const IndexPage = () => {
 										alt="Android"
 									/>
 									<a
-										href={andriodDownLoadUrl}
+										href={androidDownLoadUrl}
 										target="_blank"
 										rel="noreferrer">
 										<button>Android</button>
@@ -41,7 +41,7 @@ const IndexPage = () => {
 								</div>
 
 								<QRCode
-									value={andriodDownLoadUrl}
+									value={androidDownLoadUrl}
 									renderAs="svg"
 									size={180}
 									includeMargin={true}
