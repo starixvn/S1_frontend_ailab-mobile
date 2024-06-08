@@ -11,7 +11,7 @@ const IndexPage = () => {
 	const { appLinkDatas } = useAppDownLoad();
 	const navigate = useNavigate();
 
-	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const androidDownLoadUrl = appLinkDatas?.Android?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
 
 	return (
@@ -33,7 +33,7 @@ const IndexPage = () => {
 				/>
 				<div className="qrcode">
 					<div className="container">
-						{andriodDownLoadUrl && (
+						{androidDownLoadUrl && (
 							<div className="qrcode-item">
 								<img
 									src={`${bannerImgUrl}/h5/img/appdownload/android.svg`}
@@ -42,7 +42,7 @@ const IndexPage = () => {
 								Android
 								<a
 									className="download"
-									href={andriodDownLoadUrl}
+									href={androidDownLoadUrl}
 									target="_blank"
 									rel="noreferrer">
 									{i18n.lbl_Downloads} (Android)
