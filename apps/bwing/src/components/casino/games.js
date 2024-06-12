@@ -63,7 +63,6 @@ const GamePanel = React.forwardRef((props, ref) => {
 				);
 			}
 		};
-
 		const gameProviderName = providerList.find(obj => obj.tpId === g.tpId)
 			?.gameImgDisplayText;
 		const gameImage = `${imgUrl}/${gameProviderName}/${
@@ -109,6 +108,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
+	games.sort(() => Math.random() - 0.5); // 隨機排列遊戲列表
 
 	return games.length === 0 ? (
 		<div className="nodata icon icon-nodata" ref={ref}>

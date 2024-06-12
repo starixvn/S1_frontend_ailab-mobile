@@ -110,6 +110,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
+	games.sort(() => Math.random() - 0.5); // 隨機排列遊戲列表
 	return games.length === 0 ? (
 		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
