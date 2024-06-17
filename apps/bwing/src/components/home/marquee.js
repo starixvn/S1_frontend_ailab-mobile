@@ -157,10 +157,7 @@ class Marquee extends Component {
 				}
 			},
 			() => {
-				this.props.setPopBox({
-					isOpen: true,
-					content: "GetAnnouncement-api-error"
-				});
+				console.log("GetAnnouncement-api-Error");
 			}
 		);
 	};
