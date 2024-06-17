@@ -268,7 +268,7 @@ const IndexPage = () => {
 					() => {
 						setPopBox({
 							isOpen: true,
-							content: t("msg_ApiServerError"),
+							content: "error-popup-testing-for-online-check",
 							handlePopBox: openNextPopUp
 						});
 					}

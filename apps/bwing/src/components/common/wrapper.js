@@ -199,7 +199,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 		},
-		userInfo.isLogin && !isSpecialPath() ? 600000 : null
+		userInfo.isLogin && !isSpecialPath() ? 30000 : null
 	);
 
 	useEffect(() => {
