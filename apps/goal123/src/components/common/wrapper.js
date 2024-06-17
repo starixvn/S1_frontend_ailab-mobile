@@ -158,7 +158,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 		},
-		userInfo.isLogin && !isSpecialPath() ? 10000 : null
+		userInfo.isLogin && !isSpecialPath() ? 30000 : null
 	);
 
 	useEffect(() => {
