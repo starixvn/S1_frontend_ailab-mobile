@@ -1631,12 +1631,12 @@ header {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.header.euro-header .header-content {
+.header.olympic-header .header-content {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
 }
-.header.euro-header .header-content a {
+.header.olympic-header .header-content a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1645,11 +1645,11 @@ header {
           align-items: center;
   margin-left: 1vw;
 }
-.header.euro-header .header-content a img {
+.header.olympic-header .header-content a img {
   width: 20vw !important;
 }
-.header.euro-header .header-content a .euro-index-logo {
-  width: 12vw !important;
+.header.olympic-header .header-content a .olympic-index-logo {
+  width: 16vw !important;
 }
 
 .menu {
