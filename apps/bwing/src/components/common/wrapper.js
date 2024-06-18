@@ -153,17 +153,21 @@ export const Wrapper = ({ children }) => {
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
 			setPopBox({ isOpen: false });
-		};
-		if (errorCode !== 0 && isMountedRef.current) {
+			// set 邏輯要寫在 click 事件內，寫在同一個 scope popup 會因為 state 改變後 rerender 導致 popup 消失
 			setUserInfo(prevState => ({
 				isLogin: false,
 				langId: prevState.langId
 			}));
+		};
+		// 1001 才會進來，代表強制踢出
+		if (errorCode === 1001 && isMountedRef.current) {
 			setPopBox({
 				isOpen: true,
 				title: i18n.lbl_ImportantNote,
 				content: errMsg ?? i18n.msg_ForceLogedoutHint,
 				hasBtn: true,
+				// 因為 setUserInfo 寫在事件裡，所以要額外傳關閉事件進去，否則按 xx 不會 work
+				handlePopBox: clickClose,
 				btnBar: (
 					<div className="btn-group">
 						<button className="blue" onClick={clickClose}>
@@ -199,7 +203,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 		},
-		userInfo.isLogin && !isSpecialPath() ? 600000 : null
+		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
 
 	useEffect(() => {
