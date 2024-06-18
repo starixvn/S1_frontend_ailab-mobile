@@ -36,10 +36,7 @@ export default ({ isLogin = false }) => {
 				}
 			},
 			() => {
-				setPopBox({
-					isOpen: true,
-					content: i18n.msg_ApiServerError
-				});
+				console.log("GetBalance-api-error");
 			}
 		);
 	}, [isLogin, i18n, setPopBox]);

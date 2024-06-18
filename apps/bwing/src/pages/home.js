@@ -67,7 +67,6 @@ const IndexPage = () => {
 	const [hotEventList, setHotEventList] = useState([]);
 	const [leaderBoardList, setLeaderBoardList] = useState([]);
 	const [hotGameList, setHotGameList] = useState([]);
-	const [recentlyViewedGames, setRecentlyViewedGames] = useState([]);
 	const [news, setNews] = useState([]);
 	const { selCategory } = useSelCategory();
 	const { videoList } = useHandleStreamList({ selCategory });
@@ -269,7 +268,7 @@ const IndexPage = () => {
 					() => {
 						setPopBox({
 							isOpen: true,
-							content: t("msg_ApiServerError"),
+							content: "error-popup-testing-for-online-check",
 							handlePopBox: openNextPopUp
 						});
 					}
