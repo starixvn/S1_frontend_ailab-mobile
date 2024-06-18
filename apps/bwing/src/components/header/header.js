@@ -43,7 +43,7 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 		<header>
 			<div
 				className={`${classNames("header", {
-					"euro-header": isDateRange(eventTime.euroCup)
+					"olympic-header": isDateRange(eventTime.olympic)
 				})}`}>
 				<div className="header-content">
 					<button
@@ -59,14 +59,11 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 					{!hideLogo && !title && (
 						<a className="logo">
 							<Logo />
-							{isDateRange(eventTime.euroCup) && (
+							{isDateRange(eventTime.olympic) && (
 								<img
-									className="euro-index-logo"
-									src={`${bannerImgUrl}/h5/img/event/eurocup/bwing-euro.webp`}
-									alt="euro-logo-gif"
-									onClick={() =>
-										navigate(`/${path.euroCup.root}`)
-									}
+									className="olympic-index-logo"
+									src={`${bannerImgUrl}/h5/img/event/olympic/bwing-logoh5.webp`}
+									alt="olympic-logo-gif"
 								/>
 							)}
 						</a>

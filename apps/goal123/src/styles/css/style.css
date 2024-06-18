@@ -14462,7 +14462,7 @@ span.important {
 .header-content .logo > div span.vn {
   font-size: 2.4vw;
 }
-.header-content .logo-eurocup {
+.header-content .logo-olympic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14473,9 +14473,9 @@ span.important {
       -ms-flex-align: center;
           align-items: center;
 }
-.header-content .logo-eurocup img {
+.header-content .logo-olympic img {
   width: 10.8vw;
-  margin-left: 0.65vw;
+  margin-left: 2.5vw;
 }
 .header-content .loginjoin {
   display: -webkit-box;
@@ -16693,7 +16693,6 @@ main .menu-info .inner button {
 main .menu-app {
   background: #fab617;
   padding: 3.3vw 5.2vw;
-  margin-bottom: 4.6vw;
 }
 main .menu-app .app-content {
   display: -webkit-box;
@@ -16789,6 +16788,9 @@ main .menu-app .app-title-text span:first-child {
   font-size: 3.2vw;
   font-weight: 800;
   text-transform: uppercase;
+}
+main .menu-lang {
+  margin-top: 4.6vw;
 }
 main .menu-lang .country-list {
   display: -webkit-box;

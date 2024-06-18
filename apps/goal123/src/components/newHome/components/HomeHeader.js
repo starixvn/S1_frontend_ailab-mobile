@@ -125,12 +125,11 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 							{t("Label_Header_HarvestWealth")}
 						</span>
 					</div>
-					<a
-						className="logo-eurocup"
-						href={`/${userInfo.langId}/${path.euroCup.root}`}>
+					{/* 2024巴黎奧運期間LOGO */}
+					<a className="logo-olympic">
 						<img
-							src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
-							alt="header-eurocup-logo"
+							src={`${bannerImgUrl}/h5/img/event/olympic/logo-goal123-h5.webp`}
+							alt="header-olympic-logo"
 						/>
 					</a>
 				</div>
