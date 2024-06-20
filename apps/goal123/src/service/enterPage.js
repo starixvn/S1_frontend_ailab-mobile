@@ -27,10 +27,22 @@ export const GET_CASINO_ENTER_PAGE = ({
 		const homeUrl = `${appUrl}`;
 		const signupUrl = `${appUrl}/${path.join.root}`;
 		const LoginUrl = `${appUrl}/${path.login.root}`;
+		const lobbyUrl = `${appUrl}/${path.casino.root}?tpId=${tpId}&tpGameType=${tpGameType}`;
 		const _errorPageUrl = errorPageUrl(langId);
 		const _tpGameType = tpGameType ? `&tpGameType=${tpGameType}` : "";
 		const entPageUrl = `${config.openURL}/${langId}/entPage?homeUrl=${homeUrl}&signupUrl=${signupUrl}&LoginUrl=${LoginUrl}&tpId=${tpId}&gameId=${gameId}&errorUrl=${_errorPageUrl}&AppType=2${_tpGameType}`;
-		const url = `${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`;
+
+		const searchParams = new URLSearchParams({
+			fun: isFree ? "1" : "0",
+			gameType: "slots"
+		});
+
+		if (Number(tpId) === products.PragmaticPlaySlot.tpId) {
+			searchParams.set("LobbyUrl", lobbyUrl);
+		}
+
+		const url = `${entPageUrl}&${searchParams.toString()}`;
+
 		// * stage 環境， log url 提供資訊 debug
 		if (
 			window.location.href.indexOf("stag") !== -1 ||
@@ -41,7 +53,7 @@ export const GET_CASINO_ENTER_PAGE = ({
 
 		window
 			.open(
-				`${entPageUrl}&fun=${isFree ? 1 : 0}&gameType=slots`,
+				url,
 				`Tp_${tpId}`,
 				"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 			)
