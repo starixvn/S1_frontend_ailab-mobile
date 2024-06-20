@@ -212,6 +212,9 @@ export default {
 	},
 	cockFighting: {
 		root: "cockfighting"
+	},
+	survey: {
+		root: "survey"
 	}
 };
 

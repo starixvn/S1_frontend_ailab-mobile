@@ -77,3 +77,7 @@ export const liveStreamingRequest = createAxiosInstanceWithDeviceHeader(
 export const euroCupRequest = createAxiosInstanceWithDeviceHeader(
 	`${rootURL}/api/CupEvent`
 );
+
+export const surveyRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Questionnaire`
+);
