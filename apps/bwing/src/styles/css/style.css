@@ -1286,13 +1286,6 @@ a {
   margin-left: 12vw !important;
 }
 
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 a,
 button {
   font-family: "Bai Jamjuree", sans-serif;
@@ -3802,6 +3795,9 @@ header {
       -ms-flex-flow: unset;
           flex-flow: unset;
   display: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 4vw;
 }
 #popup.livesportspop.active {
   display: -webkit-box;
@@ -3824,10 +3820,11 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 4vw;
 }
 #popup.livesportspop .livesports > div {
   width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 #popup.livesportspop .livesports > div:first-child {
   border-radius: 3vw;
