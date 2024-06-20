@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
 import {
 	api_account_GetReferralCode,
 	api_account_GetReferralSettingDetail,
@@ -10,19 +9,21 @@ import { bannerImgUrl } from "../../config";
 import {
 	loadingContext,
 	referralPopBox,
-	userInfoContext
+	userInfoContext,
+	popBoxContext
 } from "../common/context";
 import { ReferralPopBox } from "./referral.popbox";
 import ReferralStatus from "./referralStatus";
 import ReferralInfo from "./referral.info";
 
-const Referral = ({ userInfo, i18n, setPopBox }) => {
+const Referral = () => {
 	const { t } = useTranslation();
 	const isMountedRef = useRef(null);
 	const [referralCode, setReferralCode] = useState("");
 	const {
 		userInfo: { langId }
 	} = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
 	const { setReferralBox } = useContext(referralPopBox);
 	const [referralSum, setReferralSum] = useState({});
@@ -140,12 +141,6 @@ const Referral = ({ userInfo, i18n, setPopBox }) => {
 			</>
 		)
 	);
-};
-
-Referral.propTypes = {
-	userInfo: PropTypes.objectOf(PropTypes.any).isRequired,
-	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	setPopBox: PropTypes.func.isRequired
 };
 
 export default Referral;
