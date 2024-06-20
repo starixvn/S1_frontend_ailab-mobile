@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import path from "apps/goal123/src/path";
 import { isDateRange } from "@ailab-mobile/common";
-import { eventTime } from "../../common/eventTime";
 import { bannerImgUrl } from "../../../config";
 import useGetBalance from "../../hook/useGetMainBalance";
 import useGetTpBalance from "../../hook/useGetTpBalance";
@@ -13,6 +12,7 @@ import { api_account_GetPopupMsg } from "../../../service/api/account";
 import { tpWalletsListType } from "../../transfer/transfer.def";
 import { userInfoContext, msgCountContext } from "../../common/context";
 import { number_format } from "../../common/common";
+import { eventTime } from "../../common/eventTime";
 
 const HomeHeader = ({ appHint, handleDownloadHint }) => {
 	const { userInfo } = useContext(userInfoContext);
@@ -128,6 +128,7 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 						</span>
 					</div>
 
+					{/* TODO: 歐洲盃期間LOGO => 結束後可刪 */}
 					{isDateRange(eventTime.eventCup) && (
 						<a
 							className="logo-eurocup"
@@ -135,6 +136,16 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 							<img
 								src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
 								alt="header-eurocup-logo"
+							/>
+						</a>
+					)}
+
+					{/* 2024巴黎奧運期間LOGO */}
+					{isDateRange(eventTime.olympic) && (
+						<a className="logo-olympic">
+							<img
+								src={`${bannerImgUrl}/h5/img/event/olympic/logo-goal123-h5.webp`}
+								alt="header-olympic-logo"
 							/>
 						</a>
 					)}

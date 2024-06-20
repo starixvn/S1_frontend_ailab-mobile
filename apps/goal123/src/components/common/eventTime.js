@@ -59,12 +59,16 @@ export const eventTime = {
 	game_93Connect: { endDate: "2024/04/21 23:59:59" },
 	eventCup: {
 		startDate: "2024/04/15 00:00:00",
-		endDate: "2024/07/20 23:59:59"
+		endDate: "2024/07/15 23:59:59"
 	},
 	prediction: {
 		endDate: "2024/06/14 23:59:59"
 	},
 	liveCasino_Won: {
 		endDate: "2024/07/09 23:59:59"
+	},
+	olympic: {
+		startDate: "2024/07/16 00:00:00",
+		endDate: "2024/08/15 23:59:59"
 	}
 };

@@ -18495,6 +18495,9 @@ main .menu-app .app-title-text span:first-child {
 main .menu-lang {
 	margin-top: 4.6vw;
 }
+main .menu-lang {
+	margin-top: 4.6vw;
+}
 main .menu-lang .country-list {
 	display: -webkit-box;
 	display: -ms-flexbox;
