@@ -56,9 +56,23 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 							{title}
 						</div>
 					)}
+
 					{!hideLogo && !title && (
 						<a className="logo">
 							<Logo />
+							{/* TODO: 歐洲盃期間LOGO => 結束後可刪 */}
+							{isDateRange(eventTime.euroCup) && (
+								<img
+									className="euro-index-logo"
+									src={`${bannerImgUrl}/h5/img/event/eurocup/bwing-euro.webp`}
+									alt="euro-logo-gif"
+									onClick={() =>
+										navigate(`/${path.euroCup.root}`)
+									}
+								/>
+							)}
+
+							{/* 巴黎奧運期間顯示 */}
 							{isDateRange(eventTime.olympic) && (
 								<img
 									className="olympic-index-logo"
