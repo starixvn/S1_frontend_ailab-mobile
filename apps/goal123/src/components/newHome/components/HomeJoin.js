@@ -60,10 +60,10 @@ const HomeJoin = () => {
 					: t("lbl_Home_Join")}
 			</div>
 			<div className="join-list">
-				{JoinListItems.map((item, index) => (
+				{JoinListItems.map(item => (
 					<div
 						className="join-item"
-						key={index.title}
+						key={item.title}
 						onClick={() => handleDepositImage(item)}>
 						<div className="title">{t(item.title)}</div>
 						<img src={getImageUrl(item.img)} alt={t(item.title)} />

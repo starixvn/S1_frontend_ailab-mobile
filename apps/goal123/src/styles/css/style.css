@@ -2240,16 +2240,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   padding: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: unset;
           flex-flow: unset;
   display: none;
-  padding: 0 4vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 #popup.livesportspop.active {
   display: -webkit-box;
@@ -2260,45 +2257,27 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: center;
 }
 #popup.livesportspop .livesports {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
+  width: 90vw !important;
+  height: 170vw;
+  margin-bottom: 15vw;
+  position: relative;
   -webkit-animation: sponsor 0.3s linear 0.2s backwards;
           animation: sponsor 0.3s linear 0.2s backwards;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+#popup.livesportspop .livesports img {
+  display: block;
+  margin: 0 auto;
+  max-width: 85vw;
 }
 #popup.livesportspop .livesports > div {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-}
-#popup.livesportspop .livesports > div:first-child {
-  border-radius: 3vw;
-}
-#popup.livesportspop .livesports > div:first-child img {
-  width: 100%;
-}
-#popup.livesportspop .livesports > div:nth-child(2) {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(211, 44, 15)), to(rgb(255, 134, 51)));
-  background: linear-gradient(180deg, rgb(211, 44, 15) 0%, rgb(255, 134, 51) 100%);
-  padding: 1rem;
-  margin-top: -11vw;
-  border-radius: 3vw;
-  position: relative;
-  z-index: 1;
+  padding: 0 4vw;
+  margin-top: 45vw;
 }
 #popup.livesportspop .livesports > div .livesports-item {
   background: url(https://banner.goal123.org/h5/img/team-bg.png) no-repeat center/100%;
-  height: 35vw;
+  height: 39vw;
   margin-bottom: 2vw;
-  overflow: hidden;
-  border-radius: 1rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .top {
   font-weight: 600;
@@ -2315,19 +2294,20 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   background: -webkit-gradient(linear, left top, right top, from(rgb(255, 54, 14)), to(rgb(28, 49, 123)));
   background: linear-gradient(90deg, rgb(255, 54, 14) 0%, rgb(28, 49, 123) 100%);
+  border-radius: 10px 10px 0 0;
 }
-#popup.livesportspop .livesports > div .livesports-item .top > div:first-child {
+#popup.livesportspop .livesports > div .livesports-item .top > div {
+  width: 55vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 0.9rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  height: 5vw;
+  width: 17vw;
   text-align: center;
-  border-radius: 1rem 0 0 1rem;
-  padding: 0 1.5vw;
+  border-radius: 20px 0 0 20px;
+  padding: 0.5vw 1vw 0.5vw 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2335,7 +2315,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
   font-size: 3vw;
-  font-size: 0.9rem;
+  line-height: 1.2;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child::before {
   display: block;
@@ -2359,6 +2339,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 2vw;
+  font-size: 3vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team {
   display: -webkit-box;
@@ -2376,8 +2357,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child {
   background: #d5d5d5;
   border-radius: 50px;
-  width: 4rem;
-  height: 4rem;
+  width: 14vw;
+  height: 14vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2389,14 +2370,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: center;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child img {
-  width: 8vw;
+  width: 12vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:last-child {
   text-align: center;
   margin-top: 2vw;
-  line-height: 3vw;
+  line-height: 3.5vw;
   width: 20vw;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time {
   margin: 0 2vw;
@@ -2411,12 +2391,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   color: #0f214e;
   font-weight: 600;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div {
   margin-top: 2vw;
@@ -2451,8 +2427,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop .livesports > div .livesports-item.next .bottom-time > div {
   color: #272829;
 }
-#popup.livesportspop .livesports > div .livesports-item:last-child {
-  margin: 0;
+#popup.livesportspop .livesports.vn {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-vn.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.en {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
 }
 @-webkit-keyframes blinking {
   from {
@@ -2488,7 +2467,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   cursor: pointer;
   display: block;
   width: 7vw;
-  margin-top: 1vw;
+  position: absolute;
+  left: 50%;
+  bottom: -12vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
 }
 @keyframes closepop {
   0% {
@@ -16566,6 +16551,10 @@ main .menu-platform .platform button span {
   white-space: pre-wrap;
   word-break: break-word;
   min-height: 8vw;
+}
+main .menu-platform .platform .survey-icon img {
+  width: 9vw;
+  height: 9vw;
 }
 main .menu-lobby {
   margin-top: 1.5vw;

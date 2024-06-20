@@ -54,6 +54,15 @@ const MenuPlatform = () => {
 					/>
 					<span>{t("Label_Menu_Lucky_Wheel")}</span>
 				</a>
+				{userInfo.isLogin && (
+					<a href="/survey">
+						<img
+							src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-survey.svg`}
+							alt="sidemenu-survey"
+						/>
+						<span>{t("lbl_Survey")}</span>
+					</a>
+				)}
 			</div>
 		</div>
 	);
