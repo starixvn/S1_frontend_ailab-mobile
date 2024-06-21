@@ -43,6 +43,7 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 		<header>
 			<div
 				className={`${classNames("header", {
+					"euro-header": isDateRange(eventTime.euroCup),
 					"olympic-header": isDateRange(eventTime.olympic)
 				})}`}>
 				<div className="header-content">
