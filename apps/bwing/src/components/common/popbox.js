@@ -28,6 +28,7 @@ const PopUp = () => {
 	};
 
 	let content = null;
+	let fallbackTitle = i18n.lbl_ImportantNote;
 	switch (popBox.popBoxType) {
 		case defPopBoxType.TurnoverAccumulated:
 			content = <TurnoverAccumulated {...popBox} />;
@@ -57,6 +58,7 @@ const PopUp = () => {
 			break;
 
 		default:
+			fallbackTitle = i18n.lbl_Error_Oops;
 			content = (
 				<div className="popTxt">
 					{popBox.content}
@@ -65,6 +67,7 @@ const PopUp = () => {
 			);
 			break;
 	}
+
 	return popBox.isOpen ? (
 		<div
 			id="popup"
@@ -89,7 +92,7 @@ const PopUp = () => {
 								<span />
 							</div>
 						)}
-						<h1>{popBox.title ?? i18n.lbl_ImportantNote}</h1>
+						<h1>{popBox.title ?? fallbackTitle}</h1>
 					</div>
 					{content}
 				</div>
