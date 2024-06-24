@@ -2240,16 +2240,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   padding: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: unset;
           flex-flow: unset;
   display: none;
-  padding: 0 4vw;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 #popup.livesportspop.active {
   display: -webkit-box;
@@ -2260,45 +2257,27 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: center;
 }
 #popup.livesportspop .livesports {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
+  width: 90vw !important;
+  height: 170vw;
+  margin-bottom: 15vw;
+  position: relative;
   -webkit-animation: sponsor 0.3s linear 0.2s backwards;
           animation: sponsor 0.3s linear 0.2s backwards;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+#popup.livesportspop .livesports img {
+  display: block;
+  margin: 0 auto;
+  max-width: 85vw;
 }
 #popup.livesportspop .livesports > div {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  width: 100%;
-}
-#popup.livesportspop .livesports > div:first-child {
-  border-radius: 3vw;
-}
-#popup.livesportspop .livesports > div:first-child img {
-  width: 100%;
-}
-#popup.livesportspop .livesports > div:nth-child(2) {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(211, 44, 15)), to(rgb(255, 134, 51)));
-  background: linear-gradient(180deg, rgb(211, 44, 15) 0%, rgb(255, 134, 51) 100%);
-  padding: 1rem;
-  margin-top: -11vw;
-  border-radius: 3vw;
-  position: relative;
-  z-index: 1;
+  padding: 0 4vw;
+  margin-top: 45vw;
 }
 #popup.livesportspop .livesports > div .livesports-item {
   background: url(https://banner.goal123.org/h5/img/team-bg.png) no-repeat center/100%;
-  height: 35vw;
+  height: 39vw;
   margin-bottom: 2vw;
-  overflow: hidden;
-  border-radius: 1rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .top {
   font-weight: 600;
@@ -2315,19 +2294,20 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: center;
   background: -webkit-gradient(linear, left top, right top, from(rgb(255, 54, 14)), to(rgb(28, 49, 123)));
   background: linear-gradient(90deg, rgb(255, 54, 14) 0%, rgb(28, 49, 123) 100%);
+  border-radius: 10px 10px 0 0;
 }
-#popup.livesportspop .livesports > div .livesports-item .top > div:first-child {
+#popup.livesportspop .livesports > div .livesports-item .top > div {
+  width: 55vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 0.9rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  height: 5vw;
+  width: 17vw;
   text-align: center;
-  border-radius: 1rem 0 0 1rem;
-  padding: 0 1.5vw;
+  border-radius: 20px 0 0 20px;
+  padding: 0.5vw 1vw 0.5vw 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2335,7 +2315,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
   font-size: 3vw;
-  font-size: 0.9rem;
+  line-height: 1.2;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child::before {
   display: block;
@@ -2359,6 +2339,7 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 2vw;
+  font-size: 3vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team {
   display: -webkit-box;
@@ -2376,8 +2357,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child {
   background: #d5d5d5;
   border-radius: 50px;
-  width: 4rem;
-  height: 4rem;
+  width: 14vw;
+  height: 14vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2389,14 +2370,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           justify-content: center;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child img {
-  width: 8vw;
+  width: 12vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:last-child {
   text-align: center;
   margin-top: 2vw;
-  line-height: 3vw;
+  line-height: 3.5vw;
   width: 20vw;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time {
   margin: 0 2vw;
@@ -2411,12 +2391,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   color: #0f214e;
   font-weight: 600;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div {
   margin-top: 2vw;
@@ -2451,8 +2427,11 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 #popup.livesportspop .livesports > div .livesports-item.next .bottom-time > div {
   color: #272829;
 }
-#popup.livesportspop .livesports > div .livesports-item:last-child {
-  margin: 0;
+#popup.livesportspop .livesports.vn {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-vn.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.en {
+  background: url(https://banner.goal123.org/h5/img/livesports-bg-en.png) no-repeat center/100% !important;
 }
 @-webkit-keyframes blinking {
   from {
@@ -2488,7 +2467,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   cursor: pointer;
   display: block;
   width: 7vw;
-  margin-top: 1vw;
+  position: absolute;
+  left: 50%;
+  bottom: -12vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
 }
 @keyframes closepop {
   0% {
@@ -7288,7 +7273,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 34vw;
+  bottom: 64vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7301,6 +7286,18 @@ span.important {
 }
 .eventLink.vgaming.eurocup {
   bottom: 34vw;
+}
+.eventLink.luckywheel {
+  bottom: 34vw;
+}
+.eventLink.luckywheel .vgimg {
+  width: 27vw;
+}
+.eventLink.luckywheel .icon-close {
+  top: 0;
+  right: 0;
+  background: #cecece;
+  color: rgb(92, 92, 92);
 }
 .eventLink.dragonegg {
   right: 4vw;
@@ -9816,9 +9813,9 @@ span.important {
 }
 .wheelEvent .eventTitleBg {
   width: 39vw;
-  height: 9vw;
+  height: 12vw;
   background: url(https://banner.goal123.org/h5/img/event/wheel/title.png) no-repeat bottom center/cover;
-  margin: auto;
+  margin: 25vw 0 6vw 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9828,7 +9825,6 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 6vw;
 }
 .wheelEvent .eventTitleBg .eventTitle {
   margin-top: -2.5vw;
@@ -9843,7 +9839,7 @@ span.important {
 }
 .wheelEvent .eventTitleBg.vietnam {
   width: 50vw;
-  height: 10vw;
+  height: 14vw;
 }
 .wheelEvent .eventTitleBg.vietnam .eventTitle {
   margin-top: -3.5vw;
@@ -17580,4 +17576,508 @@ main .menu-member .member-vip .vip-extra p {
   text-align: center;
   line-height: 1.2;
   word-spacing: 0.1vw;
+}
+
+.retention {
+  background: #000000 url(https://banner.goal123.org/h5/img/event/retention/retention-banner.jpg) no-repeat top/contain;
+  position: relative;
+  width: 100%;
+  margin-top: 10vw;
+  color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 0 50vw;
+}
+.retention-wrapper {
+  width: 100%;
+}
+.retention-wrapper .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.retention-wrapper .top-item {
+  width: 90%;
+  -webkit-animation: baloon_1 2s infinite;
+          animation: baloon_1 2s infinite;
+  margin-bottom: 70vw;
+  padding-top: 15vw;
+  z-index: 1;
+}
+.retention-wrapper .top-btn {
+  position: absolute;
+  padding: 3vw 10vw;
+  bottom: -18vw;
+  background: url(https://banner.goal123.org/h5/img/event/retention/buttons.png) no-repeat center/100%;
+  width: 50vw;
+  height: 20vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4.5vw;
+  font-weight: 700;
+  color: #FFF7B1;
+  -webkit-animation: livesports 1.5s ease-in-out infinite;
+          animation: livesports 1.5s ease-in-out infinite;
+}
+.retention-wrapper .top-btn.close {
+  display: none;
+}
+.retention-wrapper .bonus-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 5vw 5vw;
+  margin-top: 3vw;
+}
+.retention-wrapper .bonus-list > div:last-child {
+  position: relative;
+  z-index: 1;
+}
+.retention-wrapper .bonus-list .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.retention-wrapper .bonus-list .title > div:first-child {
+  color: #fab617;
+  font-size: 4vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 5vw;
+}
+.retention-wrapper .bonus-list .sheet-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+  margin-top: 3vw;
+}
+.retention-wrapper .bonus-list .sheet-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.retention-wrapper .bonus-list .sheet-item > div {
+  border-right: 2px solid #4689FF;
+}
+.retention-wrapper .bonus-list .sheet-item > div > div {
+  padding: 2vw 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 100vw;
+}
+.retention-wrapper .bonus-list .sheet-item > div > div:first-child {
+  background: #113F90;
+  font-size: 4vw;
+  font-weight: 700;
+  height: 8vw;
+}
+.retention-wrapper .bonus-list .sheet-item > div > div:last-child {
+  background: #E9E9E9;
+  color: #112240;
+  font-size: 3.5vw;
+  font-weight: 600;
+  height: 14vw;
+}
+.retention-wrapper .bonus-list .sheet-item > div:first-child > div:first-child {
+  border-radius: 2vw 0 0 0;
+}
+.retention-wrapper .bonus-list .sheet-item > div:first-child > div:last-child {
+  border-radius: 0 0 0 2vw;
+}
+.retention-wrapper .bonus-list .sheet-item > div:last-child {
+  border-right: none;
+}
+.retention-wrapper .bonus-list .sheet-item > div:last-child > div:first-child {
+  border-radius: 0 2vw 0 0;
+}
+.retention-wrapper .bonus-list .sheet-item > div:last-child > div:last-child {
+  border-radius: 0 0 2vw 0;
+}
+.retention-wrapper .turnover-progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 4vw 0 8vw;
+}
+.retention-wrapper .turnover-progress .turnover-title {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(255, 109, 0)), to(rgb(255, 198, 2)));
+  background: linear-gradient(90deg, rgb(255, 109, 0) 0%, rgb(255, 198, 2) 100%);
+  font-size: 4vw;
+  font-weight: 700;
+  padding: 4vw 0 4vw 4vw;
+  border-radius: 7vw 7vw 0 0;
+  width: 85vw;
+}
+.retention-wrapper .turnover-progress .turnover-item {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(255, 236, 171)), to(rgb(255, 109, 0)));
+  background: linear-gradient(90deg, rgb(255, 236, 171) 0%, rgb(255, 109, 0) 100%);
+  width: 90vw;
+  border-radius: 6vw;
+  margin-top: -10px;
+  padding: 1vw;
+  height: 38vw;
+}
+.retention-wrapper .turnover-progress .turnover-item > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 3.5vw;
+  font-weight: 700;
+  border-radius: 5vw;
+  height: 38vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(201, 0, 24)), to(rgb(71, 0, 10)));
+  background: linear-gradient(180deg, rgb(201, 0, 24) 0%, rgb(71, 0, 10) 100%);
+}
+.retention-wrapper .turnover-progress .turnover-item > div .number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80vw;
+  margin-bottom: 2vw;
+}
+.retention-wrapper .turnover-progress .turnover-item > div .number > div:last-child {
+  color: #fab617;
+}
+.retention-wrapper .turnover-progress .turnover-item > div .progress {
+  height: 5vw;
+  background: #000;
+  width: 80vw;
+  border-radius: 20vw;
+}
+.retention-wrapper .turnover-progress .turnover-item > div .progress-bar {
+  background: -webkit-gradient(linear, left top, right top, from(rgb(255, 109, 0)), to(rgb(255, 255, 255)));
+  background: linear-gradient(90deg, rgb(255, 109, 0) 0%, rgb(255, 255, 255) 100%);
+  height: 5vw;
+  border-radius: 20vw;
+  -webkit-box-shadow: 0 0 9px #FFB12A;
+          box-shadow: 0 0 9px #FFB12A;
+}
+.retention-wrapper .turnover-progress .turnover-item > div .percent {
+  color: #FFC602;
+  width: 80vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin-top: 1.5vw;
+}
+.retention-wrapper .chip img {
+  position: absolute;
+}
+.retention-wrapper .chip img:first-child {
+  width: 200px;
+  bottom: calc(50% - 750px);
+  left: calc(50% - 1100px);
+  -webkit-animation: baloon_1 4.5s infinite;
+          animation: baloon_1 4.5s infinite;
+}
+.retention-wrapper .chip img:nth-child(2) {
+  width: 180px;
+  top: calc(50% - 500px);
+  right: calc(50% - 850px);
+  -webkit-animation: baloon_1 3s infinite;
+          animation: baloon_1 3s infinite;
+}
+.retention-wrapper .chip img:last-child {
+  width: 220px;
+  bottom: calc(50% - 1200px);
+  right: 0;
+  -webkit-animation: baloon_1 6.5s infinite;
+          animation: baloon_1 6.5s infinite;
+}
+.retention-wrapper .bottom {
+  margin-top: 4vw;
+}
+.retention-wrapper .bottom-title {
+  font-size: 4.5vw;
+  font-weight: 700;
+  margin-bottom: 3vw;
+}
+.retention-wrapper .bottom > div {
+  margin-bottom: 8vw;
+}
+.retention-wrapper .bottom > div ul {
+  color: #BCBCBC;
+}
+.retention-wrapper .bottom > div ul li {
+  margin-bottom: 2vw;
+  line-height: 4.5vw;
+}
+.retention-title {
+  font-size: 8vw;
+  font-weight: 800;
+  text-shadow: 0 0 30px #FFD268;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 9vw;
+  margin-top: 22vw;
+  padding: 0 5vw;
+}
+.retention-title > div {
+  width: 80vw;
+  line-height: 6vw;
+  margin: 3vw 0;
+  font-size: 3.5vw;
+  text-shadow: none;
+  font-weight: 500;
+}
+@-webkit-keyframes baloon_1 {
+  0% {
+    -webkit-transform: translateY(3vw);
+            transform: translateY(3vw);
+  }
+  50% {
+    -webkit-transform: translateY(10vw);
+            transform: translateY(10vw);
+  }
+  100% {
+    -webkit-transform: translateY(3vw);
+            transform: translateY(3vw);
+  }
+}
+@keyframes baloon_1 {
+  0% {
+    -webkit-transform: translateY(3vw);
+            transform: translateY(3vw);
+  }
+  50% {
+    -webkit-transform: translateY(10vw);
+            transform: translateY(10vw);
+  }
+  100% {
+    -webkit-transform: translateY(3vw);
+            transform: translateY(3vw);
+  }
+}
+
+.eventpage-tap {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7607843137);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 3vw 0;
+  border-radius: 20vw;
+  width: 90vw;
+  left: calc(50% - 45vw);
+  top: 7vw;
+  z-index: 2;
+}
+.eventpage-tap > button {
+  font-size: 4vw;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40vw;
+  color: #979797;
+}
+.eventpage-tap > button.active {
+  color: #112240;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.eventpage-tap > button.active::after {
+  position: absolute;
+  display: block;
+  content: "";
+  background: #fab617;
+  height: 1vw;
+  width: 35vw;
+  bottom: -3vw;
+}
+
+.retention-footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+}
+.retention-footer img {
+  width: 100%;
+}
+
+.retention-wrapper .bonus-list p strong span {
+  color: #fab617 !important;
+  font-weight: bold !important;
+}
+
+.retention-wrapper .bonus-list p span strong span {
+  color: #fab617 !important;
+  font-weight: bold !important;
+  font-family: "Bai Jamjuree", sans-serif !important;
+  font-size: 6vw !important;
+}
+
+/* 標題可能的結構*/
+.retention-wrapper .bonus-list p span strong {
+  color: #fab617 !important;
+  font-weight: bold !important;
+  font-family: "Bai Jamjuree", sans-serif !important;
+  font-size: 6vw !important;
+}
+
+.retention-wrapper .bonus-list p,
+.retention-wrapper .bonus-list span {
+  color: white !important;
+}
+
+.retention-wrapper .bonus-list p a span {
+  color: #fab617 !important;
+}
+
+.retention-wrapper .bonus-list p span a {
+  color: #fab617 !important;
+}
+
+.retention-wrapper .bonus-list table {
+  width: 100% !important;
+}
+
+.retention-wrapper .bonus-list table tr p span {
+  color: #000 !important;
+}
+
+.retention-wrapper .bonus-list table tr p span span {
+  color: #000 !important;
+}
+
+.retention-wrapper .bonus-list table tr td span {
+  color: #000 !important;
+}
+
+.retention-wrapper .bonus-list table tr:first-child p span {
+  color: #ffffff !important;
+}
+
+.retention-wrapper .bonus-list table tr:first-child td {
+  background-color: #fab617 !important;
+}
+
+.retention-wrapper .bonus-list .table-wrapper {
+  overflow-x: scroll !important;
+}
+
+.retention-wrapper .bonus-list strong span {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.retention-wrapper .bonus-list span strong {
+  font-weight: bold !important;
+}
+
+.retention-wrapper .bonus-list table td {
+  border: none !important;
+  border-right: 2px solid #000 !important;
+}
+
+.retention-wrapper .bonus-list tr td:last-child {
+  border-right: none !important;
+}
+
+.retention-wrapper .bonus-list tr:first-child td:first-child {
+  border-top-left-radius: 2vw !important;
+}
+
+.retention-wrapper .bonus-list tr:first-child td:last-child {
+  border-top-right-radius: 2vw !important;
+}
+
+.retention-wrapper .bonus-list tr:last-child td:first-child {
+  border-bottom-left-radius: 2vw !important;
+}
+
+.retention-wrapper .bonus-list tr:last-child td:last-child {
+  border-bottom-right-radius: 2vw !important;
 }/*# sourceMappingURL=style.css.map */

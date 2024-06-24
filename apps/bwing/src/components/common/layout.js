@@ -250,6 +250,13 @@ export const defPageInfo = {
 		titleKey: "lbl_CupEvent_Euro2024",
 		className: "euro",
 		hideLogo: true
+	},
+
+	// 設計那邊的結構class是下在裡面那層 所以這邊沒加
+
+	retention: {
+		titleKey: "Label_Retention_SurpriseReward",
+		hideLogo: true
 	}
 };
 

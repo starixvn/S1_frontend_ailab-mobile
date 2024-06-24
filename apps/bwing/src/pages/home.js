@@ -4,6 +4,7 @@ import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { isExpiry } from "@ailab-mobile/promotion";
 import { isInApp } from "@ailab-mobile/common";
+import { api_promotion_GetPromotionDetail } from "apps/goal123/src/service/api/promotion";
 import {
 	userInfoContext,
 	popBoxContext,
@@ -46,6 +47,10 @@ import News from "../components/home/news";
 import { HomeBanner } from "../components/home/homeBanner";
 import { useGetTpMaintainList } from "../components/hook/useGetTpMaintainList";
 import useGetBalance from "../components/hook/useGetMainBalance";
+
+const apiResPromotionType = {
+	retentionFreebet: 9
+};
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -354,43 +359,72 @@ const IndexPage = () => {
 			getPopUpPromotion({ langId: userInfo.langId }).then(
 				({ data: { data: { bonusCode } = {} } = {} }) => {
 					if (bonusCode) {
-						setPopBox({
-							isOpen: true,
-							className: "promosback active",
-							displayStyle: "", //* 默認為block, 給空字串防止跑版
-							custContent: (
-								<div className="pop promosbackpop">
-									<img
-										src={`${
-											process.env.REACT_APP_BANNER_URL
-										}/desktop/img/promosBackPopup/promosPopup-${
-											userInfo?.langId || "en"
-										}.png`}
-										alt="img-promosPopup"
-									/>
-									<button
-										className="popgo"
-										onClick={() => {
-											navigate(
-												`/${path.promotion.root}?bonusCode=${bonusCode}`
-											);
-											setPopBox({ isOpen: false });
-										}}>
-										{t("lbl_ClaimNow")}
-									</button>
-									<img
-										src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
-										alt="img-delet"
-										className="closepop"
-										onClick={() => {
-											setPopBox({ isOpen: false });
-											openNextPopUp();
-										}}
-									/>
-								</div>
-							)
-						});
-						setCookie(cookieName, "1", 1);
+						// getting promotion detail to determine the type of promotion
+						api_promotion_GetPromotionDetail({
+							langId: userInfo.langId,
+							BonusCode: bonusCode
+						}).then(
+							// giving default value to response data and promotionType
+							({
+								data: {
+									data: { promotionType = null } = {}
+								} = {}
+							}) => {
+								setPopBox({
+									isOpen: true,
+									className: "promosback active",
+									displayStyle: "", //* 默認為block, 給空字串防止跑版
+									custContent: (
+										<div className="pop promosbackpop">
+											<img
+												src={`${
+													process.env
+														.REACT_APP_BANNER_URL
+												}/desktop/img/promosBackPopup/promosPopup-${
+													userInfo?.langId || "en"
+												}.png`}
+												alt="img-promosPopup"
+											/>
+											<button
+												className="popgo"
+												// if promotion type = retention freebet(9), then link to retention landing page
+												onClick={() => {
+													if (
+														promotionType ===
+														apiResPromotionType.retentionFreebet
+													) {
+														navigate(
+															`/${path.retention.root}`
+														);
+													} else {
+														navigate(
+															`/${path.promotion.root}?bonusCode=${bonusCode}`
+														);
+													}
+
+													setPopBox({
+														isOpen: false
+													});
+												}}>
+												{t("lbl_ClaimNow")}
+											</button>
+											<img
+												src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
+												alt="img-delet"
+												className="closepop"
+												onClick={() => {
+													setPopBox({
+														isOpen: false
+													});
+													openNextPopUp();
+												}}
+											/>
+										</div>
+									)
+								});
+								setCookie(cookieName, "1", 1);
+							}
+						);
 					} else {
 						openNextPopUp();
 					}
