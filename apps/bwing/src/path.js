@@ -212,6 +212,9 @@ export default {
 	},
 	cockFighting: {
 		root: "cockfighting"
+	},
+	retention: {
+		root: "retention"
 	}
 };
 
