@@ -5,7 +5,7 @@ import React, {
 	useCallback,
 	useRef
 } from "react";
-import { products } from "@ailab-mobile/common";
+import { isInApp, products } from "@ailab-mobile/common";
 import { popBoxContext, i18nContext } from "../common/context";
 import { api_tp_GotoGame, defGotoGame_AppType } from "../../service/api/tp";
 
@@ -124,6 +124,19 @@ export const useGotoGame = ({
 			loginGameType
 		}) => {
 			if (_isLogin) {
+				// 因在 App 內彈窗開啟特定遊戲時會有問題，在此改導轉到專屬的開啟頁面
+				if (isInApp() && _tpId === products.PGSoft.tpId) {
+					const params = new URLSearchParams({
+						tpId: String(_tpId),
+						langId: String(_langId),
+						gameId: String(_gameId),
+						tpGameType: String(tpGameType),
+						loginGameType
+					}).toString();
+					window.location = `/launcher/pg?${params}`;
+					return;
+				}
+
 				api_tp_GotoGame({
 					TpId: _tpId,
 					LangId: _langId,
