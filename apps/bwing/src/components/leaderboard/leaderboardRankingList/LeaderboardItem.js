@@ -1,0 +1,89 @@
+import React from "react";
+import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
+import { bannerImgUrl } from "../../../config";
+
+/** 排名列表Item */
+const LeaderboardItem = ({ rankList }) => {
+	const { t } = useTranslation();
+
+	/**
+	 * 渲染前三名 Item，樣式跟其他 Item 不一樣
+	 * @param userName 其他玩家名稱
+	 * @param point point
+	 * @param rank 名次 */
+	const renderTop3Item = (userName, point, rank) => {
+		return (
+			<div className={`user-list top-${rank}`} key={rank}>
+				<div className="left">
+					<div className="order">
+						<img
+							src={`${bannerImgUrl}/h5/img/leaderboard/winner-${rank}.png`}
+							alt=""
+						/>
+					</div>
+					<div className="user-id">{userName}</div>
+				</div>
+				<div className="right">
+					<i className="icon-cash" />
+					<span>$ {point}</span>
+				</div>
+			</div>
+		);
+	};
+
+	/**
+	 * 渲染除了前三名以外的 Item，
+	 * @param userName 其他玩家名稱
+	 * @param point point
+	 * @param rank 名次 */
+	const renderOtherItem = (userName, point, rank) => {
+		return (
+			<div className="user-list" key={rank}>
+				<div className="left">
+					<div className="order">{rank}</div>
+					<div className="user-id">{userName}</div>
+				</div>
+				<div className="right">
+					<i className="icon-cash" />
+					<span>$ {point}</span>
+				</div>
+			</div>
+		);
+	};
+	return (
+		<>
+			<div className="user-thead">
+				<div className="left">
+					<span>{t("lbl_Rank")}</span>
+					<span>{t("lbl_Username")}</span>
+				</div>
+				<div className="right">
+					<span>{t("lbl_Points")}</span>
+				</div>
+			</div>
+			<div className="user-ranking">
+				{rankList &&
+					rankList.map(({ userName, wTurnover }, index) => {
+						const isTop3 = index < 3; // 前三名
+						const rank = index + 1; // 名次
+						return isTop3
+							? renderTop3Item(userName, wTurnover, rank)
+							: renderOtherItem(userName, wTurnover, rank);
+					})}
+			</div>
+		</>
+	);
+};
+
+/** 排名列表Item */
+export default LeaderboardItem;
+
+LeaderboardItem.propTypes = {
+	rankList: PropTypes.arrayOf(
+		PropTypes.shape({
+			userName: PropTypes.string.isRequired,
+			wTurnover: PropTypes.number.isRequired
+		})
+	).isRequired
+};
