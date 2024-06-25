@@ -85,6 +85,7 @@ import Lottery from "./pages/lottery";
 import Esports from "./pages/esports";
 import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
+import Leaderboard from "./pages/leaderboard";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -206,6 +207,7 @@ const Index = () => {
 							<News path={path.news.root} />
 							<DragonEgg path={path.dragonEgg.root} />
 							<EuroCup path={path.euroCup.root} />
+							<Leaderboard path={path.leaderboard.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

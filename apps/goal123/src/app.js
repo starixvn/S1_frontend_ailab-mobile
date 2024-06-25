@@ -71,6 +71,7 @@ import RebateExclude from "./pages/rebateExclude";
 import DragonEgg from "./pages/dragonEgg";
 import Ambassador from "./pages/ambassador";
 import EuroCup from "./pages/euroCup";
+import LeaderBoard from "./pages/leaderBoard";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -142,7 +143,6 @@ const Index = () => {
 						<Casino path={`${path.casino.root}/:tpId`} />
 						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
-						{/* <Ranking path={path.leaderBoard.root} /> */}
 						<Angpao path={path.angpao.root} />
 
 						<LuckyWheel path={path.luckyWheel.root} />
@@ -158,6 +158,7 @@ const Index = () => {
 						<DragonEgg path={path.dragonEgg.root} />
 						<Ambassador path={path.ambassador.root} />
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
+						<LeaderBoard path={path.leaderBoard.root} />
 					</Router>
 					<Join />
 					<Login />

@@ -66,5 +66,9 @@ export const eventTime = {
 	},
 	liveCasino_Won: {
 		endDate: "2024/07/09 23:59:59"
+	},
+	olympic: {
+		startDate: "2024/07/16 00:00:00",
+		endDate: "2024/08/15 23:59:59"
 	}
 };

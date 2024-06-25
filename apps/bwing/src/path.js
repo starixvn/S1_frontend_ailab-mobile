@@ -147,9 +147,6 @@ export default {
 	howToPlay: {
 		root: "howToPlay"
 	},
-	// leaderBoard: {
-	// 	root: "leaderBoard"
-	// },
 	angpao: {
 		root: "angpao"
 	},
@@ -212,6 +209,9 @@ export default {
 	},
 	cockFighting: {
 		root: "cockfighting"
+	},
+	leaderboard: {
+		root: "leaderboard"
 	}
 };
 
