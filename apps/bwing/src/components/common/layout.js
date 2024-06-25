@@ -250,6 +250,12 @@ export const defPageInfo = {
 		titleKey: "lbl_CupEvent_Euro2024",
 		className: "euro",
 		hideLogo: true
+	},
+	leaderboard: {
+		titleKey: "lbl_LeaderBoard",
+		className: "leaderboard",
+		iconClassName: "icon-leaderboard-blue",
+		hideLogo: true
 	}
 };
 
