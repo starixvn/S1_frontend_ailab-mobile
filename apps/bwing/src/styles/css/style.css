@@ -19345,7 +19345,6 @@ body main.main.referral {
   width: 100%;
   border: 1px solid #ccc;
   background: #FFF;
-  margin: 0 0 5vw;
   padding: 3vw;
   color: #0A1B38;
   border-radius: 2vw;
@@ -19383,7 +19382,6 @@ body main.main.referral {
   width: 75vw;
   border: 1px solid #ccc;
   background: #FFF;
-  margin: 0 0 5vw;
   padding: 3vw;
   height: 50vw;
   max-width: 100%;
@@ -19424,9 +19422,32 @@ body main.main.referral {
   margin-top: 8vw;
   color: white;
 }
+.survey-before fieldset button:first-child[disabled] {
+  background: gray !important;
+}
 .survey-before fieldset button:last-child {
   background: #DFDFDF;
   color: #9B9B9B;
+}
+.survey-before fieldset .tip {
+  display: none;
+  margin-top: 2vw;
+}
+.survey-before fieldset .tip.active {
+  display: block;
+  color: red;
+}
+.survey-before fieldset .tip.message {
+  margin-top: 1vw;
+}
+.survey-before fieldset.error textarea {
+  border: 2px solid red;
+}
+.survey-before fieldset.error input {
+  border: 2px solid red;
+}
+.survey-before fieldset:first-child {
+  margin-bottom: 5vw;
 }
 .survey-before .survey-input {
   margin-top: 3vw;

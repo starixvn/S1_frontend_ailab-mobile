@@ -18,34 +18,46 @@ const Survey = () => {
 	const {
 		userInfo: { isLogin }
 	} = useContext(userInfoContext);
-	const [isSubmit, setIsSubmit] = useState(false);
-	const [surveyForm, setSurveyForm] = useState(initStatus);
 	const navigate = useNavigate();
+	// 控制顯示頁面
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	// 是否正在submit，避免連點重複呼叫
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	// 是否符合表單驗證規則
+	const [isValid, setIsValid] = useState(false);
+	// 是否有點選輸入過欄位
+	const [isDirty, setIsDirty] = useState(false);
+	// 表單控制
+	const [surveyForm, setSurveyForm] = useState(initStatus);
+	// 表單tip控制
+	const [surveyFormTip, setSurveyFormTip] = useState(initStatus);
 
-	const onCancelForm = () => {
-		setSurveyForm(initStatus);
-		navigate(-1);
+	const EMAIL_OR_PHONE_REGEX = /^((\(?\+?[0-9]*\)?)?[0-9_]*|(\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+))$/;
+	const formValidateRules = {
+		content: {
+			required: {
+				value: true,
+				message: t("lbl_Survey_Req_Content")
+			}
+		},
+		contactInfo: {
+			pattern: {
+				value: EMAIL_OR_PHONE_REGEX,
+				message: t("lbl_Survey_Vld_Contact")
+			}
+		}
 	};
 
 	const onSubmit = async e => {
 		e.preventDefault();
-
-		const errMessage = formValidate(surveyForm);
-		if (errMessage) {
-			setPopBox({
-				isOpen: true,
-				title: t("lbl_ImportantNote"),
-				content: errMessage
-			});
-			return;
-		}
+		setIsSubmitting(true);
 
 		try {
 			const res = await api_survey_Set(surveyForm);
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 0) {
 					setSurveyForm(initStatus);
-					setIsSubmit(true);
+					setIsSubmitted(true);
 				} else {
 					setPopBox({
 						isOpen: true,
@@ -60,18 +72,23 @@ const Survey = () => {
 				title: t("lbl_ImportantNote"),
 				content: t("msg_ApiServerError")
 			});
+		} finally {
+			setIsSubmitting(false);
 		}
 	};
 
-	const formValidate = form => {
-		const EMAIL_OR_PHONE_REGEX = /^((\(?\+?[0-9]*\)?)?[0-9_]*|(\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+))$/;
-		if (!form.content) {
-			return t("lbl_Survey_Req_Content");
+	const validateForm = (formValidateRule, value) => {
+		const { required, pattern } = formValidateRule;
+		if (required && required.value && !value) {
+			return required.message;
 		}
-		if (form.contactInfo && !EMAIL_OR_PHONE_REGEX.test(form.contactInfo)) {
-			return t("lbl_Survey_Vld_Contact");
+		if (pattern && pattern.value) {
+			const regex = pattern.value;
+			if (!regex.test(value)) {
+				return pattern.message;
+			}
 		}
-		return null;
+		return "";
 	};
 
 	const handleInputChange = e => {
@@ -80,7 +97,35 @@ const Survey = () => {
 			...prev,
 			[name]: value
 		}));
+		setIsDirty(true);
 	};
+
+	const handleOnBlur = e => {
+		const { name, value } = e.target;
+		const tipMsg = validateForm(formValidateRules[name], value);
+		setSurveyFormTip(prev => ({
+			...prev,
+			[name]: tipMsg
+		}));
+	};
+
+	const renderInfoMessage = errMsg => {
+		if (errMsg) {
+			return <div className={classNames("tip", "active")}>{errMsg}</div>;
+		}
+		return null;
+	};
+
+	// 初始化validate，並在每次form有改變時做驗證isValid
+	useEffect(() => {
+		let valid = true;
+		for (const key of ["content", "contactInfo"]) {
+			if (validateForm(formValidateRules[key], surveyForm[key])) {
+				valid = false;
+			}
+		}
+		setIsValid(valid);
+	}, [surveyForm, formValidateRules, validateForm, setIsValid]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -99,31 +144,46 @@ const Survey = () => {
 		<>
 			<div
 				className={classNames("survey-before", {
-					close: isSubmit
+					close: isSubmitted
 				})}>
 				<div>{t("lbl_Survey_Title")}</div>
 				<div>{t("lbl_Survey_Hint1")}</div>
 				<form className="survey-input" onSubmit={onSubmit}>
-					<fieldset>
+					<fieldset
+						className={classNames({
+							error: !!surveyFormTip.content
+						})}>
 						<textarea
-							placeholder={t("lbl_Survey_Phd_Content") ?? ""}
 							name="content"
+							placeholder={t("lbl_Survey_Phd_Content") ?? ""}
 							value={surveyForm.content}
+							maxLength={2000}
 							onChange={e => handleInputChange(e)}
+							onBlur={e => handleOnBlur(e)}
 						/>
+						{renderInfoMessage(surveyFormTip.content)}
 					</fieldset>
-					<fieldset>
+					<fieldset
+						className={classNames({
+							error: !!surveyFormTip.contactInfo
+						})}>
 						<input
 							type="text"
 							name="contactInfo"
 							placeholder={t("lbl_Survey_Phd_Contact") ?? ""}
 							value={surveyForm.contactInfo}
 							onChange={e => handleInputChange(e)}
+							onBlur={e => handleOnBlur(e)}
 						/>
+						{renderInfoMessage(surveyFormTip.contactInfo)}
 					</fieldset>
 					<fieldset className="survey-btn">
-						<button type="submit">{t("lbl_Submit")}</button>
-						<button type="button" onClick={onCancelForm}>
+						<button
+							type="submit"
+							disabled={!isValid || !isDirty || isSubmitting}>
+							{t("lbl_Submit")}
+						</button>
+						<button type="button" onClick={() => navigate(-1)}>
 							{t("lbl_Cancel")}
 						</button>
 					</fieldset>
@@ -131,7 +191,7 @@ const Survey = () => {
 			</div>
 			<div
 				className={classNames("survey-after", {
-					close: !isSubmit
+					close: !isSubmitted
 				})}>
 				<div>
 					<img
