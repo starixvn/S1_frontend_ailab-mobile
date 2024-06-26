@@ -9,7 +9,7 @@ const LeaderboardItem = ({ rankList }) => {
 	const { t } = useTranslation();
 
 	/**
-	 * 渲染前三名 Item，樣式跟其他 Item 不一樣
+	 * 渲染前三名 Item，會有獎牌，所以前三名單獨處理
 	 * @param userName 其他玩家名稱
 	 * @param point point
 	 * @param rank 名次 */

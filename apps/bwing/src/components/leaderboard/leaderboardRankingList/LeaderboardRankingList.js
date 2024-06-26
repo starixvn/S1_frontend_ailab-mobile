@@ -12,7 +12,6 @@ const LeaderboardRankingList = () => {
 	const {
 		getFormattedUpdateTime,
 		isLogin,
-
 		rankList,
 		loading
 	} = useLeaderBoard();
