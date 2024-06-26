@@ -118,7 +118,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 			} catch (error) {
 				setPopBox({
 					isOpen: true,
-					content: error
+					content: i18n.msg_ApiServerError
 				});
 			}
 		};

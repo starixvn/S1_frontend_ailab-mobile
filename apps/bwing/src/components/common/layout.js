@@ -250,6 +250,11 @@ export const defPageInfo = {
 		titleKey: "lbl_CupEvent_Euro2024",
 		className: "euro",
 		hideLogo: true
+	},
+	survey: {
+		titleKey: "lbl_Survey",
+		className: "survey",
+		hideLogo: true
 	}
 };
 

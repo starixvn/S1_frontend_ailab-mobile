@@ -55,7 +55,13 @@ const LiveStreamingLink = ({
 			isOpen: true,
 			className: "livesportspop active",
 			custContent: (
-				<div className={`livesports ${langId}`}>
+				<div className="livesports">
+					<div>
+						<img
+							src={`${bannerImgUrl}/h5/img/livesports-bg-${langId}.png`}
+							alt=""
+						/>
+					</div>
 					<div>
 						{liveStreamingList.map(
 							({

@@ -86,6 +86,7 @@ import Esports from "./pages/esports";
 import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import Launcher from "./pages/launcher";
+import Survey from "./pages/survey";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -208,6 +209,7 @@ const Index = () => {
 							<DragonEgg path={path.dragonEgg.root} />
 							<EuroCup path={path.euroCup.root} />
 							<Launcher path={`${path.launcher.root}/:type`} />
+							<Survey path={path.survey.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

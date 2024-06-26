@@ -215,6 +215,9 @@ export default {
 	},
 	launcher: {
 		root: "launcher"
+	},
+	survey: {
+		root: "survey"
 	}
 };
 

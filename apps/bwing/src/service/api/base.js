@@ -81,3 +81,7 @@ export const shieldRequest = createAxiosInstanceWithDeviceHeader(
 export const newsRequest = createAxiosInstanceWithDeviceHeader(
 	`${rootURL}/api/News`
 );
+
+export const surveyRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/Questionnaire`
+);

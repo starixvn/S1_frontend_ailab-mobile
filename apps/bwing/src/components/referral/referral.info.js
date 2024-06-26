@@ -74,7 +74,12 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 							className="icon-copy-text"
 							onClick={() => onCopy("ref_code")}
 						/>
-						<input type="text" value={referralCode} id="ref_code" />
+						<input
+							type="text"
+							value={referralCode}
+							id="ref_code"
+							readOnly
+						/>
 					</div>
 					<div className="subtitle">{t("lbl_Referral_link")}</div>
 					<div className="copy">
@@ -82,7 +87,12 @@ const ReferralInfo = ({ referralCode, onCopy }) => {
 							className="icon-copy-text"
 							onClick={() => onCopy("ref_link")}
 						/>
-						<input type="text" value={referralLink} id="ref_link" />
+						<input
+							type="text"
+							value={referralLink}
+							id="ref_link"
+							readOnly
+						/>
 					</div>
 				</div>
 				<div className="refer-info-qr">

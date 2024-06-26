@@ -230,7 +230,7 @@ const Casino = () => {
 		} catch (error) {
 			setPopBox({
 				isOpen: true,
-				content: String(error)
+				content: i18n.msg_ApiServerError
 			});
 			setLoading(false);
 		}
