@@ -503,6 +503,15 @@ a {
   margin: 0 1vw;
   cursor: pointer;
 }
+.icon-leaderboard-blue::before {
+  content: "";
+  display: block;
+  width: 11.5vw;
+  height: 10vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-leaderboard-blue.svg) no-repeat center/cover;
+  margin: 0 1vw;
+  cursor: pointer;
+}
 .icon-aff-blue::before {
   content: "";
   display: block;
@@ -1819,9 +1828,6 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: calc(100% - 10vw);
@@ -1830,11 +1836,10 @@ header {
 .menu-list-item {
   width: 26vw;
   height: 26vw;
-  margin-bottom: 5vw;
   background: #fff;
   border-radius: 3vw;
   font-weight: 700;
-  font-size: 3.5vw;
+  font-size: 3.2vw;
   color: #1C317B;
   text-transform: uppercase;
   display: -webkit-box;
@@ -1850,6 +1855,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0vw 1.3vw 5vw;
 }
 .menu-list-item span {
   width: calc(100% - 2vw);
