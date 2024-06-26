@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLeaderBoard } from "../leaderboardContext";
 
@@ -21,7 +21,6 @@ const LEADER_BOARD_MONTHS = Object.freeze({
 /** 日期選擇 */
 const LeaderboardDateSelection = () => {
 	const { t } = useTranslation();
-	// =================== 上下文 ===================
 	const {
 		pastMonths,
 		pastYears,
@@ -31,21 +30,30 @@ const LeaderboardDateSelection = () => {
 	} = useLeaderBoard();
 
 	// =================== 狀態 ===================
-	/** 當前年份 */
+
+	/** 選擇的年份 */
 	const [selectedYear, setSelectedYear] = useState(currentYear);
 
-	/** 當前月份 */
+	/** 選擇的月份 */
 	const [selectedMonth, setSelectedMonth] = useState(currentMonth);
 
-	/** 是否關閉年份選擇 */
+	/** 是否開啟年份選單 */
 	const [isShowYearSelect, setIsShowYearSelect] = useState(false);
 
-	/** 是否關閉月份選擇 */
+	/** 是否開啟月份選單 */
 	const [isShowMonthSelect, setIsShowMonthSelect] = useState(false);
 
-	// =================== 對內函數 ===================
-	/** 處理年份選擇
-	 *  @param {number} year 選擇的年份 */
+	// =================== Ref ===================
+
+	/** yearRef */
+	const yearRef = useRef(null);
+
+	/** monthRef */
+	const monthRef = useRef(null);
+
+	// =================== 函數 ===================
+
+	/** 處理年份選擇 */
 	const handleYearSelectClick = year => {
 		setSelectedYear(year);
 		const selectedDateId = `${year}-${currentMonth}`;
@@ -53,26 +61,51 @@ const LeaderboardDateSelection = () => {
 		setIsShowYearSelect(false);
 	};
 
-	/** 處理月份選擇
-	 *  @param {number} month 選擇的月份 */
+	/** 處理月份選擇 */
 	const handleMonthSelectClick = month => {
 		setSelectedMonth(month);
 		const selectedDateId = `${selectedYear}-${month}`;
 		onSelectedDateId(selectedDateId);
 		setIsShowMonthSelect(false);
 	};
+
+	/** 點擊外部時收合選單 */
+	const handleClickOutside = event => {
+		/**
+		 * 檢查是否點擊在 ref 外部
+		 * @param ref 需要檢查的 ref
+		 * @returns  如果點擊在 ref 外部，返回 true；否則返回 false */
+		const isOutsideClick = ref =>
+			ref.current && !ref.current.contains(event.target);
+
+		// 如果點擊在年份選擇框外部，收合年份選擇框
+		if (isOutsideClick(yearRef)) {
+			setIsShowYearSelect(false);
+		}
+
+		// 如果點擊在月份選擇框外部，收合月份選擇框
+		if (isOutsideClick(monthRef)) {
+			setIsShowMonthSelect(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
 		<div className="board-top">
 			<div className="title">{t("lbl_Ranking")}</div>
 			<div className="select-period">
-				<div className="select-years">
-					{/* 年份選擇 */}
+				<div className="select-years" ref={yearRef}>
 					<div
 						className="select-btn"
 						onClick={() => setIsShowYearSelect(!isShowYearSelect)}>
 						{selectedYear}
 					</div>
-					{/* 是否秀出選擇年份選單 */}
 					{isShowYearSelect && (
 						<div className="option-menu">
 							{pastYears.map(year => (
@@ -86,8 +119,7 @@ const LeaderboardDateSelection = () => {
 						</div>
 					)}
 				</div>
-				<div className="select-month">
-					{/* 月份選擇 */}
+				<div className="select-month" ref={monthRef}>
 					<div
 						className="select-btn active"
 						onClick={() =>
@@ -95,7 +127,6 @@ const LeaderboardDateSelection = () => {
 						}>
 						{t(LEADER_BOARD_MONTHS[selectedMonth])}
 					</div>
-					{/* 是否秀出選擇月份選單 */}
 					{isShowMonthSelect && (
 						<div className="option-menu">
 							{pastMonths.map(month => (

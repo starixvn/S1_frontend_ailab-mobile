@@ -2,6 +2,7 @@ import React from "react";
 import LeaderboardRewardItem from "./LeaderboardRewardItem";
 import LeaderboardRewardTop3Item from "./LeaderboardRewardTop3Item";
 import { useLeaderBoard } from "../leaderboardContext";
+import { numFormatToDigits } from "../../common/common";
 
 /** 名次物件 */
 const RANK = Object.freeze({
@@ -39,7 +40,8 @@ const LeaderboardRewards = () => {
 	/** 轉百萬
 	 *  @param {number} number 需要轉百萬的數字 */
 	const convertToMillion = number => {
-		return number / 1000000;
+		const result = numFormatToDigits(number / 1000000, 0);
+		return result;
 	};
 
 	return (

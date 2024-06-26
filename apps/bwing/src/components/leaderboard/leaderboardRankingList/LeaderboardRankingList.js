@@ -12,7 +12,7 @@ const LeaderboardRankingList = () => {
 	const {
 		getFormattedUpdateTime,
 		isLogin,
-		userRank,
+
 		rankList,
 		loading
 	} = useLeaderBoard();
@@ -32,9 +32,7 @@ const LeaderboardRankingList = () => {
 					)}
 
 					{/* 確認登入並且有 userRank 資料才顯示使用者排名 */}
-					{isLogin ? (
-						<LeaderboardUserRanking userRank={userRank} />
-					) : null}
+					{isLogin ? <LeaderboardUserRanking /> : null}
 				</div>
 				{/* 每 30 entries 刷新一次 */}
 				<div className="board-refresh">

@@ -1,19 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { bannerImgUrl } from "apps/bwing/src/config";
+import { useLeaderBoard } from "../leaderboardContext";
+import { numFormatToDigits } from "../../common/common";
 
 /** 使用者自己的排名 */
-const LeaderboardUserRanking = ({ userRank }) => {
+const LeaderboardUserRanking = () => {
+	const { userRank } = useLeaderBoard();
 	const { rank, userName, point } = userRank ?? {};
+
+	/** 前三名會有獎牌，其餘名次則顯示排名 */
+	const randerRank = () => {
+		const isTop3 = Number(rank) <= 3;
+		return isTop3 ? (
+			<div className="order">
+				<img
+					src={`${bannerImgUrl}/h5/img/leaderboard/winner-${Number(
+						rank
+					)}.png`}
+					alt=""
+				/>
+			</div>
+		) : (
+			<div className="order">{rank}</div>
+		);
+	};
 	return (
 		<div className="user-themselves">
 			<div className="left">
 				<i className="icon-arrow" />
-				<div className="order">{rank}</div>
+				{randerRank()}
 				<div className="user-id">{userName}</div>
 			</div>
 			<div className="right">
 				<i className="icon-cash" />
-				<span>{point}</span>
+				<span>{numFormatToDigits(point, 2)}</span>
 			</div>
 		</div>
 	);

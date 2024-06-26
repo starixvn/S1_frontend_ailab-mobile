@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
+import { numFormatToDigits } from "../../common/common";
 import { bannerImgUrl } from "../../../config";
 
 /** 排名列表Item */
@@ -26,7 +27,7 @@ const LeaderboardItem = ({ rankList }) => {
 				</div>
 				<div className="right">
 					<i className="icon-cash" />
-					<span>$ {point}</span>
+					<span>$ {numFormatToDigits(point, 2)}</span>
 				</div>
 			</div>
 		);
@@ -46,7 +47,7 @@ const LeaderboardItem = ({ rankList }) => {
 				</div>
 				<div className="right">
 					<i className="icon-cash" />
-					<span>$ {point}</span>
+					<span>$ {numFormatToDigits(point, 2)}</span>
 				</div>
 			</div>
 		);

@@ -1,6 +1,6 @@
 import React from "react";
 import Leaderboard from "../components/leaderboard";
-import { LeaderboardProvider } from "../components/leaderboard/leaderboardContext/Leaderboard-context";
+import { LeaderboardProvider } from "../components/leaderboard/leaderboardContext";
 
 export default () => {
 	return (

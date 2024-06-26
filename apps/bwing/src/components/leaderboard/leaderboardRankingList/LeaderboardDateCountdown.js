@@ -1,15 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "@reach/router";
+import { products } from "@ailab-mobile/common";
 import { useLeaderBoard } from "../leaderboardContext";
-import path from "../../../path";
+import useMenu from "../../hook/useMenu";
 
 /** 本月倒數 */
 const LeaderboardDateCountdown = () => {
 	const { t } = useTranslation();
-	const { timeLeft, langId } = useLeaderBoard();
+	const { timeLeft } = useLeaderBoard();
 	const { days, hours, minutes, seconds } = timeLeft;
-	const navigate = useNavigate();
+	const { onClickProductItem } = useMenu();
 	return (
 		<div className="countdown">
 			<div className="countdown-item">
@@ -34,9 +34,7 @@ const LeaderboardDateCountdown = () => {
 				</div>
 			</div>
 			<button
-				onClick={() =>
-					navigate(`/${langId}/${path.sports.root}/?game=Soccer`)
-				}
+				onClick={() => onClickProductItem(products.Soccer)}
 				className="btn-bet">
 				{t("lbl_betNow")}
 			</button>
