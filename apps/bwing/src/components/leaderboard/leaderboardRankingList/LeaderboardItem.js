@@ -1,13 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import PropTypes from "prop-types";
+import { useLeaderBoard } from "../leaderboardContext";
 import { numFormatToDigits } from "../../common/common";
 import { bannerImgUrl } from "../../../config";
 
 /** 排名列表Item */
-const LeaderboardItem = ({ rankList }) => {
+const LeaderboardItem = () => {
 	const { t } = useTranslation();
-
+	const { rankList } = useLeaderBoard();
 	/**
 	 * 渲染前三名 Item，會有獎牌，所以前三名單獨處理
 	 * @param userName 其他玩家名稱
@@ -80,12 +80,3 @@ const LeaderboardItem = ({ rankList }) => {
 
 /** 排名列表Item */
 export default LeaderboardItem;
-
-LeaderboardItem.propTypes = {
-	rankList: PropTypes.arrayOf(
-		PropTypes.shape({
-			userName: PropTypes.string.isRequired,
-			wTurnover: PropTypes.number.isRequired
-		})
-	).isRequired
-};

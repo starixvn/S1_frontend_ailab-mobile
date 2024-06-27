@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { bannerImgUrl } from "apps/bwing/src/config";
+import { bannerImgUrl } from "../../../config";
 import { useLeaderBoard } from "../leaderboardContext";
 import { numFormatToDigits } from "../../common/common";
 

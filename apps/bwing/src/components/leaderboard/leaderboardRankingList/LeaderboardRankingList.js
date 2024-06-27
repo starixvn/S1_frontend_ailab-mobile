@@ -9,12 +9,7 @@ import Loading from "../../common/loading";
 
 /** 排行榜單 */
 const LeaderboardRankingList = () => {
-	const {
-		getFormattedUpdateTime,
-		isLogin,
-		rankList,
-		loading
-	} = useLeaderBoard();
+	const { getFormattedUpdateTime, isLogin, loading } = useLeaderBoard();
 
 	const { t } = useTranslation();
 
@@ -24,11 +19,7 @@ const LeaderboardRankingList = () => {
 			<div className="board">
 				<LeaderboardDateSelection />
 				<div className="winner-total">
-					{loading ? (
-						<Loading />
-					) : (
-						<LeaderboardItem rankList={rankList} />
-					)}
+					{loading ? <Loading /> : <LeaderboardItem />}
 
 					{/* 確認登入並且有 userRank 資料才顯示使用者排名 */}
 					{isLogin ? <LeaderboardUserRanking /> : null}

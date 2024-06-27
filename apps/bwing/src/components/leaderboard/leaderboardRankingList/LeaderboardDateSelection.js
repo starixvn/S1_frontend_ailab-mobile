@@ -74,7 +74,7 @@ const LeaderboardDateSelection = () => {
 		/**
 		 * 檢查是否點擊在 ref 外部
 		 * @param ref 需要檢查的 ref
-		 * @returns  如果點擊在 ref 外部，返回 true；否則返回 false */
+		 * @returns  如果點擊在 ref 外部，return true；否則 return false */
 		const isOutsideClick = ref =>
 			ref.current && !ref.current.contains(event.target);
 
@@ -89,6 +89,7 @@ const LeaderboardDateSelection = () => {
 		}
 	};
 
+	/** 監聽滑鼠點擊 */
 	useEffect(() => {
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
