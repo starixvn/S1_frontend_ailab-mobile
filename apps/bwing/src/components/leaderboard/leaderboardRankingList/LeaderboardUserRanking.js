@@ -11,13 +11,12 @@ const LeaderboardUserRanking = () => {
 
 	/** 前三名會有獎牌，其餘名次則顯示排名 */
 	const randerRank = () => {
-		const isTop3 = Number(rank) <= 3;
+		const numberRank = Number(rank);
+		const isTop3 = numberRank <= 3;
 		return isTop3 ? (
 			<div className="order">
 				<img
-					src={`${bannerImgUrl}/h5/img/leaderboard/winner-${Number(
-						rank
-					)}.png`}
+					src={`${bannerImgUrl}/h5/img/leaderboard/winner-${numberRank}.png`}
 					alt=""
 				/>
 			</div>
@@ -25,6 +24,7 @@ const LeaderboardUserRanking = () => {
 			<div className="order">{rank}</div>
 		);
 	};
+
 	return (
 		<div className="user-themselves">
 			<div className="left">
@@ -34,7 +34,7 @@ const LeaderboardUserRanking = () => {
 			</div>
 			<div className="right">
 				<i className="icon-cash" />
-				<span>{numFormatToDigits(point, 2)}</span>
+				<span>{numFormatToDigits(point)}</span>
 			</div>
 		</div>
 	);

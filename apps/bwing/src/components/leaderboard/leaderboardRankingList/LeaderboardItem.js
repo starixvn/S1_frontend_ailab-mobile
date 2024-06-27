@@ -27,7 +27,7 @@ const LeaderboardItem = ({ rankList }) => {
 				</div>
 				<div className="right">
 					<i className="icon-cash" />
-					<span>$ {numFormatToDigits(point, 2)}</span>
+					<span>$ {numFormatToDigits(point)}</span>
 				</div>
 			</div>
 		);
@@ -47,7 +47,7 @@ const LeaderboardItem = ({ rankList }) => {
 				</div>
 				<div className="right">
 					<i className="icon-cash" />
-					<span>$ {numFormatToDigits(point, 2)}</span>
+					<span>$ {numFormatToDigits(point)}</span>
 				</div>
 			</div>
 		);
@@ -64,6 +64,7 @@ const LeaderboardItem = ({ rankList }) => {
 				</div>
 			</div>
 			<div className="user-ranking">
+				{/* 渲染前三名 Item，會有獎牌，所以前三名跟其他 Item 處理方式不同 */}
 				{rankList &&
 					rankList.map(({ userName, wTurnover }, index) => {
 						const isTop3 = index < 3; // 前三名

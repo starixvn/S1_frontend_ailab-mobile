@@ -40,7 +40,8 @@ const LeaderboardRewards = () => {
 	/** 轉百萬
 	 *  @param {number} number 需要轉百萬的數字 */
 	const convertToMillion = number => {
-		const result = numFormatToDigits(number / 1000000, 0);
+		const millionResult = number / 1000000;
+		const result = numFormatToDigits(millionResult, 0);
 		return result;
 	};
 
