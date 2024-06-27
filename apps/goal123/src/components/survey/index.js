@@ -111,7 +111,14 @@ const Survey = () => {
 
 	const renderInfoMessage = errMsg => {
 		if (errMsg) {
-			return <div className={classNames("tip", "active")}>{errMsg}</div>;
+			return (
+				<div
+					className={classNames("tip active", {
+						message: errMsg === t("lbl_Survey_Req_Content")
+					})}>
+					{errMsg}
+				</div>
+			);
 		}
 		return null;
 	};
