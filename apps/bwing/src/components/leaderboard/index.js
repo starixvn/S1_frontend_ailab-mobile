@@ -8,7 +8,7 @@ import LeaderboardTerm from "./LeaderboardTerm";
 /** leaderboard 主組件 */
 const Leaderboard = () => {
 	return (
-		<main className="leaderboard">
+		<>
 			<LeaderboardBanner />
 			<div className="leaderboard-wrapper">
 				<LeaderboardRewards />
@@ -18,7 +18,7 @@ const Leaderboard = () => {
 					<LeaderboardTerm />
 				</div>
 			</div>
-		</main>
+		</>
 	);
 };
 
