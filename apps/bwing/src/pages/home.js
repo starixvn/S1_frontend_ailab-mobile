@@ -293,6 +293,7 @@ const IndexPage = () => {
 				setCookie(cookieOfficialAnnounce, true, 1);
 				setPopBox({
 					isOpen: true,
+					title: t("lbl_ImportantNote"),
 					content: (
 						<img
 							src={`${bannerImgUrl}/h5/img/4.0/nonlogin/300x300_popup.jpg`}
