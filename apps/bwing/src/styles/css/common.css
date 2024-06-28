@@ -426,6 +426,15 @@
   margin: 0 1vw;
   cursor: pointer;
 }
+.icon-leaderboard-blue::before {
+  content: "";
+  display: block;
+  width: 11.5vw;
+  height: 10vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-leaderboard-blue.svg) no-repeat center/cover;
+  margin: 0 1vw;
+  cursor: pointer;
+}
 .icon-aff-blue::before {
   content: "";
   display: block;

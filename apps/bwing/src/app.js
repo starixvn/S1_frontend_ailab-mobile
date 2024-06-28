@@ -87,6 +87,7 @@ import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
+import Leaderboard from "./pages/leaderboard";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -210,6 +211,7 @@ const Index = () => {
 							<EuroCup path={path.euroCup.root} />
 							<Launcher path={`${path.launcher.root}/:type`} />
 							<Survey path={path.survey.root} />
+							<Leaderboard path={path.leaderboard.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

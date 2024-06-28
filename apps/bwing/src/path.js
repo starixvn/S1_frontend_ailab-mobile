@@ -147,9 +147,6 @@ export default {
 	howToPlay: {
 		root: "howToPlay"
 	},
-	// leaderBoard: {
-	// 	root: "leaderBoard"
-	// },
 	angpao: {
 		root: "angpao"
 	},
@@ -218,6 +215,9 @@ export default {
 	},
 	survey: {
 		root: "survey"
+	},
+	leaderboard: {
+		root: "leaderboard"
 	}
 };
 

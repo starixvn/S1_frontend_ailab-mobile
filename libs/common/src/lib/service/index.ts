@@ -10,6 +10,6 @@ export * from "./hotEventApi";
 export * from "./hotGameApi";
 export * from "./gameApi";
 export * from "./bigWinApi";
-export * from "./eventApi";
+export * from "./leaderboardApi";
 export * from "./eventsApi";
 export * from "./cupEventApi";

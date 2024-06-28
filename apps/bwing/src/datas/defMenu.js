@@ -430,5 +430,10 @@ export const defSubMenus = langId => [
 		icon: "icon-survey-blue",
 		path: path.survey.root,
 		displayKey: "lbl_Survey"
+	},
+	{
+		icon: "icon-leaderboard-blue",
+		path: path.leaderboard.root,
+		displayKey: "lbl_LeaderBoard"
 	}
 ];
