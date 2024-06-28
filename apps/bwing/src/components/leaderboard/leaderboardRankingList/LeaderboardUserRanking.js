@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { bannerImgUrl } from "../../../config";
 import { useLeaderBoard } from "../leaderboardContext";
 import { numFormatToDigits } from "../../common/common";
@@ -42,11 +41,3 @@ const LeaderboardUserRanking = () => {
 
 /** 使用者自己的排名 */
 export default LeaderboardUserRanking;
-
-LeaderboardUserRanking.propTypes = {
-	userRank: PropTypes.shape({
-		rank: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-		userName: PropTypes.string,
-		point: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-	}).isRequired
-};
