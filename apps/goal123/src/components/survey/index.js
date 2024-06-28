@@ -32,7 +32,7 @@ const Survey = () => {
 	// 表單tip控制
 	const [surveyFormTip, setSurveyFormTip] = useState(initStatus);
 
-	const EMAIL_OR_PHONE_REGEX = /^((\(?\+?[0-9]*\)?)?[0-9_]*|(\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+))$/;
+	const EMAIL_OR_PHONE_REGEX = /^((\+84)?[0-9]{9,}|(\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+))$/;
 	const formValidateRules = {
 		content: {
 			required: {
