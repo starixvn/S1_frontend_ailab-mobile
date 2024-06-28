@@ -161,6 +161,7 @@ const usePopupHandler = () => {
 				setCookie(cookieOfficialAnnounce, true, 1);
 				setPopBox({
 					isOpen: true,
+					title: i18n.lbl_ImportantNote,
 					content: (
 						<img
 							src={`${bannerImgUrl}/h5/img/nonlogin/300x300_goal_${userInfo.langId}.jpg`}
