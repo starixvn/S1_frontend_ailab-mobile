@@ -254,28 +254,10 @@ export const AutoPlayWithBtn = ({ Rows }) => {
 		}
 	};
 
-	const goNext = () => {
-		if (swiperRef.current && swiperRef.current.swiper) {
-			swiperRef.current.swiper.slideNext();
-		}
-	};
-	const goPrev = () => {
-		if (swiperRef.current && swiperRef.current.swiper) {
-			swiperRef.current.swiper.slidePrev();
-		}
-	};
-
 	return Rows && Rows.length > 0 ? (
-		<div className="swiper-container">
-			<div className="swiper-wrapper">
-				{/* eslint-disable-next-line react/jsx-props-no-spreading */}
-				<Swiper ref={swiperRef} {...params}>
-					{Rows}
-				</Swiper>
-			</div>
-			<div className="swiper-button-prev" onClick={goPrev} />
-			<div className="swiper-button-next" onClick={goNext} />
-		</div>
+		<Swiper ref={swiperRef} {...params}>
+			{Rows}
+		</Swiper>
 	) : null;
 };
 
