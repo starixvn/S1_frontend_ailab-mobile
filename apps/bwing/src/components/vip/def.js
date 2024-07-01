@@ -49,13 +49,6 @@ export const defLevelList = [
 	}
 ];
 
-export const VIP_SPECIAL_REBATE = {
-	sport: 1,
-	liveCasino: 3,
-	casino: 2,
-	virtualSports: 7
-};
-
 /**
  * 回饋類表，避免魔術數字
  * @Sports 體育
@@ -64,10 +57,10 @@ export const VIP_SPECIAL_REBATE = {
  * @VirtualSports 虛擬體育
  * @ESports 電子競技
  */
-export const RebateCategory = Object.freeze({
-	Sports: 0,
-	Casino: 1,
-	LiveCasino: 2,
-	VirtualSports: 3,
-	ESports: 4
-});
+export const VIP_SPECIAL_REBATE = {
+	sport: 1,
+	casino: 2,
+	liveCasino: 3,
+	virtualSports: 7,
+	eSports: 11
+};

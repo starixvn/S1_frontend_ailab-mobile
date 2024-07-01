@@ -121,6 +121,16 @@ const VipTable = ({ vipBanner }) => {
 						%
 					</div>
 				</div>
+				<div className="vip-grade-table-content">
+					<div>{i18n.lbl_Vip_ESport_Rebate}</div>
+					<div>
+						{vipBanner?.rebateCategory?.find(
+							item =>
+								item.categoryId === VIP_SPECIAL_REBATE.eSports
+						)?.percentage || "-"}
+						%
+					</div>
+				</div>
 			</div>
 			<div className="vip-grade-table-item">
 				<div className="vip-grade-table-content subtitle">
