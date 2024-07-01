@@ -6,12 +6,16 @@ import { numFormatToDigits } from "../common/common";
 
 const VipTable = ({ vipBanner }) => {
 	const { i18n } = useContext(i18nContext);
-	// * 因 GetVipBanner response 裡有參雜 string number 故須額外判斷與顯示
+	/**
+	 * 將 input 轉為為數字，排除非數字字符串。
+	 * 處理 GetVipBanner API 的數據，該數據可能包含混合的字符串和數字。
+	 * @param {string | number} input - 可能是字符串或數字。
+	 * @returns {string | number} - 更改過後的數字字符串，或未更動過的字串。 */
 	const number_format_excludeString = input => {
+		// 檢查輸入是否可以轉換為數字
 		if (!isNaN(Number(input))) {
 			return numFormatToDigits(Number(input), 0);
 		}
-
 		return input;
 	};
 

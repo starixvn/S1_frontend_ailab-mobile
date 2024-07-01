@@ -55,3 +55,19 @@ export const VIP_SPECIAL_REBATE = {
 	casino: 2,
 	virtualSports: 7
 };
+
+/**
+ * 回饋類表，避免魔術數字
+ * @Sports 體育
+ * @Casino 賭場
+ * @LiveCasino 真人賭場
+ * @VirtualSports 虛擬體育
+ * @ESports 電子競技
+ */
+export const RebateCategory = Object.freeze({
+	Sports: 0,
+	Casino: 1,
+	LiveCasino: 2,
+	VirtualSports: 3,
+	ESports: 4
+});
