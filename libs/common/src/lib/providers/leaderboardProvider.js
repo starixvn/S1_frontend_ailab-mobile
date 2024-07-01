@@ -87,14 +87,24 @@ const MAX_RANK = 100;
 /** bwing 的排行版種類，其他專案可能會有不同種類 */
 const LEADER_BOARD_TYPE = 0;
 
-/** 今年已過的月份的陣列，從小到大排序 */
+/** 活動初始年份 */
+const initYear = 2024;
+
+/** 今年已過的月份的陣列，從小到大排序，
+ *  活動是從 2024/7 開始，故只取 2024/7 之後的月份，
+ *  2024 年以後就回傳已過的月份陣列，從小到大排序，
+ *  ex: now 2024/9 return [7, 8, 9]
+ *  ex: now 2025/5 return [1, 2, 3, 4, 5] */
 const pastMonths = (() => {
-	return Array.from({ length: currentMonth }, (_, index) => index + 1);
+	const startMonth = currentYear === initYear ? 7 : 1;
+	return Array.from(
+		{ length: currentMonth - startMonth + 1 },
+		(_, index) => startMonth + index
+	);
 })();
 
 /** 已過的年份的陣列(從 2024 開始)，從小到大排序 */
 const pastYears = (() => {
-	const initYear = 2024;
 	const yearsCount = currentYear - initYear + 1;
 	const years = Array.from(
 		{ length: yearsCount },
@@ -191,6 +201,7 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 
 				setUserRank({ rank, userName, point });
 			} else {
+				setUserRank({});
 				setRankList([]);
 			}
 		} catch (error) {
