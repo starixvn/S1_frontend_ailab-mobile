@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { VipSpecialRebate } from "./def";
 import { numFormatToDigits } from "../common/common";
 
 const EventListVND = ({ i18n, vipBanner }) => {
-	// * 因 GetVipBanner response 裡有參雜 string number 故須額外判斷與顯示
+	/**
+	 * 將 input 轉為為數字，排除非數字字符串。
+	 * 處理 GetVipBanner API 的數據，該數據可能包含混合的字符串和數字。
+	 * @param {string | number} input - 可能是字符串或數字。
+	 * @returns {string | number} - 更改過後的數字字符串，或未更動過的字串。 */
 	const number_format_excludeString = input => {
 		if (!isNaN(Number(input))) {
 			return numFormatToDigits(Number(input), 0);
 		}
-
 		return input;
 	};
 
@@ -25,10 +29,10 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.depositPriority ? (
 								<i className="icon icon-checkmark" />
-							) : null}{" "}
+							) : null}
 							{item?.depositPriority}
 						</td>
 					))}
@@ -38,10 +42,10 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.withdrawalPriority ? (
 								<i className="icon icon-checkmark" />
-							) : null}{" "}
+							) : null}
 							{item?.withdrawalPriority}
 						</td>
 					))}
@@ -51,10 +55,10 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.serviceSupport ? (
 								<i className="icon icon-checkmark" />
-							) : null}{" "}
+							) : null}
 							{item?.serviceSupport}
 						</td>
 					))}
@@ -66,7 +70,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.designatedAccountManager && (
 								<i className="icon icon-checkmark" />
 							)}
@@ -79,7 +83,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{number_format_excludeString(
 								item?.withdrawalMax.split(".")[0]
 							)}
@@ -91,7 +95,9 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{number_format_excludeString(item?.times)}</td>
+						<td key={item.level + item.levelName}>
+							{number_format_excludeString(item?.times)}
+						</td>
 					))}
 				</tr>
 				<tr className="title">
@@ -105,7 +111,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.upBonus
 								? number_format_excludeString(
 										item?.upBonus.split(".")[0]
@@ -124,7 +130,13 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{item?.rebateCategory[0].percentage}%</td>
+						<td key={item.level + item.levelName}>
+							{
+								item?.rebateCategory[VipSpecialRebate.Sport]
+									.percentage
+							}
+							%
+						</td>
 					))}
 				</tr>
 				<tr>
@@ -132,7 +144,14 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{item?.rebateCategory[2].percentage}%</td>
+						<td key={item.level + item.levelName}>
+							{
+								item?.rebateCategory[
+									VipSpecialRebate.LiveCasino
+								].percentage
+							}
+							%
+						</td>
 					))}
 				</tr>
 				<tr>
@@ -140,7 +159,13 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{item?.rebateCategory[1].percentage}%</td>
+						<td key={item.level + item.levelName}>
+							{
+								item?.rebateCategory[VipSpecialRebate.Casino]
+									.percentage
+							}
+							%
+						</td>
 					))}
 				</tr>
 				<tr>
@@ -148,7 +173,28 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{item?.rebateCategory[3].percentage}%</td>
+						<td key={item.level + item.levelName}>
+							{
+								item?.rebateCategory[
+									VipSpecialRebate.VirtualSports
+								].percentage
+							}
+							%
+						</td>
+					))}
+				</tr>
+				<tr>
+					<td colSpan="7">{i18n.lbl_Vip_ESport_Rebate}</td>
+				</tr>
+				<tr>
+					{vipBanner?.vipBannerData?.map(item => (
+						<td key={item.level + item.levelName}>
+							{
+								item?.rebateCategory[VipSpecialRebate.ESports]
+									.percentage
+							}
+							%
+						</td>
 					))}
 				</tr>
 				<tr className="title">
@@ -161,7 +207,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.referralBonus && (
 								<i className="icon icon-checkmark" />
 							)}
@@ -179,7 +225,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.upDeposit
 								? number_format_excludeString(
 										item?.upDeposit.split(".")[0]
@@ -201,7 +247,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.downDeposit &&
 							Number(item?.downDeposit) !== 0
 								? number_format_excludeString(
@@ -218,7 +264,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr>
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>
+						<td key={item.level + item.levelName}>
 							{item?.downTurnover &&
 							Number(item?.downTurnover) !== 0
 								? number_format_excludeString(
@@ -235,7 +281,9 @@ const EventListVND = ({ i18n, vipBanner }) => {
 				</tr>
 				<tr className="lastTd">
 					{vipBanner?.vipBannerData?.map(item => (
-						<td>{item?.rankingValidityMembershipRenewal}</td>
+						<td key={item.level + item.levelName}>
+							{item?.rankingValidityMembershipRenewal}
+						</td>
 					))}
 				</tr>
 			</tbody>
