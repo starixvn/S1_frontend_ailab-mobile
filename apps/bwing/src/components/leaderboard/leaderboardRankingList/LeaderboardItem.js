@@ -1,6 +1,6 @@
 import React from "react";
+import { useLeaderBoard } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
-import { useLeaderBoard } from "../leaderboardContext";
 import { numFormatToDigits } from "../../common/common";
 import { bannerImgUrl } from "../../../config";
 
