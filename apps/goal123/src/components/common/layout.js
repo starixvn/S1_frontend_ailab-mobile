@@ -187,10 +187,8 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 			{!isDateRange(eventTime.eventCup) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />
 			) : null}
-
 			{/* 僅限過年期間顯示 */}
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
-
 			{/* 歐冠杯期間顯示 */}
 			{isDateRange(eventTime.eventCup) && root && <EuroCupLink />}
 			{/* <Footer /> */}

@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "@reach/router";
+import path from "../../path";
+
 import {
 	i18nContext,
 	popBoxContext,
@@ -18,6 +22,7 @@ import {
 import PopBoxLuckyWheel from "../common/popbox.luckyWheel";
 import useCounter from "../hook/useCounter";
 import { bannerImgUrl } from "../../config";
+import useRetentionPromotion from "../retention/hooks/useRetentionPromotion";
 
 const LuckyWheel = () => {
 	const { i18n } = useContext(i18nContext);
@@ -37,6 +42,9 @@ const LuckyWheel = () => {
 		eventId: eventIds.luckyWheel,
 		count
 	});
+	const { retentionBonusCode } = useRetentionPromotion();
+	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setLoading(true);
@@ -150,8 +158,25 @@ const LuckyWheel = () => {
 		}
 	};
 
+	const handleretention = () => {
+		navigate(`/${path.retention.root}`);
+	};
+
 	return (
 		<div className="eventPage">
+			{retentionBonusCode && (
+				<div className="eventpage-tap">
+					<>
+						<button className="active">
+							{t("Label_Retention_LuckyWheel")}
+						</button>
+						<button onClick={handleretention}>
+							{t("Label_Retention_SurpriseReward")}
+						</button>
+					</>
+				</div>
+			)}
+
 			<div
 				className={`eventTitleBg${
 					userInfo.langId === "vn" ? " vietnam" : ""

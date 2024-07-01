@@ -146,6 +146,9 @@ export default {
 	euroCup: {
 		root: "euro-cup"
 	},
+	retention: {
+		root: "retention"
+	},
 	launcher: {
 		root: "launcher"
 	},

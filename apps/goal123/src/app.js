@@ -73,6 +73,7 @@ import Ambassador from "./pages/ambassador";
 import EuroCup from "./pages/euroCup";
 import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
+import RetentionPage from "./pages/retention";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -162,6 +163,7 @@ const Index = () => {
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 						<Launcher path={`${path.launcher.root}/:type`} />
 						<Survey path={path.survey.root} />
+						<RetentionPage path={path.retention.root} />
 					</Router>
 					<Join />
 					<Login />
