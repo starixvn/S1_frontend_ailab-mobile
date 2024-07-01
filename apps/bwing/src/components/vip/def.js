@@ -57,10 +57,10 @@ export const defLevelList = [
  * @VirtualSports 虛擬體育
  * @ESports 電子競技
  */
-export const VIP_SPECIAL_REBATE = {
-	sport: 1,
-	casino: 2,
-	liveCasino: 3,
-	virtualSports: 7,
-	eSports: 11
+export const VipSpecialRebate = {
+	Sport: 1,
+	Casino: 2,
+	LiveCasino: 3,
+	VirtualSports: 7,
+	ESports: 11
 };

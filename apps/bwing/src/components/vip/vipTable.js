@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { i18nContext } from "../common/context";
-import { VIP_SPECIAL_REBATE } from "./def";
+import { VipSpecialRebate } from "./def";
 import { numFormatToDigits } from "../common/common";
 
 const VipTable = ({ vipBanner }) => {
@@ -84,7 +84,7 @@ const VipTable = ({ vipBanner }) => {
 					<div>{i18n.lbl_Vip_Sport_Rebate}</div>
 					<div>
 						{vipBanner?.rebateCategory?.find(
-							item => item.categoryId === VIP_SPECIAL_REBATE.sport
+							item => item.categoryId === VipSpecialRebate.Sport
 						)?.percentage || "-"}
 						%
 					</div>
@@ -94,8 +94,7 @@ const VipTable = ({ vipBanner }) => {
 					<div>
 						{vipBanner?.rebateCategory?.find(
 							item =>
-								item.categoryId ===
-								VIP_SPECIAL_REBATE.liveCasino
+								item.categoryId === VipSpecialRebate.LiveCasino
 						)?.percentage || "-"}
 						%
 					</div>
@@ -104,8 +103,7 @@ const VipTable = ({ vipBanner }) => {
 					<div>{i18n.lbl_Vip_SlotFishing_Rebate}</div>
 					<div>
 						{vipBanner?.rebateCategory?.find(
-							item =>
-								item.categoryId === VIP_SPECIAL_REBATE.casino
+							item => item.categoryId === VipSpecialRebate.Casino
 						)?.percentage || "-"}
 						%
 					</div>
@@ -116,7 +114,7 @@ const VipTable = ({ vipBanner }) => {
 						{vipBanner?.rebateCategory?.find(
 							item =>
 								item.categoryId ===
-								VIP_SPECIAL_REBATE.virtualSports
+								VipSpecialRebate.VirtualSports
 						)?.percentage || "-"}
 						%
 					</div>
@@ -125,8 +123,7 @@ const VipTable = ({ vipBanner }) => {
 					<div>{i18n.lbl_Vip_ESport_Rebate}</div>
 					<div>
 						{vipBanner?.rebateCategory?.find(
-							item =>
-								item.categoryId === VIP_SPECIAL_REBATE.eSports
+							item => item.categoryId === VipSpecialRebate.ESports
 						)?.percentage || "-"}
 						%
 					</div>
