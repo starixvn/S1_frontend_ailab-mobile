@@ -33,6 +33,13 @@ const MenuPlatform = () => {
 					/>
 					<span>{t("Label_Menu_Vip")}</span>
 				</a>
+				<a href="/leaderBoard">
+					<img
+						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-leaderboard.svg`}
+						alt="sidemenu-leaderboard"
+					/>
+					<span>{t("lbl_LeaderBoard")}</span>
+				</a>
 				<a href={siteInfo({ langId: userInfo.langId }).affiliateLink}>
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-affiliate.svg`}

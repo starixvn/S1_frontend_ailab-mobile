@@ -33,3 +33,31 @@ export interface IDrawPrizeData {
 	ticketCount: number;
 	drawPrizeType: number;
 }
+
+export interface ILeaderBoardMonthData {
+	custId: number;
+	status: number;
+	userName: string;
+	wTurnover: number;
+}
+
+export interface IGetLeaderBoardListMonthArgs {
+	lBCategoryId: number;
+	TopNum: number;
+	SelectDays: string;
+	EventCode: string;
+}
+
+export interface ICustRankData {
+	custRank: number;
+	point: number;
+	status: number;
+}
+
+export interface IGetCustRankMonthArgs {
+	LBCategoryId: number;
+	SelectDays: string;
+	EventCode: string;
+}
+
+export type ICustRankMonthData = ICustRankData;

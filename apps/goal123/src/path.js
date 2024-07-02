@@ -101,9 +101,9 @@ export default {
 	whoami: {
 		root: "whoami"
 	},
-	// leaderBoard: {
-	// 	root: "leaderBoard"
-	// },
+	leaderBoard: {
+		root: "leaderBoard"
+	},
 	angpao: {
 		root: "angpao"
 	},
