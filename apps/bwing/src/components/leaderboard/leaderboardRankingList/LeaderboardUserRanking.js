@@ -6,11 +6,11 @@ import { numFormatToDigits } from "../../common/common";
 /** 使用者自己的排名 */
 const LeaderboardUserRanking = () => {
 	const { userRank } = useLeaderBoard();
-	const { rank, userName, point } = userRank ?? {};
+	const { custRank, userName, point } = userRank ?? {};
 
 	/** 前三名會有獎牌，其餘名次則顯示排名 */
 	const randerRank = () => {
-		const numberRank = Number(rank);
+		const numberRank = Number(custRank);
 		const isTop3 = numberRank <= 3;
 		return isTop3 ? (
 			<div className="order">
@@ -20,7 +20,7 @@ const LeaderboardUserRanking = () => {
 				/>
 			</div>
 		) : (
-			<div className="order">{rank}</div>
+			<div className="order">{custRank}</div>
 		);
 	};
 
