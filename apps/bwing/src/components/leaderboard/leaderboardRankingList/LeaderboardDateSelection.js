@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import classNames from "classnames";
 import { useLeaderBoard } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
 
@@ -103,7 +104,9 @@ const LeaderboardDateSelection = () => {
 			<div className="select-period">
 				<div className="select-years" ref={yearRef}>
 					<div
-						className="select-btn"
+						className={classNames("select-btn", {
+							active: isShowYearSelect
+						})}
 						onClick={() => setIsShowYearSelect(!isShowYearSelect)}>
 						{selectedYear}
 					</div>
@@ -122,7 +125,9 @@ const LeaderboardDateSelection = () => {
 				</div>
 				<div className="select-month" ref={monthRef}>
 					<div
-						className="select-btn active"
+						className={classNames("select-btn", {
+							active: isShowMonthSelect
+						})}
 						onClick={() =>
 							setIsShowMonthSelect(!isShowMonthSelect)
 						}>
