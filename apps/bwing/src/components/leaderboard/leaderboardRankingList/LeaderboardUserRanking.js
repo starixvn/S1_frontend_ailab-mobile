@@ -1,6 +1,6 @@
 import React from "react";
+import { useLeaderBoard } from "@ailab-mobile/common";
 import { bannerImgUrl } from "../../../config";
-import { useLeaderBoard } from "../leaderboardContext";
 import { numFormatToDigits } from "../../common/common";
 
 /** 使用者自己的排名 */

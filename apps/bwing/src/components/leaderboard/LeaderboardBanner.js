@@ -1,7 +1,6 @@
 import React from "react";
-import { isDateRange } from "@ailab-mobile/common";
+import { isDateRange, useLeaderBoard } from "@ailab-mobile/common";
 import { bannerImgUrl } from "../../config";
-import { useLeaderBoard } from "./leaderboardContext";
 import { eventTime } from "../common/eventTime";
 
 /** Banner 组件 */

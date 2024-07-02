@@ -1,6 +1,6 @@
 import React from "react";
+import { useLeaderBoard } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
-import { useLeaderBoard } from "../leaderboardContext";
 import LeaderboardDateCountdown from "./LeaderboardDateCountdown";
 import LeaderboardDateSelection from "./LeaderboardDateSelection";
 import LeaderboardUserRanking from "./LeaderboardUserRanking";
@@ -9,10 +9,14 @@ import Loading from "../../common/loading";
 
 /** 排行榜單 */
 const LeaderboardRankingList = () => {
-	const { getFormattedUpdateTime, isLogin, loading } = useLeaderBoard();
-
+	const {
+		getFormattedUpdateTime,
+		isLogin,
+		loading,
+		rankList
+	} = useLeaderBoard();
 	const { t } = useTranslation();
-
+	const hasRankList = rankList.length > 0;
 	return (
 		<div className="leaderboard-ranking">
 			<LeaderboardDateCountdown />
@@ -21,8 +25,8 @@ const LeaderboardRankingList = () => {
 				<div className="winner-total">
 					{loading ? <Loading /> : <LeaderboardItem />}
 
-					{/* 確認登入並且有 userRank 資料才顯示使用者排名 */}
-					{isLogin ? <LeaderboardUserRanking /> : null}
+					{/* 確認登入並且有 rankList 資料才顯示使用者排名 */}
+					{isLogin && hasRankList ? <LeaderboardUserRanking /> : null}
 				</div>
 				{/* 每 30 entries 刷新一次 */}
 				<div className="board-refresh">
