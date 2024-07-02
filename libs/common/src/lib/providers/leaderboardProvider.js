@@ -93,8 +93,8 @@ const initYear = 2024;
 /** 今年已過的月份的陣列，從小到大排序，
  *  活動是從 2024/7 開始，故只取 2024/7 之後的月份，
  *  2024 年以後就回傳已過的月份陣列，從小到大排序，
- *  ex: now 2024/9 return [7, 8, 9]
- *  ex: now 2025/5 return [1, 2, 3, 4, 5] */
+ *  @ex : now 2024/9 return [7, 8, 9]
+ *  @ex : now 2025/5 return [1, 2, 3, 4, 5] */
 const pastMonths = (() => {
 	const startMonth = currentYear === initYear ? 7 : 1;
 	return Array.from(
@@ -126,10 +126,11 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 		{ isFetching: isGetLeaderBoardListMonthFetching }
 	] = useLazyGetLeaderBoardListMonthQuery();
 
+	// 當 userInfo.isLogin 為 false 時，不會執行 getCustRankMonth
 	const [
 		getCustRankMonth,
 		{ isFetching: isGetCustRankFetching }
-	] = useLazyGetCustRankMonthQuery();
+	] = useLazyGetCustRankMonthQuery({ skip: !userInfo.isLogin });
 
 	// =================== 常數 ===================
 
@@ -147,14 +148,6 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 	const loading = isGetLeaderBoardListMonthFetching || isGetCustRankFetching;
 
 	// =================== 狀態 ===================
-
-	/** 本月倒數時間 */
-	const [timeLeft, setTimeLeft] = useState({
-		days: 0,
-		hours: 0,
-		minutes: 0,
-		seconds: 0
-	});
 
 	/** 排行榜列表 */
 	const [rankList, setRankList] = useState([]);
@@ -230,28 +223,6 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 		initData();
 	}, [userName]);
 
-	/** 計算離本月結算的倒數時間 */
-	useEffect(() => {
-		const calculateTimeLeft = () => {
-			const now = moment();
-			const endOfMonth = moment().endOf("month");
-			const diff = endOfMonth.diff(now);
-			const seconds = Math.floor((diff / 1000) % 60);
-			const minutes = Math.floor((diff / 1000 / 60) % 60);
-			const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-			setTimeLeft({
-				days,
-				hours,
-				minutes,
-				seconds
-			});
-		};
-		const interval = setInterval(calculateTimeLeft, 1000);
-		return () => clearInterval(interval);
-	}, []);
-
 	/** 傳遞的資料物件 */
 	const value = {
 		isLogin,
@@ -260,7 +231,6 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 		loading,
 		langId,
 		currentYear,
-		timeLeft,
 		leaderBoardSettingResponseData,
 		currentMonth,
 		pastMonths,
