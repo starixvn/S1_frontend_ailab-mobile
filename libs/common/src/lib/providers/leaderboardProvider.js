@@ -1,13 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { find } from "lodash";
 import moment from "moment";
 import {
 	// RTK Query API
 	useGetLeaderboardSettingQuery,
-	useLazyGetLeaderBoardListMonthQuery,
-	useLazyGetCustRankMonthQuery
+	useGetLeaderBoardListMonthQuery,
+	useGetCustRankMonthQuery
 } from "@ailab-mobile/service";
 
 /** 創建上下文 */
@@ -23,19 +23,19 @@ export const useLeaderBoard = () => {
 /** 定義日期格式化函數 */
 const formatDate = date => date.format("YYYY-MM-DD");
 
+/**
+ * 獲取兩個日期之間的月份列表
+ * @param startDate 開始日期
+ * @param endDate 結束日期 */
+const getMonthsBetween = (startDate, endDate) => {
+	const diff = endDate.diff(startDate, "months");
+	return Array.from({ length: diff + 1 }, (_, index) =>
+		startDate.clone().add(index, "months")
+	);
+};
+
 /** 獲取今年已過的月份列表 */
 const getMonthDataList = () => {
-	/**
-	 * 獲取兩個日期之間的月份列表
-	 * @param startDate 開始日期
-	 * @param endDate 結束日期 */
-	const getMonthsBetween = (startDate, endDate) => {
-		const diff = endDate.diff(startDate, "months");
-		return Array.from({ length: diff + 1 }, (_, index) =>
-			startDate.clone().add(index, "months")
-		);
-	};
-
 	/** 過去的資料已經不可獲取,故以現年為查詢起點 */
 	const currentYear = moment().year();
 	const initDate = moment(`${currentYear}-01-01`);
@@ -93,8 +93,8 @@ const initYear = 2024;
 /** 今年已過的月份的陣列，從小到大排序，
  *  活動是從 2024/7 開始，故只取 2024/7 之後的月份，
  *  2024 年以後就回傳已過的月份陣列，從小到大排序，
- *  @ex : now 2024/9 return [7, 8, 9]
- *  @ex : now 2025/5 return [1, 2, 3, 4, 5] */
+ *  ex: now 2024/9 return [7, 8, 9]
+ *  ex: now 2025/5 return [1, 2, 3, 4, 5] */
 const pastMonths = (() => {
 	const startMonth = currentYear === initYear ? 7 : 1;
 	return Array.from(
@@ -118,89 +118,58 @@ const pastYears = (() => {
 /** LeaderBoard 的 context provider
  *  日期計算的邏輯,
  *  獲取排行榜列表的 API 呼叫 */
-export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
+const LeaderboardProvider = ({ siteId, userInfo, children }) => {
+	/** 當前選中月份跟日期 ID ex: 2024-4 並初始化月份 */
+	const [selectedDateId, setSelectedDateId] = useState(
+		() => monthDataList[monthDataList.length - 1]?.id
+	);
+
+	const { isLogin, langId, userName } = userInfo || {};
+
+	const args = {
+		lBCategoryId: LEADER_BOARD_TYPE,
+		TopNum: MAX_RANK,
+		SelectDays: find(monthDataList, { id: selectedDateId })?.startDate ?? ""
+	};
+
 	// =================== api ===================
-
-	const [
-		getLeaderBoardListMonth,
-		{ isFetching: isGetLeaderBoardListMonthFetching }
-	] = useLazyGetLeaderBoardListMonthQuery();
-
-	// 當 userInfo.isLogin 為 false 時，不會執行 getCustRankMonth
-	const [
-		getCustRankMonth,
-		{ isFetching: isGetCustRankFetching }
-	] = useLazyGetCustRankMonthQuery({ skip: !userInfo.isLogin });
-
-	// =================== 常數 ===================
-
-	const { userName, isLogin, currencyId, langId } = userInfo || {};
 
 	/** 積分資料 */
 	const {
 		data: { data: leaderBoardSettingResponseData } = {}
 	} = useGetLeaderboardSettingQuery({
 		siteId,
-		currencyId
+		currencyId: 51
 	});
 
-	/** 加載狀態 */
-	const loading = isGetLeaderBoardListMonthFetching || isGetCustRankFetching;
+	/** 排名資料 */
+	const {
+		data: { data: rankList = [] } = {},
+		isFetching: isGetLeaderBoardListMonthFetching
+	} = useGetLeaderBoardListMonthQuery(args);
 
-	// =================== 狀態 ===================
+	/** 使者排名資料 */
+	const {
+		data: { data: userRank } = {},
+		isFetching: isGetCustRankFetching
+	} = useGetCustRankMonthQuery(
+		{
+			LBCategoryId: args.lBCategoryId,
+			SelectDays: args.SelectDays
+		},
+		{ skip: !userInfo.isLogin }
+	);
 
-	/** 排行榜列表 */
-	const [rankList, setRankList] = useState([]);
-
-	/** 當前選中月份跟日期 ID ex: 2024-4 */
-	const [selectedDateId, setSelectedDateId] = useState("");
-
-	/** 使用者排名資料 */
-	const [userRank, setUserRank] = useState({});
+	const mergedUserRankWithUserName = {
+		...userRank,
+		custRank:
+			userRank?.custRank > MAX_RANK || userRank?.custRank === 0
+				? "100+"
+				: userRank?.custRank,
+		userName
+	};
 
 	// =================== 對外函數 ===================
-
-	/**
-	 * 獲取使用者選取的日期排名資料
-	 * @param newSelectedDateId 使用者選取的日期 ex : 2024-1 */
-	const getRankMonthData = async newSelectedDateId => {
-		const args = {
-			lBCategoryId: LEADER_BOARD_TYPE,
-			TopNum: MAX_RANK,
-			SelectDays:
-				find(monthDataList, { id: newSelectedDateId })?.startDate ?? ""
-		};
-
-		try {
-			const {
-				data: leaderBoardListMonth
-			} = await getLeaderBoardListMonth(args).unwrap();
-
-			if (leaderBoardListMonth.length > 0) {
-				setRankList(leaderBoardListMonth);
-
-				// 未登入時，不打 getCustRankMonth
-				if (!isLogin) return;
-				const {
-					data: { data: { custRank = 0, point = 0 } = {} } = {}
-				} = await getCustRankMonth({
-					LBCategoryId: args.lBCategoryId,
-					SelectDays: args.SelectDays
-				});
-
-				// 使用者排名位於百名內顯示名次，超過百名顯示 100+
-				const rank =
-					custRank > MAX_RANK || custRank === 0 ? "100+" : custRank;
-
-				setUserRank({ rank, userName, point });
-			} else {
-				setUserRank({});
-				setRankList([]);
-			}
-		} catch (error) {
-			setRankList([]);
-		}
-	};
 
 	/**
 	 * 處理當前選中日期變更
@@ -208,26 +177,17 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 	const onSelectedDateId = newSelectedDateId => {
 		if (newSelectedDateId !== selectedDateId) {
 			setSelectedDateId(newSelectedDateId);
-			getRankMonthData(newSelectedDateId);
 		}
 	};
 
-	// =================== useEffect ===================
-
-	/** 初始化拿月份資料 */
-	useEffect(() => {
-		const initData = async () => {
-			const initMonthId = monthDataList[monthDataList.length - 1]?.id;
-			await getRankMonthData(initMonthId);
-		};
-		initData();
-	}, [userName]);
+	/** 加載狀態 */
+	const loading = isGetLeaderBoardListMonthFetching || isGetCustRankFetching;
 
 	/** 傳遞的資料物件 */
 	const value = {
 		isLogin,
 		rankList,
-		userRank,
+		userRank: mergedUserRankWithUserName,
 		loading,
 		langId,
 		currentYear,
@@ -245,6 +205,8 @@ export const LeaderboardProvider = ({ siteId, userInfo, children }) => {
 		</LeaderboardContext.Provider>
 	);
 };
+
+export { LeaderboardProvider };
 
 LeaderboardProvider.propTypes = {
 	siteId: PropTypes.number.isRequired,
