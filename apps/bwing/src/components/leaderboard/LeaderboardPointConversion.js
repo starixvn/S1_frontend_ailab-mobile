@@ -1,6 +1,7 @@
 import React from "react";
 import { useLeaderBoard } from "@ailab-mobile/common";
 import { useTranslation } from "react-i18next";
+import { numFormatToDigits } from "../common/common";
 
 /** 積分表 */
 const LeaderboardPointConversion = () => {
@@ -24,7 +25,7 @@ const LeaderboardPointConversion = () => {
 	 * 將流水 + vnd 轉換成 i18n 顯示
 	 * @param turnover 流水 */
 	const getTurnoverI18nText = turnover => {
-		return `${turnover} ${t("lbl_vnd")}`;
+		return `${numFormatToDigits(turnover, 0)} ${t("lbl_vnd")}`;
 	};
 	return (
 		<div className="info-point">
