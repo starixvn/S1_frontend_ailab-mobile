@@ -82,7 +82,7 @@ const Survey = () => {
 		if (required && required.value && !value) {
 			return required.message;
 		}
-		if (pattern && pattern.value) {
+		if (pattern && pattern.value && value) {
 			const regex = pattern.value;
 			if (!regex.test(value)) {
 				return pattern.message;
