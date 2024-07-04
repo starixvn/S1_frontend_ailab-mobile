@@ -26,8 +26,7 @@ const LeaderboardItem = () => {
 					<div className="user-id">{userName}</div>
 				</div>
 				<div className="right">
-					<i className="icon-cash" />
-					<span>$ {numFormatToDigits(point)}</span>
+					<span>{numFormatToDigits(point)}</span>
 				</div>
 			</div>
 		);
@@ -46,8 +45,7 @@ const LeaderboardItem = () => {
 					<div className="user-id">{userName}</div>
 				</div>
 				<div className="right">
-					<i className="icon-cash" />
-					<span>$ {numFormatToDigits(point)}</span>
+					<span>{numFormatToDigits(point)}</span>
 				</div>
 			</div>
 		);

@@ -16579,16 +16579,13 @@ main .menu-platform .platform {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 84vw;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 85vw;
 }
 main .menu-platform .platform a,
 main .menu-platform .platform button {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 24.5vw;
-          flex: 0 0 24.5vw;
+      -ms-flex: 0 0 25vw;
+          flex: 0 0 25vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16617,7 +16614,7 @@ main .menu-platform .platform button span {
   color: #141f33;
   font-size: 3vw;
   font-weight: 700;
-  width: 23.5vw;
+  width: 25vw;
   line-height: 1.2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18454,15 +18451,14 @@ main.leaderboard .leaderboard-reward .reward-left {
 }
 main.leaderboard .leaderboard-reward .reward-left .item {
   border-radius: 3vw;
-  width: 38vw;
+  width: 44vw;
   height: 22vw;
   background: url(https://banner.goal123.org/h5/img/leaderboard/reward-bg.jpg) no-repeat center/cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -18498,8 +18494,7 @@ main.leaderboard .leaderboard-reward .reward-left .item .text-ranking {
   background: #141F33;
   border-radius: 0.2vw 0.2vw 1.5vw 1.5vw;
   padding: 1vw 2.4vw;
-  margin-top: -3vw;
-  margin-bottom: 0.5vw;
+  margin-top: -7vw;
 }
 main.leaderboard .leaderboard-reward .reward-left .item .text .data-number {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, rgb(251, 130, 19)), color-stop(30%, rgb(251, 181, 19)), color-stop(50%, rgb(255, 255, 255)), color-stop(70%, rgb(251, 181, 19)), color-stop(90%, rgb(251, 130, 19)));
@@ -18510,13 +18505,13 @@ main.leaderboard .leaderboard-reward .reward-left .item .text .data-number {
   color: transparent;
   font-size: 5vw;
   font-weight: 900;
+  margin-top: 1vw;
 }
 main.leaderboard .leaderboard-reward .reward-left .item .text-unit {
   color: #fff;
   font-weight: 900;
   font-size: 2.8vw;
   text-align: center;
-  margin-top: 0.5vw;
   line-height: 1.2;
 }
 main.leaderboard .leaderboard-reward .reward-left .item img {
@@ -18533,7 +18528,7 @@ main.leaderboard .leaderboard-reward .reward-right {
 }
 main.leaderboard .leaderboard-reward .reward-right .item {
   background: linear-gradient(176deg, rgb(48, 89, 164) 9%, rgb(20, 31, 51) 87%);
-  width: 21vw;
+  width: 26vw;
   height: 22vw;
   border-radius: 3vw;
   display: -webkit-box;
@@ -18572,8 +18567,7 @@ main.leaderboard .leaderboard-reward .reward-right .item .text-ranking {
   background: #141F33;
   border-radius: 0.2vw 0.2vw 1.5vw 1.5vw;
   padding: 1vw 2.4vw;
-  margin-top: -3.5vw;
-  margin-bottom: 0.5vw;
+  margin-top: -6.5vw;
 }
 main.leaderboard .leaderboard-reward .reward-right .item .text .data-number {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, rgb(251, 130, 19)), color-stop(30%, rgb(251, 181, 19)), color-stop(50%, rgb(255, 255, 255)), color-stop(70%, rgb(251, 181, 19)), color-stop(90%, rgb(251, 130, 19)));
@@ -18584,6 +18578,7 @@ main.leaderboard .leaderboard-reward .reward-right .item .text .data-number {
   color: transparent;
   font-size: 5vw;
   font-weight: 900;
+  margin-top: 1vw;
 }
 main.leaderboard .leaderboard-reward .reward-right .item .text-unit {
   color: #fff;
@@ -18668,6 +18663,7 @@ main.leaderboard .leaderboard-ranking .countdown-time span {
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
+  margin-right: 0.5vw;
 }
 main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
   display: -webkit-box;
@@ -18771,7 +18767,7 @@ main.leaderboard .leaderboard-ranking .board-top .select-month .select-btn {
   margin-right: unset;
 }
 main.leaderboard .leaderboard-ranking .board-top .select-btn {
-  width: 23.8vw;
+  width: 22.8vw;
   border-radius: 2.3vw;
   border: 0.23vw solid #fff;
   background: #141f33;
@@ -18824,7 +18820,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-thead {
       -ms-flex-align: center;
           align-items: center;
   background: #1E2F4D;
-  padding: 2vw 2.3vw;
+  padding: 2vw 4vw 2vw 2vw;
   border-radius: 4vw 4vw 0 0;
   margin-bottom: 1.3vw;
   -webkit-box-sizing: border-box;
@@ -18859,7 +18855,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-thead .left spa
           flex: 0 0 27vw;
 }
 main.leaderboard .leaderboard-ranking .board .winner-total .user-thead .right span {
-  width: 33vw;
+  width: 9vw;
   text-align: left;
 }
 main.leaderboard .leaderboard-ranking .board .winner-total .user-ranking {
@@ -18890,7 +18886,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-list {
 main.leaderboard .leaderboard-ranking .board .winner-total .user-list.top {
   background: -webkit-gradient(linear, left top, right top, from(rgb(207, 0, 0)), to(rgb(251, 181, 19)));
   background: linear-gradient(90deg, rgb(207, 0, 0) 0%, rgb(251, 181, 19) 100%);
-  padding: 2vw 2.2vw 2vw 1.2vw;
+  padding: 2vw 3.2vw 2vw 1.2vw;
 }
 main.leaderboard .leaderboard-ranking .board .winner-total .user-list .left {
   display: -webkit-box;
@@ -19087,7 +19083,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-themselves-info
 main.leaderboard .leaderboard-ranking .board-refresh {
   color: #fff;
   text-align: center;
-  margin-top: 2vw;
+  margin-top: 3vw;
   font-size: 3vw;
 }
 main.leaderboard .leaderboard-ranking .board-refresh span {
