@@ -19364,7 +19364,7 @@ main.leaderboard .leaderboard-reward .reward-left {
 }
 main.leaderboard .leaderboard-reward .reward-left .item {
   border-radius: 3vw;
-  width: 22vw;
+  width: 28vw;
   height: 28vw;
   background: url(https://banner.bw88.io/h5/img/leaderboard/reward-bg.jpg) no-repeat center/cover;
   display: -webkit-box;
@@ -19437,7 +19437,7 @@ main.leaderboard .leaderboard-reward .reward-right {
 main.leaderboard .leaderboard-reward .reward-right .item {
   font-family: "Montserrat", sans-serif;
   background: #2D44A8;
-  width: 22vw;
+  width: 26vw;
   height: 25vw;
   border-radius: 3vw;
   display: -webkit-box;
@@ -19579,6 +19579,7 @@ main.leaderboard .leaderboard-ranking .countdown-time span {
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
+  margin-right: 0.6vw;
 }
 main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
   display: -webkit-box;
@@ -19683,7 +19684,7 @@ main.leaderboard .leaderboard-ranking .board-top .select-month .select-btn {
   margin-right: unset;
 }
 main.leaderboard .leaderboard-ranking .board-top .select-btn {
-  width: 23.8vw;
+  width: 22.8vw;
   border-radius: 2.3vw;
   border: 0.23vw solid #fff;
   background: #1C317B;
@@ -19736,7 +19737,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-thead {
       -ms-flex-align: center;
           align-items: center;
   background: #1A2C5E;
-  padding: 2.3vw;
+  padding: 2.3vw 4.2vw 2.3vw 2.3vw;
   border-radius: 4vw 4vw 0 0;
   margin-bottom: 1.3vw;
   -webkit-box-sizing: border-box;
@@ -19771,8 +19772,8 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-thead .left spa
           flex: 0 0 27vw;
 }
 main.leaderboard .leaderboard-ranking .board .winner-total .user-thead .right span {
-  width: 33vw;
-  text-align: left;
+  width: 11vw;
+  text-align: right;
 }
 main.leaderboard .leaderboard-ranking .board .winner-total .user-ranking {
   max-height: 100vw;
@@ -20000,7 +20001,7 @@ main.leaderboard .leaderboard-ranking .board .winner-total .user-themselves-info
 main.leaderboard .leaderboard-ranking .board-refresh {
   color: #fff;
   text-align: center;
-  margin-top: 2vw;
+  margin-top: 3vw;
   font-size: 3vw;
 }
 main.leaderboard .leaderboard-ranking .board-refresh span {
