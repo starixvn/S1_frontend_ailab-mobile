@@ -23,10 +23,6 @@ const RecentlyViewedGameList = () => {
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev"
-		},
-		pagination: {
-			el: ".swiper-pagination",
-			clickable: true // Make pagination bullets clickable
 		}
 	};
 
@@ -47,7 +43,7 @@ const RecentlyViewedGameList = () => {
 						} = recentlyViewedGameItem || {};
 						return (
 							<SwiperSlide
-								key={`${tpId}_${tpGameType}_${gameId}`}>
+								key={`recently-game-${tpId}-${tpGameType}-${gameId}`}>
 								<div
 									className="swiper-slide"
 									onClick={() =>
