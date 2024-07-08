@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "@reach/router";
 import { userInfoContext, loadingContext } from "../common/context";
@@ -74,7 +74,7 @@ const RetentionContent = () => {
 	};
 
 	return (
-		<div className="retention">
+		<div className="retention" style={{ position:'static'}}>
 			<img
 				src={`${bannerImgUrl}/h5/img/event/retention/retention-banner.jpg`}
 				alt="retention-banner"
