@@ -9,7 +9,7 @@ const RANK = Object.freeze({
 	3: "top-3",
 	"4-11": "4-11th",
 	"12-19": "12-19th",
-	"20-200": "20-200th"
+	"20-100": "20-100th"
 });
 
 const LeaderBoardReward = () => {
