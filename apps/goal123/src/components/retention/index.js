@@ -19,7 +19,7 @@ const RetentionContent = () => {
 	const navigate = useNavigate();
 
 	const {
-		userInfo: { currencyId, langId, isLogin }
+		userInfo: { currencyId, langId }
 	} = useContext(userInfoContext);
 
 	const { retentionBonusCode, promotionDetail } = useRetentionPromotion();
@@ -71,11 +71,6 @@ const RetentionContent = () => {
 			console.error("Error claiming promotion:", error);
 		}
 	};
-
-	if (!isLogin && !retentionBonusCode) {
-		navigate(`/${langId}`);
-		return null; // Prevent rendering any content
-	}
 
 	return (
 		<>
@@ -135,7 +130,6 @@ const RetentionContent = () => {
 				)}
 				<div className="bonus-list">
 					<div className="title">
-						<div>{t("Label_Retention_BonusTitle")}</div>
 						<div />
 					</div>
 					{!details && <div />}

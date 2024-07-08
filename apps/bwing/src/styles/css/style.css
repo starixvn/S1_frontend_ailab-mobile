@@ -19721,7 +19721,7 @@ body main.main.referral {
   z-index: 3;
 }
 .eventpage-tap > button {
-  font-size: 4vw;
+  font-size: 3vw;
   font-weight: 700;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19751,8 +19751,8 @@ body main.main.referral {
   display: block;
   content: "";
   background: #ffffff;
-  height: 1vw;
-  width: 35vw;
+  height: 0.7vw;
+  width: 50%;
   bottom: -3vw;
 }
 
@@ -19774,7 +19774,6 @@ body main.main.referral {
   color: #FD9200 !important;
   font-weight: bold !important;
   font-family: "Bai Jamjuree", sans-serif !important;
-  font-size: 6vw !important;
 }
 
 /* 標題可能的結構*/
@@ -19782,7 +19781,6 @@ body main.main.referral {
   color: #FD9200 !important;
   font-weight: bold !important;
   font-family: "Bai Jamjuree", sans-serif !important;
-  font-size: 6vw !important;
 }
 
 .retention-wrapper .bonus-list p,
