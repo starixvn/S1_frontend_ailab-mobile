@@ -23,7 +23,7 @@ const LeaderBoardReward = () => {
 
 	/**
 	 * 名次資料 (照名次排序)，
-	 * 後端陣列沒有照名次沒有排序，需要前端自行排序 */
+	 * 後端陣列沒有照名次排序，需要前端自行排序 */
 	const sortedLeaderboardRankingBonus = [...leaderboardRankingBonus].sort(
 		(a, b) => {
 			const LEADER_BOARD_REWORD_RANK_ORDER = Object.keys(RANK);
@@ -43,7 +43,7 @@ const LeaderBoardReward = () => {
 					?.slice(0, TOP3_COUNT)
 					?.map(item => {
 						return (
-							<div className="item">
+							<div className="item" key={`top-${item?.ranking}`}>
 								<img
 									src={`https://banner.goal123.org/h5/img/leaderboard/top-${item?.ranking}.png`}
 									alt="leaderboard-top"
@@ -69,7 +69,7 @@ const LeaderBoardReward = () => {
 				{/* 三名以後(不包含三) */}
 				{sortedLeaderboardRankingBonus?.slice(3)?.map(item => {
 					return (
-						<div className="item">
+						<div className="item" key={`rank-${item?.ranking}`}>
 							<div className="text">
 								<div className="text-ranking">
 									{t(
