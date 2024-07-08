@@ -10,6 +10,7 @@ const useRetentionPromotion = () => {
 	const [promotionDetail, setPromotionDetail] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const {
+		userInfo,
 		userInfo: { isLogin, langId }
 	} = useContext(userInfoContext);
 
@@ -42,7 +43,7 @@ const useRetentionPromotion = () => {
 			}
 		};
 		fetchPromotionData();
-	}, []);
+	}, [userInfo]);
 
 	return { retentionBonusCode, promotionDetail, loading };
 };

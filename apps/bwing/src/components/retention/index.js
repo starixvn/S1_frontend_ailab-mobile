@@ -140,7 +140,6 @@ const RetentionContent = () => {
 						)}
 						<div className="bonus-list">
 							<div className="title">
-								<div>{t("Label_Retention_BonusTitle")}</div>
 								<div />
 							</div>
 							<div />
