@@ -22,11 +22,9 @@ const LeaderBoardRanking = () => {
 					{isLogin && hasRankList && <LeaderboardUserRanking />}
 				</div>
 				<div className="board-refresh">
-					{t("lbl_Leaderboard_Last_Update_On")}
-					<span className="data">
-						{getFormattedUpdateTime()}
-					</span>{" "}
-					{t("lbl_Leaderboard_Update_Every_30_Minutes")}
+					{t("lbl_Leaderboard_Last_Update_On")}&nbsp;&nbsp;
+					<span className="data">{getFormattedUpdateTime()}</span>
+					&nbsp;{t("lbl_Leaderboard_Update_Every_30_Minutes")}
 				</div>
 			</div>
 		</div>
