@@ -19,12 +19,13 @@ const HomeLeaderBoard = () => {
 			<Link to={`/${path.leaderBoard.root}`}>
 				<div className="winner-total">
 					<div className="user-ranking">
-						{winnerList.map((winner, index) => (
+						{/* 渲染前三名 Item，會有獎牌，所以前三名跟其他 Item 處理方式不同 */}
+						{winnerList.map(({ userName, wTurnover }, index) => (
 							<div
 								className={
 									index < 3 ? "user-list top" : "user-list"
 								}
-								key={winner.custId}>
+								key={`${userName}${wTurnover}`}>
 								<div className="left">
 									<div className="order">
 										{index < 3 ? (

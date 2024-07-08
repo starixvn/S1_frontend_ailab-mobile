@@ -19,10 +19,11 @@ const TopWinner = ({ leaderBoardList }) => {
 				<div className="home-topwinner mb-4">
 					<div className="title">{t("lbl_Top10winners")}</div>
 					<div className="home-topwinner-content">
+						{/* 渲染前三名 Item，會有獎牌，所以前三名跟其他 Item 處理方式不同 */}
 						{leaderBoardList.map(
-							({ userName, wTurnover, custId }, index) => (
+							({ userName, wTurnover }, index) => (
 								<div
-									key={custId}
+									key={`${userName}${wTurnover}`}
 									className="home-topwinner-item">
 									<div>
 										{index < 3 ? (
