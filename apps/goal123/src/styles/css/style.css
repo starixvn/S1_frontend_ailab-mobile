@@ -17943,7 +17943,7 @@ main .menu-member .member-vip .vip-extra p {
   z-index: 2;
 }
 .eventpage-tap > button {
-  font-size: 4vw;
+  font-size: 3vw;
   font-weight: 700;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17973,8 +17973,8 @@ main .menu-member .member-vip .vip-extra p {
   display: block;
   content: "";
   background: #fab617;
-  height: 1vw;
-  width: 35vw;
+  height: 0.7vw;
+  width: 50%;
   bottom: -3vw;
 }
 
@@ -17996,7 +17996,6 @@ main .menu-member .member-vip .vip-extra p {
   color: #fab617 !important;
   font-weight: bold !important;
   font-family: "Bai Jamjuree", sans-serif !important;
-  font-size: 6vw !important;
 }
 
 /* 標題可能的結構*/
@@ -18004,7 +18003,6 @@ main .menu-member .member-vip .vip-extra p {
   color: #fab617 !important;
   font-weight: bold !important;
   font-family: "Bai Jamjuree", sans-serif !important;
-  font-size: 6vw !important;
 }
 
 .retention-wrapper .bonus-list p,
