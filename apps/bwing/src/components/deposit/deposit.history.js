@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { AllowUploadReceiptType } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	popBoxContext,
@@ -267,7 +268,12 @@ export const TransactionHistory = props => {
 	const { i18n } = useContext(i18nContext);
 
 	let btnGroup = null;
-	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
+	if (
+		// 存款方式
+		AllowUploadReceiptType.includes(props.depositType) &&
+		// 存款狀態
+		(props.status === 1 || props.status === 7)
+	) {
 		btnGroup = (
 			<div className="btn-group">
 				<button className="blue" onClick={props.SubmitProof}>
