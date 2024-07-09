@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { isInApp } from "@ailab-mobile/common";
+import { isInApp, LeaderboardProvider } from "@ailab-mobile/common";
 import { userInfoContext, rootContext } from "../common/context";
 import HomeMarquee from "./components/HomeMarquee";
 import HomeSportMatches from "./components/HomeSportMatches";
 import HomeJoin from "./components/HomeJoin";
+import { siteId } from "../../config";
 import HomeLeaderBoard from "./components/HomeLeaderBoard";
 import HomeInfo from "./components/HomeInfo";
 import HomeAppDownload from "./components/HomeAppDownload";
@@ -44,7 +45,13 @@ const HomeContent = () => {
 					<HomeSportMatches />
 					<HomeJoin />
 					<HomePopularSlotGames />
-					<HomeLeaderBoard />
+
+					{/* 首頁的 HomeLeaderBoard 比 leaderboard 頁面更早開發（但功能相同），由於 PM 希望內頁與首頁的資料顯示一致，
+                        為了避免相同邏輯分散在兩個頁面，所以將後期開發的 LeaderboardProvider 包裹 HomeLeaderBoard，共享相同的資料與 API。 */}
+					<LeaderboardProvider siteId={siteId} userInfo={userInfo}>
+						<HomeLeaderBoard />
+					</LeaderboardProvider>
+
 					<HomeInfo />
 					{userInfo.isLogin && <RecentlyViewedGameList />}
 					{!isInApp() && <HomeAppDownload />}
