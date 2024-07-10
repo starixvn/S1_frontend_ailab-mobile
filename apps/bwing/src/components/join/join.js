@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { useLocation, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useCooldown } from "@ailab-mobile/hooks";
 import {
 	defNavPanel,
 	i18nContext,
@@ -51,6 +52,7 @@ const Join = () => {
 	const urlAffiliate = urlAffId || urlAffCode;
 	const isShow =
 		nav === defNavPanel.join || pathname === `/${path.join.root}`;
+	const { isReady, setCooldown, cooldown } = useCooldown();
 
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
@@ -103,6 +105,7 @@ const Join = () => {
 			checked = false;
 			msg = t("lbl_UserNameCheckTooltip");
 		} else {
+			setCooldown(3);
 			const res = await api_ExistsUserName({
 				UserName: val,
 				langId: userInfo.langId
@@ -548,9 +551,11 @@ const Join = () => {
 
 						<div className="btn-group">
 							<button
-								className="btn-primary"
+								disabled={!isReady}
+								className={isReady ? "btn-primary" : "btn-gray"}
 								onClick={handleNextStep}>
 								{t("lbl_Next")}
+								{cooldown ? ` (${cooldown})` : null}
 							</button>
 						</div>
 					</>
