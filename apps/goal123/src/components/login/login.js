@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import { useMatch, Link, useNavigate } from "@reach/router";
+import { useCooldown } from "@ailab-mobile/hooks";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import { LOGIN } from "../../service/auth";
@@ -28,6 +29,7 @@ const LoginPage = () => {
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
+	const { isReady, cooldown, setCooldown } = useCooldown();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -73,6 +75,7 @@ const LoginPage = () => {
 		const checked = userValue.UserName !== "" && userValue.Password !== "";
 
 		if (checked) {
+			setCooldown(3);
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (isMountedRef.current) {
 					if (errorCode === 0) {
@@ -218,8 +221,13 @@ const LoginPage = () => {
 						{i18n.lbl_ForgetPassword}?
 					</Link>
 				</div>
-				<button data-testid="login_submit" onClick={handleLogin}>
+				<button
+					data-testid="login_submit"
+					onClick={handleLogin}
+					style={isReady ? undefined : { filter: "grayscale(1)" }}
+					disabled={!isReady}>
 					{i18n.lbl_Login}
+					{cooldown ? ` (${cooldown})` : null}
 				</button>
 			</div>
 		)
