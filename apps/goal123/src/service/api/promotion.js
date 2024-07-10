@@ -27,6 +27,22 @@ export const api_promotion_GetRebateExcludeGameList = ({
 		CurrencyId: currencyId
 	});
 
+export const api_promotion_GetRetentionPromotion = ({ langId }) =>
+	promotionRequest.post(`/GetRetentionPromotion/${langId}`, {
+		DeviceType: getDeviceType()
+	});
+
+export const api_promotion_SetClaimPromotion = ({
+	langId,
+	BonusCode,
+	LockedAmount
+}) =>
+	promotionRequest.post(`/SetClaimPromotion/${langId}`, {
+		BonusCode,
+		LockedAmount,
+		DeviceType: getDeviceType()
+	});
+
 // export const api_promotion_SetClaimPromotion = ({
 // 	langId,
 // 	BonusCode,
