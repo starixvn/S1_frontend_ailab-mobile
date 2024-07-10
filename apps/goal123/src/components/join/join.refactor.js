@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, Redirect, useNavigate } from "@reach/router";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useCooldown } from "@ailab-mobile/hooks";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Checkbox from "../common/checkbox";
@@ -46,6 +47,7 @@ const Join = () => {
 	const [recaptchaInfo, setRecaptchaInfo] = useState({});
 	const { saveShieldData } = useShieldCheck();
 	const [reCaptchaKey, setReCaptchaKey] = useState(0);
+	const { isReady, cooldown, setCooldown } = useCooldown();
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
@@ -82,11 +84,12 @@ const Join = () => {
 
 	useEffect(() => {
 		// getRecaptchaSiteKey();
-		if (urlAffiliate) {
-			checkAffiliate({});
-		} else {
-			GetSiteCurrencyList();
-		}
+		const init = async () => {
+			// * 預先拿 currencyList
+			await GetSiteCurrencyList();
+			if (urlAffiliate) checkAffiliate({});
+		};
+		init();
 	}, []);
 
 	useEffect(() => {
@@ -98,8 +101,6 @@ const Join = () => {
 	const checkAffiliate = async ({ formAffCode }) => {
 		let checked = null;
 		let msg = "";
-		// * 預先拿 currencyList
-		await GetSiteCurrencyList();
 		if (urlAffId) {
 			const res = await api_site_GetAffiliateAgent({ AffId: urlAffId });
 			if (res.data.errorCode === 0) {
@@ -201,6 +202,7 @@ const Join = () => {
 			checked = false;
 			msg = i18n.lbl_UserNameCheckTooltip;
 		} else {
+			setCooldown(3);
 			const res = await api_ExistsUserName({
 				UserName: val,
 				langId: userInfo.langId
@@ -492,7 +494,7 @@ const Join = () => {
 				<Inputbox
 					icon="icon icon-member"
 					placeholder={i18n.lbl_Username}
-					onBlur={checkValue.bind(this, { col: "UserName" })}
+					// onBlur={checkValue.bind(this, { col: "UserName" })}
 					onChange={EditField.bind(this, { col: "UserName" })}
 					btnStatus={inputStatus.UserName.checked}
 					tip={inputStatus.UserName.msg}
@@ -618,7 +620,14 @@ const Join = () => {
 				</Checkbox>
 				<div className="JoinRule open">{inputStatus.Checkbox.msg}</div>
 				<div className="btn-group">
-					<button onClick={clickSubmit}>{i18n.lbl_JoinNow}</button>
+					<button
+						className="btn-gray"
+						onClick={clickSubmit}
+						style={isReady ? undefined : { filter: "grayscale(1)" }}
+						disabled={!isReady}>
+						{i18n.lbl_JoinNow}
+						{cooldown ? ` (${cooldown})` : null}
+					</button>
 				</div>
 			</div>
 		)
