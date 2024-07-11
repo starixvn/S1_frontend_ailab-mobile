@@ -348,11 +348,12 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
-		refId
+		refId,
+		isShowReceiptInfo = true
 	) => {
 		// if (pageVerify) {
-		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo, code } = depositRep;
+		const { currencyId, ...restBankInfo } = bankInfo || {};
+		const { accountName, accountNo, code } = depositRep || {};
 		setbankSlipPopBox(() => ({
 			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
 				"HH:mm"
@@ -366,7 +367,8 @@ const Panel = () => {
 			amount: number_format(amount, false, 0),
 			picFileName,
 			refId,
-			disableSubmit: false
+			disableSubmit: false,
+			isShowReceiptInfo
 		}));
 		// }
 	};
