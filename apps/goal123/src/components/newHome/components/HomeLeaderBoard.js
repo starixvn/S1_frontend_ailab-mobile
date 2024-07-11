@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { number_format } from "../utils/homeFormatter";
+import { numFormatToDigits } from "../../common/common";
 import { bannerImgUrl } from "../../../config";
 import useTopWinnerList from "../hooks/useWinnerList";
 
@@ -41,9 +41,7 @@ const HomeLeaderBoard = () => {
 							<div className="right">
 								<i className="icon-cash" />
 								<span>
-									{number_format({
-										number: winner.wTurnover
-									})}
+									{numFormatToDigits(winner.wTurnover, 0)}
 								</span>
 							</div>
 						</div>
