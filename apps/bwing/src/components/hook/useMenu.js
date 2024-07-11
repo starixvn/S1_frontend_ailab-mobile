@@ -21,7 +21,6 @@ const useMenu = () => {
 
 	const onClickProductItem = async product => {
 		if (!product || product?.isInMaintain) return;
-
 		const { tpId, gameId, menuType, tpGameType, noPlay, path, betType } =
 			product || {};
 

@@ -72,6 +72,7 @@ import DragonEgg from "./pages/dragonEgg";
 import Ambassador from "./pages/ambassador";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
+import LeaderBoard from "./pages/leaderBoard";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -143,7 +144,6 @@ const Index = () => {
 						<Casino path={`${path.casino.root}/:tpId`} />
 						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
-						{/* <Ranking path={path.leaderBoard.root} /> */}
 						<Angpao path={path.angpao.root} />
 
 						<LuckyWheel path={path.luckyWheel.root} />
@@ -160,6 +160,7 @@ const Index = () => {
 						<Ambassador path={path.ambassador.root} />
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 						<RetentionPage path={path.retention.root} />
+						<LeaderBoard path={path.leaderBoard.root} />
 					</Router>
 					<Join />
 					<Login />

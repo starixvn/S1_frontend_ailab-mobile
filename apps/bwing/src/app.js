@@ -85,6 +85,7 @@ import Lottery from "./pages/lottery";
 import Esports from "./pages/esports";
 import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
+import Leaderboard from "./pages/leaderboard";
 import RetentionPage from "./pages/retention";
 
 const Index = () => {
@@ -208,6 +209,7 @@ const Index = () => {
 							<DragonEgg path={path.dragonEgg.root} />
 							<EuroCup path={path.euroCup.root} />
 							<RetentionPage path={path.retention.root} />
+							<Leaderboard path={path.leaderboard.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

@@ -168,10 +168,12 @@ const HomeBanner = () => {
 
 	return (
 		<div className="home-banner">
-			<Swiper {...swiperParams} className="swiper-container">
+			<Swiper
+				{...swiperParams}
+				className="swiper-container home-banner-container">
 				{banner.map((bannerData, index) => (
 					<SwiperSlide
-						key={index}
+						key={bannerData.bannerName}
 						className="swiper-slide"
 						onClick={() => handleClickBanner(bannerData)}>
 						<img

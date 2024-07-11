@@ -257,6 +257,12 @@ export const defPageInfo = {
 	retention: {
 		titleKey: "Label_Retention_SurpriseReward",
 		hideLogo: true
+	},
+	leaderboard: {
+		titleKey: "lbl_LeaderBoard",
+		className: "leaderboard",
+		iconClassName: "icon-leaderboard-blue",
+		hideLogo: true
 	}
 };
 
