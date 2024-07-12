@@ -32,7 +32,7 @@ const LeaderboardUserRanking = () => {
 				<div className="user-id">{userName}</div>
 			</div>
 			<div className="right">
-				<span>{numFormatToDigits(point)}</span>
+				<span>{numFormatToDigits(point, 0)}</span>
 			</div>
 		</div>
 	);

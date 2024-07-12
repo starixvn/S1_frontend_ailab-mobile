@@ -13,9 +13,53 @@ export interface ICheckPromotionMissionData {
 	eggTicket: number;
 }
 
+export interface IGetLeaderBoardListArgs {
+	lBCategoryId: number;
+	TopNum: number;
+	BeforeDays: number;
+	EventCode: string;
+}
+
+export interface ILeaderboardPointCalculation {
+	date: string;
+	siteId: number;
+	currencyId: number;
+	sportTurnover: number;
+	slotTurnover: number;
+	liveCasinoTurnover: number;
+}
+
+export interface ILeaderboardRankingBonus {
+	siteId: number;
+	siteName: string;
+	currency: string;
+	currencyId: number;
+	ranking: string;
+	minPoint: number;
+	bonus: number;
+}
+
+export interface ILeaderboardData {
+	leaderboardPointCalculation: ILeaderboardPointCalculation;
+	leaderboardRankingBonus: ILeaderboardRankingBonus[];
+}
+
 export interface IGetCustBlessingsStickerData {
 	isClaimedBigPrize: boolean;
 	stickers: number;
+}
+
+export interface IGetCustRankArgs {
+	LBCategoryId: number;
+	BeforeDays: number;
+	EventCode: string;
+}
+
+export interface IGetLeaderBoardData {
+	custId: number;
+	userName: string;
+	wTurnover: number;
+	status: number;
 }
 
 export interface IGetCustDrawPrizeListData {

@@ -52,7 +52,10 @@ const HomeLeaderBoard = () => {
 										</div>
 										<div className="right">
 											<span>
-												{numFormatToDigits(wTurnover)}
+												{numFormatToDigits(
+													wTurnover,
+													0
+												)}
 											</span>
 										</div>
 									</div>
