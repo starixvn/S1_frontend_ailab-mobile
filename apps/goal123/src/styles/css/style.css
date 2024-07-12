@@ -2070,6 +2070,47 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   border: 0;
   border-radius: 2px;
 }
+#popup.detailpop {
+  width: 100%;
+  background: #eaf1ff;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  top: 100%;
+  -webkit-box-pack: revert;
+      -ms-flex-pack: revert;
+          justify-content: revert;
+}
+#popup.detailpop .pop {
+  padding: 0 !important;
+}
+#popup.detailpop.active {
+  top: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+#popup.detailpop .popTit {
+  border-radius: 0;
+  position: fixed;
+  padding: 2vw 4vw;
+  z-index: 1;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+          box-shadow: rgba(0, 0, 0, 0.7) 0 0 4px 0;
+  border: 0;
+}
+#popup.detailpop .icon-close {
+  z-index: 2;
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+}
+#popup.detailpop .infoList {
+  padding: 11vw 4vw 4vw;
+  width: calc(100% - 8vw) !important;
+}
+#popup.detailpop .infoList .info {
+  color: #4e6ca8;
+}
 #popup.promosback {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -3764,6 +3805,9 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
 }
 .info ul li.total span:nth-child(2) {
   font-weight: bold;
+}
+.info ul li .title {
+  color: #1f3258;
 }
 .info.infoBlack {
   background: #d1d6e0;
@@ -8270,6 +8314,15 @@ span.important {
   font-weight: bold;
   color: white;
 }
+.depositModule_mobile > .title .info,
+.depositModule_online > .title .info,
+.depositModule_local > .title .info,
+.depositModule_topupMobile > .title .info,
+.depositModule_Crpyto > .title .info {
+  color: rgba(250, 182, 23, 0.8);
+  margin-left: 0.75vw;
+  font-size: 3.25vw;
+}
 .depositModule_mobile .selectModule,
 .depositModule_online .selectModule,
 .depositModule_local .selectModule,
@@ -8398,7 +8451,7 @@ span.important {
   width: calc(100% - 12vw);
   padding: 2vw 5vw;
   background: #adccff;
-  margin: auto;
+  margin: 1vw auto;
   border-radius: 5px;
 }
 .depositModule_mobile .selectModule > div.info .checkBank,
@@ -8412,6 +8465,43 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+.depositModule_mobile .selectModule > div.info.remark,
+.depositModule_online .selectModule > div.info.remark,
+.depositModule_local .selectModule > div.info.remark,
+.depositModule_topupMobile .selectModule > div.info.remark,
+.depositModule_Crpyto .selectModule > div.info.remark {
+  background: transparent;
+  width: calc(100% - 2vw);
+  padding: 0;
+}
+.depositModule_mobile .selectModule > div.info.remark ul,
+.depositModule_online .selectModule > div.info.remark ul,
+.depositModule_local .selectModule > div.info.remark ul,
+.depositModule_topupMobile .selectModule > div.info.remark ul,
+.depositModule_Crpyto .selectModule > div.info.remark ul {
+  width: 100%;
+}
+.depositModule_mobile .selectModule > div.info.remark ul .tip,
+.depositModule_online .selectModule > div.info.remark ul .tip,
+.depositModule_local .selectModule > div.info.remark ul .tip,
+.depositModule_topupMobile .selectModule > div.info.remark ul .tip,
+.depositModule_Crpyto .selectModule > div.info.remark ul .tip {
+  text-align: left;
+  padding: 0 1vw;
+  margin-bottom: 2vw;
+}
+.depositModule_mobile .selectModule > div.info.remark li,
+.depositModule_online .selectModule > div.info.remark li,
+.depositModule_local .selectModule > div.info.remark li,
+.depositModule_topupMobile .selectModule > div.info.remark li,
+.depositModule_Crpyto .selectModule > div.info.remark li {
+  background: #adccff;
+  border-radius: 5px;
+  padding: 2vw 5vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 1.5vw;
 }
 .depositModule_mobile .selectModule > div .checkCrypto,
 .depositModule_online .selectModule > div .checkCrypto,
@@ -12899,8 +12989,8 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 12vw;
-  padding-bottom: 10vw;
+  padding-top: 11vw;
+  padding-bottom: 18vw;
 }
 .ambassador .banner img {
   width: 100%;
@@ -16538,6 +16628,10 @@ main .menu-platform .platform button span {
   word-break: break-word;
   min-height: 8vw;
 }
+main .menu-platform .platform .survey-icon img {
+  width: 9vw;
+  height: 9vw;
+}
 main .menu-lobby {
   margin-top: 1.5vw;
   -webkit-box-sizing: border-box;
@@ -18104,6 +18198,195 @@ main .menu-member .member-vip .vip-extra p {
 
 .retention-wrapper .bonus-list tr:last-child td:last-child {
   border-bottom-right-radius: 2vw !important;
+}
+
+.survey {
+  background: #F8F8F8;
+  color: #9C9C9C;
+  padding: 22vw 0 40vw;
+}
+.survey-before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 6vw;
+}
+.survey-before > div:first-child {
+  color: #141f33;
+  font-size: 4vw;
+  font-weight: 600;
+}
+.survey-before > div:nth-child(2) {
+  text-align: center;
+  margin-top: 5vw;
+  line-height: 5.5vw;
+}
+.survey-before fieldset {
+  border: medium none;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+.survey-before fieldset input {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  color: #0A1B38;
+  border-radius: 2vw;
+}
+.survey-before fieldset input::-webkit-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset input::-moz-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset input:-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset input::-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset input::placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset input:focus {
+  outline: 0;
+  border: 2px solid #5084e4;
+}
+.survey-before fieldset textarea {
+  width: 75vw;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  height: 50vw;
+  max-width: 100%;
+  resize: none;
+  border-radius: 2vw;
+}
+.survey-before fieldset textarea::-webkit-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset textarea::-moz-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset textarea:-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset textarea::-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset textarea::placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.survey-before fieldset textarea:focus {
+  outline: 0;
+  border: 2px solid #5084e4;
+}
+.survey-before fieldset button {
+  background: #EE4F49;
+  font-size: 3.5vw;
+  font-weight: 600;
+  border-radius: 2vw;
+  padding: 3vw 10vw;
+  width: 39.5vw;
+  margin-top: 8vw;
+  color: white;
+}
+.survey-before fieldset button:first-child[disabled] {
+  background: gray !important;
+}
+.survey-before fieldset button:last-child {
+  background: #DFDFDF;
+  color: #9B9B9B;
+}
+.survey-before fieldset .tip {
+  display: none;
+  margin-top: 2vw;
+}
+.survey-before fieldset .tip.active {
+  display: block;
+  color: red;
+}
+.survey-before fieldset .tip.message {
+  margin-top: 1vw;
+}
+.survey-before fieldset.error textarea {
+  border: 2px solid red;
+}
+.survey-before fieldset.error input {
+  border: 2px solid red;
+}
+.survey-before fieldset:first-child {
+  margin-bottom: 5vw;
+}
+.survey-before .survey-input {
+  margin-top: 3vw;
+}
+.survey-before .survey-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.survey-before.close {
+  display: none;
+}
+.survey-after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.survey-after img {
+  width: 45vw;
+  margin-top: 15vw;
+}
+.survey-after > div:first-child > div {
+  color: #141f33;
+  font-size: 4vw;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 8vw;
+}
+.survey-after > div:last-child {
+  text-align: center;
+  padding: 7vw 5vw 0;
+  line-height: 5.5vw;
+}
+.survey-after.close {
+  display: none;
 }
 
 main.leaderboard {
