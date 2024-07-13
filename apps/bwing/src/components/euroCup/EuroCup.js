@@ -141,6 +141,7 @@ const EuroCup = () => {
 		} else {
 			setPopBox({
 				isOpen: true,
+				title: t("lbl_ImportantNote"),
 				content: (
 					<div id="popup" className="active">
 						<div className="submitpop score">
