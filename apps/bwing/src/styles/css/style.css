@@ -17748,7 +17748,7 @@ body main.main.referral {
 .euro {
   font-family: "Montserrat", sans-serif;
   background: #143CDB;
-  padding: 0 0 25vw;
+  padding: 12vw 0 25vw;
 }
 .euro a, .euro button {
   font-family: "Montserrat", sans-serif;
@@ -17829,6 +17829,24 @@ body main.main.referral {
   padding: 45vw 0 10vw;
   margin-top: 3vw;
   position: relative;
+}
+.euro .center-wrapper .submit-btn {
+  background: #F9D64B;
+  -webkit-box-shadow: 0 0 5px white;
+          box-shadow: 0 0 5px white;
+  padding: 3vw;
+  font-weight: 700;
+  font-size: 4vw;
+  border-radius: 50vw;
+  width: 50vw;
+  color: #143CDB;
+  margin-top: 5vw;
+}
+.euro .center-wrapper .submit-btn.check {
+  background: #C9C9C9;
+  color: #8E8E8E;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .euro .center-content {
   display: none;
@@ -17932,6 +17950,15 @@ body main.main.referral {
   border: 6px solid #F9D64B;
   border-radius: 100%;
   margin: 5vw 0 3vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .euro .center-score .score-country .score-flag img {
   width: 20vw;
@@ -18973,37 +19000,38 @@ body main.main.referral {
 }
 .euro .bottom-wrapper .bottom-info {
   color: white;
-  font-size: 2.5vw;
+  font-size: 3.5vw;
   font-weight: 600;
   margin: 2vw 0 0;
 }
 .euro .bottom-wrapper .bottom-info li {
   margin: 2vw 8vw;
-  line-height: 3.5vw;
+  line-height: 5vw;
 }
 .euro .bottom-wrapper .reward {
-  margin: 5vw 1vw;
+  margin: 5vw 1vw 7vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .euro .bottom-wrapper .reward-item {
-  width: 48vw;
-}
-.euro .bottom-wrapper .reward-item:first-child .prize .prize-item-text {
-  width: 22vw;
+  width: 85vw;
 }
 .euro .bottom-wrapper .reward-item:first-child .prize .prize-item-text:first-child {
   margin-bottom: 1vw;
 }
 .euro .bottom-wrapper .reward-item:last-child {
-  margin-left: 1.5vw;
+  margin-top: 3vw;
 }
 .euro .bottom-wrapper .reward-item:last-child .reward-title {
   background: #00BA5D;
-}
-.euro .bottom-wrapper .reward-item:last-child .prize .prize-item-text {
-  width: 25vw;
 }
 .euro .bottom-wrapper .reward-title {
   background: red;
@@ -19016,13 +19044,14 @@ body main.main.referral {
           align-items: center;
   color: white;
   font-weight: 700;
-  padding: 2vw 0 2vw 5vw;
+  padding: 3vw 0 3vw 5vw;
   position: relative;
+  font-size: 4.5vw;
 }
 .euro .bottom-wrapper .reward-title img {
-  width: 12vw;
+  width: 20vw;
   position: absolute;
-  bottom: 0;
+  bottom: -1vw;
   right: 0;
 }
 .euro .bottom-wrapper .reward .prize {
@@ -19033,7 +19062,7 @@ body main.main.referral {
       -ms-flex-align: center;
           align-items: center;
   background: white;
-  padding: 1.5vw 3vw;
+  padding: 5vw 3vw;
   height: 20vw;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -19047,9 +19076,10 @@ body main.main.referral {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 3vw;
 }
 .euro .bottom-wrapper .reward .prize-item-text span {
-  font-size: 2.5vw;
+  font-size: 3.5vw;
   margin-bottom: 0.5vw;
 }
 .euro .bottom-wrapper .reward .prize-item-text span:first-child {
@@ -19061,7 +19091,7 @@ body main.main.referral {
   font-weight: 700;
 }
 .euro .bottom-wrapper .reward .prize img {
-  width: 20vw;
+  width: 30vw;
 }
 .euro .bottom-wrapper .reward .prize .iphone {
   margin-right: 5vw;
@@ -19070,7 +19100,7 @@ body main.main.referral {
   background: #C2C2C2;
   font-weight: 600;
   color: white;
-  font-size: 2.5vw;
+  font-size: 4vw;
   padding: 2.5vw 1vw;
   border-radius: 0 0 4vw 4vw;
   display: -webkit-box;
@@ -19099,32 +19129,6 @@ body main.main.referral {
 .euro .bottom-wrapper .reward .winner.active {
   background: #F9BF4B;
   color: #143CDB;
-}
-.euro .bottom-wrapper .reward.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.euro .bottom-wrapper .reward.active .reward-item {
-  width: 95vw;
-}
-.euro .bottom-wrapper .reward.active .reward-item:first-child .prize-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.euro .bottom-wrapper .reward.active .reward-item:last-child {
-  margin: 3vw 0 0 0;
-}
-.euro .bottom-wrapper .reward.active .prize {
-  padding: 0 5vw;
 }
 .euro-fixture {
   display: none;
@@ -19166,8 +19170,8 @@ body main.main.referral {
           justify-content: center;
   text-transform: uppercase;
   line-height: 1.2;
-  min-width: 15vw;
-  padding: 1vw 2.5vw;
+  min-width: 16.5vw;
+  padding: 2vw 0;
   margin-right: 2vw;
   font-size: 2.5vw;
   font-weight: bold;
@@ -19190,6 +19194,7 @@ body main.main.referral {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  min-height: 95vw;
 }
 .euro-match-order {
   font-weight: bold;
@@ -19235,6 +19240,7 @@ body main.main.referral {
 .euro-match-item .time {
   text-align: center;
   line-height: 1;
+  width: 20vw;
 }
 .euro-match-item .time span {
   display: block;
