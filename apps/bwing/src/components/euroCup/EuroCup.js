@@ -156,7 +156,7 @@ const EuroCup = () => {
 										onClick={() =>
 											setPopBox({ isOpen: false })
 										}>
-										{t("lbl_CANCEL")}
+										{t("lbl_Cancel")}
 									</button>
 								</div>
 							</div>
