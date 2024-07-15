@@ -4,6 +4,7 @@ import { bannerImgUrl } from "apps/goal123/src/config";
 import { isInApp } from "@ailab-mobile/common";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { api_GetWalletInfo } from "apps/goal123/src/service/api/account";
+import { api_promotion_GetPromotionDetail } from "apps/goal123/src/service/api/promotion";
 import {
 	setCookie,
 	readCookie,
@@ -20,6 +21,10 @@ import { defPopBoxType } from "../../common/popbox";
 import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../../common/popbox.newYear";
+
+const apiResPromotionType = {
+	retentionFreebet: 9
+};
 
 const usePopupHandler = () => {
 	const navigate = useNavigate();
@@ -221,42 +226,71 @@ const usePopupHandler = () => {
 			getPopUpPromotion({ langId: userInfo.langId }).then(
 				({ data: { data: { bonusCode } = {} } = {} }) => {
 					if (bonusCode) {
-						setPopBox({
-							isOpen: true,
-							className: "promosback active",
-							custContent: (
-								<div className="pop promosbackpop">
-									<img
-										src={`${
-											process.env.REACT_APP_BANNER_URL
-										}/desktop/img/promosBackPopup/promosPopup-${
-											userInfo?.langId || "en"
-										}.png`}
-										alt="img-promosPopup"
-									/>
-									<button
-										className="popgo"
-										onClick={() => {
-											navigate(
-												`/${path.promotion.root}?bonusCode=${bonusCode}`
-											);
-											setPopBox({ isOpen: false });
-										}}>
-										{i18n.lbl_ClaimNow}
-									</button>
-									<img
-										src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
-										alt="img-delet"
-										className="closepop"
-										onClick={() => {
-											setPopBox({ isOpen: false });
-											openNextPopUp();
-										}}
-									/>
-								</div>
-							)
-						});
-						setCookie(cookieName, "1", 1);
+						// getting promotion detail to determine the type of promotion
+						api_promotion_GetPromotionDetail({
+							langId: userInfo.langId,
+							BonusCode: bonusCode
+						}).then(
+							// giving default value to response data and promotionType
+							({
+								data: {
+									data: { promotionType = null } = {}
+								} = {}
+							}) => {
+								setPopBox({
+									isOpen: true,
+									className: "promosback active",
+									custContent: (
+										<div className="pop promosbackpop">
+											<img
+												src={`${
+													process.env
+														.REACT_APP_BANNER_URL
+												}/desktop/img/promosBackPopup/promosPopup-${
+													userInfo?.langId || "en"
+												}.png`}
+												alt="img-promosPopup"
+											/>
+											<button
+												className="popgo"
+												// if promotion type = retention freebet(9), then link to retention landing page
+												onClick={() => {
+													if (
+														promotionType ===
+														apiResPromotionType.retentionFreebet
+													) {
+														navigate(
+															`/${path.retention.root}`
+														);
+													} else {
+														navigate(
+															`/${path.promotion.root}?bonusCode=${bonusCode}`
+														);
+													}
+
+													setPopBox({
+														isOpen: false
+													});
+												}}>
+												{i18n.lbl_ClaimNow}
+											</button>
+											<img
+												src={`${process.env.REACT_APP_BANNER_URL}/desktop/img/promosBackPopup/delet.png`}
+												alt="img-delet"
+												className="closepop"
+												onClick={() => {
+													setPopBox({
+														isOpen: false
+													});
+													openNextPopUp();
+												}}
+											/>
+										</div>
+									)
+								});
+								setCookie(cookieName, "1", 1);
+							}
+						);
 					} else {
 						openNextPopUp();
 					}

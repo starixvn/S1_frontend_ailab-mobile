@@ -22,7 +22,7 @@ const LuckyWheel = ({ setLuckyWheel }) => {
 				<button className="icon-close-white-bg" onClick={closePop} />
 				<Link to={`/${path.luckyWheel.root}`}>
 					<img
-						src={`${bannerImgUrl}/h5/img/4.0/luckywheel.gif`}
+						src={`${bannerImgUrl}/h5/img/event/retention/entrance.webp`}
 						alt="luckyWheel"
 					/>
 				</Link>
