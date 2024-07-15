@@ -160,8 +160,11 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 			)}
 
 			{/* 歐冠杯期間顯示 */}
-			{displayVgaming && root && isDateRange(eventTime.eventCup) && (
-				<div className="eventLink vgaming">
+			{displayVgaming && root && (
+				<div
+					className={classNames("eventLink vgaming", {
+						eurocup: isDateRange(eventTime.eventCup)
+					})}>
 					<button
 						className="icon icon-close"
 						onClick={() => setDisplayVgaming(false)}
