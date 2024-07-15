@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "@reach/router";
+import { useCooldown } from "@ailab-mobile/hooks";
 import { bannerImgUrl } from "../../config";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import path from "../../path";
@@ -40,6 +41,7 @@ const Login = () => {
 	const [userValue, setUserValue] = useState(initUserValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [activeInfoMsg, setActiveInfoMsg] = useState("");
+	const { isReady, setCooldown, cooldown } = useCooldown();
 
 	const isShow =
 		nav === defNavPanel.login || pathname === `/${path.login.root}`;
@@ -78,6 +80,7 @@ const Login = () => {
 		const checked = userValue.UserName !== "" && userValue.Password !== "";
 
 		if (checked) {
+			setCooldown(3);
 			const CallBackLogin = (errorCode, message, isLogin, userData) => {
 				if (errorCode === 0) {
 					setUserInfo(() => ({
@@ -217,9 +220,12 @@ const Login = () => {
 					{t("lbl_ForgetPassword")}
 				</Link>
 				<div className="btn-group">
-					<button type="submit" className="btn-primary">
-						{" "}
+					<button
+						type="submit"
+						className={isReady ? "btn-primary" : "btn-gray"}
+						disabled={!isReady}>
 						{t("lbl_Login")}
+						{cooldown ? ` (${cooldown})` : null}
 					</button>
 				</div>
 				<div className="login-message">

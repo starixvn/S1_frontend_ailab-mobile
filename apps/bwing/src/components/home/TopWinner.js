@@ -39,7 +39,12 @@ const TopWinner = () => {
 										</div>
 										<div>{userName}</div>
 										<div>
-											{numFormatToDigits(wTurnover)}
+											<div>
+												{numFormatToDigits(
+													wTurnover,
+													0
+												)}
+											</div>
 										</div>
 									</div>
 								)
