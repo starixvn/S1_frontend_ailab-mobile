@@ -43,7 +43,8 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 		<header>
 			<div
 				className={`${classNames("header", {
-					"euro-header": isDateRange(eventTime.euroCup)
+					"euro-header": isDateRange(eventTime.euroCup),
+					"olympic-header": isDateRange(eventTime.olympic)
 				})}`}>
 				<div className="header-content">
 					<button
@@ -56,9 +57,11 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 							{title}
 						</div>
 					)}
+
 					{!hideLogo && !title && (
 						<a className="logo">
 							<Logo />
+							{/* TODO: 歐洲盃期間LOGO => 結束後可刪 */}
 							{isDateRange(eventTime.euroCup) && (
 								<img
 									className="euro-index-logo"
@@ -67,6 +70,15 @@ const Header = ({ hideLogo, title, iconClassName, appHint, setAppHint }) => {
 									onClick={() =>
 										navigate(`/${path.euroCup.root}`)
 									}
+								/>
+							)}
+
+							{/* 巴黎奧運期間顯示 */}
+							{isDateRange(eventTime.olympic) && (
+								<img
+									className="olympic-index-logo"
+									src={`${bannerImgUrl}/h5/img/event/olympic/bwing-logoh5.webp`}
+									alt="olympic-logo-gif"
 								/>
 							)}
 						</a>
