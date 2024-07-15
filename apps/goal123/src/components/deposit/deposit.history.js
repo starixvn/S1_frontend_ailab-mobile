@@ -1,5 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import moment from "moment";
+import {
+	AllowUploadReceiptType,
+	WithReceiptInfoType
+} from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import {
 	i18nContext,
@@ -205,7 +209,8 @@ const Panel = () => {
 		amount,
 		transId,
 		picFileName,
-		refId
+		refId,
+		isShowReceiptInfo
 	}) => {
 		const { currencyId, ...restBankInfo } = bankInfo;
 		const { accountName, accountNo } = depositRep;
@@ -220,7 +225,8 @@ const Panel = () => {
 			isOpen: true,
 			amount: number_format(amount, _isConvert),
 			picFileName,
-			refId
+			refId,
+			isShowReceiptInfo
 		}));
 	};
 
@@ -298,9 +304,15 @@ const defIconStatus = {
 export const TransactionHistory = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
+	const isShowReceiptInfo = WithReceiptInfoType.includes(props.depositType);
 
 	let btnGroup = null;
-	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
+	if (
+		// 存款方式
+		AllowUploadReceiptType.includes(props.depositType) &&
+		// 存款狀態
+		(props.status === 1 || props.status === 7)
+	) {
 		btnGroup = (
 			<div className="btn-group">
 				<button className="darkGray" onClick={props.ClickCancel}>
@@ -308,7 +320,7 @@ export const TransactionHistory = props => {
 				</button>
 				<button
 					className="lightBlue openPopup"
-					onClick={props.SubmitProof}>
+					onClick={() => props.SubmitProof(isShowReceiptInfo)}>
 					{i18n.lbl_SubmitProof}
 				</button>
 			</div>

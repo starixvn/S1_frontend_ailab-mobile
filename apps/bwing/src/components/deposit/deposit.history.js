@@ -2,6 +2,10 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import {
+	AllowUploadReceiptType,
+	WithReceiptInfoType
+} from "@ailab-mobile/common";
+import {
 	i18nContext,
 	popBoxContext,
 	userInfoContext,
@@ -265,12 +269,20 @@ const statusClassName = {
 export const TransactionHistory = props => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { i18n } = useContext(i18nContext);
+	const isShowReceiptInfo = WithReceiptInfoType.includes(props.depositType);
 
 	let btnGroup = null;
-	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
+	if (
+		// 存款方式
+		AllowUploadReceiptType.includes(props.depositType) &&
+		// 存款狀態
+		(props.status === 1 || props.status === 7)
+	) {
 		btnGroup = (
 			<div className="btn-group">
-				<button className="blue" onClick={props.SubmitProof}>
+				<button
+					className="blue"
+					onClick={() => props.SubmitProof(isShowReceiptInfo)}>
 					{i18n.lbl_SubmitProof}
 				</button>
 				<button className="gray openPopup" onClick={props.ClickCancel}>
