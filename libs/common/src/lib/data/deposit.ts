@@ -16,7 +16,10 @@ export const AllowUploadReceiptType = [
 	DepositTypeEnum.QuickTransfer,
 	DepositTypeEnum.CryptoPay,
 	DepositTypeEnum.CryptoWallet,
-	DepositTypeEnum.MobilePayment
+	DepositTypeEnum.MobilePayment,
+	DepositTypeEnum.ChatTransfer,
+	DepositTypeEnum.TopUpCard,
+	DepositTypeEnum.BankAutoChannel
 ];
 
 export const WithReceiptInfoType = [DepositTypeEnum.BankTransfer];

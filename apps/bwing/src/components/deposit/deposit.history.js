@@ -189,8 +189,8 @@ const Panel = () => {
 		receiptInfo,
 		refId
 	}) => {
-		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo, code } = depositRep;
+		const { currencyId, ...restBankInfo } = bankInfo || {};
+		const { accountName, accountNo, code } = depositRep || {};
 		setbankSlipPopBox(() => ({
 			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
 				"HH:mm"
