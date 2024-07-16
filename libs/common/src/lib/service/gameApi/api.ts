@@ -50,10 +50,13 @@ export const gameApi = rootApi.injectEndpoints({
 				currencyId: number;
 			}
 		>({
-			query: data => ({
+			query: ({ currencyId }) => ({
 				url: gameApiUrl.getRecentlyViewed,
 				method: "POST",
-				data
+				data: {
+					currencyId,
+					deviceType: getDeviceType()
+				}
 			})
 		})
 	})

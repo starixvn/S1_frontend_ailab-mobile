@@ -3,7 +3,6 @@ import { useGetRecentlyViewedQuery } from "@ailab-mobile/service";
 import { defCategory, products, defLoginGameType } from "@ailab-mobile/common";
 import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import { useGotoGame } from "./useGotoGame";
-import { defDeviceType } from "../../service/api/base";
 import useSetTimeout from "./useSetTimeout";
 import { defMenuList } from "../../datas/defMenu";
 import {
@@ -24,7 +23,6 @@ const useRecentlyViewed = () => {
 
 	const { data: recentlyViewedList = [] } = useGetRecentlyViewedQuery(
 		{
-			deviceType: defDeviceType.Desktop,
 			currencyId: userInfo?.currencyId
 		},
 		{

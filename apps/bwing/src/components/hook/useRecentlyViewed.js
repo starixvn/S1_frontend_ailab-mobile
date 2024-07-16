@@ -51,8 +51,7 @@ const useRecentlyViewed = () => {
 
 	const { data: recentlyViewedList = [] } = useGetRecentlyViewedQuery(
 		{
-			deviceType: defDeviceType.Desktop,
-			currencyId: userInfo?.currencyId
+			deviceType: defDeviceType.Desktop
 		},
 		{
 			skip: !userInfo?.isLogin,
