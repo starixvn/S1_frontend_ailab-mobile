@@ -147,9 +147,6 @@ export default {
 	howToPlay: {
 		root: "howToPlay"
 	},
-	// leaderBoard: {
-	// 	root: "leaderBoard"
-	// },
 	angpao: {
 		root: "angpao"
 	},
@@ -215,6 +212,9 @@ export default {
 	},
 	retention: {
 		root: "retention"
+	},
+	leaderboard: {
+		root: "leaderboard"
 	}
 };
 
