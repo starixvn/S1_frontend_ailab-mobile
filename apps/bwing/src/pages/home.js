@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { isExpiry } from "@ailab-mobile/promotion";
-import { isInApp } from "@ailab-mobile/common";
 import { api_promotion_GetPromotionDetail } from "apps/goal123/src/service/api/promotion";
+import { isInApp, LeaderboardProvider } from "@ailab-mobile/common";
 import {
 	userInfoContext,
 	popBoxContext,
@@ -19,7 +19,7 @@ import {
 } from "../components/common/common";
 import path from "../path";
 import { api_GetWalletInfo } from "../service/api/account";
-import { bannerImgUrl } from "../config";
+import { bannerImgUrl, siteId } from "../config";
 import NewYear, {
 	defEventPeriod as NewYearEventPeriod
 } from "../components/common/popbox.newYear";
@@ -31,7 +31,6 @@ import HomeMatch from "../components/home/homeMatch";
 import { api_hotEvent_GetDataList } from "../service/api/hotEvent";
 import SportList from "../components/home/sportList";
 import TopWinner from "../components/home/TopWinner";
-import { api_events_GetLeaderboardList } from "../service/api/events";
 import Jactpot from "../components/home/jackpot";
 import FavoriteSlots from "../components/home/FavoriteSlots";
 import { api_HotGame_GetDataList } from "../service/api/hotGame";
@@ -70,7 +69,6 @@ const IndexPage = () => {
 			})
 	);
 	const [hotEventList, setHotEventList] = useState([]);
-	const [leaderBoardList, setLeaderBoardList] = useState([]);
 	const [hotGameList, setHotGameList] = useState([]);
 	const [news, setNews] = useState([]);
 	const { selCategory } = useSelCategory();
@@ -111,24 +109,6 @@ const IndexPage = () => {
 			// });
 		}
 	};
-
-	const getLeaderBoardList = async () => {
-		try {
-			const res = await api_events_GetLeaderboardList({
-				lBCategoryId: 0,
-				TopNum: 10,
-				BeforeDays: 0,
-				EventCode: "202104"
-			});
-			setLeaderBoardList(res.data.data ?? []);
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: t("msg_ApiServerError")
-			});
-		}
-	};
-
 	const getHotGameList = async () => {
 		try {
 			const res = await api_HotGame_GetDataList(userInfo.langId);
@@ -461,7 +441,6 @@ const IndexPage = () => {
 	useEffect(() => {
 		getPromotionList();
 		getHotEventList();
-		getLeaderBoardList();
 		getHotGameList();
 	}, []);
 
@@ -513,7 +492,13 @@ const IndexPage = () => {
 					<HotPromotion promotionList={filterPromotionList} />
 					<HomeMatch hotEventList={hotEventList} />
 					<SportList />
-					<TopWinner leaderBoardList={leaderBoardList} />
+
+					{/* 首頁的 TopWinner 比 leaderboard 頁面更早開發（但功能相同），由於 PM 希望內頁與首頁的資料顯示一致，
+                        為了避免相同邏輯分散在兩個頁面，所以將後期開發的 LeaderboardProvider 包裹 TopWinner，共享相同的資料與 API。 */}
+					<LeaderboardProvider siteId={siteId} userInfo={userInfo}>
+						<TopWinner />
+					</LeaderboardProvider>
+
 					<Jactpot />
 					<FavoriteSlots hotGameList={hotGameList} />
 					{userInfo.isLogin && <RecentlyViewed />}

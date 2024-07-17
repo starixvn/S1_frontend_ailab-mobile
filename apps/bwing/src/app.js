@@ -86,6 +86,7 @@ import Esports from "./pages/esports";
 import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
+import Leaderboard from "./pages/leaderboard";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -208,6 +209,7 @@ const Index = () => {
 							<DragonEgg path={path.dragonEgg.root} />
 							<EuroCup path={path.euroCup.root} />
 							<RetentionPage path={path.retention.root} />
+							<Leaderboard path={path.leaderboard.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>
