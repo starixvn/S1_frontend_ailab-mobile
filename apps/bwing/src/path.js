@@ -210,11 +210,11 @@ export default {
 	cockFighting: {
 		root: "cockfighting"
 	},
-	leaderboard: {
-		root: "leaderboard"
-	},
 	retention: {
 		root: "retention"
+	},
+	leaderBoard: {
+		root: "leaderBoard"
 	}
 };
 
