@@ -213,8 +213,8 @@ export default {
 	retention: {
 		root: "retention"
 	},
-	leaderboard: {
-		root: "leaderboard"
+	leaderBoard: {
+		root: "leaderBoard"
 	}
 };
 
