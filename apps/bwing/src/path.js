@@ -216,8 +216,8 @@ export default {
 	survey: {
 		root: "survey"
 	},
-	leaderboard: {
-		root: "leaderboard"
+	leaderBoard: {
+		root: "leaderBoard"
 	},
 	retention: {
 		root: "retention"

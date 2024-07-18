@@ -139,11 +139,6 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	leaderBoard: {
-		titleKey: "lbl_Ranking",
-		className: "main rankingNew",
-		hideLogo: true
-	},
 	referral: {
 		titleKey: "lbl_Referral",
 		className: "main referral",
@@ -256,7 +251,7 @@ export const defPageInfo = {
 		className: "survey",
 		hideLogo: true
 	},
-	leaderboard: {
+	leaderBoard: {
 		titleKey: "lbl_LeaderBoard",
 		className: "leaderboard",
 		iconClassName: "icon-leaderboard-blue"
