@@ -13,12 +13,12 @@ const GamePanel = React.forwardRef((props, ref) => {
 		gameList,
 		providerList,
 		activeProvider,
-		activeCategory,
 		i18n,
 		imgUrl,
 		handleSetFavorite,
 		favoriteStr,
-		setFavoriteStr
+		setFavoriteStr,
+		newGamesArr
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { maintainList } = useGetTpMaintainList();
@@ -75,7 +75,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			<div
 				className={`info${isMaintain ? " active" : ""}`}
 				key={`casino-game-${gameProviderName}-${g.gameId}`}>
-				{activeCategory === "new" ? (
+				{newGamesArr.includes(g.gameId) ? (
 					<i className="icon icon-new" />
 				) : null}
 				<button>
@@ -110,6 +110,7 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
+	games.sort(() => Math.random() - 0.5); // 隨機排列遊戲列表
 	return games.length === 0 ? (
 		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
@@ -125,7 +126,7 @@ GamePanel.defaultProps = {
 	gameList: [],
 	providerList: null,
 	handleSetFavorite: null,
-	activeCategory: null
+	newGamesArr: []
 };
 
 GamePanel.propTypes = {
@@ -133,12 +134,12 @@ GamePanel.propTypes = {
 	gameList: PropTypes.arrayOf(PropTypes.object),
 	providerList: PropTypes.arrayOf(PropTypes.any),
 	activeProvider: PropTypes.objectOf(PropTypes.any).isRequired,
-	activeCategory: PropTypes.string,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
 	imgUrl: PropTypes.string.isRequired,
 	handleSetFavorite: PropTypes.func,
 	favoriteStr: PropTypes.string.isRequired,
-	setFavoriteStr: PropTypes.func.isRequired
+	setFavoriteStr: PropTypes.func.isRequired,
+	newGamesArr: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default GamePanel;
