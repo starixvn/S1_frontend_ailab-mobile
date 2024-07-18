@@ -30,8 +30,9 @@ const Casino = () => {
 	const { throttle } = useSetTimeout();
 	const { handleGoToGame } = useGotoGame({ autoGetData: false });
 	const { maintainList } = useGetTpMaintainList();
-	const splitList = window.location.href.split("/");
-	const pathTpId = splitList[splitList.length - 1];
+	const splitList = window.location.href.split("=");
+	const pathTpId =
+		splitList.length > 1 ? Number(splitList[splitList.length - 1]) : 0;
 
 	const [imageUrl, setImageUrl] = useState("");
 	const [gameList, setGameList] = useState([]);
@@ -46,7 +47,12 @@ const Casino = () => {
 	const [favoriteStr, setFavoriteStr] = useState(
 		localStorage.getItem("favorite")
 	);
+	const [newGamesArr, setNewGamesArr] = useState([]);
 
+	// 找到featured在第幾個
+	const featuredIdx = categoryList.findIndex(value => {
+		return value === "featured";
+	});
 	const changeActiveProvider = provider => {
 		setActiveProvider(provider);
 	};
@@ -212,12 +218,14 @@ const Casino = () => {
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
 
-			setActiveCategory(page === "jackpot" ? "jackpot" : _list[1]);
-
-			const targetList = Object.entries(res.data.data)?.find(
-				item => item[0] === _list[1]
-			)[1];
+			// 一進畫面找到該tpId的'all'遊戲
+			const targetList = Object.entries(res.data.data)?.find(item => {
+				return item[0] === _list[1];
+			})[1];
 			setGameList(targetList);
+
+			setActiveCategory(page === "jackpot" ? "jackpot" : "all");
+
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -231,6 +239,25 @@ const Casino = () => {
 	useEffect(() => {
 		getSlotGameData();
 	}, []);
+
+	// 一進畫面就先把新遊戲的gameId存在陣列
+	useEffect(() => {
+		allCategoryList.forEach(items => {
+			if (items[0] === "new") {
+				const _gameIdArr = items[1].map(item => item.gameId);
+				setNewGamesArr(_gameIdArr);
+			}
+		});
+	}, [allCategoryList]);
+
+	// 如果有featured類別就用featured，不然的話用all
+	useEffect(() => {
+		if (featuredIdx !== -1) {
+			setActiveCategory("featured");
+		} else {
+			setActiveCategory("all");
+		}
+	}, [featuredIdx]);
 
 	return (
 		<div className="wrapper">
@@ -277,6 +304,7 @@ const Casino = () => {
 					setCategoryList={setCategoryList}
 					setFavoriteList={setFavoriteList}
 					setActiveCategory={setActiveCategory}
+					newGamesArr={newGamesArr}
 				/>
 			</div>
 		</div>
