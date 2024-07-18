@@ -15,7 +15,7 @@ const TopWinner = () => {
 			<div className="home-title row-align-center txt-bigger txt-center mb-4">
 				{t("lbl_Top_Winner_Description")}
 			</div>
-			<Link to={`/${path.leaderboard.root}`}>
+			<Link to={`/${path.leaderBoard.root}`}>
 				<div className="home-topwinner mb-4">
 					<div className="title">{t("lbl_Top10winners")}</div>
 					<div className="home-topwinner-content">
@@ -39,7 +39,7 @@ const TopWinner = () => {
 										</div>
 										<div>{userName}</div>
 										<div>
-											{numFormatToDigits(wTurnover,0)}
+											{numFormatToDigits(wTurnover, 0)}
 										</div>
 									</div>
 								)
