@@ -44,10 +44,16 @@ const Panel = () => {
 	const [imageUrl, setImageUrl] = useState("");
 	const [slotDataList, setSlotDataList] = useState([]);
 	const [selGameInfo, setSelGameInfo] = useState(null);
+	const [newGamesArr, setNewGamesArr] = useState([]);
 	const gameListRef = useRef(null);
 	const splitList = window.location.href.split("/");
 
 	const pathTpId = splitList[splitList.length - 1];
+
+	// 找到featured在第幾個
+	const featuredIdx = categoryList.findIndex(value => {
+		return value === "featured";
+	});
 	const getSlotGameData = async () => {
 		setLoading(true);
 		try {
@@ -57,6 +63,7 @@ const Panel = () => {
 			const { providerList: pList } = res.data.data;
 			const targetProvider =
 				pList.find(obj => obj.tpId === Number(pathTpId)) ?? {};
+
 			if (Object.keys(targetProvider).length > 0) {
 				const targetIndex = pList.findIndex(
 					providerObj => providerObj.tpId === targetProvider.tpId
@@ -70,6 +77,7 @@ const Panel = () => {
 			} else {
 				setProviderList(pList);
 			}
+
 			const skipList = ["imgUrl", "providerList"];
 			let tempList = [];
 			setSlotDataList(Object.entries(res.data.data));
@@ -138,11 +146,22 @@ const Panel = () => {
 			const _list = [];
 			tempList.forEach(item => _list.push(item[0]));
 			setCategoryList(_list);
-			setActiveCategory(_list[1]);
-			const targetList = Object.entries(res.data.data)?.find(
-				item => item[0] === _list[1]
-			)[1];
-			setGameList(targetList);
+
+			// 一進畫面找到該tpId的'all'遊戲
+			const allItemList = tempList.filter(
+				item => item[0] === "all"
+			)[0][1];
+			const singleAllList = allItemList.filter(value => {
+				return pathTpId && value.tpId === Number(pathTpId);
+			});
+			if (featuredIdx !== -1) {
+				const targetList = Object.entries(res.data.data)?.find(item => {
+					return item[0] === _list[featuredIdx];
+				})[1];
+				setGameList(targetList);
+			} else {
+				setGameList(singleAllList);
+			}
 			setLoading(false);
 		} catch (error) {
 			setPopBox({
@@ -219,6 +238,7 @@ const Panel = () => {
 				const filterList = resultList.filter(item =>
 					filterHandle(item)
 				);
+
 				setGameList(filterList);
 			} else {
 				const filterList =
@@ -230,6 +250,7 @@ const Panel = () => {
 								)
 						  )
 						: targetList[1]?.filter(item => filterHandle(item));
+
 				setGameList(filterList);
 			}
 		}
@@ -378,6 +399,25 @@ const Panel = () => {
 		}
 	}, [activeProvider]);
 
+	// 一進畫面就先把新遊戲的gameId存在陣列
+	useEffect(() => {
+		allCategoryList.forEach(items => {
+			if (items[0] === "new") {
+				const _gameIdArr = items[1].map(item => item.gameId);
+				setNewGamesArr(_gameIdArr);
+			}
+		});
+	}, [allCategoryList]);
+
+	// 如果有featured類別就用featured，不然的話用all
+	useEffect(() => {
+		if (featuredIdx !== -1) {
+			setActiveCategory("featured");
+		} else {
+			setActiveCategory("all");
+		}
+	}, [featuredIdx]);
+
 	return (
 		<>
 			<Slider />
@@ -415,6 +455,7 @@ const Panel = () => {
 				ref={gameListRef}
 				favoriteStr={favoriteStr}
 				setFavoriteStr={setFavoriteStr}
+				newGamesArr={newGamesArr}
 			/>
 			{selGameInfo === null ? null : (
 				<div className="slotFunctionNew open">
