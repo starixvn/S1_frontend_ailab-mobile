@@ -87,6 +87,7 @@ import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
+import Launcher from "./pages/launcher";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -210,6 +211,7 @@ const Index = () => {
 							<EuroCup path={path.euroCup.root} />
 							<RetentionPage path={path.retention.root} />
 							<LeaderBoard path={path.leaderBoard.root} />
+							<Launcher path={path.launcher.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>
