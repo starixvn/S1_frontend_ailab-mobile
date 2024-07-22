@@ -124,6 +124,19 @@ export const useGotoGame = ({
 			loginGameType
 		}) => {
 			if (_isLogin) {
+				// 因待 API 回資料後才彈窗會被阻擋，在此改為先彈窗啟動頁，並在啟動頁進行 API 呼叫及導轉
+				if (_tpId === products.PGSoft.tpId) {
+					const params = new URLSearchParams({
+						tpId: String(_tpId),
+						langId: String(_langId),
+						gameId: String(_gameId),
+						tpGameType: String(tpGameType),
+						loginGameType
+					}).toString();
+					window.open(`/launcher?${params}`, "launcher");
+					return;
+				}
+
 				api_tp_GotoGame({
 					TpId: _tpId,
 					LangId: _langId,
