@@ -215,6 +215,9 @@ export default {
 	},
 	leaderBoard: {
 		root: "leaderBoard"
+	},
+	launcher: {
+		root: "launcher"
 	}
 };
 
