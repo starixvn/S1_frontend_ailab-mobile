@@ -75,7 +75,6 @@ import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
-import Launcher from "./pages/launcher";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -162,7 +161,6 @@ const Index = () => {
 						<DragonEgg path={path.dragonEgg.root} />
 						<Ambassador path={path.ambassador.root} />
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
-						<Launcher path={`${path.launcher.root}/:type`} />
 						<Survey path={path.survey.root} />
 						<RetentionPage path={path.retention.root} />
 						<LeaderBoard path={path.leaderBoard.root} />
