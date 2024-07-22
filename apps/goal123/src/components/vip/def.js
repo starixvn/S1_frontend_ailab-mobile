@@ -50,3 +50,19 @@ export const defLevelList = [
 		levelName_col3: "CLUB"
 	}
 ];
+
+/**
+ * 回饋類表，避免魔術數字
+ * @Sports 體育
+ * @Casino 賭場
+ * @LiveCasino 真人賭場
+ * @VirtualSports 虛擬體育
+ * @ESports 電子競技
+ */
+export const VipSpecialRebate = {
+	Sport: 0,
+	Casino: 1,
+	LiveCasino: 2,
+	VirtualSports: 3,
+	ESports: 4
+};

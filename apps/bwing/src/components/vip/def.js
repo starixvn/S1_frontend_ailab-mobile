@@ -49,9 +49,18 @@ export const defLevelList = [
 	}
 ];
 
-export const VIP_SPECIAL_REBATE = {
-	sport: 1,
-	liveCasino: 3,
-	casino: 2,
-	virtualSports: 7
+/**
+ * 回饋類表，避免魔術數字
+ * @Sports 體育
+ * @Casino 賭場
+ * @LiveCasino 真人賭場
+ * @VirtualSports 虛擬體育
+ * @ESports 電子競技
+ */
+export const VipSpecialRebate = {
+	Sport: 1,
+	Casino: 2,
+	LiveCasino: 3,
+	VirtualSports: 7,
+	ESports: 11
 };
