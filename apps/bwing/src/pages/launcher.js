@@ -1,13 +1,10 @@
-// 因 useMenu 開新視窗的方法在 app 內會畫面全白打不開遊戲
-// app team 推測是瀏覽器對彈窗容忍度的問題
-// 根據建議在此另做了開啟 PG Slots 用的頁面
-
 import React, { useEffect } from "react";
 import { some } from "lodash";
+import { products } from "@ailab-mobile/common";
 import LauncherScreen from "../components/launcher/launcherScreen";
 import { api_tp_GotoGame, defGotoGame_AppType } from "../service/api/tp";
 
-const LauncherPage = ({ type }) => {
+const LauncherPage = () => {
 	useEffect(() => {
 		const launch = async () => {
 			try {
@@ -25,7 +22,7 @@ const LauncherPage = ({ type }) => {
 				);
 				if (isParamsMissing) throw new Error("Missing parameters");
 
-				if (type === "pg") {
+				if (Number(tpId) === products.PGSoft.tpId) {
 					const {
 						data: { message }
 					} = await api_tp_GotoGame({

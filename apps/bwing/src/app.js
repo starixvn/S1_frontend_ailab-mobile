@@ -89,6 +89,7 @@ import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
+import Launcher from "./pages/launcher";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -214,6 +215,7 @@ const Index = () => {
 							<Survey path={path.survey.root} />
 							<RetentionPage path={path.retention.root} />
 							<LeaderBoard path={path.leaderBoard.root} />
+							<Launcher path={path.launcher.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

@@ -149,11 +149,11 @@ export default {
 	retention: {
 		root: "retention"
 	},
-	launcher: {
-		root: "launcher"
-	},
 	survey: {
 		root: "survey"
+	},
+	launcher: {
+		root: "launcher"
 	}
 };
 

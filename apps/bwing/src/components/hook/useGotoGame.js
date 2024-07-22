@@ -124,8 +124,8 @@ export const useGotoGame = ({
 			loginGameType
 		}) => {
 			if (_isLogin) {
-				// 因在 App 內彈窗開啟特定遊戲時會有問題，在此改導轉到專屬的開啟頁面
-				if (isInApp() && _tpId === products.PGSoft.tpId) {
+				// 因待 API 回資料後才彈窗會被阻擋，在此改為先彈窗啟動頁，並在啟動頁進行 API 呼叫及導轉
+				if (_tpId === products.PGSoft.tpId) {
 					const params = new URLSearchParams({
 						tpId: String(_tpId),
 						langId: String(_langId),
@@ -133,7 +133,7 @@ export const useGotoGame = ({
 						tpGameType: String(tpGameType),
 						loginGameType
 					}).toString();
-					window.location = `/launcher/pg?${params}`;
+					window.open(`/launcher?${params}`);
 					return;
 				}
 

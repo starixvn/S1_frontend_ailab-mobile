@@ -221,6 +221,9 @@ export default {
 	},
 	retention: {
 		root: "retention"
+	},
+	launcher: {
+		root: "launcher"
 	}
 };
 
