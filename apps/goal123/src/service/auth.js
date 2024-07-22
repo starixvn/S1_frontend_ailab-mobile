@@ -1,7 +1,6 @@
 import { api_UserLogin, api_UserLogout } from "./api/account";
 import { api_GetCustProfile } from "./api/accountStrict";
 import { api_CheckSignIn } from "./api/site";
-import { set } from "husky";
 import { setAppAuth } from "@ailab-mobile/common";
 
 export const IS_LOGGED_IN = async () => {
