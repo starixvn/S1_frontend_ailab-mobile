@@ -12899,7 +12899,7 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 12vw;
+  padding-top: 11vw;
   padding-bottom: 10vw;
 }
 .ambassador .banner img {
@@ -13199,7 +13199,7 @@ span.important {
 }
 .ambassador-app {
   background: #fab617;
-  padding: 10vw 3vw 10vw 3vw;
+  padding: 10vw 3vw 20vw 3vw;
   position: relative;
   border-radius: 15vw 15vw 0 0;
   margin-top: -15vw;
@@ -14065,9 +14065,13 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #3D63FB;
 }
 .euro .bottom-tap a.active {
   border-bottom: 2px solid white;
+}
+.euro .bottom-tap a.active span {
+  color: white;
 }
 .euro .reward-title, .euro .matches-title, .euro .terms-title {
   color: white;
@@ -14641,7 +14645,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2.6vw;
+  font-size: 2.15vw;
   color: #878686;
   font-weight: 700;
 }
@@ -14656,7 +14660,7 @@ span.important {
 .header-content .member-balance .number span {
   color: #284985;
   font-size: 2.8vw;
-  margin-right: 1.5vw;
+  margin-right: 1vw;
 }
 .header-content .member-balance a.icon-spinner11::before,
 .header-content .member-balance button.icon-spinner11::before {
