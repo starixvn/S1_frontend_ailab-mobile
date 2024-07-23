@@ -1956,18 +1956,17 @@ header {
           animation: dragonegg 1.5s ease-in-out 0s infinite normal none;
 }
 .eventLink.livesports {
-  bottom: 56vw;
-  right: -4vw;
+  bottom: 90vw;
+  right: 0vw;
 }
 .eventLink.livesports img {
   -webkit-animation: livesports 4s ease-in-out infinite;
           animation: livesports 4s ease-in-out infinite;
-  width: 36vw;
+  width: 25vw;
   z-index: 1;
 }
 .eventLink.livesports .icon-close-white-bg::before {
-  top: 5vw;
-  right: 4vw;
+  top: 2vw;
 }
 .eventLink.eurolink {
   bottom: 50vw;
