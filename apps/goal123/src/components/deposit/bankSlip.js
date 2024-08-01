@@ -127,73 +127,81 @@ class Modal extends Component {
 				className={`bankSlip popUp${
 					bankSlipPopBox.isOpen ? " open" : ""
 				}`}>
-				<div className="info infoAccount">
-					<ul>
-						<li>
-							<div>
-								<div className="bankLogo acb" />
-								<span>{bankSlipPopBox.bankName}</span>
-							</div>
-							<a
-								className="icon icon-new-tab clickBtn"
-								target="_blank"
-								rel="noreferrer noopener"
-								href={bankSlipPopBox.bankSite}
-							/>
-						</li>
-						<li>
-							<div>
-								<span className="title">
-									{i18n.lbl_BankAccountName}
-								</span>
-								<span>{bankSlipPopBox.accountName}</span>
-							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={bankSlipPopBox.accountName}
-							/>
-						</li>
-						<li>
-							<div>
-								<span className="title">
-									{i18n.lbl_BankNumber}
-								</span>
-								<span>{bankSlipPopBox.accountNo}</span>
-							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={bankSlipPopBox.accountNo}
-							/>
-						</li>
-
-						<li>
-							<div>
-								<span className="title">
-									{i18n.lbl_DepositAmount}
-								</span>
-								<span>{bankSlipPopBox.amount}</span>
-							</div>
-							<button
-								className="icon icon-files-empty clickBtn copyBtn"
-								data-clipboard-text={bankSlipPopBox.amount}
-							/>
-						</li>
-						{bankSlipPopBox?.code && (
+				{bankSlipPopBox.isShowReceiptInfo && (
+					<div className="info infoAccount">
+						<ul>
+							<li>
+								<div>
+									<div className="bankLogo acb" />
+									<span>{bankSlipPopBox.bankName}</span>
+								</div>
+								<a
+									className="icon icon-new-tab clickBtn"
+									target="_blank"
+									rel="noreferrer noopener"
+									href={bankSlipPopBox.bankSite}
+								/>
+							</li>
 							<li>
 								<div>
 									<span className="title">
-										{i18n.Label_Remark}
+										{i18n.lbl_BankAccountName}
 									</span>
-									<span>{bankSlipPopBox.code}</span>
+									<span>{bankSlipPopBox.accountName}</span>
 								</div>
 								<button
 									className="icon icon-files-empty clickBtn copyBtn"
-									data-clipboard-text={bankSlipPopBox.code}
+									data-clipboard-text={
+										bankSlipPopBox.accountName
+									}
 								/>
 							</li>
-						)}
-					</ul>
-				</div>
+							<li>
+								<div>
+									<span className="title">
+										{i18n.lbl_BankNumber}
+									</span>
+									<span>{bankSlipPopBox.accountNo}</span>
+								</div>
+								<button
+									className="icon icon-files-empty clickBtn copyBtn"
+									data-clipboard-text={
+										bankSlipPopBox.accountNo
+									}
+								/>
+							</li>
+
+							<li>
+								<div>
+									<span className="title">
+										{i18n.lbl_DepositAmount}
+									</span>
+									<span>{bankSlipPopBox.amount}</span>
+								</div>
+								<button
+									className="icon icon-files-empty clickBtn copyBtn"
+									data-clipboard-text={bankSlipPopBox.amount}
+								/>
+							</li>
+							{bankSlipPopBox?.code && (
+								<li>
+									<div>
+										<span className="title">
+											{i18n.Label_Remark}
+										</span>
+										<span>{bankSlipPopBox.code}</span>
+									</div>
+									<button
+										className="icon icon-files-empty clickBtn copyBtn"
+										data-clipboard-text={
+											bankSlipPopBox.code
+										}
+									/>
+								</li>
+							)}
+						</ul>
+					</div>
+				)}
 				<span className="text">{i18n.lbl_AttachFile}</span>
 				{this.props.receiptInfoList?.length > 0 ? (
 					<div className="uploadModule">
