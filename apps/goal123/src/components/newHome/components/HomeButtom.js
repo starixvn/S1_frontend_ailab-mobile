@@ -194,7 +194,7 @@ const HomeButtom = () => {
 					<span> {t("lbl_GamingLicense")}</span>
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/gaming-license/curacao.png`}
-						alt="GamingLicenseImg"
+						alt="GamingLicense"
 					/>
 				</div>
 
