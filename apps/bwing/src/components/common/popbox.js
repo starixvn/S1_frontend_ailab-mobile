@@ -71,8 +71,11 @@ const PopUp = () => {
 	return popBox.isOpen ? (
 		<div
 			id="popup"
+			// 8/2/24 修正popBox的zIndex 只要有popBox.isOpen就會顯示於最上層
 			style={
-				popBox.isOpen ? { display: popBox.displayStyle ?? "block" } : {}
+				popBox.isOpen
+					? { display: popBox.displayStyle ?? "block", zIndex: "99" }
+					: {}
 			}
 			className={popBox.className}>
 			{popBox.custContent ? (
