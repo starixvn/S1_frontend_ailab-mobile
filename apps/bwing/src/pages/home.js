@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Redirect, useNavigate } from "@reach/router";
 import { useLazyGetPopUpPromotionQuery } from "@ailab-mobile/service";
 import { isExpiry } from "@ailab-mobile/promotion";
+import { api_promotion_GetPromotionDetail } from "apps/goal123/src/service/api/promotion";
 import { isInApp, LeaderboardProvider } from "@ailab-mobile/common";
 import {
 	userInfoContext,
@@ -507,6 +508,14 @@ const IndexPage = () => {
 			</div>
 			<div className="copyright">
 				{`© Copyright ${new Date().getFullYear()}. Bwing. All Rights Reserved.`}
+			</div>
+
+			<div className="game-license">
+				<span className="title"> {t("lbl_GamingLicense")}</span>
+				<img
+					src={`${bannerImgUrl}/h5/img/home-page/gaming-license/curacao.png`}
+					alt="GamingLicense"
+				/>
 			</div>
 		</>
 	);

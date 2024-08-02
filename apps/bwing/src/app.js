@@ -90,6 +90,7 @@ import Survey from "./pages/survey";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
 
+
 const Index = () => {
 	const history = createHistory(window);
 

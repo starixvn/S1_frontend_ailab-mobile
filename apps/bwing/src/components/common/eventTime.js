@@ -74,6 +74,10 @@ export const eventTime = {
 		startDate: "2024/07/11 00:00:00",
 		endDate: "2024/07/14 23:59:59"
 	},
+	game_93Connect: { endDate: "2024/04/21 23:59:59" },
+	liveCasino_Won: {
+		endDate: "2024/07/09 23:59:59"
+	},
 	WCC_CockFighting: { endDate: "2025/04/21 23:59:59" },
 	olympic: {
 		startDate: "2024/07/16 00:00:00",

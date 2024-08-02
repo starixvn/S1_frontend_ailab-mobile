@@ -222,6 +222,12 @@ export default {
 	retention: {
 		root: "retention"
 	},
+	retention: {
+		root: "retention"
+	},
+	leaderBoard: {
+		root: "leaderBoard"
+	},
 	launcher: {
 		root: "launcher"
 	}

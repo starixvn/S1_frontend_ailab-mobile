@@ -133,7 +133,7 @@ export const useGotoGame = ({
 						tpGameType: String(tpGameType),
 						loginGameType
 					}).toString();
-					window.open(`/launcher?${params}`);
+					window.open(`/launcher?${params}`, "launcher");
 					return;
 				}
 
