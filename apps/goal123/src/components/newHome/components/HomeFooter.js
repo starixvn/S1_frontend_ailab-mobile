@@ -59,8 +59,7 @@ const HomeFooter = () => {
 		setClickPromotion(!clickPromotion);
 	};
 
-	const liveChatUrl = `https://direct.lc.chat/${siteInfo().liveChatId}
-	}`;
+	const liveChatUrl = `https://direct.lc.chat/${siteInfo().liveChatId}`;
 
 	const handleLiveChatClick = () => {
 		window.open(liveChatUrl, "_blank", "noopener,noreferrer");
