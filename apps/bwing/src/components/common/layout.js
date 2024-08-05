@@ -144,6 +144,11 @@ export const defPageInfo = {
 		className: "main referral",
 		hideLogo: true
 	},
+	"referral/history": {
+		titleKey: "lbl_ReferralHistory",
+		className: "main",
+		hideLogo: true
+	},
 	mysteryBox: {
 		titleKey: "lbl_MysteryBox_EventTitle",
 		className: "main mysteryEvent",
