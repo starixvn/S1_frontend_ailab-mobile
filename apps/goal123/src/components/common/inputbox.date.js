@@ -14,6 +14,7 @@ const Inputbox = props => {
 						: props.value
 				}
 				max={props.max ? props.max : null}
+				style={{ width: "100%" }}
 			/>
 		</label>
 	);
