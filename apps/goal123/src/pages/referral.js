@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { useLocation } from "@reach/router";
 import TabPage from "../components/common/tabPage";
 import path from "../path";
 import Layout from "../components/common/layout";
@@ -20,10 +21,13 @@ const defTabs = {
 
 const IndexPage = props => {
 	const { i18n } = useContext(i18nContext);
+	const { pathname } = useLocation();
+	const mainClass =
+		pathname === `/${path.referral.root}` ? "main referral" : "main";
 
 	return (
 		<ReferralWrapper>
-			<Layout title={i18n.lbl_friendReferral} mainClass="main referral">
+			<Layout title={i18n.lbl_friendReferral} mainClass={mainClass}>
 				<TabPage defTabs={defTabs}>{props.children}</TabPage>
 			</Layout>
 		</ReferralWrapper>
