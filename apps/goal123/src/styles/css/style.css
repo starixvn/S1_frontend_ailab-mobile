@@ -7288,7 +7288,7 @@ span.important {
   }
 }
 .eventLink.vgaming {
-  bottom: 64vw;
+  bottom: 60vw;
 }
 .eventLink.vgaming .vgimg {
   width: 27vw;
@@ -7303,7 +7303,7 @@ span.important {
   bottom: 34vw;
 }
 .eventLink.luckywheel {
-  bottom: 34vw;
+  bottom: 36vw;
 }
 .eventLink.luckywheel .vgimg {
   width: 27vw;
@@ -7385,18 +7385,18 @@ span.important {
   }
 }
 .eventLink.livesports {
-  bottom: 66vw;
-  left: 69vw;
+  bottom: 90vw;
+  left: 75vw;
 }
 .eventLink.livesports img {
   -webkit-animation: livesports 4s ease-in-out infinite;
           animation: livesports 4s ease-in-out infinite;
-  width: 31vw;
+  width: 24vw;
   z-index: 1;
 }
 .eventLink.livesports .icon-close {
-  right: 0;
-  top: 1vw;
+  right: 0vw;
+  top: 0vw;
   z-index: 4;
   background: #cecece;
   color: rgb(92, 92, 92);
@@ -12899,7 +12899,7 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 12vw;
+  padding-top: 11vw;
   padding-bottom: 10vw;
 }
 .ambassador .banner img {
@@ -13199,7 +13199,7 @@ span.important {
 }
 .ambassador-app {
   background: #fab617;
-  padding: 10vw 3vw 10vw 3vw;
+  padding: 10vw 3vw 20vw 3vw;
   position: relative;
   border-radius: 15vw 15vw 0 0;
   margin-top: -15vw;
@@ -14065,9 +14065,13 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #3D63FB;
 }
 .euro .bottom-tap a.active {
   border-bottom: 2px solid white;
+}
+.euro .bottom-tap a.active span {
+  color: white;
 }
 .euro .reward-title, .euro .matches-title, .euro .terms-title {
   color: white;
@@ -14641,7 +14645,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2.6vw;
+  font-size: 2.15vw;
   color: #878686;
   font-weight: 700;
 }
@@ -14656,7 +14660,7 @@ span.important {
 .header-content .member-balance .number span {
   color: #284985;
   font-size: 2.8vw;
-  margin-right: 1.5vw;
+  margin-right: 1vw;
 }
 .header-content .member-balance a.icon-spinner11::before,
 .header-content .member-balance button.icon-spinner11::before {
@@ -16284,6 +16288,31 @@ main.home .home-bottom .bottom-info .provider img {
   width: 18vw;
   height: auto;
 }
+main.home .home-bottom .bottom-info .license {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 4.5vw 0 0;
+}
+main.home .home-bottom .bottom-info .license span {
+  display: inline-block;
+  color: #fff;
+  margin-bottom: 1.6vw;
+  font-size: 2.8vw;
+}
+main.home .home-bottom .bottom-info .license img {
+  width: 30vw;
+}
 main.home .home-bottom .bottom-info .powered {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16298,7 +16327,7 @@ main.home .home-bottom .bottom-info .powered {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 9.3vw 0 4.5vw;
+  margin: 4.5vw 0 4.5vw;
 }
 main.home .home-bottom .bottom-info .powered span {
   display: inline-block;
