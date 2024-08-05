@@ -7045,6 +7045,28 @@ header {
   font-size: 3.5vw;
 }
 
+.game-license {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.game-license span {
+  margin: 3vw;
+  font-size: 3.5vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.game-license img {
+  width: 40vw;
+}
+
 .login-module, .join-module {
   display: -webkit-box;
   display: -ms-flexbox;

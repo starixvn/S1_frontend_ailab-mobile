@@ -510,6 +510,14 @@ const IndexPage = () => {
 			<div className="copyright">
 				{`© Copyright ${new Date().getFullYear()}. Bwing. All Rights Reserved.`}
 			</div>
+
+			<div className="game-license">
+				<span className="title"> {t("lbl_GamingLicense")}</span>
+				<img
+					src={`${bannerImgUrl}/h5/img/home-page/gaming-license/curacao.png`}
+					alt="GamingLicense"
+				/>
+			</div>
 		</>
 	);
 };
