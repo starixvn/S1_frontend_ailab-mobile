@@ -189,6 +189,15 @@ const HomeButtom = () => {
 						})}
 					</Swiper>
 				</div>
+
+				<div className="license">
+					<span> {t("lbl_GamingLicense")}</span>
+					<img
+						src={`${bannerImgUrl}/h5/img/home-page/gaming-license/curacao.png`}
+						alt="GamingLicense"
+					/>
+				</div>
+
 				<div className="powered">
 					<span>{t("lbl_PoweredBy")}</span>
 					<img
