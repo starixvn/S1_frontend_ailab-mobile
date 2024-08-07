@@ -16,7 +16,7 @@ const HomeMenu = ({ userInfo }) => {
 
 	const hotGameList = [
 		{
-			...products.SabaSoccer,
+			...products.Soccer,
 			defSubMenuImage: `${bannerImgUrl}/h5/img/home-page/hotgame/sports-saba.png`,
 			defDisplayKey: "lbl_SabaSoccer"
 		},
