@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { MetaPixelTracker } from "@ailab-mobile/common";
 import classNames from "classnames";
 import { useLocation, useNavigate } from "@reach/router";
 import { useTranslation } from "react-i18next";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useCooldown } from "@ailab-mobile/hooks";
 import {
 	defNavPanel,
@@ -332,6 +332,8 @@ const Join = () => {
 				response => {
 					const { message, errorCode } = response.data;
 					if (errorCode === 0) {
+						// 註冊成功送出臉書廣告埋點給市場
+						MetaPixelTracker("registerSubmit");
 						api_GetCustProfile().then(
 							res_custInfo => {
 								let _user = {

@@ -10,6 +10,7 @@ import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import { LOGIN } from "../../service/auth";
 import useShieldCheck from "../hook/useShieldCheck";
+import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
 
 const initUserValue = {
 	UserName: "",
@@ -33,6 +34,7 @@ const initStatus = {
 
 const Login = () => {
 	const { t } = useTranslation();
+	const { checkDepositSuccessful } = useDepositWithdrawTracker();
 	const { nav, setNav } = useContext(navContext);
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
@@ -81,8 +83,15 @@ const Login = () => {
 
 		if (checked) {
 			setCooldown(3);
-			const CallBackLogin = (errorCode, message, isLogin, userData) => {
+			const CallBackLogin = async (
+				errorCode,
+				message,
+				isLogin,
+				userData
+			) => {
 				if (errorCode === 0) {
+					// 登入成功送出臉書廣告埋點給市場
+					await checkDepositSuccessful();
 					setUserInfo(() => ({
 						...userData,
 						isLogin
