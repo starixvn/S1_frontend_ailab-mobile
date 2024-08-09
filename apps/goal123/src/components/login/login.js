@@ -13,6 +13,7 @@ import {
 import path from "../../path";
 import Logo from "../common/logo";
 import useShieldCheck from "../hook/useShieldCheck";
+import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
 
 const initValue = { UserName: "", Password: "" };
 const initStatus = {
@@ -30,6 +31,7 @@ const LoginPage = () => {
 	const isMountedRef = useRef(null);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
+	const { checkDepositSuccessful } = useDepositWithdrawTracker();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -76,9 +78,16 @@ const LoginPage = () => {
 
 		if (checked) {
 			setCooldown(3);
-			const CallBackLogin = (errorCode, message, isLogin, userData) => {
+			const CallBackLogin = async (
+				errorCode,
+				message,
+				isLogin,
+				userData
+			) => {
 				if (isMountedRef.current) {
 					if (errorCode === 0) {
+						// 登入成功送出臉書廣告埋點給市場
+						await checkDepositSuccessful();
 						setUserInfo(() => ({
 							...userData,
 							isLogin

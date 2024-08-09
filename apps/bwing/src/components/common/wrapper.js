@@ -23,6 +23,7 @@ import path, { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
 import { siteInfo } from "../../config";
 import DefLangs from "../../datas/defLangs";
+import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
 
 const isSpecialPath = () => {
 	return (
@@ -58,6 +59,7 @@ export const Wrapper = ({ children }) => {
 	const [theme, setTheme] = useState(themeList.default);
 	const [isShowEWallet, setIsShowEWallet] = useState(false);
 	const isMountedRef = useRef(null);
+	const { checkDepositSuccessful } = useDepositWithdrawTracker();
 	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
 		[]
 	);
@@ -180,7 +182,9 @@ export const Wrapper = ({ children }) => {
 	};
 
 	useInterval(
-		() => {
+		async () => {
+			// 每分鐘確認使用者是否有儲值成功的單號，如果有就通知市場（ 臉書通知 ）
+			await checkDepositSuccessful();
 			api_onlineCheck().then(
 				res => {
 					const result = res.data;

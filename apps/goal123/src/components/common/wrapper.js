@@ -21,6 +21,7 @@ import i18nConfig from "../../i18n/config";
 import { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
 import { siteInfo } from "../../config";
+import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
 
 const isSpecialPath = () => {
 	return (
@@ -61,6 +62,7 @@ export const Wrapper = ({ children }) => {
 		[]
 	);
 	const isMountedRef = useRef(null);
+	const { checkDepositSuccessful } = useDepositWithdrawTracker();
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -140,7 +142,9 @@ export const Wrapper = ({ children }) => {
 	};
 
 	useInterval(
-		() => {
+		async () => {
+			// 每分鐘確認使用者是否有儲值成功的單號，如果有就通知市場（ 臉書通知 ）
+			await checkDepositSuccessful();
 			api_onlineCheck().then(
 				res => {
 					const result = res.data;
