@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import { MetaPixelTracker } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import { useMatch, Redirect } from "@reach/router";
 import Inputbox from "../common/inputbox";
@@ -550,6 +551,8 @@ const Join = ({ hideBtn }) => {
 					if (isMountedRef.current) {
 						const { errorCode, message } = response.data;
 						if (errorCode === 0) {
+							// 註冊成功送出臉書廣告埋點給市場
+							MetaPixelTracker("registerSubmit");
 							api_GetCustProfile().then(
 								res => {
 									if (isMountedRef.current) {
