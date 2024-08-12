@@ -21,18 +21,19 @@ const useDepositWithdrawTracker = () => {
 	 *  5. 調用 setCustNotification 移除該單號，防止之後再次獲得相同的單號。 */
 	const checkDepositSuccessful = async () => {
 		try {
-			const { data: { data: orders = [] } = {} } =
-				await api_GetCustNotification({
-					notificationType: NotificationTypeEnum.Deposit
-				});
+			const {
+				data: { data: orders = [] } = {}
+			} = await api_GetCustNotification({
+				notificationType: NotificationTypeEnum.Deposit
+			});
 
 			const hasOrders = orders.length > 0;
 
 			if (hasOrders) {
-				MetaPixelTracker("deposit_successful");
-
 				/** setCustNotification api 的 Promise Object 陣列 */
 				const promises = orders.map(orderId => {
+					// 根據存款單號數量，觸發 MetaPixelTracker 事件
+					MetaPixelTracker("deposit_successful");
 					return api_SetCustNotification({
 						notificationType: NotificationTypeEnum.Deposit,
 						transId: orderId
