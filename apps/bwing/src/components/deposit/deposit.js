@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
-import { yuriTrack } from "@ailab-mobile/common";
+import { yuriTrack, MetaPixelTracker } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -206,6 +206,7 @@ const Panel = () => {
 		);
 
 	const handleSubmit = () => {
+		MetaPixelTracker("depositSubmit");
 		yuriTrack("Purchase");
 	};
 
