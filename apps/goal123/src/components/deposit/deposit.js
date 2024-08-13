@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
 import moment from "moment";
+import { MetaPixelTracker } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -249,6 +250,10 @@ const Panel = () => {
 			}
 		);
 
+	const handleSubmit = () => {
+		MetaPixelTracker("depositSubmit");
+	};
+
 	let content = (
 		<MobilePay
 			payType={defPayType.mobilePay}
@@ -256,6 +261,7 @@ const Panel = () => {
 			promoList={promoList}
 			checkDepositSpecialCode={checkDepositSpecialCode}
 			GetAllPayment={GetAllPayment}
+			onSubmit={handleSubmit}
 		/>
 	);
 
@@ -266,6 +272,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.localBank] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				onSubmit={handleSubmit}
 			/>
 		);
 	} else if (selectedOption === defPayType.onlineBank) {
@@ -275,6 +282,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.onlineBank] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				onSubmit={handleSubmit}
 			/>
 		);
 	} else if (selectedOption === defPayType.loadCardPay) {
@@ -284,6 +292,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.loadCardPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				onSubmit={handleSubmit}
 			/>
 		);
 	} else if (selectedOption === defPayType.cryptoPay) {
@@ -293,6 +302,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.cryptoPay] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				onSubmit={handleSubmit}
 			/>
 		);
 	} else if (selectedOption === defPayType.qrPay) {
@@ -302,6 +312,7 @@ const Panel = () => {
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
 				GetAllPayment={GetAllPayment}
+				onSubmit={handleSubmit}
 			/>
 		);
 	} else if (selectedOption === defPayType.quickTransfer) {
@@ -311,6 +322,7 @@ const Panel = () => {
 				paymentList={paymentList[defPayType.quickTransfer] ?? []}
 				promoList={promoList}
 				checkDepositSpecialCode={checkDepositSpecialCode}
+				onSubmit={handleSubmit}
 			/>
 		);
 	}

@@ -11,7 +11,7 @@ import PromoList from "./promoList";
 const payType = "onlineBanking";
 
 const Payment = props => {
-	const { paymentList, promoList, checkDepositSpecialCode } = props;
+	const { paymentList, promoList, checkDepositSpecialCode, onSubmit } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -82,7 +82,7 @@ const Payment = props => {
 					return;
 				}
 			}
-
+			onSubmit();
 			const RedirectToNext = real_amount => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqBankAutoChannel`;
 				const param = {
@@ -203,7 +203,8 @@ Payment.defaultProps = {
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
 export default Payment;

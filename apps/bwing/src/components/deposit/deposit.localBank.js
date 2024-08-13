@@ -5,7 +5,6 @@ import React, {
 	useEffect,
 	Component
 } from "react";
-import { MetaPixelTracker } from "@ailab-mobile/common";
 import PropTypes from "prop-types";
 import moment from "moment";
 import ClipboardJS from "../../lib/clipboard.min";
@@ -178,7 +177,6 @@ const Payment = props => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								MetaPixelTracker("depositSubmit");
 								const CloseDoneDepositPopup = () => {
 									setProcessing(false);
 									window.location.reload();
