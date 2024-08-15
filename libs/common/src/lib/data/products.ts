@@ -716,6 +716,30 @@ export const products = {
 		tpGameType: 117,
 		gameId: "CQ9"
 	},
+	SabaPlay: {
+		tpGameIdNo: 134,
+		tpId: 66,
+		tpGameType: 119,
+		gameId: 0
+	},
+	UuSlots: {
+		tpGameIdNo: 135,
+		tpId: 67,
+		tpGameType: 120,
+		gameId: "GetSlotGamePage"
+	},
+	Live22: {
+		tpGameIdNo: 136,
+		tpId: 68,
+		tpGameType: 121,
+		gameId: "GetSlotGamePage"
+	},
+	FastSpin: {
+		tpGameIdNo: 137,
+		tpId: 69,
+		tpGameType: 122,
+		gameId: "GetSlotGamePage"
+	},
 
 	// * Footer 靜態遊戲入口
 	BaseBall: {
