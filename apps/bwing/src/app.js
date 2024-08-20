@@ -85,11 +85,10 @@ import Lottery from "./pages/lottery";
 import Esports from "./pages/esports";
 import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
-import Launcher from "./pages/launcher";
-import Survey from "./pages/survey";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
-
+import Launcher from "./pages/launcher";
+import Survey from "./pages/survey";
 
 const Index = () => {
 	const history = createHistory(window);
@@ -215,6 +214,7 @@ const Index = () => {
 							<RetentionPage path={path.retention.root} />
 							<LeaderBoard path={path.leaderBoard.root} />
 							<Launcher path={path.launcher.root} />
+							<Survey path={path.survey.root} />
 						</Router>
 					</Layout>
 				</LocationProvider>

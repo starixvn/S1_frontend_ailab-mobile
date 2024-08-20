@@ -25,7 +25,8 @@ const Payment = props => {
 		paymentList,
 		promoList,
 		checkDepositSpecialCode,
-		GetAllPayment
+		GetAllPayment,
+		onSubmit
 	} = props;
 
 	const { i18n } = useContext(i18nContext);
@@ -128,7 +129,7 @@ const Payment = props => {
 					return;
 				}
 			}
-
+			onSubmit();
 			// 導至外部
 			const RedirectToNext = () => {
 				const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqQRPay`;
@@ -320,7 +321,8 @@ Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
 	checkDepositSpecialCode: PropTypes.func.isRequired,
-	GetAllPayment: PropTypes.func.isRequired
+	GetAllPayment: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
 export default Payment;

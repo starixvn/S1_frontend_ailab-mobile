@@ -210,26 +210,17 @@ export default {
 	cockFighting: {
 		root: "cockfighting"
 	},
+	leaderBoard: {
+		root: "leaderBoard"
+	},
+	retention: {
+		root: "retention"
+	},
 	launcher: {
 		root: "launcher"
 	},
 	survey: {
 		root: "survey"
-	},
-	leaderBoard: {
-		root: "leaderBoard"
-	},
-	retention: {
-		root: "retention"
-	},
-	retention: {
-		root: "retention"
-	},
-	leaderBoard: {
-		root: "leaderBoard"
-	},
-	launcher: {
-		root: "launcher"
 	}
 };
 

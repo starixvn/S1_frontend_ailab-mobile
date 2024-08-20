@@ -3857,7 +3857,7 @@ header {
 #popup.livesportspop {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   padding: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -3877,6 +3877,11 @@ header {
           justify-content: center;
 }
 #popup.livesportspop .livesports {
+  background: url(https://banner.bw88.io/h5/img/livesportspop-bg.png) no-repeat center/100% !important;
+  width: 90vw !important;
+  height: 170vw;
+  margin-bottom: 15vw;
+  position: relative;
   -webkit-animation: sponsor 0.3s linear 0.2s backwards;
           animation: sponsor 0.3s linear 0.2s backwards;
   display: -webkit-box;
@@ -3910,11 +3915,8 @@ header {
 }
 #popup.livesportspop .livesports > div .livesports-item {
   background: url(https://banner.bw88.io/h5/img/team-bg.png) no-repeat center/100%;
-  height: 35vw;
-  margin-bottom: 1.5vw;
-  overflow: hidden;
-  border-radius: 1rem;
-  color: white;
+  height: 39vw;
+  margin-bottom: 2vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .top {
   font-weight: 600;
@@ -3929,28 +3931,23 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: -webkit-gradient(linear, left top, right top, from(rgb(150, 172, 249)), to(rgb(28, 49, 123)));
-  background: linear-gradient(90deg, rgb(150, 172, 249) 0%, rgb(28, 49, 123) 100%);
-}
-#popup.livesportspop .livesports > div .livesports-item .top > div:first-child {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 1rem;
+  background: -webkit-gradient(linear, left top, right top, from(rgb(107, 140, 255)), to(rgb(28, 49, 123)));
+  background: linear-gradient(90deg, rgb(107, 140, 255) 0%, rgb(28, 49, 123) 100%);
+  border-radius: 10px 10px 0 0;
+  color: white;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child {
   background: #ff7600;
-  height: 5vw;
+  width: 12vw;
   text-align: center;
-  border-radius: 1rem 0 0 1rem;
-  padding: 0 1.5vw;
+  border-radius: 20px 0 0 20px;
+  padding: 0 1vw 0 3vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .top > div:last-child::before {
   display: block;
@@ -3973,7 +3970,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 3.1vw;
+  margin-top: 3.5vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team {
   display: -webkit-box;
@@ -3991,8 +3988,8 @@ header {
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child {
   background: #d5d5d5;
   border-radius: 50px;
-  width: 4rem;
-  height: 4rem;
+  width: 14vw;
+  height: 14vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4004,14 +4001,13 @@ header {
           justify-content: center;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:first-child img {
-  width: 8vw;
+  width: 12vw;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-team > div:last-child {
   text-align: center;
   margin-top: 2vw;
-  line-height: 3vw;
+  line-height: 3.5vw;
   width: 20vw;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time {
   margin: 0 2vw;
@@ -4026,12 +4022,8 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   color: #0f214e;
   font-weight: 600;
-  font-size: 0.8rem;
 }
 #popup.livesportspop .livesports > div .livesports-item .bottom-time > div > div {
   margin-top: 2vw;
@@ -4045,9 +4037,6 @@ header {
 #popup.livesportspop .livesports > div .livesports-item.next .top {
   background: -webkit-gradient(linear, left top, right top, from(rgb(141, 142, 152)), to(rgb(24, 24, 24)));
   background: linear-gradient(90deg, rgb(141, 142, 152) 0%, rgb(24, 24, 24) 100%);
-}
-#popup.livesportspop .livesports > div .livesports-item.next .top > div {
-  font-size: 1rem;
 }
 #popup.livesportspop .livesports > div .livesports-item.next .top > div:last-child {
   background: white;
@@ -4069,8 +4058,11 @@ header {
 #popup.livesportspop .livesports > div .livesports-item.next .bottom-time > div {
   color: #272829;
 }
-#popup.livesportspop .livesports > div .livesports-item:last-child {
-  margin: 0;
+#popup.livesportspop .livesports.vn {
+  background: url(https://banner.bw88.io/h5/img/livesportspop-bg-vn.png) no-repeat center/100% !important;
+}
+#popup.livesportspop .livesports.en {
+  background: url(https://banner.bw88.io/h5/img/livesportspop-bg-en.png) no-repeat center/100% !important;
 }
 @-webkit-keyframes blinking {
   from {
@@ -4106,7 +4098,13 @@ header {
   cursor: pointer;
   display: block;
   width: 7vw;
-  margin-top: 2vw;
+  position: absolute;
+  left: 50%;
+  bottom: -12vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: closepop 2s ease-in-out;
+          animation: closepop 2s ease-in-out;
 }
 @-webkit-keyframes closepop {
   0% {
@@ -18929,7 +18927,7 @@ body main.main.referral {
 .euro .ticket-filter.closedown > div .close-text {
   background: rgba(0, 0, 0, 0.8196078431);
   width: 97.2vw;
-  height: 83.1vw;
+  height: 72.1vw;
   position: absolute;
   z-index: 3;
   color: white;

@@ -251,11 +251,6 @@ export const defPageInfo = {
 		className: "euro",
 		hideLogo: true
 	},
-	survey: {
-		titleKey: "lbl_Survey",
-		className: "survey",
-		hideLogo: true
-	},
 
 	// 設計那邊的結構class是下在裡面那層 所以這邊沒加
 	retention: {
@@ -266,10 +261,9 @@ export const defPageInfo = {
 		className: "leaderboard",
 		iconClassName: "icon-leaderboard-blue"
 	},
-	// 設計那邊的結構class是下在裡面那層 所以這邊沒加
-	retention: {
-		titleKey: "Label_Retention_SurpriseReward",
-		iconClassName: "icon-leaderboard-blue",
+	survey: {
+		titleKey: "lbl_Survey",
+		className: "survey",
 		hideLogo: true
 	}
 };

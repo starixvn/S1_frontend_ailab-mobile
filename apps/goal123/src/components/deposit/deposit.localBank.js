@@ -39,7 +39,7 @@ import ImportantNotes from "./importantNote";
 const payType = "localBank";
 
 const Payment = props => {
-	const { paymentList, promoList, checkDepositSpecialCode } = props;
+	const { paymentList, promoList, checkDepositSpecialCode, onSubmit } = props;
 
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -195,7 +195,7 @@ const Payment = props => {
 					return;
 				}
 			}
-
+			onSubmit();
 			const RedirectToNext = debounce((real_amount, sysId) => {
 				setLoading(true);
 				setPopBox(prevState => ({
@@ -212,7 +212,7 @@ const Payment = props => {
 					res => {
 						if (isMountedRef.current) {
 							if (res.data.errorCode === 0) {
-								MetaPixelTracker("depositSubmit")
+								MetaPixelTracker("depositSubmit");
 								const CloseDoneDepositPopup = () => {
 									setProcessing(false);
 									window.location.reload();
@@ -541,7 +541,8 @@ Payment.defaultProps = {
 Payment.propTypes = {
 	paymentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 	promoList: PropTypes.arrayOf(PropTypes.object),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
 const GroupList = ({
