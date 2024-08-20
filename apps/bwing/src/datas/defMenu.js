@@ -431,11 +431,6 @@ export const defSubMenus = langId => [
 		displayKey: "lbl_CockFighting"
 	},
 	{
-		icon: "icon-survey-blue",
-		path: path.survey.root,
-		displayKey: "lbl_Survey"
-	},
-	{
 		icon: "icon-leaderboard-blue",
 		path: path.leaderBoard.root,
 		displayKey: "lbl_LeaderBoard"

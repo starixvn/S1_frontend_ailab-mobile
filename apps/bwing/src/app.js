@@ -210,7 +210,6 @@ const Index = () => {
 							<News path={path.news.root} />
 							<DragonEgg path={path.dragonEgg.root} />
 							<EuroCup path={path.euroCup.root} />
-							<Survey path={path.survey.root} />
 							<RetentionPage path={path.retention.root} />
 							<LeaderBoard path={path.leaderBoard.root} />
 							<Launcher path={path.launcher.root} />

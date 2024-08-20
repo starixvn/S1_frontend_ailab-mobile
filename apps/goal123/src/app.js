@@ -161,7 +161,6 @@ const Index = () => {
 						<DragonEgg path={path.dragonEgg.root} />
 						<Ambassador path={path.ambassador.root} />
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
-						<Survey path={path.survey.root} />
 						<RetentionPage path={path.retention.root} />
 						<LeaderBoard path={path.leaderBoard.root} />
 						<Launcher path={path.launcher.root} />
