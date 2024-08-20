@@ -1,13 +1,14 @@
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import React, { useContext, useEffect, useState } from "react";
 import { MetaPixelTracker } from "@ailab-mobile/common";
-import classNames from "classnames";
-import { useLocation, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
+import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { useCooldown } from "@ailab-mobile/hooks";
+import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
 import {
 	defNavPanel,
 	i18nContext,
-	navContext,
 	popBoxContext,
 	userInfoContext
 } from "../common/context";
@@ -22,37 +23,33 @@ import {
 	api_GetSiteCurrencyList,
 	api_site_AffiliateCheck,
 	api_site_GetAffiliateAgent,
-	api_site_GetRecaptchaInfo,
 	api_site_Signup
 } from "../../service/api/site";
-import { initStatus, initValue, reCaptchaEnum, VN_AREACODE } from "./def";
+import { initStatus, initValue, VN_AREACODE } from "./def";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import useShieldCheck from "../hook/useShieldCheck";
 import Checkbox from "../common/checkbox";
 
-const Join = () => {
+const Join = ({ setNav }) => {
 	const { t } = useTranslation();
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const { nav, setNav } = useContext(navContext);
 	const { i18n } = useContext(i18nContext);
-	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const [step, setStep] = useState(1);
 	const [userValue, setUserValue] = useState(initValue);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
-	const [reCaptchaToken, setReCaptchaToken] = useState("");
-	const [recaptchaInfo, setRecaptchaInfo] = useState({});
-	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const [activeInfoMsg, setActiveInfoMsg] = useState("");
 	const { saveShieldData } = useShieldCheck();
 	const urlAffId = getUrlParameter("AffId") || readCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 	const urlAffiliate = urlAffId || urlAffCode;
-	const isShow =
-		nav === defNavPanel.join || pathname === `/${path.join.root}`;
 	const { isReady, setCooldown, cooldown } = useCooldown();
+	const {
+		data: { data: recaptchaInfoData } = {}
+	} = useGetRecaptchaInfoQuery();
+	const { executeRecaptcha } = useGoogleReCaptcha();
 
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
@@ -286,11 +283,6 @@ const Join = () => {
 	};
 
 	const clickSubmit = async () => {
-		// const _reCaptchaCheck =
-		// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
-		// // * 機器人驗證沒過直接 return 出去
-		// if (!_reCaptchaCheck) return;
-
 		let checked = null;
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
@@ -299,6 +291,14 @@ const Join = () => {
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
 		});
+
+		// 中國地區不需驗證
+		const ReCaptchaAction = "signup";
+		let reCaptchaToken;
+		if (recaptchaInfoData?.country !== "CN") {
+			if (!executeRecaptcha) return;
+			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
+		}
 
 		checked =
 			RealNameCheck.checked &&
@@ -318,8 +318,9 @@ const Join = () => {
 				PhoneNo: userValue.Phone,
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
-				ReferralUrl: document.referrer
-				// ReCaptchaToken: reCaptchaToken
+				ReferralUrl: document.referrer,
+				ReCaptchaToken: reCaptchaToken,
+				ReCaptchaAction
 			};
 
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
@@ -401,10 +402,6 @@ const Join = () => {
 		}
 	};
 
-	const handleReCaptchaChange = token => {
-		setReCaptchaToken(token);
-	};
-
 	const handleNextStep = async () => {
 		let checked = null;
 		const UserNameCheck = await userNameCheck({ val: userValue.UserName });
@@ -444,26 +441,6 @@ const Join = () => {
 		setNav(null);
 	};
 
-	const getRecaptchaSiteKey = async () => {
-		try {
-			const res = await api_site_GetRecaptchaInfo();
-			const { country, siteKey } = res.data.data;
-			setRecaptchaInfo({
-				country,
-				siteKey
-			});
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: error
-			});
-		}
-	};
-
-	// useEffect(() => {
-	// 	setReCaptchaKey(reCaptchaKey + 1);
-	// }, [userInfo.langId]);
-
 	useEffect(() => {
 		// getRecaptchaSiteKey();
 		if (urlAffiliate) {
@@ -474,10 +451,7 @@ const Join = () => {
 	}, [step]);
 
 	return (
-		<div
-			className={`join-module popup ${classNames({
-				active: isShow
-			})}`}>
+		<>
 			<div>
 				<button className="icon-close-white-bg" onClick={handleClose} />
 				<img
@@ -645,18 +619,6 @@ const Join = () => {
 							activeInfoMsg={activeInfoMsg}
 							setActiveInfoMsg={setActiveInfoMsg}
 						/>
-						{/*
-              	{Object.keys(recaptchaInfo).length > 0 &&
-								recaptchaInfo.country !== "CN" && (
-									<ReCAPTCHA
-										key={reCaptchaKey}
-										class="g-recaptcha"
-										sitekey={recaptchaInfo.siteKey}
-										onChange={handleReCaptchaChange}
-										hl={reCaptchaEnum[userInfo.langId]}
-									/>
-								)}
-              */}
 
 						<div className="join-message">
 							<Checkbox
@@ -683,8 +645,12 @@ const Join = () => {
 				)}
 			</div>
 			<div className="join-bottominfo">{t("lbl_PoweredBy")} Bong88</div>
-		</div>
+		</>
 	);
+};
+
+Join.propTypes = {
+	setNav: PropTypes.func.isRequired
 };
 
 export default Join;
