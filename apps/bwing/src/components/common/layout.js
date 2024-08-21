@@ -263,10 +263,9 @@ export const defPageInfo = {
 		iconClassName: "icon-leaderboard-blue",
 		hideLogo: true
 	},
-	leaderBoard: {
-		titleKey: "lbl_LeaderBoard",
-		className: "leaderboard",
-		iconClassName: "icon-leaderboard-blue",
+	survey: {
+		titleKey: "lbl_Survey",
+		className: "survey",
 		hideLogo: true
 	}
 };

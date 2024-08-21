@@ -32,7 +32,8 @@ const Main = props => {
 		userPaymentData,
 		handleUserPaymentData,
 		promoList,
-		checkDepositSpecialCode
+		checkDepositSpecialCode,
+		onSubmit
 	} = props;
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -114,7 +115,7 @@ const Main = props => {
 						return;
 					}
 				}
-
+				onSubmit();
 				const RedirectToNext = debounce(real_amount => {
 					setPopBox(prevState => ({
 						...prevState,
@@ -500,7 +501,8 @@ Main.propTypes = {
 	userPaymentData: PropTypes.objectOf(PropTypes.any),
 	handleUserPaymentData: PropTypes.func,
 	promoList: PropTypes.arrayOf(PropTypes.objectOf),
-	checkDepositSpecialCode: PropTypes.func.isRequired
+	checkDepositSpecialCode: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired
 };
 
 export default Main;

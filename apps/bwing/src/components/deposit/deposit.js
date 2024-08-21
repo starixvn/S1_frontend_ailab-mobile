@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { useNavigate } from "@reach/router";
 import moment from "moment";
 import { useLazyGetDepositQuickTransferQuery } from "@ailab-mobile/service";
-import { yuriTrack } from "@ailab-mobile/common";
+import { yuriTrack, MetaPixelTracker } from "@ailab-mobile/common";
 import {
 	i18nContext,
 	userInfoContext,
@@ -206,6 +206,7 @@ const Panel = () => {
 		);
 
 	const handleSubmit = () => {
+		MetaPixelTracker("depositSubmit");
 		yuriTrack("Purchase");
 	};
 
@@ -318,11 +319,12 @@ const Panel = () => {
 		transId,
 		picFileName,
 		receiptInfo,
-		refId
+		refId,
+		isShowReceiptInfo = true
 	) => {
 		// if (pageVerify) {
-		const { currencyId, ...restBankInfo } = bankInfo;
-		const { accountName, accountNo, code } = depositRep;
+		const { currencyId, ...restBankInfo } = bankInfo || {};
+		const { accountName, accountNo, code } = depositRep || {};
 		setbankSlipPopBox(() => ({
 			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
 				"HH:mm"
@@ -336,7 +338,8 @@ const Panel = () => {
 			amount: number_format(amount, _isConvert, 0),
 			picFileName,
 			receiptInfo,
-			refId
+			refId,
+			isShowReceiptInfo
 		}));
 		// }
 	};

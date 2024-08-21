@@ -141,92 +141,97 @@ class Content extends Component {
 					<h1 className="text-org">{i18n.lbl_SubmitProof}</h1>
 				</div>
 				<section className="depositBox">
-					<div className="depositInBox">
-						<div className="depositTitle textLeft borderBottom">
-							<h1 className="text-org">{i18n.lbl_Transaction}</h1>
-							<p>{i18n.lbl_AlmostDone}</p>
-							<p>{i18n.msg_DepositTransferHint}</p>
-						</div>
-						<div className="depostiImgText">
-							<div
-								className="bankinfo icon icon-new-tab"
-								onClick={() =>
-									window.open(
-										bankSlipPopBox.bankSite,
-										"_blank"
-									)
-								}>
-								<img
-									src={`${paymentImgUrl}/${bankSlipPopBox.bankLogo?.toLowerCase()}`}
-									alt={bankSlipPopBox.bankName}
-								/>
-								<span>{bankSlipPopBox.bankName}</span>
+					{bankSlipPopBox.isShowReceiptInfo && (
+						<div className="depositInBox">
+							<div className="depositTitle textLeft borderBottom">
+								<h1 className="text-org">
+									{i18n.lbl_Transaction}
+								</h1>
+								<p>{i18n.lbl_AlmostDone}</p>
+								<p>{i18n.msg_DepositTransferHint}</p>
 							</div>
-							<div>
-								{this.props.bankSlipPopBox
-									.disableSubmit ? null : (
-									<>
-										<h1>{i18n.lbl_ID}</h1>
-										<p>{bankSlipPopBox.transId}</p>
-									</>
-								)}
-								<h1>{i18n.lbl_BankAccountName}</h1>
-								<p>
-									{bankSlipPopBox.accountName}
-									<span
-										className="icon icon-files-empty clickBtn copyBtn"
-										data-clipboard-text={
-											bankSlipPopBox.accountName
-										}
+							<div className="depostiImgText">
+								<div
+									className="bankinfo icon icon-new-tab"
+									onClick={() =>
+										window.open(
+											bankSlipPopBox.bankSite,
+											"_blank"
+										)
+									}>
+									<img
+										src={`${paymentImgUrl}/${bankSlipPopBox.bankLogo?.toLowerCase()}`}
+										alt={bankSlipPopBox.bankName}
 									/>
-								</p>
-								<h1>{i18n.lbl_BankNumber}</h1>
-								<p>
-									{bankSlipPopBox.accountNo}
-									<span
-										className="icon icon-files-empty clickBtn copyBtn"
-										data-clipboard-text={
-											bankSlipPopBox.accountNo
-										}
-									/>
-								</p>
-								{this.props.bankSlipPopBox
-									.disableSubmit ? null : (
-									<>
-										<h1>{i18n.lbl_DepositAmount}</h1>
-										<p>
-											{number_format(
-												bankSlipPopBox.amount,
-												bankSlipPopBox._isConvert,
-												0
-											)}
-											<span
-												className="icon icon-files-empty clickBtn copyBtn"
-												data-clipboard-text={
-													bankSlipPopBox.amount
-												}
-											/>
-										</p>
-									</>
-								)}
-								{this.props.bankSlipPopBox?.code && (
-									<>
-										<h1>{i18n.Label_Remark}</h1>
-										<p>
-											{bankSlipPopBox.code}
-											<span
-												className="icon icon-files-empty clickBtn copyBtn"
-												data-clipboard-text={
-													this.props.bankSlipPopBox
-														?.code
-												}
-											/>
-										</p>
-									</>
-								)}
+									<span>{bankSlipPopBox.bankName}</span>
+								</div>
+								<div>
+									{this.props.bankSlipPopBox
+										.disableSubmit ? null : (
+										<>
+											<h1>{i18n.lbl_ID}</h1>
+											<p>{bankSlipPopBox.transId}</p>
+										</>
+									)}
+									<h1>{i18n.lbl_BankAccountName}</h1>
+									<p>
+										{bankSlipPopBox.accountName}
+										<span
+											className="icon icon-files-empty clickBtn copyBtn"
+											data-clipboard-text={
+												bankSlipPopBox.accountName
+											}
+										/>
+									</p>
+									<h1>{i18n.lbl_BankNumber}</h1>
+									<p>
+										{bankSlipPopBox.accountNo}
+										<span
+											className="icon icon-files-empty clickBtn copyBtn"
+											data-clipboard-text={
+												bankSlipPopBox.accountNo
+											}
+										/>
+									</p>
+									{this.props.bankSlipPopBox
+										.disableSubmit ? null : (
+										<>
+											<h1>{i18n.lbl_DepositAmount}</h1>
+											<p>
+												{number_format(
+													bankSlipPopBox.amount,
+													bankSlipPopBox._isConvert,
+													0
+												)}
+												<span
+													className="icon icon-files-empty clickBtn copyBtn"
+													data-clipboard-text={
+														bankSlipPopBox.amount
+													}
+												/>
+											</p>
+										</>
+									)}
+									{this.props.bankSlipPopBox?.code && (
+										<>
+											<h1>{i18n.Label_Remark}</h1>
+											<p>
+												{bankSlipPopBox.code}
+												<span
+													className="icon icon-files-empty clickBtn copyBtn"
+													data-clipboard-text={
+														this.props
+															.bankSlipPopBox
+															?.code
+													}
+												/>
+											</p>
+										</>
+									)}
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 					<div className="depositInBox">
 						<div className="depositTitle textLeft borderBottom">
 							<h1 className="text-org">
