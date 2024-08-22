@@ -16,9 +16,9 @@ const HomeJoin = () => {
 	const JoinListItems = [
 		{
 			link: `/${path.ambassador.root}`,
-			title: "lbl_Home_Professional_Image_Title",
+			title: "lbl_trusthworthy",
 			text: "lbl_Home_Professional_Image_Text",
-			img: "professional.png"
+			img: "trusthworthy.png"
 		},
 		{
 			link: `/${path.vip.root}`,
