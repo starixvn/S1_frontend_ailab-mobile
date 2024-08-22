@@ -47,7 +47,7 @@ const Shield = () => {
 			</noscript>
 			)
 			{/* === Facebook－給市場的廣告埋點 fbq('init', 'xxxxxxxxxx') << 此為監測臉書廣告的帳號ID  === */}
-			<script
+			{/* <script
 				dangerouslySetInnerHTML={{
 					__html: `
 						!function(f,b,e,v,n,t,s)
@@ -71,7 +71,7 @@ const Shield = () => {
 					style="display:none"
 					src="https://www.facebook.com/tr?id=745371327638515&ev=PageView&noscript=1"
 				/>`}
-			</noscript>
+			</noscript> */}
 		</Helmet>
 	);
 };
