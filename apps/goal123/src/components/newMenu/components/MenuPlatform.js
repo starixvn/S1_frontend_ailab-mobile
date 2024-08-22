@@ -19,13 +19,6 @@ const MenuPlatform = () => {
 						<span>{t("lbl_Referral")}</span>
 					</a>
 				)}
-				<a href="/ambassador">
-					<img
-						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-sponsor.svg`}
-						alt="sidemenu-sponsor"
-					/>
-					<span>{t("Label_Menu_Sponsor")}</span>
-				</a>
 				<a href="/vip">
 					<img
 						src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-vip.svg`}

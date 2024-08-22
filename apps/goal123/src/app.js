@@ -69,7 +69,6 @@ import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
 import DragonEgg from "./pages/dragonEgg";
-import Ambassador from "./pages/ambassador";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
@@ -158,7 +157,8 @@ const Index = () => {
 							path={`/:langId/${path.rebateExclude.root}`}
 						/>
 						<DragonEgg path={path.dragonEgg.root} />
-						<Ambassador path={path.ambassador.root} />
+						{/* 因應 pm 需求此頁暫時關閉 */}
+						{/* <Ambassador path={path.ambassador.root} /> */}
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 						<RetentionPage path={path.retention.root} />
 						<LeaderBoard path={path.leaderBoard.root} />
