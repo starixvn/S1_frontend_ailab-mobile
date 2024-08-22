@@ -78,12 +78,12 @@ const Join = () => {
 		};
 	});
 
-	useEffect(() => {
-		setReCaptchaKey(reCaptchaKey + 1);
-	}, [userInfo.langId]);
+	// useEffect(() => {
+	// 	setReCaptchaKey(reCaptchaKey + 1);
+	// }, [userInfo.langId]);
 
 	useEffect(() => {
-		getRecaptchaSiteKey();
+		// getRecaptchaSiteKey();
 		const init = async () => {
 			// * 預先拿 currencyList
 			await GetSiteCurrencyList();
@@ -330,8 +330,8 @@ const Join = () => {
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		// const EmailCheck = await emailCheck({ val: userValue.Email });
-		const reCaptchaCheck =
-			reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+		// const reCaptchaCheck =
+		// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
 		});
@@ -344,7 +344,7 @@ const Join = () => {
 			PhoneCheck.checked &&
 			// EmailCheck.checked &&
 			userValue.Checkbox &&
-			reCaptchaCheck &&
+			// reCaptchaCheck &&
 			// affiliate is optional
 			(_affiliateCheck.checked === true ||
 				_affiliateCheck.checked === null);
@@ -359,8 +359,8 @@ const Join = () => {
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
-				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReferralUrl: document.referrer
+				// ReCaptchaToken: reCaptchaToken
 			};
 
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
@@ -582,7 +582,7 @@ const Join = () => {
 					})}
 				/>
 
-				{Object.keys(recaptchaInfo).length > 0 &&
+				{/* {Object.keys(recaptchaInfo).length > 0 &&
 					recaptchaInfo.country !== "CN" && (
 						<ReCAPTCHA
 							key={reCaptchaKey}
@@ -591,7 +591,7 @@ const Join = () => {
 							onChange={handleReCaptchaChange}
 							hl={reCaptchaEnum[userInfo.langId]}
 						/>
-					)}
+					)} */}
 
 				<Checkbox
 					Checked={userValue.Checkbox}
