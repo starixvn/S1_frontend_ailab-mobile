@@ -15,10 +15,10 @@ const HomeJoin = () => {
 
 	const JoinListItems = [
 		{
+			// 因應 pm trustedPartner 不用 link，按下無動作
 			title: "lbl_trusthworthy",
-			text: "lbl_trustedPartner",
-			img: "trusthworthy.png",
-			link: `/${userInfo.langId}/${path.ambassador.root}`
+			text: "lbl_Home_Professional_Image_Text",
+			img: "trusthworthy.png"
 		},
 		{
 			link: `/${path.vip.root}`,
