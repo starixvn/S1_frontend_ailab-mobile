@@ -16,14 +16,14 @@ const images = [
 	{
 		link: `/${path.casino.root}/${products.SkywindSlot.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-sky.jpg`,
-		altText: "pop-micro",
+		altText: "pop-sky",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-sky.png`,
 		logoAlt: "popular-slots-sky"
 	},
 	{
 		link: `/${path.casino.root}/${products.Spadegaming.tpId}`,
 		imgSrc: `${config.t_and_cURL}/h5/img/home-page/pop-spad.jpg`,
-		altText: "pop-micro",
+		altText: "pop-spad",
 		logoSrc: `${config.t_and_cURL}/h5/img/home-page/popular-slots-spade.png`,
 		logoAlt: "popular-slots-spad"
 	},
@@ -86,7 +86,7 @@ const HomePopularSlotGames = () => {
 			<div className="popularslots-bottom">
 				<Swiper {...swiperParams}>
 					{images.map(image => (
-						<SwiperSlide>
+						<SwiperSlide key={image.altText}>
 							<a className="bottom-item" href={image.link}>
 								<img src={image.imgSrc} alt={image.altText} />
 								<div>

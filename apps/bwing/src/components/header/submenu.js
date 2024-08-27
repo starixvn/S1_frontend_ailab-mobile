@@ -14,7 +14,7 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 	const { i18n } = useContext(i18nContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 
-	const { langId } = userInfo;
+	const { langId, isLogin } = userInfo;
 
 	const closeNavPanel = () => {
 		handleSideMenuPanel(false);
@@ -65,6 +65,7 @@ const Content = ({ handleSideMenuPanel, isOpenSideMenu }) => {
 					i18n={i18n}
 					langId={userInfo.langId}
 					closeNavPanel={closeNavPanel}
+					isLogin={isLogin}
 				/>
 			</div>
 		</div>
@@ -78,9 +79,13 @@ Content.propTypes = {
 
 export default Content;
 
-const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
+const SubMenuList = ({ i18n, langId, closeNavPanel, isLogin }) => {
 	const rows = defSubMenus(langId).map(({ icon, href, path, displayKey }) => {
 		if (displayKey === "lbl_APP" && isInApp()) {
+			return null;
+		}
+
+		if (displayKey === "lbl_Survey" && !isLogin) {
 			return null;
 		}
 
@@ -108,8 +113,13 @@ const SubMenuList = ({ i18n, langId, closeNavPanel }) => {
 	return <div className="menu-list">{rows}</div>;
 };
 
+SubMenuList.defaultProps = {
+	isLogin: false
+};
+
 SubMenuList.propTypes = {
 	langId: PropTypes.string.isRequired,
 	i18n: PropTypes.objectOf(PropTypes.string).isRequired,
-	closeNavPanel: PropTypes.func.isRequired
+	closeNavPanel: PropTypes.func.isRequired,
+	isLogin: PropTypes.bool
 };

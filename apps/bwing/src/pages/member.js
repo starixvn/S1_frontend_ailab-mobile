@@ -16,17 +16,17 @@ const defTabs = {
 	bankInfo: {
 		to: path.member.sub.bankInfo.root,
 		displayKey: "lbl_BankInfo",
-		type: 1
+		type: "1"
 	},
 	eWallet: {
 		to: path.member.sub.eWallet.root,
 		displayKey: "lbl_EWallet",
-		type: 3
+		type: "3"
 	},
 	cryptoWallet: {
 		to: path.member.sub.cryptoWallet.root,
 		displayKey: "lbl_CryptoWallet",
-		type: 4
+		type: "4"
 	}
 };
 
@@ -42,7 +42,7 @@ const IndexPage = props => {
 		Object.entries(defTabs).filter(([_, tabs]) => {
 			if (!tabs.type) return true;
 			const result = withdrawalSettingTypeList?.find(typeEnum => {
-				return typeEnum.type === tabs.type;
+				return Number(typeEnum.type) === Number(tabs.type);
 			})?.status;
 			return result;
 		})
