@@ -93,14 +93,12 @@ const HomeFooter = () => {
 								}
 								alt="footer-home"
 							/>
-							{!userInfo.Login && (
-								<span
-									className={
-										clickHome || (matchHome && "active ")
-									}>
-									{t("lbl_Home")}
-								</span>
-							)}
+							<span
+								className={
+									clickHome || matchHome ? "active" : ""
+								}>
+								{t("lbl_Home")}
+							</span>
 						</a>
 
 						<a
@@ -122,15 +120,14 @@ const HomeFooter = () => {
 								}
 								alt="footer-promotion"
 							/>
-							{!userInfo.Login && (
-								<span
-									className={
-										clickPromotion ||
-										(matchPromotion && "active ")
-									}>
-									{t("Label_Footer_Promos")}
-								</span>
-							)}
+							<span
+								className={
+									clickPromotion || matchPromotion
+										? "active"
+										: ""
+								}>
+								{t("Label_Footer_Promos")}
+							</span>
 						</a>
 
 						{userInfo.isLogin ? (
@@ -226,7 +223,7 @@ const HomeFooter = () => {
 								}
 								alt="footer-menu"
 							/>
-							<span className={isMenuOpen && "active "}>
+							<span className={isMenuOpen ? "active" : ""}>
 								{t("Label_Footer_Menu")}
 							</span>
 						</a>
