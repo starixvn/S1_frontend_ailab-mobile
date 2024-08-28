@@ -7,6 +7,7 @@ import HomeJoin from "./components/HomeJoin";
 import { siteId } from "../../config";
 import HomeLeaderBoard from "./components/HomeLeaderBoard";
 import HomeInfo from "./components/HomeInfo";
+import HomePrevious from "./components/HomePrevious";
 import HomeAppDownload from "./components/HomeAppDownload";
 import HomeButtom from "./components/HomeButtom";
 import HomeMenu from "./components/HomeMenu";
@@ -55,6 +56,7 @@ const HomeContent = () => {
 					<HomeInfo />
 					{userInfo.isLogin && <RecentlyViewedGameList />}
 					{!isInApp() && <HomeAppDownload />}
+					<HomePrevious />
 					<HomeButtom />
 				</div>
 			</div>
