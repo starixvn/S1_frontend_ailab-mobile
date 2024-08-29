@@ -3,7 +3,8 @@ import { rootApi } from "../rootApi/api";
 
 const siteApiUrl = {
 	getTpIds: "Site/GetTpIds",
-	getIpCountry: "Site/GetIpCountry"
+	getIpCountry: "Site/GetIpCountry",
+	getRecaptchaInfo: "Site/GetRecaptchaInfo"
 };
 
 export const siteApi = rootApi.injectEndpoints({
@@ -26,8 +27,24 @@ export const siteApi = rootApi.injectEndpoints({
 				url: siteApiUrl.getIpCountry,
 				method: "POST"
 			})
+		}),
+		getRecaptchaInfo: builder.query<
+			IAxiosResponse<{
+				siteKey: string;
+				country: string;
+			}>,
+			void
+		>({
+			query: () => ({
+				url: siteApiUrl.getRecaptchaInfo,
+				method: "POST"
+			})
 		})
 	})
 });
 
-export const { useGetTpIdsQuery, useGetIpCountryQuery } = siteApi;
+export const {
+	useGetTpIdsQuery,
+	useGetIpCountryQuery,
+	useGetRecaptchaInfoQuery
+} = siteApi;
