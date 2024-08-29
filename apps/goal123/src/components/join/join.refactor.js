@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useMatch, Redirect, useNavigate } from "@reach/router";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useCooldown } from "@ailab-mobile/hooks";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Checkbox from "../common/checkbox";
@@ -11,8 +11,7 @@ import {
 	api_site_GetAffiliateAgent,
 	api_site_Signup,
 	api_ExistsEmail,
-	api_site_AffiliateCheck,
-	api_site_GetRecaptchaInfo
+	api_site_AffiliateCheck
 } from "../../service/api/site";
 import { api_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, passwordCheck, getCookie } from "../common/common";
@@ -28,7 +27,7 @@ import TandC from "../../service/t_and_c";
 import path from "../../path";
 import config from "../../config";
 import Logo from "../common/logo";
-import { initValue, initStatus, reCaptchaEnum, VN_AREACODE } from "./join.def";
+import { initValue, initStatus, VN_AREACODE } from "./join.def";
 import useShieldCheck from "../hook/useShieldCheck";
 
 const defaultLangId = GET_LANG_ID();
@@ -43,10 +42,8 @@ const Join = () => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const [reCaptchaToken, setReCaptchaToken] = useState("");
-	const [recaptchaInfo, setRecaptchaInfo] = useState({});
+	const { executeRecaptcha } = useGoogleReCaptcha();
 	const { saveShieldData } = useShieldCheck();
-	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const { isReady, cooldown, setCooldown } = useCooldown();
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
@@ -55,22 +52,6 @@ const Join = () => {
 
 	const isMountedRef = useRef(null);
 
-	const getRecaptchaSiteKey = async () => {
-		try {
-			const res = await api_site_GetRecaptchaInfo();
-			const { country, siteKey } = res.data.data;
-			setRecaptchaInfo({
-				country,
-				siteKey
-			});
-		} catch (error) {
-			setPopBox({
-				isOpen: true,
-				content: i18n.msg_ApiServerError
-			});
-		}
-	};
-
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -78,12 +59,7 @@ const Join = () => {
 		};
 	});
 
-	// useEffect(() => {
-	// 	setReCaptchaKey(reCaptchaKey + 1);
-	// }, [userInfo.langId]);
-
 	useEffect(() => {
-		// getRecaptchaSiteKey();
 		const init = async () => {
 			// * 預先拿 currencyList
 			await GetSiteCurrencyList();
@@ -330,11 +306,12 @@ const Join = () => {
 		const RealNameCheck = realNameCheck({ val: userValue.RealName });
 		const PhoneCheck = phoneCheck({ val: userValue.Phone });
 		// const EmailCheck = await emailCheck({ val: userValue.Email });
-		// const reCaptchaCheck =
-		// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 		const _affiliateCheck = await checkAffiliate({
 			formAffCode: userValue.Affiliate
 		});
+
+		if (!executeRecaptcha) return;
+		const reCaptchaToken = await executeRecaptcha("signUp");
 
 		checked =
 			UserNameCheck.checked &&
@@ -344,7 +321,6 @@ const Join = () => {
 			PhoneCheck.checked &&
 			// EmailCheck.checked &&
 			userValue.Checkbox &&
-			// reCaptchaCheck &&
 			// affiliate is optional
 			(_affiliateCheck.checked === true ||
 				_affiliateCheck.checked === null);
@@ -359,8 +335,8 @@ const Join = () => {
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
-				ReferralUrl: document.referrer
-				// ReCaptchaToken: reCaptchaToken
+				ReferralUrl: document.referrer,
+				ReCaptchaToken: reCaptchaToken
 			};
 
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
@@ -462,10 +438,6 @@ const Join = () => {
 
 	const showBylink = useMatch(path.join.root);
 	const openPanel = showBylink || nav === defNavPanel.join;
-
-	const handleReCaptchaChange = token => {
-		setReCaptchaToken(token);
-	};
 
 	if (redirectPath) {
 		return <Redirect to="/" noThrow={true} />;
@@ -581,17 +553,6 @@ const Join = () => {
 						info: "lbl_Please_enter_Affiliate_ID"
 					})}
 				/>
-
-				{/* {Object.keys(recaptchaInfo).length > 0 &&
-					recaptchaInfo.country !== "CN" && (
-						<ReCAPTCHA
-							key={reCaptchaKey}
-							class="g-recaptcha"
-							sitekey={recaptchaInfo.siteKey}
-							onChange={handleReCaptchaChange}
-							hl={reCaptchaEnum[userInfo.langId]}
-						/>
-					)} */}
 
 				<Checkbox
 					Checked={userValue.Checkbox}
