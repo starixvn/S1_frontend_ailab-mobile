@@ -44,7 +44,6 @@ const Join = () => {
 	const [redirectPath, setRedirectPath] = useState(null);
 	const { executeRecaptcha } = useGoogleReCaptcha();
 	const { saveShieldData } = useShieldCheck();
-	const [reCaptchaKey, setReCaptchaKey] = useState(0);
 	const { isReady, cooldown, setCooldown } = useCooldown();
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
@@ -59,10 +58,6 @@ const Join = () => {
 			isMountedRef.current = false;
 		};
 	});
-
-	useEffect(() => {
-		setReCaptchaKey(reCaptchaKey + 1);
-	}, [userInfo.langId]);
 
 	useEffect(() => {
 		const init = async () => {
