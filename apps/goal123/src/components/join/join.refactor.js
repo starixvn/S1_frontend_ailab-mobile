@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, useNavigate } from "@reach/router";
 import { useCooldown } from "@ailab-mobile/hooks";
+import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
@@ -43,6 +44,9 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 	const { executeRecaptcha } = useGoogleReCaptcha();
 	const { saveShieldData } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
+	const {
+		data: { data: recaptchaInfoData } = {}
+	} = useGetRecaptchaInfoQuery();
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
@@ -308,8 +312,12 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 			formAffCode: userValue.Affiliate
 		});
 
-		if (!executeRecaptcha) return;
-		const reCaptchaToken = await executeRecaptcha("signUp");
+		// 中國地區不需驗證
+		let reCaptchaToken;
+		if (recaptchaInfoData?.country !== "CN") {
+			if (!executeRecaptcha) return;
+			reCaptchaToken = await executeRecaptcha("signUp");
+		}
 
 		checked =
 			UserNameCheck.checked &&

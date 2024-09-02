@@ -22,6 +22,7 @@ const JoinWrapper = () => {
 						openPanel={openPanel}
 						showBylink={showBylink}
 					/>
+					{/* 客製化 element 必須添加 */}
 					<div id="g-reCaptcha" />
 				</GReCaptchaProviders>
 			</div>
