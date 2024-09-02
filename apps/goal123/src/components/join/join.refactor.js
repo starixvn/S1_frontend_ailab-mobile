@@ -313,10 +313,11 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 		});
 
 		// 中國地區不需驗證
+		const ReCaptchaAction = "signup";
 		let reCaptchaToken;
 		if (recaptchaInfoData?.country !== "CN") {
 			if (!executeRecaptcha) return;
-			reCaptchaToken = await executeRecaptcha("signUp");
+			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
 		}
 
 		checked =
@@ -342,7 +343,8 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 				AreaCode: VN_AREACODE,
 				UserLang: defaultLangId,
 				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReCaptchaToken: reCaptchaToken,
+				ReCaptchaAction
 			};
 
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");

@@ -293,10 +293,11 @@ const Join = ({ setNav }) => {
 		});
 
 		// 中國地區不需驗證
+		const ReCaptchaAction = "signup";
 		let reCaptchaToken;
 		if (recaptchaInfoData?.country !== "CN") {
 			if (!executeRecaptcha) return;
-			reCaptchaToken = await executeRecaptcha("signUp");
+			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
 		}
 
 		checked =
@@ -318,7 +319,8 @@ const Join = ({ setNav }) => {
 				// Email: userValue.Email,
 				AreaCode: VN_AREACODE,
 				ReferralUrl: document.referrer,
-				ReCaptchaToken: reCaptchaToken
+				ReCaptchaToken: reCaptchaToken,
+				ReCaptchaAction
 			};
 
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
