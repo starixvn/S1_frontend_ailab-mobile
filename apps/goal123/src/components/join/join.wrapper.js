@@ -1,16 +1,31 @@
 import React, { useContext } from "react";
+import { useMatch } from "@reach/router";
 import { GReCaptchaProviders } from "@ailab-mobile/common";
-import { userInfoContext } from "../common/context";
+import classNames from "classnames";
+import { defNavPanel, navContext, userInfoContext } from "../common/context";
 import Join from "./join.refactor";
+import path from "../../path";
 
 const JoinWrapper = () => {
 	const { userInfo } = useContext(userInfoContext);
+	const { nav, setNav } = useContext(navContext);
+
+	const showBylink = useMatch(path.join.root);
+	const openPanel = showBylink || nav === defNavPanel.join;
 
 	return (
-		<GReCaptchaProviders langId={userInfo?.langId}>
-			<Join />
-			<div id="g-reCaptcha" />
-		</GReCaptchaProviders>
+		userInfo?.isLogin === false && (
+			<div className={classNames("Join", { open: openPanel })}>
+				<GReCaptchaProviders langId={userInfo?.langId}>
+					<Join
+						setNav={setNav}
+						openPanel={openPanel}
+						showBylink={showBylink}
+					/>
+					<div id="g-reCaptcha" />
+				</GReCaptchaProviders>
+			</div>
+		)
 	);
 };
 
