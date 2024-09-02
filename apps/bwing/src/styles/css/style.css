@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -1857,6 +1857,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
@@ -1865,6 +1868,7 @@ header {
 .menu-list-item {
   width: 26vw;
   height: 26vw;
+  margin: 0 5vw 5vw 0;
   background: #fff;
   border-radius: 3vw;
   font-weight: 700;
@@ -20911,4 +20915,198 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   margin-bottom: 5vw;
   letter-spacing: 0.05vw;
   color: #1C317B;
+}
+
+.survey {
+  background: #F8F8F8;
+  color: #9C9C9C;
+}
+.survey-before {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 14vw;
+  padding: 0 6vw;
+}
+.survey-before > div:first-child {
+  color: #1C317B;
+  font-size: 4vw;
+  font-weight: 600;
+}
+.survey-before > div:nth-child(2) {
+  padding: 0 5vw;
+  text-align: center;
+  margin-top: 5vw;
+  line-height: 5.5vw;
+}
+.survey-before fieldset {
+  border: medium none;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+.survey-before fieldset input {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  color: #0A1B38;
+  border-radius: 2vw;
+}
+.survey-before fieldset input::-webkit-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset input::-moz-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset input:-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset input::-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset input::placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset input:focus {
+  outline: 0;
+  border: 2px solid #FFAF43;
+}
+.survey-before fieldset textarea {
+  width: 75vw;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  height: 50vw;
+  max-width: 100%;
+  resize: none;
+  border-radius: 2vw;
+}
+.survey-before fieldset textarea::-webkit-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset textarea::-moz-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset textarea:-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset textarea::-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset textarea::placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.survey-before fieldset textarea:focus {
+  outline: 0;
+  border: 2px solid #FFAF43;
+}
+.survey-before fieldset button {
+  background: #FFAF43;
+  font-size: 3.5vw;
+  font-weight: 600;
+  border-radius: 2vw;
+  padding: 3vw 10vw;
+  width: 39.5vw;
+  margin-top: 8vw;
+  color: white;
+}
+.survey-before fieldset button:first-child[disabled] {
+  background: gray !important;
+}
+.survey-before fieldset button:last-child {
+  background: #DFDFDF;
+  color: #9B9B9B;
+}
+.survey-before fieldset .tip {
+  display: none;
+  margin-top: 2vw;
+}
+.survey-before fieldset .tip.active {
+  display: block;
+  color: red;
+}
+.survey-before fieldset .tip.message {
+  margin-top: 1vw;
+}
+.survey-before fieldset.error textarea {
+  border: 2px solid red;
+}
+.survey-before fieldset.error input {
+  border: 2px solid red;
+}
+.survey-before fieldset:first-child {
+  margin-bottom: 5vw;
+}
+.survey-before .survey-input {
+  margin-top: 3vw;
+}
+.survey-before .survey-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.survey-before.close {
+  display: none;
+}
+.survey-after {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.survey-after img {
+  width: 45vw;
+  margin-top: 15vw;
+}
+.survey-after > div:first-child > div {
+  color: #0A1B38;
+  font-size: 4vw;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 8vw;
+}
+.survey-after > div:last-child {
+  text-align: center;
+  padding: 7vw 5vw 0;
+  line-height: 5.5vw;
+}
+.survey-after.close {
+  display: none;
+}
+
+#g-reCaptcha .grecaptcha-badge {
+  z-index: 999;
 }/*# sourceMappingURL=style.css.map */
