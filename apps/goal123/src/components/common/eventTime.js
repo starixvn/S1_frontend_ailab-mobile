@@ -70,5 +70,10 @@ export const eventTime = {
 	olympic: {
 		startDate: "2024/07/16 00:00:00",
 		endDate: "2024/08/15 23:59:59"
+	},
+	// 2024中秋節
+	midAutumn: {
+		startDate: "2024/09/12 00:00:00",
+		endDate: "2024/09/18 23:59:59"
 	}
 };
