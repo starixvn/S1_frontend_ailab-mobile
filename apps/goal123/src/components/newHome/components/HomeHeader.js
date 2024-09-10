@@ -88,6 +88,11 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 		setPopUp("");
 	};
 
+	// TODO: 因應中秋節更換ＬＯＧＯ（期間：2024.9.12~9.18）(之後若有其他活動也可以在此調整)
+	const logoUrl = isDateRange(eventTime.midAutumn)
+		? `${bannerImgUrl}/h5/img/logo-mid.png`
+		: `${bannerImgUrl}/h5/img/logo.png`;
+
 	return (
 		<>
 			{appHint && (
@@ -118,37 +123,12 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 				<div className="logo">
 					<div>
 						<a className="logo-img">
-							<img
-								src={`${bannerImgUrl}/h5/img/logo.png`}
-								alt="header-logo"
-							/>
+							<img src={logoUrl} alt="header-logo" />
 						</a>
 						<span className="en">
 							{t("Label_Header_HarvestWealth")}
 						</span>
 					</div>
-
-					{/* TODO: 歐洲盃期間LOGO => 結束後可刪 */}
-					{isDateRange(eventTime.eventCup) && (
-						<a
-							className="logo-eurocup"
-							href={`/${userInfo.langId}/${path.euroCup.root}`}>
-							<img
-								src={`${bannerImgUrl}/h5/img/event/eurocup/euro-logo-gif-new.webp`}
-								alt="header-eurocup-logo"
-							/>
-						</a>
-					)}
-
-					{/* 2024巴黎奧運期間LOGO */}
-					{isDateRange(eventTime.olympic) && (
-						<a className="logo-olympic">
-							<img
-								src={`${bannerImgUrl}/h5/img/event/olympic/logo-goal123-h5.webp`}
-								alt="header-olympic-logo"
-							/>
-						</a>
-					)}
 				</div>
 
 				{!userInfo.isLogin && (
