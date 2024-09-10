@@ -43,5 +43,15 @@
       <img class="character" src="img/character.png" alt="">
     </div> -->
   </div>
+
+  <script>
+    try {
+      setInterval(() => {
+        document.location.href = window?.location.origin;
+      }, 30000);
+    } catch (e) {
+      console.error("BlockIP Error", e);
+    }
+  </script>
   </body>
 </html>
