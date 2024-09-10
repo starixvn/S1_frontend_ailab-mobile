@@ -17,6 +17,8 @@
   "Currency_96": "USDT",
   "GPI_VNLottery": "VN Lottery",
   "Label_CupEvent_Verify_Email_Phone": "Account information has not been completed, please verify the account information",
+  "Label_DepositNotification": "Deposit {{orderId}} have been approved        ",
+  "Label_DepositNotification                        ": "Deposit {{orderId}} have been approved        ",
   "Label_Deposit_AdditionalInfo": "(000') additional info here",
   "Label_Deposit_RemarkHint": "Please attach the remark to recipient reference field during transferring",
   "Label_Footer_Menu": "menu",

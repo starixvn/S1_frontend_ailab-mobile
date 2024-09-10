@@ -18,7 +18,7 @@ const HomePrevious = () => {
 					<ul className="previous-text">
 						<li className="previous-name">Michael Ballack</li>
 						<li className="previous-designation">
-							goal123 brand ambassador
+							{t("label_BrandAmbassador")}
 						</li>
 						<li className="previous-period">2023-2024</li>
 					</ul>
