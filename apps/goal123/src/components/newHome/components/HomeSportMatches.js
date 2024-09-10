@@ -12,7 +12,7 @@ const HomeSportMatches = () => {
 	const { setNav } = useContext(navContext);
 	const [activeTab, setActiveTab] = useState("1"); // 1: football, 2: basketball
 	const [apiData, setApiData] = useState([]);
-	const [filteredData, setFilteredData] = useState([]);
+	const [, setFilteredData] = useState([]);
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 
@@ -167,16 +167,11 @@ const HomeSportMatches = () => {
 					</a>
 				</div>
 			</div>
-			<div className="ambassador">
+			<div className="hotmatches-image">
 				<img
-					src={`${bannerImgUrl}/h5/img/home-page/hotmatches-bg.png`}
-					alt="ambassador"
+					src={`${bannerImgUrl}/h5/img/home-page/hotmatches-bg-1.png`}
+					alt="hotmatches"
 				/>
-				<div className="text">
-					<span>{t("lbl_Home_Ambassador")}</span>
-					<span>2023-2024</span>
-					<span>Michael Ballack</span>
-				</div>
 			</div>
 
 			<Swiper
@@ -188,7 +183,9 @@ const HomeSportMatches = () => {
 						filteredApiData.map((item, index) => {
 							return (
 								<SwiperSlide className="swiper-slide">
-									<div className="sports-item" key={index}>
+									<div
+										className="sports-item"
+										key={item?.sportLeaguesTitle}>
 										<div className="title">
 											{item?.sportLeaguesTitle}
 										</div>
