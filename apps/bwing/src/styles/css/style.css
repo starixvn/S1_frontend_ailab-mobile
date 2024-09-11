@@ -10109,6 +10109,7 @@ a.clickBtn:before {
 @media screen and (max-width: 1024px) {
   .inputdate input[type=date] {
     padding: 0;
+    width: 77vw;
   }
 }
 .inputdate input[type=date] ~ .iconModule {
@@ -19893,6 +19894,7 @@ body main.main.referral {
 .survey {
   background: #F8F8F8;
   color: #9C9C9C;
+  height: 100%;
 }
 .survey-before {
   display: -webkit-box;
