@@ -1,7 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "@ailab-mobile/store";
-import { Router, createHistory, LocationProvider } from "@reach/router";
+import {
+	Router,
+	createHistory,
+	LocationProvider,
+	Redirect
+} from "@reach/router";
 import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
@@ -82,6 +87,10 @@ const Index = () => {
 			<Wrapper>
 				<LocationProvider history={history}>
 					<Router primary={false}>
+						<Redirect from="/en" to="/" noThrow />
+						<Redirect from="/vn" to="/" noThrow />
+						<Redirect from="/en/:p" to="/:p" noThrow />
+						<Redirect from="/vn/:p" to="/:p" noThrow />
 						<NewHome path={path.home.root} default={true} />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
@@ -92,20 +101,16 @@ const Index = () => {
 							<Profile path={path.member.sub.root} />
 							<BankInfo path={path.member.sub.bankInfo.root} />
 						</Member>
-
 						<EWalletInfo path={path.eWallet.root} />
 						<CryptoWallet path={path.cryptoWallet.root} />
-
 						<FriendReferral path={path.referral.root}>
 							<Referral path={path.referral.sub.root} />
 							<ReferralHistory
 								path={path.referral.sub.history.root}
 							/>
 						</FriendReferral>
-
 						<Deposit path={path.deposit.root} />
 						<DepositHistory path={path.depositHistory.root} />
-
 						<Withdrawal path={path.withdrawal.root}>
 							<WithdrawalHome path={path.withdrawal.sub.root} />
 							<WithdrawalHistory
@@ -120,7 +125,6 @@ const Index = () => {
 								path={path.withdrawal.sub.cryptoWithdrawal.root}
 							/>
 						</Withdrawal>
-
 						<Kyc path={path.kyc.root} />
 						<KycWaiting path={path.kycWaiting.root} />
 						<Transfer path={path.transfer.root}>
@@ -146,7 +150,6 @@ const Index = () => {
 						<Other path={path.other.root} />
 						<Whoami path={path.whoami.root} />
 						<Angpao path={path.angpao.root} />
-
 						<LuckyWheel path={path.luckyWheel.root} />
 						<VIP path={path.vip.root} />
 						<AppDownload path={path.appDownload.root} />
