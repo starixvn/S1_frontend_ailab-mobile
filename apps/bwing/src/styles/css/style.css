@@ -20730,6 +20730,7 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
 .survey {
   background: #F8F8F8;
   color: #9C9C9C;
+  height: 100%;
 }
 .survey-before {
   display: -webkit-box;
