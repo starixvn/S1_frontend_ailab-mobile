@@ -501,7 +501,7 @@ const IndexPage = () => {
 					<Jactpot />
 					<FavoriteSlots hotGameList={hotGameList} />
 					{userInfo.isLogin && <RecentlyViewed />}
-					{!isInApp() && <HomeDownLoad />}
+					{/* {!isInApp() && <HomeDownLoad />} */}
 					<LiveSports videoList={videoList} />
 					<News news={news} />
 				</div>

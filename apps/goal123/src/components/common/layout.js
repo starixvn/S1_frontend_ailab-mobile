@@ -144,7 +144,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 			)}
 
 			{root ? (
-				<main className={classNames("home", { active: appHint })}>
+				<main className="home">
 					{children}
 					{loading ? <Loading /> : null}
 				</main>
