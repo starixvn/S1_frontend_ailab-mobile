@@ -1,7 +1,12 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "@ailab-mobile/store";
-import { Router, createHistory, LocationProvider } from "@reach/router";
+import {
+	Router,
+	createHistory,
+	LocationProvider,
+	Redirect
+} from "@reach/router";
 import path, { defSpecialPath } from "./path";
 import { Wrapper } from "./components/common/wrapper";
 import PopBox from "./components/common/popbox";
@@ -99,6 +104,10 @@ const Index = () => {
 				<LocationProvider history={history}>
 					<Layout>
 						<Router>
+							<Redirect from="/en" to="/" noThrow />
+							<Redirect from="/vn" to="/" noThrow />
+							<Redirect from="/en/:p" to="/:p" noThrow />
+							<Redirect from="/vn/:p" to="/:p" noThrow />
 							<Home path={path.home.root} default />
 							<ForgetPwd path={path.forgetPassword.root} />
 							<ResetPwd path={path.resetPassword.root} />
