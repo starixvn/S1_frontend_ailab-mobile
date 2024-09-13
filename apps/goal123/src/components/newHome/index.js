@@ -55,7 +55,7 @@ const HomeContent = () => {
 
 					<HomeInfo />
 					{userInfo.isLogin && <RecentlyViewedGameList />}
-					{/* {!isInApp() && <HomeAppDownload />} */}
+					{!isInApp() && <HomeAppDownload />}
 					<HomePrevious />
 					<HomeButtom />
 				</div>
