@@ -95,6 +95,30 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 
 	return (
 		<>
+			{appHint && (
+				<div className={appHint ? "appdownload active" : "appdownload"}>
+					<img
+						src={`${bannerImgUrl}/h5/img/home-page/goal123-appicon.png`}
+						alt="header-app-banner"
+					/>
+					<div className="text">
+						<span>{t("Label_Header_DownloadApp")}</span>
+						<span>{t("lbl_DownloadAppHint")}</span>
+					</div>
+					<button
+						className="btn-download"
+						onClick={() => {
+							navigate(`/${path.appDownload.root}`);
+						}}>
+						{t("lbl_Downloads")}
+					</button>
+					<i
+						className="icon icon-close"
+						onClick={handleDownloadHint}
+					/>
+				</div>
+			)}
+
 			<div className="header-content">
 				<div className="logo">
 					<div>

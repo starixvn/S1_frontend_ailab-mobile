@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "@reach/router";
 import { i18nContext } from "../components/common/context";
 import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
@@ -13,10 +13,6 @@ const IndexPage = () => {
 
 	const androidDownLoadUrl = appLinkDatas?.Android?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
-
-	useEffect(() => {
-		navigate(path.home.root);
-	}, []);
 
 	return (
 		<Layout title={i18n.lbl_APPDownload} mainClass="main app_page">

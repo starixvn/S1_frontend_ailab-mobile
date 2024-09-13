@@ -1,23 +1,16 @@
-import { useNavigate } from "@reach/router";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import QRCode from "qrcode.react";
 import { i18nContext } from "../components/common/context";
 import { useAppDownLoad } from "../components/appDownload/useAppDownLoad";
 import Footer from "../components/common/footer";
 import { bannerImgUrl } from "../config";
-import path from "../path";
 
 const IndexPage = () => {
 	const { i18n } = useContext(i18nContext);
 	const { appLinkDatas } = useAppDownLoad();
-	const navigate = useNavigate();
 
 	const androidDownLoadUrl = appLinkDatas?.Android?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
-
-	useEffect(() => {
-		navigate(path.home.root);
-	}, []);
 
 	return (
 		<>

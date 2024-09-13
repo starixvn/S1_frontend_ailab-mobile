@@ -26,14 +26,14 @@ const Header = ({ title, hideLogo, showingAppHint, setAppHint }) => {
 
 	return (
 		<header className={title ? "header" : ""} id="header">
-			{/* {showingAppHint && (* /}
-			{/*	<AppDownloadHint */}
-			{/*		i18n={i18n} */}
-			{/*		cookieName={`appDownloadHint${userInfo.userName}`} */}
-			{/*		langId={userInfo.langId} */}
-			{/*		setAppHint={setAppHint} */}
-			{/*	/> */}
-			{/* )} */}
+			{showingAppHint && (
+				<AppDownloadHint
+					i18n={i18n}
+					cookieName={`appDownloadHint${userInfo.userName}`}
+					langId={userInfo.langId}
+					setAppHint={setAppHint}
+				/>
+			)}
 			<div>
 				{hideLogo ? null : isDateRange(eventTime.eventCup) ? (
 					<a className="logo eurocuplogo">
