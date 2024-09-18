@@ -48,6 +48,11 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
+	"deposit/depositHistory": {
+		titleKey: "lbl_Deposit",
+		className: "main",
+		hideLogo: true
+	},
 	withdrawal: {
 		titleKey: "lbl_Withdrawal",
 		className: "main",
@@ -68,7 +73,7 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	[`/message/announcement`]: {
+	"message/announcement": {
 		titleKey: "lbl_Message",
 		className: "main Announcement",
 		hideLogo: true
