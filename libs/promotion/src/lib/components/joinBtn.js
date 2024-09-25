@@ -23,7 +23,8 @@ export const JoinBtn = ({
 	const [redirectPath, setRedirectPath] = useState(null);
 	const [processing, setProcessing] = useState(false);
 
-	const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
+	const { path, userInfo, i18n, api, handleLogin } = config;
+	// const { path, userInfo, i18n, api, formatSetting, handleLogin } = config;
 
 	if (
 		!promotionInfo ||
@@ -198,7 +199,7 @@ export const JoinBtn = ({
 							ClosePopBox={clickClose}
 							SetClaimPromotion={SetClaimPromotion}
 							i18n={i18n}
-							formatSetting={formatSetting}
+							// formatSetting={formatSetting}
 						/>
 					)
 				});
