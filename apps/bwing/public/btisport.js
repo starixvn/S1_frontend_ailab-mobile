@@ -57,8 +57,8 @@
 	};
 
 	// Constants
-	var getStatusUrl = "https://tp.nova88.net/BTI/Status";
-	var getRefreshUrl = "https://tp.nova88.net/BTI/Refresh";
+	var getStatusUrl = "https://tp.nova88asia.com/BTI/Status";
+	var getRefreshUrl = "https://tp.nova88asia.com/BTI/Refresh";
 	var URL_PARAM_NAME_TOKEN = "operatorToken";
 	var COOKIE_PARAM_NAME_TOKEN = "operatorToken";
 	var SESSION_PARAM_NAME_TOKEN = "operatorToken";
