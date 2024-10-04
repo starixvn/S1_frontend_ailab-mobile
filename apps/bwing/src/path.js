@@ -95,6 +95,9 @@ export default {
 	statement: {
 		root: "statement"
 	},
+	setting: {
+		root: "setting"
+	},
 	financialLog: {
 		root: "financialLog"
 	},
@@ -116,7 +119,6 @@ export default {
 	resetPassword: {
 		root: "resetPassword"
 	},
-	changePassword: { root: "changePassword" },
 	other: {
 		root: "other"
 	},

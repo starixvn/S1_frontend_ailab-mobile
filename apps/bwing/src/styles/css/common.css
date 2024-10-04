@@ -390,8 +390,15 @@
   margin: 0 1vw;
   cursor: pointer;
 }
-<<<<<<< HEAD
-=======
+.icon-setting-blue::before {
+  content: "";
+  display: block;
+  width: 9vw;
+  height: 9vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-setting-blue.svg) no-repeat center/cover;
+  margin: 0 1vw;
+  cursor: pointer;
+}
 .icon-survey-blue::before {
   content: "";
   display: block;
@@ -401,7 +408,6 @@
   margin: 0 1vw;
   cursor: pointer;
 }
->>>>>>> feat/ms-8490-(Allsites)-Survey-Questionnaire
 .icon-lottery-blue::before {
   content: "";
   display: block;
@@ -429,7 +435,6 @@
   margin: 0 1vw;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .icon-leaderboard-blue::before {
   content: "";
   display: block;
@@ -439,8 +444,6 @@
   margin: 0 1vw;
   cursor: pointer;
 }
-=======
->>>>>>> feat/ms-8490-(Allsites)-Survey-Questionnaire
 .icon-aff-blue::before {
   content: "";
   display: block;
