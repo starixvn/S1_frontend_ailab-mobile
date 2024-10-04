@@ -46,9 +46,8 @@ import Announcement from "./components/message/announcement";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
-import ChangePwd from "./components/member/changePwd";
 
-import Other from "./components/setting/other";
+import Other from "./pages/other";
 
 import Kyc from "./components/withdrawal/kyc";
 import KycWaiting from "./components/withdrawal/kycWaiting";
@@ -77,6 +76,7 @@ import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
+import Setting from "./pages/setting";
 import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
 
@@ -94,7 +94,6 @@ const Index = () => {
 						<NewHome path={path.home.root} default={true} />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
-						<ChangePwd path={path.changePassword.root} />
 						<Promotion path={path.promotion.root} />
 						<PromotionInfo path={path.promotionInfo.root} />
 						<Member path={path.member.root}>
@@ -166,6 +165,7 @@ const Index = () => {
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 						<RetentionPage path={path.retention.root} />
 						<LeaderBoard path={path.leaderBoard.root} />
+						<Setting path={path.setting.root} />
 						<Launcher path={path.launcher.root} />
 						<Survey path={path.survey.root} />
 					</Router>

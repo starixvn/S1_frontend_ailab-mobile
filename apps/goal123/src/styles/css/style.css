@@ -62,6 +62,56 @@ a {
   color: #fff;
 }
 
+.icon-moon:before {
+  font-size: 14vw;
+}
+
+.icon-CirclePay:before {
+  font-size: 12vw !important;
+}
+
+.icon-Eeziepay:before {
+  font-size: 7vw !important;
+}
+
+.icon-OneClickPay:before {
+  font-size: 14vw !important;
+}
+
+.icon-VNPay:before {
+  font-size: 3vw !important;
+}
+
+.icon-equalizer:before {
+  font-size: 6vw;
+}
+
+.icon-search {
+  -webkit-transform: translateY(35%) !important;
+          transform: translateY(35%) !important;
+}
+
+.icon-hockey:before {
+  font-size: 3vw;
+  margin-bottom: 1vw;
+}
+
+.icon-member:before {
+  font-size: 6.3vw !important;
+}
+
+.icon-cog:before {
+  font-size: 5vw !important;
+}
+
+.icon-paytrust88:before {
+  font-size: 5vw !important;
+}
+
+.icon-JDpay:before {
+  font-size: 4vw !important;
+}
+
 body,
 html {
   width: 100%;
@@ -685,7 +735,8 @@ main .sideBarNew div {
   display: -ms-flexbox;
   display: flex;
 }
-main .sideBarNew div > button, main .sideBarNew div a {
+main .sideBarNew div > button,
+main .sideBarNew div a {
   border-radius: 5px;
   height: 60px;
   margin: 0 2px;
@@ -702,14 +753,18 @@ main .sideBarNew div > button, main .sideBarNew div a {
       -ms-flex: 0 0 60px;
           flex: 0 0 60px;
 }
-main .sideBarNew div > button.active, main .sideBarNew div a.active {
+main .sideBarNew div > button.active,
+main .sideBarNew div a.active {
   background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 211, 79)), to(rgb(255, 195, 77)));
   background: linear-gradient(to bottom, rgb(255, 211, 79) 0%, rgb(255, 195, 77) 100%);
   color: #1f2e4d;
   -webkit-box-shadow: 0 -2px 1px #b88c36 inset;
           box-shadow: 0 -2px 1px #b88c36 inset;
 }
-main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liveicon::before, main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.newicon::before, main .sideBarNew div a.liveicon::before, main .sideBarNew div a.hoticon::before {
+main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liveicon::before, main .sideBarNew div > button.hoticon::before,
+main .sideBarNew div a.newicon::before,
+main .sideBarNew div a.liveicon::before,
+main .sideBarNew div a.hoticon::before {
   content: "";
   position: absolute;
   top: -11px;
@@ -720,32 +775,40 @@ main .sideBarNew div > button.newicon::before, main .sideBarNew div > button.liv
   -webkit-animation: flash3 linear infinite alternate 0.3s;
           animation: flash3 linear infinite alternate 0.3s;
 }
-main .sideBarNew div > button.newicon::before, main .sideBarNew div a.newicon::before {
+main .sideBarNew div > button.newicon::before,
+main .sideBarNew div a.newicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/new.svg) no-repeat center/contain;
 }
-main .sideBarNew div > button.liveicon::before, main .sideBarNew div a.liveicon::before {
+main .sideBarNew div > button.liveicon::before,
+main .sideBarNew div a.liveicon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/live.svg) no-repeat center/contain;
 }
-main .sideBarNew div > button.hoticon::before, main .sideBarNew div a.hoticon::before {
+main .sideBarNew div > button.hoticon::before,
+main .sideBarNew div a.hoticon::before {
   background: url(https://banner.goal123.org/h5/img/hotgame/hot.svg) no-repeat center/contain;
 }
-main .sideBarNew div > button img, main .sideBarNew div a img {
+main .sideBarNew div > button img,
+main .sideBarNew div a img {
   width: 35px;
 }
-main .sideBarNew div > button img.cryptobtn, main .sideBarNew div a img.cryptobtn {
+main .sideBarNew div > button img.cryptobtn,
+main .sideBarNew div a img.cryptobtn {
   width: 45px;
   padding-left: 1px;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  main .sideBarNew div > button, main .sideBarNew div a {
+  main .sideBarNew div > button,
+  main .sideBarNew div a {
     width: 20%;
     height: 100px;
   }
-  main .sideBarNew div > button img, main .sideBarNew div a img {
+  main .sideBarNew div > button img,
+  main .sideBarNew div a img {
     width: 50px;
   }
 }
-main .sideBarNew div > button.event, main .sideBarNew div a.event {
+main .sideBarNew div > button.event,
+main .sideBarNew div a.event {
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -757,7 +820,8 @@ main .sideBarNew div > button.event, main .sideBarNew div a.event {
       -ms-flex-pack: center;
           justify-content: center;
 }
-main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
+main .sideBarNew div > button.event img,
+main .sideBarNew div a.event img {
   width: 10.5vw;
 }
 @-webkit-keyframes newicon {
@@ -1726,7 +1790,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex: 1 1;
           flex: 1 1;
 }
-#popup.cryptoAddpop .popTxt .infoModule.parts .btn-group button, #popup.cryptoAddpop .popTxt .infoModule.parts .btn-group a {
+#popup.cryptoAddpop .popTxt .infoModule.parts .btn-group button,
+#popup.cryptoAddpop .popTxt .infoModule.parts .btn-group a {
   font-size: 3.5vw;
 }
 #popup.cryptoAddpop .popTxt .infoModule .icon-module {
@@ -2019,7 +2084,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   overflow: hidden;
   margin: 1vw 0 2vw;
 }
-#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg, #popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg,
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
   width: auto;
   height: 90%;
   margin: 0;
@@ -2036,7 +2102,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-#popup.qrpayPop .pop > div.popTxt .guide .code a, #popup.qrpayPop .pop > div.popTxt .guide .code button {
+#popup.qrpayPop .pop > div.popTxt .guide .code a,
+#popup.qrpayPop .pop > div.popTxt .guide .code button {
   color: #fff;
   padding: 1vw;
   margin-left: 1vw;
@@ -2573,19 +2640,27 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   display: -ms-flexbox;
   display: flex;
 }
-#popup.depositlist .pop .depositlist-item .date, #popup.depositlist .pop .depositlist-item .user, #popup.depositlist .pop .depositlist-item .money {
+#popup.depositlist .pop .depositlist-item .date,
+#popup.depositlist .pop .depositlist-item .user,
+#popup.depositlist .pop .depositlist-item .money {
   font-size: 2.5vw;
 }
-#popup.depositlist .pop .depositlist-item .date > div, #popup.depositlist .pop .depositlist-item .user > div, #popup.depositlist .pop .depositlist-item .money > div {
+#popup.depositlist .pop .depositlist-item .date > div,
+#popup.depositlist .pop .depositlist-item .user > div,
+#popup.depositlist .pop .depositlist-item .money > div {
   border-radius: 2vw;
   padding: 2vw 0;
   margin-top: 2vw;
   padding-left: 1vw;
 }
-#popup.depositlist .pop .depositlist-item .date > div:nth-child(n), #popup.depositlist .pop .depositlist-item .user > div:nth-child(n), #popup.depositlist .pop .depositlist-item .money > div:nth-child(n) {
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(n),
+#popup.depositlist .pop .depositlist-item .user > div:nth-child(n),
+#popup.depositlist .pop .depositlist-item .money > div:nth-child(n) {
   background: #DEDEDE;
 }
-#popup.depositlist .pop .depositlist-item .date > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .user > div:nth-child(odd), #popup.depositlist .pop .depositlist-item .money > div:nth-child(odd) {
+#popup.depositlist .pop .depositlist-item .date > div:nth-child(odd),
+#popup.depositlist .pop .depositlist-item .user > div:nth-child(odd),
+#popup.depositlist .pop .depositlist-item .money > div:nth-child(odd) {
   background: #F2F2F2;
 }
 #popup.depositlist .pop .depositlist-item .date {
@@ -3215,11 +3290,13 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-.mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
+.mainNew .hotevent .hotDiv > div.btn a,
+.mainNew .hotevent .hotDiv > div.btn button {
   font-size: 2.6vw;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  .mainNew .hotevent .hotDiv > div.btn a, .mainNew .hotevent .hotDiv > div.btn button {
+  .mainNew .hotevent .hotDiv > div.btn a,
+  .mainNew .hotevent .hotDiv > div.btn button {
     font-size: 2.4vw;
   }
 }
@@ -3338,7 +3415,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -webkit-animation: newicon 1s linear infinite alternate;
           animation: newicon 1s linear infinite alternate;
 }
-.mainNew .gameBox > div .gamelistNew .game .newicon, .mainNew .gameBox > div .gamelistNew .game .hoticon {
+.mainNew .gameBox > div .gamelistNew .game .newicon,
+.mainNew .gameBox > div .gamelistNew .game .hoticon {
   position: absolute;
   bottom: 20px;
   left: 0;
@@ -3416,7 +3494,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
           align-items: flex-end;
   width: 100%;
 }
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a,
+.mainNew .gameBox > div .gamelistNew .game .switchbtn button {
   font-size: 3vw;
   -webkit-transform: scale(0.55);
           transform: scale(0.55);
@@ -3431,19 +3510,23 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   background: #fab617;
   color: #1f3258;
 }
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:first-child {
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:first-child,
+.mainNew .gameBox > div .gamelistNew .game .switchbtn button:first-child {
   background: #d83b35;
   margin-bottom: 0;
   color: #fff;
 }
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover {
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover,
+.mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover {
   background: rgba(247, 121, 0, 0.8);
 }
-.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover:first-child, .mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover:first-child {
+.mainNew .gameBox > div .gamelistNew .game .switchbtn a:hover:first-child,
+.mainNew .gameBox > div .gamelistNew .game .switchbtn button:hover:first-child {
   background: rgba(170, 40, 7, 0.8);
 }
 @media (max-width: 280px) {
-  .mainNew .gameBox > div .gamelistNew .game .switchbtn a, .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
+  .mainNew .gameBox > div .gamelistNew .game .switchbtn a,
+  .mainNew .gameBox > div .gamelistNew .game .switchbtn button {
     width: 25vw;
   }
 }
@@ -3931,7 +4014,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   margin-bottom: 1vw;
 }
 
-.pending, .reject, .cancelled, .approved {
+.pending,
+.reject,
+.cancelled,
+.approved {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3939,7 +4025,10 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
       -ms-flex-align: center;
           align-items: center;
 }
-.pending .infobtn, .reject .infobtn, .cancelled .infobtn, .approved .infobtn {
+.pending .infobtn,
+.reject .infobtn,
+.cancelled .infobtn,
+.approved .infobtn {
   background: url(https://banner.goal123.org/h5/img/notice.png) no-repeat center/cover;
   width: 4vw;
   height: 4vw;
@@ -4211,7 +4300,8 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.selectBank button, .selectBank a {
+.selectBank button,
+.selectBank a {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(33.3333333333% - 1vw);
           flex: 0 0 calc(33.3333333333% - 1vw);
@@ -4228,16 +4318,20 @@ main .sideBarNew div > button.event img, main .sideBarNew div a.event img {
   position: relative;
   min-height: 16.5vw;
 }
-.selectBank button.open, .selectBank a.open {
+.selectBank button.open,
+.selectBank a.open {
   border: 2px solid #1e85ec;
 }
-.selectBank button .mask, .selectBank a .mask {
+.selectBank button .mask,
+.selectBank a .mask {
   display: none;
 }
-.selectBank button.pending, .selectBank a.pending {
+.selectBank button.pending,
+.selectBank a.pending {
   position: relative;
 }
-.selectBank button.pending .mask, .selectBank a.pending .mask {
+.selectBank button.pending .mask,
+.selectBank a.pending .mask {
   position: absolute;
   top: 0;
   left: 0;
@@ -5449,7 +5543,8 @@ button.clickBtn:before {
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
 }
-.slotFunctionNew .btn-group a, .slotFunctionNew .btn-group button {
+.slotFunctionNew .btn-group a,
+.slotFunctionNew .btn-group button {
   width: 70%;
   margin-bottom: 5vw;
   border: 1px solid #fff;
@@ -6835,7 +6930,8 @@ span.important {
   -webkit-filter: grayscale(1);
           filter: grayscale(1);
 }
-.promotions div.promodule .claimed, .promotions div.promodule .new {
+.promotions div.promodule .claimed,
+.promotions div.promodule .new {
   position: absolute;
   display: none;
   -webkit-box-pack: center;
@@ -6862,7 +6958,8 @@ span.important {
           transform: rotate(0);
   font-style: initial;
 }
-.promotions div.promodule .claimed:before, .promotions div.promodule .new:before {
+.promotions div.promodule .claimed:before,
+.promotions div.promodule .new:before {
   content: "CLAIMED";
   top: -14vw;
   left: 0vw;
@@ -6883,7 +6980,8 @@ span.important {
   display: flex;
 }
 @media screen and (min-width: 550px) and (max-width: 1024px) {
-  .promotions div.promodule .protitle, .promotions div.promodule .text {
+  .promotions div.promodule .protitle,
+  .promotions div.promodule .text {
     margin-bottom: 10px;
   }
 }
@@ -7844,12 +7942,14 @@ span.important {
 .refShare .refBox > div button {
   width: 100%;
 }
-.refShare .refBox > div a, .refShare .refBox > div button {
+.refShare .refBox > div a,
+.refShare .refBox > div button {
   color: #fab617;
   text-decoration: underline;
   font-size: 12px;
 }
-.refShare .refBox > div a.more, .refShare .refBox > div button.more {
+.refShare .refBox > div a.more,
+.refShare .refBox > div button.more {
   font-size: 16px;
   display: block;
   margin: 0 auto;
@@ -7861,7 +7961,8 @@ span.important {
   text-transform: uppercase;
   text-decoration: none;
 }
-.refShare .refBox > div a.more:hover, .refShare .refBox > div button.more:hover {
+.refShare .refBox > div a.more:hover,
+.refShare .refBox > div button.more:hover {
   background: #fab617;
   color: #ffffff;
   -webkit-transition: 0.2s;
@@ -8199,13 +8300,15 @@ span.important {
   font-size: 4vw;
   color: #284985;
 }
-.refer-status-item .card > div, .refer-status-item .card span {
+.refer-status-item .card > div,
+.refer-status-item .card span {
   color: #EA2329;
   font-weight: 900;
   font-size: 5.6vw;
   margin-top: 4vw;
 }
-.refer-status-item .card > div span, .refer-status-item .card span span {
+.refer-status-item .card > div span,
+.refer-status-item .card span span {
   margin-right: 3vw;
 }
 
@@ -9347,7 +9450,8 @@ span.important {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.favouriteModule .favourite > div div a, .favouriteModule .favourite > div div button {
+.favouriteModule .favourite > div div a,
+.favouriteModule .favourite > div div button {
   color: white;
   margin-left: 2vw;
   background: #4e6ca8;
@@ -9552,7 +9656,8 @@ span.important {
   border-radius: 0;
   margin: 5vw 0 -3vw;
 }
-.partnerSelect button, .partnerSelect a {
+.partnerSelect button,
+.partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -9570,23 +9675,27 @@ span.important {
   -webkit-filter: brightness(0.5);
           filter: brightness(0.5);
 }
-.partnerSelect button div, .partnerSelect a div {
+.partnerSelect button div,
+.partnerSelect a div {
   margin-top: -1vw;
 }
-.partnerSelect button img, .partnerSelect a img {
+.partnerSelect button img,
+.partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
   transition: 0.7s;
   height: 12vw;
 }
-.partnerSelect button.active, .partnerSelect a.active {
+.partnerSelect button.active,
+.partnerSelect a.active {
   background: #1e85ec;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
-.partnerSelect button.active img, .partnerSelect a.active img {
+.partnerSelect button.active img,
+.partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;
@@ -9595,7 +9704,8 @@ span.important {
 .partnerSelect.modifier {
   background: transparent;
 }
-.partnerSelect.modifier button, .partnerSelect.modifier a {
+.partnerSelect.modifier button,
+.partnerSelect.modifier a {
   background: #5084e4;
   margin-right: 1vw;
   padding: 0.8vw 1.2vw;
@@ -9613,7 +9723,8 @@ span.important {
   border-radius: 0;
   margin-top: 4vw;
 }
-.partnerSelect + .casinoSelect button, .partnerSelect + .casinoSelect a {
+.partnerSelect + .casinoSelect button,
+.partnerSelect + .casinoSelect a {
   color: #a1a1a1;
   width: auto;
   min-width: auto;
@@ -9622,7 +9733,8 @@ span.important {
   white-space: nowrap;
   border-radius: 0;
 }
-.partnerSelect + .casinoSelect button.active, .partnerSelect + .casinoSelect a.active {
+.partnerSelect + .casinoSelect button.active,
+.partnerSelect + .casinoSelect a.active {
   margin-top: 1vw;
   color: #5084e4;
   border-bottom: 1vw #5084e4 solid;
@@ -9683,7 +9795,8 @@ span.important {
   display: block;
   margin: 10px auto;
 }
-.app_page > div a, .app_page > div button {
+.app_page > div a,
+.app_page > div button {
   padding: 8px 15px;
   background: linear-gradient(130deg, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%);
   -webkit-box-shadow: 1px 2px 5px rgba(125, 184, 240, 0.7450980392);
@@ -9725,7 +9838,15 @@ span.important {
   color: #cfcfcf !important;
 }
 
-.backstage ol, .backstage ul, .backstage li, .backstage ins, .backstage p, .backstage pre, .backstage del, .backstage em, .backstage span {
+.backstage ol,
+.backstage ul,
+.backstage li,
+.backstage ins,
+.backstage p,
+.backstage pre,
+.backstage del,
+.backstage em,
+.backstage span {
   list-style: revert;
   margin: revert;
   padding: revert;
@@ -9734,7 +9855,13 @@ span.important {
   font: revert;
   vertical-align: revert;
 }
-.backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
+.backstage h1,
+.backstage h2,
+.backstage h3,
+.backstage h4,
+.backstage h5,
+.backstage h6,
+.backstage strong {
   font-size: revert;
   margin: revert;
   padding: revert;
@@ -12090,7 +12217,8 @@ span.important {
   position: relative;
   cursor: pointer;
 }
-.recently .swiper-button-next, .recently .swiper-button-prev {
+.recently .swiper-button-next,
+.recently .swiper-button-prev {
   background: rgba(250, 182, 23, 0.8);
   font-family: "icomoon";
   width: 6vw;
@@ -12110,12 +12238,14 @@ span.important {
   transition: 0.5s;
   z-index: 4;
 }
-.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
+.recently .swiper-button-next::before,
+.recently .swiper-button-prev::before {
   content: "\ea40";
   font-size: 4vw;
   color: #141f33;
 }
-.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
+.recently .swiper-button-next::after,
+.recently .swiper-button-prev::after {
   content: "";
 }
 .recently .swiper-button-next {
@@ -12902,7 +13032,7 @@ span.important {
   }
 }
 .ambassador {
-  padding-top: 12vw;
+  padding-top: 11vw;
   padding-bottom: 10vw;
 }
 .ambassador .banner img {
@@ -13202,7 +13332,7 @@ span.important {
 }
 .ambassador-app {
   background: #fab617;
-  padding: 10vw 3vw 10vw 3vw;
+  padding: 10vw 3vw 20vw 3vw;
   position: relative;
   border-radius: 15vw 15vw 0 0;
   margin-top: -15vw;
@@ -13384,7 +13514,8 @@ span.important {
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 }
-.euro a, .euro button {
+.euro a,
+.euro button {
   font-family: "Montserrat", sans-serif;
 }
 .euro .top-bn {
@@ -13572,7 +13703,8 @@ span.important {
 .euro .prediction-swiper-item .country-flag img {
   width: 11vw;
 }
-.euro .swiper-button-next, .euro .swiper-button-prev {
+.euro .swiper-button-next,
+.euro .swiper-button-prev {
   top: 82vw;
   border-radius: 50vw;
   width: 10vw;
@@ -13707,18 +13839,21 @@ span.important {
   padding: 6vw;
   margin: 0 7vw;
 }
-.euro .ticket-filter > div .group-input .dropdown, .euro .ticket-filter > div .team-input .dropdown {
+.euro .ticket-filter > div .group-input .dropdown,
+.euro .ticket-filter > div .team-input .dropdown {
   background: #dddddd;
   border-radius: 50vw;
   border: 0;
 }
-.euro .ticket-filter > div .group-input .dropdown > .btn, .euro .ticket-filter > div .team-input .dropdown > .btn {
+.euro .ticket-filter > div .group-input .dropdown > .btn,
+.euro .ticket-filter > div .team-input .dropdown > .btn {
   color: #B5B5B5;
   font-weight: 700;
   margin-left: 4vw;
   padding: 2vw 0;
 }
-.euro .ticket-filter > div .group-input .dropdown::before, .euro .ticket-filter > div .team-input .dropdown::before {
+.euro .ticket-filter > div .group-input .dropdown::before,
+.euro .ticket-filter > div .team-input .dropdown::before {
   background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-down-dark.png) no-repeat center/100%;
   display: block;
   content: "";
@@ -13727,7 +13862,8 @@ span.important {
   border: 0;
   margin-right: 1.5vw;
 }
-.euro .ticket-filter > div .group-input .dropdown-container, .euro .ticket-filter > div .team-input .dropdown-container {
+.euro .ticket-filter > div .group-input .dropdown-container,
+.euro .ticket-filter > div .team-input .dropdown-container {
   display: none;
   left: calc(50% - 37vw);
   top: 7vw;
@@ -13741,16 +13877,20 @@ span.important {
   font-size: 3.5vw;
   max-height: 47vw;
 }
-.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item,
+.euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
   border-bottom: 1px solid #e3e3e3;
 }
-.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child,
+.euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
   border: 0;
 }
-.euro .ticket-filter > div .group-input .dropdown-container.active, .euro .ticket-filter > div .team-input .dropdown-container.active {
+.euro .ticket-filter > div .group-input .dropdown-container.active,
+.euro .ticket-filter > div .team-input .dropdown-container.active {
   display: block;
 }
-.euro .ticket-filter > div .group-input .dropdown.check, .euro .ticket-filter > div .team-input .dropdown.check {
+.euro .ticket-filter > div .group-input .dropdown.check,
+.euro .ticket-filter > div .team-input .dropdown.check {
   background: white;
   border: 2px solid #143CDB;
 }
@@ -14068,11 +14208,17 @@ span.important {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  color: #3D63FB;
 }
 .euro .bottom-tap a.active {
   border-bottom: 2px solid white;
 }
-.euro .reward-title, .euro .matches-title, .euro .terms-title {
+.euro .bottom-tap a.active span {
+  color: white;
+}
+.euro .reward-title,
+.euro .matches-title,
+.euro .terms-title {
   color: white;
   font-size: 4vw;
   font-weight: 800;
@@ -14084,7 +14230,9 @@ span.important {
           align-items: center;
   margin: 7vw 0 1vw 5vw;
 }
-.euro .reward-title img, .euro .matches-title img, .euro .terms-title img {
+.euro .reward-title img,
+.euro .matches-title img,
+.euro .terms-title img {
   width: 7vw;
   margin-right: 2vw;
   margin-bottom: 1vw;
@@ -14409,7 +14557,8 @@ span.important {
   text-transform: capitalize;
   font-size: 2.9vw;
 }
-.appdownload a, .appdownload button {
+.appdownload a,
+.appdownload button {
   font-family: "Montserrat", sans-serif;
   background: #d83b35;
   font-size: 3.6vw;
@@ -14470,7 +14619,8 @@ span.important {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.header-content .logo > div a img, .header-content .logo > div button img {
+.header-content .logo > div a img,
+.header-content .logo > div button img {
   width: 30.5vw;
 }
 .header-content .logo > div span {
@@ -14644,7 +14794,7 @@ span.important {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2.6vw;
+  font-size: 2.15vw;
   color: #878686;
   font-weight: 700;
 }
@@ -14659,7 +14809,7 @@ span.important {
 .header-content .member-balance .number span {
   color: #284985;
   font-size: 2.8vw;
-  margin-right: 1.5vw;
+  margin-right: 1vw;
 }
 .header-content .member-balance a.icon-spinner11::before,
 .header-content .member-balance button.icon-spinner11::before {
@@ -14828,7 +14978,8 @@ span.important {
   bottom: -7.6vw;
   right: -0.7vw;
 }
-.header-content .member-message a.icon-message .info a, .header-content .member-message a.icon-message .info button,
+.header-content .member-message a.icon-message .info a,
+.header-content .member-message a.icon-message .info button,
 .header-content .member-message button.icon-message .info a,
 .header-content .member-message button.icon-message .info button {
   display: inline-block;
@@ -17124,7 +17275,8 @@ main .menu-member .member-profile {
       -ms-flex-align: center;
           align-items: center;
 }
-main .menu-member .member-profile a, main .menu-member .member-profile button {
+main .menu-member .member-profile a,
+main .menu-member .member-profile button {
   display: block;
 }
 main .menu-member .member-profile .user-level {
@@ -17302,7 +17454,8 @@ main .menu-member .member-message .icon-message .info {
   bottom: -6.6vw;
   right: -0.9vw;
 }
-main .menu-member .member-message .icon-message .info a, main .menu-member .member-message .icon-message .info button {
+main .menu-member .member-message .icon-message .info a,
+main .menu-member .member-message .icon-message .info button {
   display: inline-block;
 }
 main .menu-member .member-message .icon-message .info > div {
@@ -18513,7 +18666,8 @@ main.leaderboard .leaderboard-ranking .countdown-time span {
   color: transparent;
   margin-right: 0.5vw;
 }
-main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
+main.leaderboard .leaderboard-ranking .countdown a.btn-bet,
+main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18534,7 +18688,8 @@ main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .le
   color: #fff;
   margin: 2.3vw 0 0;
 }
-main.leaderboard .leaderboard-ranking .countdown a:hover, main.leaderboard .leaderboard-ranking .countdown button:hover {
+main.leaderboard .leaderboard-ranking .countdown a:hover,
+main.leaderboard .leaderboard-ranking .countdown button:hover {
   -webkit-filter: brightness(1.05);
           filter: brightness(1.05);
   -webkit-transition: 0.3s;
@@ -19237,4 +19392,600 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
 
 #g-reCaptcha .grecaptcha-badge {
   z-index: 999;
+}
+
+.setting-container .bottom-line {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8vw 0;
+}
+.setting-content {
+  color: #949494;
+  margin-bottom: 8vw;
+  font-weight: 500;
+}
+.setting-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-checkbox .inputBox, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event {
+  height: 10vw;
+  border-radius: 3vw !important;
+  border: 0;
+  color: #5574A7;
+  font-size: 3vw;
+}
+.setting-checkbox .inputBox .dropdown, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown {
+  background: #ffffff;
+  border: 1px solid #284985;
+  border-radius: 2vw;
+  color: #052561;
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2vw;
+}
+.setting-checkbox .inputBox .dropdown-container, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container {
+  display: none;
+  position: absolute;
+  background: #EFEFEF;
+  z-index: 2;
+  border: 1px solid #284985;
+  border-top: 0;
+  width: 100%;
+  left: 0;
+  top: 6vw;
+  max-height: 45vw;
+  overflow-y: scroll;
+  color: #284985;
+  border-radius: 0 0 2vw 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 2vw;
+  background: #fff;
+}
+.setting-checkbox .inputBox .dropdown-container.active, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container.active, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container.active {
+  display: block;
+}
+.setting-checkbox .inputBox .dropdown-container .dropdown-item, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container .dropdown-item, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container .dropdown-item {
+  padding: 2vw 2vw 2vw 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+}
+.setting-checkbox .checkbox-content {
+  margin-top: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.setting-checkbox .checkbox-content input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  width: 0;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled {
+  background: #000;
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 8px;
+  padding: 0.5px;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled + .checkbox-icon + span {
+  color: #B5C0D1;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #2775FF;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled ~ .checkbox-icon {
+  opacity: 0;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled ~ .checkbox-icon::after {
+  opacity: 0;
+}
+.setting-checkbox .checkbox-content .checkbox-icon {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  border: 1px solid #C2D9FF;
+  border-radius: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 2vw;
+  padding: 0.2vw;
+}
+.setting-checkbox .checkbox-content .checkbox-icon::after {
+  content: "";
+  width: 1vw;
+  height: 2vw;
+  border: solid white;
+  border-width: 0 0.5vw 0.5vw 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: none;
+  margin-bottom: 1vw;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #2775FF;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-radiobox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-radiobox .radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
+}
+.setting-radiobox .radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label::before {
+  content: "";
+  background: white;
+  border-radius: 100%;
+  border: 1px solid #2775FF;
+  display: inline-block;
+  width: 4vw;
+  height: 4vw;
+  position: relative;
+  margin-right: 2vw;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.setting-radiobox .radio input[type=radio]:checked + .radio-label::before {
+  background: #2775FF;
+  -webkit-box-shadow: inset 0 0 0 3px white;
+          box-shadow: inset 0 0 0 3px white;
+}
+.setting-radiobox .radio input[type=radio]:focus + .radio-label::before {
+  outline: none;
+  border-color: #2775FF;
+}
+.setting-radiobox .radio input[type=radio]:disabled + .radio-label::before {
+  -webkit-box-shadow: inset 0 0 0 3px #f4f4f4;
+          box-shadow: inset 0 0 0 3px #f4f4f4;
+  border-color: #b4b4b4;
+  background: white;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label:empty::before {
+  margin-right: 0;
+}
+.setting-radiobox .radio .radio-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-title {
+  color: #112240;
+  font-weight: 700;
+  font-size: 3.5vw;
+  font-weight: 600;
+  margin: 0 0 2vw 2vw;
+}
+.setting-tip {
+  color: #949494;
+  font-size: 2.5vw;
+  font-weight: 100;
+  margin: 2vw 0 3vw 2vw;
+}
+.setting .tip.active {
+  color: #e92529;
+  text-align: left;
+  display: block;
+}
+.setting .changepassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.setting .changepassword .inputBox, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vw !important;
+  margin-top: 3vw !important;
+  border-radius: 20vw !important;
+  border: 0;
+  background: #fff;
+  color: #5574A7;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox:focus-within, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event:focus-within, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .inputBox.error, .setting .changepassword .worldcupEvent .ticket__container .error.inputBox-event, .worldcupEvent .ticket__container .setting .changepassword .error.inputBox-event {
+  border: 1px solid #cf0404;
+}
+.setting .changepassword .inputBox > input, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input {
+  background: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: 3vw;
+  color: #284985;
+  border: 0;
+  outline: none;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox > input::-webkit-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-webkit-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-moz-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-moz-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-ms-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input:-ms-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-ms-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-ms-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-webkit-autofill, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input:-webkit-autofill, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+          box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #0A1B38;
+}
+.setting .changepassword .inputBox > input[type=file], .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=file], .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=file] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox], .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=checkbox], .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=checkbox] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] + label, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=checkbox] + label, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=checkbox] + label {
+  margin: 0 2vw 0 0;
+  vertical-align: middle;
+  color: #284985;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword-input {
+  height: 10vw;
+  padding: 0 0 0 3vw;
+  margin-top: 3vw;
+  border-radius: 20vw;
+  border: 0;
+  background: #EFEFEF;
+  color: #5574A7;
+  font-size: 3vw;
+}
+.setting .changepassword-input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword-input:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword fieldset {
+  border: medium none;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+.setting .changepassword fieldset input {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  color: #0A1B38;
+  border-radius: 2vw;
+}
+.setting .changepassword fieldset input::-webkit-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset input::-moz-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset input:-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset input::-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset input::placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset input:focus {
+  outline: 0;
+  border: 2px solid #5084e4;
+}
+.setting .changepassword fieldset textarea {
+  width: 75vw;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  height: 50vw;
+  max-width: 100%;
+  resize: none;
+  border-radius: 2vw;
+}
+.setting .changepassword fieldset textarea::-webkit-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset textarea::-moz-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset textarea:-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset textarea::-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset textarea::placeholder {
+  color: #D8D8D8;
+  font-family: "Montserrat", sans-serif;
+}
+.setting .changepassword fieldset textarea:focus {
+  outline: 0;
+  border: 2px solid #5084e4;
+}
+.setting .changepassword fieldset button {
+  background: #EE4F49;
+  font-size: 3.5vw;
+  font-weight: 600;
+  border-radius: 2vw;
+  padding: 3vw 10vw;
+  width: 39.5vw;
+  margin-top: 8vw;
+  color: white;
+}
+.setting .changepassword fieldset button:first-child[disabled] {
+  background: gray !important;
+}
+.setting .changepassword fieldset button:last-child {
+  background: #DFDFDF;
+  color: #9B9B9B;
+}
+.setting .changepassword fieldset .tip {
+  display: none;
+  margin-top: 2vw;
+}
+.setting .changepassword fieldset .tip.active {
+  display: block;
+  color: red;
+}
+.setting .changepassword fieldset .tip.message {
+  margin-top: 1vw;
+}
+.setting .changepassword fieldset.error textarea {
+  border: 2px solid red;
+}
+.setting .changepassword fieldset.error input {
+  border: 2px solid red;
+}
+.setting .changepassword fieldset:first-child {
+  margin-bottom: 5vw;
+}
+.setting .changepassword .survey-input {
+  margin-top: 3vw;
+}
+.setting .changepassword .survey-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .changepassword .survey-btn > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .changepassword .survey-btn > div img {
+  width: 10vw;
+}
+.setting .changepassword .survey-btn > div span {
+  color: #5574A7;
+  margin-left: 2vw;
+}
+.setting .changepassword .survey-btn button {
+  background: #2775FF;
+  color: white;
+  width: 25vw;
+  border-radius: 20vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.setting .changepassword .survey-btn button::after {
+  display: block;
+  content: "";
+  width: 2.5vw;
+  height: 2.5vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin-left: 1.5vw;
+}
+.setting .changepassword .survey-btn button.active {
+  background: #9C9C9C;
+}
+.setting .changepassword .survey-btn button.active::after {
+  display: none;
+}
+.setting .btn-group {
+  width: 100%;
+}
+.setting .btn-group > button {
+  background: #284985;
+}
+.setting .inputBox input, .setting .worldcupEvent .ticket__container .inputBox-event input, .worldcupEvent .ticket__container .setting .inputBox-event input {
+  width: auto;
+}
+.setting .inputBox .icon-module, .setting .worldcupEvent .ticket__container .inputBox-event .icon-module, .worldcupEvent .ticket__container .setting .inputBox-event .icon-module {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+}
+.setting input[type=checkbox]:disabled {
+  background: #000;
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 8px;
+  padding: 0.5px;
+}
+.setting input[type=checkbox]:disabled + .checkbox-icon + span {
+  color: #B5C0D1;
 }/*# sourceMappingURL=style.css.map */

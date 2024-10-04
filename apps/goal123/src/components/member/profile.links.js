@@ -23,11 +23,6 @@ const ProfileLinks = ({ i18n, setUserInfo, setNav }) => {
 	) : (
 		<>
 			<div className="btn-group">
-				<Link className="lightBlue" to={`/${path.changePassword.root}`}>
-					{i18n.lbl_ChangePassword}
-				</Link>
-			</div>
-			<div className="btn-group">
 				<Link className="lightBlue" to={`/${path.other.root}`}>
 					{i18n.lbl_Other}
 				</Link>

@@ -87,6 +87,19 @@ export const accountApi = rootApi.injectEndpoints({
 				method: "POST"
 			})
 		}),
+		SetCustSetting: builder.mutation<
+			IAxiosResponse<void>,
+			{
+				financeNotification: string | undefined;
+				soundEffects: string | undefined;
+			}
+		>({
+			query: data => ({
+				url: "AccountStrict/SetCustSetting",
+				method: "POST",
+				data
+			})
+		}),
 		setLanguage: builder.mutation<IAxiosResponse<void>, { langId: string }>(
 			{
 				query: ({ langId }) => ({
@@ -158,6 +171,7 @@ export const {
 	useGetReferralSummaryV2Query,
 	useGetReferralCodeQuery,
 	useSetLanguageMutation,
+	useSetCustSettingMutation,
 	useGetCustBonusWalletQuery,
 	useGetCustVIPProgressQuery,
 	useGetCustTpGameTypeSettingQuery
