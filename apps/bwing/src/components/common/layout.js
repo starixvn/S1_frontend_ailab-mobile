@@ -1,5 +1,6 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { ToastContainer } from "react-toastify";
 import { useLocation, useNavigate } from "@reach/router";
 import { isDateRange, products } from "@ailab-mobile/common";
 import Footer from "./footer";
@@ -374,6 +375,7 @@ const Layout = ({ children }) => {
 					</main>
 				</>
 			)}
+			<ToastContainer />
 			{loading ? <Loading /> : null}
 			<Footer />
 			{/* 右下角 Vgaming 進入點 */}

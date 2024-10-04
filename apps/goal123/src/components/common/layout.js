@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import React, { useContext, Component, useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import PropTypes from "prop-types";
 import moment from "moment/moment";
 import { useMatch, useNavigate, useLocation } from "@reach/router";
@@ -129,6 +130,7 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
+			<ToastContainer />
 			{!root &&
 				(noHeader
 					? null
