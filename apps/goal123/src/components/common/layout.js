@@ -130,12 +130,11 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 	return (
 		<>
 			<RotationHint i18n={i18n} />
-			<ToastContainer />
+			<ToastContainer /> {/* 吐司訊息 */}
 			{!root &&
 				(noHeader
 					? null
 					: header ?? <Header title={title} hideLogo={true} />)}
-
 			{root && (
 				<header id="header" className="header-index">
 					<HomeHeader
@@ -144,7 +143,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 					/>
 				</header>
 			)}
-
 			{root ? (
 				<main className={classNames("home", { active: appHint })}>
 					{children}
@@ -160,7 +158,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 					{loading ? <Loading /> : null}
 				</main>
 			)}
-
 			{/* 歐冠杯期間顯示 */}
 			{displayVgaming && root && (
 				<div
@@ -179,7 +176,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 					/>
 				</div>
 			)}
-
 			{root && (
 				<LiveStreamingPop
 					liveStreamingList={liveStreamingList}
@@ -187,7 +183,6 @@ const Layout = ({ children, header, mainClass, title, goTopBtn, noHeader }) => {
 					setDisplayLiveStreaming={setDisplayLiveStreaming}
 				/>
 			)}
-
 			{/* 歐冠杯期間不顯示 */}
 			{!isDateRange(eventTime.eventCup) && root && luckyWheel ? (
 				<LuckyWheel userInfo={userInfo} setLuckyWheel={setLuckyWheel} />

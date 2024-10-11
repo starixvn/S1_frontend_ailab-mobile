@@ -158,21 +158,20 @@ export const Wrapper = ({ children }) => {
 			});
 		}
 	}, []);
-
 	/**
-	 * 當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
+	 * 當使用者登入時，檢查存款/提款通知並觸發相應的吐司訊息。
 	 *
-	 * @note 不監聽 financeNotification 和 soundEffects，是因為每次設定吐司訊息都會導致調用 API。
-	 * 這些資料都來自`userInfo`資料，因此只監聽 accountName 即可。 */
+	 * @note 為確保能正確獲取 API 返回的 `financeNotification` 和 `soundEffects` 吐司訊息設定參數，
+	 * 監聽 `accountName`，它與 `financeNotification` 和 `soundEffects` 都來自用戶信息 `userInfo`。
+	 * 不監聽 `financeNotification` 和 `soundEffects` 是因為當使用者於設定頁設定吐司訊息時，
+	 * 這兩者會更新，導致 API 的不必要重新調用。 */
 	useEffect(() => {
-		if (!financeNotification || !soundEffects) return;
+		if (!financeNotification || !soundEffects || !userInfo.isLogin) return;
 		const checkNotification = async () => {
-			if (userInfo.isLogin) {
-				await checkDepositOrWithdrawalSuccessful(
-					financeNotification,
-					soundEffects
-				);
-			}
+			await checkDepositOrWithdrawalSuccessful(
+				financeNotification,
+				soundEffects
+			);
 		};
 		checkNotification();
 	}, [accountName]);

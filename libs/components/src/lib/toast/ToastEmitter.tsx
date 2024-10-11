@@ -7,17 +7,16 @@ import "react-toastify/dist/ReactToastify.css";
 const CustomToast = ({
 	message,
 	iconClassName,
-	isDefault
+	messageStyle
 }: {
 	message: string;
 	iconClassName: string | undefined;
-	isDefault: boolean;
+	messageStyle: React.CSSProperties;
 }) => (
 	<div
 		style={{
 			display: "flex"
-		}}
-	>
+		}}>
 		{iconClassName && (
 			<i
 				className={`icon ${iconClassName}`}
@@ -27,15 +26,7 @@ const CustomToast = ({
 				}}
 			/>
 		)}
-		<span
-			// 如果是 Default (白背景)，則顯示灰色文字
-			// 其餘訊息類型皆為滿色背景色，則顯示白色文字
-			style={{
-				color: isDefault ? "gray" : "white"
-			}}
-		>
-			{message}
-		</span>
+		<span style={messageStyle}>{message}</span>
 	</div>
 );
 
@@ -44,13 +35,15 @@ interface IToastOptions {
 	toastMuted: boolean;
 	customBGColor?: ToastBGColorEnum | undefined;
 	customIconClassName?: string | undefined;
+	isWrapText?: boolean;
 }
 
 export const ToastEmitter = ({
 	message,
 	toastMuted,
 	customBGColor = ToastBGColorEnum.Green,
-	customIconClassName
+	customIconClassName,
+	isWrapText = true
 }: IToastOptions) => {
 	/** 是否禁音 */
 
@@ -67,6 +60,15 @@ export const ToastEmitter = ({
 
 	/** ====== 常數 ====== */
 
+	/**
+	 *  吐司訊息文字 Style 設定
+	 *  @color 如果是 Default (白背景)，則顯示灰色文字，其餘訊息類型皆為滿色背景色，則顯示白色文字
+	 *  @whiteSpace  訊息是否換行，預設過長會換行。 */
+	const messageStyle: React.CSSProperties = {
+		color: customBGColor === ToastBGColorEnum.Default ? "gray" : "white",
+		whiteSpace: isWrapText ? "normal" : "nowrap"
+	};
+
 	/** 吐司訊息的其他設定，如果未來有需求可以自行增加參數，從外部傳入。 */
 	const toastOptions: ToastOptions = {
 		position: PositionEnum.TopCenter,
@@ -75,14 +77,17 @@ export const ToastEmitter = ({
 		closeOnClick: true,
 		draggable: false,
 		closeButton: false,
-		transition: Zoom
+		transition: Zoom,
+		style: {
+			borderRadius: "8px" // 因應設計，手機吐司訊息有圓角
+		}
 	};
 
 	const content = (
 		<CustomToast
 			message={message}
 			iconClassName={customIconClassName}
-			isDefault={customBGColor === ToastBGColorEnum.Default}
+			messageStyle={messageStyle}
 		/>
 	);
 	// 根據訊息種類，顯示通知

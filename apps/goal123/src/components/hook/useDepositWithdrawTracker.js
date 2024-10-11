@@ -38,10 +38,11 @@ const useDepositWithdrawTracker = () => {
 	 * @toastMuted 禁用吐司訊息音效 */
 	const checkDepositSuccessful = async (toastVisibled, toastMuted) => {
 		try {
-			const { data: { data: orders = [] } = {} } =
-				await api_GetCustNotification({
-					notificationType: NotificationTypeEnum.Deposit
-				});
+			const {
+				data: { data: orders = [] } = {}
+			} = await api_GetCustNotification({
+				notificationType: NotificationTypeEnum.Deposit
+			});
 			const hasOrders = orders.length > 0;
 			if (!hasOrders) return;
 
@@ -53,7 +54,8 @@ const useDepositWithdrawTracker = () => {
 						message: t("Label_DepositSuccessful", { orderId }),
 						toastMuted,
 						backgroundColor: ToastBGColorEnum.Green,
-						iconClassName: ToastIconEnum.Check
+						iconClassName: ToastIconEnum.Check,
+						isWrapText: false
 					});
 				}
 				// 移除該單號，防止之後再次獲得相同的單號
@@ -93,7 +95,8 @@ const useDepositWithdrawTracker = () => {
 						message: t("Label_WithdrawSuccessful", { orderId }),
 						toastMuted,
 						backgroundColor: ToastBGColorEnum.Blue,
-						iconClassName: ToastIconEnum.Check
+						iconClassName: ToastIconEnum.Check,
+						isWrapText: false
 					});
 				}
 				// 移除該單號，防止之後再次獲得相同的單號
@@ -115,12 +118,8 @@ const useDepositWithdrawTracker = () => {
 		isToastVisible,
 		isToastMuted
 	) => {
-		/** 開啟吐司訊息 */
 		const toastVisibled = isToastVisible === ToastVisibleEnum.Visible;
-
-		/** 靜音吐司訊息 */
 		const toastMuted = isToastMuted === ToastSoundStateEnum.Muted;
-
 		await checkDepositSuccessful(toastVisibled, toastMuted);
 		await checkWithdrawalSuccessful(toastVisibled, toastMuted);
 	};

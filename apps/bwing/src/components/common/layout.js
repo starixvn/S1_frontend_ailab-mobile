@@ -349,6 +349,7 @@ const Layout = ({ children }) => {
 	) : (
 		<>
 			<RotationHint i18n={i18n} />
+			<ToastContainer /> {/* 吐司訊息 */}
 			{pageInfo.customHeader ? (
 				children
 			) : (
@@ -375,7 +376,6 @@ const Layout = ({ children }) => {
 					</main>
 				</>
 			)}
-			<ToastContainer />
 			{loading ? <Loading /> : null}
 			<Footer />
 			{/* 右下角 Vgaming 進入點 */}
@@ -393,16 +393,12 @@ const Layout = ({ children }) => {
 					/>
 				</div>
 			)}
-
 			{/* 僅限過年期間顯示 */}
 			{!isDateRange(eventTime.dragonEgg) && luckyWheel && root && (
 				<LuckyWheel setLuckyWheel={setLuckyWheel} />
 			)}
-
 			{isDateRange(eventTime.euroCup) && root && <EuroCupLink />}
-
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
-
 			{isDateRange(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>
