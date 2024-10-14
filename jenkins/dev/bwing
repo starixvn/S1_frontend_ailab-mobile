@@ -40,7 +40,7 @@ pipeline {
                                             currentBuild.displayName = env.commitHash
                                         }
                                         sh 'zip -r mobile-${site}-${commitHash} *'
-                                        sh 'curl -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://172.31.28.233:8081/repository/artifacts/Frontend/mobile/${site}/${env}/mobile-${site}-${commitHash}.zip'
+                                        sh 'curl -v -u admin:123456 --upload-file mobile-${site}-${commitHash}.zip http://172.31.28.169:8081/repository/artifacts/Frontend/mobile/${site}/${env}/mobile-${site}-${commitHash}.zip'
                                         sh 'echo mobile-${site}-${commitHash}'
                                     }
                                 }
