@@ -7940,19 +7940,16 @@ span.important {
 }
 
 .main.referral {
-  padding: 23vw 0vw 40vw;
+  padding: 25vw 0vw 40vw;
   width: 100%;
 }
 .main.referral .tag {
   z-index: 4;
 }
-.main.referral > div:nth-child(2) {
-  position: relative;
-}
 
 .refer {
-  padding: 6vw 4.2vw 1vw;
-  margin-top: -2vw;
+  padding: 0 4.2vw 1vw;
+  margin-top: -4vw;
   border-radius: 4vw;
   background: #fff;
 }
@@ -7967,7 +7964,7 @@ span.important {
   -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
           box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   position: absolute;
-  top: 80vw;
+  top: 105vw;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -15558,12 +15555,13 @@ main.home .home-sports .sports-hotmatches .sports-item .team-name {
   text-transform: capitalize;
   font-weight: 600;
 }
-main.home .home-sports .hotmatches-image {
+main.home .home-sports .ambassador {
   width: 100%;
   position: relative;
+  padding-top: 6vw;
 }
-main.home .home-sports .hotmatches-image::after {
-  content: "HIỆN KHÔNG CÓ TRẬN";
+main.home .home-sports .ambassador::after {
+  content: "Currently No Matches";
   display: inline-block;
   text-transform: uppercase;
   font-size: 4.8vw;
@@ -15573,8 +15571,8 @@ main.home .home-sports .hotmatches-image::after {
   left: 12vw;
   bottom: -5vw;
 }
-main.home .home-sports .hotmatches-image::before {
-  content: "Currently No Matches";
+main.home .home-sports .ambassador::before {
+  content: "HIỆN KHÔNG CÓ TRẬN";
   display: inline-block;
   text-transform: uppercase;
   font-size: 4.8vw;
@@ -15584,10 +15582,25 @@ main.home .home-sports .hotmatches-image::before {
   left: 12vw;
   bottom: -90vw;
 }
-main.home .home-sports .hotmatches-image img {
+main.home .home-sports .ambassador img {
   width: 86vw;
+  margin-top: -2vw;
+}
+main.home .home-sports .ambassador span {
   display: block;
-  margin: 0 auto;
+  font-weight: 500;
+  font-size: 2.5vw;
+  text-align: right;
+}
+main.home .home-sports .ambassador span:last-child {
+  font-family: "Niconne", cursive;
+  font-size: 4.5vw;
+  top: 14px;
+}
+main.home .home-sports .ambassador .text {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 main.home .home-join {
   width: 100%;
@@ -16202,123 +16215,6 @@ main.home .home-app .app-btn-content button.instructions {
           justify-content: center;
   margin-bottom: 4.6vw;
 }
-main.home .home-previous {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 5vw 0 6vw;
-  padding: 0 3.3vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-main.home .home-previous * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-main.home .home-previous .home-title {
-  font-size: 4.5vw;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 4vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-main.home .home-previous .home-title::before, main.home .home-previous .home-title::after {
-  content: "";
-  display: block;
-  height: 1.4vw;
-  border-radius: 2.34vw;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.37)), color-stop(50%, rgba(251, 181, 19, 0.5)), color-stop(86%, rgb(251, 181, 19)));
-  background: linear-gradient(-270deg, rgba(255, 255, 255, 0.37) 0%, rgba(251, 181, 19, 0.5) 50%, rgb(251, 181, 19) 86%);
-  -ms-flex-item-align: center;
-      align-self: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 12vw;
-          flex: 1 0 12vw;
-}
-main.home .home-previous .home-title::before {
-  margin-right: 2.3vw;
-}
-main.home .home-previous .home-title::after {
-  margin-left: 2.3vw;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-main.home .home-previous .previous {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(38vw, 1fr));
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 2.3vw 3.5vw;
-}
-main.home .home-previous .previous .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-main.home .home-previous .previous-img {
-  margin-bottom: 2.3vw;
-}
-main.home .home-previous .previous-img img {
-  width: 23vw;
-  display: block;
-  margin: 0 auto;
-}
-main.home .home-previous .previous-text {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 2.8vw;
-  font-weight: 500;
-}
-main.home .home-previous .previous-text li {
-  margin-bottom: 0.8vw;
-}
-main.home .home-previous .previous-name {
-  font-family: "Niconne", cursive;
-  font-size: 4.6vw;
-}
-main.home .home-previous .previous-designation {
-  text-transform: capitalize;
-}
 main.home .home-bottom {
   width: 100%;
   padding-top: 8.2vw;
@@ -16670,10 +16566,6 @@ main .menu-platform .platform button span {
   white-space: pre-wrap;
   word-break: break-word;
   min-height: 8vw;
-}
-main .menu-platform .platform .survey-icon img {
-  width: 9vw;
-  height: 9vw;
 }
 main .menu-lobby {
   margin-top: 1.5vw;
@@ -19050,12 +18942,16 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   color: #141f33;
 }
 
-.survey {
-  background: #F8F8F8;
-  color: #9C9C9C;
-  padding: 22vw 0 40vw;
+.setting-container .bottom-line {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8vw 0;
 }
-.survey-before {
+.setting-content {
+  color: #949494;
+  margin-bottom: 8vw;
+  font-weight: 500;
+}
+.setting-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19063,178 +18959,393 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-checkbox .inputBox, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event {
+  height: 10vw;
+  border-radius: 3vw !important;
+  border: 0;
+  color: #5574A7;
+  font-size: 3vw;
+}
+.setting-checkbox .inputBox .dropdown, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown {
+  background: #ffffff;
+  border: 1px solid #284985;
+  border-radius: 2vw;
+  color: #052561;
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 6vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2vw;
 }
-.survey-before > div:first-child {
-  color: #141f33;
-  font-size: 4vw;
-  font-weight: 600;
-}
-.survey-before > div:nth-child(2) {
-  text-align: center;
-  margin-top: 5vw;
-  line-height: 5.5vw;
-}
-.survey-before fieldset {
-  border: medium none;
-  min-width: 100%;
-  padding: 0;
-  width: 100%;
-}
-.survey-before fieldset input {
-  width: 100%;
-  border: 1px solid #ccc;
-  background: #FFF;
-  padding: 3vw;
-  color: #0A1B38;
-  border-radius: 2vw;
-}
-.survey-before fieldset input::-webkit-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset input::-moz-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset input:-ms-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset input::-ms-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset input::placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset input:focus {
-  outline: 0;
-  border: 2px solid #5084e4;
-}
-.survey-before fieldset textarea {
-  width: 75vw;
-  border: 1px solid #ccc;
-  background: #FFF;
-  padding: 3vw;
-  height: 50vw;
-  max-width: 100%;
-  resize: none;
-  border-radius: 2vw;
-}
-.survey-before fieldset textarea::-webkit-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset textarea::-moz-placeholder {
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset textarea:-ms-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset textarea::-ms-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset textarea::placeholder {
-  color: #D8D8D8;
-  font-family: "Montserrat", sans-serif;
-}
-.survey-before fieldset textarea:focus {
-  outline: 0;
-  border: 2px solid #5084e4;
-}
-.survey-before fieldset button {
-  background: #EE4F49;
-  font-size: 3.5vw;
-  font-weight: 600;
-  border-radius: 2vw;
-  padding: 3vw 10vw;
-  width: 39.5vw;
-  margin-top: 8vw;
-  color: white;
-}
-.survey-before fieldset button:first-child[disabled] {
-  background: gray !important;
-}
-.survey-before fieldset button:last-child {
-  background: #DFDFDF;
-  color: #9B9B9B;
-}
-.survey-before fieldset .tip {
+.setting-checkbox .inputBox .dropdown-container, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container {
   display: none;
+  position: absolute;
+  background: #EFEFEF;
+  z-index: 2;
+  border: 1px solid #284985;
+  border-top: 0;
+  width: 100%;
+  left: 0;
+  top: 6vw;
+  max-height: 45vw;
+  overflow-y: scroll;
+  color: #284985;
+  border-radius: 0 0 2vw 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.setting-checkbox .inputBox .dropdown-container.active, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container.active, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container.active {
+  display: block;
+}
+.setting-checkbox .inputBox .dropdown-container .dropdown-item, .setting-checkbox .worldcupEvent .ticket__container .inputBox-event .dropdown-container .dropdown-item, .worldcupEvent .ticket__container .setting-checkbox .inputBox-event .dropdown-container .dropdown-item {
+  padding: 2vw 2vw 2vw 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-checkbox .checkbox-content {
+  margin-top: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.setting-checkbox .checkbox-content input[type=checkbox] {
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  width: 0 !important;
+}
+.setting-checkbox .checkbox-content .checkbox-icon {
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  border: 1px solid #C2D9FF;
+  border-radius: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 2vw;
+  padding: 0.2vw;
+}
+.setting-checkbox .checkbox-content .checkbox-icon::after {
+  content: "";
+  width: 1vw;
+  height: 2vw;
+  border: solid white;
+  border-width: 0 0.5vw 0.5vw 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: none;
+  margin-bottom: 1vw;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #2775FF;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-radiobox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-radiobox .radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 2vw;
 }
-.survey-before fieldset .tip.active {
+.setting-radiobox .radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label::before {
+  content: "";
+  background: white;
+  border-radius: 100%;
+  border: 1px solid #2775FF;
+  display: inline-block;
+  width: 4vw;
+  height: 4vw;
+  position: relative;
+  margin-right: 2vw;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.setting-radiobox .radio input[type=radio]:checked + .radio-label::before {
+  background: #2775FF;
+  -webkit-box-shadow: inset 0 0 0 3px white;
+          box-shadow: inset 0 0 0 3px white;
+}
+.setting-radiobox .radio input[type=radio]:focus + .radio-label::before {
+  outline: none;
+  border-color: #2775FF;
+}
+.setting-radiobox .radio input[type=radio]:disabled + .radio-label::before {
+  -webkit-box-shadow: inset 0 0 0 3px #f4f4f4;
+          box-shadow: inset 0 0 0 3px #f4f4f4;
+  border-color: #b4b4b4;
+  background: white;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label:empty::before {
+  margin-right: 0;
+}
+.setting-radiobox .radio .radio-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-title {
+  color: #112240;
+  font-weight: 700;
+  font-size: 3.5vw;
+  font-weight: 600;
+  margin: 0 0 2vw 2vw;
+}
+.setting-tip {
+  color: #949494;
+  font-size: 2.5vw;
+  font-weight: 100;
+  margin: 2vw 0 3vw 2vw;
+}
+.setting .tip.active {
+  color: #e92529;
+  text-align: left;
   display: block;
-  color: red;
 }
-.survey-before fieldset .tip.message {
-  margin-top: 1vw;
+.setting .changepassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.survey-before fieldset.error textarea {
-  border: 2px solid red;
+.setting .changepassword .inputBox, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vw !important;
+  margin-top: 3vw !important;
+  border-radius: 20vw !important;
+  border: 0;
+  background: #fff;
+  color: #5574A7;
+  font-size: 3vw !important;
 }
-.survey-before fieldset.error input {
-  border: 2px solid red;
+.setting .changepassword .inputBox:focus-within, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event:focus-within, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
 }
-.survey-before fieldset:first-child {
-  margin-bottom: 5vw;
+.setting .changepassword .inputBox.error, .setting .changepassword .worldcupEvent .ticket__container .error.inputBox-event, .worldcupEvent .ticket__container .setting .changepassword .error.inputBox-event {
+  border: 1px solid #cf0404;
 }
-.survey-before .survey-input {
+.setting .changepassword .inputBox > input, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input {
+  background: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: 3vw;
+  color: #284985;
+  border: 0;
+  outline: none;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox > input::-webkit-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-webkit-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-moz-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-moz-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-ms-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input:-ms-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-ms-input-placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::-ms-input-placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::placeholder, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input::placeholder, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-webkit-autofill, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input:-webkit-autofill, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword .inputBox > input[type=file], .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=file], .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=file] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox], .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=checkbox], .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=checkbox] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] + label, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=checkbox] + label, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=checkbox] + label {
+  margin: 0 2vw 0 0;
+  vertical-align: middle;
+  color: #284985;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword-input {
+  height: 10vw;
+  padding: 0 0 0 3vw;
   margin-top: 3vw;
+  border-radius: 20vw;
+  border: 0;
+  background: #EFEFEF;
+  color: #5574A7;
+  font-size: 3vw;
 }
-.survey-before .survey-btn {
-  width: 100%;
+.setting .changepassword-input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword-input:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .connect-social .social-icon {
+  background: #EFEFEF;
+  border-radius: 20vw;
+  padding: 2vw 4vw 2vw 3vw;
+  margin-top: 4vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-.survey-before.close {
-  display: none;
-}
-.survey-after {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-.survey-after img {
-  width: 45vw;
-  margin-top: 15vw;
+.setting .connect-social .social-icon > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.survey-after > div:first-child > div {
-  color: #141f33;
-  font-size: 4vw;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 8vw;
+.setting .connect-social .social-icon > div img {
+  width: 10vw;
 }
-.survey-after > div:last-child {
-  text-align: center;
-  padding: 7vw 5vw 0;
-  line-height: 5.5vw;
+.setting .connect-social .social-icon > div span {
+  color: #5574A7;
+  margin-left: 2vw;
 }
-.survey-after.close {
+.setting .connect-social .social-icon button {
+  background: #2775FF;
+  color: white;
+  width: 25vw;
+  border-radius: 20vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.setting .connect-social .social-icon button::after {
+  display: block;
+  content: "";
+  width: 2.5vw;
+  height: 2.5vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin-left: 1.5vw;
+}
+.setting .connect-social .social-icon button.active {
+  background: #9C9C9C;
+}
+.setting .connect-social .social-icon button.active::after {
   display: none;
+}
+.setting .btn-group {
+  width: 100%;
+}
+.setting .btn-group > button {
+  background: #284985;
 }/*# sourceMappingURL=style.css.map */

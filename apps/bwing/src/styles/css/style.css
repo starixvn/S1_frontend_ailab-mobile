@@ -476,12 +476,12 @@ a {
   margin: 0 1vw;
   cursor: pointer;
 }
-.icon-survey-blue::before {
+.icon-setting-blue::before {
   content: "";
   display: block;
-  width: 10vw;
-  height: 10vw;
-  background: url(https://banner.bw88.io/h5/img/4.0/icon-survey.svg) no-repeat center/cover;
+  width: 9vw;
+  height: 9vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-setting-blue.svg) no-repeat center/cover;
   margin: 0 1vw;
   cursor: pointer;
 }
@@ -1857,18 +1857,14 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
-  margin: 0 4vw;
+  width: calc(100% - 10vw);
+  margin: auto;
 }
 .menu-list-item {
   width: 26vw;
   height: 26vw;
-  margin: 0 5vw 5vw 0;
   background: #fff;
   border-radius: 3vw;
   font-weight: 700;
@@ -20727,11 +20723,16 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   color: #1C317B;
 }
 
-.survey {
-  background: #F8F8F8;
-  color: #9C9C9C;
+.setting-container .bottom-line {
+  border-bottom: 1px solid #1c317b;
+  margin: 8vw 0;
 }
-.survey-before {
+.setting-content {
+  color: #949494;
+  margin-bottom: 8vw;
+  font-weight: 500;
+}
+.setting-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20739,180 +20740,406 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-checkbox .inputBox {
+  height: 10vw;
+  border-radius: 3vw !important;
+  border: 0;
+  color: #5574A7;
+  font-size: 3vw;
+  position: relative;
+}
+.setting-checkbox .inputBox .dropdown {
+  background: #ffffff;
+  border: 1px solid #1C317B;
+  border-radius: 2vw;
+  color: #1C317B;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 14vw;
-  padding: 0 6vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2vw;
 }
-.survey-before > div:first-child {
-  color: #1C317B;
-  font-size: 4vw;
-  font-weight: 600;
-}
-.survey-before > div:nth-child(2) {
-  padding: 0 5vw;
-  text-align: center;
-  margin-top: 5vw;
-  line-height: 5.5vw;
-}
-.survey-before fieldset {
-  border: medium none;
-  min-width: 100%;
-  padding: 0;
-  width: 100%;
-}
-.survey-before fieldset input {
-  width: 100%;
-  border: 1px solid #ccc;
-  background: #FFF;
-  padding: 3vw;
-  color: #0A1B38;
-  border-radius: 2vw;
-}
-.survey-before fieldset input::-webkit-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset input::-moz-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset input:-ms-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset input::-ms-input-placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset input::placeholder {
-  font-size: 3vw;
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset input:focus {
-  outline: 0;
-  border: 2px solid #FFAF43;
-}
-.survey-before fieldset textarea {
-  width: 75vw;
-  border: 1px solid #ccc;
-  background: #FFF;
-  padding: 3vw;
-  height: 50vw;
-  max-width: 100%;
-  resize: none;
-  border-radius: 2vw;
-}
-.survey-before fieldset textarea::-webkit-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset textarea::-moz-placeholder {
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset textarea:-ms-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset textarea::-ms-input-placeholder {
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset textarea::placeholder {
-  color: #D8D8D8;
-  font-family: "Bai Jamjuree", sans-serif;
-}
-.survey-before fieldset textarea:focus {
-  outline: 0;
-  border: 2px solid #FFAF43;
-}
-.survey-before fieldset button {
-  background: #FFAF43;
-  font-size: 3.5vw;
-  font-weight: 600;
-  border-radius: 2vw;
-  padding: 3vw 10vw;
-  width: 39.5vw;
-  margin-top: 8vw;
-  color: white;
-}
-.survey-before fieldset button:first-child[disabled] {
-  background: gray !important;
-}
-.survey-before fieldset button:last-child {
-  background: #DFDFDF;
-  color: #9B9B9B;
-}
-.survey-before fieldset .tip {
+.setting-checkbox .inputBox .dropdown-container {
   display: none;
+  position: absolute;
+  background: #ffffff;
+  z-index: 2;
+  border: 1px solid #1C317B;
+  border-top: 0;
+  width: 100%;
+  left: 0;
+  top: 7vw;
+  max-height: 45vw;
+  overflow-y: scroll;
+  color: #284985;
+  border-radius: 0 0 2vw 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.setting-checkbox .inputBox .dropdown-container.active {
+  display: block;
+}
+.setting-checkbox .inputBox .dropdown-container .dropdown-item {
+  padding: 2vw 2vw 2vw 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-checkbox .checkbox-content {
+  margin-top: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.setting-checkbox .checkbox-content input[type=checkbox] {
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  width: 0 !important;
+}
+.setting-checkbox .checkbox-content .checkbox-icon {
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  border: 1px solid #C2D9FF;
+  border-radius: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 2vw;
+  padding: 0.2vw;
+}
+.setting-checkbox .checkbox-content .checkbox-icon::after {
+  content: "";
+  width: 1vw;
+  height: 2vw;
+  border: solid white;
+  border-width: 0 0.5vw 0.5vw 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: none;
+  margin-bottom: 1vw;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #F38C00;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-radiobox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-radiobox .radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 2vw;
 }
-.survey-before fieldset .tip.active {
+.setting-radiobox .radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label::before {
+  content: "";
+  background: white;
+  border-radius: 100%;
+  border: 1px solid #2775FF;
+  display: inline-block;
+  width: 4vw;
+  height: 4vw;
+  position: relative;
+  margin-right: 2vw;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.setting-radiobox .radio input[type=radio]:checked + .radio-label::before {
+  background: #2775FF;
+  -webkit-box-shadow: inset 0 0 0 3px white;
+          box-shadow: inset 0 0 0 3px white;
+}
+.setting-radiobox .radio input[type=radio]:focus + .radio-label::before {
+  outline: none;
+  border-color: #2775FF;
+}
+.setting-radiobox .radio input[type=radio]:disabled + .radio-label::before {
+  -webkit-box-shadow: inset 0 0 0 3px #f4f4f4;
+          box-shadow: inset 0 0 0 3px #f4f4f4;
+  border-color: #b4b4b4;
+  background: white;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label:empty::before {
+  margin-right: 0;
+}
+.setting-radiobox .radio .radio-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-title {
+  color: #112240;
+  font-weight: 700;
+  font-size: 3.5vw;
+  font-weight: 600;
+  margin: 0 0 2vw 2vw;
+}
+.setting-tip {
+  color: #949494;
+  font-size: 2.5vw;
+  font-weight: 100;
+  margin: 2vw 0 3vw 2vw;
+}
+.setting .tip.active {
+  color: #e92529;
+  text-align: left;
   display: block;
-  color: red;
 }
-.survey-before fieldset .tip.message {
-  margin-top: 1vw;
+.setting .changepassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.survey-before fieldset.error textarea {
-  border: 2px solid red;
+.setting .changepassword .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vw !important;
+  margin-top: 3vw !important;
+  border-radius: 20vw !important;
+  border: 0;
+  background: #fff;
+  color: #5574A7;
+  font-size: 3vw !important;
 }
-.survey-before fieldset.error input {
-  border: 2px solid red;
+.setting .changepassword .inputBox:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
 }
-.survey-before fieldset:first-child {
-  margin-bottom: 5vw;
+.setting .changepassword .inputBox.error {
+  border: 1px solid #cf0404;
 }
-.survey-before .survey-input {
+.setting .changepassword .inputBox > input {
+  background: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: 3vw;
+  color: #284985;
+  border: 0;
+  outline: none;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox > input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword .inputBox > input[type=file] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] + label {
+  margin: 0 2vw 0 0;
+  vertical-align: middle;
+  color: #284985;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword-input {
+  height: 10vw;
+  padding: 0 0 0 3vw;
   margin-top: 3vw;
+  border-radius: 20vw;
+  border: 0;
+  background: #EFEFEF;
+  color: #5574A7;
+  font-size: 3vw;
 }
-.survey-before .survey-btn {
-  width: 100%;
+.setting .changepassword-input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword-input:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .connect-social .social-icon {
+  background: #EFEFEF;
+  border-radius: 20vw;
+  padding: 2vw 4vw 2vw 3vw;
+  margin-top: 4vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-.survey-before.close {
-  display: none;
-}
-.survey-after {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-.survey-after img {
-  width: 45vw;
-  margin-top: 15vw;
+.setting .connect-social .social-icon > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.survey-after > div:first-child > div {
-  color: #0A1B38;
-  font-size: 4vw;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 8vw;
+.setting .connect-social .social-icon > div img {
+  width: 10vw;
 }
-.survey-after > div:last-child {
-  text-align: center;
-  padding: 7vw 5vw 0;
-  line-height: 5.5vw;
+.setting .connect-social .social-icon > div span {
+  color: #5574A7;
+  margin-left: 2vw;
 }
-.survey-after.close {
+.setting .connect-social .social-icon button {
+  background: #2775FF;
+  color: white;
+  width: 25vw;
+  border-radius: 20vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.setting .connect-social .social-icon button::after {
+  display: block;
+  content: "";
+  background: url(https://banner.0814media.net/h5/img/4.0/down-1.png) no-repeat center/100%;
+  width: 2.5vw;
+  height: 2.5vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin-left: 1.5vw;
+}
+.setting .connect-social .social-icon button.active {
+  background: #9C9C9C;
+}
+.setting .connect-social .social-icon button.active::after {
   display: none;
+}
+.setting .btn-group {
+  width: 100%;
+}
+.setting .btn-group > button {
+  background: #284985;
+}
+.setting .icon-module {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .icon-module > i {
+  padding-right: 3vw;
+  font-size: 5vw;
 }/*# sourceMappingURL=style.css.map */
