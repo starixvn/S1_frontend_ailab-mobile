@@ -20916,4 +20916,8 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
 }
 .survey-after.close {
   display: none;
+}
+
+#g-reCaptcha .grecaptcha-badge {
+  z-index: 999;
 }/*# sourceMappingURL=style.css.map */

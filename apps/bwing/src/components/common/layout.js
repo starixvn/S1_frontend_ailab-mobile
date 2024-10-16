@@ -1,7 +1,12 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { useLocation, useNavigate } from "@reach/router";
-import { isDateRange, products } from "@ailab-mobile/common";
+import {
+	isDateRange,
+	products,
+	GReCaptchaProviders
+} from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "../header/header";
 import {
@@ -305,13 +310,18 @@ const Layout = ({ children }) => {
 	const { loading, setLoading } = useContext(loadingContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { root } = useContext(rootContext);
-	const { setNav } = useContext(navContext);
+	const { nav, setNav } = useContext(navContext);
 	const location = useLocation();
 	const navigate = useNavigate();
+	const { pathname } = useLocation();
 	const pageInfo = GetPageInfo(location.pathname);
 	const [luckyWheel, setLuckyWheel] = useState(false);
 	const [displayVgaming, setDisplayVgaming] = useState(true);
 	const [appHint, setAppHint] = useState(false);
+
+	const isShow =
+		nav === defNavPanel.join || pathname === `/${path.join.root}`;
+
 	const clickGame = ({ tpId, gameId, tpGameType }) => {
 		GET_ENTER_PAGE({
 			langId: userInfo.langId,
@@ -358,7 +368,16 @@ const Layout = ({ children }) => {
 			) : (
 				<>
 					<Login />
-					<Join />
+					<GReCaptchaProviders langId={userInfo?.langId}>
+						<div
+							className={`join-module popup ${classNames({
+								active: isShow
+							})}`}>
+							<Join setNav={setNav} />
+							<div id="g-reCaptcha" />
+						</div>
+						{/* 客製化 element 必須添加 */}
+					</GReCaptchaProviders>
 					<Header
 						icon={pageInfo?.icon}
 						hideModal={pageInfo.hideModal}
