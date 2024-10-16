@@ -69,7 +69,7 @@ import VIP from "./pages/vip";
 import AppEntPage from "./pages/appEntPage";
 import AppDownload from "./pages/appDownload";
 import Login from "./components/login/login";
-import Join from "./components/join/join.refactor";
+import JoinWrapper from "./components/join/join.wrapper";
 import UMPage from "./pages/um";
 import WorldCup from "./pages/worldCup";
 import RebateExclude from "./pages/rebateExclude";
@@ -169,7 +169,7 @@ const Index = () => {
 						<Launcher path={path.launcher.root} />
 						<Survey path={path.survey.root} />
 					</Router>
-					<Join />
+					<JoinWrapper />
 					<Login />
 				</LocationProvider>
 				<PopBox />
