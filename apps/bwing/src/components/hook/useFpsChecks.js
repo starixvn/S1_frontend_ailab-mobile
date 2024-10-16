@@ -21,7 +21,7 @@ const useFpsChecks = ({ isLogin, interval = 60000 }) => {
 				// 忽略
 			}
 		},
-		isLogin && isSent === false ? interval : null
+		isLogin && !isSent ? interval : null
 	);
 };
 
