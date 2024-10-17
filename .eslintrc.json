@@ -50,7 +50,7 @@
 		"no-param-reassign": ["error", { "props": false }],
 		"consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
 		"react/no-array-index-key": ["warn"],
-		"react/prop-types": ["warn"],
+		"react/prop-types": ["off"],
 		"react/no-did-update-set-state": ["warn"],
 		"react/no-unescaped-entities": ["warn"],
 		"new-cap": ["off"],
@@ -75,7 +75,6 @@
 		"react/jsx-filename-extension": [
 			1,
 			{ "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-		],
-		"react/prop-types": "off"
+		]
 	}
 }
