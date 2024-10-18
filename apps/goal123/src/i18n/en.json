@@ -1,5 +1,4 @@
 {
-  "                                \nLabel_DepositNotification                        ": "Deposit {{orderId}} have been approved        ",
   "Currency_1": "SGD",
   "Currency_12": "GBP",
   "Currency_13": "RMB",
@@ -76,6 +75,7 @@
   "Skywind_Cai_Shen_Da_Hai": "Cai Shen Da Hai",
   "Skywind_Ocean_Ruler": "Ocean Ruler",
   "Traditional_Lottery": "Traditional Lottery",
+  "label_BrandAmbassador": "goal123 brand ambassador",
   "label_ExBrandAmbassadors": "Ex brand ambassadors",
   "lbl_3rdPlace": "3rd Place",
   "lbl_5mins": "5 mins",
