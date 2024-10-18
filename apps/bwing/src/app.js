@@ -41,7 +41,7 @@ import Message from "./pages/message";
 import PersonalMsg from "./components/message/personalMsg";
 import Announcement from "./components/message/announcement";
 
-import Other from "./components/setting/other";
+import Other from "./pages/other";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
@@ -87,6 +87,7 @@ import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
+import Setting from "./pages/setting";
 import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
 
@@ -212,6 +213,7 @@ const Index = () => {
 							<EuroCup path={path.euroCup.root} />
 							<RetentionPage path={path.retention.root} />
 							<LeaderBoard path={path.leaderBoard.root} />
+							<Setting path={path.setting.root} />
 							<Launcher path={path.launcher.root} />
 							<Survey path={path.survey.root} />
 						</Router>

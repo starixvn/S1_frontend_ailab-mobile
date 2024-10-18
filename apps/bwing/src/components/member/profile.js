@@ -60,11 +60,6 @@ const Panel = () => {
 				<ProfileDetail />
 
 				<div className="btn-group">
-					<Link
-						className="btn-primary"
-						to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword.toUpperCase()}
-					</Link>
 					<button
 						type="button"
 						className="btn-primary"

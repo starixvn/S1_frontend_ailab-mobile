@@ -9,7 +9,8 @@ export enum ToastBGColorEnum {
 
 /** 使用設計提供的 classNames 來自定義 icon。 如需擴充，需請設計進行設計，並提供 className */
 export enum ToastIconEnum {
-	Check = " icon-checkmark"
+	Check = "icon-toast-checkmark",
+	Cross = "icon-toast-close"
 }
 
 /** 動畫種類。 */
@@ -24,12 +25,6 @@ export enum TransitionEnum {
 export enum ToastSoundStateEnum {
 	Muted = "0",
 	Enabled = "1"
-}
-
-/** 吐司訊息是否禁用。 */
-export enum ToastVisibleEnum {
-	Hidden = "0",
-	Visible = "1"
 }
 
 /** 吐司訊息出現的位置 */

@@ -19213,9 +19213,9 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
   letter-spacing: 0.5px;
 }
 .setting .changepassword .inputBox > input:-webkit-autofill, .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input:-webkit-autofill, .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
-          box-shadow: 0 0 0px 1000px #0A1B38 inset;
-  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+          box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #0A1B38;
 }
 .setting .changepassword .inputBox > input[type=file], .setting .changepassword .worldcupEvent .ticket__container .inputBox-event > input[type=file], .worldcupEvent .ticket__container .setting .changepassword .inputBox-event > input[type=file] {
   display: none;

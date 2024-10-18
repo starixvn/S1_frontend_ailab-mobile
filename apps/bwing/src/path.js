@@ -95,6 +95,9 @@ export default {
 	statement: {
 		root: "statement"
 	},
+	setting: {
+		root: "setting"
+	},
 	financialLog: {
 		root: "financialLog"
 	},

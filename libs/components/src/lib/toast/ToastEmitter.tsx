@@ -32,7 +32,6 @@ const CustomToast = ({
 
 interface IToastOptions {
 	message: string;
-	toastMuted: boolean;
 	customBGColor?: ToastBGColorEnum | undefined;
 	customIconClassName?: string | undefined;
 	isWrapText?: boolean;
@@ -40,24 +39,10 @@ interface IToastOptions {
 
 export const ToastEmitter = ({
 	message,
-	toastMuted,
 	customBGColor = ToastBGColorEnum.Green,
 	customIconClassName,
 	isWrapText = true
 }: IToastOptions) => {
-	/** 是否禁音 */
-
-	/** ====== 函數 ====== */
-
-	/** 根據使用者設定，決定是否播放音效 (音效請設計放在 s3) */
-	const playSound = () => {
-		if (toastMuted) return;
-		const audio = new Audio(
-			"https://banner.goal123.org/Static/toast/img/toastSound.mp3"
-		);
-		audio.play();
-	};
-
 	/** ====== 常數 ====== */
 
 	/**
@@ -72,7 +57,7 @@ export const ToastEmitter = ({
 	/** 吐司訊息的其他設定，如果未來有需求可以自行增加參數，從外部傳入。 */
 	const toastOptions: ToastOptions = {
 		position: PositionEnum.TopCenter,
-		autoClose: 3000,
+		autoClose: 5000,
 		hideProgressBar: true,
 		closeOnClick: true,
 		draggable: false,
@@ -108,5 +93,4 @@ export const ToastEmitter = ({
 			toast(content, toastOptions);
 			break;
 	}
-	playSound();
 };

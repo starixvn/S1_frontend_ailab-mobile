@@ -56,6 +56,16 @@ const MenuPlatform = () => {
 						<span>{t("lbl_Survey")}</span>
 					</a>
 				)}
+				{/* todo:請設計增加 logo */}
+				{userInfo.isLogin && (
+					<a href="/setting">
+						<img
+							src={`${bannerImgUrl}/h5/img/home-page/icon/sidemenu-setting.svg`}
+							alt="setting"
+						/>
+						<span>setting</span>
+					</a>
+				)}
 			</div>
 		</div>
 	);

@@ -91,9 +91,10 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	setting: {
-		titleKey: "lbl_Setting",
-		className: "main",
-		hideLogo: true
+		titleKey: "setting",
+		className: "main setting",
+		hideLogo: true,
+		iconClassName: "icon-setting-blue",
 	},
 	promotion: {
 		titleKey: "lbl_Promotion",

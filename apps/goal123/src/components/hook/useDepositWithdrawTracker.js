@@ -1,10 +1,9 @@
-import { MetaPixelTracker } from "@ailab-mobile/common";
+import { MetaPixelTracker, NotificationStateEnum } from "@ailab-mobile/common";
 import {
 	ToastEmitter,
 	ToastBGColorEnum,
 	ToastSoundStateEnum,
-	ToastIconEnum,
-	ToastVisibleEnum
+	ToastIconEnum
 } from "@ailab-mobile/components";
 import { useTranslation } from "react-i18next";
 import {
@@ -12,120 +11,153 @@ import {
 	api_SetCustNotification
 } from "../../service/api/player";
 
-/** 訊息種類 */
+/** 訊息種類的Enum，用來標識不同的通知類型
+ *  @DepositSuccess 存款成功
+ *  @WithdrawalSuccess 提款成功
+ *  @DepositFail 存款失敗
+ *  @WithdrawalFail 提款失敗 */
 const NotificationTypeEnum = Object.freeze({
-	Deposit: 1,
-	Withdrawal: 2
+	DepositSuccess: 1,
+	WithdrawalSuccess: 2,
+	DepositFail: 3,
+	WithdrawalFail: 4
 });
 
-/** 此 hook 負責追蹤用戶存款提款成功的事件，如果使用者存款提款成功，觸發 MetaPixelTracker 事件通知市場，並發送存款提款成功的吐司訊息通知用戶 */
-const useDepositWithdrawTracker = () => {
-	// ======= hook =======
+/** 各類型財務通知的配置
+ *  @note 當前提款不需要發通知給市場,如果之後有需求再自行擴充。
+ *  @event 市場追蹤用戶的事件，目前僅有存款成功需要追蹤
+ *  @messageKey i18n 訊息鍵
+ *  @bgColor 發送的吐司背景色
+ *  @iconClassName 吐司訊息 icon */
+const notificationsConfig = {
+	[NotificationTypeEnum.DepositSuccess]: {
+		event: "deposit_successful",
+		i18nLabel: "Label_DepositSuccessful",
+		bgColor: ToastBGColorEnum.Green,
+		iconClassName: ToastIconEnum.Check
+	},
+	[NotificationTypeEnum.WithdrawalSuccess]: {
+		event: null,
+		i18nLabel: "Label_WithdrawSuccessful",
+		bgColor: ToastBGColorEnum.Green,
+		iconClassName: ToastIconEnum.Check
+	},
+	[NotificationTypeEnum.DepositFail]: {
+		event: null,
+		i18nLabel: "Label_DepositFailed",
+		bgColor: ToastBGColorEnum.Red,
+		iconClassName: ToastIconEnum.Cross
+	},
+	[NotificationTypeEnum.WithdrawalFail]: {
+		event: null,
+		i18nLabel: "Label_WithdrawFailed",
+		bgColor: ToastBGColorEnum.Red,
+		iconClassName: ToastIconEnum.Cross
+	}
+};
 
+/**
+ * useDepositWithdrawTracker Hook:
+ * - 此 Hook 負責處理用戶存款與提款的成功或失敗通知。
+ * - 依據通知類型發送事件追蹤、顯示吐司訊息，並播放音效。 */
+const useDepositWithdrawTracker = () => {
 	const { t } = useTranslation();
 
-	// ======= 對外函數 =======
-
-	/**
-	 *  當存在存款單號時 ( 代表用戶存款成功 ) 流程：
-	 *  1. 已登入時，每分鐘打一次 getCustNotification 確認是否有單號。
+	/** 處理財務通知（ 存款成功／提款成功／存款失敗／提款失敗 ）的函數
+	 *  1. 已登入時，每分鐘打一次 getCustNotification 確認是否有財務通知的單號。
 	 *	2. 登入完成，也會打一次 getCustNotification ( 有可能用戶存完款就登出，後台尚未審核，所以未通知用戶 )，此時若有單號，則會通知用戶。
-	 *  3. 觸發 MetaPixelTracker 事件，通知市場用戶存款成功。
-	 *  4. 向用戶發送吐司訊息確認交易已處理。
-	 *  5. 調用 setCustNotification 移除該單號，防止之後再次獲得相同的單號。
+	 *  3. 觸發 MetaPixelTracker 事件，通知市場用戶執行當前財務操作成功。
+	 *  4. 向用戶發送財務通知訊息。
+	 *  5. 調用 setCustNotification 移除該財務通知單號，防止之後再次獲得相同的單號。
 	 *
-	 * @toastVisibled 啟用吐司訊息
-	 * @toastMuted 禁用吐司訊息音效 */
-	const checkDepositSuccessful = async (toastVisibled, toastMuted) => {
+	 * @notificationType - 通知類型（例如存款成功/提款成功）。
+	 * @notificationEnabled - 是否啟用通知。
+	 * @notificationMuted - 是否禁音通知音效。 */
+	const processNotification = async (
+		notificationType,
+		notificationEnabled,
+		notificationMuted
+	) => {
 		try {
 			const {
 				data: { data: orders = [] } = {}
-			} = await api_GetCustNotification({
-				notificationType: NotificationTypeEnum.Deposit
-			});
-			const hasOrders = orders.length > 0;
-			if (!hasOrders) return;
+			} = await api_GetCustNotification({ notificationType });
 
-			const promises = orders.map(orderId => {
-				// 每筆存款訂單成功時，通知市場用戶存款成功。如用戶有開啟吐司訊息，觸發存款成功吐司訊息，存款為綠底／白字／勾勾 icon
-				MetaPixelTracker("deposit_successful");
-				if (toastVisibled) {
+			// 若沒有新訂單號，則不進行任何操作
+			if (orders.length === 0) return;
+
+			const {
+				event,
+				i18nLabel,
+				bgColor,
+				iconClassName
+			} = notificationsConfig[notificationType];
+
+			/** 消除該財務通知的所有單號 */
+			const orderProcessingPromises = orders.map(async orderId => {
+				// 如果此財務通知需要通知市場，就發送通知給市場
+				if (event) MetaPixelTracker(event);
+
+				// 如果財務通知有啟用，就發送通知
+				if (notificationEnabled) {
 					ToastEmitter({
-						message: t("Label_DepositSuccessful", { orderId }),
-						toastMuted,
-						backgroundColor: ToastBGColorEnum.Green,
-						iconClassName: ToastIconEnum.Check,
+						message: t(i18nLabel, { orderId }),
+						customBGColor: bgColor,
+						customIconClassName: iconClassName,
 						isWrapText: false
 					});
+
+					// 如果財務通知開啟音效，就播放音效
+					if (!notificationMuted) {
+						const audio = new Audio(
+							"https://banner.goal123.org/Static/toast/img/toastSound.mp3"
+						);
+						audio.play();
+					}
 				}
-				// 移除該單號，防止之後再次獲得相同的單號
+
+				// 移除該財務通知類型的單號，防止之後再次獲得相同的單號
 				return api_SetCustNotification({
-					notificationType: NotificationTypeEnum.Deposit,
+					notificationType,
 					transId: orderId
 				});
 			});
-			await Promise.all(promises);
+
+			await Promise.all(orderProcessingPromises);
 		} catch (error) {
-			// 忽略
+			// 忽略錯誤
 		}
 	};
 
 	/**
-	 *  @note 當前提款不需要發通知給市場,如果之後有需求再自行擴充。
-	 *  當存在提款單號時 ( 代表用戶提款成功 ) 流程：
-	 *  1. 已登入時，每分鐘打一次 getCustNotification 確認是否有單號。
-	 *	2. 登入完成，也會打一次 getCustNotification ( 有可能用戶提完款就登出，後台尚未審核，所以未通知用戶 )，此時若有單號，則會通知用戶。
-	 *  3. 向用戶發送吐司訊息確認交易已處理。
-	 *  4. 調用 setCustNotification 移除該單號，防止之後再次獲得相同的單號。
-	 *
-	 * @toastVisibled 啟用吐司訊息
-	 * @toastMuted 禁用吐司訊息音效 */
-	const checkWithdrawalSuccessful = async (toastVisibled, toastMuted) => {
-		try {
-			const { data: orders = [] } = await api_GetCustNotification({
-				notificationType: NotificationTypeEnum.Withdrawal
-			});
-			const hasOrders = orders.length > 0;
-			if (!hasOrders) return;
-
-			const promises = orders.map(orderId => {
-				// 每筆提款成功時，且用戶有開啟吐司訊息，觸發提款成功吐司訊息，提款為藍底／白字／勾勾 icon
-				if (toastVisibled) {
-					ToastEmitter({
-						message: t("Label_WithdrawSuccessful", { orderId }),
-						toastMuted,
-						backgroundColor: ToastBGColorEnum.Blue,
-						iconClassName: ToastIconEnum.Check,
-						isWrapText: false
-					});
-				}
-				// 移除該單號，防止之後再次獲得相同的單號
-				return api_SetCustNotification({
-					notificationType: NotificationTypeEnum.Withdrawal,
-					transId: orderId
-				});
-			});
-			await Promise.all(promises);
-		} catch (error) {
-			// 忽略
-		}
-	};
-
-	/** 處理存提款吐司訊息通知
-	 *  @isToastVisible 吐司訊息是否開啟
-	 *  @isToastMuted 吐司訊息是否靜音 */
-	const checkDepositOrWithdrawalSuccessful = async (
-		isToastVisible,
-		isToastMuted
+	 *  在 “登入時” 或是 “登入後，每分鐘檢查”，
+	 *  當前是否有 存款成功／提款成功／存款失敗／提款失敗 的單號，
+	 *  有的話需要發送財務通知給使用者。
+	 * @notificationEnabledArg - 從 userInfo 取得的財務通知是否啟用
+	 * @notificationMutedArg - 從 userInfo 取得的財務通知是否禁音 */
+	const handleNotification = async (
+		notificationEnabledArg,
+		notificationMutedArg
 	) => {
-		const toastVisibled = isToastVisible === ToastVisibleEnum.Visible;
-		const toastMuted = isToastMuted === ToastSoundStateEnum.Muted;
-		await checkDepositSuccessful(toastVisibled, toastMuted);
-		await checkWithdrawalSuccessful(toastVisibled, toastMuted);
-	};
+		const notificationEnabled =
+			notificationEnabledArg === NotificationStateEnum.Enabled;
 
+		const notificationMuted =
+			notificationMutedArg === ToastSoundStateEnum.Muted;
+
+		/** 一次性檢查所有財務通知的類型，是否有單號，如果有單號，就發財務通知給使用者 */
+		await Promise.all(
+			Object.values(NotificationTypeEnum).map(async notificationType => {
+				processNotification(
+					notificationType,
+					notificationEnabled,
+					notificationMuted
+				);
+			})
+		);
+	};
 	return {
-		checkDepositOrWithdrawalSuccessful
+		handleNotification
 	};
 };
 

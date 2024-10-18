@@ -43,7 +43,7 @@ import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
 import ChangePwd from "./components/member/changePwd";
 
-import Other from "./components/setting/other";
+import Other from "./pages/other";
 
 import Kyc from "./components/withdrawal/kyc";
 import KycWaiting from "./components/withdrawal/kycWaiting";
@@ -72,6 +72,7 @@ import DragonEgg from "./pages/dragonEgg";
 import EuroCup from "./pages/euroCup";
 import RetentionPage from "./pages/retention";
 import LeaderBoard from "./pages/leaderBoard";
+import Setting from "./pages/setting";
 import Launcher from "./pages/launcher";
 import Survey from "./pages/survey";
 
@@ -163,6 +164,7 @@ const Index = () => {
 						<EuroCup path={`/:langId/${path.euroCup.root}`} />
 						<RetentionPage path={path.retention.root} />
 						<LeaderBoard path={path.leaderBoard.root} />
+						<Setting path={path.setting.root} />
 						<Launcher path={path.launcher.root} />
 						<Survey path={path.survey.root} />
 					</Router>
