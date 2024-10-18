@@ -6,7 +6,6 @@ import {
 	userInfoContext
 } from "../common/context";
 import ProfileDetail from "./profile.detail";
-import path from "../../path";
 import { LOGOUT } from "../../service/auth";
 import ProfileWallet from "./profile.wallet";
 import { defLevelList } from "../vip/def";
