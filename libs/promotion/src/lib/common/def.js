@@ -14,12 +14,7 @@ export const defPromotionType = {
 	cashback: 7,
 	static: 8,
 	retentionFreeBet: 9,
-	missionBonus: 11,
-	// 10/17/24 新增
-	SportAndSlot: 16,
-	SlotAndLiveCasino: 17,
-	LiveCasinoAndSport: 18,
-	ALLCategory: 19
+	missionBonus: 11
 };
 
 export const defFilterType = {
@@ -130,7 +125,12 @@ export const defCategoryId = {
 	PtLiveCasino: 8,
 	SBSW: 9,
 	// 沒有 Mega888SlotRNGFishing
-	ESports: 11
+	ESports: 11,
+	// 10/17/24 新增
+	SportAndSlot: 16,
+	SlotAndLiveCasino: 17,
+	LiveCasinoAndSport: 18,
+	ALLCategory: 19
 };
 
 export const promotionPeriodType = {
