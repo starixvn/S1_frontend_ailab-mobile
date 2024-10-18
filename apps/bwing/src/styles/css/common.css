@@ -390,6 +390,8 @@
   margin: 0 1vw;
   cursor: pointer;
 }
+<<<<<<< HEAD
+=======
 .icon-survey-blue::before {
   content: "";
   display: block;
@@ -399,6 +401,7 @@
   margin: 0 1vw;
   cursor: pointer;
 }
+>>>>>>> feat/ms-8490-(Allsites)-Survey-Questionnaire
 .icon-lottery-blue::before {
   content: "";
   display: block;
@@ -426,6 +429,7 @@
   margin: 0 1vw;
   cursor: pointer;
 }
+<<<<<<< HEAD
 .icon-leaderboard-blue::before {
   content: "";
   display: block;
@@ -435,6 +439,8 @@
   margin: 0 1vw;
   cursor: pointer;
 }
+=======
+>>>>>>> feat/ms-8490-(Allsites)-Survey-Questionnaire
 .icon-aff-blue::before {
   content: "";
   display: block;

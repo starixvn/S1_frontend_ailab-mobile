@@ -14,7 +14,12 @@ export const defPromotionType = {
 	cashback: 7,
 	static: 8,
 	retentionFreeBet: 9,
-	missionBonus: 11
+	missionBonus: 11,
+	// 10/17/24 新增
+	SportAndSlot: 16,
+	SlotAndLiveCasino: 17,
+	LiveCasinoAndSport: 18,
+	ALLCategory: 19
 };
 
 export const defFilterType = {
