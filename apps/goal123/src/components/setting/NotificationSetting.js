@@ -5,13 +5,13 @@ import {
 	useNotificationSetting,
 	NotificationStateEnum
 } from "@ailab-mobile/common";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../common/context";
 
 const NotificationSetting = () => {
 	// ====== hook ======
 
-	const { t } = useTranslation();
+	// const { t } = useTranslation();
 
 	// 從 userInfo 拿取財務訊息的設定狀態
 	const {

@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { find, uniqueId, filter, includes } from "lodash";
+import { find, uniqueId, filter } from "lodash";
 import classNames from "classnames";
 
 export type SelectOptionType = {
