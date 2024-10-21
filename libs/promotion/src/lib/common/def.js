@@ -125,7 +125,12 @@ export const defCategoryId = {
 	PtLiveCasino: 8,
 	SBSW: 9,
 	// 沒有 Mega888SlotRNGFishing
-	ESports: 11
+	ESports: 11,
+	// 10/17/24 新增
+	SportAndSlot: 16,
+	SlotAndLiveCasino: 17,
+	LiveCasinoAndSport: 18,
+	ALLCategory: 19
 };
 
 export const promotionPeriodType = {
