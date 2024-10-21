@@ -10113,6 +10113,7 @@ a.clickBtn:before {
 @media screen and (max-width: 1024px) {
   .inputdate input[type=date] {
     padding: 0;
+    width: 77vw;
   }
 }
 .inputdate input[type=date] ~ .iconModule {
