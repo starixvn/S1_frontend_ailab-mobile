@@ -22,6 +22,7 @@ import { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
 import { siteInfo } from "../../config";
 import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
+import useFpsChecks from "../hook/useFpsChecks";
 
 const isSpecialPath = () => {
 	return (
@@ -169,6 +170,8 @@ export const Wrapper = ({ children }) => {
 		},
 		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
+
+	useFpsChecks({ isLogin: userInfo.isLogin, interval: 60000 });
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
