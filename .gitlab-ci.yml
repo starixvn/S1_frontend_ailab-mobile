@@ -4,12 +4,22 @@ stages:
 variables:
   GITLABTW_API_URL: http://gitlab2.n88dev.com/api/v4
   GITLABTW_TOKEN: glpat-YfdihyynWJHSXeeRoKDm
+
+  ## Define FE Group
   TW_FE_GITLABTW_GROUP: Frontend
   FE_GROUP_ID: 568
   FE_GROUP_URL: $CI_SERVER_URL/s1/frontend
+
+  ## Define BE Group
   TW_BE_GITLABTW_GROUP: Backend
   BE_GROUP_ID: 569
   BE_GROUP_URL: $CI_SERVER_URL/s1/backend
+
+  ## Define Design Group
+  DESIGN_GITLABTW_GROUP: Design
+  DESIGN_GROUP_ID: 2516
+  DESIGN_GROUP_URL: $CI_SERVER_URL/s1/design
+
 
 
 .sync_base:
@@ -64,6 +74,19 @@ sync_be_page1:
     GITLABCOM_PAGE_SIZE: 50
     GROUP_ID: $BE_GROUP_ID
     GROUP_URL: $BE_GROUP_URL
+
+
+sync_ds_page1:
+  extends:
+    - .sync_base
+  variables:
+    GITLABCOM_GROUP: $DESIGN_GITLABTW_GROUP
+    GITLABCOM_PAGE: 1
+    GITLABCOM_PAGE_SIZE: 50
+    GROUP_ID: $DESIGN_GROUP_ID
+    GROUP_URL: $DESIGN_GROUP_URL
+
+
 
 
 
