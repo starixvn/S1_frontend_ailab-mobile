@@ -85,3 +85,7 @@ export const newsRequest = createAxiosInstanceWithDeviceHeader(
 export const surveyRequest = createAxiosInstanceWithDeviceHeader(
 	`${rootURL}/api/Questionnaire`
 );
+
+export const fpsRequest = createAxiosInstanceWithDeviceHeader(
+	`${rootURL}/api/FPS`
+);
