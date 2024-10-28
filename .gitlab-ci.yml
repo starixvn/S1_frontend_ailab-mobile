@@ -15,7 +15,7 @@ variables:
   BE_GROUP_ID: 569
   BE_GROUP_URL: $CI_SERVER_URL/s1/backend
 
-  ## Define Design Group
+  ### Define Design Group
   DESIGN_GITLABTW_GROUP: Design
   DESIGN_GROUP_ID: 2523
   DESIGN_GROUP_URL: $CI_SERVER_URL/s1-testing/design
