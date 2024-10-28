@@ -17,8 +17,8 @@ variables:
 
   ### Define Design Group
   DESIGN_GITLABTW_GROUP: Design
-  DESIGN_GROUP_ID: 2523
-  DESIGN_GROUP_URL: $CI_SERVER_URL/s1-testing/design
+  DESIGN_GROUP_ID: 2516
+  DESIGN_GROUP_URL: $CI_SERVER_URL/s1/design
 
 
 
@@ -50,7 +50,7 @@ variables:
           curl --no-progress-meter --request POST --header "PRIVATE-TOKEN:glpat-i7UDNnuwdukMYXHbdzST" -F path=$SRC_PROJECT_NAME -F namespace_id=$GROUP_ID -F initialize_with_readme=false --url "$GITLAB_API_URL/projects/"
           echo -e "\n***Push to gitlabnexdev $SRC_PROJECT_NAME***"
           git remote add gitlabnexdev $GROUP_URL/${SRC_PROJECT_NAME}.git
-          git push gitlabnexdev --tags "refs/remotes/origin/*:refs/heads/*" --force
+          git push gitlabnexdev --tags "refs/remotes/origin/*:refs/heads/*"
           cd ../
         } || true
       done
