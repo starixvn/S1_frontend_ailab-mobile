@@ -17,7 +17,7 @@ variables:
 
   ## Define Design Group
   DESIGN_GITLABTW_GROUP: Design
-  DESIGN_GROUP_ID: 2516
+  DESIGN_GROUP_ID: 2523
   DESIGN_GROUP_URL: $CI_SERVER_URL/s1/design
 
 
