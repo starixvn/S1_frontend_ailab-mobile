@@ -1,6 +1,7 @@
 import React, { useContext, Component, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { ToastContainer } from "react-toastify";
 import { useLocation, useNavigate } from "@reach/router";
 import {
 	isDateRange,
@@ -100,9 +101,10 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	setting: {
-		titleKey: "lbl_Setting",
-		className: "main",
-		hideLogo: true
+		titleKey: "setting",
+		className: "main setting",
+		hideLogo: true,
+		iconClassName: "icon-setting-blue"
 	},
 	promotion: {
 		titleKey: "lbl_Promotion",
@@ -361,6 +363,7 @@ const Layout = ({ children }) => {
 	) : (
 		<>
 			<RotationHint i18n={i18n} />
+			<ToastContainer /> {/* 吐司訊息 */}
 			{pageInfo.customHeader ? (
 				children
 			) : (
@@ -413,16 +416,12 @@ const Layout = ({ children }) => {
 					/>
 				</div>
 			)}
-
 			{/* 僅限過年期間顯示 */}
 			{!isDateRange(eventTime.dragonEgg) && luckyWheel && root && (
 				<LuckyWheel setLuckyWheel={setLuckyWheel} />
 			)}
-
 			{isDateRange(eventTime.euroCup) && root && <EuroCupLink />}
-
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
-
 			{isDateRange(eventTime.mysteryBox) && root && <MysteryBox />}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>

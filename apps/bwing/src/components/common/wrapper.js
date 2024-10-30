@@ -60,10 +60,16 @@ export const Wrapper = ({ children }) => {
 	const [theme, setTheme] = useState(themeList.default);
 	const [isShowEWallet, setIsShowEWallet] = useState(false);
 	const isMountedRef = useRef(null);
-	const { checkDepositSuccessful } = useDepositWithdrawTracker();
+	const { handleNotification } = useDepositWithdrawTracker();
 	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
 		[]
 	);
+
+	/**
+	 *  使用者資訊中，吐司訊息的設定
+	 *  @financeNotification 是否顯示吐司訊息
+	 *  @soundEffects 是否播放吐司訊息音效 */
+	const { financeNotification, soundEffects } = userInfo ?? {};
 
 	const GetBalance = () => {
 		if (!userInfo.isLogin) return;
@@ -153,6 +159,16 @@ export const Wrapper = ({ children }) => {
 		}
 	}, []);
 
+	// 當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
+	useEffect(() => {
+		if (!userInfo.isLogin) return;
+		const checkNotification = async () => {
+			// 將 userInfo 取得的吐司訊息設定傳至 handleNotification 當中，並觸發對應設定的吐司訊息。
+			await handleNotification(financeNotification, soundEffects);
+		};
+		checkNotification();
+	}, [userInfo.isLogin]);
+
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
 			setPopBox({ isOpen: false });
@@ -184,8 +200,9 @@ export const Wrapper = ({ children }) => {
 
 	useInterval(
 		async () => {
-			// 每分鐘確認使用者是否有儲值成功的單號，如果有就通知市場（ 臉書通知 ）
-			await checkDepositSuccessful();
+			// 當使用者登入後，每分鐘檢查存/提款通知並觸發對應的吐司訊息。
+			// 將 userInfo 取得的吐司訊息設定傳至 handleNotification 當中，並觸發對應設定的吐司訊息。
+			await handleNotification(financeNotification, soundEffects);
 			api_onlineCheck().then(
 				res => {
 					const result = res.data;
