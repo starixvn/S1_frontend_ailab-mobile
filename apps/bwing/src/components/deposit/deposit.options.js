@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { userInfoContext } from "Context";
+import { CurrenciesEnum } from "@ailab-mobile/common";
 import { defPayment } from "./deposit.def";
 
 const Options = ({ i18n, selectedOption, handleSelect, paymentList }) => {
+	const {
+		userInfo: { currencyId }
+	} = useContext(userInfoContext);
+
 	const rows = Object.keys(defPayment)
 		.filter(key => paymentList[key]?.length > 0)
 		.map(key => {
 			const pay = defPayment[key];
+
+			// 10/29/24 調整vnd時候的quick bank 顯示為 bank transfer
+			const finalDisplayLabelKey =
+				currencyId === CurrenciesEnum.VN &&
+				pay.displayKey === "lbl_DepositType9"
+					? "lbl_DepositType3"
+					: pay.displayKey;
+
 			return (
 				<div key={key} onClick={handleSelect.bind(this, key)}>
 					<div
@@ -16,7 +30,7 @@ const Options = ({ i18n, selectedOption, handleSelect, paymentList }) => {
 						<div className={pay.icon} />
 						<i className="icon icon-icon32px_check" />
 					</div>
-					<div className="subtitle">{i18n[pay.displayKey]}</div>
+					<div className="subtitle">{i18n[finalDisplayLabelKey]}</div>
 				</div>
 			);
 		});
