@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect, useNavigate } from "@reach/router";
 import { useCooldown } from "@ailab-mobile/hooks";
 import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
+import { isInApp } from "@ailab-mobile/common";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
@@ -315,7 +316,7 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 		// 中國地區不需驗證
 		const ReCaptchaAction = "signup";
 		let reCaptchaToken;
-		if (recaptchaInfoData?.country !== "CN") {
+		if (recaptchaInfoData?.country !== "CN" && !isInApp()) {
 			if (!executeRecaptcha) return;
 			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
 		}
