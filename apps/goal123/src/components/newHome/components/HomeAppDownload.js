@@ -9,11 +9,11 @@ const HomeAppDownload = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const { appLinkDatas } = useAppDownLoad();
-	const andriodDownLoadUrl = appLinkDatas?.Andriod?.downloadLink ?? "";
+	const androidDownloadUrl = appLinkDatas?.Android?.downloadLink ?? "";
 	const IOSDownloadUrl = appLinkDatas?.IOS?.downloadLink ?? "";
 
-	const handleAndriod = () => {
-		window.open(andriodDownLoadUrl, "_blank", "noopener,noreferrer");
+	const handleAndroid = () => {
+		window.open(androidDownloadUrl, "_blank", "noopener,noreferrer");
 	};
 
 	const handleIOS = () => {
@@ -71,7 +71,7 @@ const HomeAppDownload = () => {
 							<div className="app-android">
 								<button
 									className="btn-app"
-									onClick={handleAndriod}>
+									onClick={handleAndroid}>
 									<i className="icon-android" />
 									{t("lbl_Home_Android")}
 								</button>
