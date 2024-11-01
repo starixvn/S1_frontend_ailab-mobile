@@ -1,6 +1,6 @@
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import React, { useContext, useEffect, useState } from "react";
-import { MetaPixelTracker } from "@ailab-mobile/common";
+import { isInApp, MetaPixelTracker } from "@ailab-mobile/common";
 import { useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
@@ -295,7 +295,7 @@ const Join = ({ setNav }) => {
 		// 中國地區不需驗證
 		const ReCaptchaAction = "signup";
 		let reCaptchaToken;
-		if (recaptchaInfoData?.country !== "CN") {
+		if (recaptchaInfoData?.country !== "CN" && !isInApp()) {
 			if (!executeRecaptcha) return;
 			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
 		}
