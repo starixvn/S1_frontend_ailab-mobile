@@ -187,7 +187,7 @@ export const Wrapper = ({ children }) => {
 				}
 			);
 		},
-		userInfo.isLogin && !isSpecialPath() ? 600000 : null
+		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
 
 	useFpsChecks({ isLogin: userInfo.isLogin, interval: 60000 });
