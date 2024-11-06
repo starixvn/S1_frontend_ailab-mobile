@@ -120,16 +120,6 @@ export const Wrapper = ({ children }) => {
 		}
 	}, [userInfo.isLogin]);
 
-	// 當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
-	useEffect(() => {
-		if (!userInfo.isLogin) return;
-		const checkNotification = async () => {
-			// 將 userInfo 取得的吐司訊息設定傳至 handleNotification 當中，並觸發對應設定的吐司訊息。
-			await handleNotification(financeNotification, soundEffects);
-		};
-		checkNotification();
-	}, [userInfo.isLogin]);
-
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
 			// set 邏輯要寫在 click 事件內，寫在同一個 scope popup 會因為 state 改變後 rerender 導致 popup 消失

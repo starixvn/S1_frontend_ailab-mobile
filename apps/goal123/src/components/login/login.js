@@ -13,6 +13,7 @@ import {
 import path from "../../path";
 import Logo from "../common/logo";
 import useShieldCheck from "../hook/useShieldCheck";
+import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
 
 const initValue = { UserName: "", Password: "" };
 const initStatus = {
@@ -30,6 +31,7 @@ const LoginPage = () => {
 	const isMountedRef = useRef(null);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
+	const { handleNotification } = useDepositWithdrawTracker();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -88,9 +90,15 @@ const LoginPage = () => {
 							...userData,
 							isLogin
 						}));
+
 						setNav(null);
 						saveShieldData();
 						navigate(`/`);
+
+						// 從 userData 拿取財務通知設定，當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
+						const { financeNotification, soundEffects } =
+							userData ?? {};
+						handleNotification(financeNotification, soundEffects);
 					} else if (
 						errorCode === 1101 ||
 						errorCode === 1102 ||
