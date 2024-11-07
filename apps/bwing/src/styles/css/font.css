@@ -1,51 +1,40 @@
 @font-face {
   font-family: "icomoon";
-  src: url("../fonts/icomoon.woff?v=202003") format("woff");
+  src: url("../fonts/icomoon.eot");
+  src: url("../fonts/icomoon.eot") format("embedded-opentype"), url("../fonts/icomoon.ttf") format("truetype"), url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
 }
 .icon:before {
-  font-family: "icomoon";
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.casinoList .icon-GPI::before {
-  font-size: 20px !important;
-}
-.casinoList .icon-YGG::before {
-  font-size: 18px !important;
-}
-.casinoList .icon-JOKER::before {
-  font-size: 12px !important;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-}
-.casinoList .icon-SG::before {
-  font-size: 18px !important;
-}
-.casinoList .icon-PG::before {
-  font-size: 12px !important;
-}
-.casinoList .icon-OW::before {
-  font-size: 18px !important;
+.icon-toast-checkmark:before {
+  content: "\e9e2";
 }
 
-.livecasinoList .icon-DG:before {
-  font-size: 22px !important;
-}
-.livecasinoList .icon-AB:before {
-  font-size: 38px !important;
-}
-.livecasinoList .icon-AG:before {
-  font-size: 24px !important;
-}
-.livecasinoList .icon-PP:before {
-  font-size: 42px !important;
-}
-.livecasinoList .icon-SA:before {
-  font-size: 36px !important;
+.icon-toast-close:before {
+  content: "\e9f1";
 }
 
 .icon-BTI:before {
   content: "\e9f0";
   color: #f9fafc;
+}
+
+.icon-pt:before {
+  content: "\e9ef";
 }
 
 .icon-N2LIVE:before {
@@ -56,8 +45,18 @@
   content: "\e9ed";
 }
 
-.icon-pt:before {
-  content: "\e9ef";
+.icon-live-chat:before {
+  content: "\e9ec";
+}
+
+.icon-zalo:before {
+  content: "\e9ea";
+  color: #49cdff;
+}
+
+.icon-skype:before {
+  content: "\e9eb";
+  color: #03a9f4;
 }
 
 .icon-gg:before {
@@ -65,8 +64,30 @@
   color: #fff;
 }
 
-.icon-topupCard::before {
+.icon-topupCard:before {
   content: "\e9e8";
+}
+
+.icon-ICG:before {
+  content: "\e9e7";
+  color: #75838b;
+}
+
+.icon-one789:before {
+  content: "\e9e6";
+  color: #fff;
+}
+
+.icon-newicon:before {
+  content: "\e9e5";
+}
+
+.icon-new:before {
+  content: "\e9e4";
+}
+
+.icon-cq9:before {
+  content: "\e9e3";
 }
 
 .icon-WM:before {
@@ -135,14 +156,6 @@
 
 .icon-BTC:before {
   content: "\e9a6";
-}
-
-.icon-mg:before {
-  content: "\e9f3";
-}
-
-.icon-jili:before {
-  content: "\e9f1";
 }
 
 .icon-line:before {
@@ -769,6 +782,10 @@
   color: #58cdff;
 }
 
+.icon-other:before {
+  content: "\e9e1";
+}
+
 .icon-cloud_upload:before {
   content: "\e9af";
 }
@@ -1179,44 +1196,4 @@
 
 .icon-moon:before {
   content: "\e91d";
-}
-
-.icon-cq9:before {
-  content: "\e9e3";
-}
-
-.icon-new:before {
-  content: "\e9e4";
-}
-
-.icon-newicon:before {
-  content: "\e9e5";
-}
-
-.icon-one789:before {
-  content: "\e9e6";
-}
-
-.icon-other:before {
-  content: "\e9e1";
-}
-
-.icon-ICG:before {
-  content: "\e9e7";
-}
-
-.icon-zalo:before {
-  content: "\e9ea";
-}
-
-.icon-skype:before {
-  content: "\e9eb";
-}
-
-.icon-live-chat:before {
-  content: "\e9ec";
-}
-
-.icon-kingmaker:before {
-  content: "\e9f2";
 }/*# sourceMappingURL=font.css.map */

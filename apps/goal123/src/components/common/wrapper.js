@@ -22,6 +22,7 @@ import { defSpecialPath } from "../../path";
 import { GET_LANG_ID } from "../../service/language";
 import { siteInfo } from "../../config";
 import useDepositWithdrawTracker from "../hook/useDepositWithdrawTracker";
+import useFpsChecks from "../hook/useFpsChecks";
 
 const isSpecialPath = () => {
 	return (
@@ -58,11 +59,18 @@ export const Wrapper = ({ children }) => {
 	const [msgCount, setMsgCount] = useState(0);
 	const [theme, setTheme] = useState(themeList.default);
 	const [isShowEWallet, setIsShowEWallet] = useState(false);
+	const { handleNotification } = useDepositWithdrawTracker();
 	const [withdrawalSettingTypeList, setWithdrawalSettingTypeList] = useState(
 		[]
 	);
 	const isMountedRef = useRef(null);
-	const { checkDepositSuccessful } = useDepositWithdrawTracker();
+
+	/**
+	 *  使用者資訊中，吐司訊息的設定
+	 *  @financeNotification 是否顯示吐司訊息
+	 *  @soundEffects 是否播放吐司訊息音效 */
+	const { financeNotification, soundEffects } = userInfo ?? {};
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => {
@@ -143,8 +151,10 @@ export const Wrapper = ({ children }) => {
 
 	useInterval(
 		async () => {
-			// 每分鐘確認使用者是否有儲值成功的單號，如果有就通知市場（ 臉書通知 ）
-			await checkDepositSuccessful();
+			// 當使用者登入後，每分鐘檢查存/提款通知並觸發對應的吐司訊息。
+			// 將 userInfo 取得的吐司訊息設定傳至 handleNotification 當中，並觸發對應設定的吐司訊息。
+			await handleNotification(financeNotification, soundEffects);
+
 			api_onlineCheck().then(
 				res => {
 					const result = res.data;
@@ -169,6 +179,8 @@ export const Wrapper = ({ children }) => {
 		},
 		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
+
+	useFpsChecks({ isLogin: userInfo.isLogin, interval: 60000 });
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
