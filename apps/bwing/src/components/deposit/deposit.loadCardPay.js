@@ -22,13 +22,15 @@ const initCardDataStatus = {
 	cardSerial: { checked: null, msg: "" }
 };
 
+const initCardData = { cardCode: "", cardSerial: "" };
+
 const Payment = props => {
 	const { paymentList, promoList, checkDepositSpecialCode, onSubmit } = props;
 	const { i18n } = useContext(i18nContext);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const [selChannel, setSelChannel] = useState({});
-	const [cardData, setCardData] = useState({ cardCode: "", cardSerial: "" });
+	const [cardData, setCardData] = useState(initCardData);
 	const [cardDataStatus, setCardDataStatus] = useState(initCardDataStatus);
 
 	const [depositPromo, setDepositPromo] = useState({
@@ -67,6 +69,7 @@ const Payment = props => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
+						setCardData(initCardData);
 						setSelChannel(res.data.data?.[0]);
 					} else {
 						setPopBox({
@@ -121,7 +124,7 @@ const Payment = props => {
 		let checked = true;
 		let msg = "";
 
-		if (!val) {
+		if (!val && selChannel.extraDataType === 4) {
 			checked = false;
 			if (col === "cardCode") {
 				msg = i18n.msg_PleaseEnterCardCode;
@@ -229,7 +232,7 @@ const Payment = props => {
 						}
 					);
 				} else {
-					const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReqLoadCardPay`;
+					const mainUrl = `${config.openURL}/${userInfo.langId}/Cashier/DepositReq`;
 					const windowOpenUrl = getWindowOpenUrl({ mainUrl, param });
 					window.open(windowOpenUrl);
 
@@ -256,14 +259,18 @@ const Payment = props => {
 						/>
 						<div>
 							<ul>
-								<li className="text-lightBlue">
-									{i18n.lbl_CardCode} :
-								</li>
-								<li>{cardData.cardCode}</li>
-								<li className="text-lightBlue">
-									{i18n.lbl_CardSerial} :
-								</li>
-								<li>{cardData.cardSerial}</li>
+								{selChannel?.extraDataType === 4 && (
+									<>
+										<li className="text-lightBlue">
+											{i18n.lbl_CardCode} :
+										</li>
+										<li>{cardData.cardCode}</li>
+										<li className="text-lightBlue">
+											{i18n.lbl_CardSerial} :
+										</li>
+										<li>{cardData.cardSerial}</li>
+									</>
+								)}
 								<li className="text-lightBlue">
 									{i18n.lbl_CardValue} :
 								</li>
@@ -299,11 +306,21 @@ const Payment = props => {
 	};
 
 	const _isConvert = isConvert(userInfo.currencyId);
-	const canSubmit =
-		cardData.cardCode &&
-		cardData.cardSerial &&
-		amount !== "" &&
-		VaildAmount({ _amount: amount, displayWarning: false });
+
+	const canSubmit = (() => {
+		if (selChannel?.extraDataType === 4) {
+			return (
+				cardData.cardCode &&
+				cardData.cardSerial &&
+				amount !== "" &&
+				VaildAmount({ _amount: amount, displayWarning: false })
+			);
+		}
+		return (
+			amount !== "" &&
+			VaildAmount({ _amount: amount, displayWarning: false })
+		);
+	})();
 
 	return (
 		<>
@@ -321,42 +338,47 @@ const Payment = props => {
 				_isConvert={_isConvert}
 				showMinMaxHint={true}
 			/>
-			<Inputbox
-				title={i18n.lbl_CardCode}
-				isRequired={true}
-				value={cardData.cardCode}
-				placeholder={i18n.msg_PleaseEnterCardCode}
-				onBlur={checkValue.bind(null, {
-					col: "cardCode",
-					val: cardData.cardCode
-				})}
-				onChange={EditField.bind(null, { col: "cardCode" })}
-				btnStatus={cardDataStatus.cardCode.checked}
-				tip={cardDataStatus.cardCode.msg}
-				clickInfo={clickInfo.bind(this, { col: "cardCode" })}
-				i18n={i18n}
-				isShowPaste={true}
-				EditFieldPaste={EditField}
-				pasteCol="cardCode"
-			/>
-			<Inputbox
-				title={i18n.lbl_CardSerial}
-				isRequired={true}
-				value={cardData.cardSerial}
-				placeholder={i18n.msg_PleaseEnterCardSerial}
-				onBlur={checkValue.bind(null, {
-					col: "cardSerial",
-					val: cardData.cardSerial
-				})}
-				onChange={EditField.bind(null, { col: "cardSerial" })}
-				btnStatus={cardDataStatus.cardSerial.checked}
-				tip={cardDataStatus.cardSerial.msg}
-				clickInfo={clickInfo.bind(this, { col: "cardSerial" })}
-				i18n={i18n}
-				isShowPaste={true}
-				EditFieldPaste={EditField}
-				pasteCol="cardSerial"
-			/>
+			{selChannel?.extraDataType === 4 && (
+				<>
+					<Inputbox
+						title={i18n.lbl_CardCode}
+						isRequired={true}
+						value={cardData.cardCode}
+						placeholder={i18n.msg_PleaseEnterCardCode}
+						onBlur={checkValue.bind(null, {
+							col: "cardCode",
+							val: cardData.cardCode
+						})}
+						onChange={EditField.bind(null, { col: "cardCode" })}
+						btnStatus={cardDataStatus.cardCode.checked}
+						tip={cardDataStatus.cardCode.msg}
+						clickInfo={clickInfo.bind(this, { col: "cardCode" })}
+						i18n={i18n}
+						isShowPaste={true}
+						EditFieldPaste={EditField}
+						pasteCol="cardCode"
+					/>
+					<Inputbox
+						title={i18n.lbl_CardSerial}
+						isRequired={true}
+						value={cardData.cardSerial}
+						placeholder={i18n.msg_PleaseEnterCardSerial}
+						onBlur={checkValue.bind(null, {
+							col: "cardSerial",
+							val: cardData.cardSerial
+						})}
+						onChange={EditField.bind(null, { col: "cardSerial" })}
+						btnStatus={cardDataStatus.cardSerial.checked}
+						tip={cardDataStatus.cardSerial.msg}
+						clickInfo={clickInfo.bind(this, { col: "cardSerial" })}
+						i18n={i18n}
+						isShowPaste={true}
+						EditFieldPaste={EditField}
+						pasteCol="cardSerial"
+					/>
+				</>
+			)}
+
 			<AmountInput
 				title={i18n.lbl_CardValue}
 				channel={selChannel}
