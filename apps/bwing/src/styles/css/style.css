@@ -2180,8 +2180,8 @@ header {
 .btn-group button.btn-gray, .btn-group button.btn-cancel,
 .btn-group a.btn-gray,
 .btn-group a.btn-cancel {
-  background: #AAAAAA;
-  color: #fff;
+  background: #AAAAAA !important;
+  color: #fff !important;
 }
 .btn-group button.btn-lightblue,
 .btn-group a.btn-lightblue {
