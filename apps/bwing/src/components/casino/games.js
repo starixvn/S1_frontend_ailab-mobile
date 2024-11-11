@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
+import { shuffle } from "lodash";
 import Loading from "../common/loading";
 import { defTpGameType } from "../hook/useGetTpMaintainList";
 
@@ -21,14 +22,18 @@ const GamePanel = React.forwardRef((props, ref) => {
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { langId } = userInfo;
-	if (gameList === null) return <Loading />;
+	const shuffledGameList = useMemo(
+		() => (gameList ? shuffle(gameList) : null),
+		[gameList]
+	);
+	if (shuffledGameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
 	if (storageStr && storageStr.charAt(0) === "&") {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
 	const storageList = storageStr?.split("&") ?? [];
-	gameList?.forEach(g => {
+	shuffledGameList?.forEach(g => {
 		const handleIsFavorite = () => {
 			return storageList?.includes(`${g.tpId}_${g.gameId}`);
 		};
@@ -108,7 +113,6 @@ const GamePanel = React.forwardRef((props, ref) => {
 			</div>
 		);
 	});
-	games.sort(() => Math.random() - 0.5); // 隨機排列遊戲列表
 
 	return games.length === 0 ? (
 		<div className="nodata icon icon-nodata" ref={ref}>
