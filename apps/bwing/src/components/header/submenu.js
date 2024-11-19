@@ -81,11 +81,15 @@ export default Content;
 
 const SubMenuList = ({ i18n, langId, closeNavPanel, isLogin }) => {
 	const rows = defSubMenus(langId).map(({ icon, href, path, displayKey }) => {
+		/** 需要登入才能顯示的 menu item */
+		const loginRequiredMenuItems = ["lbl_Survey", "lbl_Setting"];
+
 		if (displayKey === "lbl_APP" && isInApp()) {
 			return null;
 		}
 
-		if (displayKey === "lbl_Survey" && !isLogin) {
+		// 未登入的使用者不顯示的 menu item
+		if (loginRequiredMenuItems.includes(displayKey) && !isLogin) {
 			return null;
 		}
 

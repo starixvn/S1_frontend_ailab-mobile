@@ -34,7 +34,6 @@ const initStatus = {
 
 const Login = () => {
 	const { t } = useTranslation();
-	const { checkDepositSuccessful } = useDepositWithdrawTracker();
 	const { nav, setNav } = useContext(navContext);
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
@@ -44,6 +43,7 @@ const Login = () => {
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [activeInfoMsg, setActiveInfoMsg] = useState("");
 	const { isReady, setCooldown, cooldown } = useCooldown();
+	const { handleNotification } = useDepositWithdrawTracker();
 
 	const isShow =
 		nav === defNavPanel.login || pathname === `/${path.login.root}`;
@@ -90,17 +90,21 @@ const Login = () => {
 				userData
 			) => {
 				if (errorCode === 0) {
-					// 登入成功送出臉書廣告埋點給市場
-					await checkDepositSuccessful();
 					setUserInfo(() => ({
 						...userData,
 						isLogin
 					}));
+
 					setNav(null);
 					saveShieldData();
 					navigate(`/`);
 					setUserValue(initUserValue);
 					setInputStatus(initStatus);
+
+					// 從 userData 拿取財務通知設定，當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
+					const { financeNotification, soundEffects } =
+						userData ?? {};
+					handleNotification(financeNotification, soundEffects);
 				} else if (
 					errorCode === 1101 ||
 					errorCode === 1102 ||
