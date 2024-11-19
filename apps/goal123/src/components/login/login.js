@@ -31,7 +31,7 @@ const LoginPage = () => {
 	const isMountedRef = useRef(null);
 	const { getShieldData, saveShieldData, isShieldLoaded } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
-	const { checkDepositSuccessful } = useDepositWithdrawTracker();
+	const { handleNotification } = useDepositWithdrawTracker();
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -86,15 +86,19 @@ const LoginPage = () => {
 			) => {
 				if (isMountedRef.current) {
 					if (errorCode === 0) {
-						// 登入成功送出臉書廣告埋點給市場
-						await checkDepositSuccessful();
 						setUserInfo(() => ({
 							...userData,
 							isLogin
 						}));
+
 						setNav(null);
 						saveShieldData();
 						navigate(`/`);
+
+						// 從 userData 拿取財務通知設定，當使用者登入時，檢查存/提款通知並觸發對應的吐司訊息。
+						const { financeNotification, soundEffects } =
+							userData ?? {};
+						handleNotification(financeNotification, soundEffects);
 					} else if (
 						errorCode === 1101 ||
 						errorCode === 1102 ||

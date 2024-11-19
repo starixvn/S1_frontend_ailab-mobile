@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "@reach/router";
 import {
 	navContext,
 	i18nContext,
@@ -7,7 +6,6 @@ import {
 	userInfoContext
 } from "../common/context";
 import ProfileDetail from "./profile.detail";
-import path from "../../path";
 import { LOGOUT } from "../../service/auth";
 import ProfileWallet from "./profile.wallet";
 import { defLevelList } from "../vip/def";
@@ -60,11 +58,6 @@ const Panel = () => {
 				<ProfileDetail />
 
 				<div className="btn-group">
-					<Link
-						className="btn-primary"
-						to={`/${path.changePassword.root}`}>
-						{i18n.lbl_ChangePassword.toUpperCase()}
-					</Link>
 					<button
 						type="button"
 						className="btn-primary"

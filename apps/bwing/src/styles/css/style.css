@@ -476,6 +476,15 @@ a {
   margin: 0 1vw;
   cursor: pointer;
 }
+.icon-setting-blue::before {
+  content: "";
+  display: block;
+  width: 9vw;
+  height: 9vw;
+  background: url(https://banner.bw88.io/h5/img/4.0/icon-setting-blue.svg) no-repeat center/cover;
+  margin: 0 1vw;
+  cursor: pointer;
+}
 .icon-survey-blue::before {
   content: "";
   display: block;
@@ -1349,6 +1358,43 @@ html {
   font-family: "Bai Jamjuree", sans-serif;
 }
 
+.casinoList .icon-GPI::before {
+  font-size: 20px !important;
+}
+.casinoList .icon-YGG::before {
+  font-size: 18px !important;
+}
+.casinoList .icon-JOKER::before {
+  font-size: 12px !important;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+.casinoList .icon-SG::before {
+  font-size: 18px !important;
+}
+.casinoList .icon-PG::before {
+  font-size: 12px !important;
+}
+.casinoList .icon-OW::before {
+  font-size: 18px !important;
+}
+
+.livecasinoList .icon-DG:before {
+  font-size: 22px !important;
+}
+.livecasinoList .icon-AB:before {
+  font-size: 38px !important;
+}
+.livecasinoList .icon-AG:before {
+  font-size: 24px !important;
+}
+.livecasinoList .icon-PP:before {
+  font-size: 42px !important;
+}
+.livecasinoList .icon-SA:before {
+  font-size: 36px !important;
+}
+
 #root {
   height: 100%;
 }
@@ -2086,7 +2132,8 @@ header {
             transform: translateX(-2px) rotate(-1.2deg);
   }
 }
-#header ~ .Login, #header ~ .Join {
+#header ~ .Login,
+#header ~ .Join {
   z-index: 11;
 }
 
@@ -2180,8 +2227,8 @@ header {
 .btn-group button.btn-gray, .btn-group button.btn-cancel,
 .btn-group a.btn-gray,
 .btn-group a.btn-cancel {
-  background: #AAAAAA;
-  color: #fff;
+  background: #AAAAAA !important;
+  color: #fff !important;
 }
 .btn-group button.btn-lightblue,
 .btn-group a.btn-lightblue {
@@ -2718,7 +2765,8 @@ header {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.popup .btn-group a, .popup .btn-group button {
+.popup .btn-group a,
+.popup .btn-group button {
   margin-bottom: 2vw;
   padding: 2vw;
   border-radius: 3vw;
@@ -3189,7 +3237,8 @@ header {
 #popup.promoinfo .promotions div.promodule .info .title {
   font-weight: normal;
 }
-#popup.promoinfo .promotions .btnGroup button, #popup.promoinfo .promotions .btnGroup a {
+#popup.promoinfo .promotions .btnGroup button,
+#popup.promoinfo .promotions .btnGroup a {
   width: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(#f85f05), to(#f20505));
   background: linear-gradient(180deg, #f85f05, #f20505);
@@ -3416,7 +3465,8 @@ header {
   margin: 2vw auto;
   padding: 2vw;
 }
-#popup.cryptoPay .pop .cryptoGuide ul, #popup.cryptoPay .pop .cryptoGuide li {
+#popup.cryptoPay .pop .cryptoGuide ul,
+#popup.cryptoPay .pop .cryptoGuide li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3424,7 +3474,8 @@ header {
       -ms-flex-align: center;
           align-items: center;
 }
-#popup.cryptoPay .pop .cryptoGuide ul li:nth-child(odd), #popup.cryptoPay .pop .cryptoGuide li li:nth-child(odd) {
+#popup.cryptoPay .pop .cryptoGuide ul li:nth-child(odd),
+#popup.cryptoPay .pop .cryptoGuide li li:nth-child(odd) {
   font-weight: bold;
   color: #1C317B;
   margin-right: 2vw;
@@ -3784,7 +3835,8 @@ header {
   overflow: hidden;
   margin: 1vw 0 2vw;
 }
-#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg, #popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode svg,
+#popup.qrpayPop .pop > div.popTxt .guide .qrCode img {
   width: auto;
   height: 90%;
   margin: 0;
@@ -3801,7 +3853,8 @@ header {
       -ms-flex-align: center;
           align-items: center;
 }
-#popup.qrpayPop .pop > div.popTxt .guide .code a, #popup.qrpayPop .pop > div.popTxt .guide .code button {
+#popup.qrpayPop .pop > div.popTxt .guide .code a,
+#popup.qrpayPop .pop > div.popTxt .guide .code button {
   color: #fff;
   padding: 1vw;
   margin-left: 1vw;
@@ -4401,7 +4454,9 @@ header {
   color: #F9BF4B;
   font-size: 2vw;
 }
-#popup.submitpop .submitpop-btn > button, #popup.submitpop .notpop-btn > button, #popup.notpop .submitpop-btn > button, #popup.notpop .notpop-btn > button {
+#popup.submitpop .submitpop-btn > button,
+#popup.submitpop .notpop-btn > button, #popup.notpop .submitpop-btn > button,
+#popup.notpop .notpop-btn > button {
   padding: 2vw;
   width: 30vw;
   border-radius: 20vw;
@@ -4410,12 +4465,16 @@ header {
   font-size: 3.5vw;
   margin-top: 4vw;
 }
-#popup.submitpop .submitpop-btn > button:first-child, #popup.submitpop .notpop-btn > button:first-child, #popup.notpop .submitpop-btn > button:first-child, #popup.notpop .notpop-btn > button:first-child {
+#popup.submitpop .submitpop-btn > button:first-child,
+#popup.submitpop .notpop-btn > button:first-child, #popup.notpop .submitpop-btn > button:first-child,
+#popup.notpop .notpop-btn > button:first-child {
   border: 1px solid #143CDB;
   color: #143CDB;
   margin-right: 1vw;
 }
-#popup.submitpop .submitpop-btn > button:last-child, #popup.submitpop .notpop-btn > button:last-child, #popup.notpop .submitpop-btn > button:last-child, #popup.notpop .notpop-btn > button:last-child {
+#popup.submitpop .submitpop-btn > button:last-child,
+#popup.submitpop .notpop-btn > button:last-child, #popup.notpop .submitpop-btn > button:last-child,
+#popup.notpop .notpop-btn > button:last-child {
   color: #989898;
   border: 1px solid #989898;
 }
@@ -4600,7 +4659,9 @@ header {
   text-transform: uppercase;
   font-weight: bold;
 }
-.home-hotgame-item .tag-live, .home-hotgame-item .tag-new, .home-hotgame-item .tag-hot {
+.home-hotgame-item .tag-live,
+.home-hotgame-item .tag-new,
+.home-hotgame-item .tag-hot {
   position: absolute;
   top: 1vw;
   left: 1vw;
@@ -4730,7 +4791,8 @@ header {
 .home-match-odds div span:first-child {
   color: #F38C00;
 }
-.home-match-odds a, .home-match-odds button {
+.home-match-odds a,
+.home-match-odds button {
   color: #fff;
   background: #F38C00;
   font-family: "Montserrat", sans-serif;
@@ -4740,7 +4802,8 @@ header {
   width: 25vw;
   border-radius: 5px;
 }
-.home-match-odds a span, .home-match-odds button span {
+.home-match-odds a span,
+.home-match-odds button span {
   font-size: 3.5vw;
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
           filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
@@ -4863,7 +4926,8 @@ header {
 .home-jackpot.maintain .home-jackpot-btn button {
   font-size: 4vw;
 }
-.home-jackpot.maintain .home-jackpot-title, .home-jackpot.maintain .home-jackpot-number {
+.home-jackpot.maintain .home-jackpot-title,
+.home-jackpot.maintain .home-jackpot-number {
   display: none;
 }
 .home-jackpot.maintain .tag-maintain {
@@ -5058,11 +5122,14 @@ header {
   text-transform: uppercase;
   display: block;
 }
-.home-download-content img, .home-download-content svg, .home-download-content canvas {
+.home-download-content img,
+.home-download-content svg,
+.home-download-content canvas {
   width: 35vw !important;
   height: 35vw !important;
 }
-.home-download-content a, .home-download-content button {
+.home-download-content a,
+.home-download-content button {
   display: block;
   max-width: 82vw;
   width: -webkit-max-content;
@@ -5280,7 +5347,8 @@ header {
   -webkit-line-clamp: 3;
   line-height: 1.1;
 }
-.home-news-info a, .home-news-info button {
+.home-news-info a,
+.home-news-info button {
   width: 35%;
   color: #fff;
   font-size: 3.5vw;
@@ -5458,7 +5526,8 @@ header {
 .lobby-match-odds div span:first-child {
   color: #F38C00;
 }
-.lobby-match-odds a, .lobby-match-odds button {
+.lobby-match-odds a,
+.lobby-match-odds button {
   color: #fff;
   background: #F38C00;
   font-family: "Montserrat", sans-serif;
@@ -5468,7 +5537,8 @@ header {
   width: 25vw;
   border-radius: 5px;
 }
-.lobby-match-odds a span, .lobby-match-odds button span {
+.lobby-match-odds a span,
+.lobby-match-odds button span {
   font-size: 3.5vw;
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
           filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.8));
@@ -5726,7 +5796,8 @@ header {
 .lobby.esports .lobby-products-item img, .lobby.slots .lobby-products-item img, .lobby.livecasino .lobby-products-item img, .lobby.lottery .lobby-products-item img, .lobby.cockfighting .lobby-products-item img {
   width: 100%;
 }
-.lobby.games .tag-new-pop::before, .lobby.games .tag-hot-pop::before {
+.lobby.games .tag-new-pop::before,
+.lobby.games .tag-hot-pop::before {
   position: absolute;
   top: -1vw;
   left: 0;
@@ -5926,7 +5997,8 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.lobby-promotion .btn-group a, .lobby-promotion .btn-group button {
+.lobby-promotion .btn-group a,
+.lobby-promotion .btn-group button {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 44vw;
           flex: 0 0 44vw;
@@ -5940,7 +6012,8 @@ header {
   width: max-content;
   margin-top: 0;
 }
-.lobby-promotion-page .btn-group a, .lobby-promotion-page .btn-group button {
+.lobby-promotion-page .btn-group a,
+.lobby-promotion-page .btn-group button {
   padding: 0 12vw;
 }
 .lobby-promotion-banner {
@@ -6015,7 +6088,9 @@ header {
   padding: 2vw 1vw;
   background: #F6F9FF;
 }
-.lobby-leaderboard-menu div, .lobby-leaderboard-menu a, .lobby-leaderboard-menu button {
+.lobby-leaderboard-menu div,
+.lobby-leaderboard-menu a,
+.lobby-leaderboard-menu button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -6025,7 +6100,9 @@ header {
   color: #1C317B;
   font-size: 4vw;
 }
-.lobby-leaderboard-menu div.active, .lobby-leaderboard-menu a.active, .lobby-leaderboard-menu button.active {
+.lobby-leaderboard-menu div.active,
+.lobby-leaderboard-menu a.active,
+.lobby-leaderboard-menu button.active {
   color: #F38C00;
 }
 .lobby-leaderboard-submenu {
@@ -6043,7 +6120,9 @@ header {
   width: calc(100% - 10vw);
   margin: 3vw auto;
 }
-.lobby-leaderboard-submenu div, .lobby-leaderboard-submenu a, .lobby-leaderboard-submenu button {
+.lobby-leaderboard-submenu div,
+.lobby-leaderboard-submenu a,
+.lobby-leaderboard-submenu button {
   -webkit-box-flex: 0;
       -ms-flex: 0;
           flex: 0;
@@ -6053,7 +6132,9 @@ header {
   color: #1C317B;
   font-size: 4vw;
 }
-.lobby-leaderboard-submenu div.active, .lobby-leaderboard-submenu a.active, .lobby-leaderboard-submenu button.active {
+.lobby-leaderboard-submenu div.active,
+.lobby-leaderboard-submenu a.active,
+.lobby-leaderboard-submenu button.active {
   color: #F38C00;
 }
 .lobby-leaderboard-title {
@@ -6242,7 +6323,8 @@ header {
   width: max-content;
   margin-top: 0;
 }
-.promotion-pop .btn-group a, .promotion-pop .btn-group button {
+.promotion-pop .btn-group a,
+.promotion-pop .btn-group button {
   padding: 0 12vw;
 }
 .promotion-pop .ViewAllAmount {
@@ -6553,7 +6635,8 @@ header {
   top: -2vw;
   right: -2vw;
 }
-.slots-products-item .icon-fav-outline, .slots-products-item .icon-fav-solid {
+.slots-products-item .icon-fav-outline,
+.slots-products-item .icon-fav-solid {
   position: absolute;
   top: 2vw;
   left: 2vw;
@@ -6695,7 +6778,8 @@ header {
   margin-bottom: 3vw;
   font-family: "Nunito Sans", sans-serif;
 }
-.vip-info a, .vip-info button {
+.vip-info a,
+.vip-info button {
   text-align: left;
   font-size: 4.5vw;
   font-weight: bold;
@@ -6841,7 +6925,8 @@ header {
 .vip-grade .swiper-container {
   position: relative;
 }
-.vip-grade .swiper-button-next, .vip-grade .swiper-button-prev {
+.vip-grade .swiper-button-next,
+.vip-grade .swiper-button-prev {
   top: 20vw;
   color: #1C317B;
   z-index: 2;
@@ -6851,7 +6936,8 @@ header {
   width: 4vw;
   height: 6.5vw;
 }
-.vip-grade .swiper-button-next::after, .vip-grade .swiper-button-prev::after {
+.vip-grade .swiper-button-next::after,
+.vip-grade .swiper-button-prev::after {
   display: none;
   font-size: 5vw;
   font-weight: bold;
@@ -6904,7 +6990,8 @@ header {
   right: -1.8vw;
   z-index: 2;
 }
-.footer-item > div:first-child, .footer-item .icon-livechat {
+.footer-item > div:first-child,
+.footer-item .icon-livechat {
   position: absolute;
   top: -50%;
   width: 12vw;
@@ -6921,10 +7008,12 @@ header {
   border-radius: 50%;
   background: #1C317B;
 }
-.footer-item > div:first-child::before, .footer-item .icon-livechat::before {
+.footer-item > div:first-child::before,
+.footer-item .icon-livechat::before {
   z-index: 2;
 }
-.footer-item > div:first-child::after, .footer-item .icon-livechat::after {
+.footer-item > div:first-child::after,
+.footer-item .icon-livechat::after {
   opacity: 0;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -7080,7 +7169,8 @@ header {
   width: 40vw;
 }
 
-.login-module, .join-module {
+.login-module,
+.join-module {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7091,40 +7181,53 @@ header {
   overflow-x: hidden;
   z-index: 12;
 }
-.login-module > div, .login-module form, .join-module > div, .join-module form {
+.login-module > div,
+.login-module form,
+.join-module > div,
+.join-module form {
   text-align: center;
 }
-.login-module .swiper-container, .join-module .swiper-container {
+.login-module .swiper-container,
+.join-module .swiper-container {
   position: relative;
   padding-bottom: 4vw;
 }
-.login-module .swiper-pagination, .join-module .swiper-pagination {
+.login-module .swiper-pagination,
+.join-module .swiper-pagination {
   bottom: 0 !important;
 }
-.login-module .swiper-pagination-bullet, .join-module .swiper-pagination-bullet {
+.login-module .swiper-pagination-bullet,
+.join-module .swiper-pagination-bullet {
   width: 3.75vw;
   height: 3.75vw;
   background: #1C317B;
   opacity: 0.5;
 }
-.login-module .swiper-pagination-bullet-active, .join-module .swiper-pagination-bullet-active {
+.login-module .swiper-pagination-bullet-active,
+.join-module .swiper-pagination-bullet-active {
   background: #1C317B;
   opacity: 1;
 }
-.login-module .icon-phone::before, .login-module .icon-affiliate::before, .join-module .icon-phone::before, .join-module .icon-affiliate::before {
+.login-module .icon-phone::before,
+.login-module .icon-affiliate::before,
+.join-module .icon-phone::before,
+.join-module .icon-affiliate::before {
   content: "" !important;
 }
-.login-logo, .join-logo {
+.login-logo,
+.join-logo {
   width: 35vw;
   margin: 0 auto 4vw auto;
   text-align: center;
 }
-.login-banner, .join-banner {
+.login-banner,
+.join-banner {
   width: 70vw;
   margin: 0 auto 4vw auto;
   text-align: center;
 }
-.login-title, .join-title {
+.login-title,
+.join-title {
   font-size: 6vw;
   font-weight: 700;
   color: #1C317B;
@@ -7132,7 +7235,8 @@ header {
   margin-bottom: 4vw;
   text-align: left;
 }
-.login-forget, .join-forget {
+.login-forget,
+.join-forget {
   color: #1C317B;
   right: 0;
   text-align: right;
@@ -7140,7 +7244,8 @@ header {
   font-weight: 600;
   margin-top: -2vw;
 }
-.login-message, .join-message {
+.login-message,
+.join-message {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7154,14 +7259,16 @@ header {
   font-family: "Nunito Sans", sans-serif;
   font-size: 4.25vw;
 }
-.login-message a, .join-message a {
+.login-message a,
+.join-message a {
   color: #0000FF;
   font-weight: 600;
   margin-left: 2vw;
   font-size: 4.25vw;
   text-decoration: underline;
 }
-.login-bottominfo, .join-bottominfo {
+.login-bottominfo,
+.join-bottominfo {
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 600;
   text-align: center;
@@ -7242,7 +7349,8 @@ main .login-bar {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-main .login-bar a, main .login-bar button {
+main .login-bar a,
+main .login-bar button {
   font-size: 5vw;
   text-transform: uppercase;
   border-radius: 2.5vw;
@@ -8283,7 +8391,10 @@ main .sideBar button.icon:before {
 .info.infoAccount li .title {
   font-weight: bold;
 }
-.info .textYellow, .info .textRed, .info .textGreen, .info .textGray {
+.info .textYellow,
+.info .textRed,
+.info .textGreen,
+.info .textGray {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8291,7 +8402,10 @@ main .sideBar button.icon:before {
       -ms-flex-align: center;
           align-items: center;
 }
-.info .textYellow .infobtn, .info .textRed .infobtn, .info .textGreen .infobtn, .info .textGray .infobtn {
+.info .textYellow .infobtn,
+.info .textRed .infobtn,
+.info .textGreen .infobtn,
+.info .textGray .infobtn {
   background: url(https://banner.bw88.io/h5/img/notice.png) no-repeat center/cover;
   width: 4vw;
   height: 4vw;
@@ -8913,7 +9027,8 @@ main .sideBar button.icon:before {
 .cryptoCard > div.cryptoName .icon:before {
   margin-right: 2vw;
 }
-.cryptoCard > div.cryptoName button.clickBtn, .cryptoCard > div.cryptoName a.clickBtn {
+.cryptoCard > div.cryptoName button.clickBtn,
+.cryptoCard > div.cryptoName a.clickBtn {
   background: transparent;
   border: 0;
   height: revert;
@@ -8921,7 +9036,8 @@ main .sideBar button.icon:before {
   margin: 0 0 0 auto;
   color: #333;
 }
-.cryptoCard > div.cryptoName button.clickBtn:before, .cryptoCard > div.cryptoName a.clickBtn:before {
+.cryptoCard > div.cryptoName button.clickBtn:before,
+.cryptoCard > div.cryptoName a.clickBtn:before {
   font-size: 4vw;
 }
 
@@ -14030,7 +14146,8 @@ span.important {
 .refShare .refBox > div > div span {
   color: #1C317B;
 }
-.refShare .refBox > div a, .refShare .refBox > div button {
+.refShare .refBox > div a,
+.refShare .refBox > div button {
   width: 100%;
   background: #1C317B;
   color: #fff;
@@ -14298,12 +14415,14 @@ body main.main.referral {
   font-weight: 800;
   font-size: 3.8vw;
 }
-.refer-status-item .card > div, .refer-status-item .card span {
+.refer-status-item .card > div,
+.refer-status-item .card span {
   color: #F38C00;
   margin-top: 4vw;
   font-size: 5.6vw;
 }
-.refer-status-item .card > div span, .refer-status-item .card span span {
+.refer-status-item .card > div span,
+.refer-status-item .card span span {
   margin-right: 3vw;
 }
 .refer-bouns {
@@ -16181,7 +16300,8 @@ body main.main.referral {
   border-radius: 0;
   margin: 4vw 0 0;
 }
-.partnerSelect button, .partnerSelect a {
+.partnerSelect button,
+.partnerSelect a {
   min-width: 30.5vw;
   padding: 0 1vw;
   display: -webkit-box;
@@ -16199,23 +16319,27 @@ body main.main.referral {
   -webkit-filter: brightness(0.5);
           filter: brightness(0.5);
 }
-.partnerSelect button div, .partnerSelect a div {
+.partnerSelect button div,
+.partnerSelect a div {
   margin-top: -1vw;
 }
-.partnerSelect button img, .partnerSelect a img {
+.partnerSelect button img,
+.partnerSelect a img {
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   -webkit-transition: 0.7s;
   transition: 0.7s;
   height: 12vw;
 }
-.partnerSelect button.active, .partnerSelect a.active {
+.partnerSelect button.active,
+.partnerSelect a.active {
   background: #58cdff;
   color: white;
   -webkit-filter: none;
           filter: none;
 }
-.partnerSelect button.active img, .partnerSelect a.active img {
+.partnerSelect button.active img,
+.partnerSelect a.active img {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
   -webkit-transition: 0.7s;
@@ -16224,7 +16348,8 @@ body main.main.referral {
 .partnerSelect.modifier {
   background: transparent;
 }
-.partnerSelect.modifier button, .partnerSelect.modifier a {
+.partnerSelect.modifier button,
+.partnerSelect.modifier a {
   background: #58cdff;
   margin-right: 1vw;
   padding: 0.8vw 1.2vw;
@@ -16245,7 +16370,8 @@ body main.main.referral {
   border-radius: 0;
   margin-top: 1vw;
 }
-.partnerSelect + .casinoSelect button, .partnerSelect + .casinoSelect a {
+.partnerSelect + .casinoSelect button,
+.partnerSelect + .casinoSelect a {
   color: #a1a1a1;
   width: auto;
   min-width: auto;
@@ -16254,7 +16380,8 @@ body main.main.referral {
   white-space: nowrap;
   border-radius: 0;
 }
-.partnerSelect + .casinoSelect button.active, .partnerSelect + .casinoSelect a.active {
+.partnerSelect + .casinoSelect button.active,
+.partnerSelect + .casinoSelect a.active {
   margin-top: 1vw;
   color: #58cdff;
   border-bottom: 1vw #58cdff solid;
@@ -16452,7 +16579,15 @@ body main.main.referral {
             transform: rotate(359deg);
   }
 }
-.backstage ol, .backstage ul, .backstage li, .backstage ins, .backstage p, .backstage pre, .backstage del, .backstage em, .backstage span {
+.backstage ol,
+.backstage ul,
+.backstage li,
+.backstage ins,
+.backstage p,
+.backstage pre,
+.backstage del,
+.backstage em,
+.backstage span {
   list-style: revert;
   margin: revert;
   padding: revert;
@@ -16461,7 +16596,13 @@ body main.main.referral {
   font: revert;
   vertical-align: revert;
 }
-.backstage h1, .backstage h2, .backstage h3, .backstage h4, .backstage h5, .backstage h6, .backstage strong {
+.backstage h1,
+.backstage h2,
+.backstage h3,
+.backstage h4,
+.backstage h5,
+.backstage h6,
+.backstage strong {
   font-size: revert;
   margin: revert;
   padding: revert;
@@ -17016,7 +17157,8 @@ body main.main.referral {
   border-radius: 3px;
   padding: 2vw 2vw 5vw;
 }
-.recently .swiper-button-next, .recently .swiper-button-prev {
+.recently .swiper-button-next,
+.recently .swiper-button-prev {
   background: #112240;
   font-family: "icomoon";
   width: 35px;
@@ -17035,11 +17177,13 @@ body main.main.referral {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-.recently .swiper-button-next::before, .recently .swiper-button-prev::before {
+.recently .swiper-button-next::before,
+.recently .swiper-button-prev::before {
   content: "\ea40";
   color: #fff;
 }
-.recently .swiper-button-next::after, .recently .swiper-button-prev::after {
+.recently .swiper-button-next::after,
+.recently .swiper-button-prev::after {
   display: none;
 }
 .recently .swiper-button-next {
@@ -17876,7 +18020,8 @@ body main.main.referral {
   background: #143CDB;
   padding: 12vw 0 25vw;
 }
-.euro a, .euro button {
+.euro a,
+.euro button {
   font-family: "Montserrat", sans-serif;
 }
 .euro .top-wrapper {
@@ -18280,7 +18425,11 @@ body main.main.referral {
   width: 90.5vw;
   border-radius: 0 0 4vw 4vw;
 }
-.euro .mission-item .mission-one, .euro .mission-item .mission-two, .euro .mission-item .mission-three, .euro .mission-item .mission-four, .euro .mission-item .mission-five {
+.euro .mission-item .mission-one,
+.euro .mission-item .mission-two,
+.euro .mission-item .mission-three,
+.euro .mission-item .mission-four,
+.euro .mission-item .mission-five {
   background: #143CDB;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18294,7 +18443,11 @@ body main.main.referral {
           align-items: center;
   border-radius: 4vw;
 }
-.euro .mission-item .mission-one .ticket-title, .euro .mission-item .mission-two .ticket-title, .euro .mission-item .mission-three .ticket-title, .euro .mission-item .mission-four .ticket-title, .euro .mission-item .mission-five .ticket-title {
+.euro .mission-item .mission-one .ticket-title,
+.euro .mission-item .mission-two .ticket-title,
+.euro .mission-item .mission-three .ticket-title,
+.euro .mission-item .mission-four .ticket-title,
+.euro .mission-item .mission-five .ticket-title {
   color: #143CDB;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18312,7 +18465,11 @@ body main.main.referral {
   font-weight: 700;
   background: #F9D64B;
 }
-.euro .mission-item .mission-one .subtitle, .euro .mission-item .mission-two .subtitle, .euro .mission-item .mission-three .subtitle, .euro .mission-item .mission-four .subtitle, .euro .mission-item .mission-five .subtitle {
+.euro .mission-item .mission-one .subtitle,
+.euro .mission-item .mission-two .subtitle,
+.euro .mission-item .mission-three .subtitle,
+.euro .mission-item .mission-four .subtitle,
+.euro .mission-item .mission-five .subtitle {
   color: white;
   font-weight: 700;
   display: -webkit-box;
@@ -18324,15 +18481,23 @@ body main.main.referral {
   text-align: center;
   margin: 4vw 5vw 3vw;
 }
-.euro .mission-item .mission-one.close, .euro .mission-item .mission-two.close, .euro .mission-item .mission-three.close, .euro .mission-item .mission-four.close, .euro .mission-item .mission-five.close {
+.euro .mission-item .mission-one.close,
+.euro .mission-item .mission-two.close,
+.euro .mission-item .mission-three.close,
+.euro .mission-item .mission-four.close,
+.euro .mission-item .mission-five.close {
   display: none;
 }
-.euro .mission-item .mission-two, .euro .mission-item .mission-three, .euro .mission-item .mission-five {
+.euro .mission-item .mission-two,
+.euro .mission-item .mission-three,
+.euro .mission-item .mission-five {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
 }
-.euro .mission-item .mission-two .ticket-title, .euro .mission-item .mission-three .ticket-title, .euro .mission-item .mission-five .ticket-title {
+.euro .mission-item .mission-two .ticket-title,
+.euro .mission-item .mission-three .ticket-title,
+.euro .mission-item .mission-five .ticket-title {
   border-radius: 4vw 0 4vw 0;
 }
 .euro .mission-one .progress {
@@ -18769,21 +18934,25 @@ body main.main.referral {
   margin-left: 1.5vw;
   font-size: 6vw;
 }
-.euro .ticket-filter > div .group-input, .euro .ticket-filter > div .team-input {
+.euro .ticket-filter > div .group-input,
+.euro .ticket-filter > div .team-input {
   width: 87vw;
 }
-.euro .ticket-filter > div .group-input .dropdown, .euro .ticket-filter > div .team-input .dropdown {
+.euro .ticket-filter > div .group-input .dropdown,
+.euro .ticket-filter > div .team-input .dropdown {
   background: #F2F3F4;
   border-radius: 4vw;
   border: 0;
 }
-.euro .ticket-filter > div .group-input .dropdown > .btn, .euro .ticket-filter > div .team-input .dropdown > .btn {
+.euro .ticket-filter > div .group-input .dropdown > .btn,
+.euro .ticket-filter > div .team-input .dropdown > .btn {
   color: #B5B5B5;
   font-weight: 600;
   margin-left: 4vw;
   padding: 1vw 0;
 }
-.euro .ticket-filter > div .group-input .dropdown::before, .euro .ticket-filter > div .team-input .dropdown::before {
+.euro .ticket-filter > div .group-input .dropdown::before,
+.euro .ticket-filter > div .team-input .dropdown::before {
   background: url(https://banner.goal123.org/h5/img/event/eurocup/arrow-down-dark.png) no-repeat center/100%;
   display: block;
   content: "";
@@ -18792,7 +18961,8 @@ body main.main.referral {
   border: 0;
   margin-right: 1.5vw;
 }
-.euro .ticket-filter > div .group-input .dropdown-container, .euro .ticket-filter > div .team-input .dropdown-container {
+.euro .ticket-filter > div .group-input .dropdown-container,
+.euro .ticket-filter > div .team-input .dropdown-container {
   display: none;
   left: calc(50% - 43.5vw);
   top: 6vw;
@@ -18806,16 +18976,20 @@ body main.main.referral {
   font-size: 3.5vw;
   max-height: 47vw;
 }
-.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item,
+.euro .ticket-filter > div .team-input .dropdown-container .dropdown-item {
   border-bottom: 1px solid #e3e3e3;
 }
-.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child, .euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
+.euro .ticket-filter > div .group-input .dropdown-container .dropdown-item:last-child,
+.euro .ticket-filter > div .team-input .dropdown-container .dropdown-item:last-child {
   border: 0;
 }
-.euro .ticket-filter > div .group-input .dropdown-container.active, .euro .ticket-filter > div .team-input .dropdown-container.active {
+.euro .ticket-filter > div .group-input .dropdown-container.active,
+.euro .ticket-filter > div .team-input .dropdown-container.active {
   display: block;
 }
-.euro .ticket-filter > div .group-input .dropdown.check, .euro .ticket-filter > div .team-input .dropdown.check {
+.euro .ticket-filter > div .group-input .dropdown.check,
+.euro .ticket-filter > div .team-input .dropdown.check {
   background: white;
   border: 2px solid #143CDB;
 }
@@ -20173,7 +20347,8 @@ main.leaderboard .leaderboard-ranking .countdown-time span {
   color: transparent;
   margin-right: 0.6vw;
 }
-main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
+main.leaderboard .leaderboard-ranking .countdown a.btn-bet,
+main.leaderboard .leaderboard-ranking .countdown button.btn-bet {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20195,7 +20370,8 @@ main.leaderboard .leaderboard-ranking .countdown a.btn-bet, main.leaderboard .le
   color: #fff;
   margin: 2.3vw 0 0;
 }
-main.leaderboard .leaderboard-ranking .countdown a:hover, main.leaderboard .leaderboard-ranking .countdown button:hover {
+main.leaderboard .leaderboard-ranking .countdown a:hover,
+main.leaderboard .leaderboard-ranking .countdown button:hover {
   -webkit-filter: brightness(1.05);
           filter: brightness(1.05);
   -webkit-transition: 0.3s;
@@ -20921,4 +21097,582 @@ main.leaderboard .leaderboard-info .info-term .term-content ul li {
 
 #g-reCaptcha .grecaptcha-badge {
   z-index: 999;
+}
+
+.setting-container .bottom-line {
+  border-bottom: 1px solid #1c317b;
+  margin: 8vw 0;
+}
+.setting-content {
+  color: #949494;
+  margin-bottom: 8vw;
+  font-weight: 500;
+}
+.setting-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-checkbox .inputBox {
+  height: 10vw;
+  border-radius: 3vw !important;
+  border: 0;
+  color: #5574A7;
+  font-size: 3vw;
+  position: relative;
+}
+.setting-checkbox .inputBox .dropdown {
+  background: #ffffff;
+  border: 1px solid #1C317B;
+  border-radius: 2vw;
+  color: #1C317B;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2vw;
+}
+.setting-checkbox .inputBox .dropdown-container {
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  z-index: 2;
+  border: 1px solid #1C317B;
+  border-top: 0;
+  width: 100%;
+  left: 0;
+  top: 7vw;
+  max-height: 45vw;
+  overflow-y: scroll;
+  color: #284985;
+  border-radius: 0 0 2vw 2vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.setting-checkbox .inputBox .dropdown-container.active {
+  display: block;
+}
+.setting-checkbox .inputBox .dropdown-container .dropdown-item {
+  padding: 2vw 2vw 2vw 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-checkbox .checkbox-content {
+  margin-top: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.setting-checkbox .checkbox-content input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  width: 0;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled {
+  background: #000;
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 8px;
+  padding: 0.5px;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled + .checkbox-icon + span {
+  color: #B5C0D1;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #2775FF;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled ~ .checkbox-icon {
+  opacity: 0;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:disabled ~ .checkbox-icon::after {
+  opacity: 0;
+}
+.setting-checkbox .checkbox-content .checkbox-icon {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 4vw;
+  height: 4vw;
+  background: white;
+  border: 1px solid #C2D9FF;
+  border-radius: 1vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 2vw;
+  padding: 0.2vw;
+}
+.setting-checkbox .checkbox-content .checkbox-icon::after {
+  content: "";
+  width: 1vw;
+  height: 2vw;
+  border: solid white;
+  border-width: 0 0.5vw 0.5vw 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: none;
+  margin-bottom: 1vw;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon {
+  background: #F38C00;
+}
+.setting-checkbox .checkbox-content input[type=checkbox]:checked ~ .checkbox-icon::after {
+  display: block;
+}
+.setting-radiobox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2vw;
+}
+.setting-radiobox .radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2vw;
+}
+.setting-radiobox .radio input[type=radio] {
+  position: absolute;
+  opacity: 0;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label::before {
+  content: "";
+  background: white;
+  border-radius: 100%;
+  border: 1px solid #2775FF;
+  display: inline-block;
+  width: 4vw;
+  height: 4vw;
+  position: relative;
+  margin-right: 2vw;
+  vertical-align: top;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+.setting-radiobox .radio input[type=radio]:checked + .radio-label::before {
+  background: #2775FF;
+  -webkit-box-shadow: inset 0 0 0 3px white;
+          box-shadow: inset 0 0 0 3px white;
+}
+.setting-radiobox .radio input[type=radio]:focus + .radio-label::before {
+  outline: none;
+  border-color: #2775FF;
+}
+.setting-radiobox .radio input[type=radio]:disabled + .radio-label::before {
+  -webkit-box-shadow: inset 0 0 0 3px #f4f4f4;
+          box-shadow: inset 0 0 0 3px #f4f4f4;
+  border-color: #b4b4b4;
+  background: white;
+}
+.setting-radiobox .radio input[type=radio] + .radio-label:empty::before {
+  margin-right: 0;
+}
+.setting-radiobox .radio .radio-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting-title {
+  color: #112240;
+  font-weight: 700;
+  font-size: 3.5vw;
+  font-weight: 600;
+  margin: 0 0 2vw 2vw;
+}
+.setting-tip {
+  color: #949494;
+  font-size: 2.5vw;
+  font-weight: 100;
+  margin: 2vw 0 3vw 2vw;
+}
+.setting .tip.active {
+  color: #e92529;
+  text-align: left;
+  display: block;
+}
+.setting .changepassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.setting .changepassword .inputBox {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 10vw !important;
+  margin-top: 3vw !important;
+  border-radius: 20vw !important;
+  border: 0;
+  background: #fff;
+  color: #5574A7;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .inputBox.error {
+  border: 1px solid #cf0404;
+}
+.setting .changepassword .inputBox > input {
+  background: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: 3vw;
+  color: #284985;
+  border: 0;
+  outline: none;
+  font-size: 3vw !important;
+}
+.setting .changepassword .inputBox > input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword .inputBox > input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+          box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #0A1B38;
+}
+.setting .changepassword .inputBox > input[type=file] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] {
+  display: none;
+}
+.setting .changepassword .inputBox > input[type=checkbox] + label {
+  margin: 0 2vw 0 0;
+  vertical-align: middle;
+  color: #284985;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword-input {
+  height: 10vw;
+  padding: 0 0 0 3vw;
+  margin-top: 3vw;
+  border-radius: 20vw;
+  border: 0;
+  background: #EFEFEF;
+  color: #5574A7;
+  font-size: 3vw;
+}
+.setting .changepassword-input::-webkit-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-moz-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::-ms-input-placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input::placeholder {
+  color: #B5C0D1;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+}
+.setting .changepassword-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #0A1B38 inset;
+          box-shadow: 0 0 0px 1000px #0A1B38 inset;
+  -webkit-text-fill-color: white;
+}
+.setting .changepassword-input:focus-within {
+  border: 1px solid #C2D9FF;
+  outline: #C2D9FF;
+}
+.setting .changepassword .btn-group button {
+  height: 10vw;
+  border-radius: 2.5vw;
+  margin-top: 5vw;
+}
+.setting .changepassword fieldset {
+  border: medium none;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+.setting .changepassword fieldset input {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  color: #0A1B38;
+  border-radius: 2vw;
+}
+.setting .changepassword fieldset input::-webkit-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset input::-moz-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset input:-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset input::-ms-input-placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset input::placeholder {
+  font-size: 3vw;
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset input:focus {
+  outline: 0;
+  border: 2px solid #FFAF43;
+}
+.setting .changepassword fieldset textarea {
+  width: 75vw;
+  border: 1px solid #ccc;
+  background: #FFF;
+  padding: 3vw;
+  height: 50vw;
+  max-width: 100%;
+  resize: none;
+  border-radius: 2vw;
+}
+.setting .changepassword fieldset textarea::-webkit-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset textarea::-moz-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset textarea:-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset textarea::-ms-input-placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset textarea::placeholder {
+  color: #D8D8D8;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.setting .changepassword fieldset textarea:focus {
+  outline: 0;
+  border: 2px solid #FFAF43;
+}
+.setting .changepassword fieldset button {
+  background: #FFAF43;
+  font-size: 3.5vw;
+  font-weight: 600;
+  border-radius: 2vw;
+  padding: 3vw 10vw;
+  width: 39.5vw;
+  margin-top: 8vw;
+  color: white;
+}
+.setting .changepassword fieldset button:first-child[disabled] {
+  background: gray !important;
+}
+.setting .changepassword fieldset button:last-child {
+  background: #DFDFDF;
+  color: #9B9B9B;
+}
+.setting .changepassword fieldset .tip {
+  display: none;
+  margin-top: 2vw;
+}
+.setting .changepassword fieldset .tip.active {
+  display: block;
+  color: red;
+}
+.setting .changepassword fieldset .tip.message {
+  margin-top: 1vw;
+}
+.setting .changepassword fieldset.error textarea {
+  border: 2px solid red;
+}
+.setting .changepassword fieldset.error input {
+  border: 2px solid red;
+}
+.setting .changepassword fieldset:first-child {
+  margin-bottom: 5vw;
+}
+.setting .changepassword .survey-input {
+  margin-top: 3vw;
+}
+.setting .changepassword .survey-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .changepassword .survey-btn > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .changepassword .survey-btn > div img {
+  width: 10vw;
+}
+.setting .changepassword .survey-btn > div span {
+  color: #5574A7;
+  margin-left: 2vw;
+}
+.setting .changepassword .survey-btn button {
+  background: #2775FF;
+  color: white;
+  width: 25vw;
+  border-radius: 20vw;
+  height: 7vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.setting .changepassword .survey-btn button::after {
+  display: block;
+  content: "";
+  background: url(https://banner.0814media.net/h5/img/4.0/down-1.png) no-repeat center/100%;
+  width: 2.5vw;
+  height: 2.5vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  margin-left: 1.5vw;
+}
+.setting .changepassword .survey-btn button.active {
+  background: #9C9C9C;
+}
+.setting .changepassword .survey-btn button.active::after {
+  display: none;
+}
+.setting .btn-group {
+  width: 100%;
+}
+.setting .btn-group > button {
+  background: #284985;
+}
+.setting .icon-module {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.setting .icon-module > i {
+  padding-right: 3vw;
+}
+.setting .icon-module > i.icon-checkmark::before {
+  font-size: 3.5vw;
+  color: #09D854;
+}
+.setting .icon-module > i.icon-cross::before {
+  color: #FF0000;
 }/*# sourceMappingURL=style.css.map */
