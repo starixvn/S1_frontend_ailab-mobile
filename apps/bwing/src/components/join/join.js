@@ -309,6 +309,7 @@ const Join = ({ setNav }) => {
 			(_affiliateCheck.checked === true ||
 				_affiliateCheck.checked === null);
 		if (checked) {
+			MetaPixelTracker("registerSubmit");
 			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
@@ -334,7 +335,7 @@ const Join = ({ setNav }) => {
 					const { message, errorCode } = response.data;
 					if (errorCode === 0) {
 						// 註冊成功送出臉書廣告埋點給市場
-						MetaPixelTracker("registerSubmit");
+						MetaPixelTracker("CompleteRegistration");
 						api_GetCustProfile().then(
 							res_custInfo => {
 								let _user = {

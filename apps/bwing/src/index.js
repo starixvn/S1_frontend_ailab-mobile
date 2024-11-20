@@ -86,11 +86,12 @@ const Shield = () => {
 					style="display:none"
 				/>`}
 			</noscript>
-			)
-			{/* === Facebook－給市場的廣告埋點 fbq('init', 'xxxxxxxxxx') << 此為監測臉書廣告的帳號ID  === */}
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `
+			){/* === Facebook Pixel - 存／提款成功事件 === */}
+			{process.env.NODE_ENV === "production" && (
+				<>
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
 						!function(f,b,e,v,n,t,s)
 						{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 						n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -102,43 +103,19 @@ const Shield = () => {
 						fbq('init', '1037896624403579');
 						fbq('track', 'PageView');
 						`
-				}}
-			/>
-			<noscript>
-				{`<img
+						}}
+					/>
+					<noscript>
+						{`<img
 					alt=""
 					height="1"
 					width="1"
 					style="display:none"
 					src="https://www.facebook.com/tr?id=1037896624403579&ev=PageView&noscript=1"
 				/>`}
-			</noscript>
-			{/* === Facebook－給市場的廣告埋點 fbq('init', 'xxxxxxxxxx') << 此為監測臉書廣告的帳號ID  === */}
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `
-						!function(f,b,e,v,n,t,s)
-						{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-						n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-						if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-						n.queue=[];t=b.createElement(e);t.async=!0;
-						t.src=v;s=b.getElementsByTagName(e)[0];
-						s.parentNode.insertBefore(t,s)}(window, document,'script',
-						'https://connect.facebook.net/en_US/fbevents.js');
-						fbq('init', '1037896624403579');
-						fbq('track', 'PageView');
-						`
-				}}
-			/>
-			<noscript>
-				{`<img
-					alt=""
-					height="1"
-					width="1"
-					style="display:none"
-					src="https://www.facebook.com/tr?id=1037896624403579&ev=PageView&noscript=1"
-				/>`}
-			</noscript>
+					</noscript>
+				</>
+			)}
 		</Helmet>
 	);
 };
