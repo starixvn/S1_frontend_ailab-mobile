@@ -86,8 +86,7 @@ const Shield = () => {
 					style="display:none"
 				/>`}
 			</noscript>
-			)
-			{/* === Facebook－給市場的廣告埋點 fbq('init', 'xxxxxxxxxx') << 此為監測臉書廣告的帳號ID  === */}
+			){/* === Facebook Pixel - 存／提款成功事件 === */}
 			{process.env.NODE_ENV === "production" && (
 				<>
 					<script
