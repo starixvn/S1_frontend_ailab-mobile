@@ -119,6 +119,9 @@ export default {
 	resetPassword: {
 		root: "resetPassword"
 	},
+	changePassword: {
+		root: "changePassword"
+	},
 	other: {
 		root: "other"
 	},
