@@ -35,13 +35,13 @@ const NotificationTypeEnum = Object.freeze({
  *  @iconClassName 吐司訊息 icon */
 const notificationsConfig = {
 	[NotificationTypeEnum.DepositSuccess]: {
-		event: "deposit_successful",
+		event: "Purchase",
 		i18nLabel: "lbl_DepositSuccessful",
 		bgColor: ToastBGColorEnum.Green,
 		iconClassName: ToastIconEnum.Check
 	},
 	[NotificationTypeEnum.WithdrawalSuccess]: {
-		event: null,
+		event: "withdraw",
 		i18nLabel: "lbl_WithdrawSuccessful",
 		bgColor: ToastBGColorEnum.Green,
 		iconClassName: ToastIconEnum.Check
@@ -98,34 +98,42 @@ const useDepositWithdrawTracker = () => {
 			} = notificationsConfig[notificationType];
 
 			/** 消除該財務通知的所有單號 */
-			const orderProcessingPromises = orders.map(async orderId => {
-				// 如果此財務通知需要通知市場，就發送通知給市場
-				if (event) MetaPixelTracker(event);
+			const orderProcessingPromises = orders.map(
+				({
+					transId,
+					amount = 0,
+					firstDeposit = false,
+					isoCode = ""
+				}) => {
+					// 如果此財務通知需要通知市場，就發送通知給市場
+					if (event)
+						MetaPixelTracker(event, amount, firstDeposit, isoCode);
 
-				// 如果財務通知有啟用，就發送通知
-				if (notificationEnabled) {
-					ToastEmitter({
-						message: t(i18nLabel, { orderId }),
-						customBGColor: bgColor,
-						customIconClassName: iconClassName,
-						isWrapText: false
-					});
+					// 如果財務通知有啟用，就發送通知
+					if (notificationEnabled) {
+						ToastEmitter({
+							message: t(i18nLabel, { orderId: transId }),
+							customBGColor: bgColor,
+							customIconClassName: iconClassName,
+							isWrapText: false
+						});
 
-					// 如果財務通知開啟音效，就播放音效
-					if (!notificationMuted) {
-						const audio = new Audio(
-							`${bannerImgUrl}/Static/toast/img/toastSound.mp3`
-						);
-						audio.play();
+						// 如果財務通知開啟音效，就播放音效
+						if (!notificationMuted) {
+							const audio = new Audio(
+								`${bannerImgUrl}/Static/toast/img/toastSound.mp3`
+							);
+							audio.play();
+						}
 					}
-				}
 
-				// 移除該財務通知類型的單號，防止之後再次獲得相同的單號
-				return api_SetCustNotification({
-					notificationType,
-					transId: orderId
-				});
-			});
+					// 移除該財務通知類型的單號，防止之後再次獲得相同的單號
+					return api_SetCustNotification({
+						notificationType,
+						transId
+					});
+				}
+			);
 
 			await Promise.all(orderProcessingPromises);
 		} catch (error) {

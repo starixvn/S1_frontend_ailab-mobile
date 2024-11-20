@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import PropTypes from "prop-types";
 import { userInfoContext } from "Context";
+import { shuffle } from "lodash";
 import Loading from "../common/loading";
 import {
 	useGetTpMaintainList,
@@ -22,31 +23,28 @@ const GamePanel = React.forwardRef((props, ref) => {
 	} = props;
 	const { userInfo } = useContext(userInfoContext);
 	const { maintainList } = useGetTpMaintainList();
-	if (gameList === null) return <Loading />;
+	const shuffledGameList = useMemo(
+		() => (gameList ? shuffle(gameList) : null),
+		[gameList]
+	);
+	if (shuffledGameList === null) return <Loading />;
 	const games = [];
 	let storageStr = favoriteStr ?? "";
 	if (storageStr && storageStr.charAt(0) === "&") {
 		storageStr = storageStr.substring(1, storageStr.length);
 	}
 	const storageList = storageStr?.split("&") ?? [];
-	gameList
-		?.sort(
-			(a, b) =>
-				// 照新增遊戲的時間排序
-				new Date(b.launchDate).getTime() -
-				new Date(a.launchDate).getTime()
-		)
-		.forEach(g => {
-			const handleIsFavorite = () => {
-				return storageList?.includes(`${g.tpId}_${g.gameId}`);
-			};
-			const _isFavorite = handleIsFavorite();
-			const isMaintain = maintainList?.some(
-				m =>
-					m.tpId === g.tpId &&
-					(m.tpGameType === activeProvider?.tpGameType ||
-						m.tpGameType === defTpGameType.All)
-			);
+	shuffledGameList?.forEach(g => {
+		const handleIsFavorite = () => {
+			return storageList?.includes(`${g.tpId}_${g.gameId}`);
+		};
+		const _isFavorite = handleIsFavorite();
+		const isMaintain = maintainList?.some(
+			m =>
+				m.tpId === g.tpId &&
+				(m.tpGameType === activeProvider?.tpGameType ||
+					m.tpGameType === defTpGameType.All)
+		);
 
 			const onToggleFavorite = () => {
 				handleSetFavorite(g.gameId, _isFavorite, g.tpId);
@@ -79,46 +77,45 @@ const GamePanel = React.forwardRef((props, ref) => {
 				g.imgName[userInfo.langId] ?? g.imgName.en
 			}`;
 
-			games.push(
-				<div
-					className={`info${isMaintain ? " active" : ""}`}
-					key={`casino-game-${gameProviderName}-${g.gameId}`}>
-					{newGamesArr.includes(g.gameId) ? (
-						<i className="icon icon-new" />
-					) : null}
-					<button>
-						<img
-							data-testid="gameImg"
-							onClick={
-								isMaintain
-									? () => null
-									: () =>
-											selectGame({
-												...g,
-												providerName: gameProviderName
-											})
-							}
-							src={gameImage}
-							alt={g.gameName[userInfo.langId] ?? g.gameName.en}
-						/>
-					</button>
-					<span data-testid="providerName">{gameProviderName}</span>
-					{isMaintain ? (
-						<div className="maintenance">
-							{i18n.lbl_underMaintenance}
-						</div>
-					) : null}
-					<span
-						onClick={onToggleFavorite}
-						data-testid="favBtn"
-						className={`icon icon-star-${
-							_isFavorite ? "full" : "empty"
-						}`}
+		games.push(
+			<div
+				className={`info${isMaintain ? " active" : ""}`}
+				key={`casino-game-${gameProviderName}-${g.gameId}`}>
+				{newGamesArr.includes(g.gameId) ? (
+					<i className="icon icon-new" />
+				) : null}
+				<button>
+					<img
+						data-testid="gameImg"
+						onClick={
+							isMaintain
+								? () => null
+								: () =>
+										selectGame({
+											...g,
+											providerName: gameProviderName
+										})
+						}
+						src={gameImage}
+						alt={g.gameName[userInfo.langId] ?? g.gameName.en}
 					/>
-				</div>
-			);
-		});
-	games.sort(() => Math.random() - 0.5); // 隨機排列遊戲列表
+				</button>
+				<span data-testid="providerName">{gameProviderName}</span>
+				{isMaintain ? (
+					<div className="maintenance">
+						{i18n.lbl_underMaintenance}
+					</div>
+				) : null}
+				<span
+					onClick={onToggleFavorite}
+					data-testid="favBtn"
+					className={`icon icon-star-${
+						_isFavorite ? "full" : "empty"
+					}`}
+				/>
+			</div>
+		);
+	});
 	return games.length === 0 ? (
 		<div data-testid="noData" className="nodata icon icon-nodata" ref={ref}>
 			<div className="txt-white">{i18n.msg_NoData}</div>
