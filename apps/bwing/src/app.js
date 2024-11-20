@@ -50,6 +50,7 @@ import Other from "./pages/other";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
+import ChangePwd from "./components/member/changePwd";
 
 import Kyc from "./components/withdrawal/kyc";
 import KycWaiting from "./components/withdrawal/kycWaiting";
@@ -111,6 +112,7 @@ const Index = () => {
 							<Home path={path.home.root} default />
 							<ForgetPwd path={path.forgetPassword.root} />
 							<ResetPwd path={path.resetPassword.root} />
+							<ChangePwd path={path.changePassword.root} />
 							<Promotion path={path.promotion.root} />
 
 							<PromotionInfo path={path.promotionInfo.root} />
