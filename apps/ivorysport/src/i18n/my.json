@@ -5,7 +5,14 @@
 	"Label_General_Verify21Years": "Sila sahkan bahawa anda berusia 21 tahun atau lebih untuk masuk ke laman web ini",
 	"Label_General_Already21Years": "Saya berusia lebih daripada 21 tahun",
 	"Label_General_AgreeTermsCondition": "Saya bersetuju dengan <Link>Terma & Syarat</Link> ivorysport",
-  "Label_Kyc_Hint" : "Sila muat naik ID Sah anda sebelum anda boleh mula bermain!",
+
+	"Label_General_Important_Notice_Close_Title": "Pemberitahuan Penting:",
+	"Label_General_Important_Notice_Close_Content1": "Selaras dengan dasar kerajaan Filipina, kami dengan berat hati memaklumkan bahawa laman web Ivorysport.com tidak akan dapat diakses bermula 16 Disember 2024.",
+	"Label_General_Important_Notice_Close_Content2": "Sehubungan itu, semua anggota mesti menghubungi Jabatan Perkhidmatan Pelanggan (CSD) untuk penyelesaian akaun anda.",
+	"Label_General_Important_Notice_Close_Content3": "Kami menghargai pemahaman dan sokongan anda sepanjang perjalanan kami. Terima kasih kerana menjadi anggota berharga Ivorysport!",
+	"Label_General_Thank_You": "Terima kasih.",
+
+	"Label_Kyc_Hint": "Sila muat naik ID Sah anda sebelum anda boleh mula bermain!",
 
 	"lbl_Max": "Maksimum",
 	"lbl_Min": "Minima",

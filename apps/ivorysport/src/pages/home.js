@@ -5,7 +5,7 @@ import {
 	popBoxContext,
 	rootContext
 } from "Context";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import age21Image from "../styles/img/homepage/21age.png";
 import pagcorImage from "../styles/img/homepage/pagcor.png";
 import Layout from "../components/common/layout";
@@ -17,8 +17,8 @@ import Header from "../components/header/header";
 import JoinLoginBar from "../components/home/joinLoginBar";
 import PromotionWrapper from "../components/promotion/common/wrapper";
 import HomeEntry from "../components/home/homeEntry";
-import { readCookie, setCookie } from "../components/common/common";
-import { cloudBannerImgURL, siteInfo } from "../config";
+// import { readCookie, setCookie } from "../components/common/common";
+// import { cloudBannerImgURL, siteInfo } from "../config";
 
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
@@ -38,86 +38,110 @@ const IndexPage = () => {
 
 	useEffect(() => {
 		// * 如果未登入狀態及尚未勾選已年滿21歲的cookie即彈出此彈窗讓使用者驗證
-		if (userInfo.userName === "访客") {
-			if (!readCookie(siteInfo().ageVerificationCookie)) {
-				const onOK = () => {
-					setCookie(siteInfo().ageVerificationCookie, 1, 1);
-					setPopBox({ isOpen: false });
-				};
-				setPopBox({
-					isOpen: true,
-					title: t("Label_General_AgeVerification"),
-					hideCloseBtn: true,
-					content: (
-						<>
-							<div
-								style={{
-									display: "flex",
-									justifyContent: "center",
-									flexDirection: "column",
-									alignItems: "center",
-									textAlign: "center"
-								}}>
-								{t("Label_General_Verify21Years")}
-
-								<br />
-								<br />
-								<p>
-									<Trans
-										i18nKey="Label_General_AgreeTermsCondition"
-										components={{
-											Link: (
-												<span
-													style={{
-														fontWeight: 700
-													}}>
-													<a
-														href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
-														rel="noreferrer"
-														target="_blank">
-														{t(
-															"Label_General_Exit"
-														)}
-													</a>
-												</span>
-											)
-										}}
-									/>
-								</p>
-							</div>
-							<div className="btn-group">
-								<button className="white" onClick={onOK}>
-									{t("Label_General_Already21Years")}
-								</button>
-
-								<a
-									className="gray"
-									href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
-									rel="noreferrer">
-									{t("Label_General_Exit")}
-								</a>
-							</div>
-
-							<div
-								style={{
-									display: "flex",
-									justifyContent: "center"
-								}}>
-								<img
-									style={{ height: "64px" }}
-									src={pagcorImage}
-									alt="img-pagcor"
+		if (userInfo.userName === "Guest") {
+			// if (!readCookie(siteInfo().ageVerificationCookie)) {
+			// const onOK = () => {
+			// 	setCookie(siteInfo().ageVerificationCookie, 1, 1);
+			// 	setPopBox({ isOpen: false });
+			// };
+			setPopBox({
+				isOpen: true,
+				title: t("Label_General_Important_Notice_Close_Title"),
+				hideCloseBtn: true,
+				content: (
+					<>
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								flexDirection: "column",
+								alignItems: "center",
+								textAlign: "center"
+							}}>
+							{/* {t("Label_General_Verify21Years")} */}
+							<p>
+								{t(
+									"Label_General_Important_Notice_Close_Content1"
+								)}
+							</p>
+							<br />
+							<p>
+								{t(
+									"Label_General_Important_Notice_Close_Content2"
+								)}
+							</p>
+							<br />
+							<p>
+								{t(
+									"Label_General_Important_Notice_Close_Content3"
+								)}
+							</p>
+							<br />
+							<p>{t("Label_General_Thank_You")}</p>
+							<br />
+							{/* <p>
+								<Trans
+									i18nKey="Label_General_AgreeTermsCondition"
+									components={{
+										Link: (
+											<span
+												style={{
+													fontWeight: 700
+												}}>
+												<a
+													href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+													rel="noreferrer"
+													target="_blank">
+													{t("Label_General_Exit")}
+												</a>
+											</span>
+										)
+									}}
 								/>
-								<img
-									style={{ height: "64px" }}
-									src={age21Image}
-									alt="img-pagcor"
-								/>
-							</div>
-						</>
-					)
-				});
-			}
+							</p> */}
+						</div>
+						<div className="btn-group">
+							<button
+								className="btn-cancel"
+								href="/"
+								rel="noreferrer"
+								onClick={() => {
+									setPopBox({ isOpen: false });
+								}}>
+								{t("lbl_Close")}
+							</button>
+							{/* <button className="white" onClick={onOK}>
+								{t("Label_General_Already21Years")}
+							</button>
+
+							<a
+								className="gray"
+								href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+								rel="noreferrer">
+								{t("Label_General_Exit")}
+							</a> */}
+						</div>
+
+						<div
+							style={{
+								display: "flex",
+								justifyContent: "center"
+							}}>
+							<img
+								style={{ height: "64px" }}
+								src={pagcorImage}
+								alt="img-pagcor"
+							/>
+							<img
+								style={{ height: "64px" }}
+								src={age21Image}
+								alt="img-pagcor"
+							/>
+						</div>
+					</>
+				)
+			});
+			// }
 		}
 	}, [userInfo.isLogin, userInfo.userName]);
 	return (

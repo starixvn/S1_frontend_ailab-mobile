@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import classNames from "classnames";
 import areaCode from "../../datas/areaCode";
 import { popBoxContext } from "../common/context";
@@ -25,7 +25,7 @@ import { GET_LANG_ID } from "../../service/language";
 import {
 	initStatus,
 	currencyToAreacode,
-	reCaptchaEnum,
+	// reCaptchaEnum,
 	limitCountryNum,
 	OCCUPATION_OPTIONS,
 	SOURCE_OF_INCOME_OPTIONS
@@ -67,7 +67,7 @@ const JoinStep2 = ({
 	const { showTips, showTipHandler } = useTip([]);
 	const isMountedRef = useRef(null);
 	const defaultLangId = userInfo.langId ?? GET_LANG_ID();
-	const [reCaptchaToken, setReCaptchaToken] = useState("");
+	// const [reCaptchaToken, setReCaptchaToken] = useState("");
 	const yearOptions = [];
 	const startYear = GetYear();
 	for (let i = startYear; i >= startYear - 59; i--) {
@@ -338,8 +338,8 @@ const JoinStep2 = ({
 
 	const checkAll = async () => {
 		try {
-			const _reCaptchaCheck =
-				reCaptchaToken !== "" || recaptchaInfo.country === "CN";
+			// const _reCaptchaCheck =
+			// 	reCaptchaToken !== "" || recaptchaInfo.country === "CN";
 
 			// * 機器人驗證沒過直接 return 出去
 			// if (!_reCaptchaCheck) return false;
@@ -555,9 +555,9 @@ const JoinStep2 = ({
 		}
 	};
 
-	const handleReCaptchaChange = token => {
-		setReCaptchaToken(token);
-	};
+	// const handleReCaptchaChange = token => {
+	// 	setReCaptchaToken(token);
+	// };
 
 	return (
 		<div className="Join">
