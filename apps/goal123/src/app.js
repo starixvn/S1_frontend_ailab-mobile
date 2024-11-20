@@ -46,6 +46,7 @@ import Announcement from "./components/message/announcement";
 import Casino from "./pages/casino";
 import ForgetPwd from "./components/login/forgetPwd";
 import ResetPwd from "./components/login/resetPwd";
+import ChangePwd from "./components/member/changePwd";
 
 import Other from "./pages/other";
 
@@ -94,6 +95,7 @@ const Index = () => {
 						<NewHome path={path.home.root} default={true} />
 						<ForgetPwd path={path.forgetPassword.root} />
 						<ResetPwd path={path.resetPassword.root} />
+						<ChangePwd path={path.changePassword.root} />
 						<Promotion path={path.promotion.root} />
 						<PromotionInfo path={path.promotionInfo.root} />
 						<Member path={path.member.root}>
