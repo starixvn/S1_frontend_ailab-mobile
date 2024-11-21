@@ -9,7 +9,7 @@ export const api_cashier_DepositReqLoadCardPay = ({
 	BonusCode
 }) =>
 	cashierRequest.post(
-		`/${langId}/Cashier/DepositReqLoadCardPay?ChannelId=${ChannelId}&Code=${Code}&Serial=${Serial}&Amount=${Amount}${
+		`/${langId}/Cashier/DepositReq?ChannelId=${ChannelId}&Code=${Code}&Serial=${Serial}&Amount=${Amount}${
 			BonusCode ? `&BonusCode=${BonusCode}` : ""
 		}`
 	);
