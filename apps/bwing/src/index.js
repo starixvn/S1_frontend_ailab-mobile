@@ -136,7 +136,8 @@ const Content = () => {
 		<React.StrictMode>
 			{/* <GTM /> */}
 			<Shield />
-			<FbTrack />
+			{/* Release 手動註解 */}
+			{/* <FbTrack /> */}
 			<YuriTrack />
 			<App />
 		</React.StrictMode>
