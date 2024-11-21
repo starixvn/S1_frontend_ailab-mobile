@@ -36,114 +36,210 @@ const IndexPage = () => {
 		};
 	}, [setRoot]);
 
+	// 不管登入與否只要有回到首頁的動作就跳關站彈窗
 	useEffect(() => {
-		// * 如果未登入狀態及尚未勾選已年滿21歲的cookie即彈出此彈窗讓使用者驗證
-		if (userInfo.userName === "Guest") {
-			// if (!readCookie(siteInfo().ageVerificationCookie)) {
-			// const onOK = () => {
-			// 	setCookie(siteInfo().ageVerificationCookie, 1, 1);
-			// 	setPopBox({ isOpen: false });
-			// };
-			setPopBox({
-				isOpen: true,
-				title: t("Label_General_Important_Notice_Close_Title"),
-				hideCloseBtn: true,
-				content: (
-					<>
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								flexDirection: "column",
-								alignItems: "center",
-								textAlign: "center"
-							}}>
-							{/* {t("Label_General_Verify21Years")} */}
-							<p>
-								{t(
-									"Label_General_Important_Notice_Close_Content1"
-								)}
-							</p>
-							<br />
-							<p>
-								{t(
-									"Label_General_Important_Notice_Close_Content2"
-								)}
-							</p>
-							<br />
-							<p>
-								{t(
-									"Label_General_Important_Notice_Close_Content3"
-								)}
-							</p>
-							<br />
-							<p>{t("Label_General_Thank_You")}</p>
-							<br />
-							{/* <p>
-								<Trans
-									i18nKey="Label_General_AgreeTermsCondition"
-									components={{
-										Link: (
-											<span
-												style={{
-													fontWeight: 700
-												}}>
-												<a
-													href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
-													rel="noreferrer"
-													target="_blank">
-													{t("Label_General_Exit")}
-												</a>
-											</span>
-										)
-									}}
-								/>
-							</p> */}
-						</div>
-						<div className="btn-group">
-							<button
-								className="btn-cancel"
-								href="/"
-								rel="noreferrer"
-								onClick={() => {
-									setPopBox({ isOpen: false });
-								}}>
-								{t("lbl_Close")}
-							</button>
-							{/* <button className="white" onClick={onOK}>
-								{t("Label_General_Already21Years")}
-							</button>
-
-							<a
-								className="gray"
-								href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
-								rel="noreferrer">
-								{t("Label_General_Exit")}
-							</a> */}
-						</div>
-
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center"
-							}}>
-							<img
-								style={{ height: "64px" }}
-								src={pagcorImage}
-								alt="img-pagcor"
+		setPopBox({
+			isOpen: true,
+			title: t("Label_General_Important_Notice_Close_Title"),
+			hideCloseBtn: true,
+			content: (
+				<>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							flexDirection: "column",
+							alignItems: "center",
+							textAlign: "center"
+						}}>
+						{/* {t("Label_General_Verify21Years")} */}
+						<p>
+							{t("Label_General_Important_Notice_Close_Content1")}
+						</p>
+						<br />
+						<p>
+							{t("Label_General_Important_Notice_Close_Content2")}
+						</p>
+						<br />
+						<p>
+							{t("Label_General_Important_Notice_Close_Content3")}
+						</p>
+						<br />
+						<p>{t("Label_General_Thank_You")}</p>
+						<br />
+						{/* <p>
+							<Trans
+								i18nKey="Label_General_AgreeTermsCondition"
+								components={{
+									Link: (
+										<span
+											style={{
+												fontWeight: 700
+											}}>
+											<a
+												href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+												rel="noreferrer"
+												target="_blank">
+												{t("Label_General_Exit")}
+											</a>
+										</span>
+									)
+								}}
 							/>
-							<img
-								style={{ height: "64px" }}
-								src={age21Image}
-								alt="img-pagcor"
-							/>
-						</div>
-					</>
-				)
-			});
-			// }
-		}
-	}, [userInfo.isLogin, userInfo.userName]);
+						</p> */}
+					</div>
+					<div className="btn-group">
+						<button
+							className="btn-cancel"
+							href="/"
+							rel="noreferrer"
+							onClick={() => {
+								setPopBox({ isOpen: false });
+							}}>
+							{t("lbl_Close")}
+						</button>
+						{/* <button className="white" onClick={onOK}>
+							{t("Label_General_Already21Years")}
+						</button>
+	
+						<a
+							className="gray"
+							href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+							rel="noreferrer">
+							{t("Label_General_Exit")}
+						</a> */}
+					</div>
+
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center"
+						}}>
+						<img
+							style={{ height: "64px" }}
+							src={pagcorImage}
+							alt="img-pagcor"
+						/>
+						<img
+							style={{ height: "64px" }}
+							src={age21Image}
+							alt="img-pagcor"
+						/>
+					</div>
+				</>
+			)
+		});
+	}, [userInfo.isLogin]);
+
+	// useEffect(() => {
+	// 	// * 如果未登入狀態及尚未勾選已年滿21歲的cookie即彈出此彈窗讓使用者驗證
+	// 	if (userInfo.userName === "Guest") {
+	// 		// if (!readCookie(siteInfo().ageVerificationCookie)) {
+	// 		// const onOK = () => {
+	// 		// 	setCookie(siteInfo().ageVerificationCookie, 1, 1);
+	// 		// 	setPopBox({ isOpen: false });
+	// 		// };
+	// 		setPopBox({
+	// 			isOpen: true,
+	// 			title: t("Label_General_Important_Notice_Close_Title"),
+	// 			hideCloseBtn: true,
+	// 			content: (
+	// 				<>
+	// 					<div
+	// 						style={{
+	// 							display: "flex",
+	// 							justifyContent: "center",
+	// 							flexDirection: "column",
+	// 							alignItems: "center",
+	// 							textAlign: "center"
+	// 						}}>
+	// 						{/* {t("Label_General_Verify21Years")} */}
+	// 						<p>
+	// 							{t(
+	// 								"Label_General_Important_Notice_Close_Content1"
+	// 							)}
+	// 						</p>
+	// 						<br />
+	// 						<p>
+	// 							{t(
+	// 								"Label_General_Important_Notice_Close_Content2"
+	// 							)}
+	// 						</p>
+	// 						<br />
+	// 						<p>
+	// 							{t(
+	// 								"Label_General_Important_Notice_Close_Content3"
+	// 							)}
+	// 						</p>
+	// 						<br />
+	// 						<p>{t("Label_General_Thank_You")}</p>
+	// 						<br />
+	// 						{/* <p>
+	// 							<Trans
+	// 								i18nKey="Label_General_AgreeTermsCondition"
+	// 								components={{
+	// 									Link: (
+	// 										<span
+	// 											style={{
+	// 												fontWeight: 700
+	// 											}}>
+	// 											<a
+	// 												href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+	// 												rel="noreferrer"
+	// 												target="_blank">
+	// 												{t("Label_General_Exit")}
+	// 											</a>
+	// 										</span>
+	// 									)
+	// 								}}
+	// 							/>
+	// 						</p> */}
+	// 					</div>
+	// 					<div className="btn-group">
+	// 						<button
+	// 							className="btn-cancel"
+	// 							href="/"
+	// 							rel="noreferrer"
+	// 							onClick={() => {
+	// 								setPopBox({ isOpen: false });
+	// 							}}>
+	// 							{t("lbl_Close")}
+	// 						</button>
+	// 						{/* <button className="white" onClick={onOK}>
+	// 							{t("Label_General_Already21Years")}
+	// 						</button>
+
+	// 						<a
+	// 							className="gray"
+	// 							href={`${cloudBannerImgURL}/Static/en/TermsConditions.html`}
+	// 							rel="noreferrer">
+	// 							{t("Label_General_Exit")}
+	// 						</a> */}
+	// 					</div>
+
+	// 					<div
+	// 						style={{
+	// 							display: "flex",
+	// 							justifyContent: "center"
+	// 						}}>
+	// 						<img
+	// 							style={{ height: "64px" }}
+	// 							src={pagcorImage}
+	// 							alt="img-pagcor"
+	// 						/>
+	// 						<img
+	// 							style={{ height: "64px" }}
+	// 							src={age21Image}
+	// 							alt="img-pagcor"
+	// 						/>
+	// 					</div>
+	// 				</>
+	// 			)
+	// 		});
+	// 		// }
+	// 	}
+	// }, [userInfo.isLogin, userInfo.userName]);
+
 	return (
 		<PromotionWrapper>
 			<Layout
