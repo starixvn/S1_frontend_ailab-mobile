@@ -4,7 +4,7 @@ import useInterval from "./useInterval";
 
 const getInputValueById = id => document.getElementById(id)?.value || "";
 
-const useFpsChecks = ({ isLogin, interval = 60000 }) => {
+const useFpsChecks = ({ isLogin, interval = 10000 }) => {
 	const [isSent, setIsSent] = useState(false);
 
 	useInterval(
