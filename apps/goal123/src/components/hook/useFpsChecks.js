@@ -2,23 +2,20 @@ import { useState } from "react";
 import { api_fps_checks } from "../../service/api/fps";
 import useInterval from "./useInterval";
 
-const getInputValueById = id => document.getElementById(id)?.value || "";
+const getInputValueByName = id =>
+	document.getElementsByName(id)?.[0]?.value || "";
 
-const useFpsChecks = ({ isLogin, interval = 60000 }) => {
+const useFpsChecks = ({ isLogin, interval = 10000 }) => {
 	const [isSent, setIsSent] = useState(false);
 
 	useInterval(
 		async () => {
 			try {
-				const di = getInputValueById("__di");
-				const bi = getInputValueById("__bi");
-				const detecasAnalysis = getInputValueById("detecas-analysis");
-
-				// 取得這 3 個值後再送
-				if (![di, bi, detecasAnalysis].every(Boolean)) return;
-
-				const sessionKey = getInputValueById("__fdi");
-				const token = getInputValueById("__tk");
+				const di = getInputValueByName("__di");
+				const bi = getInputValueByName("__bi");
+				const detecasAnalysis = getInputValueByName("detecas-analysis");
+				const sessionKey = getInputValueByName("__fdi");
+				const token = getInputValueByName("__tk");
 				const url = window.location.href;
 				await api_fps_checks({
 					di,
