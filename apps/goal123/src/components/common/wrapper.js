@@ -120,7 +120,7 @@ export const Wrapper = ({ children }) => {
 		}
 	}, [userInfo.isLogin]);
 
-	useFpsChecks({ isLogin: userInfo.isLogin, interval: 10000 });
+	useFpsChecks({ isLogin: userInfo.isLogin });
 
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
