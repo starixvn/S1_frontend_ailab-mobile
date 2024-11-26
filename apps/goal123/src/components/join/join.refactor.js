@@ -2,9 +2,8 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect, useNavigate } from "@reach/router";
 import { useCooldown } from "@ailab-mobile/hooks";
-import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
-import { isInApp } from "@ailab-mobile/common";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { CaptchaTypeEnum } from "@ailab-mobile/service";
+import { useCaptchaContext } from "@ailab-mobile/common";
 import Inputbox from "../common/inputbox.info";
 import InputboxPWD from "../common/inputbox.password.info";
 import Checkbox from "../common/checkbox";
@@ -42,12 +41,9 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const { executeRecaptcha } = useGoogleReCaptcha();
+	const { Captcha, getToken, captchaType } = useCaptchaContext();
 	const { saveShieldData } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
-	const {
-		data: { data: recaptchaInfoData } = {}
-	} = useGetRecaptchaInfoQuery();
 
 	const urlAffId = getUrlParameter("AffId") || getCookie("AffId");
 	const urlAffCode = getUrlParameter("AffCode") || getCookie("AffCode");
@@ -313,13 +309,10 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 			formAffCode: userValue.Affiliate
 		});
 
-		// 中國地區不需驗證
-		const ReCaptchaAction = "signup";
-		let reCaptchaToken;
-		if (recaptchaInfoData?.country !== "CN" && !isInApp()) {
-			if (!executeRecaptcha) return;
-			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
-		}
+		const reCaptchaToken =
+			captchaType === CaptchaTypeEnum.Number
+				? userValue.reCaptchaToken
+				: await getToken();
 
 		checked =
 			UserNameCheck.checked &&
@@ -345,7 +338,7 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 				UserLang: defaultLangId,
 				ReferralUrl: document.referrer,
 				ReCaptchaToken: reCaptchaToken,
-				ReCaptchaAction
+				CaptchaType: captchaType
 			};
 
 			regData.RefId = getUrlParameter("RefId") || getCookie("RefId");
@@ -558,6 +551,15 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 					info: "lbl_Please_enter_Affiliate_ID"
 				})}
 			/>
+
+			<Captcha />
+			{captchaType === CaptchaTypeEnum.Number && (
+				<Inputbox
+					value={userValue.reCaptchaToken}
+					onChange={EditField.bind(this, { col: "reCaptchaToken" })}
+					placeholder={i18n.lbl_EnterCaptchaCode}
+				/>
+			)}
 
 			<Checkbox
 				Checked={userValue.Checkbox}
