@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "@reach/router";
 import {
 	isDateRange,
 	products,
-	GReCaptchaProviders
+	MultiCaptchaProvider
 } from "@ailab-mobile/common";
 import Footer from "./footer";
 import Header from "../header/header";
@@ -369,16 +369,14 @@ const Layout = ({ children }) => {
 			) : (
 				<>
 					<Login />
-					<GReCaptchaProviders langId={userInfo?.langId}>
-						<div
-							className={`join-module popup ${classNames({
-								active: isShow
-							})}`}>
+					<div
+						className={`join-module popup ${classNames({
+							active: isShow
+						})}`}>
+						<MultiCaptchaProvider langId={userInfo?.langId}>
 							<Join setNav={setNav} />
-							<div id="g-reCaptcha" />
-						</div>
-						{/* 客製化 element 必須添加 */}
-					</GReCaptchaProviders>
+						</MultiCaptchaProvider>
+					</div>
 					<Header
 						icon={pageInfo?.icon}
 						hideModal={pageInfo.hideModal}

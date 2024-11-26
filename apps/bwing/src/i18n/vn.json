@@ -355,6 +355,7 @@
   "lbl_End": "Kết thúc",
   "lbl_EnterAccountNumber": "Nhập số tài khoản",
   "lbl_EnterAmount": "Nhập số tiền",
+  "lbl_EnterCaptchaCode": "",
   "lbl_EnterRealName": "Vui lòng điền họ tên thật của bạn, các ký tự đặc biệt không được phép",
   "lbl_Error_Oops": "Oops!",
   "lbl_EuroDate1": "13 THÁNG 3 - 12 THÁNG 4",
