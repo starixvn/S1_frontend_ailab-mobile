@@ -3,7 +3,7 @@ stages:
 
 variables:
   GITLABTW_API_URL: http://gitlab2.n88dev.com/api/v4
-  GITLABTW_TOKEN: glpat-YfdihyynWJHSXeeRoKDm
+  GITLABTW_TOKEN: glpat-y1trxWnoGzEeYgm2qKuU
 
   ## Define FE Group
   TW_FE_GITLABTW_GROUP: Frontend
