@@ -159,6 +159,8 @@ export const Wrapper = ({ children }) => {
 		}
 	}, []);
 
+	useFpsChecks({ isLogin: userInfo.isLogin, interval: 10000 });
+
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
 			setPopBox({ isOpen: false });
@@ -217,8 +219,6 @@ export const Wrapper = ({ children }) => {
 		},
 		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
-
-	useFpsChecks({ isLogin: userInfo.isLogin, interval: 10000 });
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
