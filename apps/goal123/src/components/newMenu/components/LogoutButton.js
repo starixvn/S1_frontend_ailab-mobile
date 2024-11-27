@@ -18,6 +18,7 @@ const LogoutButton = () => {
 			}));
 			setNav(null);
 			setRedirectPath("/");
+			localStorage.removeItem("fpsNeededToCheck");
 		});
 	};
 

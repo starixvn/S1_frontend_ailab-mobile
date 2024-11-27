@@ -120,6 +120,8 @@ export const Wrapper = ({ children }) => {
 		}
 	}, [userInfo.isLogin]);
 
+	useFpsChecks({ isLogin: userInfo.isLogin, interval: 10000 });
+
 	const OnlineCheckCallBack = (errorCode, errMsg) => {
 		const clickClose = () => {
 			// set 邏輯要寫在 click 事件內，寫在同一個 scope popup 會因為 state 改變後 rerender 導致 popup 消失
@@ -179,8 +181,6 @@ export const Wrapper = ({ children }) => {
 		},
 		userInfo.isLogin && !isSpecialPath() ? 60000 : null
 	);
-
-	useFpsChecks({ isLogin: userInfo.isLogin, interval: 10000 });
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
