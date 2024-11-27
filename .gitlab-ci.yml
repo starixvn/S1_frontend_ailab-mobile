@@ -34,7 +34,7 @@ variables:
       git config --global user.email 'rocketor.vn@nexcel.com'
       git config --global user.name 'Rocketor.VN'
       git config --global credential.helper store
-      echo 'http://oauth2:glpat-YfdihyynWJHSXeeRoKDm@gitlab2.n88dev.com' >> $HOME/.git-credentials
+      echo 'http://oauth2:glpat-y1trxWnoGzEeYgm2qKuU@gitlab2.n88dev.com' >> $HOME/.git-credentials
       echo -e 'https://oauth2:glpat-i7UDNnuwdukMYXHbdzST@gitlab.nexdev.net\n' >> $HOME/.git-credentials
   script:
     - export SRC_PROJECTS=$(curl --no-progress-meter "$GITLABTW_API_URL/groups/$GITLABCOM_GROUP/projects?private_token=$GITLABTW_TOKEN&per_page=$GITLABCOM_PAGE_SIZE&page=$GITLABCOM_PAGE&simple=true" | jq .)
