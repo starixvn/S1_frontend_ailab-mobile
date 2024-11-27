@@ -13234,6 +13234,11 @@ react-toastify@^7.0.4:
   dependencies:
     clsx "^1.1.1"
 
+react-turnstile@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/react-turnstile/-/react-turnstile-1.1.4.tgz"
+  integrity sha512-oluyRWADdsufCt5eMqacW4gfw8/csr6Tk+fmuaMx0PWMKP1SX1iCviLvD2D5w92eAzIYDHi/krUWGHhlfzxTpQ==
+
 react@16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react/-/react-16.13.1.tgz"

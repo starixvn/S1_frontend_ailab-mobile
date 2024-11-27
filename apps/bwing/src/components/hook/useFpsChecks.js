@@ -24,10 +24,6 @@ const useFpsChecks = ({ isLogin, interval = 10000 }) => {
 				const sessionKey = getInputValueByName("__fdi");
 				const token = getInputValueByName("__tk");
 
-				// 取得這 3 個值後再送
-				// eslint-disable-next-line consistent-return
-				if (![di, bi, detecasAnalysis].every(Boolean)) return;
-
 				const url = window.location.href;
 				await api_fps_checks({
 					di,
