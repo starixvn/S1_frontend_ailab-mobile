@@ -5,14 +5,14 @@ import { Autoplay } from "../components/common/swipperBanner";
 import {
 	userInfoContext,
 	i18nContext,
-	defNavPanel,
-	navContext,
+	// defNavPanel,
+	// navContext,
 	popBoxContext
 } from "../components/common/context";
 import { defBannersUrl, defLevelList } from "../components/vip/def";
 import { EventList } from "../components/vip/eventList";
 import { Info } from "../components/vip/info";
-import { FooterBanner } from "../components/vip/footerBanner";
+// import { FooterBanner } from "../components/vip/footerBanner";
 import Layout from "../components/common/layout";
 import { api_site_GetVipBanner } from "../service/api/site";
 
@@ -49,16 +49,16 @@ Banners.propTypes = {
 const IndexPage = () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
-	const { setNav } = useContext(navContext);
+	// const { setNav } = useContext(navContext);
 	const [vipBanner, setVipBanner] = useState([]);
 	const { setPopBox } = useContext(popBoxContext);
 	const isMountedRef = useRef(null);
 
-	const openJoinPop = () => {
-		if (!userInfo.isLogin) {
-			setNav(defNavPanel.join);
-		}
-	};
+	// const openJoinPop = () => {
+	// 	if (!userInfo.isLogin) {
+	// 		setNav(defNavPanel.join);
+	// 	}
+	// };
 
 	useEffect(() => {
 		const getVipBanner = async () => {
@@ -104,10 +104,10 @@ const IndexPage = () => {
 						.format("MM/DD/YYYY")}
 				</div>
 				<EventList langId={userInfo.langId} vipBanner={vipBanner} />
-				<FooterBanner
+				{/* <FooterBanner
 					langId={userInfo.langId}
 					openJoinPop={openJoinPop}
-				/>
+				/> */}
 			</div>
 		</Layout>
 	);
