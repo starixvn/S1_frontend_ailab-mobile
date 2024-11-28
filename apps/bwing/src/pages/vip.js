@@ -20,7 +20,7 @@ const IndexPage = () => {
 					<div className="lobby-top">
 						<div className="lobby-banner">
 							<img
-								src={`${process.env.REACT_APP_BANNER_URL}/h5/img/4.0/vip/en/all-banner.jpg`}
+								src={`${process.env.REACT_APP_BANNER_URL}/h5/img/4.0/vip/en/all-banner-v1.jpg`}
 								alt=""
 							/>
 						</div>
