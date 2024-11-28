@@ -558,6 +558,7 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 					value={userValue.reCaptchaToken}
 					onChange={EditField.bind(this, { col: "reCaptchaToken" })}
 					placeholder={i18n.lbl_EnterCaptchaCode}
+					hideInfoBtn
 				/>
 			)}
 

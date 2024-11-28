@@ -626,6 +626,9 @@ const Join = ({ setNav }) => {
 									col: "reCaptchaToken"
 								})}
 								placeholder={t("lbl_EnterCaptchaCode")}
+								inputBoxNewClass="inputbox-item primary"
+								border={false}
+								hideInfoBtn
 							/>
 						)}
 
