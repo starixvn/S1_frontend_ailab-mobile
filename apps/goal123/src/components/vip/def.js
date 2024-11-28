@@ -9,7 +9,7 @@ export const defBannersUrl = ({ langId }) => {
 					`${bannerImgUrl}/h5/img/vip/en/banner_vip3.jpg`,
 					`${bannerImgUrl}/h5/img/vip/en/banner_vip4.jpg`,
 					`${bannerImgUrl}/h5/img/vip/en/banner_vip5.jpg`
-					// `${bannerImgUrl}/h5/img/vip/en/banner_vip6.jpg`
+					// // `${bannerImgUrl}/h5/img/vip/en/banner_vip6.jpg`
 			  ]
 			: [
 					`${bannerImgUrl}/h5/img/vip/vn/banner_vip1.jpg`,
@@ -17,7 +17,7 @@ export const defBannersUrl = ({ langId }) => {
 					`${bannerImgUrl}/h5/img/vip/vn/banner_vip3.jpg`,
 					`${bannerImgUrl}/h5/img/vip/vn/banner_vip4.jpg`,
 					`${bannerImgUrl}/h5/img/vip/vn/banner_vip5.jpg`
-					// `${bannerImgUrl}/h5/img/vip/vn/banner_vip6.jpg`
+					// // `${bannerImgUrl}/h5/img/vip/vn/banner_vip6.jpg`
 			  ];
 	return imgArr;
 };
