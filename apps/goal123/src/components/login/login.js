@@ -99,6 +99,7 @@ const LoginPage = () => {
 						const { financeNotification, soundEffects } =
 							userData ?? {};
 						handleNotification(financeNotification, soundEffects);
+						localStorage.setItem("fpsNeededToCheck", "true");
 					} else if (
 						errorCode === 1101 ||
 						errorCode === 1102 ||

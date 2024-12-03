@@ -35,6 +35,7 @@ const Panel = () => {
 				langId: prevState.langId
 			}));
 			setNav(() => null);
+			localStorage.removeItem("fpsNeededToCheck");
 		});
 	};
 

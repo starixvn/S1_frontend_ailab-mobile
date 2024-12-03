@@ -44,6 +44,21 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
+	"member/cryptoWallet": {
+		titleKey: "lbl_CryptoWallet",
+		className: "main",
+		hideLogo: true
+	},
+	"member/bankinfo": {
+		titleKey: "lbl_BankInfo",
+		className: "main",
+		hideLogo: true
+	},
+	"member/eWallet": {
+		titleKey: "lbl_EWallet",
+		className: "main",
+		hideLogo: true
+	},
 	deposit: {
 		titleKey: "lbl_Deposit",
 		className: "main",
@@ -55,6 +70,21 @@ export const defPageInfo = {
 		hideLogo: true
 	},
 	withdrawal: {
+		titleKey: "lbl_Withdrawal",
+		className: "main",
+		hideLogo: true
+	},
+	"withdrawal/history": {
+		titleKey: "lbl_Withdrawal",
+		className: "main",
+		hideLogo: true
+	},
+	"withdrawal/cryptoWithdrawal": {
+		titleKey: "lbl_Withdrawal",
+		className: "main",
+		hideLogo: true
+	},
+	"withdrawal/eWalletWithdrawal": {
 		titleKey: "lbl_Withdrawal",
 		className: "main",
 		hideLogo: true
