@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <g id="iconEm" transform="translate(-105 -359)">
-    <g id="bg" transform="translate(105 359)" fill="none" stroke="#1c317b" stroke-width="3">
-      <circle cx="15" cy="15" r="15" stroke="none"/>
-      <circle cx="15" cy="15" r="13.5" fill="none"/>
-    </g>
-    <path id="email" d="M16943,6430.58h-12a2,2,0,0,1-2-2v-6a2.007,2.007,0,0,1,.025-.322l7.014,5.226a1.665,1.665,0,0,0,1.926,0l7.01-5.223a2.086,2.086,0,0,1,.025.319v6A2,2,0,0,1,16943,6430.58Zm-6-3.577a.55.55,0,0,1-.32-.1l-7.324-5.46a2,2,0,0,1,1.643-.86h12a2.007,2.007,0,0,1,1.646.86l-7.324,5.459A.533.533,0,0,1,16937,6427Z" transform="translate(-16817.002 -6051.58)" fill="#1c317b"/>
-  </g>
-</svg>

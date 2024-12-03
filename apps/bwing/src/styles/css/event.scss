@@ -1,0 +1,602 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rufina:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap');
+
+.dragonegg-event {
+  min-width: auto;
+  padding-top: 0;
+  padding-bottom: 15vw;
+  background: #112b83;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 3.5vw;
+  button, a {
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .event {
+    &-banner{
+        width: fill-available;
+    }
+    &-main {
+        position: relative;
+        z-index: 3;
+        margin-top: -10vw;
+        padding-top: 19vw;
+        padding-bottom: 5vw;
+        // height: 130vw;
+        box-sizing: border-box;
+        background:  url(https://banner.bw88.io/h5/img/event/dragonegg/daily_bg.png) no-repeat top / cover;
+    }
+    &-task {
+        padding: 0 5vw;
+        &-title {
+            position: absolute;
+            top: 5.5vw;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Rufina', serif;
+            font-size: 5vw;
+            font-weight: bold;
+            color: #fff;
+        }
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, #fffae7 0%, #fffefc 100%);
+            margin-bottom: 3vw;
+            border-radius: 20px;
+            padding: 2vw;
+            box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+            min-height: 10vw;
+            img {
+                width: 11vw;
+            }
+        }
+        &-info {
+            display: flex;
+            flex-direction: column;
+            color: #0067c6;
+            width: 68vw;
+            margin-right: 2vw;
+            padding-bottom: 4vw;
+            .text {
+                color: #0067c6;
+                font-weight: bold;
+                line-height: 1.2;
+                height: 8.5vw;
+                display: flex;
+                align-items: center;
+            }
+        }
+        &-btn {
+            background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_btn.png) no-repeat center / cover;
+            width: 20vw;
+            height: 8.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            filter: drop-shadow(1px 1px 1px rgba(black,.4));
+            font-size: 3.5vw;
+            padding-bottom: 2.5vw;
+            margin-bottom: -2.5vw;
+            box-sizing: border-box;
+            &.active {
+                background: url(https://banner.bw88.io/h5/img/event/dragonegg/daily_btn_f.png) no-repeat center / cover;
+                color: #8e8e8e;
+            }
+        }
+    }
+    &-draw {
+        text-align: center;
+        position: relative;
+        img {
+            width: 72vw;
+        }
+        &-egg {
+            position: relative;
+        }
+        &-value {
+            position: absolute;
+            top: 9vw;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 10vw;
+            font-weight: 600;
+            filter: drop-shadow(0 2px 2px rgba(black,.5));
+        }
+        &-btn {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            justify-content: space-between;
+        }
+        .draw {
+            &-single {
+                width: 35.75vw;
+                height: 11.8vw;
+                padding-bottom: 1.5vw;
+                margin-right: 5vw;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                font-weight: 600;
+                background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center / cover;
+                color: #6b6b6b;
+                &.active {
+                    background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn.png) no-repeat center / cover;
+                    color: #fff;
+                }
+            }
+            &-ten {
+                width: 35.75vw;
+                height: 11.8vw;
+                padding-bottom: 1.5vw;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                font-weight: 600;
+                background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center / cover;
+                color: #6b6b6b;
+                &.active {
+                    background: url(https://banner.bw88.io/h5/img/event/dragonegg/draw_btn_ten.png) no-repeat center / cover;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    &-collection {
+        height: 115vw;
+        margin-top: -27vw;
+        margin-bottom: 5vw;
+        position: relative;
+        z-index: 3;
+        padding-top: 62vw;
+        pointer-events: none;
+        box-sizing: border-box;
+        background: url(https://banner.bw88.io/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center / cover;
+        &.vn{
+            background: url(https://banner.bw88.io/h5/img/event/dragonegg/5fu_bg_vn.png) no-repeat center / cover;
+        }
+        &-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #6c4100;
+            color: #c5a36a;
+            padding: 0 3vw ;
+            margin: 0 auto 4.5vw;
+            width: calc(100% - 20vw);
+            border-radius: 10vw;
+            min-height: 16vw;
+            font-weight: 600;
+            font-size: 4.5vw;
+            opacity: .8;
+            pointer-events: all;
+            img {
+                width: 15vw;
+                filter: contrast(50%);
+            }
+            &.active {
+                background: linear-gradient(180deg, #fcab21 0%, #e9620b 100%);
+                filter: drop-shadow(0px 0px 3px #fef571);
+                opacity: 1;
+                color: #fff;
+                img {
+                    width: 15vw;
+                    filter: contrast(1);
+                }
+            }
+        }
+        &-text {
+            color: #fff0be;
+            text-align: center;
+        }
+    }
+    &-fu{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8vw;
+        &-item  {
+            img {
+                width: 16.5vw;
+            }
+        }
+        &.active {
+            .event-fu-item {
+                img {
+                    filter: grayscale(1) brightness(1.2) contrast(50%);
+                }
+            }
+        }
+    }
+    &-history {
+        width: calc(100% - 20vw);
+        padding: 19vw 5vw 5vw;
+        margin: 0 auto;
+        background: url(https://banner.bw88.io/h5/img/event/dragonegg/rewards_bg.png) no-repeat center / cover;
+        height: 45vw;
+        position: relative;
+        &-title {
+            position: absolute;
+            top: 9vw;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #a06000;
+            font-size: 4vw;
+            font-weight: bold;
+        }
+        &-table {
+            .top-title {
+                display: flex;
+                div {
+                    width: 100%;
+                    display: flex;
+                    background: #a06000;
+                    color: #fff;
+                    border: 0;
+                    padding: 1vw 0;
+                    border-radius: 0 10px 0 0;
+                    align-items: center;
+                    justify-content: center;
+                    &:first-child {
+                        flex: 0 0 20vw;
+                        margin-right: .5vw;
+                        border-radius: 10px 0 0 0;
+                    }
+                }
+
+            }
+            .content{
+                height: 38vw;
+                overflow: auto;
+                border-radius: 0 0 10px 10px;
+                div {
+                    display: flex;
+                    div {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        background: #fff;
+                        width: 100%;
+                        color: #a06000;
+                        border-bottom: 1px solid #a06000;
+                        padding: 1vw 0;
+                        &:first-child {
+                            flex: 0 0 20vw;
+                            margin-right: .5vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-info {
+        color: #FFF;
+        margin: 5vw auto;
+        padding: 0 5vw;
+        font-size: 3.5vw;
+        .title {
+            font-size: 4vw;
+            font-weight: bold;
+            color: #FFF;
+            margin-bottom: 2vw;
+        }
+        .text {
+            color: #FFF;
+            margin-bottom: 2vw;
+        }
+        .sponsor {
+            display: flex;
+            div {
+                flex: 1 1;
+                background: rgba(0, 0, 0, 0.25);
+                margin-right: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                padding: 2vw;
+                img  {
+                    width: 30vw;
+                }
+            }
+        }
+    }
+  }
+  .progress {
+    background: linear-gradient(180deg, #1e1e1e 0%, #005ab7 100%);
+    position: relative;
+    border: 1.5px solid #fff;
+    border-radius: 2vw;
+    width: 100%;
+    height: 2vw;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+    &-bar{
+        height: 2vw;
+        background: linear-gradient(180deg, #fac48a 0%, #ea8003 100%);
+        border-radius: 2vw;
+    }
+    &-info {
+        position: absolute;
+        right: 0;
+        bottom: -5vw;
+        font-size: 3.5vw;
+        font-weight: bold;
+    }
+  }
+}
+
+.dragonegg-pop {
+    background: rgba(black, 0.8) !important;
+    backdrop-filter: blur(3px);
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    padding: 0 !important;
+    .close-btn{
+         background: url(https://banner.bw88.io/h5/img/event/dragonegg/icon-close.svg) no-repeat center / cover;
+         width: 7vw;
+         height: 7vw;
+         position: absolute;
+         bottom: calc(50% - 50vw);
+         left: 50%;
+         transform: translateX(-50%);
+    }
+    .pop {
+        width: 100% !important;
+        margin-top: -55vw;
+    }
+    .dragonegg {
+        &-frame{
+            width: 100%;
+            height: 124vw;
+            padding: 70vw 10vw 0;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            color: #C60000;
+            font-size: 4vw;
+            font-weight: bold;
+            background: url(https://banner.bw88.io/h5/img/event/dragonegg/choose_bg.png) no-repeat center / cover;
+        }
+        &-draw {
+            display: flex;
+            justify-content: center;
+            margin-top: 3vw;
+            .egg {
+                position: relative;
+                img {
+                    width: 23vw;
+                }
+                &::after{
+                    content: "";
+                    background: url(https://banner.bw88.io/h5/img/event/dragonegg/choose_egg_l.png) no-repeat center / cover;
+                    position: absolute;
+                    top: 0;
+                    right: -1vw;
+                    width: 25vw;
+                    height: 25vw;
+                    display: none;
+                }
+                &:hover {
+                    &::after{
+                        display: block;
+                    }
+
+                }
+            }
+        }
+        &-egg {
+            position: absolute;
+            bottom: 1vw;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: #fff;
+            span {
+                color: #ffce66;
+            }
+        }
+    }
+}
+
+.dragonegg-result-pop {
+    background: rgba(black, 0.8) !important;
+    backdrop-filter: blur(3px);
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    justify-content: flex-start !important;
+    overflow-y: auto;
+    button, a {
+      font-family: 'Source Sans 3', sans-serif !important;
+    }
+    .close-btn{
+         background: url(https://banner.bw88.io/h5/img/event/dragonegg/icon-close.svg) no-repeat center / cover;
+         width: 7vw;
+         height: 7vw;
+         position: absolute;
+         top: 7vw;
+         right: 7vw;
+    }
+    &.single {
+        .title {
+            margin-top: 5vw;
+        }
+    }
+    &.next-try{
+        justify-content: center !important;
+        .dragonegg-result-frame {
+            &::before{
+                display: none;
+            }
+            img {
+                margin-top: -3vw;
+                margin-bottom: 3vw;
+                animation: none;
+            }
+        }
+    }
+    &.ten-draw {
+        .dragonegg-result-frame {
+            &::before{
+                display: none;
+            }
+            img {
+                width: 60vw;
+            }
+        }
+
+    }
+    .dragonegg-result {
+        &-frame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            &::before{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 58vw;
+                top: 0;
+                left:0;
+                z-index: -1;
+                background: url(https://banner.bw88.io/h5/img/event/dragonegg/winning_bg.png) no-repeat center / cover;
+                animation: .3s bigger cubic-bezier(.4,.94,.56,1.59);
+            }
+            .title {
+                font-size: 10vw;
+                color: #fff; 
+                font-family: 'Oswald', sans-serif;
+                font-weight: bold;
+                -webkit-text-stroke-width: 1.5px; 
+                -webkit-text-stroke-color: #C17900;
+            }
+            .rewards-title {
+                color: #f6cd63;
+                font-size: 5vw;
+                font-weight: bold;
+            }
+            img {
+                width: 75vw;
+                animation: .3s bigger cubic-bezier(.4,.94,.56,1.59);
+            }
+        }
+        &-list{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2vw;
+            color: #fff;
+            div {
+                margin-bottom: 2vw;
+                line-height: 1.2;
+
+            }
+        }
+        &-btn {
+            display: flex;
+            flex-wrap: wrap;
+            .btn-blue-outline{
+                border: 2px solid #369fff;
+                border-radius: 5px;
+                filter: drop-shadow(1px 1px 3px #369fff);
+                color: #369fff;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 46.5%;
+                    margin-bottom: 3vw;
+                }
+            }
+            .btn-blue {
+                background: linear-gradient(180deg, #1d2fc5 0%, #061b94 100%);
+                border-radius: 5px;
+                color: #fff;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 47%;
+                    margin-bottom: 3vw;
+                }
+            }
+            .btn-org {
+                background: linear-gradient(180deg, rgba(249,132,66,1) 0%, rgba(201,78,10,1) 100%);
+                border-radius: 5px;
+                color: #fff;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 47%;
+                    margin-bottom: 3vw;
+                }
+            }
+        }
+        &-egg {
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            span {
+                color: #f6cd63;
+            }
+        }
+        &-share {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            background: #03214e;
+            color: #fff;
+            font-weight: bold;
+            padding: 2vw 3vw;
+            margin: 5vw auto;
+            img {
+                width: 5vw;
+                margin-left: 2vw;
+            }
+        }
+    }
+}
+
+
+.mr-2 {
+    margin-right: 2vw;
+}
+
+@keyframes bigger {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }

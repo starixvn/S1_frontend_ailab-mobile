@@ -13,7 +13,7 @@ export default langId => {
 		AboutUs: `${bannerImgUrl}/Static/${langId}/AboutUs.html`,
 		Terms: `${bannerImgUrl}/Static/${langId}/Terms.html`,
 		ContactUs: `${bannerImgUrl}/Static/${langId}/ContactUs.html?url=${window.location.origin}`,
-		HowToDeposit: `${config.t_and_cURL}/Static/${langId}/HowToDeposit.html`,
+		// HowToDeposit: `${config.t_and_cURL}/Static/${langId}/HowToDeposit.html`,
 		HowToBet: `${config.t_and_cURL}/Static/${config.siteName}/Static/${langId}/HowToBet.html`,
 		HowToWithdraw: `${config.t_and_cURL}/Static/${langId}/HowToWithdraw.html`,
 		AngPow: `${config.t_and_cURL}/Static/${config.siteName}/ranking/${langId}3.html`,
