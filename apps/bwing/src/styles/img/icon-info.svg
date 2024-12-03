@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-  <g id="btn_info" transform="translate(-610 -366)">
-    <g id="bg" transform="translate(610 366)" fill="none" stroke="#1c317b" stroke-width="3">
-      <circle cx="15" cy="15" r="15" stroke="none"/>
-      <circle cx="15" cy="15" r="13.5" fill="none"/>
-    </g>
-    <text id="i" transform="translate(625 388)" fill="#1c317b" font-size="18" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="-2.709" y="0">i</tspan></text>
-  </g>
-</svg>

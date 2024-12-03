@@ -64,13 +64,13 @@ import CockFighting from "./pages/cockFighting";
 import LiveCasino from "./pages/liveCasino";
 import Sports from "./pages/sports";
 
-import HowToDeposit from "./pages/howToDeposit";
+// import HowToDeposit from "./pages/howToDeposit";
 import HowToWithdraw from "./pages/howToWithdraw";
 import HowToPlay from "./pages/howToPlay";
 
 // import Ranking from "./pages/ranking";
 import Angpao from "./pages/angpao";
-import MysteryBox from "./pages/mysteryBox";
+// import MysteryBox from "./pages/mysteryBox";
 import VIP from "./pages/vip";
 import VipInner from "./pages/vip-inner";
 
@@ -195,12 +195,12 @@ const Index = () => {
 							<LiveCasino path={path.liveCasino.root} />
 							<Lottery path={path.lottery.root} />
 							<Esports path={path.eSports.root} />
-							<HowToDeposit path={path.howToDeposit.root} />
+							{/* <HowToDeposit path={path.howToDeposit.root} /> */}
 							<HowToWithdraw path={path.howToWithdraw.root} />
 							<HowToPlay path={path.howToPlay.root} />
 							{/* <Ranking path={path.leaderBoard.root} /> */}
 							<Angpao path={path.angpao.root} />
-							<MysteryBox path={path.mysteryBox.root} />
+							{/* <MysteryBox path={path.mysteryBox.root} /> */}
 							<LuckyWheel path={path.luckyWheel.root} />
 
 							<VIP path={path.vip.root} />

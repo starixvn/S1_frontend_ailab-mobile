@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Oswald:wght@600;700&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap');
+
+.dragonegg-event {
+  min-width: auto;
+  padding-top: 0;
+  padding-bottom: 15vw;
+  background: #560000;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 3.5vw;
+  button, a {
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .event {
+    &-banner{
+        width: fill-available;
+    }
+    &-main {
+        position: relative;
+        z-index: 1;
+        margin-top: -12vw;
+        padding-top: 22vw;
+        padding-bottom: 12vw;
+        // height: 154vw;
+        background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_bg.png) no-repeat top / cover;
+    }
+    &-task {
+        padding: 0 5vw;
+        &-title {
+            position: absolute;
+            top: 5.5vw;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'EB Garamond', serif;
+            font-size: 5vw;
+            font-weight: bold;
+        }
+        &-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(255,251,236,1) 0%, rgba(255,242,199,1) 100%);
+            margin-bottom: 3vw;
+            border-radius: 5px;
+            padding: 2vw;
+            box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.25);
+            min-height: 10vw;
+            img {
+                width: 11vw;
+            }
+        }
+        &-info {
+            display: flex;
+            flex-direction: column;
+            color: #a06000;
+            width: 60vw;
+            margin-right: 2vw;
+            padding-bottom: 4vw;
+            .text {
+                color: #a06000;
+                font-weight: bold;
+                line-height: 1.2;
+                height: 8.5vw;
+                display: flex;
+                align-items: center;
+            }
+        }
+        &-btn {
+            background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_btn.png) no-repeat center / cover;
+            width: 20vw;
+            height: 6vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            filter: drop-shadow(1px 1px 1px rgba(black,.4));
+            font-size: 3.5vw;
+            &.active {
+                background: url(https://banner.goal123.org/h5/img/event/dragonegg/daily_btn_f.png) no-repeat center / cover;
+                color: #8e8e8e;
+            }
+        }
+    }
+    &-draw {
+        text-align: center;
+        img {
+            width: 90vw;
+        }
+        &-egg {
+            position: relative;
+        }
+        &-value {
+            position: absolute;
+            top: 10vw;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 10vw;
+            font-weight: 600;
+            filter: drop-shadow(0 2px 2px rgba(black,.5));
+        }
+        &-btn {
+            display: flex;
+            padding: 0 12vw;
+            justify-content: space-between;
+        }
+        .draw {
+            &-single {
+                width: 34vw;
+                height: 11vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                font-weight: 600;
+                background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center / cover;
+                color: #6b6b6b;
+                &.active {
+                    background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn.png) no-repeat center / cover;
+                    color: #fff;
+                }
+            }
+            &-ten {
+                width: 34vw;
+                height: 11vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4vw;
+                font-weight: 600;
+                background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_f.png) no-repeat center / cover;
+                color: #6b6b6b;
+                &.active {
+                    background: url(https://banner.goal123.org/h5/img/event/dragonegg/draw_btn_ten.png) no-repeat center / cover;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    &-collection {
+        height: 55vw;
+        margin-top: -16vw;
+        margin-bottom: 5vw;
+        position: relative;
+        z-index: 2;
+        padding-top: 35vw;
+        pointer-events: none;
+        background: url(https://banner.goal123.org/h5/img/event/dragonegg/5fu_bg_en.png) no-repeat center / cover;
+        &.vn {
+            background: url(https://banner.goal123.org/h5/img/event/dragonegg/5fu_bg_vn.png) no-repeat center / cover;
+        }
+        &-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #aa0804;
+            color: #fff0be;
+            padding: 0 3vw ;
+            margin: 5vw auto 1.5vw;
+            width: calc(100% - 15vw);
+            min-height: 15.5vw;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 4.5vw;
+            opacity: .8;
+            pointer-events: all;
+            img {
+                width: 15vw;
+                filter: contrast(50%);
+            }
+            &.active {
+                background: linear-gradient(180deg, rgba(254,165,68,1) 0%, rgba(235,34,11,1) 100%);
+                filter: drop-shadow(0px 0px 3px #fef571);
+                opacity: 1;
+                img {
+                    width: 15vw;
+                    filter: contrast(1);
+                }
+            }
+        }
+        &-text {
+            color: #fff0be;
+            text-align: center;
+        }
+    }
+    &-fu{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8vw;
+        &-item  {
+            img {
+                width: 15vw;
+            }
+        }
+        &.active {
+            .event-fu-item {
+                img {
+                    filter: grayscale(1) brightness(1.2) contrast(50%);
+                }
+            }
+        }
+    }
+    &-history {
+        width: calc(100% - 20vw);
+        padding: 14vw 5vw 5vw;
+        margin: 0 auto;
+        background: url(https://banner.goal123.org/h5/img/event/dragonegg/rewards_bg.png) no-repeat center / cover;
+        height: 49vw;
+        position: relative;
+        &-title {
+            position: absolute;
+            top: 3vw;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffed98;
+            font-size: 4vw;
+            font-weight: bold;
+        }
+        &-table {
+            .top-title{
+                display: flex;
+                div {
+                    width: 100%;
+                    display: flex;
+                    background: #f6cd63;
+                    color: #7e4c02;
+                    border: 0;
+                    padding: 1vw 0;
+                    border-radius: 0 10px 0 0;
+                    align-items: center;
+                    justify-content: center;
+                    &:first-child {
+                        flex: 0 0 20vw;
+                        margin-right: .5vw;
+                        border-radius: 10px 0 0 0;
+                    }
+                }
+            }
+            .content{
+                height: 35vw;
+                overflow: auto;
+                border-radius: 0 0 10px 10px;
+                div {
+                    display: flex;
+                    div {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        background: #FFE8BB;
+                        width: 100%;
+                        color: #CA2121;
+                        border-bottom: 1px solid #7e4c02;
+                        padding: 1vw 0;
+                        &:first-child {
+                            flex: 0 0 20vw;
+                            margin-right: .5vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-info {
+        color: #f6cd63;
+        margin: 5vw auto;
+        padding: 0 5vw;
+        font-size: 3.5vw;
+        .title {
+            font-size: 4vw;
+            font-weight: bold;
+            color: #f6cd63;
+            margin-bottom: 2vw;
+        }
+        .text {
+            color: #f6cd63;
+            margin-bottom: 2vw;
+        }
+        .sponsor {
+            display: flex;
+            div {
+                flex: 1 1;
+                background: rgba(0, 0, 0, 0.25);
+                margin-right: 2vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                padding: 2vw;
+                img  {
+                    width: 30vw;
+                }
+            }
+        }
+    }
+  }
+  .progress {
+    background: linear-gradient(180deg, rgba(102,0,1,1) 0%, rgba(189,1,0,1) 100%);
+    position: relative;
+    border: 1.5px solid #fff;
+    border-radius: 2vw;
+    width: 100%;
+    height: 2vw;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+    &-bar{
+        height: 2vw;
+        background: linear-gradient(180deg, rgba(255,227,133,1) 0%, rgba(255,163,19,1) 100%);
+        border-radius: 2vw;
+    }
+    &-info {
+        position: absolute;
+        right: 0;
+        bottom: -5vw;
+        font-size: 3.5vw;
+        font-weight: bold;
+    }
+  }
+}
+
+.dragonegg-pop {
+    background: rgba(black, 0.8) !important;
+    backdrop-filter: blur(3px);
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    .close-btn{
+         background: url(https://banner.goal123.org/h5/img/event/dragonegg/icon-close.svg) no-repeat center / cover;
+         width: 7vw;
+         height: 7vw;
+         position: absolute;
+         bottom: calc(50% - 50vw);
+         left: 50%;
+         transform: translateX(-50%);
+    }
+    .pop {
+        margin-top: -30vw;
+    }
+    .dragonegg {
+        &-frame{
+            width: 100%;
+            height: 97vw;
+            padding: 42vw 5vw 0;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            background: url(https://banner.goal123.org/h5/img/event/dragonegg/choose_bg.png) no-repeat center / cover;
+        }
+        &-draw {
+            display: flex;
+            margin-top: 3vw;
+            .egg {
+                position: relative;
+                img {
+                    width: 25vw;
+                }
+                &::after{
+                    content: "";
+                    background: url(https://banner.goal123.org/h5/img/event/dragonegg/choose_egg_l.png) no-repeat center / cover;
+                    position: absolute;
+                    top: -2vw;
+                    right: 0;
+                    width: 15vw;
+                    height: 12vw;
+                    display: none;
+                }
+                &:hover {
+                    &::after{
+                        display: block;
+                    }
+
+                }
+            }
+        }
+        &-egg {
+            position: absolute;
+            bottom: 4vw;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            span {
+                color: #f6cd63;
+            }
+        }
+    }
+}
+
+.dragonegg-result-pop {
+    background: rgba(black, 0.8) !important;
+    backdrop-filter: blur(3px);
+    position: relative;
+    font-family: 'Source Sans 3', sans-serif;
+    justify-content: flex-start !important;
+    overflow-y: auto;
+    .close-btn{
+         background: url(https://banner.goal123.org/h5/img/event/dragonegg/icon-close.svg) no-repeat center / cover;
+         width: 7vw;
+         height: 7vw;
+         position: absolute;
+         top: 7vw;
+         right: 7vw;
+    }
+    &.single {
+        .title {
+            margin-top: 3vw;
+        }
+    }
+    &.next-try{
+        justify-content: center !important;
+        .dragonegg-result-frame {
+            &::before{
+                display: none;
+            }
+            img {
+                margin-top: -3vw;
+                margin-bottom: 3vw;
+                animation: none;
+            }
+        }
+    }
+    &.ten-draw {
+        .dragonegg-result-frame {
+            &::before{
+                display: none;
+            }
+            img {
+                width: 60vw;
+            }
+        }
+
+    }
+    .dragonegg-result {
+        &-frame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            &::before{
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 58vw;
+                top: 0;
+                left:0;
+                z-index: -1;
+                background: url(https://banner.goal123.org/h5/img/event/dragonegg/winning_bg.png) no-repeat center / cover;
+                animation: .3s bigger cubic-bezier(.4,.94,.56,1.59);
+            }
+            .title {
+                font-size: 10vw;
+                color: #fff; 
+                font-family: 'Oswald', sans-serif;
+                font-weight: bold;
+                -webkit-text-stroke-width: 1.5px; 
+                -webkit-text-stroke-color: #B1010B;
+            }
+            .rewards-title {
+                color: #f6cd63;
+                font-size: 5vw;
+                font-weight: bold;
+            }
+            img {
+                width: 75vw;
+                animation: .3s bigger cubic-bezier(.4,.94,.56,1.59);
+            }
+        }
+        &-list{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2vw;
+            div {
+                margin-bottom: 2vw;
+                line-height: 1.2;
+
+            }
+        }
+        &-btn {
+            display: flex;
+            flex-wrap: wrap;
+            .btn-red-outline{
+                border: 2px solid #ef4646;
+                border-radius: 5px;
+                filter: drop-shadow(1px 1px 3px #ef4646);
+                color: #ef4646;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 47%;
+                    margin-bottom: 3vw;
+                }
+            }
+            .btn-red {
+                background: linear-gradient(180deg, rgba(250,83,83,1) 0%, rgba(191,9,11,1) 100%);
+                border-radius: 5px;
+                color: #fff;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 48.5%;
+                    margin-bottom: 3vw;
+                }
+            }
+            .btn-org {
+                background: linear-gradient(180deg, rgba(249,132,66,1) 0%, rgba(201,78,10,1) 100%);
+                border-radius: 5px;
+                color: #fff;
+                text-align: center;
+                font-size: 4.5vw;
+                font-weight: bold;
+                padding: 1.5vw;
+                box-sizing: border-box;
+                &.full {
+                    width: 100%;
+                    margin-bottom: 3vw;
+                }
+                &.half {
+                    width: 48.5%;
+                    margin-bottom: 3vw;
+                }
+            }
+        }
+        &-egg {
+            font-weight: bold;
+            text-align: center;
+            span {
+                color: #f6cd63;
+            }
+        }
+        &-share {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            background: #5B0604;
+            color: #fff;
+            font-weight: bold;
+            padding: 2vw 3vw;
+            margin: 5vw auto;
+            img {
+                width: 5vw;
+                margin-left: 2vw;
+            }
+        }
+    }
+}
+
+
+.mr-2 {
+    margin-right: 2vw;
+}
+
+@keyframes bigger {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
