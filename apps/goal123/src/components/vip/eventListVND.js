@@ -58,7 +58,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Service_Support_At_Date}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.serviceSupport ? (
 								<i className="icon icon-checkmark" />
