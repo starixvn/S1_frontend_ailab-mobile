@@ -41,7 +41,12 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 	const [siteCurrencyList, setSiteCurrencyList] = useState([]);
 	const [inputStatus, setInputStatus] = useState(initStatus);
 	const [redirectPath, setRedirectPath] = useState(null);
-	const { Captcha, getToken, captchaType } = useCaptchaContext();
+	const {
+		Captcha,
+		getToken,
+		captchaType,
+		refreshCaptcha
+	} = useCaptchaContext();
 	const { saveShieldData } = useShieldCheck();
 	const { isReady, cooldown, setCooldown } = useCooldown();
 
@@ -391,6 +396,7 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 							});
 						}
 					}
+					refreshCaptcha();
 				},
 				() => {
 					if (isMountedRef.current) {

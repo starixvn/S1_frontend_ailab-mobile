@@ -11,7 +11,10 @@ import {
 	useGoogleReCaptcha
 } from "react-google-recaptcha-v3";
 import Turnstile from "react-turnstile";
-import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
+import {
+	useGetRecaptchaInfoQuery,
+	useLazyGetNumberCaptchaQuery
+} from "@ailab-mobile/service";
 import { FallbackCaptcha } from "./FallbackCaptcha";
 import {
 	CaptchaActionTypeEnum,
@@ -29,15 +32,26 @@ interface ICaptchaContext {
 	getToken: () => string | Promise<string> | undefined;
 	Captcha: React.FC;
 	captchaType?: CaptchaTypeEnum;
+	refreshCaptcha: () => void;
 }
 
-export const CaptchaContext = createContext({} as ICaptchaContext);
+export const CaptchaContext = createContext<ICaptchaContext>({
+	getToken: () => "",
+	Captcha: () => null,
+	refreshCaptcha: () => null
+});
 
 interface ICaptchaProviderProps {
 	children: ReactNode;
 	recaptchaInfoData?: IRecaptchaInfoData;
 	action?: CaptchaActionTypeEnum;
 }
+
+const isGoogleRecaptcha = (data?: IRecaptchaInfoData) =>
+	data?.type === CaptchaTypeEnum.Google &&
+	data.siteKey &&
+	data.country !== "CN" &&
+	!isInApp();
 
 const CaptchaProvider = ({
 	children,
@@ -48,14 +62,16 @@ const CaptchaProvider = ({
 	const [captchaType, setCaptchaType] = useState<
 		undefined | CaptchaTypeEnum
 	>();
-	const { siteKey, type, country } = recaptchaInfoData || {};
+	const { siteKey, type } = recaptchaInfoData || {};
 
 	const { executeRecaptcha } = useGoogleReCaptcha();
+
+	const [refreshNumberCaptcha] = useLazyGetNumberCaptchaQuery();
 
 	const getToken = () => {
 		switch (captchaType) {
 			case CaptchaTypeEnum.Google:
-				if (country === "CN" || isInApp()) {
+				if (isGoogleRecaptcha(recaptchaInfoData)) {
 					return "";
 				}
 				return executeRecaptcha?.(action);
@@ -79,17 +95,25 @@ const CaptchaProvider = ({
 			/>
 		)
 	};
+
 	useEffect(() => {
 		if (type !== undefined) {
 			setCaptchaType(type);
 		}
 	}, [type]);
 
+	const refreshCaptcha = () => {
+		if (captchaType === CaptchaTypeEnum.Number) {
+			refreshNumberCaptcha({ action });
+		}
+	};
+
 	const value: ICaptchaContext = {
 		getToken,
 		Captcha:
 			captchaType !== undefined ? components[captchaType] : () => null,
-		captchaType
+		captchaType,
+		refreshCaptcha
 	};
 	return (
 		<CaptchaContext.Provider value={value}>
@@ -105,20 +129,8 @@ export const MultiCaptchaProvider = ({
 	children: ReactNode;
 	langId: string;
 }) => {
-	const {
-		data: { data: recaptchaInfoData } = {}
-	} = useGetRecaptchaInfoQuery();
-	const { type, siteKey, country } = recaptchaInfoData || {};
-
-	if (!siteKey)
-		return (
-			<CaptchaProvider recaptchaInfoData={recaptchaInfoData}>
-				{children}
-			</CaptchaProvider>
-		);
-
-	const isGoogleReCaptchaBadge =
-		type === CaptchaTypeEnum.Google && country !== "CN" && !isInApp();
+	const { data: recaptchaInfoData } = useGetRecaptchaInfoQuery()?.data ?? {};
+	const { siteKey } = recaptchaInfoData || {};
 
 	return (
 		<GoogleReCaptchaProvider
@@ -127,13 +139,17 @@ export const MultiCaptchaProvider = ({
 				element: "g-reCaptcha",
 				parameters: { badge: "bottomleft" }
 			}}
-			reCaptchaKey={siteKey}>
+			reCaptchaKey={siteKey ?? ""}>
 			<CaptchaProvider recaptchaInfoData={recaptchaInfoData}>
 				{children}
 			</CaptchaProvider>
 			<div
 				id="g-reCaptcha"
-				style={isGoogleReCaptchaBadge ? {} : { display: "none" }}
+				style={
+					isGoogleRecaptcha(recaptchaInfoData)
+						? {}
+						: { display: "none" }
+				}
 			/>
 		</GoogleReCaptchaProvider>
 	);
