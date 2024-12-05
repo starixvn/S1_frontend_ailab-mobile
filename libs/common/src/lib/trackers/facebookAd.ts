@@ -18,6 +18,7 @@ export type MetaPixelTrackerName =
 
 export const MetaPixelTracker = (
 	eventName: MetaPixelTrackerName,
+	eventID?: string,
 	amount?: number,
 	firstDeposit?: boolean,
 	isoCode?: string
@@ -31,12 +32,12 @@ export const MetaPixelTracker = (
 	) => {
 		const params = { currency: isoCode, value: amount, ...extraParams };
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		(window as any).fbq("track", action, params);
+		(window as any).fbq("track", action, params, { eventID });
 	};
 
 	switch (eventName) {
 		case "CompleteRegistration":
-			window.fbq("track", eventName);
+			window.fbq("track", eventName, {}, { eventID });
 			break;
 		case "Purchase":
 			if (firstDeposit) {
@@ -47,7 +48,7 @@ export const MetaPixelTracker = (
 			trackWithParams(eventName);
 			break;
 		default:
-			window.fbq("trackCustom", eventName);
+			window.fbq("trackCustom", eventName, {}, { eventID });
 			break;
 	}
 };
