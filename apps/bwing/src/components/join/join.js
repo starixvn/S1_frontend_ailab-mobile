@@ -46,7 +46,12 @@ const Join = ({ setNav }) => {
 	const urlAffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 	const urlAffiliate = urlAffId || urlAffCode;
 	const { isReady, setCooldown, cooldown } = useCooldown();
-	const { Captcha, getToken, captchaType } = useCaptchaContext();
+	const {
+		Captcha,
+		getToken,
+		captchaType,
+		refreshCaptcha
+	} = useCaptchaContext();
 
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
@@ -366,6 +371,7 @@ const Join = ({ setNav }) => {
 							content: `[${errorCode}] ${message}`
 						});
 					}
+					refreshCaptcha();
 				},
 				() => {
 					setPopBox({
