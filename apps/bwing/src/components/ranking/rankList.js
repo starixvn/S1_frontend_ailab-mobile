@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { userInfoContext } from "../common/context";
 import { number_format } from "../common/common";
-import no1 from "../../styles/img/ranking/trophy1.png";
-import no2 from "../../styles/img/ranking/trophy2.png";
-import no3 from "../../styles/img/ranking/trophy3.png";
-import gold from "../../styles/img/ranking/trophy4.png";
+// import no1 from "../../styles/img/ranking/trophy1.png";
+// import no2 from "../../styles/img/ranking/trophy2.png";
+// import no3 from "../../styles/img/ranking/trophy3.png";
+// import gold from "../../styles/img/ranking/trophy4.png";
 
 const RankItem = ({
 	Ranking,
@@ -52,13 +52,13 @@ RankItem.propTypes = {
 };
 
 export const RankImg = ({ Ranking }) => {
-	let img = <img src={gold} alt="gold" />;
+	let img = <img src="" alt="gold" />;
 	const rank = Number(Ranking);
 	if (isNaN(Ranking) && Ranking !== "999+") {
 		img = Ranking;
-	} else if (rank === 1) img = <img src={no1} alt="no1" />;
-	else if (rank === 2) img = <img src={no2} alt="no2" />;
-	else if (rank === 3) img = <img src={no3} alt="no3" />;
+	} else if (rank === 1) img = <img src="" alt="no1" />;
+	else if (rank === 2) img = <img src="" alt="no2" />;
+	else if (rank === 3) img = <img src="" alt="no3" />;
 	return img || "";
 };
 

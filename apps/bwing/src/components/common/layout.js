@@ -21,7 +21,7 @@ import {
 import path from "../../path";
 import Loading from "./loading";
 import LuckyWheel from "../luckyWheel/homePopBox";
-import MysteryBox from "../mysteryBox/homePopBox";
+// import MysteryBox from "../mysteryBox/homePopBox";
 import { eventTime } from "./eventTime";
 import Login from "../login/login";
 import Join from "../join/join";
@@ -161,11 +161,11 @@ export const defPageInfo = {
 		className: "account",
 		hideLogo: true
 	},
-	howToDeposit: {
-		titleKey: "lbl_HowToDepoist",
-		className: "main",
-		hideLogo: true
-	},
+	// howToDeposit: {
+	// 	titleKey: "lbl_HowToDepoist",
+	// 	className: "main",
+	// 	hideLogo: true
+	// },
 	howToWithdraw: {
 		titleKey: "lbl_HowToWithdrawal",
 		className: "main",
@@ -191,11 +191,11 @@ export const defPageInfo = {
 		className: "main",
 		hideLogo: true
 	},
-	mysteryBox: {
-		titleKey: "lbl_MysteryBox_EventTitle",
-		className: "main mysteryEvent",
-		hideLogo: true
-	},
+	// mysteryBox: {
+	// 	titleKey: "lbl_MysteryBox_EventTitle",
+	// 	className: "main mysteryEvent",
+	// 	hideLogo: true
+	// },
 	vip: {
 		titleKey: "lbl_VIP",
 		className: "main vip",
@@ -454,7 +454,7 @@ const Layout = ({ children }) => {
 			)}
 			{isDateRange(eventTime.euroCup) && root && <EuroCupLink />}
 			{isDateRange(eventTime.dragonEgg) && root && <DragonEggPop />}
-			{isDateRange(eventTime.mysteryBox) && root && <MysteryBox />}
+			{/* {isDateRange(eventTime.mysteryBox) && root && <MysteryBox />} */}
 			{pageInfo.goTopBtn === false ? null : <GoTopBtn />}
 		</>
 	);

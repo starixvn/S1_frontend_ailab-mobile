@@ -1,7 +1,0 @@
-<svg id="btnVisible" xmlns="http://www.w3.org/2000/svg" width="27" height="16.744" viewBox="0 0 27 16.744">
-  <path id="Path_1" data-name="Path 1" d="M-538.248,731.39c-1.994-4.277-7.175-7.147-12.9-7.147h-.026c-5.71.01-10.884,2.881-12.872,7.147l-.1.214.1.216c1.994,4.276,7.2,7.423,12.926,7.423h0c6,0,10.884-3.157,12.872-7.423l.1-.216Zm-12.872,6.076h0a13.757,13.757,0,0,1-11.008-5.862c2.147-3.7,5.742-5.508,10.956-5.516h.026c5.225,0,8.922,1.857,10.982,5.516C-542.214,735.217-546.625,737.308-551.12,737.466Z" transform="translate(564.646 -723.37)" fill="#1c317b"/>
-  <g id="Ellipse_142" data-name="Ellipse 142" transform="translate(7.508 2.378)" fill="none" stroke="#1c317b" stroke-miterlimit="10" stroke-width="2">
-    <circle cx="6" cy="6" r="6" stroke="none"/>
-    <circle cx="6" cy="6" r="5" fill="none"/>
-  </g>
-</svg>
