@@ -167,7 +167,6 @@ export const api_WithdrawalUSDTReq = (AccountNo, amount) =>
 export const api_WithdrawalCryptoReq = ({
 	AccountNo,
 	amount,
-	blackbox,
 	CurrencyId,
 	ExchangeRate,
 	ExchangeAmount
@@ -175,7 +174,6 @@ export const api_WithdrawalCryptoReq = ({
 	paymentRequest.post("/WithdrawalCryptoReq", {
 		AccountNo,
 		amount,
-		blackbox,
 		CurrencyId,
 		ExchangeRate,
 		ExchangeAmount
