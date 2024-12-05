@@ -11,8 +11,8 @@ import Condition from "./condition";
 import History from "./history";
 import PopBox from "./popBox";
 import Counter from "./counter";
-import bgImg from "../../styles/img/mystery/bg.png";
-import bgVNImg from "../../styles/img/mystery/bg_vn.png";
+// import bgImg from "../../styles/img/mystery/bg.png";
+// import bgVNImg from "../../styles/img/mystery/bg_vn.png";
 import { useCheckPrize } from "../hook/useCheckPrize";
 import { eventIds } from "../../datas/eventId";
 
@@ -55,11 +55,7 @@ const MysteryBox = () => {
 
 	return (
 		<>
-			<img
-				className="mysteryBg"
-				src={userInfo.langId === "en" ? bgImg : bgVNImg}
-				alt="Mystery Box"
-			/>
+			<img className="mysteryBg" src="" alt="Mystery Box" />
 			<div className="animation">
 				<div
 					className={`mysteryBox ${

@@ -1,0 +1,1431 @@
+@import "color-group.scss";
+
+// icon
+.icon {
+  &-dropdown-arrow {
+    &-primary {
+      &::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 8px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-arrow.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-secondary {
+      &::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 8px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-arrow-org.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 10px;
+        height: 8px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-arrow-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-arrow {
+    &::before {
+      content: "";
+      display: block;
+      width: 5vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/btn-arrow3.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 4vw;
+        height: 6vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/btn-arrow3-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-close {
+    &-primary {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-close-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-secondary {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-close-org.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-close-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white-bg {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: $secondary url(https://banner.bw88.io/h5/img/4.0/icon-close-white.svg) no-repeat center / 50% 50%;
+        border-radius: 50%;
+        margin: 0 1vw;
+        cursor: pointer;
+        z-index: 1;
+      }
+    }
+
+    &-slots {
+      &::before {
+        content: "";
+        display: block;
+        width: 13vw;
+        height: 13vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/slots-game-close.png) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-app {
+    &-primary {
+      &::before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 24px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-app.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-secondary {
+      &::before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 24px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-app-org.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 24px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-app-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-visible {
+    &::before {
+      content: "";
+      display: block;
+      width: 5vw;
+      height: 3.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-visible.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-unvisible {
+    &::before {
+      content: "";
+      display: block;
+      width: 5.5vw;
+      height: 3.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-unvisible.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-wallet {
+    &::before {
+      content: "";
+      display: block;
+      width: 5vw;
+      height: 5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-wallet.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-message {
+    &::before {
+      content: "" !important;
+      display: block;
+      width: 8vw;
+      height: 5.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-message.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-menu {
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 6vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-menu.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-home {
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 20px;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-home-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-outline {
+      &::before {
+        content: "";
+        display: block;
+        width: 6.5vw;
+        height: 6.5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-home-outline.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-download {
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 23px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-download.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 11vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-download-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-contact {
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 23px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-contact.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-speaker {
+    &::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 23px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-speaker.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-games {
+    &::before {
+      content: "";
+      display: block;
+      width: 12.5vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-games.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 17.75vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-games-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-promo {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-promo.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 11vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-promo-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 6vw;
+        height: 6vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-promo-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-soccer {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-soccer.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 11vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-soccer-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-solid {
+      &::before {
+        content: "";
+        display: block;
+        width: 6vw;
+        height: 6vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-soccer-solid.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-slots {
+    &::before {
+      content: "";
+      display: block;
+      width: 10vw;
+      height: 10vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-slots.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 11vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-slots-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-star {
+    &-outline {
+      &::before {
+        content: "";
+        display: block;
+        width: 9vw;
+        height: 9vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-star-outline.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+
+      &-blue {
+        &::before {
+          content: "";
+          display: block;
+          width: 11vw;
+          height: 11vw;
+          background: url(https://banner.bw88.io/h5/img/4.0/icon-star-outline-blue.svg) no-repeat center / cover;
+          margin: 0 1vw;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-news {
+    &::before {
+      content: "";
+      display: block;
+      width: 10vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-news.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-livesports {
+    &::before {
+      content: "";
+      display: block;
+      width: 20vw;
+      height: 9vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-livesport.png) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-livecasino {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 16vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-livecasino-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-cockfighting {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 12.75vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-cockfighting-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-setting {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 9vw;
+        height: 9vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-setting-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-survey {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 10vw;
+        height: 10vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-survey.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-lottery {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 12.75vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-lottery-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-fishing {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 17.5vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-fishing-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-esports {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 9.5vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-esports-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-leaderboard {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 11.5vw;
+        height: 10vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-leaderboard-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-aff {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 9.5vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-aff-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-other {
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 7.5vw;
+        height: 11vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-other-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 4.5vw;
+        height: 6.85vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-other-white.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-livechat {
+    &::before {
+      content: "";
+      display: block;
+      width: 6.75vw;
+      height: 4.95vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-livechat.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-deposit {
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 5.85vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-deposit.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-footer {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 7vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-deposit-2.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-org {
+      &::before {
+        content: "";
+        display: block;
+        width: 11vw;
+        height: 12vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-deposit.png) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-withdrawal {
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 5.85vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-withdrawal.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-statement {
+    &::before {
+      content: "";
+      display: block;
+      width: 6vw;
+      height: 7.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-statement.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-history {
+    &::before {
+      content: "";
+      display: block;
+      width: 5.5vw;
+      height: 6vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-history.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-transfer {
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 6.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-transfer.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-facebook {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 22px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-facebook.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-telegram {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-telegram.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-zalo {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-zalo.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-skype {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-skype.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-youtube {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 15px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-youtube.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-tiktok {
+    &::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 22px;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-tiktok.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-profile {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-profile.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-password {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-password.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-outline {
+      &::before {
+        content: "";
+        display: block;
+        width: 8vw;
+        height: 10vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-password-outline.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-phone {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-phone.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-email {
+    &::before {
+      content: "" !important;
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-email.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-affiliate {
+    &::before {
+      content: "";
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-affiliate.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 5vw;
+      height: 5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-check.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-blue {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-check-blue.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+
+    &-cirlce-org {
+      &::before {
+        content: "";
+        display: block;
+        width: 12vw;
+        height: 12vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-check.png) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "" !important;
+      display: block;
+      width: 4.5vw;
+      height: 4.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-error.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 5.75vw;
+      height: 5.75vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-info.svg) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-org {
+      &::before {
+        content: "";
+        display: block;
+        width: 12vw;
+        height: 12vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-info.png) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-org {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-search.svg) no-repeat center / cover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-solid {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-fav-solid.svg) no-repeat center / cover;
+        cursor: pointer;
+      }
+    }
+
+    &-outline {
+      &::before {
+        content: "";
+        display: block;
+        width: 5vw;
+        height: 5vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-fav-outline.svg) no-repeat center / cover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 21vw;
+      height: 17vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-notice.png) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-crown {
+    &-blue {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 10vw;
+        height: 10vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-crown-blue.svg) no-repeat center / cover;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7.2vw;
+      height: 8.85vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-account.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+
+    &-white {
+      &::before {
+        content: "";
+        display: block;
+        width: 5.5vw;
+        height: 6.85vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/icon-account-white.svg) no-repeat center / cover;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  &-bank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 7vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-bank.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-crypto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 6.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-crypto.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-referral {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 8vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-referral.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-password-outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 8.25vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-password-outline.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 7vw;
+      height: 8.25vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-logout.svg) no-repeat center / cover;
+      cursor: pointer;
+    }
+  }
+
+  &-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 13vw;
+      height: 18vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/icon-cheers.png) no-repeat center / cover;
+      cursor: pointer;
+    }
+
+  }
+
+}
+
+// new tag etc. 
+.tag {
+  &-new {
+    &::before {
+      animation: flash .35s infinite alternate;
+      content: "";
+      display: block;
+      width: 15.5vw;
+      height: 7.5vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/tag-new.png) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-pop {
+      &::before {
+        animation: flash .35s infinite alternate;
+        content: "";
+        display: block;
+        width: 10.2vw;
+        height: 7vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/tag-new-2.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-hot {
+    &::before {
+      animation: flash .35s infinite alternate;
+      content: "";
+      display: block;
+      width: 70px;
+      height: 33px;
+      background: url(https://banner.bw88.io/h5/img/4.0/tag-hot.png) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+
+    &-pop {
+      &::before {
+        animation: flash .35s infinite alternate;
+        content: "";
+        display: block;
+        width: 10vw;
+        height: 7vw;
+        background: url(https://banner.bw88.io/h5/img/4.0/tag-hot-2.svg) no-repeat center / cover;
+        margin: 0 1vw;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-live {
+    &::before {
+      animation: flash .35s infinite alternate;
+      content: "";
+      display: block;
+      width: 55px;
+      height: 17px;
+      background: url(https://banner.bw88.io/h5/img/4.0/tag-live.png) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+
+  &-claimed {
+    &::before {
+      content: "";
+      display: block;
+      width: 20vw;
+      height: 6vw;
+      background: url(https://banner.bw88.io/h5/img/4.0/tag-claim.png) no-repeat center / cover;
+      margin: 0 1vw;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes flash {
+  0% {
+    filter: brightness(1);
+  }
+
+  100% {
+    filter: brightness(1.1);
+  }
+}
+
+// txt-style
+.txt-center {
+  text-align: center !important;
+}
+
+.txt-left {
+  text-align: left !important;
+}
+
+.txt-right {
+  text-align: right !important;
+}
+
+.txt-primary {
+  color: $primary !important;
+}
+
+.txt-secondary {
+  color: $secondary !important;
+}
+
+.txt-white {
+  color: $white !important;
+}
+
+.txt-black {
+  color: $black !important;
+}
+
+.txt-bigger {
+  font-size: 5vw !important;
+}
+
+.txt-smaller {
+  font-size: 3vw !important;
+}
+
+.row-align-center {
+  justify-content: center !important;
+}
+
+.row-align-left {
+  justify-content: flex-start !important;
+}
+
+.row-align-right {
+  justify-content: flex-end !important;
+}
+
+.col-align-center {
+  align-items: center !important;
+}
+
+.col-align-left {
+  align-items: flex-start !important;
+}
+
+.col-align-right {
+  align-items: flex-end !important;
+}
+
+// 欄位
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 1vw;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+// 1 
+.col-12 {
+  width: 100%;
+}
+
+// 1/2
+.col-6 {
+  width: 50%;
+}
+
+// 1/4
+.col-3 {
+  width: 25%;
+}
+
+// 2/3
+.col-8 {
+  width: 66.666%;
+}
+
+// 1/3
+.col-4 {
+  width: 33.333%;
+}
+
+.mb-1 {
+  margin-bottom: 2vw !important;
+}
+
+.mb-2 {
+  margin-bottom: 4vw !important;
+}
+
+.mb-3 {
+  margin-bottom: 6vw !important;
+}
+
+.mb-4 {
+  margin-bottom: 8vw !important;
+}
+
+.mb-5 {
+  margin-bottom: 10vw !important;
+}
+
+.mb-6 {
+  margin-bottom: 12vw !important;
+}
+
+.mt-1 {
+  margin-top: 2vw !important;
+}
+
+.mt-2 {
+  margin-top: 4vw !important;
+}
+
+.mt-3 {
+  margin-top: 6vw !important;
+}
+
+.mt-4 {
+  margin-top: 8vw !important;
+}
+
+.mt-5 {
+  margin-top: 10vw !important;
+}
+
+.mt-6 {
+  margin-top: 12vw !important;
+}
+
+.mr-1 {
+  margin-right: 2vw !important;
+}
+
+.mr-2 {
+  margin-right: 4vw !important;
+}
+
+.mr-3 {
+  margin-right: 6vw !important;
+}
+
+.mr-4 {
+  margin-right: 8vw !important;
+}
+
+.mr-5 {
+  margin-right: 10vw !important;
+}
+
+.mr-6 {
+  margin-right: 12vw !important;
+}
+
+.ml-1 {
+  margin-left: 2vw !important;
+}
+
+.ml-2 {
+  margin-left: 4vw !important;
+}
+
+.ml-3 {
+  margin-left: 6vw !important;
+}
+
+.ml-4 {
+  margin-left: 8vw !important;
+}
+
+.ml-5 {
+  margin-left: 10vw !important;
+}
+
+.ml-6 {
+  margin-left: 12vw !important;
+}

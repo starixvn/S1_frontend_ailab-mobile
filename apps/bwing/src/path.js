@@ -143,9 +143,9 @@ export default {
 	fishing: {
 		root: "fishing"
 	},
-	howToDeposit: {
-		root: "howToDeposit"
-	},
+	// howToDeposit: {
+	// 	root: "howToDeposit"
+	// },
 	howToWithdraw: {
 		root: "howToWithdraw"
 	},

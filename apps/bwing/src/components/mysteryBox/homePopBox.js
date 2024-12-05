@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "@reach/router";
-import { userInfoContext } from "../common/context";
+// import { userInfoContext } from "../common/context";
 import path from "../../path";
-import eventImg from "../../styles/img/mystery/homeImg.png";
-import eventImgVN from "../../styles/img/mystery/homeImg_vn.png";
+// import eventImg from "../../styles/img/mystery/homeImg.png";
+// import eventImgVN from "../../styles/img/mystery/homeImg_vn.png";
 
 const MysteryBox = () => {
-	const { userInfo } = useContext(userInfoContext);
+	// const { userInfo } = useContext(userInfoContext);
 	const [mysteryBox, setMysteryBox] = useState(true);
 	const closePop = () => {
 		setMysteryBox(false);
@@ -19,11 +19,7 @@ const MysteryBox = () => {
 					X
 				</div>
 				<Link to={`/${path.mysteryBox.root}`}>
-					<img
-						className="mystery"
-						src={userInfo.langId === "vn" ? eventImgVN : eventImg}
-						alt="Mystery Box"
-					/>
+					<img className="mystery" src="" alt="Mystery Box" />
 				</Link>
 			</div>
 		)
