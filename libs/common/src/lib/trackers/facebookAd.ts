@@ -39,11 +39,10 @@ export const MetaPixelTracker = (
 			window.fbq("track", eventName);
 			break;
 		case "Purchase":
-			if (firstDeposit) {
-				trackWithParams("StartTrial");
-			} else {
-				trackWithParams("redeposit");
-			}
+			trackWithParams(firstDeposit ? "StartTrial" : "redeposit");
+			trackWithParams(eventName);
+			break;
+		case "withdraw":
 			trackWithParams(eventName);
 			break;
 		default:
