@@ -567,6 +567,10 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 			)}
 			<Captcha />
 
+			<div style={{ textAlign: "start" }}>
+				<Captcha />
+			</div>
+
 			<Checkbox
 				Checked={userValue.Checkbox}
 				className={`Terms${

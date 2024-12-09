@@ -632,6 +632,10 @@ const Join = ({ setNav }) => {
 						)}
 						<Captcha />
 
+						<div style={{ textAlign: "start", marginBottom: 24 }}>
+							<Captcha />
+						</div>
+
 						<div className="join-message">
 							<Checkbox
 								testAttr="agreeCheck"
