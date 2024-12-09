@@ -27,11 +27,10 @@ export const FallbackCaptcha = () => {
 
 	return (
 		<button
-			style={{ background: "none" }}
+			style={{ background: "none", width: "auto" }}
 			onClick={refreshCaptcha}
 			type="button">
 			<img
-				style={{ width: "100%" }}
 				src={`data:image/png;base64,${numberCaptcha.picture}`}
 				alt="captcha"
 			/>
