@@ -621,7 +621,6 @@ const Join = ({ setNav }) => {
 							setActiveInfoMsg={setActiveInfoMsg}
 						/>
 
-						<Captcha />
 						{captchaType === CaptchaTypeEnum.Number && (
 							<Inputbox
 								value={userValue.reCaptchaToken}
@@ -631,6 +630,7 @@ const Join = ({ setNav }) => {
 								placeholder={t("lbl_EnterCaptchaCode")}
 							/>
 						)}
+						<Captcha />
 
 						<div className="join-message">
 							<Checkbox

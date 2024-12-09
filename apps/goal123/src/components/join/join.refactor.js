@@ -558,7 +558,6 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 				})}
 			/>
 
-			<Captcha />
 			{captchaType === CaptchaTypeEnum.Number && (
 				<Inputbox
 					value={userValue.reCaptchaToken}
@@ -566,6 +565,7 @@ const Join = ({ setNav, openPanel, showBylink }) => {
 					placeholder={i18n.lbl_EnterCaptchaCode}
 				/>
 			)}
+			<Captcha />
 
 			<Checkbox
 				Checked={userValue.Checkbox}
