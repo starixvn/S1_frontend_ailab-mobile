@@ -1,11 +1,11 @@
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import React, { useContext, useEffect, useState } from "react";
-import { isInApp, MetaPixelTracker } from "@ailab-mobile/common";
+import { MetaPixelTracker, useCaptchaContext } from "@ailab-mobile/common";
+import { CaptchaTypeEnum } from "@ailab-mobile/service";
+
 import { useNavigate } from "@reach/router";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { useCooldown } from "@ailab-mobile/hooks";
-import { useGetRecaptchaInfoQuery } from "@ailab-mobile/service";
 import {
 	defNavPanel,
 	i18nContext,
@@ -47,9 +47,11 @@ const Join = ({ setNav }) => {
 	const urlAffiliate = urlAffId || urlAffCode;
 	const { isReady, setCooldown, cooldown } = useCooldown();
 	const {
-		data: { data: recaptchaInfoData } = {}
-	} = useGetRecaptchaInfoQuery();
-	const { executeRecaptcha } = useGoogleReCaptcha();
+		Captcha,
+		getToken,
+		captchaType,
+		refreshCaptcha
+	} = useCaptchaContext();
 
 	const checkValue = async ({ col }, e) => {
 		const val = e.target.value;
@@ -292,13 +294,10 @@ const Join = ({ setNav }) => {
 			formAffCode: userValue.Affiliate
 		});
 
-		// 中國地區不需驗證
-		const ReCaptchaAction = "signup";
-		let reCaptchaToken;
-		if (recaptchaInfoData?.country !== "CN" && !isInApp()) {
-			if (!executeRecaptcha) return;
-			reCaptchaToken = await executeRecaptcha(ReCaptchaAction);
-		}
+		const reCaptchaToken =
+			captchaType === CaptchaTypeEnum.Number
+				? userValue.reCaptchaToken
+				: await getToken();
 
 		checked =
 			RealNameCheck.checked &&
@@ -321,7 +320,7 @@ const Join = ({ setNav }) => {
 				AreaCode: VN_AREACODE,
 				ReferralUrl: document.referrer,
 				ReCaptchaToken: reCaptchaToken,
-				ReCaptchaAction
+				CaptchaType: captchaType
 			};
 
 			regData.RefId = getUrlParameter("RefId") || readCookie("RefId");
@@ -375,6 +374,7 @@ const Join = ({ setNav }) => {
 							content: `[${errorCode}] ${message}`
 						});
 					}
+					refreshCaptcha();
 				},
 				() => {
 					setPopBox({
@@ -623,6 +623,23 @@ const Join = ({ setNav }) => {
 							activeInfoMsg={activeInfoMsg}
 							setActiveInfoMsg={setActiveInfoMsg}
 						/>
+
+						{captchaType === CaptchaTypeEnum.Number && (
+							<Inputbox
+								value={userValue.reCaptchaToken}
+								onChange={EditField.bind(this, {
+									col: "reCaptchaToken"
+								})}
+								placeholder={t("lbl_EnterCaptchaCode")}
+								inputBoxNewClass="inputbox-item primary"
+								border={false}
+								hideInfoBtn
+							/>
+						)}
+
+						<div style={{ textAlign: "start", marginBottom: 24 }}>
+							<Captcha />
+						</div>
 
 						<div className="join-message">
 							<Checkbox
