@@ -1,10 +1,16 @@
 import { IAxiosResponse } from "../axiosBaseQuery";
 import { rootApi } from "../rootApi/api";
+import {
+	IGetNumberCaptchaArgs,
+	IGetNumberCaptchaData,
+	IRecaptchaInfoData
+} from "./type";
 
 const siteApiUrl = {
 	getTpIds: "Site/GetTpIds",
 	getIpCountry: "Site/GetIpCountry",
-	getRecaptchaInfo: "Site/GetRecaptchaInfo"
+	getRecaptchaInfo: "Site/GetRecaptchaInfo",
+	getNumberCaptcha: "Site/GetNumberCaptcha"
 };
 
 export const siteApi = rootApi.injectEndpoints({
@@ -29,15 +35,22 @@ export const siteApi = rootApi.injectEndpoints({
 			})
 		}),
 		getRecaptchaInfo: builder.query<
-			IAxiosResponse<{
-				siteKey: string;
-				country: string;
-			}>,
+			IAxiosResponse<IRecaptchaInfoData>,
 			void
 		>({
 			query: () => ({
 				url: siteApiUrl.getRecaptchaInfo,
 				method: "POST"
+			})
+		}),
+		getNumberCaptcha: builder.query<
+			IAxiosResponse<IGetNumberCaptchaData>,
+			IGetNumberCaptchaArgs
+		>({
+			query: data => ({
+				url: siteApiUrl.getNumberCaptcha,
+				method: "POST",
+				data
 			})
 		})
 	})
@@ -46,5 +59,6 @@ export const siteApi = rootApi.injectEndpoints({
 export const {
 	useGetTpIdsQuery,
 	useGetIpCountryQuery,
-	useGetRecaptchaInfoQuery
+	useGetRecaptchaInfoQuery,
+	useLazyGetNumberCaptchaQuery
 } = siteApi;
