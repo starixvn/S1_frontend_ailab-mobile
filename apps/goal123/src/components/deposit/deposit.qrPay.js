@@ -259,7 +259,7 @@ const Payment = props => {
 				idKey="groupId"
 				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
-				displayKey="channelName"
+				displayKey="displayGroupName"
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
@@ -270,12 +270,12 @@ const Payment = props => {
 				SelectPayment={SelectChannel}
 				selected={selChannel?.channelId}
 				mainKey={`deposit-full-${payType}-channelList`}
-				imgKey="groupName"
+				imgKey="channelName"
 				idKey="channelId"
 				bindFullObj={true}
 				prefixImgUrl={`${paymentImgUrl}/`}
 				i18n={i18n}
-				displayKey="channelName"
+				displayKey="displayChannelName"
 				showMinMaxHint={true}
 				_isConvert={_isConvert}
 			/>
