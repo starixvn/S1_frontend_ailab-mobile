@@ -19,20 +19,23 @@ const IndexPage = () => {
 		/>
 	));
 
-	const vipTableRow = vipBanner?.vipBannerData?.map(item => {
-		return (
-			<div className="vip-grade-info" key={item.levelName}>
-				<div className="vip-grade-icon">
-					<img
-						src={`https://banner.bw88.io/h5/img/4.0/vip/vip${item?.level}.png`}
-						alt=""
-					/>
-					<div>{item.levelName}</div>
+	// 排除 level 6 bwing vvip
+	const vipTableRow = vipBanner?.vipBannerData
+		?.filter(item => item.level !== 6)
+		.map(item => {
+			return (
+				<div className="vip-grade-info" key={item.levelName}>
+					<div className="vip-grade-icon">
+						<img
+							src={`https://banner.bw88.io/h5/img/4.0/vip/vip${item?.level}.png`}
+							alt=""
+						/>
+						<div>{item.levelName}</div>
+					</div>
+					<VipTable vipBanner={item} />
 				</div>
-				<VipTable vipBanner={item} />
-			</div>
-		);
-	});
+			);
+		});
 
 	useEffect(() => {
 		const getVipBanner = async () => {
@@ -63,7 +66,7 @@ const IndexPage = () => {
 		return () => {
 			isMountedRef.current = false;
 		};
-	});
+	}, []);
 
 	return (
 		<div className="wrapper">

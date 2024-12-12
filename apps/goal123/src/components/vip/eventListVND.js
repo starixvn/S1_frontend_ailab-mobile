@@ -16,6 +16,10 @@ const EventListVND = ({ i18n, vipBanner }) => {
 		return input;
 	};
 
+	const filteredData = Array.isArray(vipBanner?.vipBannerData)
+		? vipBanner.vipBannerData.filter(item => item.level !== 6)
+		: [];
+
 	return (
 		<table className="eventList">
 			<tbody>
@@ -28,7 +32,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Deposit_Priority}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.depositPriority ? (
 								<i className="icon icon-checkmark" />
@@ -41,7 +45,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_WithDrawal_Priority}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.withdrawalPriority ? (
 								<i className="icon icon-checkmark" />
@@ -54,7 +58,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Service_Support_At_Date}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.serviceSupport ? (
 								<i className="icon icon-checkmark" />
@@ -69,7 +73,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.designatedAccountManager && (
 								<i className="icon icon-checkmark" />
@@ -82,7 +86,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Daily_Limit}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{number_format_excludeString(
 								item?.withdrawalMax.split(".")[0]
@@ -94,7 +98,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_DAILY_TRANSACTIONS_COUNT}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{number_format_excludeString(item?.times)}
 						</td>
@@ -110,7 +114,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Tier_UpGrade_Bonus}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.upBonus
 								? number_format_excludeString(
@@ -129,7 +133,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Sport_Rebate}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{
 								item?.rebateCategory[VipSpecialRebate.Sport]
@@ -143,7 +147,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_LiveCasino_Rebate}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{
 								item?.rebateCategory[
@@ -158,7 +162,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_SlotFishing_Rebate}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{
 								item?.rebateCategory[VipSpecialRebate.Casino]
@@ -172,7 +176,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_VirtualSport_Rebate}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{
 								item?.rebateCategory[
@@ -187,7 +191,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_ESport_Rebate}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{
 								item?.rebateCategory[VipSpecialRebate.ESports]
@@ -206,7 +210,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Referral_bonus}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.referralBonus && (
 								<i className="icon icon-checkmark" />
@@ -224,7 +228,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					<td colSpan="7">{i18n.lbl_Vip_Monthly_Minimum_Deposit}</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.upDeposit
 								? number_format_excludeString(
@@ -246,7 +250,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.downDeposit &&
 							Number(item?.downDeposit) !== 0
@@ -263,7 +267,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					</td>
 				</tr>
 				<tr>
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.downTurnover &&
 							Number(item?.downTurnover) !== 0
@@ -280,7 +284,7 @@ const EventListVND = ({ i18n, vipBanner }) => {
 					</td>
 				</tr>
 				<tr className="lastTd">
-					{vipBanner?.vipBannerData?.map(item => (
+					{filteredData.map(item => (
 						<td key={item.level + item.levelName}>
 							{item?.rankingValidityMembershipRenewal}
 						</td>
