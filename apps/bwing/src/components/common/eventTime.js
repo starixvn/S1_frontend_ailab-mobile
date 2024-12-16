@@ -87,5 +87,9 @@ export const eventTime = {
 	leaderboardMidAutumn: {
 		startDate: "2024/09/12 00:00:00",
 		endDate: "2024/09/30 23:59:59"
+	},
+	leaderboardChristmas: {
+		startDate: "2024/12/17 00:00:00",
+		endDate: "2024/12/25 23:59:59"
 	}
 };
