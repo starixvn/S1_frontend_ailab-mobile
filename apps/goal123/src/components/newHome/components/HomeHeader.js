@@ -88,9 +88,9 @@ const HomeHeader = ({ appHint, handleDownloadHint }) => {
 		setPopUp("");
 	};
 
-	// TODO: 因應中秋節更換ＬＯＧＯ（期間：2024.9.12~9.18）(之後若有其他活動也可以在此調整)
-	const logoUrl = isDateRange(eventTime.midAutumn)
-		? `${bannerImgUrl}/h5/img/logo-mid.png`
+	// TODO: 因應聖誕節更換ＬＯＧＯ（期間：2024.12.17~12.26）(之後若有其他活動也可以在此調整)
+	const logoUrl = isDateRange(eventTime.christmas)
+		? `${bannerImgUrl}/h5/img/logo-christmas.png`
 		: `${bannerImgUrl}/h5/img/logo.png`;
 
 	return (
