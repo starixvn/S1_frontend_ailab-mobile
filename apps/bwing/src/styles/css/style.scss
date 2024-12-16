@@ -538,7 +538,7 @@ header {
 
   &-list {
     display: flex;
-    // justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     // width: calc(100% - 10vw);
     width: 100%;
@@ -547,6 +547,7 @@ header {
     &-item {
       width: 26vw;
       height: 26vw;
+      margin: 0 5vw 5vw 0;
       background: $white;
       border-radius: 3vw;
       font-weight: 700;
@@ -17158,155 +17159,6 @@ body {
   border-bottom-right-radius: 2vw !important;
 }
 
-
-.survey{
-  background: #F8F8F8;
-  color: #9C9C9C;
-  height: 100%;
-  &-before{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 14vw;
-    padding: 0 6vw;
-    >div{
-      &:first-child{
-        color: #1C317B;
-        font-size: 4vw;
-        font-weight: 600;
-      }
-      &:nth-child(2){
-        padding: 0 5vw;
-        text-align: center;
-        margin-top: 5vw;
-        line-height: 5.5vw;
-      }
-    }
-    fieldset {
-      border: medium none;
-      min-width: 100%;
-      padding: 0;
-      width: 100%;
-      input{
-        width: 100%;
-        border: 1px solid #ccc;
-        background: #FFF;
-        // margin: 0 0 5vw;
-        padding: 3vw;
-        color: #0A1B38;
-        border-radius: 2vw;
-        &::placeholder{
-          font-size: 3vw;
-          color: #D8D8D8;
-          font-family: "Bai Jamjuree", sans-serif;
-        }
-      }
-      input:focus{
-        outline: 0;
-        border: 2px solid #FFAF43;
-      }
-      textarea {
-        width: 75vw;
-        border: 1px solid #ccc;
-        background: #FFF;
-        // margin: 0 0 5vw;
-        padding: 3vw;
-        height: 50vw;
-        max-width: 100%;
-        resize: none;
-        border-radius: 2vw;
-        &::placeholder{
-          color: #D8D8D8;
-          font-family: "Bai Jamjuree", sans-serif;
-        }
-      }
-      textarea:focus {
-        outline: 0;
-        border: 2px solid #FFAF43;
-      }
-      button{
-        background: #FFAF43;
-        font-size: 3.5vw;
-        font-weight: 600;
-        border-radius: 2vw;
-        padding: 3vw 10vw;
-        width: 39.5vw;
-        margin-top: 8vw;
-        color: white;
-        &:first-child{
-          &[disabled]{
-            background: gray !important;
-          }
-        }
-        &:last-child{
-          background: #DFDFDF;
-          color: #9B9B9B;
-        }
-      }
-      .tip{
-        display: none;
-        margin-top: 2vw;
-        &.active{
-          display: block;
-          color: red;
-        }
-        &.message{
-          margin-top: 1vw;
-        }
-      }
-      &.error{
-        textarea{
-          border: 2px solid red;
-        }
-        input{
-          border: 2px solid red;
-        }
-      }
-      &:first-child{
-        margin-bottom: 5vw;
-      }
-    }
-    .survey-input{
-      margin-top: 3vw;
-    }
-    .survey-btn{
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-    &.close{
-      display: none;
-    }
-  }
-  &-after{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    img{
-      width: 45vw;
-      margin-top: 15vw;
-    }
-    >div{
-      &:first-child{
-        >div{
-          color: #0A1B38;
-          font-size: 4vw;
-          font-weight: 600;
-          text-align: center;
-          margin-top: 8vw;
-        }
-      }
-      &:last-child{
-        text-align: center;
-        padding: 7vw 5vw 0;
-        line-height: 5.5vw;
-      }
-    }
-    &.close{
-      display: none;
-    }
-  }
-}
 
 
 //2024 Leaderboard (leaderboard.html)

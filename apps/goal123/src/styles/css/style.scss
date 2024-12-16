@@ -2170,47 +2170,6 @@ main {
       }
     }
   }
-  
-  &.detailpop{
-    width: 100%;
-    background: #eaf1ff;
-    padding: 0;
-    height: 100%;
-    overflow-y: auto;
-    top: 100%;
-    justify-content: revert;
-    .pop {
-      padding: 0 !important;
-    }
-
-    &.active {
-      top: 0;
-      transition: 1s;
-    }
-
-    .popTit {
-      border-radius: 0;
-      position: fixed;
-      padding: 2vw 4vw;
-      z-index: 1;
-      box-shadow: rgba(black, 0.7) 0 0 4px 0;
-      border: 0;
-    }
-
-    .icon-close {
-      z-index: 2;
-      position: absolute;
-      top: 2vw;
-      right: 2vw;
-    }
-    .infoList {
-      padding: 11vw 4vw 4vw;
-      width: calc(100% - 8vw) !important;
-      .info {    
-        color: #4e6ca8;
-      }
-    }
-  }
 
   //會員達標回饋PromosBackPopup start
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -3814,9 +3773,6 @@ main {
             font-weight: bold;
           }
         }
-      }
-      .title {
-        color: $primary;
       }
     }
   }
@@ -8278,11 +8234,6 @@ span.important {
       font-weight: bold;
       color: white;
     }
-    .info {
-      color: rgba($yellow1, .8);
-      margin-left: 0.75vw;
-      font-size: 3.25vw;
-    }
   }
 
   .selectModule {
@@ -8364,32 +8315,12 @@ span.important {
         width: calc(100% - 12vw);
         padding: 2vw 5vw;
         background: #adccff;
-        margin: 1vw auto;
+        margin: auto;
         border-radius: 5px;
 
         .checkBank {
           display: flex;
           align-items: center;
-        }
-        &.remark{
-          background: transparent;
-          width: calc(100% - 2vw);
-          padding: 0;
-          ul {
-            width: 100%;
-            .tip {
-              text-align: left;
-              padding: 0 1vw;
-              margin-bottom: 2vw;
-            }
-          }
-          li {
-            background: #adccff;
-            border-radius: 5px;
-            padding: 2vw 5vw;
-            box-sizing: border-box;
-            margin-bottom: 1.5vw;
-          }
         }
       }
 
@@ -12109,7 +12040,7 @@ span.important {
 
   &-app {
     background: $yellow1;
-    padding: 10vw 3vw 10vw 3vw;
+    padding: 10vw 3vw 20vw 3vw;
     position: relative;
     border-radius: 15vw 15vw 0 0;
     margin-top: -15vw;
@@ -12425,13 +12356,13 @@ span.important {
             >div {
               margin-left: 2vw;
             }
-        }
+          }
         }
 
         img {
           width: 11vw;
         }
-    }
+      }
     }
   }
 
@@ -12807,7 +12738,7 @@ span.important {
             width: 20vw;
             margin-bottom: 1.5vw;
             text-align: center;
-        }
+          }
         }
 
         .number {
@@ -12826,9 +12757,9 @@ span.important {
                 font-size: 2vw;
               }
             }
+          }
         }
-        }
-    }
+      }
     }
 
     .more-btn {
@@ -13446,7 +13377,7 @@ span.important {
         span {
           display: flex;
           align-items: center;
-          font-size: 2.6vw;
+          font-size: 2.15vw;
           color: #878686;
           font-weight: 700;
         }
@@ -13458,7 +13389,7 @@ span.important {
           span {
             color: $secondary;
             font-size: 2.8vw;
-            margin-right: 1.5vw;
+            margin-right: 1vw;
           }
         }
 
@@ -17038,181 +16969,6 @@ main {
 }
 
 
-.survey{
-  background: #F8F8F8;
-  color: #9C9C9C;
-  padding: 22vw 0 40vw;
-
-  &-before {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 6vw;
-
-    >div {
-      &:first-child {
-        color: #141f33;
-        font-size: 4vw;
-        font-weight: 600;
-      }
-
-      &:nth-child(2) {
-        text-align: center;
-        margin-top: 5vw;
-        line-height: 5.5vw;
-      }
-    }
-
-    fieldset {
-      border: medium none;
-      min-width: 100%;
-      padding: 0;
-      width: 100%;
-
-      input {
-        width: 100%;
-        border: 1px solid #ccc;
-        background: #FFF;
-        // margin: 0 0 5vw;
-        padding: 3vw;
-        color: #0A1B38;
-        border-radius: 2vw;
-
-        &::placeholder {
-          font-size: 3vw;
-          color: #D8D8D8;
-          font-family: "Montserrat", sans-serif;
-        }
-      }
-
-      input:focus {
-        outline: 0;
-        border: 2px solid #5084e4;
-      }
-
-      textarea {
-        width: 75vw;
-        border: 1px solid #ccc;
-        background: #FFF;
-        // margin: 0 0 5vw;
-        padding: 3vw;
-        height: 50vw;
-        max-width: 100%;
-        resize: none;
-        border-radius: 2vw;
-
-        &::placeholder {
-          color: #D8D8D8;
-          font-family: "Montserrat", sans-serif;
-        }
-      }
-
-      textarea:focus {
-        outline: 0;
-        border: 2px solid #5084e4;
-      }
-
-      button {
-        background: #EE4F49;
-        font-size: 3.5vw;
-        font-weight: 600;
-        border-radius: 2vw;
-        padding: 3vw 10vw;
-        width: 39.5vw;
-        margin-top: 8vw;
-        color: white;
-
-        &:first-child {
-          &[disabled] {
-            background: gray !important;
-          }
-        }
-
-        &:last-child {
-          background: #DFDFDF;
-          color: #9B9B9B;
-        }
-      }
-
-      .tip {
-        display: none;
-        margin-top: 2vw;
-
-        &.active {
-          display: block;
-          color: red;
-        }
-
-        &.message {
-          margin-top: 1vw;
-        }
-      }
-
-      &.error {
-        textarea {
-          border: 2px solid red;
-        }
-
-        input {
-          border: 2px solid red;
-        }
-      }
-
-      &:first-child {
-        margin-bottom: 5vw;
-      }
-    }
-
-    .survey-input {
-      margin-top: 3vw;
-    }
-
-    .survey-btn {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &.close {
-      display: none;
-    }
-  }
-
-  &-after {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      width: 45vw;
-      margin-top: 15vw;
-    }
-
-    >div {
-      &:first-child {
-        >div {
-          color: #141f33;
-          font-size: 4vw;
-          font-weight: 600;
-          text-align: center;
-          margin-top: 8vw;
-        }
-      }
-
-      &:last-child {
-        text-align: center;
-        padding: 7vw 5vw 0;
-        line-height: 5.5vw;
-      }
-    }
-
-    &.close {
-      display: none;
-    }
-  }
-}
-
-
 //2024-Leaderboard(leaderboard.html)
 main {
   &.leaderboard {
@@ -18008,41 +17764,7 @@ main {
       &:nth-child(2) {
         text-align: center;
         margin-top: 5vw;
-      }
-    }
-
-    &-input {
-      height: 10vw;
-      padding: 0 0 0 3vw;
-      margin-top: 3vw;
-      border-radius: 20vw;
-      border: 0;
-      background: #EFEFEF;
-      color: #5574A7;
-      font-size: 3vw;
-
-      &::placeholder {
-        color: #B5C0D1;
-        font-family: 'Poppins', sans-serif;
-        letter-spacing: 0.5px;
-      }
-
-      &:-webkit-autofill {
-        box-shadow: 0 0 0px 1000px #0A1B38 inset;
-        -webkit-text-fill-color: white;
-      }
-
-      &:focus-within {
-        border: 1px solid #C2D9FF;
-        outline: #C2D9FF;
-      }
-    }
-
-    .btn-group {
-      button {
-        height: 10vw;
-        border-radius: 2.5vw;
-        margin-top: 5vw;
+        line-height: 5.5vw;
       }
     }
 

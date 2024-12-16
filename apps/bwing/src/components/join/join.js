@@ -195,7 +195,7 @@ const Join = ({ setNav }) => {
 		if (col === "UserName") {
 			val = val.replace(/[\W_]/g, "");
 		} else if (col === "RealName") {
-			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?\[\]\\`~{}]+/gu, "");
+			val = val.replace(/[\d\-!@#$%^&_()+";~～<>=|?[\]\\`~{}]+/gu, "");
 		} else if (col === "Phone") {
 			val = val.replace(/[^0-9]+/g, "");
 		}
@@ -308,7 +308,7 @@ const Join = ({ setNav }) => {
 			(_affiliateCheck.checked === true ||
 				_affiliateCheck.checked === null);
 		if (checked) {
-			MetaPixelTracker("registerSubmit");
+			MetaPixelTracker("registerSubmit", userValue.UserName);
 			const regData = {
 				UserName: userValue.UserName,
 				Userpwd: userValue.Password,
@@ -334,7 +334,10 @@ const Join = ({ setNav }) => {
 					const { message, errorCode } = response.data;
 					if (errorCode === 0) {
 						// 註冊成功送出臉書廣告埋點給市場
-						MetaPixelTracker("CompleteRegistration");
+						MetaPixelTracker(
+							"CompleteRegistration",
+							userValue.UserName
+						);
 						api_GetCustProfile().then(
 							res_custInfo => {
 								let _user = {
@@ -628,9 +631,11 @@ const Join = ({ setNav }) => {
 									col: "reCaptchaToken"
 								})}
 								placeholder={t("lbl_EnterCaptchaCode")}
+								inputBoxNewClass="inputbox-item primary"
+								border={false}
+								hideInfoBtn
 							/>
 						)}
-						<Captcha />
 
 						<div style={{ textAlign: "start", marginBottom: 24 }}>
 							<Captcha />

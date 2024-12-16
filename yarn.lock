@@ -13285,11 +13285,6 @@
   dependencies:
     "clsx" "^1.1.1"
 
-"react-turnstile@^1.1.4":
-  "integrity" "sha512-oluyRWADdsufCt5eMqacW4gfw8/csr6Tk+fmuaMx0PWMKP1SX1iCviLvD2D5w92eAzIYDHi/krUWGHhlfzxTpQ=="
-  "resolved" "https://registry.npmjs.org/react-turnstile/-/react-turnstile-1.1.4.tgz"
-  "version" "1.1.4"
-
 "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"

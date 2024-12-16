@@ -107,7 +107,13 @@ const useDepositWithdrawTracker = () => {
 				}) => {
 					// 如果此財務通知需要通知市場，就發送通知給市場
 					if (event)
-						MetaPixelTracker(event, amount, firstDeposit, isoCode);
+						MetaPixelTracker(
+							event,
+							transId,
+							amount,
+							firstDeposit,
+							isoCode
+						);
 
 					// 如果財務通知有啟用，就發送通知
 					if (notificationEnabled) {
