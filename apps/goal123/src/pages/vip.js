@@ -114,7 +114,10 @@ const IndexPage = () => {
 };
 
 const LevelList = ({ i18n }) => {
-	const rows = defLevelList.map(l => (
+	const filteredList = defLevelList.filter(
+		item => !item.imgUrl.includes("vip6")
+	);
+	const rows = filteredList.map(l => (
 		<div key={`VIPLevelList-${l.levelName}`}>
 			<img src={l.imgUrl} alt={l.levelName} />
 			{l.levelName ? (

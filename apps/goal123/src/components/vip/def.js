@@ -42,13 +42,13 @@ export const defLevelList = [
 	{
 		imgUrl: `${bannerImgUrl}/h5/img/vip/vip5.png`,
 		levelName: "lbl_Diamond_Club"
+	},
+	{
+		imgUrl: `${bannerImgUrl}/h5/img/vip/vip6.png`,
+		levelName_col1: "GOAL",
+		levelName_col2: "123",
+		levelName_col3: "CLUB"
 	}
-	// {
-	// 	imgUrl: `${bannerImgUrl}/h5/img/vip/vip6.png`,
-	// 	levelName_col1: "GOAL",
-	// 	levelName_col2: "123",
-	// 	levelName_col3: "CLUB"
-	// }
 ];
 
 /**
