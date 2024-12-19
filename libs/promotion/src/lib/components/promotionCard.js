@@ -44,7 +44,6 @@ const PromotionCard = ({
 	};
 
 	const promoStyle = getPromoStyle();
-
 	return (
 		<div className={promoStyle}>
 			<Stamp
