@@ -191,7 +191,6 @@ export const JoinBtn = ({
 				});
 		}
 	};
-
 	const onJoinPromotion = async _promo => {
 		if (userInfo.isLogin !== false) {
 			if (
@@ -272,8 +271,10 @@ export const JoinBtn = ({
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
 					_promo.promotionType === defPromotionType.firstDeposit ||
-					_promo.promotionType === defPromotionType.missionBonus)
+					_promo.promotionType === defPromotionType.missionBonus) &&
+				!_promo.isPromotionUploadCustList
 			) {
+				// reDeposit, firstDeposit, missionBonus 且 非member list所走的join now流程
 				handlePopBox({
 					content: (
 						<ClaimWithLockedAmount
@@ -290,13 +291,23 @@ export const JoinBtn = ({
 				// 新制first deposit, redeposit (member list)所走的join now流程
 				(_promo.promotionType === defPromotionType.reDeposit ||
 					_promo.promotionType === defPromotionType.firstDeposit) &&
-				_promo.isPromotionUploadCustList
+				_promo.isPromotionUploadCustList &&
+				_promo.canJoin
 			) {
-				const success = await setClaimPromotionForUploadCustList({
-					bonusCode: promotionInfo.bonusCode,
-					LockedAmount: promotionInfo.maxAmount
+				handlePopBox({
+					content: (
+						<ClaimWithLockedAmount
+							uiSetting={uiSetting}
+							promotionInfo={promotionInfo}
+							ClosePopBox={clickClose}
+							SetClaimPromotion={
+								setClaimPromotionForUploadCustList
+							}
+							i18n={i18n}
+							// formatSetting={formatSetting}
+						/>
+					)
 				});
-				if (success) window.location.reload();
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
