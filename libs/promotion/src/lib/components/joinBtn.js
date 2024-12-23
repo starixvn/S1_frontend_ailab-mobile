@@ -293,7 +293,8 @@ export const JoinBtn = ({
 				_promo.isPromotionUploadCustList
 			) {
 				const success = await setClaimPromotionForUploadCustList({
-					bonusCode: promotionInfo.bonusCode
+					bonusCode: promotionInfo.bonusCode,
+					LockedAmount: promotionInfo.maxAmount
 				});
 				if (success) window.location.reload();
 			} else {
@@ -368,7 +369,10 @@ export const JoinBtn = ({
 					onClick={async () => {
 						if (promotionInfo.canJoin && !promotionInfo.isJoin) {
 							const success = await setClaimPromotionForUploadCustList(
-								{ bonusCode: promotionInfo.bonusCode }
+								{
+									bonusCode: promotionInfo.bonusCode,
+									lockedAmount: promotionInfo.maxAmount
+								}
 							);
 							if (success) window.location.reload();
 						} else {

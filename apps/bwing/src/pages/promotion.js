@@ -15,6 +15,7 @@ import PromotionWrapper from "../components/promotion/wrapper";
 import { siteInfo } from "../config";
 import Promotion from "../components/promotion/promotion";
 
+// eslint-disable-next-line react/prop-types
 export default ({ location }) => {
 	return (
 		<PromotionWrapper>
