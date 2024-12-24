@@ -52,7 +52,7 @@ export const eventTime = {
 	casino_amigo: { endDate: "2023/12/31 23:59:59" },
 	dragonEgg: {
 		startDate: "2024/02/01 00:00:00",
-		endDate: "2024/02/29 23:59:59"
+		endDate: "2025/02/29 23:59:59"
 	},
 	GA_CockFighting: { endDate: "2024/05/01 23:59:59" },
 	WCC_CockFighting: { endDate: "2025/05/01 23:59:59" },

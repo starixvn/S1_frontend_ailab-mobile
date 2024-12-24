@@ -56,7 +56,7 @@ export const eventTime = {
 	slot_NoLimitCity: { endDate: "2024/01/11 23:59:59" },
 	dragonEgg: {
 		startDate: "2024/02/01 00:00:00",
-		endDate: "2024/02/29 23:59:59"
+		endDate: "2025/02/29 23:59:59"
 	},
 	game_93Connect: { endDate: "2024/04/21 23:59:59" },
 	liveCasino_Won: {
