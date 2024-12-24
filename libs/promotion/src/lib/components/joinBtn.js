@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { Link, Redirect } from "@reach/router";
+import { useTranslation } from "react-i18next";
 import {
 	defPromotionType,
 	defFilterType,
@@ -17,6 +18,7 @@ export const JoinBtn = ({
 	filterType,
 	config
 }) => {
+	const { t } = useTranslation();
 	const { handlePopBox, handleErrorPopBox, clickClose } = useHandlePopBox(
 		config
 	);
@@ -28,7 +30,8 @@ export const JoinBtn = ({
 
 	if (
 		!promotionInfo ||
-		defHideJoinBtnTypes.includes(promotionInfo.promotionType)
+		(defHideJoinBtnTypes.includes(promotionInfo.promotionType) &&
+			!promotionInfo.isPromotionUploadCustList)
 	) {
 		return null;
 	}
@@ -109,7 +112,86 @@ export const JoinBtn = ({
 		}
 	};
 
-	const onJoinPromotion = _promo => {
+	// 需要member list才能打的set promo api
+	const setClaimPromotionForUploadCustList = ({
+		bonusCode,
+		LockedAmount = 0
+	}) => {
+		if (!processing) {
+			setProcessing(true);
+			api.promotion
+				.SetClaimPromotionForUploadCustList({
+					langId: userInfo.langId,
+					BonusCode: bonusCode,
+					LockedAmount:
+						LockedAmount && !isNaN(LockedAmount)
+							? Number(LockedAmount)
+							: 0
+				})
+				.then(res => {
+					if (res.data.errorCode === 0) {
+						if (func_GetPromotionDetail) {
+							func_GetPromotionDetail(
+								userInfo.langId,
+								bonusCode,
+								filterType
+							);
+						} else if (func_CallBack) {
+							func_CallBack();
+						}
+						handlePopBox({
+							content: <p>{i18n?.lbl_ClaimSucceed}</p>,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										onClick={clickClose}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										OK
+									</button>
+								</div>
+							)
+						});
+					} else if (res.data.errorCode === -5) {
+						const RedirectToProfile = () => {
+							setRedirectPath(
+								`/${path.member.root}?prevPage=${path.promotionInfo.root}&BonusCode=${bonusCode}`
+							);
+							clickClose();
+						};
+						handlePopBox({
+							content: <p>{i18n?.msg_OTPHint}</p>,
+							btnBar: (
+								<div className="btn-group">
+									<button
+										className={
+											uiSetting.popBox?.cancelBtn ??
+											"blue"
+										}
+										onClick={clickClose}>
+										{i18n?.lbl_Later}
+									</button>
+									<button
+										onClick={RedirectToProfile}
+										className={
+											uiSetting.popBox?.submitBtn ??
+											"btn-check"
+										}>
+										{i18n?.lbl_GoNow}
+									</button>
+								</div>
+							)
+						});
+					} else {
+						handleErrorPopBox({ ...res.data, uiSetting });
+					}
+					setProcessing(false);
+				});
+		}
+	};
+	const onJoinPromotion = async _promo => {
 		if (userInfo.isLogin !== false) {
 			if (
 				userInfo.currencyId &&
@@ -189,8 +271,10 @@ export const JoinBtn = ({
 				_promo.canJoin &&
 				(_promo.promotionType === defPromotionType.reDeposit ||
 					_promo.promotionType === defPromotionType.firstDeposit ||
-					_promo.promotionType === defPromotionType.missionBonus)
+					_promo.promotionType === defPromotionType.missionBonus) &&
+				!_promo.isPromotionUploadCustList
 			) {
+				// reDeposit, firstDeposit, missionBonus 且 非member list所走的join now流程
 				handlePopBox({
 					content: (
 						<ClaimWithLockedAmount
@@ -203,18 +287,37 @@ export const JoinBtn = ({
 						/>
 					)
 				});
+			} else if (
+				// 新制first deposit, redeposit (member list)所走的join now流程
+				(_promo.promotionType === defPromotionType.reDeposit ||
+					_promo.promotionType === defPromotionType.firstDeposit) &&
+				_promo.isPromotionUploadCustList &&
+				_promo.canJoin
+			) {
+				handlePopBox({
+					content: (
+						<ClaimWithLockedAmount
+							uiSetting={uiSetting}
+							promotionInfo={promotionInfo}
+							ClosePopBox={clickClose}
+							SetClaimPromotion={
+								setClaimPromotionForUploadCustList
+							}
+							i18n={i18n}
+							// formatSetting={formatSetting}
+						/>
+					)
+				});
 			} else {
 				SetClaimPromotion({ bonusCode: _promo.bonusCode });
 			}
 		}
 	};
-
 	const _canJoin = !(
 		(filterType === defFilterType.specialBonus ||
 			promotionInfo.filterType === defFilterType.specialBonus) &&
 		!promotionInfo.canJoin
 	);
-
 	let btnResult = null;
 
 	if (redirectPath !== null) {
@@ -222,7 +325,6 @@ export const JoinBtn = ({
 	} else if (
 		(promotionInfo.isJoin && userInfo.isLogin) ||
 		promotionInfo.promotionType === defPromotionType.rebate ||
-		promotionInfo.promotionType === defPromotionType.other ||
 		(filterType === defFilterType.specialBonus && !promotionInfo.canJoin) ||
 		promotionInfo.beenUsed ||
 		moment.unix(promotionInfo.periodFrom).diff(Date.now()) > 0 ||
@@ -240,8 +342,10 @@ export const JoinBtn = ({
 			promotionInfo.promotionType === defPromotionType.retentionFreeBet
 				? i18n?.lbl_ClaimNow?.toUpperCase()
 				: i18n?.lbl_PromoJoinNow?.toUpperCase();
-
-		if (userInfo.isLogin === false) {
+		if (
+			userInfo.isLogin === false &&
+			!promotionInfo.isPromotionUploadCustList
+		) {
 			btnResult = handleLogin ? (
 				<button
 					className={uiSetting.joinBtn ?? "btn-check"}
@@ -261,6 +365,37 @@ export const JoinBtn = ({
 					className={uiSetting.joinBtn ?? "btn-check"}
 					onClick={onJoinPromotion.bind(this, promotionInfo)}>
 					{joinNowDisplayText}
+				</button>
+			);
+		}
+
+		// 新制special (member list)所走的apply now, claim now流程
+		if (
+			promotionInfo.isPromotionUploadCustList &&
+			promotionInfo.promotionType === defPromotionType.static
+		) {
+			btnResult = (
+				<button
+					className={uiSetting.joinBtn ?? "btn-check"}
+					onClick={async () => {
+						if (promotionInfo.canJoin && !promotionInfo.isJoin) {
+							const success = await setClaimPromotionForUploadCustList(
+								{
+									bonusCode: promotionInfo.bonusCode,
+									lockedAmount: promotionInfo.maxAmount
+								}
+							);
+							if (success) window.location.reload();
+						} else {
+							window.open(
+								`https://direct.lc.chat/${config.liveChatId}/`,
+								"_blank"
+							);
+						}
+					}}>
+					{promotionInfo.canJoin && !promotionInfo.isJoin
+						? t("lbl_ClaimNow")
+						: t("lbl_Apply_Now")}
 				</button>
 			);
 		}

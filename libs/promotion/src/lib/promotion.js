@@ -121,7 +121,6 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 		getPromotionList,
 		refreshProcessBar
 	} = useGetPromotions({ api, userInfo });
-
 	const {
 		onChangeSpecialCode,
 		specialCode,
@@ -130,7 +129,6 @@ const PromotionContent = ({ staticList, location, navBar }) => {
 		GetSpecialBonusList,
 		refreshProcessBar: specialBonusRefreshProcessBar
 	} = useHandleSpecialBonus({ api, langId: userInfo.langId, filterType });
-
 	let rows = [];
 	if (filterType === defFilterType.specialBonus) {
 		rows = setPromotionCards({

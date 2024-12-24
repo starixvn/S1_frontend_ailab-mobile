@@ -18,7 +18,8 @@ const PromoContent = ({
 }) => (
 	<div className="promodule">
 		<div className={config?.uiSetting?.btnGroup ?? btnGroup}>
-			{promotionInfo.promotionType === defPromotionType.static ? (
+			{!promotionInfo.canJoin &&
+			promotionInfo.promotionType === defPromotionType.static ? (
 				<a
 					className={config?.uiSetting.joinBtn ?? "btn-check"}
 					rel="noreferrer"

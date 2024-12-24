@@ -16,6 +16,7 @@ import Layout from "../components/common/layout";
 import PromotionWrapper from "../components/promotion/wrapper";
 import { siteInfo } from "../config";
 
+// eslint-disable-next-line react/prop-types
 export default ({ location }) => {
 	const { i18n } = useContext(i18nContext);
 	return (
@@ -27,6 +28,7 @@ export default ({ location }) => {
 	);
 };
 
+// eslint-disable-next-line react/prop-types
 const Content = ({ location }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { i18n } = useContext(i18nContext);
@@ -37,7 +39,6 @@ const Content = ({ location }) => {
 	const handleLogin = () => {
 		setNav(defNavPanel.login);
 	};
-
 	return (
 		<Promotion
 			staticList={staticList}
