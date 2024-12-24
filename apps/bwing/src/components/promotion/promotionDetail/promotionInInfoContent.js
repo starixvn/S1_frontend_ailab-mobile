@@ -47,8 +47,9 @@ const PromotionInInfoContent = ({
 					</div>
 
 					<div className={config?.uiSetting?.btnGroup}>
-						{promotionInfo.promotionType ===
-						defPromotionType.static ? (
+						{!promotionInfo.canJoin &&
+						promotionInfo.promotionType ===
+							defPromotionType.static ? (
 							<a
 								className={
 									config?.uiSetting.joinBtn ?? "btn-check"

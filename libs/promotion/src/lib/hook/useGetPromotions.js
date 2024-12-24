@@ -11,13 +11,19 @@ export const useGetPromotions = ({ api, userInfo: { langId } }) => {
 		};
 	});
 
-	const getPromotionList = useCallback(() => {
+	const getPromotionList = useCallback(async () => {
+		// 將需要Member list才有的promotion合併進原本的promotion list
+		const {
+			data: { data: promoCustListData }
+		} = await api.promotion.GetPromotionUploadCustList({
+			langId
+		});
 		api.promotion.GetPromotionList({ langId }).then(res => {
 			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setPromotion(res.data.data || []);
+				setPromotion([...res.data.data, ...promoCustListData]);
 			}
 		});
-	}, [langId]);
+	}, [api.promotion, langId]);
 
 	const refreshProcessBar = ({ bonusCode, tpId, categoryId }) => {
 		api.account
@@ -54,6 +60,5 @@ export const useGetPromotions = ({ api, userInfo: { langId } }) => {
 	useEffect(() => {
 		getPromotionList();
 	}, [getPromotionList]);
-
 	return { promotion, getPromotionList, refreshProcessBar };
 };
