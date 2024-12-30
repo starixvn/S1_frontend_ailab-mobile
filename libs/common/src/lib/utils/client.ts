@@ -1,6 +1,7 @@
 type ReactNativeWebViewMessage =
 	| { type: "SyncCurrency"; payload: number }
-	| { type: "SyncLanguage"; payload: string };
+	| { type: "SyncLanguage"; payload: string }
+	| { type: "SyncAuth"; payload: "login" | "logout" };
 
 type ReactNativeWebView = {
 	postMessage: (message: string) => void;
@@ -32,3 +33,6 @@ export const isInApp = isReactNativeWebView;
 
 export const setAppLanguage = (langCode: string) =>
 	postMsgToApp({ type: "SyncLanguage", payload: langCode });
+
+export const setAppAuth = (payload: "login" | "logout") =>
+	postMsgToApp({ type: "SyncAuth", payload });

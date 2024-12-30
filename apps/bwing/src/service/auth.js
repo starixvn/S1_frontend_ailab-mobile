@@ -1,11 +1,14 @@
 import { api_UserLogin, api_UserLogout } from "./api/account";
 import { api_GetCustProfile } from "./api/accountStrict";
 import { api_CheckSignIn } from "./api/site";
+import { setAppAuth } from "@ailab-mobile/common";
 
 export const IS_LOGGED_IN = async () => {
 	try {
 		const res = await api_CheckSignIn();
-		return res.data.errorCode === 0;
+		const isLogin = res.data.errorCode === 0;
+		setAppAuth(isLogin ? "login" : "logout");
+		return isLogin;
 	} catch (error) {
 		return null;
 	}
@@ -39,6 +42,8 @@ export const LOGIN = async ({ userName, password, langId }, CallbackLogin) => {
 	}).then(
 		res => {
 			if (res.data.errorCode === 0) {
+				// postMsg to App wrapper
+				setAppAuth("login");
 				const userlangId = res.data.message.replace("/", "");
 
 				api_GetCustProfile().then(res_custInfo => {
@@ -75,6 +80,8 @@ export const LOGOUT = callback => {
 	api_UserLogout().then(
 		res => {
 			if (res.data.errorCode === 0) {
+				// postMsg to App wrapper
+				setAppAuth("logout");
 				callback();
 			}
 		},
